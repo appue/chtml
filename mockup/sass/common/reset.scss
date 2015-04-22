@@ -72,10 +72,19 @@ a:visited{
     text-decoration: none;
 }
 
-@mixin overflow{
-    overflow: hidden;
-    text-overflow: ellipsis;
+//文字超出显示...
+@mixin ellipsis{
+  text-overflow: ellipsis;
     white-space: nowrap;
+       overflow: hidden;
+}
+
+//多行文字超出显示...
+@mixin multi_ellipsis($line: 3){
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  overflow:hidden;
 }
 
 @mixin scrollfix{

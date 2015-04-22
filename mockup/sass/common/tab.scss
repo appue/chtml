@@ -1,0 +1,42 @@
+﻿.mod_tab_2{
+    display: -webkit-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    @include border_bottom_half;
+    .line {
+        z-index: 5;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        height: 4px;
+        background-color: #3cc482;
+        -webkit-transition: -webkit-transform .3s ease-in-out;
+        transition: transform .3s ease-in-out;
+    }
+    li{
+        display: block;
+        width: 0;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        color: #323232;
+        -webkit-box-flex: 1;
+        font-size: 14px;
+        &.current{
+            color: #3cc482;
+        }
+        &:nth-of-type(1).current~.line {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        &:nth-of-type(2).current~.line {
+            -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+        }
+    }
+}
