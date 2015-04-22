@@ -1,3 +1,14 @@
+/*
+npm install --save-dev gulp
+npm install --save-dev gulp-sass
+npm install --save-dev gulp-minify-css
+npm install --save-dev gulp-connect
+npm install --save-dev gulp-watch
+npm install --save-dev gulp-livereload
+npm install --save-dev gulp-plumber
+npm install --save-dev gulp-batch
+*/
+
 var fs   = require('fs'),
     argv = require('yargs').argv,
     os   = require('os');
@@ -17,15 +28,13 @@ var task = {
         //     .pipe(sass())
         //     .pipe(minifycss())
         //     .pipe(gulp.dest(buildPath +'themes'));
-        gulp.src('mockup/themes/*.scss')
+        gulp.src('mockup/*.scss')
             .pipe(plumber())
             .pipe(sass())
-            .pipe(gulp.dest('mockup/themes'));
+            .pipe(gulp.dest('mockup/'));
     }
 };
 
 gulp.task('default', function(){
     task.sass();
-    task.watch();
-    task.connect();
 });
