@@ -1,0 +1,11 @@
+{
+    "name": "yejsApp",
+    "version": "1.0.0",
+    "main": "",
+    "ignore": [],
+    "dependencies": {
+        "angular": "1.4.x",
+        "angular-touch": "1.4.x"
+    },
+    "private": true 
+}

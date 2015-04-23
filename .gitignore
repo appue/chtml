@@ -2,3 +2,4 @@ Thumbs.db
 .DS_Store
 mockup/*.css
 /node_modules/
+/source/bower_components/
