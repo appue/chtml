@@ -2,7 +2,7 @@ angular.module('phoneApp', ['ngRoute'])
     .config(function ($routeProvider) {
         $routeProvider
            .when('/', {
-                templateUrl : 'layout/index.html'
+                templateUrl : 'templates/index.html'
                 // controller  : 'mainController'
             });
 });
