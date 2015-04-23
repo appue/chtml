@@ -60,7 +60,7 @@ var task = {
             url = '';
 
         connect.server({
-            root: 'mockup',
+            root: 'source',
             port: '9999',
             livereload: true
         });
@@ -81,7 +81,7 @@ var task = {
 };
 
 gulp.task('default', function(){
-    task.sass();
-    task.watch();
+    // task.sass();
+    // task.watch();
     task.connect();
 });
