@@ -6,6 +6,7 @@
     width: 100%;
     height: 40px;
     background: #fff;
+    z-index: 100;
     @include border_bottom_half;
     .line {
         z-index: 5;
