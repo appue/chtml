@@ -41,16 +41,14 @@ module.exports = function (gulp, $) {
 
     gulp.task('watch', function () {
 
-        var livereload = require('gulp-livereload');
-
-        livereload.listen();
+        $.livereload.listen();
 
         gulp.src('mockup/**/*.html')
-            .pipe($.watch('mockup/**/*.html', function(){})
-            .pipe(livereload());
+            .pipe($.watch('mockup/**/*.html', function() {}))
+            .pipe($.livereload());
 
         gulp.src('mockup/**/*.scss')
-            .pipe($.watch('mockup/**/*.scss', ['sass'])
-            .pipe(livereload());
+            .pipe($.watch('mockup/**/*.scss', ['sass']))
+            .pipe($.livereload())
     });
 };
