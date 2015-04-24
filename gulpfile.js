@@ -11,10 +11,10 @@ gulp.task('html', function(){
 
 
 gulp.task('dev', function(){
-    return gulp.start('run-html');
+    return gulp.start('run-dev');
 });
 
 
 gulp.task('build', function(){
-    return gulp.start('run-html');
+    return gulp.start('run-build');
 });
