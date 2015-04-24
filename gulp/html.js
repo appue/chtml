@@ -1,12 +1,6 @@
-var cssPath = "./mockup/",
-    netPath = "mockup";
-
-switch (runType) {
-    case 'dev':
-        cssPath = './source/themes/';
-        netPath = 'source';
-    break;
-}
+var fs   = require('fs'),
+    // argv = require('yargs').argv,
+    os   = require('os');
 
 module.exports = function (gulp, $) {
 
@@ -16,21 +10,8 @@ module.exports = function (gulp, $) {
             .pipe($.sass())
             .pipe($.autoprefixer('last 3 version'))
             .pipe($.size({title: 'css--------------------------------'}))
-            .pipe(gulp.dest(cssPath));
-
-        // .pipe(gulp.dest('./mockup/'));
-        // .pipe(gulp.dest('./source/themes/'));
+            .pipe(gulp.dest('mockup/'));
     });
-
-
-    gulp.task('images', function() {
-        return gulp.src([
-                './mockup/**/*.jpg',
-                './mockup/**/*.png'
-            ])
-            .pipe(gulp.dest('./source/themes/'))
-    });
-
 
     gulp.task('connect', function () {
 
@@ -38,7 +19,7 @@ module.exports = function (gulp, $) {
             url = '';
 
         $.connect.server({
-            root: netPath,
+            root: 'mockup',
             port: '9999',
             livereload: true
         });
@@ -61,16 +42,14 @@ module.exports = function (gulp, $) {
 
         $.livereload.listen();
 
-        if (!runType) {
-
-            gulp.src('mockup/**/*.html')
-                .pipe($.watch('mockup/**/*.html', function() {}))
-                .pipe($.livereload());
-
-        }
+        gulp.src('mockup/**/*.html')
+            .pipe($.watch('mockup/**/*.html', function() {}))
+            .pipe($.livereload());
 
         gulp.src('mockup/**/*.scss')
             .pipe($.watch('mockup/**/*.scss', ['sass']))
             .pipe($.livereload())
     });
+
+    gulp.task('run-html', ['sass', 'connect', 'watch']);
 };
