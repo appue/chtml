@@ -1,3 +1,9 @@
+var fs   = require('fs'),
+    argv = require('yargs').argv,
+    os   = require('os');
+
+var runType = argv.l || ''; // dev、build
+
 var cssPath = "./mockup/",
     netPath = "mockup";
 

@@ -1,9 +1,3 @@
-var fs   = require('fs'),
-    argv = require('yargs').argv,
-    os   = require('os');
-
-var runType = argv.l || ''; // dev、build
-
 var gulp = require('gulp'),
     $ = require('gulp-load-plugins')();
 
