@@ -22,7 +22,7 @@ module.exports = function (gulp, $) {
         // .pipe(gulp.dest('./source/themes/'));
     });
 
-
+    
     gulp.task('images', function() {
         return gulp.src([
                 './mockup/**/*.jpg',
@@ -31,6 +31,14 @@ module.exports = function (gulp, $) {
             .pipe(gulp.dest('./source/themes/'))
     });
 
+
+    gulp.task('clean', function () {
+
+        // return gulp.src('./source/themes', {read: false})
+        //     // .pipe($.clean());
+        //     .pipe($.rimraf())
+
+    });
 
     gulp.task('connect', function () {
 
