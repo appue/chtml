@@ -1,2 +1,3 @@
-# chtml
-chtml
+npm install
+
+bower install
