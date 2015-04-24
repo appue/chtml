@@ -88,5 +88,14 @@ module.exports = function (gulp, $) {
         gulp.src('mockup/**/*.scss')
             .pipe($.watch('mockup/**/*.scss', ['sass']))
             .pipe($.livereload())
+
+
+        if (runType == 'dev') {
+            gulp.src('./source/**/*.html')
+                .pipe($.watch('./source/**/*.html'))
+                .pipe($.livereload())          
+        }
+
+
     });
 };
