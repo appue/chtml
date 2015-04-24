@@ -51,4 +51,14 @@ module.exports = function (gulp, $) {
             .pipe($.watch('mockup/**/*.scss', ['sass']))
             .pipe($.livereload())
     });
+
+
+
+    gulp.task('images', function() {
+        return gulp.src([
+                './mockup/**/*.jpg',
+                './mockup/**/*.png'
+            ])
+            .pipe(gulp.dest('./source/themes/'))
+    });
 };
