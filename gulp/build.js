@@ -40,9 +40,11 @@ module.exports = function (gulp, $) {
 
     gulp.task('clean', function () {
 
-        // return gulp.src('./source/themes', {read: false})
-        //     // .pipe($.clean());
-        //     .pipe($.rimraf())
+        if (runType == 'dev') {
+            return gulp.src('./source/themes', {read: false})
+                // .pipe($.clean());
+                .pipe($.rimraf());
+        }
 
     });
 
