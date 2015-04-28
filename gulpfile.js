@@ -27,3 +27,7 @@ require('./gulp/run.js')(gulp, $);
 gulp.task('default', function (){
     return gulp.start('run');
 });
+
+gulp.task('text', function (){
+    return gulp.start('word');
+});
