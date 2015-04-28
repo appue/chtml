@@ -4,18 +4,8 @@
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>APP HTML</title>
-    <style type="text/css">
-    *{ padding:0; margin:0; }
-    body{ font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif; padding:10px; }
-    h1,h2,h3,h4{ line-height:30px; font-size:20px; font-weight:normal; }
-    h1{ text-align:center; }
-    h2{ color:#000; border-top:1px solid #000; padding:10px 0; margin-top:10px; }
-    h3{ color:red; }
-    h4{ font-size:14px; font-weight:normal; }
-    pre{ color:#0078ff; }
-    i{ color:#aaa; }
-    </style>
+    <title>API</title>
+    <link rel="stylesheet" type="text/css" href="themes.css" />
 </head>
 <body>
     <h1>个人主页模块相关接口定义</h1>
@@ -27,7 +17,12 @@
     <h4>postData:</h4>
     <pre>
     {
-        
+        UserId: <i>//------主动提交的用户ID</i>
+        Header: {
+            UserId: <i>//--当前登录用户的ID</i>
+            Cid: <i>//-----设备Id</i>
+            Auth: <i>//----当前登录用户的Auth</i>
+        }
     }
     </pre>
 
@@ -35,52 +30,60 @@
     <pre>
     {
         UserInfo:{
-            UserImage: <i>//-----用户头像</i>
-            Username: <i>//------用户名称</i>
-            Exper: <i>//---------经验值</i>
-            RankName: <i>//------用户等级名称</i>
-            Follow: <i>//--------关注数</i>
-            Fans: <i>//----------粉丝数</i>
+            UserImage: <i>//-------用户头像</i>
+            Username: <i>//--------用户名称</i>
+            Exper: <i>//-----------经验值</i>
+            RankName: <i>//--------用户等级名称</i>
+            Follow: <i>//----------关注数</i>
+            Fans: <i>//------------粉丝数</i>
         },
-        ArticleList:[ <i>//------发布</i>
+        ArticleList:[ <i>//--------发布</i>
             {
-                ImageUrl: <i>//--栏目封面图</i>
-                Name: <i>//------栏目名称</i>
-                Num: <i>//-------发布总数</i>
-                Praise: <i>//----赞的总数</i> 
+                CateId: <i>//------栏目ID</i>
+                ImageUrl: <i>//----栏目封面图</i>
+                CateName: <i>//----栏目名称</i>
+                ArticleNum: <i>//--发布总数</i>
+                PraiseNum: <i>//---赞的总数</i> 
             }
         ],
-        CollectList:[ <i>//------收藏</i>
+        CollectList:[ <i>//--------收藏</i>
             {
-                ImageUrl: <i>//--栏目封面图</i>
-                Name: <i>//------栏目名称</i>
-                Num: <i>//-------发布总数</i>
-                Praise: <i>//----赞的总数</i> 
+                CateId: <i>//------栏目ID</i>
+                ImageUrl: <i>//----栏目封面图</i>
+                CateName: <i>//----栏目名称</i>
+                ArticleNum: <i>//--发布总数</i>
+                PraiseNum: <i>//---赞的总数</i> 
             }
         ],
-        ClubList:[ <i>//---------圈子</i>
+        ClubList:[ <i>//-----------圈子</i>
             {
-                ImageUrl: <i>//--圈子封面图</i>
-                Name: <i>//------圈子名称</i>
-                Num: <i>//-------今日更新总数</i>
+                ClubId: <i>//------圈子ID</i>
+                ImageUrl: <i>//----圈子封面图</i>
+                ClubName: <i>//----圈子名称</i>
+                TodayNews: <i>//---今日更新总数</i>
             }
         ],
-        CollectNum: <i>//--------收藏总数</i>
-        ArticleNum: <i>//--------发布总数</i>
-        ClubNum: <i>//-----------圈子总数</i>
+        CollectNum: <i>//----------收藏总数</i>
+        ArticleNum: <i>//----------发布总数</i>
+        ClubNum: <i>//-------------圈子总数</i>
     }
     </pre>
 
 
 
     <!---------------------------------------------------->
-    <h2>2.个人主页-设置</h2>
+    <h2>2.个人主页-设置|别人的主页-查看资料</h2>
     <h3></h3>
     <h3>接口名称：getUserSetting</h3>
     <h4>postData:</h4>
     <pre>
     {
-        
+        UserId: <i>//------主动提交的用户ID</i>
+        Header: {
+            UserId: <i>//--当前登录用户的ID</i>
+            Cid: <i>//-----设备Id</i>
+            Auth: <i>//----当前登录用户的Auth</i>
+        }
     }
     </pre>
 
@@ -92,6 +95,7 @@
         Sex: <i>//-----------性别</i>
         Job: <i>//-----------岗位</i>
         Area: <i>//----------地区</i>
+
         Order: <i>//---------订阅</i>
         PushState: <i>//-----消息推送</i>
         WhisperState: <i>//--只允许我关注的人跟我私聊</i>
@@ -107,9 +111,14 @@
     <h4>postData:</h4>
     <pre>
     {   
-        UserId: <i>//-------用户ID</i>
+        UserId: <i>//-------主动提交的用户ID</i>
         OldPassword: <i>//--旧密码</i>
         NewPassword: <i>//--新密码</i>
+        Header: {
+            UserId: <i>//---当前登录用户的ID</i>
+            Cid: <i>//------设备Id</i>
+            Auth: <i>//-----当前登录用户的Auth</i>
+        }
     }
     </pre>
 
@@ -120,7 +129,12 @@
     <h4>postData:</h4>
     <pre>
     {
-        UserId: <i>//--用户ID</i>
+        UserId: <i>//------主动提交的用户ID</i>
+        Header: {
+            UserId: <i>//--当前登录用户的ID</i>
+            Cid: <i>//-----设备Id</i>
+            Auth: <i>//----当前登录用户的Auth</i>
+        }
     }
     </pre>
 
@@ -129,12 +143,16 @@
     {
         ClubList: [
             {
-                Letter: <i>//-----圈子所属字母</i>
-                ClubName: <i>//---圈子名称</i>
-                ImageUrl: <i>//---圈子封面图</i>
-                ClubName: <i>//---圈子名称</i>
-                ClubName: <i>//---圈子名称</i>
-                TotalUser: <i>//--圈子成员数目</i>
+                Letter: <i>//------------圈子所属字母</i>
+                Name: <i>//--------------圈子名称</i>
+                ImageUrl: <i>//----------圈子封面图</i>
+                TotalUser: <i>//---------圈子成员数目</i>
+                Category:[ <i>//---------圈子所属栏目名称（一级、二级、三级名称）不会跨栏目</i>
+                    {
+                        CateId: <i>//----栏目ID</i>
+                        CateName: <i>//--栏目名称</i>
+                    }
+                ]
             }
         ]
     }
@@ -142,6 +160,141 @@
 
 
     <!---------------------------------------------------->
+    <h2>5.个人主页-关注页</h2>
+    <h3>接口名称：getUserFollow</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        UserId: <i>//------主动提交的用户ID</i>
+        Header: {
+            UserId: <i>//--当前登录用户的ID</i>
+            Cid: <i>//-----设备Id</i>
+            Auth: <i>//----当前登录用户的Auth</i>
+        }
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+        FollowList: [
+            {
+                UserId: <i>//-----用户ID</i>
+                UserImage: <i>//--用户头像</i>
+                UserName: <i>//---用户名称</i>
+                State: <i>//------关注状态: 1、已关注；2、互关注</i>
+            }
+        ]
+    }
+    </pre>
+
+
+    <!---------------------------------------------------->
+    <h2>6.个人主页-粉丝页</h2>
+    <h3>接口名称：getUserFans</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        UserId: <i>//------主动提交的用户ID</i>
+        Header: {
+            UserId: <i>//--当前登录用户的ID</i>
+            Cid: <i>//-----设备Id</i>
+            Auth: <i>//----当前登录用户的Auth</i>
+        }
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+        FansList: [
+            {
+                UserId: <i>//-----用户ID</i>
+                UserImage: <i>//--用户头像</i>
+                UserName: <i>//---用户名称</i>
+                State: <i>//------关注状态: 2、互关注; 3、未关注</i>
+            }
+        ]
+    }
+    </pre>
+
+
+    <!---------------------------------------------------->
+    <h2>7.个人主页-发布</h2>
+    <h3>接口名称：getUserArticle</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        UserId: <i>//------主动提交的用户ID</i> 
+        Header: {
+            UserId: <i>//--当前登录用户的ID</i>
+            Cid: <i>//-----设备Id</i>
+            Auth: <i>//----当前登录用户的Auth</i>
+        }
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+        UserImage: <i>//-----------------用户头像</i> 
+        UserName: <i>//------------------用户名称</i> 
+        Total: <i>//---------------------该栏目中所有的帖子数目</i> 
+        Praise: <i>//--------------------该栏目中所有帖子被赞过的总和</i> 
+        CateName: <i>//------------------栏目名称</i>
+        ArticleList: [
+            {
+                ImageUrl: <i>//----------图片地址</i>
+                Content: <i>//-----------描述内容</i>
+                CollectNum: <i>//--------被收藏的数量</i>
+                UserId: <i>//------------用户ID</i>
+                UserImage: <i>//---------用户头像</i> 
+                UserName: <i>//----------用户名称</i>
+                Category:[ <i>//---------帖子所属栏目名称（一级、二级、三级名称）不会跨栏目</i>
+                    {
+                        CateId: <i>//----栏目ID</i>
+                        CateName: <i>//--栏目名称</i>
+                    }
+                ]
+            }
+        ]
+
+    }
+    </pre>
+
+
+    <!---------------------------------------------------->
+    <h2>8.个人主页-查看所有</h2>
+    <h3>接口名称：getUserCategory</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        UserId: <i>//------主动提交的用户ID</i> 
+        Header: {
+            UserId: <i>//--当前登录用户的ID</i>
+            Cid: <i>//-----设备Id</i>
+            Auth: <i>//----当前登录用户的Auth</i>
+        }
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+        CategoryList: [
+            {
+                CateId: <i>//------栏目ID</i>
+                ImageUrl: <i>//----封面图片</i>
+                CateName: <i>//----栏目名称</i>
+                ArticleNum: <i>//--总的帖子数</i>
+                PraiseNum: <i>//---总的赞数</i>
+            }
+        ]
+    }
+    </pre>
+
+
+    <!--
     <h2>1.个人主页</h2>
     <h3>接口名称：getUserInfo</h3>
     <h4>postData:</h4>
@@ -157,5 +310,6 @@
         
     }
     </pre>
+    -->
 </body>
 </html>
