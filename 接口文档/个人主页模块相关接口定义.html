@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html ng-app="phoneApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>APP HTML</title>
+    <style type="text/css">
+    *{ padding:0; margin:0; }
+    body{ font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif; padding:10px; }
+    h1,h2,h3,h4{ line-height:30px; font-size:20px; font-weight:normal; }
+    h1{ text-align:center; }
+    h2{ color:#000; border-top:1px solid #000; padding:10px 0; margin-top:10px; }
+    h3{ color:red; }
+    h4{ font-size:14px; font-weight:normal; }
+    pre{ color:#0078ff; }
+    i{ color:#aaa; }
+    </style>
+</head>
+<body>
+    <h1>个人主页模块相关接口定义</h1>
+
+
+    <!---------------------------------------------------->
+    <h2>1.个人主页</h2>
+    <h3>接口名称：getUserInfo</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+        UserInfo:{
+            UserImage: <i>//----用户头像</i>
+            Username: <i>//-----用户名称</i>
+            Exper: <i>//--------经验值</i>
+            RankName: <i>//-----用户等级名称</i>
+            Follow: <i>//-------关注数</i>
+            Fans: <i>//---------粉丝数</i>
+        },
+        ArticleList:[ <i>//-----发布</i>
+            {
+                ImageUrl: <i>//--栏目封面图</i>
+                Name: <i>//------栏目名称</i>
+                Num: <i>//-------发布总数</i>
+                Praise: <i>//----赞的总数</i> 
+            }
+        ],
+        CollectList:[ <i>//-----收藏</i>
+            {
+                ImageUrl: <i>//--栏目封面图</i>
+                Name: <i>//------栏目名称</i>
+                Num: <i>//-------发布总数</i>
+                Praise: <i>//----赞的总数</i> 
+            }
+        ],
+        ClubList:[ <i>//---------圈子</i>
+            {
+                ImageUrl: <i>//--圈子封面图</i>
+                Name: <i>//------圈子名称</i>
+                Num: <i>//-------今日更新总数</i>
+            }
+        ],
+        CollectNum: <i>//-------收藏总数</i>
+        ArticleNum: <i>//-------发布总数</i>
+        ClubNum: <i>//----------圈子总数</i>
+    }
+    </pre>
+
+
+
+    <!---------------------------------------------------->
+    <h2>2.个人主页-设置</h2>
+    <h3></h3>
+    <h3>接口名称：getUserSetting</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+        UserImage: <i>//-----用户头像</i>
+        UserName: <i>//------用户名称</i>
+        Sex: <i>//-----------性别</i>
+        Job: <i>//-----------岗位</i>
+        Area: <i>//----------地区</i>
+        Order: <i>//---------订阅</i>
+        PushState: <i>//-----消息推送</i>
+        WhisperState: <i>//--只允许我关注的人跟我私聊</i>
+        PhoneState: <i>//----允许通过手机通讯录加我好友</i>
+        PhotoState: <i>//----保存图片到相册</i>
+    }
+    </pre>
+
+
+    <!---------------------------------------------------->
+    <h2>3.个人主页-设置-修改密码</h2>
+    <h3>接口名称：setUserPassword</h3>
+    <h4>postData:</h4>
+    <pre>
+    {   
+        UserId: <i>//-------用户ID</i>
+        OldPassword: <i>//--旧密码</i>
+        NewPassword: <i>//--新密码</i>
+    }
+    </pre>
+
+
+    <!---------------------------------------------------->
+    <h2>4.个人主页-圈子</h2>
+    <h3>接口名称：getUserClub</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        UserId: <i>//-------用户ID</i>
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+        ClubList: [
+            {
+                ClubName: <i>//--圈子名称</i>
+                ImageUrl: <i>//--圈子封面图</i>
+                ClubName: <i>//--圈子名称</i>
+                ClubName: <i>//--圈子名称</i>
+                TotalUser: <i>//--圈子成员数目</i>
+            }
+        ]
+    }
+    </pre>
+
+
+    <!---------------------------------------------------->
+    <h2>1.个人主页</h2>
+    <h3>接口名称：getUserInfo</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+        
+    }
+    </pre>
+</body>
+</html>

@@ -91,8 +91,14 @@ module.exports = function (gulp, $) {
 
 
         if (runType == 'dev') {
-            gulp.src('./source/**/*.html')
-                .pipe($.watch('./source/**/*.html'))
+            gulp.src([
+                    './source/**/*.html',
+                    './source/**/*.js'
+                ])
+                .pipe($.watch([
+                    './source/**/*.html',
+                    './source/**/*.js'
+                ]))
                 .pipe($.livereload())          
         }
 
