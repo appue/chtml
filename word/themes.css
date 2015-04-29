@@ -7,6 +7,8 @@ body {
     font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     padding: 10px;
     font-size: 12px;
+    background: #000;
+    color: #fff;
 }
 
 h1,h2,h3,h4 {
@@ -16,18 +18,15 @@ h1,h2,h3,h4 {
 }
 
 h1 {
-    /*text-align: center;*/
     font-size: 16px;
     font-weight: bold;
-    /*background: #000;*/
-    color: #000;
 }
 
 h2 {
-    color: #000;
-    border-top: 1px solid #000;
+    border-top: 1px dotted #333;
     padding: 10px 0;
     margin-top: 10px;
+    color: #fff;
 }
 
 h3 {
@@ -44,5 +43,6 @@ pre {
 }
 
 i {
-    color: #aaa;
+    color: #444;
+    font-style: normal;
 }
