@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="phoneApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>API</title>
+    <link rel="stylesheet" type="text/css" href="themes.css" />
+</head>
+<body>
+    <h1>专题相关接口定义</h1>
+
+
+    <!---------------------------------------------------->
+    <h2>1.专题-列表</h2>
+    <h3>接口名称：getSubjectList</h3>
+    <i>专题按时间顺序降序排列，下滑可显示更多的</i>
+    <h4>postData:</h4>
+    <pre>
+    {
+        PageIndex: <i>//---当前页码</i>
+        PageSize: <i>//----每页显示多少条记录</i>
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        List: [
+            {
+                SubjectId: <i>//--专题ID</i>
+                Name: <i>//-------专题标题</i>
+                SubName: <i>//----标题简写</i>
+                ImageUrl: <i>//---专题封面</i>
+            }
+        ]
+    }
+    </pre>
+
+
+    <!---------------------------------------------------->
+    <h2>2.专题-内容</h2>
+    <h3>接口名称：getSubjectInfo</h3>
+    <i>这个接口是获取某个专题的一些基础信息</i>
+    <h4>postData:</h4>
+    <pre>
+    {
+        SubjectId: <i>//--专题ID</i>
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        SubjectId: <i>//---------专题ID</i>
+        Name: <i>//--------------专题标题</i>
+        SubName: <i>//-----------标题简写</i>
+        ImageUrl: <i>//----------专题封面</i>
+        Description: <i>//-------专题描述</i>
+
+        ClubId: <i>//------------圈子ID（这个圈子其实是后台在添加专题是推荐的圈子，每个专题只能推荐一个）</i>
+        ClubName: <i>//----------圈子名称</i>
+
+        <i>/*
+        * 相关主题
+        * 此处由编辑后台推荐相关的标签类别，可以是一级栏目页，二级栏目页或三级栏目页
+        */</i>
+        CategoryList: [
+            {
+                CateId: <i>//----栏目ID</i>
+                CateName: <i>//--栏目名称</i>
+                ImageUrl: <i>//--栏目封面图</i>
+            }
+        ]
+    }
+    </pre>
+
+
+    <h3>接口名称：getSubjectArticle</h3>
+    <i>这个接口是获取某个专题的帖子列表，可以分页</i>
+    <h4>postData:</h4>
+    <pre>
+    {
+        SubjectId: <i>//--专题ID</i>
+
+        PageIndex: <i>//--当前页码</i>
+        PageSize: <i>//---每页显示多少条记录</i>
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        ArticleList: [
+            {
+                ImageUrl: <i>//----------图片地址</i>
+                Content: <i>//-----------描述内容</i>
+                CollectNum: <i>//--------被收藏的数量</i>
+                UserId: <i>//------------用户ID</i>
+                UserImage: <i>//---------用户头像</i> 
+                UserName: <i>//----------用户名称</i>
+                Category:[ <i>//---------帖子所属栏目名称（一级、二级、三级名称）不会跨栏目</i>
+                    {
+                        CateId: <i>//----栏目ID</i>
+                        CateName: <i>//--栏目名称</i>
+                    }
+                ]
+            }
+        ]
+    }
+    </pre>
+</body>
+</html>

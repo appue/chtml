@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="phoneApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>API</title>
+    <link rel="stylesheet" type="text/css" href="themes.css" />
+</head>
+<body>
+    <h1>首页相关接口定义</h1>
+
+
+    <!---------------------------------------------------->
+    <h2>1.首页精品列表</h2>
+    <h3>接口名称：getHomeImage</h3>
+    <i>取图片</i>
+    <h4>postData:</h4>
+    <pre>
+    {
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        <i>
+        /*
+        * 这个里取的是后台广告里的图片，最多5张图片，可左右滑动查看
+        */</i>
+        ImageList: [
+            {
+                ImageUrl: <i>//-----图片地址</i>
+                TargetModel: <i>//--跳转类型（这个参数待定）</i>
+                H5Url: <i>//--------H5点击跳转到的网址</i>
+                AppUrl: <i>//-------APP点击跳转到的网址</i>
+            }
+        ]
+    }
+    </pre>
+
+
+    <h3>接口名称：getHomeList</h3>
+    <i>取最新推荐的帖子可分页</i>
+    <h4>postData:</h4>
+    <pre>
+    {
+        PageIndex: <i>//--当前页码</i>
+        PageSize: <i>//---每页显示多少条记录</i>
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        <i>
+        /*
+        * 帖子展示以瀑布流的形式，向下滑动可无限加载，首页呈现的均为编辑在后台推荐的帖子。
+        */</i>
+        ArticleList: [
+            {
+                ImageUrl: <i>//----------图片地址</i>
+                Content: <i>//-----------描述内容</i>
+                CollectNum: <i>//--------被收藏的数量</i>
+                UserId: <i>//------------用户ID</i>
+                UserImage: <i>//---------用户头像</i> 
+                UserName: <i>//----------用户名称</i>
+                Category:[ <i>//---------帖子所属栏目名称（一级、二级、三级名称）不会跨栏目</i>
+                    {
+                        CateId: <i>//----栏目ID</i>
+                        CateName: <i>//--栏目名称</i>
+                    }
+                ]
+            }
+        ]
+    }
+    </pre>
+
+
+    <!---------------------------------------------------->
+    <h2>2.首页关注列表</h2>
+    <h3>接口名称：getHomeFollow</h3>
+    <i>关注调取自己发布的及关注过的好友发布的帖子，帖子展示以瀑布流的形式，向下滑动可无限加载。</i>
+    <h4>postData:</h4>
+    <pre>
+    {   
+        PageIndex: <i>//---当前页码</i>
+        PageSize: <i>//----每页显示多少条记录</i>
+
+        Header: {
+            UserId: <i>//--当前登录用户的ID</i>
+            Cid: <i>//-----设备Id</i>
+            Auth: <i>//----当前登录用户的Auth</i>
+        }
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        ArticleList: [
+            {
+                ImageUrl: <i>//----------图片地址</i>
+                Content: <i>//-----------描述内容</i>
+                CollectNum: <i>//--------被收藏的数量</i>
+                UserId: <i>//------------用户ID</i>
+                UserImage: <i>//---------用户头像</i> 
+                UserName: <i>//----------用户名称</i>
+                Category:[ <i>//---------帖子所属栏目名称（一级、二级、三级名称）不会跨栏目</i>
+                    {
+                        CateId: <i>//----栏目ID</i>
+                        CateName: <i>//--栏目名称</i>
+                    }
+                ]
+            }
+        ]
+    }
+    </pre>
+</body>
+</html>
