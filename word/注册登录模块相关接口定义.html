@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="phoneApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>API</title>
+    <link rel="stylesheet" type="text/css" href="themes.css" />
+</head>
+<body>
+    <h1>注册登录模块相关接口定义</h1>
+
+
+    <!---------------------------------------------------->
+    <h2>1.注册-创建资料</h2>
+    <h3>接口名称：setRegInfo</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        UserName: <i>//--用户昵称(用户名支持汉字、字母、数字、-和)</i>
+        Sex: <i>//-------用户性别（男、女）</i>
+        Aera: <i>//------地区</i>
+        Job: <i>//-------岗位</i>
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+    }
+    </pre>
+
+
+    <!---------------------------------------------------->
+    <h2>1.注册-创建资料-选择位置(城市选择)</h2>
+    <h3>接口名称：getCityList</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+        List: [
+            {
+                Id: <i>//----------------省ID</i>
+                Name: <i>//--------------省名称</i>
+                Child: [
+                    Id: <i>//------------市ID</i>
+                    Name: <i>//----------市名称</i>
+                    Child: [
+                        {
+                            Id: <i>//----市ID</i>
+                            Name: <i>//--区名称</i>
+                        }
+                    ]
+                ]
+            }
+        ]
+    }
+    </pre>
+
+    <!--
+
+    <h2>1.个人主页</h2>
+    <h3>接口名称：getUserInfo</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
+        
+    }
+    </pre>
+    -->
+</body>
+</html>
