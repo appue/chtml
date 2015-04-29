@@ -17,6 +17,7 @@ switch (runType) {
 module.exports = function (gulp, $) {
 
     gulp.task('sass', function () {
+
         return gulp.src('mockup/*.scss')
             .pipe($.plumber())
             .pipe($.sass())
@@ -86,7 +87,9 @@ module.exports = function (gulp, $) {
         }
 
         gulp.src('mockup/**/*.scss')
-            .pipe($.watch('mockup/**/*.scss', ['sass']))
+            .pipe($.watch('mockup/**/*.scss', function(){
+                gulp.start('sass');
+            }))
             .pipe($.livereload())
 
 
