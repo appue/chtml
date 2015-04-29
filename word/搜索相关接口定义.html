@@ -42,6 +42,12 @@
     {
         Keyword: <i>//--用户输入的关键字</i>
         Type: <i>//-----搜索类型</i>
+
+        Header: {
+            UserId: <i>//--当前登录用户的ID</i>
+            Cid: <i>//-----设备Id</i>
+            Auth: <i>//----当前登录用户的Auth</i>
+        }
     }
     </pre>
 
@@ -99,10 +105,10 @@
         <i>搜索的用户结果</i>
         UserList: [
             {
-                UserId:
-                UserName:
-                ImageUrl:
-                FollowState: <i>//--</i>
+                UserId: <i>//------------用户ID</i>
+                UserName: <i>//----------用户名称</i>
+                ImageUrl: <i>//----------用户头像</i>
+                FollowState: <i>//-------用户关注状态（1、）</i>
             }
         ]
     }
