@@ -1,0 +1,42 @@
+﻿.mod_title {
+	width: 100%;
+	height: 44px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	line-height: 15px;
+	padding: 14px 14px 0;
+	box-sizing: border-box;
+	background-color: #fff;
+	@include border_bottom_half;
+	&.transparent {
+		background-color: transparent;
+		border-bottom: 0 none;
+	}
+	.left_button {
+		float: left;
+		font-size: 15px;
+		&:before {
+			content: "";
+			float: left;
+			margin-right: 8px;
+			width: 12px;
+			height: 15px;
+			background: url(img/back_arrow.png) no-repeat;
+			background-size: cover;
+		}
+	}
+	.right_button {
+		float: right;
+		font-size: 14px;
+		color: #3cc482;
+	}
+	.title_content {
+		display: inline-block;
+		max-width: 65%;
+		font-size: 15px;
+		color: #333;
+		@include ellipsis;
+	}
+}
