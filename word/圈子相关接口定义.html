@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="phoneApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>API</title>
+    <link rel="stylesheet" type="text/css" href="themes.css" />
+</head>
+<body>
+    <h1>圈子相关接口定义</h1>
+
+
+    <!---------------------------------------------------->
+    <h2>1.圈子列表</h2>
+    <h3>接口名称：getListClub</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        UserId: <i>//--用户ID</i>
+
+        Header: {
+            UserId: <i>//--当前登录用户ID</i>
+            Auth: <i>//----当前登录用户Auth</i>
+        }
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        ClubList: [
+            {
+                ClubId: <i>//------------圈子ID</i>
+                ClubName: <i>//----------圈子名称</i>
+                ImageUrl: <i>//----------圈子封面图</i>
+                Description: <i>//-------圈子简介</i>
+                TotalUser: <i>//---------圈子成员数目</i>
+                TotalArticle: <i>//------圈子帖子数目</i>
+                Letter: <i>//------------圈子所属字母</i>
+                UpdateTime: <i>//--------圈子最后更新的时间（用户在圈子里发表内容都会更新这个时间）</i>
+                CreateTime: <i>//--------圈子创建的时间</i>
+
+                <i>
+                /*
+                * 圈子所属栏目名称（一级、二级、三级名称）不会跨栏目，这个栏目是后台设置好的，跟圈子里的帖子没任何关系
+                * 帖子发布是用户自己选择栏目
+                */</i>
+                CategoryList: [
+                    {
+                        CateId: <i>//----栏目ID</i>
+                        CateName: <i>//--栏目名称</i>
+                    }
+                ]
+            }
+        ]
+        Total: <i>//---------------------圈子总数</i>
+    }
+    </pre>
+    
+
+</body>
+</html>

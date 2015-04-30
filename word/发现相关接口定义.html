@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="phoneApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>API</title>
+    <link rel="stylesheet" type="text/css" href="themes.css" />
+</head>
+<body>
+    <h1>发现相关接口定义</h1>
+
+
+    <!---------------------------------------------------->
+    <h2>1.发现首页接口</h2>
+    <h3>接口名称：getFindHome</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        SubjectList: [ <i>//--------[专题集锦]专题显示6个（不包含更多）, 可向右滑动查看</i>
+            {
+                SubjectId: <i>//----专题ID</i>
+                LongName: <i>//-----专题标题</i>
+                ShortName: <i>//----专题标题简写</i>
+                ImageUrl: <i>//-----专题封面图</i>
+            }
+        ]
+
+        CategoryList: [ <i>//-------共显示15个一级栏目</i>
+            {
+                CateId: <i>//-------栏目ID</i>
+                CateName: <i>//-----栏目名称</i>
+            }
+        ]
+    }
+    </pre>
+</body>
+</html>

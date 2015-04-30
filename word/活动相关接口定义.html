@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="phoneApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>API</title>
+    <link rel="stylesheet" type="text/css" href="themes.css" />
+</head>
+<body>
+    <h1>活动相关接口定义</h1>
+
+
+    <!---------------------------------------------------->
+    <h2>1.活动列表</h2>
+    <h3>接口名称：getListActivity</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        ActivityType: <i>//--活动类型(0、不分类型显示所有活动列表；1、文字类型；2、图片类型)</i>
+        PageIndex: <i>//-----当前页码</i>
+        PageSize: <i>//------每页显示多少条记录</i>
+
+        UserId: <i>//--------用户ID</i>
+
+        Header: {
+            UserId: <i>//----当前登录用户ID</i>
+            Auth: <i>//------当前登录用户Auth</i>
+        }
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        ActivityList: [
+            {
+                ActivityId: <i>//-----活动ID</i>
+                ActivityName: <i>//---活动标题</i>
+                ActivityLabel: <i>//--类别名称（可以说是一个标签吧，编辑后台随便输入的）</i>
+                ActivityType: <i>//---活动类型(1、文字类型；2、图片类型)</i>
+                ImageUrl: <i>//-------活动封面图</i>
+                Description: <i>//----活动描述</i>
+                UpdateTime: <i>//-----活动最后更新的时间（用户在活动里发表内容都会更新这个时间）</i>
+                CreateTime: <i>//-----活动创建的时间</i>
+            }
+        ]
+        Total: <i>//------------------活动总数</i>
+    }
+    </pre>
+</body>
+</html>

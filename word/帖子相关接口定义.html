@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="phoneApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>API</title>
+    <link rel="stylesheet" type="text/css" href="themes.css" />
+</head>
+<body>
+    <h1>帖子相关接口定义</h1>
+
+
+    <!---------------------------------------------------->
+    <h2>1.帖子列表</h2>
+    <h3>接口名称：getListArticle</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        CateId:
+        SubjectId:
+        ClubId:
+        Activity
+
+        PageIndex: <i>//-----当前页码</i>
+        PageSize: <i>//------每页显示多少条记录</i>
+
+        UserId: <i>//--------用户ID</i>
+
+        Header: {
+            UserId: <i>//----当前登录用户ID</i>
+            Auth: <i>//------当前登录用户Auth</i>
+        }
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        ArticleList: [
+            {
+                ArticleId: <i>//------------帖子ID</i>
+                Images: [ <i>//-------------帖子里的图片</i>
+                    {
+                        ImageUrl: <i>//-----帖子图片</i>
+                        Description: <i>//--帖子描述</i>
+                    }
+                ]
+                UserId: <i>//---------------帖子发布者ID</i>
+                UserName: <i>//-------------帖子发布者名称</i>
+
+                ClubId: <i>//---------------帖子所属的圈子ID</i>
+                ClubName: <i>//-------------帖子所属的圈子名称</i>
+
+                SubjectId: <i>//------------帖子所属的专题ID</i>
+                SubjectName: <i>//----------帖子所属的专题名称</i>
+
+                <i>
+                /*
+                * 帖子所属栏目名称（一级、二级、三级名称）不会跨栏目，这个栏目是用户选择的
+                */</i>
+                CategoryList: [
+                    {
+                        CateId: <i>//-------栏目ID</i>
+                        CateName: <i>//-----栏目名称</i>
+                    }
+                ]
+
+                UpdateTime: <i>//-----------帖子最后更新的时间（用户修改帖子都会更新这个时间）</i>
+                CreateTime: <i>//-----------帖子创建的时间</i>
+
+                TotalHit: <i>//-------------帖子被浏览的总数</i>
+                TotalPraise: <i>//----------帖子被赞的总数</i>
+
+                BrowseUser: [ <i>//---------浏览过该帖子的用户</i>
+                    {
+                        UserId: <i>//-------用户ID</i>
+                        UserName: <i>//-----用户名称</i>
+                        ImageUrl: <i>//-----用户头像</i>
+                    }
+                ]
+            }
+        ]
+        Total: <i>//------------------------帖子总数</i>
+    }
+    </pre>
+</body>
+</html>
