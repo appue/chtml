@@ -32,6 +32,11 @@
 
         PageIndex: <i>//---当前页码</i>
         PageSize: <i>//----每页显示多少条记录</i>
+
+        Header: {
+            UserId: <i>//--当前登录用户ID（未登录传空）</i>
+            Auth: <i>//----当前登录用户Auth（未登录传空）</i>
+        }
     }
     </pre>
 
@@ -53,6 +58,29 @@
             }
         ]
         Total: <i>//-----------------评论总数</i>
+    }
+    </pre>
+
+
+    <!---------------------------------------------------->
+    <h2>2.发表评论</h2>
+    <h3>接口名称：setArticleComment</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+        ArticleId: <i>//---被评论的帖子ID</i>
+        Content: <i>//-----评论的内容</i>
+
+        Header: {
+            UserId: <i>//--当前登录用户ID</i>
+            Auth: <i>//----当前登录用户Auth</i>
+        }
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {
     }
     </pre>
 </body>
