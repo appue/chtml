@@ -1,3 +1,11 @@
 ﻿.color_blue{
     color: #3cc482 !important;
 }
+
+@mixin blue{
+    color: #3cc482;
+}
+
+@mixin gray{
+    color: #cacdcb;
+}
