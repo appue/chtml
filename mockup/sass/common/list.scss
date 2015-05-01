@@ -27,6 +27,10 @@
                 @include multi_ellipsis(6);
                 line-height: 18px;
             }
+            .this_cate{
+                line-height: 18px;
+                text-align: center;
+            }
             .this_star{
                 @include border_bottom_half;
                 line-height: 25px;
