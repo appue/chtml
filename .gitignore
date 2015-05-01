@@ -3,3 +3,4 @@ Thumbs.db
 mockup/*.css
 /node_modules/
 /source/bower_components/
+/source/themes/

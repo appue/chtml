@@ -52,20 +52,25 @@ module.exports = function (gulp, $) {
     gulp.task('connect', function () {
 
         var version = os.platform(),
-            url = '';
+            url = '',
+            port = argv.port || 9999;
+
+        if (runType == 'dev') {
+            port = argv.port || 5555;
+        }
 
         $.connect.server({
             root: netPath,
-            port: '9999',
+            port: port,
             livereload: true
         });
 
         switch (version) {
             case 'win32':
-                url = 'start http://localhost:9999';
+                url = 'start http://localhost:'+port;
                 break;
             case 'darwin':
-                url = 'open http://localhost:9999';
+                url = 'open http://localhost:'+port;
                 break;
         }
 

@@ -9,8 +9,11 @@
 2.bower install
 
 ## 运行
-1.运行HTML模板 执行如下命令：
+1.看接口相关文档
+- gulp word
+
+2.运行HTML模板
 - gulp
 
-2.运行JS开发环境
-- gulp -run dev
+3.运行JS开发环境
+- gulp --run dev

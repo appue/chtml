@@ -30,16 +30,16 @@ module.exports = function (gulp, $) {
 
         $.connect.server({
             root: 'word',
-            port: '9999',
+            port: '3333',
             livereload: true
         });
 
         switch (version) {
             case 'win32':
-                url = 'start http://localhost:9999';
+                url = 'start http://localhost:3333';
                 break;
             case 'darwin':
-                url = 'open http://localhost:9999';
+                url = 'open http://localhost:3333';
                 break;
         }
 
