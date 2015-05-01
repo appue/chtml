@@ -1,5 +1,7 @@
-﻿.mod_list_falls{
-    border: 5px solid #f5f5f5;
+﻿$bgcolor: #e6e8e7;
+
+.mod_list_falls{
+    border: 5px solid $bgcolor;
     position: relative;
     li{
         position: absolute;
@@ -8,8 +10,8 @@
         font-size: 12px;
         color: #323232;
         .this_border{
-            border-left: 5px solid #f5f5f5;
-            border-right: 5px solid #f5f5f5;
+            border-left: 5px solid $bgcolor;
+            border-right: 5px solid $bgcolor;
         }
         .this_border{
             background: #fff;

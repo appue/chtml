@@ -1,43 +1,93 @@
-﻿.mod_tab_2{
+﻿@mixin tab($top){
     display: -webkit-box;
     position: fixed;
     left: 0;
-    top: 0;
+    top: $top;
     width: 100%;
     height: 40px;
     background: #fff;
     z-index: 100;
+}
+@mixin tab_line($width){
+    z-index: 5;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: $width;
+    height: 4px;
+    background-color: #3cc482;
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+}
+@mixin tab_li{
+    display: block;
+    width: 0;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    color: #323232;
+    -webkit-box-flex: 1;
+    font-size: 14px;
+}
+@mixin tab_1{
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+@mixin tab_2{
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+}
+@mixin tab_3{
+    -webkit-transform: translate3d(200%, 0, 0);
+    transform: translate3d(200%, 0, 0);
+}
+@mixin tab_4{
+    -webkit-transform: translate3d(300%, 0, 0);
+    transform: translate3d(300%, 0, 0);
+}
+
+.mod_tab_2{
+    @include tab(0);
     @include border_bottom_half;
-    .line {
-        z-index: 5;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 50%;
-        height: 4px;
-        background-color: #3cc482;
-        -webkit-transition: -webkit-transform .3s ease-in-out;
-        transition: transform .3s ease-in-out;
+    .line{
+        @include tab_line(50%);
     }
     li{
-        display: block;
-        width: 0;
-        text-align: center;
-        height: 40px;
-        line-height: 40px;
-        color: #323232;
-        -webkit-box-flex: 1;
-        font-size: 14px;
+        @include tab_li;
         &.current{
             color: #3cc482;
         }
         &:nth-of-type(1).current~.line {
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+            @include tab_1;
         }
         &:nth-of-type(2).current~.line {
-            -webkit-transform: translate3d(100%, 0, 0);
-            transform: translate3d(100%, 0, 0);
+            @include tab_2;
+        }
+    }
+}
+
+.mod_tab_4{
+    @include tab(48px);
+    @include border_bottom_half;
+    .line{
+        @include tab_line(25%);
+    }
+    li{
+        @include tab_li;
+        &.current{
+            color: #3cc482;
+        }
+        &:nth-of-type(1).current~.line {
+            @include tab_1;
+        }
+        &:nth-of-type(2).current~.line {
+            @include tab_2;
+        }
+        &:nth-of-type(3).current~.line {
+            @include tab_3;
+        }
+        &:nth-of-type(4).current~.line {
+            @include tab_4;
         }
     }
 }

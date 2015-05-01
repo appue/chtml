@@ -1,4 +1,6 @@
-﻿html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, em, button {
+﻿$bgcolor: #e6e8e7;
+
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, em, button {
     margin: 0;
     padding: 0;
 }
@@ -45,7 +47,7 @@ body {
     height: 100%;
     font-size: 14px;
     line-height: 1.5;
-    background: #e6e8e7;
+    background: $bgcolor;
     // -webkit-user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -136,4 +138,9 @@ a:active {
     100% {
         -webkit-transform: rotate(360deg);
     }
+}
+
+.mod_scroll{
+    @include scrollfix;
+    padding: 58px 10px 48px;
 }
