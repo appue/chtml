@@ -2,7 +2,7 @@ var fs   = require('fs'),
     argv = require('yargs').argv,
     os   = require('os');
 
-var runType = argv.l || ''; // dev、build
+var runType = argv.run || ''; // dev、build
 
 module.exports = function (gulp, $) {
 
