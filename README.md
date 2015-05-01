@@ -4,9 +4,9 @@
 运行环境基于nodejs、npm、bower，去网上下载相关的代码安装吧
 
 ## 初始化数据
-1.npm install
+- npm install
 
-2.bower install
+- bower install
 
 ## 运行
 1.看接口相关文档
