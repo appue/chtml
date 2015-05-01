@@ -92,10 +92,16 @@ module.exports = function (gulp, $) {
         }
 
         gulp.src('mockup/**/*.scss')
+            .pipe($.plumber())
             .pipe($.watch('mockup/**/*.scss', function(){
-                gulp.start('sass');
+                gulp.src('mockup/*.scss')
+                    .pipe($.plumber())
+                    .pipe($.sass())
+                    .pipe($.autoprefixer('last 3 version'))
+                    .pipe($.size({title: 'css--------------------------------'}))
+                    .pipe(gulp.dest(cssPath))
+                    .pipe($.livereload());
             }))
-            .pipe($.livereload())
 
 
         if (runType == 'dev') {
