@@ -1,14 +1,14 @@
-﻿.unit_keyword{
+﻿.unit_keyword {
     background: #fff;
     padding: 10px;
     font-size: 0;
     margin-bottom: 10px;
     @include border_half;
-    dt{
+    dt {
         line-height: 30px;
         font-size: 14px;
         padding-bottom: 10px;
-        button{
+        button {
             @include gray;
             background: url(img/icon_clean.png) no-repeat 0 center;
             background-size: 20px auto;
@@ -19,8 +19,8 @@
             padding-left: 20px;
         }
     }
-    dd{
-        @include blue;
+    dd {
+        @include green;
         display: inline-block;
         @include border_half;
         padding: 0 5px;
@@ -31,60 +31,57 @@
         line-height: 30px;
     }
 }
-
-.unit_keyword_user{
+.unit_keyword_user {
     background: #fff;
     padding: 5px;
-    li{
+    li {
         display: -webkit-box;
         padding: 5px;
         @include border_bottom_half;
         -webkit-box-align: center;
-        img{
+        img {
             display: block;
             width: 40px;
             height: 40px;
             margin-right: 5px;
             -webkit-border-radius: 40px;
         }
-        p{
+        p {
             display: block;
             -webkit-box-flex: 1;
             @include ellipsis;
         }
-        .this_btn{
+        .this_btn {
             @include button(70px, 30px);
             background: #cacdcb;
-            &.current{
+            &.current {
                 background: #3cc482;
             }
         }
     }
 }
-
-
-.unit_keyword_club{
+.unit_keyword_club {
     @include border_half;
-    li{
+    li {
         background: #fff;
         padding: 0 10px;
-        div{
+        div {
             display: -webkit-box;
             padding: 10px 0;
             @include border_bottom_half;
-            img{
+            img {
                 width: 80px;
                 height: 80px;
                 display: block;
                 margin-right: 10px;
             }
-            article{
+            article {
                 display: block;
                 -webkit-box-flex: 1;
                 line-height: 20px;
                 font-size: 12px;
                 color: #cacdcb;
-                p{
+                p {
                     font-size: 16px;
                     color: #000;
                     line-height: 30px;
