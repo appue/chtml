@@ -2,3 +2,39 @@
     padding-top: 41px;
     padding-bottom: 50px;
 }
+
+.unit_set_textarea{
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    textarea{
+        @include border_half;
+        width: 100%;
+        line-height: 20px;
+        padding: 5px;
+        -webkit-box-sizing: border-box;
+        height: 150px;
+    }
+    .this_input{
+        display: -webkit-box;
+        padding: 10px 0;
+        -webkit-box-align: center;
+        @include border_bottom_half;
+        label{
+            display: block;
+            width: 80px;
+        }
+        input{
+            display: block;
+            line-height: 20px;
+            padding: 5px;
+            -webkit-box-flex: 1;
+            @include border_half;
+        }
+    }
+    .this_text{
+        line-height: 20px;
+        padding: 10px 0;
+        font-size: 12px;
+    }
+}
