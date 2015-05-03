@@ -60,3 +60,47 @@
         }
     }
 }
+
+.unit_msg_list_03{
+    background: #fff;
+    padding: 0 10px 10px;
+    li{
+        @include border_bottom_half;
+        background-image: url(img/icon_setting.png);
+        background-repeat: no-repeat;
+        background-size: 25px auto;
+        text-indent: 25px;
+        line-height: 20px;
+        padding: 10px 0;
+        &.i_hit{
+            background-position: 0 10px;
+        }
+        &.i_comment{
+            background-position: 0 -20px;
+        }
+        &.i_msg{
+            background-position: 0 -54px;
+        }
+        &.i_talk{
+            background-position: 0 -86px;
+        }
+        &.i_friend{
+            background-position: 0 -118px;
+        }
+        span{
+            padding-right: 10px;
+            position: relative;
+            &.i_new:after{
+                position: absolute;
+                content: "";
+                display: block;
+                right: 0;
+                top: 0;
+                width: 6px;
+                height: 6px;
+                background: red;
+                -webkit-border-radius: 6px;
+            }
+        }
+    }
+}
