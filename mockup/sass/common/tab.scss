@@ -91,3 +91,86 @@
         }
     }
 }
+
+
+.mod_tab_icon{
+    @include border_bottom_half;
+    background: #fff;
+    height: 40px;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    li{
+        width: 0;
+        display: block;
+        position: relative;
+        -webkit-box-flex: 1;
+        text-indent: -9999px;
+        &:after{
+            content: "";
+            display: block;
+            position: absolute;
+            left: 50%;
+            margin-left: -10px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            overflow: hidden;
+        }
+        &:after{
+            background-color: #cacdcb;
+        }
+        &.current:after{
+            background-color: #3cc482;
+        }
+        &:nth-child(1):after{
+            background-image:
+                -webkit-linear-gradient(
+                    left, 
+                    rgba(0,0,0,0) 0%, 
+                    rgba(0,0,0,0) 45%, 
+                    #fff 45%, 
+                    #fff 55%, 
+                    rgba(0,0,0,0) 55%, 
+                    rgba(0,0,0,0) 100%
+                ),
+                -webkit-linear-gradient(
+                    top, 
+                    rgba(0,0,0,0) 0%, 
+                    rgba(0,0,0,0) 45%, 
+                    #fff 45%, 
+                    #fff 55%, 
+                    rgba(0,0,0,0) 55%, 
+                    rgba(0,0,0,0) 100%
+                );
+            background-size: 100% 100%;
+        }
+
+        &:nth-child(2):after{
+            background-image:
+                -webkit-linear-gradient(
+                    left, 
+                    rgba(0,0,0,0) 0%, 
+                    rgba(0,0,0,0) 15%, 
+                    #fff 15%, 
+                    #fff 20%, 
+                    rgba(0,0,0,0) 20%, 
+                    rgba(0,0,0,0) 100%
+                ),
+                -webkit-linear-gradient(
+                    top, 
+                    rgba(0,0,0,0) 0%, 
+                    rgba(0,0,0,0) 23%, 
+                    #fff 27%, 
+                    #fff 39%, 
+                    rgba(0,0,0,0) 39%,
+                    rgba(0,0,0,0) 61%,
+                    #fff 61%,
+                    #fff 73%,
+                    rgba(0,0,0,0) 73%,
+                    rgba(0,0,0,0) 100%
+                );
+            background-size: 100% 100%;
+        }
+    }
+}
+

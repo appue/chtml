@@ -1,7 +1,11 @@
 ﻿$bgcolor: #e6e8e7;
+$green_val: #3cc482;
+$gray_val: #cacdcb;
 
 .mod_list_falls{
-    border: 5px solid $bgcolor;
+    border-width: 0 5px 5px;
+    border-style: solid;
+    border-color: $bgcolor;
     position: relative;
     li{
         position: absolute;
@@ -37,7 +41,7 @@
                 background: url(img/icon_star.png) no-repeat 5px center;
                 background-size: 15px auto;
                 text-indent: 25px;
-                color: #cacdcb;
+                color: $gray_val;
             }
             .this_user{
                 padding-top: 5px;
@@ -54,7 +58,7 @@
                     -webkit-box-flex: 1;
                     line-height: 16px;
                     &:first-line{
-                        color: #3cc482;
+                        color: $green_val;
                     }
                 }
             }
@@ -95,13 +99,59 @@
             .this_btn{
                 @include button(90%, 30px);
                 margin: 0 5px;
-                background: #3cc482;
+                background: $green_val;
             }
             .this_tx{
                 line-height: 20px;
                 padding-bottom: 5px;
                 text-align: center;
-                color: #cacdcb;
+                color: $gray_val;
+            }
+        }
+    }
+}
+
+.mod_list_img_only{
+    padding: 0 10px 10px;
+    li{
+        background: #fff;
+        margin-bottom: 10px;
+        font-size: 12px;
+        @include border_bottom_half;
+        img{
+            width: 100%;
+        }
+        article{
+            padding: 0 10px 10px;
+            .this_text{
+                font-size: 12px;
+                line-height: 20px;
+                @include multi_ellipsis();
+            }
+            .this_star{
+                @include border_bottom_half;
+                line-height: 25px;
+                background: url(img/icon_star.png) no-repeat 0 center;
+                background-size: 10px auto;
+                text-indent: 15px;
+                color: $gray_val;
+                margin-bottom: 10px;
+            }
+            .this_user{
+                display: -webkit-box;
+                img{
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 10px;
+                    -webkit-border-radius: 50px;
+                }
+                p{
+                    -webkit-box-flex: 1;
+                    &:first-line{
+                        color: $green_val;
+                        font-size: 14px;
+                    }
+                }
             }
         }
     }
