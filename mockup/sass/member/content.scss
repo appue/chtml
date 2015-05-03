@@ -79,6 +79,15 @@
         background: url(img/icon_menu.png) no-repeat center center;
         background-size: auto 25px;
     }
+    .this_back{
+        background: url(img/back_arrow_black.png) no-repeat center;
+        background-size: 16px auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .mod_title_{
