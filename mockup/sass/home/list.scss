@@ -144,3 +144,64 @@
         }
     }
 }
+
+
+.unit_msg_list_user{
+    background: #fff;
+    padding: 5px;
+    li{
+        display: -webkit-box;
+        padding: 5px;
+        @include border_bottom_half;
+        -webkit-box-align: center;
+        img{
+            display: block;
+            width: 40px;
+            height: 40px;
+            margin-right: 5px;
+            -webkit-border-radius: 40px;
+        }
+        p{
+            display: block;
+            -webkit-box-flex: 1;
+            @include ellipsis;
+        }
+        .this_btn{
+            @include button(70px, 30px);
+            background: #cacdcb;
+            &.current{
+                background: #3cc482;
+            }
+        }
+    }
+}
+
+
+.unit_msg_list_search{
+    background: #fff;
+    padding: 0 10px;
+    li{
+        background-image: url(img/icon_friend.png);
+        background-repeat: no-repeat;
+        background-size: 25px auto;
+        line-height: 20px;
+        padding: 10px 0;
+        text-indent: 30px;
+        @include border_bottom_half;
+        &:last-child{
+            border: none;
+        }
+        &.i_weibo{
+            background-position: 0 10px;
+        }
+        &.i_weixin{
+            background-position: 0 -30px;
+        }
+        &.i_qq{
+            background-position: 0 -70px;
+        }
+        &.i_friend{
+            background-position: 0 -110px;
+        }
+    }
+}

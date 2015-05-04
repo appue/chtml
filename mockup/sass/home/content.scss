@@ -137,3 +137,27 @@ $gray_val: #cacdcb;
         }
     }
 }
+
+
+.unit_msg_search_friend{
+    background: #fff;
+    position: relative;
+    margin-bottom: 10px;
+    input{
+        width: 100%;
+        line-height: 30px;
+        padding: 5px 10px;
+        -webkit-box-sizing: border-box;
+    }
+    button{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        border: 0;
+        outline: none;
+        background: url(img/icon_search.png) no-repeat center center;
+        background-size: 25px auto;
+    }
+}
