@@ -77,44 +77,60 @@ $gray_val: #cacdcb;
         font-size: 12px;
         text-align: center;
     }
-    div{
+    .this_list{
         margin-bottom: 10px;
         display: -webkit-box;
         img{
             width: 30px;
             height: 30px;
+            display: block;
+            margin-right: 10px;
             -webkit-border-radius: 30px;
         }
-        article{
-            background: #fff;
-            padding: 5px;
-            line-height: 16px;
-            font-size: 12px;
-            position: relative;
+        div{
             -webkit-box-flex: 1;
-            -webkit-border-radius: 3px;
-            -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.1);
-            &:after{
-                content: "";
-                display: block;
-                width: 0;
-                height: 0;
-                position: absolute;
-                left: -10px;
-                top: 10px;
-                border-style: solid;
-                border-width: 5px;
-                border-color: transparent #fff transparent transparent;
+            article{
+                background: #fff;
+                padding: 5px;
+                line-height: 16px;
+                font-size: 12px;
+                position: relative;
+                display: inline-block;
+                -webkit-box-flex: 1;
+                -webkit-border-radius: 3px;
+                -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.1);
+                &:after{
+                    content: "";
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    position: absolute;
+                    top: 10px;
+                    border-style: solid;
+                    border-width: 5px;
+                }
             }
         }
         &.this_left{
-            img{
-                margin-right: 15px;
+            article{
+                &:after{
+                    left: -10px;
+                    border-color: transparent #fff transparent transparent;
+                }
             }
         }
         &.this_right{
+            -webkit-box-direction: reverse;
             img{
-                margin-left: 15px;
+                margin-right: 0;
+                margin-left: 10px;
+            }
+            article{
+                float: right;
+                &:after{
+                    right: -10px;
+                    border-color: transparent transparent transparent #fff;
+                }
             }
         }
     }
