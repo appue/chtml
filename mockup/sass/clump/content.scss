@@ -6,11 +6,12 @@ $gray_val: #cacdcb;
 .unit_find_top{
     width: 100%;
     padding: 10px 0;
+    height: 80px;
     display: -webkit-box;
     -webkit-box-pack: center;
     -webkit-box-align: center;
     background: url(img/bg_find_top.jpg) no-repeat center 0;
-    background-size: 100% auto;
+    background-size: 100% 100%;
     li{
         width: 60px;
         color: #fff;
@@ -66,9 +67,10 @@ $gray_val: #cacdcb;
     div{
         background: #fff;
         font-size: 0;
-        padding: 10px;
+        padding: 0 10px;
         ul{
             @include border_bottom_half;
+            padding: 10px 0;
             li{
                 width: 50%;
                 font-size: 14px;
