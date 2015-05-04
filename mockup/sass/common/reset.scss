@@ -1,5 +1,4 @@
 ﻿$bgcolor: #e6e8e7;
-
 html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, em, button {
     margin: 0;
     padding: 0;
@@ -24,6 +23,10 @@ input, textarea, select {
     resize: none;
     outline: 0;
     box-shadow: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+}
+input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 table {
@@ -140,8 +143,15 @@ a:active {
         -webkit-transform: rotate(360deg);
     }
 }
-
-.mod_scroll{
+//定义滚动容器
+.mod_scroll {
     @include scrollfix;
     padding: 58px 10px 48px;
+}
+//定义白色布局
+.mod_layout {
+    background-color: #fff;
+    padding: 5px 10px;
+    border-bottom: 1.5px solid #cacdcb;
+    margin-bottom: 10px;
 }
