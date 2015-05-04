@@ -1,0 +1,40 @@
+﻿//定义弹出层控件，该控件应该在body下，不应嵌套入其他容器
+.mod_popup {
+    width: 300px;
+    height: auto;
+    overflow: hidden;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    z-index: 201;
+    margin-left: -150px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 10px rgba(51, 51, 51, 1);
+    .mod_popup_title {
+        height: 44px;
+        line-height: 44px;
+        padding-left: 15px;
+        color: #3cc482;
+        border-bottom: 2px solid #3cc482;
+    }
+    //mod_popup_body应该在对应入口页面下自己定义(请另外取class名)
+    .mod_popup_body {
+    }
+    .mod_popup_ctrl {
+        padding: 20px 0 30px;
+        text-align: center;
+        a {
+            @include button();
+            display: inline-block;
+            &.cancel {
+                background-color: #cacdcb;
+            }
+            &.confirm {
+                background-color: #3cc482;
+            }
+            &.cancel~.confirm {
+                margin-left: 20px;
+            }
+        }
+    }
+}

@@ -92,12 +92,12 @@ a:active {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
-//按钮1(以popup确认按钮为标准) 参数：width, height, display
-@mixin button($width:90px, $height:34px, $display:block) {
+//按钮1(以popup确认按钮为标准) 参数：width, height
+@mixin button($width:90px, $height:34px) {
     width: $width;
     height: $height;
     line-height: $height;
-    display: $display;
+    display: block;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     text-align: center;
@@ -152,6 +152,12 @@ a:active {
 .mod_layout {
     background-color: #fff;
     padding: 5px 10px;
-    border-bottom: 1.5px solid #cacdcb;
+    border-bottom: 2px solid #cacdcb;
     margin-bottom: 10px;
+}
+//定义白色布局标题
+.mod_layout_title {
+    font-size: 11px;
+    line-height: 28px;
+    padding: 0 5px;
 }
