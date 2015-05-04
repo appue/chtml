@@ -90,7 +90,6 @@ $gray_val: #cacdcb;
         div{
             -webkit-box-flex: 1;
             article{
-                background: #fff;
                 padding: 5px;
                 line-height: 16px;
                 font-size: 12px;
@@ -113,6 +112,7 @@ $gray_val: #cacdcb;
         }
         &.this_left{
             article{
+                background: #fff;
                 &:after{
                     left: -10px;
                     border-color: transparent #fff transparent transparent;
@@ -126,10 +126,12 @@ $gray_val: #cacdcb;
                 margin-left: 10px;
             }
             article{
+                background: $green_val;
+                color: #fff;
                 float: right;
                 &:after{
                     right: -10px;
-                    border-color: transparent transparent transparent #fff;
+                    border-color: transparent transparent transparent $green_val;
                 }
             }
         }
