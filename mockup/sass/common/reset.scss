@@ -65,7 +65,7 @@ a {
 a:visited {
     text-decoration: none;
 }
-a:active {
+a:active, button:active {
     opacity: 0.7;
 }
 //文字超出显示...
@@ -76,9 +76,9 @@ a:active {
 }
 //多行文字超出显示... 参数：line-clamp
 @mixin multi_ellipsis($line:3) {
-    -webkit-box-orient: vertical;
     display: -webkit-box;
     -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 @mixin scrollfix {

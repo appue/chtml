@@ -107,9 +107,12 @@
         label {
             width: 70px;
         }
-        a:active {
-            opacity: 1 !important;
-            background-color: #ccc !important;
+        a {
+            -webkit-box-flex: 1;
+            &:active {
+                opacity: 1 !important;
+                background-color: #ccc !important;
+            }
         }
         input {
             -webkit-box-flex: 1;

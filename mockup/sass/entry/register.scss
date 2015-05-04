@@ -1,0 +1,77 @@
+.register_layout {
+    .register_data li {
+        padding: 14px 0 14px 30px;
+        @include border_bottom_half;
+        &:last-child {
+            border-bottom: 0 none;
+        }
+        &.nickname {
+            background: url(img/icon_member.png) no-repeat 5px 14px;
+            background-size: 14px auto;
+            label {
+                display: block;
+                line-height: 14px;
+                margin-bottom: 10px;
+            }
+            input {
+                display: block;
+                width: 100%;
+            }
+        }
+        &.gender {
+            background: url(img/icon_gender.png) no-repeat 5px center;
+            background-size: 14px auto;
+            span {
+                padding-right: 10px;
+                margin-right: 10px;
+            }
+            input {
+                width: 8px;
+                height: 8px;
+                border-radius: 4px;
+                background-color: #cacdcb;
+                margin-left: 15px;
+                margin-right: 10px;
+                -webkit-transition: background-color .3s ease-in-out;
+                transition: background-color .3s ease-in-out;
+                &:checked {
+                    background-color: #3dc482;
+                }
+            }
+        }
+        &.location {
+            background: url(img/icon_location.png) no-repeat 6px center;
+            background-size: 11px auto;
+        }
+        &.post {
+            background: url(img/icon_post.png) no-repeat 5px center;
+            background-size: 14px auto;
+        }
+    }
+}
+.title_content span {
+    color: $gray_val;
+}
+.chosen_location {
+    position: relative;
+    height: 150px;
+    ul {
+        @include scrollfix;
+        width: 95px;
+        height: 150px;
+        li {
+            text-align: center;
+            line-height: 50px;
+            border-bottom: 1px solid #3dc482;
+            &:last-child {
+                border-bottom: 0 none;
+            }
+        }
+    }
+    ul:nth-child(1) {
+        left: 30px;
+    }
+    ul:nth-child(2) {
+        right: 30px;
+    }
+}
