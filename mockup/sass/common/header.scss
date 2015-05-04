@@ -5,7 +5,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 100;
+    display: -webkit-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background-color: #fff;
@@ -14,36 +15,26 @@
         background-color: transparent;
         border-bottom: 0 none;
     }
+    a, h1 {
+        display: block;
+    }
     .back_button {
-        float: left;
         font-size: 15px;
-        // &:before {
-        //     content: "";
-        //     float: left;
-        //     margin-left: 14px;
-        //     margin-right: 8px;
-        //     margin-top: 14px;
-        //     width: 12px;
-        //     height: 15px;
-        //     background: url(img/back_arrow.png) no-repeat;
-        //     background-size: cover;
-        // }
-        text-indent: 40px;
-        background: url(img/back_arrow.png)  no-repeat 15px center;
+        width: 40px;
+        text-indent: -9999px;
+        background: url(img/back_arrow.png) no-repeat 15px center;
         background-size: 15px auto;
     }
     .left_button {
     }
     .right_button {
-        float: right;
+        padding-left: 10px;
         padding-right: 14px;
         font-size: 14px;
         color: #3cc482;
     }
     .title_content {
-        display: inline-block;
-        max-width: 65%;
-        padding: 0 14px;
+        -webkit-box-flex: 1;
         font-size: 15px;
         color: #333;
         @include ellipsis;
@@ -55,7 +46,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 100;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background-color: #fff;
