@@ -25,20 +25,28 @@
         text-indent: -9999px;
         background: url(img/back_arrow.png) no-repeat 15px center;
         background-size: 15px auto;
+        &~.title_content {
+            padding-left: 0;
+        }
     }
     .left_button {
     }
     .right_button {
         padding-left: 10px;
-        padding-right: 14px;
+        padding-right: 15px;
         font-size: 14px;
         color: #3cc482;
     }
     .title_content {
         -webkit-box-flex: 1;
+        padding-left: 15px;
         font-size: 15px;
         color: #333;
         @include ellipsis;
+        &.full {
+            padding-left: 0;
+            text-align: center;
+        }
     }
 }
 .mod_header_search {
