@@ -3,8 +3,10 @@
     font-weight: normal;
     background: #fff;
     line-height: 40px;
+    @include border_top_half;
     &.this_p{
         padding: 0 10px;
+        border: none;
     }
     div{
         display: block;

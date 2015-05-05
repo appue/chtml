@@ -1,3 +1,40 @@
 ﻿$bgcolor: #e6e8e7;
 $green_val: #3cc482;
 $gray_val: #cacdcb;
+
+
+/*
+* 圈子列表
+* 发现-圈子.html
+*/
+.unit_club_list_num{
+    background: #fff;
+    padding: 0 10px;
+    li{
+        padding: 10px 0;
+        display: -webkit-box;
+        @include border_bottom_half;
+        -webkit-box-align: center;
+        &:last-child{
+            border: none;
+        }
+        i{
+            display: block;
+            text-align: center;
+            width: 15px;
+            margin-right: 10px;
+            line-height: 20px;
+            text-align: left;
+        }
+        img{
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        div{
+            display: block;
+            -webkit-box-flex: 1;
+            line-height: 20px;
+        }
+    }
+}

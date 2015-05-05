@@ -166,3 +166,26 @@ $gray_val: #cacdcb;
         }
     }
 }
+
+/*
+* 底部按钮
+* 发现-圈子.html
+*/
+.unit_footer_btn{
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 4px 0;
+    @include border_top_half;
+    button{
+        @include button(100px, 36px);
+        border: none;
+        outline: none;
+        margin: 0 auto;
+        font-size: 14px;
+        background: $green_val;
+    }
+}
