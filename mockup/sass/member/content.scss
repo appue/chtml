@@ -136,24 +136,3 @@
         }
     }
 }
-
-.mod_title_{
-    display: -webkit-box;
-    font-weight: normal;
-    margin-bottom: 5px;
-    @include border_top_half;
-    div{
-        display: block;
-        line-height: 30px;
-        &:nth-child(1){
-            color: #50c88c;
-            -webkit-box-flex: 1;
-        }
-        &:last-child{
-            width: 80px;
-            color: #d9dbda;
-            font-size: 12px;
-            text-align: right;
-        }
-    }
-}

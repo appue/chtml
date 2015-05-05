@@ -37,7 +37,7 @@ $gray_val: #cacdcb;
 
 .unit_find_subject{
     background: #fff;
-    padding: 10px;
+    padding: 0 10px 10px;
     ul{
         display: -webkit-box;
         li{
@@ -140,6 +140,29 @@ $gray_val: #cacdcb;
             margin: 0 5px 10px;
             display: inline-block;
             -webkit-border-radius: 3px;
+        }
+    }
+}
+
+
+.unit_find_cate_info{
+    background: url(img/img_find_cate_bg.jpg) no-repeat center 0;
+    background-size: 100% 100%;
+    padding: 50px 0 20px;
+    font-size: 12px;
+    color: #fff;
+    display: -webkit-box;
+    img{
+        width: 70px;
+        height: 70px;
+        border: 2px solid #fff;
+        margin: 0 10px 0 20px;
+    }  
+    div{
+        -webkit-box-flex: 1;
+        margin-right: 20px;
+        &:first-line{
+            font-size: 16px;
         }
     }
 }

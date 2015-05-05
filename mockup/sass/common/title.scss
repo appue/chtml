@@ -1,0 +1,22 @@
+﻿.mod_title_text{
+    display: -webkit-box;
+    font-weight: normal;
+    background: #fff;
+    line-height: 40px;
+    &.this_p{
+        padding: 0 10px;
+    }
+    div{
+        display: block;
+        &:nth-child(1){
+            color: #50c88c;
+            -webkit-box-flex: 1;
+        }
+        &:nth-child(2){
+            width: 80px;
+            color: #d9dbda;
+            font-size: 12px;
+            text-align: right;
+        }
+    }
+}
