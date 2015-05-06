@@ -64,6 +64,7 @@ $gray_val: #cacdcb;
     button{
         width: 60px;
         border: 0;
+        font-size: 14px;
         @include button(60px);
         background: $green_val;
     }
@@ -92,7 +93,8 @@ $gray_val: #cacdcb;
             article{
                 padding: 5px;
                 line-height: 16px;
-                font-size: 12px;
+                // font-size: 12px;
+                line-height: 20px;
                 position: relative;
                 display: block;
                 -webkit-box-flex: 1;
