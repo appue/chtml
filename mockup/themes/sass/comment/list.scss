@@ -1,0 +1,35 @@
+﻿.unit_comment_list {
+    padding: 0 10px;
+    background: #fff;
+    li {
+        display: -webkit-box;
+        padding: 5px 0;
+        @include border_bottom_half;
+        &:last-child{
+            border: none;
+        }
+        img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            -webkit-border-radius: 40px;
+        }
+        dl {
+            -webkit-box-flex: 1;
+            dt {
+                line-height: 20px;
+                margin-bottom: 5px;
+                @include green;
+                i {
+                    @include gray;
+                    float: right;
+                    font-size: 12px;
+                }
+            }
+            dd {
+                line-height: 18px;
+                font-size: 12px;
+            }
+        }
+    }
+}
