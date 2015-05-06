@@ -40,6 +40,11 @@ $gray_val: #cacdcb;
     padding: 0 10px 10px;
     ul{
         display: -webkit-box;
+        &.this_left{
+            li{
+                text-align: left;
+            }
+        }
         li{
             display: block;
             line-height: 20px;
@@ -56,6 +61,9 @@ $gray_val: #cacdcb;
                 background: url(img/img_find_more.jpg) no-repeat center 0;
                 background-size: 100% auto;
                 padding-top: 70px;
+            }
+            p{
+                @include gray;
             }
         }
     }
