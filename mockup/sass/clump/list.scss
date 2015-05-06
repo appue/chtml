@@ -54,6 +54,9 @@ $gray_val: #cacdcb;
         display: -webkit-box;
         padding: 10px 0;
         @include border_bottom_half;
+        &:last-child{
+            border: none;
+        }
         -webkit-box-align: center;
         div{
             -webkit-box-flex: 1;
@@ -80,6 +83,9 @@ $gray_val: #cacdcb;
             background: none;
         }
         @include border_bottom_half;
+        &:last-child{
+            border: none;
+        }
         h2{
             line-height: 20px;
             @include ellipsis;
@@ -112,6 +118,9 @@ $gray_val: #cacdcb;
             display: -webkit-box;
             padding: 10px 0;
             @include border_bottom_half;
+            &:last-child{
+                border: none;
+            }
             img{
                 width: 70px;
                 height: 70px;
