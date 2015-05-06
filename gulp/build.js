@@ -32,8 +32,8 @@ module.exports = function (gulp, $) {
     
     gulp.task('images', function() {
         return gulp.src([
-                './mockup/**/*.jpg',
-                './mockup/**/*.png'
+                './mockup/themes/**/*.jpg',
+                './mockup/themes/**/*.png'
             ])
             .pipe(gulp.dest('./source/themes/'))
     });
