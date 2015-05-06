@@ -4,7 +4,7 @@ var fs   = require('fs'),
 
 var runType = argv.run || ''; // dev、build
 
-var cssPath = "./mockup/",
+var cssPath = "./mockup/themes",
     netPath = "mockup";
 
 switch (runType) {
@@ -18,7 +18,7 @@ module.exports = function (gulp, $) {
 
     gulp.task('sass', function () {
 
-        return gulp.src('mockup/*.scss')
+        return gulp.src('mockup/themes/*.scss')
             .pipe($.plumber())
             .pipe($.sass())
             .pipe($.autoprefixer('last 3 version'))
@@ -94,7 +94,7 @@ module.exports = function (gulp, $) {
         gulp.src('mockup/**/*.scss')
             .pipe($.plumber())
             .pipe($.watch('mockup/**/*.scss', function(){
-                gulp.src('mockup/*.scss')
+                gulp.src('mockup/themes/*.scss')
                     .pipe($.plumber())
                     .pipe($.sass())
                     .pipe($.autoprefixer('last 3 version'))
