@@ -57,7 +57,7 @@
     }
 }
 .comment_header {
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 45%, #fff 45%, #fff 55%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0) 100%);
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
     background-size: 100% 100%;
     .right_menu_gray {
         width: 40px;
@@ -66,19 +66,216 @@
     }
 }
 .comment_home {
-    padding: 10px 10px 48px;
+    padding: 10px 10px 58px;
     .comment_layout {
         background-color: #fff;
         padding: 5px;
         border-bottom: 2px solid #cacdcb;
         margin-bottom: 10px;
-        img {
+        .comment_img {
             width: 100%;
             display: block;
         }
-        p {
+        .comment_txt {
             line-height: 18px;
             padding: 5px 5px 10px;
+            font-size: 13px;
+        }
+        .person_img {
+            width: 28px;
+            height: 28px;
+            -webkit-border-radius: 14px;
+        }
+        .person_detail {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            @include border_top_half;
+            padding: 10px 0 10px 5px;
+            overflow: hidden;
+            .person_img {
+                margin-right: 6px;
+                display: block;
+            }
+            div {
+                -webkit-box-flex: 1;
+            }
+            h3 {
+                font-size: 13px;
+                line-height: 11px;
+                margin-bottom: 5px;
+                color: $green_val;
+                span {
+                    color: $gray_val;
+                    &.time {
+                        float: right;
+                    }
+                    &.private_chat {
+                        margin-left: 10px;
+                        padding-left: 18px;
+                        background: url(img/icon_chat_gray.png) no-repeat left 1px;
+                        background-size: 15px auto;
+                    }
+                }
+            }
+            p {
+                font-size: 13px;
+                span {
+                    display: inline-block;
+                    margin-right: 6px;
+                }
+            }
+        }
+        .comment_heart {
+            @include border_bottom_half;
+            a {
+                float: left;
+                display: block;
+                margin-left: 2px;
+                margin-right: 10px;
+                width: 28px;
+                height: 28px;
+                background: url(img/icon_heart_gray.png) no-repeat center;
+                background-size: 20px auto;
+                &.heart {
+                }
+            }
+            .person_img {
+                margin-right: 10px;
+                margin-bottom: 5px;
+            }
+        }
+        .comment_input {
+            display: -webkit-box;
+            padding: 10px 5px;
+            .person_img {
+                display: block;
+                margin-top: 2px;
+                margin-right: 12px;
+            }
+            div {
+                -webkit-box-flex: 1;
+                padding: 0 8px;
+                @include border_half;
+                background-color: #f6f6f6;
+                position: relative;
+                &:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 10px;
+                    left: -6px;
+                    width: 10px;
+                    height: 10px;
+                    @include border_left_half;
+                    @include border_bottom_half;
+                    border-left-width: 1px;
+                    background-color: #f6f6f6;
+                    -webkit-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                }
+                input {
+                    width: 100%;
+                    line-height: 32px;
+                }
+            }
+        }
+        .comment_more {
+            @include border_top_half;
+            padding: 5px 5px 8px;
+            a {
+                color: $green_val;
+            }
+        }
+    }
+    .comment_also_watch {
+        width: 100%;
+        height: 152px;
+        overflow: hidden;
+        padding: 10px 0;
+        background-color: #fff;
+        border-bottom: 2px solid #cacdcb;
+        position: relative;
+        h2 {
+            color: $green_val;
+            line-height: 14px;
+            padding-left: 10px;
+            padding-bottom: 8px;
+        }
+        ul {
+            display: -webkit-box;
+            position: absolute;
+            top: 32px;
+            left: 0;
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            li {
+                display: block;
+                width: 70px;
+                overflow: hidden;
+                margin: 0 10px;
+                font-size: 11px;
+                img {
+                    width: 70px;
+                    height: 70px;
+                    display: block;
+                    margin-bottom: 3px;
+                }
+                span {
+                    display: inline-block;
+                    line-height: 18px;
+                    margin-right: 6px;
+                }
+                p {
+                    margin-top: 3px;
+                    color: $gray_val;
+                }
+                &:last-child {
+                    padding-right: 10px;
+                }
+            }
+        }
+    }
+}
+.comment_footer {
+    display: -webkit-box;
+    @include border_top_half;
+    background-color: #fff;
+    width: 100%;
+    height: 48px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    a {
+        display: block;
+        line-height: 48px;
+        padding-left: 34px;
+        -webkit-box-flex: 1;
+        &.footer_heart {
+            background: url(img/icon_heart_gray.png) no-repeat 10px center;
+            background-size: 20px auto;
+            &.has_heart {
+                background-image: url(img/icon_heart_green.png);
+            }
+        }
+        &.footer_comment {
+            background: url(img/icon_comment.png) no-repeat 10px center;
+            background-size: 20px auto;
+        }
+        &.footer_share {
+            background: url(img/icon_share.png) no-repeat 10px center;
+            background-size: 20px auto;
+        }
+        &.footer_collect {
+            background: url(img/icon_star_gray.png) no-repeat 10px center;
+            background-size: 20px auto;
+            &.has_collect {
+                background-image: url(img/icon_star_green.png);
+            }
         }
     }
 }
