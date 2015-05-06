@@ -35,6 +35,13 @@ $gray_val: #cacdcb;
             display: block;
             -webkit-box-flex: 1;
             line-height: 20px;
+            font-size: 12px;
+            @include gray;
+            h2{
+                color: #000;
+                font-size: 14px;
+                @include ellipsis;
+            }
         }
     }
 }
