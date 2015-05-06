@@ -91,9 +91,9 @@ module.exports = function (gulp, $) {
 
         }
 
-        gulp.src('mockup/**/*.scss')
+        gulp.src('./mockup/themes/**/*.scss')
             .pipe($.plumber())
-            .pipe($.watch('./mockup/**/*.scss', function(){
+            .pipe($.watch('./mockup/themes/**/*.scss', function(){
                 gulp.src('./mockup/themes/*.scss')
                     .pipe($.plumber())
                     .pipe($.sass())
