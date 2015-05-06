@@ -18,7 +18,7 @@ module.exports = function (gulp, $) {
 
     gulp.task('sass', function () {
 
-        return gulp.src('mockup/themes/*.scss')
+        return gulp.src('./mockup/themes/*.scss')
             .pipe($.plumber())
             .pipe($.sass())
             .pipe($.autoprefixer('last 3 version'))
@@ -85,16 +85,16 @@ module.exports = function (gulp, $) {
 
         if (!runType) {
 
-            gulp.src('mockup/**/*.html')
-                .pipe($.watch('mockup/**/*.html', function() {}))
+            gulp.src('./mockup/**/*.html')
+                .pipe($.watch('./mockup/**/*.html', function() {}))
                 .pipe($.livereload());
 
         }
 
         gulp.src('mockup/**/*.scss')
             .pipe($.plumber())
-            .pipe($.watch('mockup/**/*.scss', function(){
-                gulp.src('mockup/themes/*.scss')
+            .pipe($.watch('./mockup/**/*.scss', function(){
+                gulp.src('./mockup/themes/*.scss')
                     .pipe($.plumber())
                     .pipe($.sass())
                     .pipe($.autoprefixer('last 3 version'))
