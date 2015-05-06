@@ -253,3 +253,64 @@ $gray_val: #cacdcb;
         }
     }
 }
+
+
+/*发现-圈子-未加入.html*/
+.unit_club_other_info{
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    @include border_bottom_half;
+    li{
+        background-image: url(img/icon_club.png);
+        background-repeat: no-repeat;
+        display: -webkit-box;
+        line-height: 30px;
+        padding: 10px 0;
+        text-indent: 30px;
+        @include border_bottom_half;
+        &:last-child{
+            border: none;
+        }
+        &.this_reg{
+            background-position: 0 13px;
+            background-size: 30px auto;
+            button{
+                @include button(60px);
+                background: $green_val;
+                border: none;
+                outline: none;
+                font-size: 14px;
+            }
+            span{
+                @include green;
+            }
+        }
+        &.this_user{
+            background-position: 0 -30px;
+            background-size: 30px auto;
+            i{
+                display: block;
+                padding-right: 20px;
+                background: url(img/icon_arrow.png) no-repeat right center;
+                background-size: 13px auto;
+            }
+            button{
+                @include button(80px);
+                background: $green_val;
+                border: none;
+                outline: none;
+                font-size: 14px;
+            }
+        }
+        &.this_acti{
+            background-image: url(img/icon_club.png), url(img/icon_arrow.png);
+            background-position: 0 -68px, right center;
+            background-size: 30px auto, 13px auto;
+
+        }
+        p{
+            -webkit-box-flex: 1;
+        }
+    }
+}
