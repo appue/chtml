@@ -151,19 +151,33 @@ $gray_val: #cacdcb;
     padding: 50px 0 20px;
     font-size: 12px;
     color: #fff;
-    display: -webkit-box;
-    img{
-        width: 70px;
-        height: 70px;
-        border: 2px solid #fff;
-        margin: 0 10px 0 20px;
-    }  
     div{
-        -webkit-box-flex: 1;
-        margin-right: 20px;
-        &:first-line{
-            font-size: 16px;
+        display: -webkit-box;
+        img{
+            width: 70px;
+            height: 70px;
+            border: 2px solid #fff;
+            margin: 0 10px 0 20px;
+        }  
+        p{
+            -webkit-box-flex: 1;
+            margin-right: 20px;
+            &:first-line{
+                font-size: 16px;
+            }
         }
+    }
+    button{
+        display: block;
+        background: none;
+        border: 1px solid #fff;
+        color: #fff;
+        width: 90px;
+        line-height: 30px;
+        margin: 0 auto;
+        outline: none;
+        margin-top: 10px;
+        -webkit-border-radius: 3px;
     }
 }
 
