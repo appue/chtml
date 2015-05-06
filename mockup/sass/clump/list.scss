@@ -134,3 +134,33 @@ $gray_val: #cacdcb;
         }
     }
 }
+
+
+/*发现-圈子成员排行.html*/
+.unit_club_user_list{
+    background: #fff;
+    padding: 0 10px;
+    li{
+        padding: 5px 0;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        @include border_bottom_half;
+        &:last-child{
+            border: none;
+        }
+        i,
+        p,
+        img{
+            display: block;
+        }
+        i{
+            min-width: 30px;
+        }
+        img{
+            width: 40px;
+            height: 40px;
+            margin-right: 5px;
+            -webkit-border-radius: 40px;
+        }
+    }
+}

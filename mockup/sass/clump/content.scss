@@ -37,6 +37,7 @@ $gray_val: #cacdcb;
 
 .unit_find_subject{
     background: #fff;
+    overflow: hidden;
     padding: 0 10px 10px;
     ul{
         display: -webkit-box;
@@ -185,6 +186,7 @@ $gray_val: #cacdcb;
         margin: 0 auto;
         outline: none;
         margin-top: 10px;
+        font-size: 14px;
         -webkit-border-radius: 3px;
     }
 }
