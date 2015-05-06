@@ -50,9 +50,20 @@
     }
     .column_title {
         line-height: 22px;
-        a {
+        span {
             float: right;
             color: $gray_val;
+            input {
+                width: 14px;
+                height: 14px;
+                border: 1px solid $green_val;
+                margin-right: 5px;
+                vertical-align: -10%;
+                &:checked {
+                    background: url(img/icon_checked.png) no-repeat center;
+                    background-size: 14px auto;
+                }
+            }
         }
     }
     .column_list {
@@ -69,6 +80,17 @@
                 height: 70px;
                 display: block;
                 margin-bottom: 6px;
+            }
+            &.selected:before {
+                content: "";
+                display: block;
+                width: 70px;
+                height: 70px;
+                margin-bottom: -70px;
+                position: relative;
+                z-index: 1;
+                background: rgba(0, 0, 0, .5) url(img/icon_tick.png) no-repeat center;
+                background-size: 23px auto;
             }
         }
     }
@@ -107,7 +129,7 @@
                 @include ellipsis;
             }
             p {
-                font-size: 11px;
+                font-size: 12px;
                 @include ellipsis;
                 span {
                     color: $gray_val;
@@ -133,15 +155,15 @@
     }
     .account_password_tip {
         color: $gray_val;
-        font-size: 11px;
-        line-height: 11px;
+        font-size: 12px;
+        line-height: 12px;
         padding-top: 13px;
         padding-left: 28px;
     }
     .get_vcode {
         text-align: right;
         a {
-            font-size: 11px;
+            font-size: 12px;
             display: inline-block;
             padding: 5px 0 10px;
             &.disable {
