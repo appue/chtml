@@ -1,11 +1,11 @@
-<ul ng-click="tabChange()" class="mod_tab_2">
-    <li class="current">精品</li>
-    <li>关注</li>
+<ul class="mod_tab_2">
+    <li ng-click="currentTab = true" ng-class="{current : currentTab}">精品</li>
+    <li ng-click="currentTab = false" ng-class="{current : !currentTab}">关注</li>
     <i class="line"></i>
 </ul>
 
 <section class="unit_home">
-    <div class="mod_slide">
+    <div class="mod_slide" ng-if="currentTab">
         <ul>
             <li>
                 <img src="../../themes/temp/img_1.jpg" />
@@ -27,8 +27,8 @@
         </ol>
     </div>
 
-    <ul class="mod_list_falls" style="height:1000px;">
-        <li style="left:0;top:0;">
+    <ul class="js_falls mod_list_falls">
+        <li>
             <div class="this_border">
                 <img src="../../themes/temp/1.jpg" />
                 <article>
