@@ -5,4 +5,8 @@ angular.module('phoneApp')
         // // $state.go('homes');
         // window.loa.href = '#/index/homes'
     }
+
+    $scope.tabChange = function(){
+        tab.setAttribute('class', 'current');
+    }
 });
