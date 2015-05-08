@@ -1,7 +1,7 @@
 <section class="login_entry">
     <div class='login_bg'></div>
     <div class="entry_button">
-        <a class="register">注册</a>
+        <a ng-click="showPopup = true" class="register">注册</a>
         <a class="login">登录</a>
     </div>
     <div class="entry_help">
@@ -9,7 +9,7 @@
     </div>
 </section>
 
-<div class="mod_popup">
+<div ng-show="showPopup" class="mod_popup">
     <h2 class="mod_popup_title">用户注册</h2>
     <div class="mod_popup_body chosen_register">
         <ul class="mod_list_default">
@@ -31,4 +31,4 @@
         <a class="cancel">取消</a>
     </div>
 </div>
-<div class="mod_mask"></div>
+<div ng-show="showPopup" class="mod_mask"></div>
