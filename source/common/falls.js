@@ -28,9 +28,7 @@ angular.module('phoneApp')
 
             angular.forEach(el, function(v, k) {
                 v.getElementsByTagName('img')[0].style.cssText = 'height:'+ v.dataset.y * p +'px';
-            });
-
-            angular.forEach(el, function(v, k) {
+                
                 var h = v.offsetHeight;
 
                 if (obj.x <= obj.y) {
