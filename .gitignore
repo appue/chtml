@@ -1,6 +1,6 @@
 Thumbs.db
 .DS_Store
-mockup/*.css
+mockup/themes/*.css
 /node_modules/
 /source/bower_components/
 /source/themes/
