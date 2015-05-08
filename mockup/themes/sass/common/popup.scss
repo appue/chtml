@@ -1,5 +1,6 @@
 ﻿//定义弹出层控件，该控件应该在body下，不应嵌套入其他容器
 .mod_popup {
+    display: none;
     width: 300px;
     height: auto;
     overflow: hidden;
