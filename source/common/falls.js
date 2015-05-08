@@ -25,28 +25,27 @@ angular.module('phoneApp')
 
             // for (var i=0,len=el.length; i<len; i++) {
 
-            angular.forEach(values, function(value, key) {
-                var h = el[i].offsetHeight;
+            angular.forEach(el, function(v, k) {
+                var h = v.offsetHeight;
 
-                alert(el[i].attr())
-
-                if (obj.x <= obj.y) {
-                    obj.layout.push({
-                        'z': i,
-                        'h': h,
-                        'type': 'left',
-                        'top': obj.x + 10
-                    });
-                    obj.x = obj.layout[i].top + h;
-                } else {
-                    obj.layout.push({
-                        'z': i,
-                        'h': h,
-                        'type': 'right',
-                        'top': obj.y + 10
-                    });
-                    obj.y = obj.layout[i].top + h;
-                }
+                alert(h);
+                // if (obj.x <= obj.y) {
+                //     obj.layout.push({
+                //         'z': i,
+                //         'h': h,
+                //         'type': 'left',
+                //         'top': obj.x + 10
+                //     });
+                //     obj.x = obj.layout[i].top + h;
+                // } else {
+                //     obj.layout.push({
+                //         'z': i,
+                //         'h': h,
+                //         'type': 'right',
+                //         'top': obj.y + 10
+                //     });
+                //     obj.y = obj.layout[i].top + h;
+                // }
             }
 
 
