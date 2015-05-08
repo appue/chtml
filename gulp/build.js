@@ -1,6 +1,7 @@
-var fs   = require('fs'),
+var fs = require('fs'),
     argv = require('yargs').argv,
-    os   = require('os');
+    os = require('os'),
+    inject = require('gulp-inject');
 
 var runType = argv.run || ''; // dev、build
 
@@ -8,9 +9,9 @@ var cssPath = "./mockup/themes",
     netPath = "mockup";
 
 switch (runType) {
-    case 'dev':
-        cssPath = './source/themes/';
-        netPath = 'source';
+case 'dev':
+    cssPath = './source/themes/';
+    netPath = 'source';
     break;
 }
 
@@ -22,15 +23,17 @@ module.exports = function (gulp, $) {
             .pipe($.plumber())
             .pipe($.sass())
             .pipe($.autoprefixer('last 3 version'))
-            .pipe($.size({title: 'css--------------------------------'}))
+            .pipe($.size({
+                title: 'css--------------------------------'
+            }))
             .pipe(gulp.dest(cssPath));
 
         // .pipe(gulp.dest('./mockup/'));
         // .pipe(gulp.dest('./source/themes/'));
     });
 
-    
-    gulp.task('images', function() {
+
+    gulp.task('images', function () {
         return gulp.src([
                 './mockup/themes/**/*.jpg',
                 './mockup/themes/**/*.png'
@@ -42,7 +45,9 @@ module.exports = function (gulp, $) {
     gulp.task('clean', function () {
 
         if (runType == 'dev') {
-            return gulp.src('./source/themes', {read: false})
+            return gulp.src('./source/themes', {
+                    read: false
+                })
                 // .pipe($.clean());
                 .pipe($.rimraf());
         }
@@ -66,16 +71,24 @@ module.exports = function (gulp, $) {
         });
 
         switch (version) {
-            case 'win32':
-                url = 'start http://localhost:'+port;
-                break;
-            case 'darwin':
-                url = 'open http://localhost:'+port;
-                break;
+        case 'win32':
+            url = 'start http://localhost:' + port;
+            break;
+        case 'darwin':
+            url = 'open http://localhost:' + port;
+            break;
         }
 
         gulp.src('')
             .pipe($.shell(url));
+    });
+
+    gulp.task('html-inject', function () {
+
+        return gulp.src('./source/**/*.html').pipe(inject(gulp.src('./source/**/**/*.js'), {
+            relative: true
+        })).pipe(gulp.dest('./source/**'));
+
     });
 
 
@@ -86,19 +99,21 @@ module.exports = function (gulp, $) {
         if (!runType) {
 
             gulp.src('./mockup/**/*.html')
-                .pipe($.watch('./mockup/**/*.html', function() {}))
+                .pipe($.watch('./mockup/**/*.html', function () {}))
                 .pipe($.livereload());
 
         }
 
         gulp.src('./mockup/themes/**/*.scss')
             .pipe($.plumber())
-            .pipe($.watch('./mockup/themes/**/*.scss', function(){
+            .pipe($.watch('./mockup/themes/**/*.scss', function () {
                 gulp.src('./mockup/themes/*.scss')
                     .pipe($.plumber())
                     .pipe($.sass())
                     .pipe($.autoprefixer('last 3 version'))
-                    .pipe($.size({title: 'css--------------------------------'}))
+                    .pipe($.size({
+                        title: 'css--------------------------------'
+                    }))
                     .pipe(gulp.dest(cssPath))
                     .pipe($.livereload());
             }))
@@ -113,7 +128,7 @@ module.exports = function (gulp, $) {
                     './source/**/*.html',
                     './source/**/*.js'
                 ]))
-                .pipe($.livereload())          
+                .pipe($.livereload())
         }
 
 

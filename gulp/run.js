@@ -1,6 +1,6 @@
-var fs   = require('fs'),
+var fs = require('fs'),
     argv = require('yargs').argv,
-    os   = require('os');
+    os = require('os');
 
 var runType = argv.run || ''; // dev、build
 
@@ -8,11 +8,11 @@ module.exports = function (gulp, $) {
 
     gulp.task('html', ['sass', 'connect', 'watch']);
 
-    gulp.task('dev', ['sass', 'images', 'connect', 'watch']);
+    gulp.task('dev', ['html-inject', 'sass', 'images', 'connect', 'watch']);
 
     gulp.task('build');
 
-    gulp.task('run', ['clean'], function() {
+    gulp.task('run', ['clean'], function () {
 
         if (runType == 'dev') {
             gulp.start('dev');
@@ -24,7 +24,7 @@ module.exports = function (gulp, $) {
 
     });
 
-    gulp.task('word', function(){
+    gulp.task('word', function () {
         var version = os.platform(),
             url = '';
 
@@ -35,12 +35,12 @@ module.exports = function (gulp, $) {
         });
 
         switch (version) {
-            case 'win32':
-                url = 'start http://localhost:8888';
-                break;
-            case 'darwin':
-                url = 'open http://localhost:8888';
-                break;
+        case 'win32':
+            url = 'start http://localhost:8888';
+            break;
+        case 'darwin':
+            url = 'open http://localhost:8888';
+            break;
         }
 
         gulp.src('')
@@ -49,8 +49,8 @@ module.exports = function (gulp, $) {
         $.livereload.listen();
 
         gulp.src('./word/**/*.html')
-            .pipe($.watch('word/**/*.html', function() {}))
+            .pipe($.watch('word/**/*.html', function () {}))
             .pipe($.livereload());
     });
-    
+
 };
