@@ -36,7 +36,7 @@ angular.module('phoneApp')
                         'z': k,
                         'h': h,
                         'type': 'left',
-                        'top': k == 0 ? obj.x : obj.x + 10
+                        'top': obj.x + 10
                     });
                     obj.x = obj.layout[k].top + h;
                 } else {
@@ -44,7 +44,7 @@ angular.module('phoneApp')
                         'z': k,
                         'h': h,
                         'type': 'right',
-                        'top': k == 1 ? obj.y : obj.y + 10
+                        'top': obj.y + 10
                     });
                     obj.y = obj.layout[k].top + h;
                 }
