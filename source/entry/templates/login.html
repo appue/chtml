@@ -1,34 +1,37 @@
-<section class="login_entry">
-    <div class='login_bg'></div>
-    <div class="entry_button">
-        <a ng-click="showPopup = true" class="register">注册</a>
-        <a class="login">登录</a>
-    </div>
-    <div class="entry_help">
-        <a>? 帮助与反馈</a>
-    </div>
-</section>
+<header class="mod_header">
+    <a class="back_button">back</a>
+    <h1 class="title_content">登录</h1>
+</header>
 
-<div ng-show="showPopup" class="mod_popup">
-    <h2 class="mod_popup_title">用户注册</h2>
-    <div class="mod_popup_body chosen_register">
+<section class="login_layout mod_scroll">
+
+    <div class="mod_layout">
         <ul class="mod_list_default">
-            <li class="icon_weixin">
-                <a>微信注册</a>
-            </li>
-            <li class="icon_mobile">
-                <a>手机号注册</a>
-            </li>
+            <li class="phone">
+                <input type="number" placeholder="用户名(手机号码)"></li>
+            <li class="password last_border_line">
+                <input type="password" placeholder="密码"></li>
+        </ul>
+        <a class="login_button">登录</a>
+        <div class="forget_password">
+            <a>忘记密码？</a>
+        </div>
+    </div>
+
+    <h2 class="mod_layout_title">使用其他方式登录</h2>
+
+    <div class="mod_layout">
+        <ul class="mod_list_default">
             <li class="icon_qq">
-                <a>QQ注册</a>
+                <a>QQ账号登录</a>
             </li>
-            <li class="icon_weibo last_border_line">
-                <a>微博注册</a>
+            <li class="icon_weixin">
+                <a>微信账号登录</a>
+            </li>
+            <li class="icon_weibo">
+                <a>新浪微博账号登录</a>
             </li>
         </ul>
     </div>
-    <div class="mod_popup_ctrl">
-        <a class="cancel">取消</a>
-    </div>
-</div>
-<div ng-show="showPopup" class="mod_mask"></div>
+
+</section>

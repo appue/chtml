@@ -1,8 +1,13 @@
-angular.module('ENTRY', ['ui.router'])
+angular.module('phoneApp', ['ui.router'])
     .config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-            .state('login', {
+            .state(' ', { //入口页面
+                url: '/',
+                templateUrl: 'templates/entry.html',
+                controller: 'entryCtrl'
+            })
+            .state('login', { //登录页
                 url: '/login',
                 templateUrl: 'templates/login.html',
                 controller: 'loginCtrl'
@@ -13,7 +18,7 @@ angular.module('ENTRY', ['ui.router'])
         if (isShowGuide && JSON.parse(isShowGuide).value === 1) {
             $urlRouterProvider.otherwise('/login');
         } else {
-            $urlRouterProvider.otherwise('/login');
+            $urlRouterProvider.otherwise('/');
         }
 
     });

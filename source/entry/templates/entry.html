@@ -1,0 +1,34 @@
+<section class="login_entry" ng-init="showPopup = false">
+    <div class='login_bg'></div>
+    <div class="entry_button">
+        <a ng-click="showPopup = true" class="register">注册</a>
+        <a class="login">登录</a>
+    </div>
+    <div class="entry_help">
+        <a>? 帮助与反馈</a>
+    </div>
+</section>
+
+<div ng-if="showPopup" class="mod_popup">
+    <h2 class="mod_popup_title">用户注册</h2>
+    <div class="mod_popup_body chosen_register">
+        <ul class="mod_list_default">
+            <li class="icon_weixin">
+                <a>微信注册</a>
+            </li>
+            <li class="icon_mobile">
+                <a>手机号注册</a>
+            </li>
+            <li class="icon_qq">
+                <a>QQ注册</a>
+            </li>
+            <li class="icon_weibo last_border_line">
+                <a>微博注册</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mod_popup_ctrl">
+        <a ng-click="showPopup = false" class="cancel">取消</a>
+    </div>
+</div>
+<div ng-if="showPopup" class="mod_mask"></div>
