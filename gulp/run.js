@@ -1,6 +1,7 @@
 var fs = require('fs'),
     argv = require('yargs').argv,
-    os = require('os');
+    os = require('os'),
+    inject = require('gulp-inject');
 
 var runType = argv.run || ''; // dev、build
 
@@ -8,7 +9,7 @@ module.exports = function (gulp, $) {
 
     gulp.task('html', ['sass', 'connect', 'watch']);
 
-    gulp.task('dev', ['html-inject', 'sass', 'images', 'connect', 'watch']);
+    gulp.task('dev', ['sass', 'images', 'connect', 'watch']);
 
     gulp.task('build');
 
@@ -21,6 +22,18 @@ module.exports = function (gulp, $) {
         } else {
             gulp.start('html');
         }
+
+    });
+
+    var folder = argv.f; //直接注入js到index.html入口文件 gulp inject -f 文件名
+
+    gulp.task('inject', function () {
+
+        if (!folder) return;
+
+        return gulp.src('./source/' + folder + '/index.html').pipe(inject(gulp.src('./source/' + folder + '/js/*.js'), {
+            relative: true
+        })).pipe(gulp.dest('./source/' + folder));
 
     });
 

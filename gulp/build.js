@@ -1,7 +1,6 @@
 var fs = require('fs'),
     argv = require('yargs').argv,
-    os = require('os'),
-    inject = require('gulp-inject');
+    os = require('os');
 
 var runType = argv.run || ''; // dev、build
 
@@ -82,15 +81,6 @@ module.exports = function (gulp, $) {
         gulp.src('')
             .pipe($.shell(url));
     });
-
-    gulp.task('html-inject', function () {
-
-        return gulp.src('./source/**/*.html').pipe(inject(gulp.src('./source/**/**/*.js'), {
-            relative: true
-        })).pipe(gulp.dest('./source/**'));
-
-    });
-
 
     gulp.task('watch', function () {
 
