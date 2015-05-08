@@ -23,30 +23,34 @@ angular.module('phoneApp')
                 'y': 0 //--右边总高度
             };
 
-            // for (var i=0,len=el.length; i<len; i++) {
+            var w = document.querySelector(params.elem +' li').offsetWidth,
+                p = w/200;
+
+            angular.forEach(el, function(v, k) {
+                v.getElementsByTagName('img')[0].style.cssText = 'height:'+ v.dataset.y * p +'px';
+            });
 
             angular.forEach(el, function(v, k) {
                 var h = v.offsetHeight;
 
-                alert(h);
-                // if (obj.x <= obj.y) {
-                //     obj.layout.push({
-                //         'z': i,
-                //         'h': h,
-                //         'type': 'left',
-                //         'top': obj.x + 10
-                //     });
-                //     obj.x = obj.layout[i].top + h;
-                // } else {
-                //     obj.layout.push({
-                //         'z': i,
-                //         'h': h,
-                //         'type': 'right',
-                //         'top': obj.y + 10
-                //     });
-                //     obj.y = obj.layout[i].top + h;
-                // }
-            }
+                if (obj.x <= obj.y) {
+                    obj.layout.push({
+                        'z': k,
+                        'h': h,
+                        'type': 'left',
+                        'top': k == 0 ? obj.x : obj.x + 10
+                    });
+                    obj.x = obj.layout[k].top + h;
+                } else {
+                    obj.layout.push({
+                        'z': k,
+                        'h': h,
+                        'type': 'right',
+                        'top': k == 1 ? obj.y : obj.y + 10
+                    });
+                    obj.y = obj.layout[k].top + h;
+                }
+            });
 
 
             return obj;
