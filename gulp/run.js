@@ -9,7 +9,7 @@ module.exports = function (gulp, $) {
 
     gulp.task('html', ['sass', 'connect', 'watch']);
 
-    gulp.task('dev', ['sass', 'images', 'connect', 'watch']);
+    gulp.task('dev', ['sass', 'images', 'inject', 'connect', 'watch']);
 
     gulp.task('build');
 
@@ -23,47 +23,6 @@ module.exports = function (gulp, $) {
             gulp.start('html');
         }
 
-    });
-
-    var folder = argv.f; //直接注入js到index.html入口文件 gulp inject -f 文件名
-
-    gulp.task('inject', function () {
-
-        if (!folder) return;
-
-        return gulp.src('./source/' + folder + '/index.html').pipe(inject(gulp.src('./source/' + folder + '/js/*.js'), {
-            relative: true
-        })).pipe(gulp.dest('./source/' + folder));
-
-    });
-
-    gulp.task('word', function () {
-        var version = os.platform(),
-            url = '';
-
-        $.connect.server({
-            root: 'word',
-            port: '8888',
-            livereload: true
-        });
-
-        switch (version) {
-        case 'win32':
-            url = 'start http://localhost:8888';
-            break;
-        case 'darwin':
-            url = 'open http://localhost:8888';
-            break;
-        }
-
-        gulp.src('')
-            .pipe($.shell(url));
-
-        $.livereload.listen();
-
-        gulp.src('./word/**/*.html')
-            .pipe($.watch('word/**/*.html', function () {}))
-            .pipe($.livereload());
     });
 
 };

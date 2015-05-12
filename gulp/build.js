@@ -2,15 +2,17 @@ var fs = require('fs'),
     argv = require('yargs').argv,
     os = require('os');
 
+var getProject = require('./tools/folder.js');
+
 var runType = argv.run || ''; // dev、build
 
 var cssPath = "./mockup/themes",
     netPath = "mockup";
 
 switch (runType) {
-case 'dev':
-    cssPath = './source/themes/';
-    netPath = 'source';
+    case 'dev':
+        cssPath = './source/themes/';
+        netPath = 'source';
     break;
 }
 
@@ -70,11 +72,12 @@ module.exports = function (gulp, $) {
         });
 
         switch (version) {
-        case 'win32':
-            url = 'start http://localhost:' + port;
+            case 'win32':
+                url = 'start http://localhost:' + port;
             break;
-        case 'darwin':
-            url = 'open http://localhost:' + port;
+
+            case 'darwin':
+                url = 'open http://localhost:' + port;
             break;
         }
 
@@ -121,6 +124,64 @@ module.exports = function (gulp, $) {
                 .pipe($.livereload())
         }
 
+    });
+
+
+    gulp.task('word', function () {
+        var version = os.platform(),
+            url = '';
+
+        $.connect.server({
+            root: 'word',
+            port: '8888',
+            livereload: true
+        });
+
+        switch (version) {
+            case 'win32':
+                url = 'start http://localhost:8888';
+            break;
+            case 'darwin':
+                url = 'open http://localhost:8888';
+            break;
+        }
+
+        gulp.src('')
+            .pipe($.shell(url));
+
+        $.livereload.listen();
+
+        gulp.src('./word/**/*.html')
+            .pipe($.watch('word/**/*.html', function () {}))
+            .pipe($.livereload());
+    });
+    
+
+    gulp.task('inject', function () {
+        var fd = argv.f;
+
+        if (fd) {
+
+            return gulp.src('./source/'+ fd +'/*.html')
+                .pipe($.inject(gulp.src('./source/'+ fd +'/**/*.js'), {
+                    relative: true
+                }))
+                .pipe(gulp.dest('./source/'+ fd));
+
+        } else {
+
+            getProject({
+                callback: function(folder){
+                    folder.forEach( function(v) {
+                        return gulp.src('./source/'+ v +'/*.html')
+                            .pipe($.inject(gulp.src('./source/'+ v +'/**/*.js'), {
+                                relative: true
+                            }))
+                            .pipe(gulp.dest('./source/'+ v));
+                    });
+                }
+            });
+        }
 
     });
 };
