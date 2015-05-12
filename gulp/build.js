@@ -163,9 +163,17 @@ module.exports = function (gulp, $) {
         if (fd) {
 
             return gulp.src('./source/'+ fd +'/*.html')
-                .pipe($.inject(gulp.src('./source/'+ fd +'/**/*.js'), {
-                    relative: true
-                }))
+                .pipe(
+                    $.inject(
+                        gulp.src([
+                            './source/'+ fd +'/**/*.js',
+                            './source/themes/'+ fd +'.css',
+                        ]),
+                        {
+                            relative: true
+                        }
+                    )
+                )
                 .pipe(gulp.dest('./source/'+ fd));
 
         } else {
@@ -174,9 +182,16 @@ module.exports = function (gulp, $) {
                 callback: function(folder){
                     folder.forEach( function(v) {
                         return gulp.src('./source/'+ v +'/*.html')
-                            .pipe($.inject(gulp.src('./source/'+ v +'/**/*.js'), {
-                                relative: true
-                            }))
+                            .pipe(
+                                $.inject(
+                                    gulp.src([
+                                        './source/'+ v +'/**/*.js',
+                                        './source/themes/'+ v +'.css'
+                                    ]), {
+                                        relative: true
+                                    }
+                                )
+                            )
                             .pipe(gulp.dest('./source/'+ v));
                     });
                 }
