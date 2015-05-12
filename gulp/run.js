@@ -9,7 +9,7 @@ module.exports = function (gulp, $) {
 
     gulp.task('html', ['sass', 'connect', 'watch']);
 
-    gulp.task('dev', ['sass', 'images', 'inject', 'connect', 'watch']);
+    gulp.task('dev', ['sass', 'images', 'connect', 'watch']);
 
     gulp.task('build');
 
