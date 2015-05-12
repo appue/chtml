@@ -1,4 +1,4 @@
-<section class="login_entry" ng-init="showPopup = false">
+<section class="login_entry">
     <div class='login_bg'></div>
     <div class="entry_button">
         <a ng-click="showPopup = true" class="register">注册</a>
@@ -9,9 +9,8 @@
     </div>
 </section>
 
-<div ng-if="showPopup" class="mod_popup">
-    <h2 class="mod_popup_title">用户注册</h2>
-    <div class="mod_popup_body chosen_register">
+<popup title="用户注册" popup-cancel="12" popup-confirm="aaaa();">
+    <div class="chosen_register">
         <ul class="mod_list_default">
             <li class="icon_weixin">
                 <a>微信注册</a>
@@ -27,8 +26,5 @@
             </li>
         </ul>
     </div>
-    <div class="mod_popup_ctrl">
-        <a ng-click="showPopup = false" class="cancel">取消</a>
-    </div>
-</div>
+</popup>
 <div ng-if="showPopup" class="mod_mask"></div>

@@ -1,7 +1,7 @@
 <header class="mod_header" ng-class="{transparent:transparent}">
 
 	<!-- 定义后退按钮 -->
-	<a ng-if="backButton" page-back class="back_button"></a>
+	<a ng-if="backButton" page-back="{{backParam}}" class="back_button"></a>
 	<!-- /定义后退按钮 -->
 
 	<!-- 定义左侧按钮（待定） -->
@@ -13,7 +13,7 @@
 	<!-- /定义标题 -->
 	
 	<!-- 定义右侧按钮 -->
-	<a ng-if="rightButton" class="right_button">{{rightButton}}</a>
+	<a ng-if="rightButton" page-jump="{{jumpParam}}" class="right_button">{{rightButton}}</a>
 	<!-- /定义右侧按钮 -->
 	
 	<!-- 定义菜单按钮（待定） -->

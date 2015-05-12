@@ -1,0 +1,18 @@
+<div ng-show="showPopup" class="mod_popup">
+
+	<!-- 定义弹出层标题 -->
+    <h2 class="mod_popup_title">{{popupTitle}}</h2>
+    <!-- /定义弹出层标题 -->
+
+    <!-- 定义弹出层内容 -->
+    <div class="mod_popup_body ng-transclude"></div>
+    <!-- /定义弹出层内容 -->
+	
+	<!-- 定义弹出层按钮 -->
+    <div class="mod_popup_ctrl">
+        <a class="cancel">取消</a>
+        <a class="confirm">确定</a>
+    </div>
+    <!-- /定义弹出层按钮 -->
+
+</div>
