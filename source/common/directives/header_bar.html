@@ -1,5 +1,23 @@
-<header class="mod_header">
-    <a class="back_button">back</a>
-    <h1 class="title_content"><span>（</span>3<span>/3）</span>验证手机号</h1>
-    <a class="right_button">下一步</a>
+<header class="mod_header" ng-class="{transparent:transparent}">
+
+	<!-- 定义后退按钮 -->
+	<a ng-if="backButton" page-back class="back_button"></a>
+	<!-- /定义后退按钮 -->
+
+	<!-- 定义左侧按钮（待定） -->
+	<a ng-if="leftButton" class="left_button"></a>
+	<!-- /定义左侧按钮 -->
+
+	<!-- 定义标题 -->
+	<h1 class="title_content">{{headerTitle}}</h1>
+	<!-- /定义标题 -->
+	
+	<!-- 定义右侧按钮 -->
+	<a ng-if="rightButton" class="right_button">{{rightButton}}</a>
+	<!-- /定义右侧按钮 -->
+	
+	<!-- 定义菜单按钮（待定） -->
+	<a ng-if="menuButton"></a>
+	<!-- /定义菜单按钮 -->
+
 </header>

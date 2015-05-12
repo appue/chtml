@@ -10,13 +10,11 @@
  *
  */
 
-'use strict';
-
 angular.module('phoneApp').config(function ($provide, $httpProvider) {
 
-    $provide.factory('gsHttpInterceptor', function ($q, ENV) {
+    $provide.factory('httpInterceptor', function ($q, ENV) {
 
-        var gsHttpInterceptor = {
+        var httpInterceptor = {
 
             request: function (config) {
                 var raw = config.url;
@@ -54,8 +52,8 @@ angular.module('phoneApp').config(function ($provide, $httpProvider) {
             }
         };
 
-        return gsHttpInterceptor;
+        return httpInterceptor;
     });
 
-    $httpProvider.interceptors.push('gsHttpInterceptor');
+    $httpProvider.interceptors.push('httpInterceptor');
 });
