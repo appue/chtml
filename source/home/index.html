@@ -13,16 +13,21 @@
 
         <div ui-view id="js_view"></div>
 
+
+        <!-- build:libjs -->
         <script src="../bower_components/angular/angular.js"></script>
         <script src="../bower_components/angular-touch/angular-touch.js"></script>
         <script src="../bower_components/angular-route/angular-route.js"></script>
         <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <!-- endbuild -->
 
         <!-- inject:js -->
         <script src="app.js"></script>
         <script src="js/index.js"></script>
         <!-- endinject -->
 
+        <!-- build:commonjs -->
         <script src="../common/falls.js"></script>
+        <!-- endbuild -->
     </body>
 </html>
