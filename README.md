@@ -1,14 +1,14 @@
 #开发环境搭建
 
-## 运行环境配置
+## 一、运行环境配置
 运行环境基于nodejs、npm、bower、gulp，去网上下载相关的代码安装吧
 
-## 初始化数据
+## 二、初始化数据
 - npm install
 
 - bower install
 
-## 运行
+## 三、运行
 1.看接口相关文档
 - gulp word
 
