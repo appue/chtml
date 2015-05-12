@@ -16,4 +16,9 @@
 - gulp
 
 3.运行JS开发环境
+在运行开发环境前需要运行命令：
+- gulp inject 
+
 - gulp --run dev
+
+
