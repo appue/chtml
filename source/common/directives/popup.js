@@ -15,8 +15,23 @@ angular.module('phoneApp')
 
 				var $that = angular.element(event.target);
 
-				if (attrs.popupCancel && $that.hasClass('cancel')) {
-					alert(1);
+				if ($that.hasClass('cancel')) { //定义取消按钮事件
+
+					if (attrs.popupCancel) {
+						console.log(attrs.popupCancel);
+					} else {
+						scope.showPopup = false;
+					}
+				}
+
+				if ($that.hasClass('confirm')) { //定义确定按钮事件
+
+					if (attrs.popupConfirm) {
+						console.log(attrs.popupConfirm);
+					} else {
+						scope.showPopup = false;
+					}
+
 				}
 
 			});
