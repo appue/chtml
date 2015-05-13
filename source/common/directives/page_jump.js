@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.directive('pageJump', function ($window, $state, $stateParams, $parse, ENV) {
+.directive('pageJump', function ($window, $state, $stateParams, $parse, routerRedirect) {
 	return {
 		restrict: 'A',
 		link: function (scope, element, attrs) {
@@ -15,47 +15,12 @@ angular.module('phoneApp')
 
 				// $window.location.href = params.opts.href;
 				// console.log();
-				alert(2);
-
 				// if (!ENV.isHybrid) {
 				// 	$window.location.href = params.opts.href.replace('index\.html', '');
 				// 	return;
 				// }
 
-				/*
-				* @params:
-				*     opts: {
-				*         direction: 页面转动方向[left|right|up|down]
-				*         href: 页面跳转的URL
-				*     }
-				*/
-				var options = {
-					'direction': 'right',
-					'duration': 500, 
-					'slowdownfactor': 3, 
-					'iosdelay': 100,
-					'androiddelay': 150,
-					'winphonedelay': 250, 
-					'fixedPixelsTop': 0,
-					'fixedPixelsBottom': 48,
-					'href': params.opts.href
-				};
-
-				for (i in params.opts) options[i] = params.opts[i];
-
-				options.href = params.opts.href;
-
-				alert(JSON.stringify(options));
-
-				window.plugins.nativepagetransitions.slide(
-					options,
-					function (msg) {
-						console.log(msg);
-					},
-					function (msg) {
-						console.log(msg);
-					}
-				);
+				routerRedirect.toJump(params);
 			});
 		}
 	};

@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.controller('HomeIndexCtrl', function($scope, $state, SetFalls){
+.controller('HomeIndexCtrl', function($scope, $state, SetFalls, routerRedirect){
     $scope.goIndex = function(){
         // // $state.go('homes');
         // window.loa.href = '#/index/homes'
@@ -8,10 +8,19 @@ angular.module('phoneApp')
 
     $scope.currentTab = 1;
 
-    $scope.tabChange = function(e){
-
-       var a = angular.element(e.currentTarget).find('li');
-       console.log(a.index('li'));
+    $scope.tabChange = function(opt){
+        // alert(angular.element(e.currentTarget).index());
+        // console.log(a.index('li'));
+        if (opt == 1) {
+            $scope.currentTab = 1;
+        } else {
+            // $scope.currentTab = 0;
+            routerRedirect.toJump({
+                'opts': {
+                    'href': '/entry/index.html#/login'
+                }
+            });
+        }
     }
 
     var obj = SetFalls.init({

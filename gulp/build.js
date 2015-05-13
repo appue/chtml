@@ -170,16 +170,19 @@ module.exports = function (gulp, $) {
         var fd = argv.f;
 
         if (fd) {
-
             return gulp.src('./source/'+ fd +'/*.html')
                 .pipe(
                     $.inject(
-                        gulp.src([
-                            './source/'+ fd +'/js/*.js',
-                            './source/themes/'+ fd +'.css',
-                        ]),
-                        {
-                            relative: true
+                        gulp.src('./source/common/**/*.js', {read: false}), { 
+                            relative: true, 
+                            name: 'injectcommon' 
+                        }
+                    )
+                )
+                .pipe(
+                    $.inject(
+                        gulp.src(['./source/'+ fd +'/js/*.js', './source/themes/'+ fd +'.css'], {read: false}), { 
+                            relative: true 
                         }
                     )
                 )
@@ -193,10 +196,15 @@ module.exports = function (gulp, $) {
                         return gulp.src('./source/'+ v +'/*.html')
                             .pipe(
                                 $.inject(
-                                    gulp.src([
-                                        './source/'+ v +'/js/*.js',
-                                        './source/themes/'+ v +'.css'
-                                    ]), {
+                                    gulp.src('./source/common/**/*.js', {read: false}), { 
+                                        relative: true, 
+                                        name: 'injectcommon' 
+                                    }
+                                )
+                            )
+                            .pipe(
+                                $.inject(
+                                    gulp.src(['./source/'+ v +'/js/*.js', './source/themes/'+ v +'.css'], {read: false}), {
                                         relative: true
                                     }
                                 )
