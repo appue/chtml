@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.directive('headerBar', function () {
+.directive('headerBar', function ($parse, $timeout) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -35,7 +35,12 @@ angular.module('phoneApp')
 
 			if (attrs.right) { //定义右侧按钮
 				scope.rightButton = attrs.right.split('|')[0] || '';
-				scope.jumpParam = attrs.right.split('|')[1] || '';
+
+				var param = attrs.right.split('|')[1] || '';
+				scope.jumpParam = scope.$eval(param);
+
+				console.log(scope.jumpParam);
+
 			}
 
 		}

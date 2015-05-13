@@ -2,6 +2,12 @@ angular.module('phoneApp')
 
 .controller('loginCtrl', function ($scope, $state) {
 
-	// alert(1);
+	$scope.aaaaa = {
+		a: 1,
+		b: 2,
+		c: function () {
+			alert(1)
+		}
+	};
 
 });
