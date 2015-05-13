@@ -212,8 +212,8 @@ module.exports = function (gulp, $) {
                     return gulp.src('./source/'+ v +'/*.html')
                         .pipe(htmlreplace({
                             'libjs': '../lib/frame.js?v='+ version,
-                            'js': v +'.js?v='+ version,
-                            'commonjs': '../common/'+ v +'.common.js?v='+ version
+                            'js': 'index.js?v='+ version,
+                            'commonjs': 'common.js?v='+ version
                         }))
                         .pipe(gulp.dest('./build/'+ v));
                 });
@@ -236,7 +236,8 @@ module.exports = function (gulp, $) {
             callback: function(folder){
                 folder.forEach( function(v) {
                     return gulp.src('./source/'+ v +'/js/**/*.js')
-                        .pipe($.concat(v +'.js'))
+                        .pipe($.concat('index.js'))
+                        .pipe($.uglify())
                         .pipe(gulp.dest('./build/'+ v));
                 });
             }
