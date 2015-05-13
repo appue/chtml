@@ -260,6 +260,12 @@ module.exports = function (gulp, $) {
         });
     });
 
+    //--html迁移
+    gulp.task('movehtml', function() {
+        return gulp.src('./source/common/**/*.html')
+            .pipe(gulp.dest('./build/common'));
+    });
+
     //--css 迁移
     gulp.task('movecss', function() {
         return gulp.src([
