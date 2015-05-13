@@ -4,10 +4,11 @@ var fs = require('fs'),
 
 var getProject = require('./tools/folder.js');
 
-var runType = argv.run || ''; // dev、build
-
-var cssPath = "./mockup/themes",
-    netPath = "mockup";
+var runType = argv.run || '', // dev、build
+    cssPath = "./mockup/themes",
+    netPath = "mockup",
+    d = new Date(),
+    version = d.getTime();
 
 switch (runType) {
     case 'dev':
@@ -210,9 +211,9 @@ module.exports = function (gulp, $) {
                 folder.forEach( function(v) {
                     return gulp.src('./source/'+ v +'/*.html')
                         .pipe(htmlreplace({
-                            'libjs': '../lib/frame.js',
-                            'js': 'js/'+ v +'.js',
-                            'commonjs': '../common/'+ v +'.common.js'
+                            'libjs': '../lib/frame.js?v='+ version,
+                            'js': v +'.js?v='+ version,
+                            'commonjs': '../common/'+ v +'.common.js?v='+ version
                         }))
                         .pipe(gulp.dest('./build/'+ v));
                 });
@@ -231,6 +232,14 @@ module.exports = function (gulp, $) {
 
     //--js 合并压缩
     gulp.task('minjs', function() {
-
+        getProject({
+            callback: function(folder){
+                folder.forEach( function(v) {
+                    return gulp.src('./source/'+ v +'/js/**/*.js')
+                        .pipe($.concat(v +'.js'))
+                        .pipe(gulp.dest('./build/'+ v));
+                });
+            }
+        });
     });
 };
