@@ -45,15 +45,23 @@ module.exports = function (gulp, $) {
 
 
     gulp.task('clean', function() {
+        var dir = './build';
 
         if (runType == 'dev') {
-            return gulp.src('./source/themes', {
-                    read: false
-                })
-                // .pipe($.clean());
-                .pipe($.rimraf());
+
+            dir = './source/themes';
+
+        } else if (runType == 'build') {
+
+            dir = './build';
+
         }
 
+        return gulp.src(dir, {
+                read: false
+            })
+            // .pipe($.clean());
+            .pipe($.rimraf()); 
     });
 
     gulp.task('connect', function() {

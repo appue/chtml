@@ -7,10 +7,13 @@ var runType = argv.run || ''; // dev、build
 
 module.exports = function (gulp, $) {
 
+    
     gulp.task('html', ['sass', 'connect', 'watch']);
+
 
     gulp.task('dev', ['sass', 'images', 'connect', 'watch']);
 
+    
     gulp.task('build', ['replacehtml', 'movehtml', 'movecss', 'moveimages', 'minjs'], function() {
 
         var version = os.platform(),
