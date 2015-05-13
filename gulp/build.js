@@ -270,6 +270,8 @@ module.exports = function (gulp, $) {
             .pipe($.uglify())
             .pipe(gulp.dest('./build/lib'));
 
+
+        //--项目公共JS压缩、合并
         getProject({
             callback: function(folder){
                 folder.forEach( function(v) {
@@ -284,6 +286,7 @@ module.exports = function (gulp, $) {
             }
         });
 
+        //--项目中的JS压缩、合并
         getProject({
             callback: function(folder){
                 folder.forEach( function(v) {
