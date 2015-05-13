@@ -292,7 +292,7 @@ module.exports = function (gulp, $) {
                 folder.forEach( function(v) {
                     return gulp.src('./source/'+ v +'/js/**/*.js')
                         .pipe($.concat('index.js'))
-                        // .pipe($.uglify())
+                        .pipe($.uglify())
                         .pipe(gulp.dest('./build/'+ v));
                 });
             }
