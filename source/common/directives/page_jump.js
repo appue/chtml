@@ -15,11 +15,12 @@ angular.module('phoneApp')
 
 				// $window.location.href = params.opts.href;
 				// console.log();
+				alert(2);
 
-				if (!ENV.isHybrid) {
-					$window.location.href = params.opts.href.replace('index\.html', '');
-					return;
-				}
+				// if (!ENV.isHybrid) {
+				// 	$window.location.href = params.opts.href.replace('index\.html', '');
+				// 	return;
+				// }
 
 				/*
 				* @params:
@@ -29,7 +30,7 @@ angular.module('phoneApp')
 				*     }
 				*/
 				var options = {
-					'direction': 'left',
+					'direction': 'right',
 					'duration': 500, 
 					'slowdownfactor': 3, 
 					'iosdelay': 100,
@@ -43,6 +44,8 @@ angular.module('phoneApp')
 				for (i in params.opts) options[i] = params.opts[i];
 
 				options.href = params.opts.href;
+
+				alert(JSON.stringify(options));
 
 				window.plugins.nativepagetransitions.slide(
 					options,
