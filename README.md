@@ -21,4 +21,7 @@
 
 - gulp --run dev
 
+4.JS编译成正式环境下的代码
+- gulp --run build
+
 
