@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('EPBUY').factory('Util', function ($http, $rootScope, $state, $compile, $ionicPopup, $ionicLoading, $timeout) {
+angular.module('phoneApp').factory('Util', function ($http, $rootScope, $state, $compile, $ionicPopup, $ionicLoading, $timeout) {
 
     var backDropDom = angular.element(document.querySelector('.backdrop'));
 
@@ -233,8 +233,8 @@ angular.module('EPBUY').factory('Util', function ($http, $rootScope, $state, $co
                             text: '知道了',
                             type: 'button-positive',
                             onTap: function () {
-                                localStorage.removeItem('EPBUY_USERAUTH');
-                                $state.go('epbuy.login', {
+                                localStorage.removeItem('phoneApp_USERAUTH');
+                                $state.go('phoneApp.login', {
                                     OtherPage: 1
                                 });
                             }
