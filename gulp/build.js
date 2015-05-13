@@ -253,7 +253,7 @@ module.exports = function (gulp, $) {
                     return gulp.src('./.tmp/'+ v +'/*.js')
                         .pipe($.concat('templates.js'))
                         // .pipe($.ngAnnotate())
-                        // .pipe($.uglify())
+                        .pipe($.uglify())
                         .pipe(gulp.dest('./build/'+ v));
                 });
             }
