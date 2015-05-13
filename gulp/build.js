@@ -18,7 +18,7 @@ switch (runType) {
 
 module.exports = function (gulp, $) {
 
-    gulp.task('sass', function () {
+    gulp.task('sass', function() {
 
         return gulp.src('./mockup/themes/*.scss')
             .pipe($.plumber())
@@ -34,7 +34,7 @@ module.exports = function (gulp, $) {
     });
 
 
-    gulp.task('images', function () {
+    gulp.task('images', function() {
         return gulp.src([
                 './mockup/themes/**/*.jpg',
                 './mockup/themes/**/*.png'
@@ -43,7 +43,7 @@ module.exports = function (gulp, $) {
     });
 
 
-    gulp.task('clean', function () {
+    gulp.task('clean', function() {
 
         if (runType == 'dev') {
             return gulp.src('./source/themes', {
@@ -55,7 +55,7 @@ module.exports = function (gulp, $) {
 
     });
 
-    gulp.task('connect', function () {
+    gulp.task('connect', function() {
 
         var version = os.platform(),
             url = '',
@@ -85,21 +85,21 @@ module.exports = function (gulp, $) {
             .pipe($.shell(url));
     });
 
-    gulp.task('watch', function () {
+    gulp.task('watch', function() {
 
         $.livereload.listen();
 
         if (!runType) {
 
             gulp.src('./mockup/**/*.html')
-                .pipe($.watch('./mockup/**/*.html', function () {}))
+                .pipe($.watch('./mockup/**/*.html', function() {}))
                 .pipe($.livereload());
 
         }
 
         gulp.src('./mockup/themes/**/*.scss')
             .pipe($.plumber())
-            .pipe($.watch('./mockup/themes/**/*.scss', function () {
+            .pipe($.watch('./mockup/themes/**/*.scss', function() {
                 gulp.src('./mockup/themes/*.scss')
                     .pipe($.plumber())
                     .pipe($.sass())
@@ -127,7 +127,7 @@ module.exports = function (gulp, $) {
     });
 
 
-    gulp.task('word', function () {
+    gulp.task('word', function() {
         var version = os.platform(),
             url = '';
 
@@ -152,12 +152,12 @@ module.exports = function (gulp, $) {
         $.livereload.listen();
 
         gulp.src('./word/**/*.html')
-            .pipe($.watch('word/**/*.html', function () {}))
+            .pipe($.watch('word/**/*.html', function() {}))
             .pipe($.livereload());
     });
     
 
-    gulp.task('inject', function () {
+    gulp.task('inject', function() {
         var fd = argv.f;
 
         if (fd) {
@@ -166,7 +166,7 @@ module.exports = function (gulp, $) {
                 .pipe(
                     $.inject(
                         gulp.src([
-                            './source/'+ fd +'/**/*.js',
+                            './source/'+ fd +'/js/*.js',
                             './source/themes/'+ fd +'.css',
                         ]),
                         {
@@ -185,7 +185,7 @@ module.exports = function (gulp, $) {
                             .pipe(
                                 $.inject(
                                     gulp.src([
-                                        './source/'+ v +'/**/*.js',
+                                        './source/'+ v +'/js/*.js',
                                         './source/themes/'+ v +'.css'
                                     ]), {
                                         relative: true
@@ -201,7 +201,8 @@ module.exports = function (gulp, $) {
     });
 
     
-    gulp.task('movehtml', function () {
+    //--html js 替换
+    gulp.task('replacehtml', function() {
         var htmlreplace = require('gulp-html-replace');
 
         getProject({
@@ -217,5 +218,19 @@ module.exports = function (gulp, $) {
                 });
             }
         });
+    });
+
+    //--html 迁移
+    gulp.task('movehtml', function() {
+        return gulp.src([
+                './source/**/*.html',
+                '!./source/*/*.html'
+            ])
+            .pipe(gulp.dest('./build/'));
+    });
+
+    //--js 合并压缩
+    gulp.task('minjs', function() {
+
     });
 };

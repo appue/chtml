@@ -11,7 +11,7 @@ module.exports = function (gulp, $) {
 
     gulp.task('dev', ['sass', 'images', 'connect', 'watch']);
 
-    gulp.task('build', ['movehtml']);
+    gulp.task('build', ['replacehtml', 'movehtml']);
 
     gulp.task('run', ['clean'], function () {
 
