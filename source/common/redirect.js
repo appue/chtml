@@ -37,9 +37,8 @@
                     return;
                 }
 
-                var tmp = window.location.origin +'/'+ params.module +'/#/'+ params.hash;
-
-                url = params.filter ? tmp +'?'+ params.filter : tmp;
+                var tmp = window.location.origin +'/'+ params.module +'/#/'+ params.hash,
+                    url = params.filter ? tmp +'?'+ params.filter : tmp;
 
                 window.location.href = url;
 
