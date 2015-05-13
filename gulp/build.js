@@ -53,7 +53,7 @@ module.exports = function (gulp, $) {
 
         } else if (runType == 'build') {
 
-            dir = './build';
+            dir = ['./build', './.tmp'];
 
         }
 
@@ -219,7 +219,8 @@ module.exports = function (gulp, $) {
                         .pipe($.htmlReplace({
                             'libjs': '../lib/frame.js?v='+ version,
                             'js': 'index.js?v='+ version,
-                            'commonjs': 'common.js?v='+ version
+                            'commonjs': 'common.js?v='+ version,
+                            'templatesjs': 'templates.js?v='+ version
                         }))
                         .pipe(gulp.dest('./build/'+ v));
                 });
@@ -228,24 +229,41 @@ module.exports = function (gulp, $) {
     });
 
 
-    //--
-    gulp.task('tmpl', function() {
-
-        return gulp.src("./source/entry/*/*.html")
-            .pipe($.ngHtml2js({
-                moduleName: "phoneApp",
-                prefix: ""
-            }))
-            .pipe(gulp.dest("./tmp/home"));
+    //--生成JS模板数据
+    gulp.task('templates', function() {
+        getProject({
+            callback: function(folder){
+                folder.forEach( function(v) {
+                    return gulp.src('./source/'+ v +'/templates/*.html')
+                        .pipe($.ngHtml2js({
+                            moduleName: "phoneApp",
+                            prefix: "templates/"
+                        }))
+                        .pipe(gulp.dest("./.tmp/"+ v));
+                });
+            }
+        });
     });
 
-    //--html 迁移
+    //--迁移合并压缩JS模板
+    gulp.task('movetemplates', function() {
+        getProject({
+            callback: function(folder){
+                folder.forEach( function(v) {
+                    return gulp.src('./.tmp/'+ v +'/*.js')
+                        .pipe($.concat('templates.js'))
+                        // .pipe($.ngAnnotate())
+                        .pipe($.uglify())
+                        .pipe(gulp.dest('./build/'+ v));
+                });
+            }
+        });
+    });
+
+    //--html迁移
     gulp.task('movehtml', function() {
-        return gulp.src([
-                './source/**/*.html',
-                '!./source/*/*.html',
-            ])
-            .pipe(gulp.dest('./build/'));
+        return gulp.src('./source/common/**/*.html')
+            .pipe(gulp.dest('./build/common'));
     });
 
     //--css 迁移

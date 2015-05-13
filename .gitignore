@@ -6,3 +6,4 @@ mockup/themes/*.css
 /bower_components/
 /source/themes/
 /build/
+/.tmp/
