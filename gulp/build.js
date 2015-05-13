@@ -212,13 +212,11 @@ module.exports = function (gulp, $) {
     
     //--html js 替换
     gulp.task('replacehtml', function() {
-        var htmlreplace = require('gulp-html-replace');
-
         getProject({
             callback: function(folder){
                 folder.forEach( function(v) {
                     return gulp.src('./source/'+ v +'/*.html')
-                        .pipe(htmlreplace({
+                        .pipe($.htmlReplace({
                             'libjs': '../lib/frame.js?v='+ version,
                             'js': 'index.js?v='+ version,
                             'commonjs': 'common.js?v='+ version
@@ -277,10 +275,11 @@ module.exports = function (gulp, $) {
                 folder.forEach( function(v) {
                     return gulp.src([,
                             './source/'+ v +'/app.js',
-                            './source/common/falls.js'
+                            './source/common/**/*.js'
                         ])
                         .pipe($.concat('common.js'))
-                        // .pipe($.uglify())
+                        .pipe($.ngAnnotate())
+                        .pipe($.uglify())
                         .pipe(gulp.dest('./build/'+ v));
                 });
             }
@@ -292,6 +291,7 @@ module.exports = function (gulp, $) {
                 folder.forEach( function(v) {
                     return gulp.src('./source/'+ v +'/js/**/*.js')
                         .pipe($.concat('index.js'))
+                        .pipe($.ngAnnotate())
                         .pipe($.uglify())
                         .pipe(gulp.dest('./build/'+ v));
                 });
