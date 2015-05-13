@@ -27,7 +27,6 @@
     "gulp-size": "^1.2.1",
     "gulp-uglify": "^1.2.0",
     "gulp-watch": "^4.2.4",
-    "ng-annotate": "^0.15.4",
     "yargs": "^3.7.2"
   },
   "scripts": {
