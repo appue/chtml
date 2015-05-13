@@ -27,7 +27,7 @@
         toJump: function (params) {
             var self = this;
 
-            if (!ENV.isHybrid || params.status) {
+            if (!ENV.isHybrid) {
 
                 var pathname = window.location.pathname.replace('\/', '').replace('\/', '');
 
@@ -66,6 +66,8 @@
             for (i in params.opts) options[i] = params.opts[i];
 
             options.href = '/'+ params.module +'/index.html#/'+ params.hash;
+
+            alert(options.href);
             
             window.plugins.nativepagetransitions.slide(
                 options,
