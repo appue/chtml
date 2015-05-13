@@ -225,19 +225,63 @@ module.exports = function (gulp, $) {
     gulp.task('movehtml', function() {
         return gulp.src([
                 './source/**/*.html',
-                '!./source/*/*.html'
+                '!./source/*/*.html',
+                './source/**/*.css',
+                './source/**/*.jpg',
+                './source/**/*.png'
+            ])
+            .pipe(gulp.dest('./build/'));
+    });
+
+    //--css 迁移
+    gulp.task('movecss', function() {
+        return gulp.src([
+                './source/**/*.css'
+            ])
+            .pipe(gulp.dest('./build/'));
+    });
+
+    //--image 迁移
+    gulp.task('moveimages', function() {
+        return gulp.src([
+                './source/**/*.jpg',
+                './source/**/*.png'
             ])
             .pipe(gulp.dest('./build/'));
     });
 
     //--js 合并压缩
     gulp.task('minjs', function() {
+        //--框架JS压缩合并
+        gulp.src([
+                './source/lib/angular.js',
+                './source/lib/angular-touch.js',
+                './source/lib/angular-ui-router.js'
+            ])
+            .pipe($.concat('frame.js'))
+            .pipe($.uglify())
+            .pipe(gulp.dest('./build/lib'));
+
+        getProject({
+            callback: function(folder){
+                folder.forEach( function(v) {
+                    return gulp.src([,
+                            './source/'+ v +'/app.js',
+                            './source/common/falls.js'
+                        ])
+                        .pipe($.concat('common.js'))
+                        // .pipe($.uglify())
+                        .pipe(gulp.dest('./build/'+ v));
+                });
+            }
+        });
+
         getProject({
             callback: function(folder){
                 folder.forEach( function(v) {
                     return gulp.src('./source/'+ v +'/js/**/*.js')
                         .pipe($.concat('index.js'))
-                        .pipe($.uglify())
+                        // .pipe($.uglify())
                         .pipe(gulp.dest('./build/'+ v));
                 });
             }
