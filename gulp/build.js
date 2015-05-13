@@ -199,4 +199,23 @@ module.exports = function (gulp, $) {
         }
 
     });
+
+    
+    gulp.task('movehtml', function () {
+        var htmlreplace = require('gulp-html-replace');
+
+        getProject({
+            callback: function(folder){
+                folder.forEach( function(v) {
+                    return gulp.src('./source/'+ v +'/*.html')
+                        .pipe(htmlreplace({
+                            'libjs': '../lib/frame.js',
+                            'js': 'js/'+ v +'.js',
+                            'commonjs': '../common/'+ v +'.common.js'
+                        }))
+                        .pipe(gulp.dest('./build/'+ v));
+                });
+            }
+        });
+    });
 };

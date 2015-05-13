@@ -12,20 +12,25 @@
 
     <div ui-view id="js_view"></div>
 
+    <!-- build:libjs -->
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-touch/angular-touch.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbuild -->
 
+    <!-- build:commonjs -->
+    <script src="../common/directives/header_bar.js"></script>
+    <script src="../common/directives/page_back.js"></script>
+    <script src="../common/directives/page_jump.js"></script>
+    <script src="../common/directives/popup.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js -->
     <!-- inject:js -->
     <script src="app.js"></script>
     <script src="js/entry.js"></script>
     <script src="js/login.js"></script>
     <!-- endinject -->
-
-    <script src="../common/directives/header_bar.js"></script>
-    <script src="../common/directives/page_back.js"></script>
-    <script src="../common/directives/page_jump.js"></script>
-    <script src="../common/directives/popup.js"></script>
-
+    <!-- endbuild -->
 </body>
 </html>

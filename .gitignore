@@ -4,3 +4,4 @@ mockup/themes/*.css
 /node_modules/
 /source/bower_components/
 /source/themes/
+/build/
