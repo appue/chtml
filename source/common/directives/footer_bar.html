@@ -1,5 +1,9 @@
-<header class="mod_header">
-    <a class="back_button">back</a>
-    <h1 class="title_content"><span>（</span>3<span>/3）</span>验证手机号</h1>
-    <a class="right_button">下一步</a>
-</header>
+<footer class="mod_footer">
+    <ul ng-click="menuChange($event)">
+        <li data-name="home" data-hash="index" ng-class="{current : footerTab == 1}">首页</li>
+        <li data-name="find" ng-class="{current : footerTab == 2}">发现</li>
+        <li data-name="" ng-class="{current : footerTab == 3}"></li>
+        <li data-name="home" data-hash="msg" ng-class="{current : footerTab == 4}" class="news">消息</li>
+        <li data-name="member" ng-class="{current : footerTab == 5}">我</li>
+    </ul>
+</footer>

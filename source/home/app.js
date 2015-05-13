@@ -22,9 +22,10 @@ angular.module('phoneApp', ['ui.router'])
         templateUrl: 'templates/index.html',
         controller: 'HomeIndexCtrl'
     })
-    .state('find', {
-        url: '/find',
-        templateUrl: 'templates/2.html'
+    .state('msg', {
+        url: '/msg',
+        templateUrl: 'templates/msg.html',
+        controller: 'HomeMsgCtrl'
     });
 
     // $urlRouterProvider.when('', '/index');

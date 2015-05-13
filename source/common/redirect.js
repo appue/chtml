@@ -1,6 +1,6 @@
 ﻿angular.module('phoneApp')
 
-.factory('routerRedirect', function(ENV) {
+.factory('routerRedirect', function($state, ENV) {
 
     var routerRedirect = {
         /*
@@ -19,24 +19,34 @@
         * @params:
         *     opts: {
         *         direction: 页面转动方向[left|right|up|down]
-        *         href: 页面跳转的URL
         *     },
-        *     callback: function(){},
-        *     failure: function(){}
+        *     module: 所属的项目
+        *     hash: hash值
+        *     filter: ? 后面的参数
         */
         toJump: function (params) {
             var self = this;
 
-            if (!ENV.isHybrid) {
+            if (!ENV.isHybrid || params.status) {
 
-                var url = params.opts.href.replace('index\.html', '')
+                var pathname = window.location.pathname.replace('\/', '').replace('\/', '');
 
-                window.location.href = window.location.origin + url;
+                if (pathname == params.module) {
+                    $state.go(params.hash);
+
+                    return;
+                }
+
+                var tmp = window.location.origin +'/'+ params.module +'/#/'+ params.hash;
+
+                url = params.filter ? tmp +'?'+ params.filter : tmp;
+
+                window.location.href = url;
 
                 return;
             } 
             
-            // self._slide(params);
+            self._slide(params);
 
         },
 
@@ -56,7 +66,7 @@
 
             for (i in params.opts) options[i] = params.opts[i];
 
-            options.href = params.opts.href;
+            options.href = '/'+ params.module +'/index.html#/'+ params.hash;
             
             window.plugins.nativepagetransitions.slide(
                 options,
