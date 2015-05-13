@@ -4,7 +4,7 @@
 */
 var fs = require('fs');
 
-var exclude = ['bower_components', 'themes', 'common'];
+var exclude = ['bower_components', 'lib', 'themes', 'common'];
 
 /*
 * @params:
