@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('EPBUY')
+angular.module('phoneApp')
 	.directive('noNetwork', function ($state, $stateParams) {
 		return {
 			restrict: 'E',
-			templateUrl: 'scripts/epbuy/components/no-network/no-network.html',
+			templateUrl: 'scripts/phoneApp/components/no-network/no-network.html',
 			controller: function ($scope) {
 				
 				$scope.refreshPage = function () {

@@ -3,7 +3,7 @@
 /**
  * 文本字数过滤器，当文本字数大于指定的最大字符数（maxCount），则只显示前（maxCount - 2）字符，并在其后显示省略号
  */
-angular.module('EPBUY').filter('ellipsis', function () {
+angular.module('phoneApp').filter('ellipsis', function () {
     return function (item, maxCount) {
         if (item && maxCount > 0 && item.length > maxCount) {
             return item.substring(0, maxCount - 2) + '…';
@@ -18,7 +18,7 @@ angular.module('EPBUY').filter('ellipsis', function () {
  * 2.当日期小于一天大于一小时，返回：x小时前；
  * 3.当日期小于一小时，返回：刚刚。
  */
-angular.module('EPBUY').filter('specDate', function ($filter) {
+angular.module('phoneApp').filter('specDate', function ($filter) {
     return function (dateTime) {
         var dateDiff = Date.now() - dateTime,
             result = '刚刚',
@@ -35,7 +35,7 @@ angular.module('EPBUY').filter('specDate', function ($filter) {
 /**
  * 格式化评分, 4.0~4.4对应4分，4.5~4.9对应4.5分
  */
-angular.module('EPBUY').filter('formatScore', function () {
+angular.module('phoneApp').filter('formatScore', function () {
     return function (score) {
         return Math.floor(score / 0.5) * 10;
     };

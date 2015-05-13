@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('EPBUY')
+angular.module('phoneApp')
 
 // 收藏
 .directive('collectionCtrl', function ($timeout, Util, DataCachePool) {

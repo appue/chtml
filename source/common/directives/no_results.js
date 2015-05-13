@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('EPBUY')
+angular.module('phoneApp')
 	.directive('noResults', function ($state, $stateParams) {
 		return {
 			restrict: 'AE',
-			templateUrl: 'scripts/epbuy/components/no-results/no-results.html',
+			templateUrl: 'scripts/phoneApp/components/no-results/no-results.html',
 			link: function (scope, element, attr) {
 
 				scope.noResultsText = attr.text ? attr.text : '抱歉，查询无结果';

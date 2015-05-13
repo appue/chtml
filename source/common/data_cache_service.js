@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('EPBUY').factory('DataCachePool', function () {
+angular.module('phoneApp').factory('DataCachePool', function () {
 
     var fetchItem = function (key) {
         if (!key) {
             return null;
         }
 
-        var itemStr = localStorage.getItem('EPBUY_' + key),
+        var itemStr = localStorage.getItem('phoneApp_' + key),
             item;
 
         try {
@@ -45,7 +45,7 @@ angular.module('EPBUY').factory('DataCachePool', function () {
 
         item.expired = expires ? (Date.now() + ONE_DAY * expires) : undefined;
 
-        localStorage.setItem('EPBUY_' + key, JSON.stringify(item));
+        localStorage.setItem('phoneApp_' + key, JSON.stringify(item));
     };
 
     /**
@@ -75,15 +75,15 @@ angular.module('EPBUY').factory('DataCachePool', function () {
         var item = fetchItem(key);
 
         if (!item) {
-            localStorage.removeItem('EPBUY_' + key);
+            localStorage.removeItem('phoneApp_' + key);
             return;
         }
 
         if (dataKey && item[dataKey]) {
             item[dataKey] = undefined;
-            localStorage.setItem('EPBUY_' + key, JSON.stringify(item));
+            localStorage.setItem('phoneApp_' + key, JSON.stringify(item));
         } else {
-            localStorage.removeItem('EPBUY_' + key);
+            localStorage.removeItem('phoneApp_' + key);
         }
 
     };

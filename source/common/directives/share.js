@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('EPBUY')
+angular.module('phoneApp')
 
 // 分享
 .directive('shareCtrl', function () {

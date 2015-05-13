@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('EPBUY')
+angular.module('phoneApp')
 
 // 获取验证码
 .directive('getVerificationcode', function ($timeout, $rootScope, Util, DataCachePool) {

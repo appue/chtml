@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('EPBUY').factory('ENV', function ($timeout) {
+angular.module('phoneApp').factory('ENV', function ($timeout) {
 
     var ENV = {
         iosVersion: '1.0.1',

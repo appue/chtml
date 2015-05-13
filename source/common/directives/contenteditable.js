@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('EPBUY')
+angular.module('phoneApp')
 
 /**
  * Two-way data binding for contenteditable elements with ng-model.

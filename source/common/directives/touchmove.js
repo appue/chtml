@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('EPBUY')
+angular.module('phoneApp')
 
 // 触摸移动
 .directive('touchMove', function ($parse) {
