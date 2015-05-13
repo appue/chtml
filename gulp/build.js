@@ -227,14 +227,23 @@ module.exports = function (gulp, $) {
         });
     });
 
+
+    //--
+    gulp.task('tmpl', function() {
+
+        return gulp.src("./source/entry/*/*.html")
+            .pipe($.ngHtml2js({
+                moduleName: "phoneApp",
+                prefix: ""
+            }))
+            .pipe(gulp.dest("./tmp/home"));
+    });
+
     //--html 迁移
     gulp.task('movehtml', function() {
         return gulp.src([
                 './source/**/*.html',
                 '!./source/*/*.html',
-                './source/**/*.css',
-                './source/**/*.jpg',
-                './source/**/*.png'
             ])
             .pipe(gulp.dest('./build/'));
     });
