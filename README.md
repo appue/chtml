@@ -10,7 +10,7 @@
 
 ## 三、运行
 1.看接口相关文档
-- gulp word
+- gulp --run word
 
 2.运行HTML模板
 - gulp
