@@ -1,41 +1,38 @@
 'use strict';
 
 angular.module('phoneApp').factory('ENV', function ($timeout) {
-
+    var ua = navigator.userAgent.toLowerCase();
+    
     var ENV = {
-        iosVersion: '1.0.1',
-        androidVersion: '1.0.1',
-        platform: 'Browser',
-        isHybrid: false,
         getLocalApi: '/api/',
         getServerApi: 'http://www.51mart.com.cn/Service/api/'
+
+        isHybrid: false, //-----是否APP环境
+        isWeixin: false, //-----是否微信环境
+        isApple: false, //------是否苹果环境
+        isAndroid: false, //----是否Android环境
+        appVersion: '1.0.1' //--APP版本号
     };
 
-    var timer = 0;
+    //--是APP环境
+    if (/appuewireless/.test(this.ua)) {
+        ENV.isHybrid = true;
+    }
 
-    var getDevice = function () {
-        if (timer > 3) {
-            return;
-        }
+    //--是否Android环境
+    if (/android/.test(this.ua)) {
+        ENV.isAndroid = true;
+    }
 
-        if (window.device) {
+    //--是否苹果环境
+    if (/iphone|ipad|ipod/.test(this.ua)) {
+        ENV.isApple = true;
+    }
 
-            ENV.isHybrid = !!window.device.platform;
-            ENV.platform = window.device.platform;
-
-            if (ENV.platform === 'iOS') {
-                ENV.platform = 'IOS';
-                document.getElementById('wrap').className = 'is-ios';
-            }
-
-        } else {
-            timer++;
-            $timeout(getDevice, 500);
-        }
-
-    };
-
-    $timeout(getDevice, 500);
+    //--是否微信环境
+    if (/micromessenger/.test(this.ua)) {
+        ENV.isWeixin = true;
+    }
 
     return ENV;
 

@@ -61,11 +61,9 @@ module.exports = function (gulp, $) {
 
         }
 
-        return gulp.src(dir, {
-                read: false
-            })
+        return gulp.src(dir, {read: false})
             // .pipe($.clean());
-            .pipe($.rimraf()); 
+            .pipe($.rimraf({ force: true })); 
     });
 
     gulp.task('connect', function() {
