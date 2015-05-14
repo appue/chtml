@@ -10,6 +10,7 @@ module.exports = function (gulp, $) {
     gulp.task('tmpl', ['minjs'], function() {
         gulp.start('connect');
     });
+    
 
     gulp.task('html', ['sass', 'connect', 'watch']);
 
