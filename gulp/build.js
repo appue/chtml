@@ -36,9 +36,6 @@ module.exports = function (gulp, $) {
                 title: 'css--------------------------------'
             }))
             .pipe(gulp.dest(cssPath));
-
-        // .pipe(gulp.dest('./mockup/'));
-        // .pipe(gulp.dest('./source/themes/'));
     });
 
 
