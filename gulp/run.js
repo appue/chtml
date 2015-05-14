@@ -7,7 +7,7 @@ var runType = argv.run || ''; // dev、build
 
 module.exports = function (gulp, $) {
 
-    gulp.task('tmpl', ['movetemplates'], function() {
+    gulp.task('tmpl', ['minjs'], function() {
 
         var version = os.platform(),
             url = '';
@@ -38,7 +38,7 @@ module.exports = function (gulp, $) {
     gulp.task('dev', ['sass', 'images', 'connect', 'watch']);
 
     
-    gulp.task('build', ['replacehtml', 'templates', 'movecss', 'moveimages', 'minjs'], function() {
+    gulp.task('build', ['replacehtml', 'templates', 'movecss', 'moveimages'], function() {
         
         gulp.start('tmpl');
 

@@ -227,19 +227,15 @@ module.exports = function (gulp, $) {
                     '../cordova.js?v='+ version,
                     '../cordova_plugins.js?v='+ version,
                     '../common/frame.js?v='+ version,
-                    'common.js?v='+ version,
                     'index.js?v='+ version,
-                    '../common/templates.js?v='+ version,
-                    'templates.js?v='+ version
+                    '../common/common.js?v='+ version
                 ];
 
                 if (packageType == 'web') {
                     jsFiles = [
                         '../common/frame.js?v='+ version,
-                        'common.js?v='+ version,
                         'index.js?v='+ version,
-                        '../common/templates.js?v='+ version,
-                        'templates.js?v='+ version
+                        '../common/common.js?v='+ version
                     ];
                 }
 
@@ -278,29 +274,6 @@ module.exports = function (gulp, $) {
         });
     });
 
-    //--迁移合并压缩JS模板
-    gulp.task('movetemplates', function() {
-        //--压缩合并公共模板数据（templates.js）
-        gulp.src('./.tmp/common/**/*.js')
-            .pipe($.concat('templates.js'))
-            // .pipe($.ngAnnotate())
-            .pipe($.uglify())
-            .pipe(gulp.dest('./build/common'));
-
-        //--压缩合并项目模板数据（templates.js）
-        getProject({
-            callback: function(folder){
-                folder.forEach( function(v) {
-                    return gulp.src('./.tmp/'+ v +'/*.js')
-                        .pipe($.concat('templates.js'))
-                        // .pipe($.ngAnnotate())
-                        .pipe($.uglify())
-                        .pipe(gulp.dest('./build/'+ v));
-                });
-            }
-        });
-    });
-
     //--css 迁移
     gulp.task('movecss', function() {
         return gulp.src([
@@ -331,27 +304,25 @@ module.exports = function (gulp, $) {
             .pipe(gulp.dest('./build/common'));
 
 
-        //--项目公共JS压缩、合并
-        getProject({
-            callback: function(folder){
-                folder.forEach( function(v) {
-                    return gulp.src([,
-                            './source/'+ v +'/app.js',
-                            './source/common/**/*.js'
-                        ])
-                        .pipe($.concat('common.js'))
-                        .pipe($.ngAnnotate())
-                        .pipe($.uglify())
-                        .pipe(gulp.dest('./build/'+ v));
-                });
-            }
-        });
+        //--项目公共JS压缩、合并（包括公共模板数据）
+        gulp.src([
+                './source/common/**/*.js',
+                './.tmp/common/**/*.js'
+            ])
+            .pipe($.concat('common.js'))
+            .pipe($.ngAnnotate())
+            .pipe($.uglify())
+            .pipe(gulp.dest('./build/common'));
 
-        //--项目中的JS压缩、合并
+        //--项目中的JS压缩、合并（包括项目模板数据）
         getProject({
             callback: function(folder){
                 folder.forEach( function(v) {
-                    return gulp.src('./source/'+ v +'/js/**/*.js')
+                    return gulp.src([
+                            './source/'+ v +'/app.js',
+                            './.tmp/'+ v +'/*.js',
+                            './source/'+ v +'/js/**/*.js'
+                        ])
                         .pipe($.concat('index.js'))
                         .pipe($.ngAnnotate())
                         .pipe($.uglify())
