@@ -31,6 +31,7 @@
 
                 var pathname = window.location.pathname.replace('\/', '').replace('\/', '');
 
+
                 if (pathname == params.module) {
                     $state.go(params.hash);
 
@@ -66,8 +67,6 @@
             for (i in params.opts) options[i] = params.opts[i];
 
             options.href = '/'+ params.module +'/index.html#/'+ params.hash;
-
-            alert(options.href);
             
             window.plugins.nativepagetransitions.slide(
                 options,

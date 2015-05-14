@@ -1,18 +1,18 @@
 <section class="mod_scroll" style="padding-top:10px;">
-    <ul class="unit_msg_list_03">
-        <li class="i_hit">
+    <ul ng-click="itemClick($event)" class="unit_msg_list_03">
+        <li data-type="praise" class="i_hit">
             <span class="i_new">赞</span>
         </li>
-        <li class="i_comment">
+        <li data-type="comment" class="i_comment">
             <span>评论</span>
         </li>
-        <li class="i_msg">
+        <li data-type="notice" class="i_msg">
             <span class="i_new">通知</span>
         </li>
-        <li class="i_talk">
+        <li data-type="whisper" class="i_talk">
             <span>私聊</span>
         </li>
-        <li class="i_friend">
+        <li data-type="search" class="i_friend">
             <span>邀请好友</span>
         </li>
     </ul>

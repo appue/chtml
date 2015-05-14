@@ -1,27 +1,34 @@
 angular.module('phoneApp')
 
-.directive('pageBack', function ($window, $state, $stateParams) {
+.directive('pageBack', function ($window, $state, $stateParams, routerRedirect) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
 
             element.on('click', function () {
 
-                if (attrs.pageBack) {
+                // if (attrs.pageBack) {
 
-                    var params = scope.$eval(attrs.pageBack);
+                //     var params = scope.$eval(attrs.pageBack);
 
-                    console.log(params);
+                //     console.log(params);
 
-                } else if (false) { //特殊情况处理
+                // } else if (false) { //特殊情况处理
 
-                    console.log(1);
+                //     console.log(1);
 
-                } else { // 默认执行浏览器后退
+                // } else { // 默认执行浏览器后退
 
-                    $window.history.back();
+                //     $window.history.back();
 
-                }
+                // }
+                var params = scope.$eval(attrs.pageBack);
+                
+                params.opts = {
+                    'direction': 'right'
+                };
+
+                routerRedirect.toJump(params);
             });
         }
     };

@@ -12,7 +12,7 @@
 
 
 
-angular.module('phoneApp', ['ui.router'])
+angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
 
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -26,7 +26,37 @@ angular.module('phoneApp', ['ui.router'])
         url: '/msg',
         templateUrl: 'templates/msg.html',
         controller: 'HomeMsgCtrl'
-    });
+    })
+    .state('msgChat', {
+        url: '/msg/chat',
+        templateUrl: 'templates/msg-chat.html',
+        controller: 'HomeMsgChatCtrl'
+    })
+    .state('msgNotice', {
+        url: '/msg/notice',
+        templateUrl: 'templates/msg-notice.html',
+        controller: 'HomeMsgNoticeCtrl'
+    })
+    .state('msgPraise', {
+        url: '/msg/praise',
+        templateUrl: 'templates/msg-praise.html',
+        controller: 'HomeMsgPraiseCtrl'
+    })
+    .state('msgSearch', {
+        url: '/msg/search',
+        templateUrl: 'templates/msg-search.html',
+        controller: 'HomeMsgSearchCtrl'
+    })
+    .state('msgWhisper', {
+        url: '/msg/whisper',
+        templateUrl: 'templates/msg-whisper.html',
+        controller: 'HomeMsgWhisperCtrl'
+    })
+    .state('setFeedback', {
+        url: '/msg/feedback',
+        templateUrl: 'templates/set-feedback.html',
+        controller: 'HomeSetFeedbackCtrl'
+    })
 
     // $urlRouterProvider.when('', '/index');
     $urlRouterProvider.otherwise('/index');
