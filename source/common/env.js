@@ -2,10 +2,10 @@
 
 angular.module('phoneApp').factory('ENV', function ($timeout) {
     var ua = navigator.userAgent.toLowerCase();
-    
+
     var ENV = {
         getLocalApi: '/api/',
-        getServerApi: 'http://www.51mart.com.cn/Service/api/'
+        getServerApi: 'http://www.51mart.com.cn/Service/api/',
 
         isHybrid: false, //-----是否APP环境
         isWeixin: false, //-----是否微信环境
