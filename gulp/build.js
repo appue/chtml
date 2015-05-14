@@ -2,7 +2,9 @@ var fs = require('fs'),
     argv = require('yargs').argv,
     os = require('os');
 
-var getProject = require('./tools/folder.js');
+var getProject = require('./tools/folder.js'),
+    buildFolder = require('./tools/build.folder.js')();
+
 
 var runType = argv.run || '', // dev、build
     packageType = argv.g || 'app', // 默认打APP的包，如果要打H5的包就 --g web
@@ -16,6 +18,10 @@ switch (runType) {
         cssPath = './source/themes/';
         netPath = 'source';
     break;
+}
+
+if (packageType == 'web') {
+    buildFolder = './build/';
 }
 
 module.exports = function (gulp, $) {
@@ -46,7 +52,7 @@ module.exports = function (gulp, $) {
 
 
     gulp.task('clean', function() {
-        var dir = './build';
+        var dir = buildFolder;
 
         if (runType == 'dev') {
 
@@ -54,7 +60,7 @@ module.exports = function (gulp, $) {
 
         } else if (runType == 'build') {
 
-            dir = ['./build', './.tmp'];
+            dir = [buildFolder, './.tmp'];
 
         }
 
@@ -242,7 +248,7 @@ module.exports = function (gulp, $) {
                 folder.forEach( function(v) {
                     return gulp.src('./source/'+ v +'/*.html')
                         .pipe($.htmlReplace({ 'js': jsFiles }))
-                        .pipe(gulp.dest('./build/'+ v));
+                        .pipe(gulp.dest(buildFolder + v));
                 });
             }
         });
@@ -279,7 +285,7 @@ module.exports = function (gulp, $) {
         return gulp.src([
                 './source/**/*.css'
             ])
-            .pipe(gulp.dest('./build/'));
+            .pipe(gulp.dest(buildFolder));
     });
 
     //--image 迁移
@@ -288,7 +294,7 @@ module.exports = function (gulp, $) {
                 './source/**/*.jpg',
                 './source/**/*.png'
             ])
-            .pipe(gulp.dest('./build/'));
+            .pipe(gulp.dest(buildFolder));
     });
 
     //--js 合并压缩
@@ -301,7 +307,7 @@ module.exports = function (gulp, $) {
             ])
             .pipe($.concat('frame.js'))
             .pipe($.uglify())
-            .pipe(gulp.dest('./build/common'));
+            .pipe(gulp.dest(buildFolder +'common'));
 
 
         //--项目公共JS压缩、合并（包括公共模板数据）
@@ -312,7 +318,7 @@ module.exports = function (gulp, $) {
             .pipe($.concat('common.js'))
             .pipe($.ngAnnotate())
             .pipe($.uglify())
-            .pipe(gulp.dest('./build/common'));
+            .pipe(gulp.dest(buildFolder +'common'));
 
         //--项目中的JS压缩、合并（包括项目模板数据）
         getProject({
@@ -326,15 +332,9 @@ module.exports = function (gulp, $) {
                         .pipe($.concat('index.js'))
                         .pipe($.ngAnnotate())
                         .pipe($.uglify())
-                        .pipe(gulp.dest('./build/'+ v));
+                        .pipe(gulp.dest(buildFolder + v));
                 });
             }
         });
-    });
-
-
-    gulp.task('debug', function() {
-        return gulp.src('./build/**/*')
-            .pipe(gulp.dest('../appcord/www'));
     });
 };

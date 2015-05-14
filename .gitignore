@@ -7,3 +7,4 @@ mockup/themes/*.css
 /source/themes/
 /build/
 /.tmp/
+/.folder
