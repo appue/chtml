@@ -35,9 +35,7 @@ angular.module('phoneApp')
 
 			if (attrs.right) { //定义右侧按钮
 				scope.rightButton = attrs.right.split('|')[0] || '';
-
-				var param = attrs.right.split('|')[1] || '';
-				scope.jumpParam = scope.$eval(param);
+				scope.jumpParam = attrs.right.split('|')[1] || '';
 
 				console.log(scope.jumpParam);
 

@@ -8,6 +8,10 @@ angular.module('phoneApp')
 
 				var params = scope.$eval(attrs.pageJump);
 
+				console.log(params);
+
+				// params.c();
+
 				// if (attrs.pageJump) {
 				// 	$window.location.href = attrs.pageJump;
 				// }
@@ -20,7 +24,8 @@ angular.module('phoneApp')
 				// 	return;
 				// }
 
-				routerRedirect.toJump(params);
+				// routerRedirect.toJump(params);
+
 			});
 		}
 	};

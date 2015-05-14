@@ -6,8 +6,12 @@ angular.module('phoneApp')
 		a: 1,
 		b: 2,
 		c: function () {
-			alert(1)
+			alert(1);
 		}
+	};
+
+	$scope.bbbbb = function () {
+		alert(2);
 	};
 
 });

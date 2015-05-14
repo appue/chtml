@@ -9,15 +9,17 @@ angular.module('phoneApp')
 
                 if (attrs.pageBack) {
 
-                    console.log(attrs.pageBack);
+                    var params = scope.$eval(attrs.pageBack);
 
-                } else if (false) {
+                    console.log(params);
+
+                } else if (false) { //特殊情况处理
 
                     console.log(1);
 
                 } else { // 默认执行浏览器后退
 
-                    $window.history.back();
+                    // $window.history.back();
 
                 }
             });
