@@ -1,7 +1,7 @@
-<div class="mod_popup">
+<div class="mod_popup ng-hide">
 
 	<!-- 定义弹出层标题 -->
-    <h2 ng-if="popupTitle" class="mod_popup_title">{{popupTitle}}</h2>
+    <h2 class="mod_popup_title ng-hide"></h2>
     <!-- /定义弹出层标题 -->
 
     <!-- 定义弹出层内容 -->
@@ -10,8 +10,8 @@
 	
 	<!-- 定义弹出层按钮 -->
     <div class="mod_popup_ctrl">
-        <a ng-if="!noCancel" class="cancel">{{popupCancelText || '取消'}}</a>
-        <a ng-if="!noConfirm" class="confirm">{{popupConfirmText || '确定'}}</a>
+        <a class="cancel">取消</a>
+        <a class="confirm">确定</a>
     </div>
     <!-- /定义弹出层按钮 -->
 

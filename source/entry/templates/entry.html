@@ -1,16 +1,15 @@
 <section class="login_entry">
     <div class='login_bg'></div>
     <div class="entry_button">
-        <a show-popup="register|popupConfirm(123)" class="register">注册</a>
+        <a show-popup="register" class="register">注册</a>
         <a ng-href="/entry/#/login" class="login">登录</a>
-        <a show-popup="register2" class="register">21313</a>
     </div>
     <div class="entry_help">
         <a>? 帮助与反馈</a>
     </div>
 </section>
 
-<popup ng-show="register" title="用户注册" no-confirm>
+<popup id="register" title="用户注册" popup-confirm="popupConfirm(123)" no-cancel>
     <div class="chosen_register" ngd-click="itemClick($event)" selector="a">
         <ul class="mod_list_default">
             <li class="icon_weixin">
@@ -29,7 +28,8 @@
     </div>
 </popup>
 
-<popup ng-show="register2" title="用户注册" no-confirm>
+<popup id="register1" title="用户注册1111" popup-confirm="popupConfirm(456)" no-confirm>
     <div class="chosen_register">12345</div>
 </popup>
+
 <div ng-show="showMask" class="mod_mask"></div>

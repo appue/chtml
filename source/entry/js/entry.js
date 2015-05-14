@@ -1,9 +1,7 @@
 userEntry.controller('entryCtrl', function ($scope, $state, $timeout, $stateParams) {
 
-	$scope.popupConfirm = function (arg, a) {
+	$scope.popupConfirm = function (arg) {
 		console.log(arg);
-		console.log(a);
-		$scope.showPopup();
 	};
 
 	$scope.itemClick = function (e) {
