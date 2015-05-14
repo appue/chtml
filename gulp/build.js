@@ -1,27 +1,43 @@
-var fs = require('fs'),
+var fs   = require('fs'),
     argv = require('yargs').argv,
-    os = require('os');
+    os   = require('os');
 
 var getProject = require('./tools/folder.js'),
     buildFolder = require('./tools/build.folder.js')();
 
 
-var runType = argv.run || '', // dev、build
+var runType     = argv.run || '', // dev、build
     packageType = argv.g || 'app', // 默认打APP的包，如果要打H5的包就 --g web
-    cssPath = "./mockup/themes",
-    netPath = "mockup",
-    d = new Date(),
-    version = d.getTime();
-
-switch (runType) {
-    case 'dev':
-        cssPath = './source/themes/';
-        netPath = 'source';
-    break;
-}
+    cssPath     = './mockup/themes',
+    netPath     = '',
+    d           = new Date(),
+    version     = d.getTime(),
+    veros       = os.platform();
 
 if (packageType == 'web') {
     buildFolder = './build/';
+}
+
+switch (runType) {
+    case 'dev':
+        netPort = argv.port || 9999;
+        cssPath = './source/themes/';
+        netPath = './source/';
+    break;
+
+    case 'build':
+        netPort = argv.port || 8888;
+        netPath = buildFolder;
+    break;
+
+    case 'word':
+        netPort = argv.port || 5555;
+        netPath = './word/';
+    break;
+
+    default: //--html
+        netPort = argv.port || 7777;
+        netPath = './mockup/';
 }
 
 module.exports = function (gulp, $) {
@@ -59,6 +75,10 @@ module.exports = function (gulp, $) {
 
             dir = [buildFolder, './.tmp'];
 
+        } else {
+
+            return;
+
         }
 
         return gulp.src(dir, {read: false})
@@ -66,35 +86,31 @@ module.exports = function (gulp, $) {
             .pipe($.rimraf({ force: true })); 
     });
 
+
     gulp.task('connect', function() {
 
-        var version = os.platform(),
-            url = '',
-            port = argv.port || 9999;
-
-        if (runType == 'dev') {
-            port = argv.port || 5555;
-        }
+        var url = '';
 
         $.connect.server({
             root: netPath,
-            port: port,
+            port: netPort,
             livereload: true
         });
 
-        switch (version) {
+        switch (veros) {
             case 'win32':
-                url = 'start http://localhost:' + port;
+                url = 'start http://localhost:' + netPort;
             break;
 
             case 'darwin':
-                url = 'open http://localhost:' + port;
+                url = 'open http://localhost:' + netPort;
             break;
         }
 
         gulp.src('')
             .pipe($.shell(url));
     });
+    
 
     gulp.task('watch', function() {
 
@@ -139,26 +155,8 @@ module.exports = function (gulp, $) {
 
 
     gulp.task('word', function() {
-        var version = os.platform(),
-            url = '';
 
-        $.connect.server({
-            root: 'word',
-            port: '8888',
-            livereload: true
-        });
-
-        switch (version) {
-            case 'win32':
-                url = 'start http://localhost:8888';
-            break;
-            case 'darwin':
-                url = 'open http://localhost:8888';
-            break;
-        }
-
-        gulp.src('')
-            .pipe($.shell(url));
+        gulp.start('connect');
 
         $.livereload.listen();
 

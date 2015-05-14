@@ -1,6 +1,7 @@
-'use strict';
+angular.module('phoneApp')
 
-angular.module('phoneApp').factory('ENV', function ($timeout) {
+.factory('ENV', function() {
+    
     var ua = navigator.userAgent.toLowerCase();
 
     var ENV = {
@@ -15,22 +16,22 @@ angular.module('phoneApp').factory('ENV', function ($timeout) {
     };
 
     //--是APP环境
-    if (/appuewireless/.test(this.ua)) {
+    if (/appuewireless/.test(ua)) {
         ENV.isHybrid = true;
     }
 
     //--是否Android环境
-    if (/android/.test(this.ua)) {
+    if (/android/.test(ua)) {
         ENV.isAndroid = true;
     }
 
     //--是否苹果环境
-    if (/iphone|ipad|ipod/.test(this.ua)) {
+    if (/iphone|ipad|ipod/.test(ua)) {
         ENV.isApple = true;
     }
 
     //--是否微信环境
-    if (/micromessenger/.test(this.ua)) {
+    if (/micromessenger/.test(ua)) {
         ENV.isWeixin = true;
     }
 
