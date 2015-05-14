@@ -2,7 +2,9 @@ var fs = require('fs'),
     argv = require('yargs').argv,
     os = require('os');
 
-var getProject = require('./tools/folder.js');
+var getProject = require('./tools/folder.js'),
+    buildFolder = require('./tools/build.folder.js')();
+
 
 var runType = argv.run || '', // dev、build
     packageType = argv.g || 'app', // 默认打APP的包，如果要打H5的包就 --g web
@@ -18,6 +20,10 @@ switch (runType) {
     break;
 }
 
+if (packageType == 'web') {
+    buildFolder = './build/';
+}
+
 module.exports = function (gulp, $) {
 
     gulp.task('sass', function() {
@@ -30,9 +36,6 @@ module.exports = function (gulp, $) {
                 title: 'css--------------------------------'
             }))
             .pipe(gulp.dest(cssPath));
-
-        // .pipe(gulp.dest('./mockup/'));
-        // .pipe(gulp.dest('./source/themes/'));
     });
 
 
@@ -46,7 +49,7 @@ module.exports = function (gulp, $) {
 
 
     gulp.task('clean', function() {
-        var dir = './build';
+        var dir = buildFolder;
 
         if (runType == 'dev') {
 
@@ -54,7 +57,7 @@ module.exports = function (gulp, $) {
 
         } else if (runType == 'build') {
 
-            dir = ['./build', './.tmp'];
+            dir = [buildFolder, './.tmp'];
 
         }
 
@@ -227,26 +230,22 @@ module.exports = function (gulp, $) {
                     '../cordova.js?v='+ version,
                     '../cordova_plugins.js?v='+ version,
                     '../common/frame.js?v='+ version,
-                    'common.js?v='+ version,
                     'index.js?v='+ version,
-                    '../common/templates.js?v='+ version,
-                    'templates.js?v='+ version
+                    '../common/common.js?v='+ version
                 ];
 
                 if (packageType == 'web') {
                     jsFiles = [
                         '../common/frame.js?v='+ version,
-                        'common.js?v='+ version,
                         'index.js?v='+ version,
-                        '../common/templates.js?v='+ version,
-                        'templates.js?v='+ version
+                        '../common/common.js?v='+ version
                     ];
                 }
 
                 folder.forEach( function(v) {
                     return gulp.src('./source/'+ v +'/*.html')
                         .pipe($.htmlReplace({ 'js': jsFiles }))
-                        .pipe(gulp.dest('./build/'+ v));
+                        .pipe(gulp.dest(buildFolder + v));
                 });
             }
         });
@@ -278,35 +277,12 @@ module.exports = function (gulp, $) {
         });
     });
 
-    //--迁移合并压缩JS模板
-    gulp.task('movetemplates', function() {
-        //--压缩合并公共模板数据（templates.js）
-        gulp.src('./.tmp/common/**/*.js')
-            .pipe($.concat('templates.js'))
-            // .pipe($.ngAnnotate())
-            .pipe($.uglify())
-            .pipe(gulp.dest('./build/common'));
-
-        //--压缩合并项目模板数据（templates.js）
-        getProject({
-            callback: function(folder){
-                folder.forEach( function(v) {
-                    return gulp.src('./.tmp/'+ v +'/*.js')
-                        .pipe($.concat('templates.js'))
-                        // .pipe($.ngAnnotate())
-                        .pipe($.uglify())
-                        .pipe(gulp.dest('./build/'+ v));
-                });
-            }
-        });
-    });
-
     //--css 迁移
     gulp.task('movecss', function() {
         return gulp.src([
                 './source/**/*.css'
             ])
-            .pipe(gulp.dest('./build/'));
+            .pipe(gulp.dest(buildFolder));
     });
 
     //--image 迁移
@@ -315,7 +291,7 @@ module.exports = function (gulp, $) {
                 './source/**/*.jpg',
                 './source/**/*.png'
             ])
-            .pipe(gulp.dest('./build/'));
+            .pipe(gulp.dest(buildFolder));
     });
 
     //--js 合并压缩
@@ -328,42 +304,34 @@ module.exports = function (gulp, $) {
             ])
             .pipe($.concat('frame.js'))
             .pipe($.uglify())
-            .pipe(gulp.dest('./build/common'));
+            .pipe(gulp.dest(buildFolder +'common'));
 
 
-        //--项目公共JS压缩、合并
+        //--项目公共JS压缩、合并（包括公共模板数据）
+        gulp.src([
+                './source/common/**/*.js',
+                './.tmp/common/**/*.js'
+            ])
+            .pipe($.concat('common.js'))
+            .pipe($.ngAnnotate())
+            .pipe($.uglify())
+            .pipe(gulp.dest(buildFolder +'common'));
+
+        //--项目中的JS压缩、合并（包括项目模板数据）
         getProject({
             callback: function(folder){
                 folder.forEach( function(v) {
-                    return gulp.src([,
+                    return gulp.src([
                             './source/'+ v +'/app.js',
-                            './source/common/**/*.js'
+                            './.tmp/'+ v +'/*.js',
+                            './source/'+ v +'/js/**/*.js'
                         ])
-                        .pipe($.concat('common.js'))
-                        .pipe($.ngAnnotate())
-                        .pipe($.uglify())
-                        .pipe(gulp.dest('./build/'+ v));
-                });
-            }
-        });
-
-        //--项目中的JS压缩、合并
-        getProject({
-            callback: function(folder){
-                folder.forEach( function(v) {
-                    return gulp.src('./source/'+ v +'/js/**/*.js')
                         .pipe($.concat('index.js'))
                         .pipe($.ngAnnotate())
                         .pipe($.uglify())
-                        .pipe(gulp.dest('./build/'+ v));
+                        .pipe(gulp.dest(buildFolder + v));
                 });
             }
         });
-    });
-
-
-    gulp.task('debug', function() {
-        return gulp.src('./build/**/*')
-            .pipe(gulp.dest('../appcord/www'));
     });
 };
