@@ -1,5 +1,16 @@
 angular.module('phoneApp')
 
+/** 
+ *  引用方法：
+ *	<header-bar
+ *		title="string"     //定义标题
+ *		transparent        //定义透明背景
+ *		back="obj"         //定义后退按钮 参数可选
+ *		left="obj"         //定义取消按钮名  参数可选
+ *		right="obj"        //定义确定按钮名  参数可选
+ *	</header-bar>
+ */
+
 .directive('headerBar', function ($parse, $timeout) {
 	return {
 		restrict: 'E',
@@ -30,15 +41,12 @@ angular.module('phoneApp')
 			}
 
 			if (attrs.left) { //定义左侧按钮
-				scope.leftButton = attrs.left;
+				scope.leftButton = attrs.left; //todo...
 			}
 
 			if (attrs.right) { //定义右侧按钮
 				scope.rightButton = attrs.right.split('|')[0] || '';
 				scope.jumpParam = attrs.right.split('|')[1] || '';
-
-				console.log(scope.jumpParam);
-
 			}
 
 		}

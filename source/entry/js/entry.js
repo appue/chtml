@@ -1,8 +1,4 @@
-userEntry.controller('entryCtrl', function ($scope, $state, $timeout) {
-
-	$scope.popupConfirm = function () {
-		alert(1);
-	};
+userEntry.controller('entryCtrl', function ($scope, $state, $timeout, $stateParams) {
 
 	$scope.itemClick = function (e) {
 		var $that = angular.element(e.delegationTarget);

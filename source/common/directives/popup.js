@@ -4,12 +4,12 @@ angular.module('phoneApp')
  *  引用方法：
  *	<popup
  *		title="string"          //定义标题
- *		popup-cancel="fn()"     //重定义取消按钮方法
- *		popup-confirm="fn()"    //重定义确定按钮方法
+ *		popup-cancel="fn(arg)"  //重定义取消按钮方法
+ *		popup-confirm="fn(arg)" //重定义确定按钮方法
  *		cancel-text="string"    //重定义取消按钮名
  *		confirm-text="string"   //重定义确定按钮名
- *		no-cancel="true">       //隐藏取消按钮，默认显示
- *		no-confirm="true">      //隐藏确定按钮，默认显示
+ *		no-cancel               //隐藏取消按钮，默认显示
+ *		no-confirm              //隐藏确定按钮，默认显示
  *	</popup>
  */
 
@@ -27,14 +27,12 @@ angular.module('phoneApp')
 			// 	$body.append('<div ng-show="showPopup" class="mod_mask"></div>');
 			// }
 
-			function bind(attr) { //按钮callback，如果没有则隐藏popup
-				if (attr) {
+			function bind(attr) { //按钮callback，如果没有attr则隐藏popup
+				// console.log(scope.$eval(attr));
+				if (attr && !scope.$$phase) {
 
-					var fn = $parse(attr);
-
-					if (!scope.$$phase) {
-						scope.$apply(fn(scope));
-					}
+					var fn = $parse(attr); //必须为fn，否则无效
+					scope.$apply(fn(scope)); //参数scope是你带进去的参数
 
 				} else {
 
@@ -49,8 +47,8 @@ angular.module('phoneApp')
 			scope.popupTitle = attrs.title;
 			scope.popupCancelText = attrs.cancelText;
 			scope.popupConfirmText = attrs.confirmText;
-			scope.noCancel = (attrs.noCancel === 'true') ? true : false;
-			scope.noConfirm = (attrs.noConfirm === 'true') ? true : false;
+			scope.noCancel = (attrs.noCancel !== undefined) ? true : false;
+			scope.noConfirm = (attrs.noConfirm !== undefined) ? true : false;
 
 			element.on('click', function (event) {
 
@@ -64,14 +62,18 @@ angular.module('phoneApp')
 					bind(attrs.popupConfirm);
 				}
 
-				event.preventDefault();
-
 			});
 
 		}
 	};
 })
 
+/** 
+ *  引用方法：
+ *	<ANY
+ *		show-popup="name"  //给元素绑定弹出层事件 name指定显示哪一个弹出层
+ *	</ANY>
+ */
 
 .directive('showPopup', function ($timeout) {
 	return {

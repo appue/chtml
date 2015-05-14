@@ -19,7 +19,7 @@ angular.module('phoneApp')
 
                 } else { // 默认执行浏览器后退
 
-                    // $window.history.back();
+                    $window.history.back();
 
                 }
             });
