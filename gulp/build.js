@@ -225,14 +225,15 @@ module.exports = function (gulp, $) {
                 folder.forEach( function(v) {
                     return gulp.src('./source/'+ v +'/*.html')
                         .pipe($.htmlReplace({
-                            'libjs': [
+                            'js': [
                                 '../cordova.js?v='+ version,
                                 '../cordova_plugins.js?v='+ version,
-                                '../lib/frame.js?v='+ version
-                            ],
-                            'js': 'index.js?v='+ version,
-                            'commonjs': 'common.js?v='+ version,
-                            'templatesjs': 'templates.js?v='+ version
+                                '../common/frame.js?v='+ version,
+                                'common.js?v='+ version,
+                                'index.js?v='+ version,
+                                '../common/templates.js?v='+ version,
+                                'templates.js?v='+ version
+                            ]
                         }))
                         .pipe(gulp.dest('./build/'+ v));
                 });
