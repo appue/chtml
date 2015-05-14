@@ -38,7 +38,7 @@ module.exports = function (gulp, $) {
     gulp.task('dev', ['sass', 'images', 'connect', 'watch']);
 
     
-    gulp.task('build', ['replacehtml', 'movehtml', 'templates', 'movecss', 'moveimages', 'minjs'], function() {
+    gulp.task('build', ['replacehtml', 'templates', 'movecss', 'moveimages', 'minjs'], function() {
         
         gulp.start('tmpl');
 

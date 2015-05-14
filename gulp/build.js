@@ -5,6 +5,7 @@ var fs = require('fs'),
 var getProject = require('./tools/folder.js');
 
 var runType = argv.run || '', // dev、build
+    packageType = argv.g || 'app', // 默认打APP的包，如果要打H5的包就 --g web
     cssPath = "./mockup/themes",
     netPath = "mockup",
     d = new Date(),
@@ -222,19 +223,29 @@ module.exports = function (gulp, $) {
     gulp.task('replacehtml', function() {
         getProject({
             callback: function(folder){
+                var jsFiles = [
+                    '../cordova.js?v='+ version,
+                    '../cordova_plugins.js?v='+ version,
+                    '../common/frame.js?v='+ version,
+                    'common.js?v='+ version,
+                    'index.js?v='+ version,
+                    '../common/templates.js?v='+ version,
+                    'templates.js?v='+ version
+                ];
+
+                if (packageType == 'web') {
+                    jsFiles = [
+                        '../common/frame.js?v='+ version,
+                        'common.js?v='+ version,
+                        'index.js?v='+ version,
+                        '../common/templates.js?v='+ version,
+                        'templates.js?v='+ version
+                    ];
+                }
+
                 folder.forEach( function(v) {
                     return gulp.src('./source/'+ v +'/*.html')
-                        .pipe($.htmlReplace({
-                            'js': [
-                                '../cordova.js?v='+ version,
-                                '../cordova_plugins.js?v='+ version,
-                                '../common/frame.js?v='+ version,
-                                'common.js?v='+ version,
-                                'index.js?v='+ version,
-                                '../common/templates.js?v='+ version,
-                                'templates.js?v='+ version
-                            ]
-                        }))
+                        .pipe($.htmlReplace({ 'js': jsFiles }))
                         .pipe(gulp.dest('./build/'+ v));
                 });
             }
@@ -244,6 +255,15 @@ module.exports = function (gulp, $) {
 
     //--生成JS模板数据
     gulp.task('templates', function() {
+        //--生成公共JS模板数据
+        gulp.src('./source/common/**/*.html')
+            .pipe($.ngHtml2js({
+                moduleName: "phoneApp",
+                prefix: "../common/"
+            }))
+            .pipe(gulp.dest("./.tmp/common"));
+
+        //--根据项目生成项目模板数据
         getProject({
             callback: function(folder){
                 folder.forEach( function(v) {
@@ -260,6 +280,14 @@ module.exports = function (gulp, $) {
 
     //--迁移合并压缩JS模板
     gulp.task('movetemplates', function() {
+        //--压缩合并公共模板数据（templates.js）
+        gulp.src('./.tmp/common/**/*.js')
+            .pipe($.concat('templates.js'))
+            // .pipe($.ngAnnotate())
+            .pipe($.uglify())
+            .pipe(gulp.dest('./build/common'));
+
+        //--压缩合并项目模板数据（templates.js）
         getProject({
             callback: function(folder){
                 folder.forEach( function(v) {
@@ -271,12 +299,6 @@ module.exports = function (gulp, $) {
                 });
             }
         });
-    });
-
-    //--html迁移
-    gulp.task('movehtml', function() {
-        return gulp.src('./source/common/**/*.html')
-            .pipe(gulp.dest('./build/common'));
     });
 
     //--css 迁移
@@ -306,7 +328,7 @@ module.exports = function (gulp, $) {
             ])
             .pipe($.concat('frame.js'))
             .pipe($.uglify())
-            .pipe(gulp.dest('./build/lib'));
+            .pipe(gulp.dest('./build/common'));
 
 
         //--项目公共JS压缩、合并

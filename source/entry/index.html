@@ -13,16 +13,12 @@
     <div ui-view id="js_view"></div>
 
 
-    <!--frame.js-->
-    <!-- build:libjs -->
+    <!-- build:js -->
     <script src="../lib/angular.js"></script>
     <script src="../lib/angular-touch.js"></script>
     <script src="../lib/angular-ui-router.js"></script>
-    <!-- endbuild -->
 
 
-    <!--common.js-->
-    <!-- build:commonjs -->
     <script src="app.js"></script>
     <!-- injectcommon:js -->
     <script src="../common/data_cache_service.js"></script>
@@ -47,20 +43,12 @@
     <script src="../common/directives/touchmove.js"></script>
     <script src="../common/directives/vcode.js"></script>
     <!-- endinject -->
-    <!-- endbuild -->
 
 
-    <!--index.js-->
-    <!-- build:js -->
     <!-- inject:js -->
     <script src="js/entry.js"></script>
     <script src="js/login.js"></script>
     <!-- endinject -->
-    <!-- endbuild -->
-    
-
-    <!--templates.js-->
-    <!-- build:templatesjs -->
     <!-- endbuild -->
 </body>
 </html>
