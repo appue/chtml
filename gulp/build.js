@@ -156,8 +156,6 @@ module.exports = function (gulp, $) {
 
     gulp.task('word', function() {
 
-        gulp.start('connect');
-
         $.livereload.listen();
 
         gulp.src('./word/**/*.html')

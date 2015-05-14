@@ -22,7 +22,7 @@ module.exports = function (gulp, $) {
     });
 
 
-    gulp.task('text', ['word']);
+    gulp.task('text', ['connect', 'word']);
 
 
     gulp.task('run', ['clean'], function () {
