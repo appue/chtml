@@ -25,7 +25,7 @@ userEntry.controller('loginForgetCtrl', function ($scope, routerRedirect, widget
         routerRedirect.toJump({
             'module': 'entry',
             'hash': 'loginReset',
-            'filter': 'phone=' + $scope.inputVal.phone
+            'url': '/login/reset/' + $scope.inputVal.phone
         });
 
     };

@@ -1,4 +1,14 @@
-userEntry.controller('loginResetCtrl', function ($scope, $stateParams, routerRedirect, widget) {
+userEntry.controller('loginResetCtrl', function ($scope, $stateParams, $location, routerRedirect, widget) {
+
+    console.log($stateParams);
+    console.log($location.$$search);
+
+    // if (!$stateParams.phone) { //如果电话号码不存在，则返回上一页
+    //     routerRedirect.toJump({
+    //         'module': 'entry',
+    //         'hash': 'loginForget'
+    //     });
+    // }
 
     $scope.vHtml = '重新发送';
     $scope.vDisable = true;

@@ -22,7 +22,7 @@ userEntry.config(function ($stateProvider, $urlRouterProvider) {
         })
         //登录-重置密码页
         .state('loginReset', {
-            url: '/login/reset?phone',
+            url: '/login/reset/:phone',
             templateUrl: 'templates/login_reset_password.html',
             controller: 'loginResetCtrl'
         })
