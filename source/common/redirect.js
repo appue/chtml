@@ -20,6 +20,7 @@
         *     opts: {
         *         direction: 页面转动方向[left|right|up|down]
         *     },
+        *     isAnimate: 是否采用动画 true/false 默认true
         *     module: 所属的项目
         *     hash: hash值
         *     filter: ? 后面的参数
@@ -54,6 +55,9 @@
             var self = this;
 
             var i,
+                obj = {
+                    'isAnimate': true
+                },
                 options = {
                     'direction': 'left',
                     'duration': 500, 
@@ -63,11 +67,20 @@
                     'winphonedelay': 250, 
                     'fixedPixelsTop': 0,
                     'fixedPixelsBottom': 48
-                };
+                },
+                href = params.module +'/index.html#'+ $state.get(params.hash).url;
+
+            for (i in params) obj[i] = params[i];
 
             for (i in params.opts) options[i] = params.opts[i];
 
-            options.href = params.module +'/index.html#'+ $state.get(params.hash).url;
+            if (!obj.isAnimate) {
+                alert(2);
+                window.open('yejs://home', '_system');
+                return;
+            }
+
+            options.href = href;
             
             window.plugins.nativepagetransitions.slide(
                 options,

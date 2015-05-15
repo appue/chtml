@@ -26,3 +26,4 @@
 - gulp --run build --g web  [生成H5压缩包]
 
 
+cordova plugin add https://github.com/EddyVerbruggen/LaunchMyApp-PhoneGap-Plugin.git --variable URL_SCHEME=yejs

@@ -18,7 +18,8 @@ angular.module('phoneApp')
 
                     routerRedirect.toJump({
                         'module': name,
-                        'hash': hash
+                        'hash': hash,
+                        'isAnimate': false
                     });
                 }
             }
