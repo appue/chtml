@@ -55,9 +55,6 @@
             var self = this;
 
             var i,
-                obj = {
-                    'isAnimate': true
-                },
                 options = {
                     'direction': 'left',
                     'duration': 500, 
@@ -67,20 +64,11 @@
                     'winphonedelay': 250, 
                     'fixedPixelsTop': 0,
                     'fixedPixelsBottom': 48
-                },
-                href = params.module +'/index.html#'+ $state.get(params.hash).url;
-
-            for (i in params) obj[i] = params[i];
+                };
 
             for (i in params.opts) options[i] = params.opts[i];
 
-            if (!obj.isAnimate) {
-                alert(2);
-                window.open('yejs://home', '_system');
-                return;
-            }
-
-            options.href = href;
+            options.href = params.module +'/index.html#'+ $state.get(params.hash).url;
             
             window.plugins.nativepagetransitions.slide(
                 options,
