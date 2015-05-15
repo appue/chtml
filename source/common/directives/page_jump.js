@@ -24,7 +24,7 @@ angular.module('phoneApp')
 				// 	return;
 				// }
 
-				// routerRedirect.toJump(params);
+				routerRedirect.toJump(params);
 
 			});
 		}
