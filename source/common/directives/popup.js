@@ -71,12 +71,11 @@ angular.module('phoneApp')
 				}
 			}
 
-			$element.on('click', function (event) {
+			angular.element(domArr[2]).find('a').on('click', function (event) {
 
 				var $allPopup = angular.element(document.querySelectorAll('.mod_popup'));
 
 				$timeout(function () {
-					// $element.addClass('ng-hide');
 					$allPopup.addClass('ng-hide');
 					$scope.showMask = false;
 				}, 0);
@@ -121,10 +120,11 @@ angular.module('phoneApp')
 					}
 				}, 0);
 
-				var fn = attrs.showPopup.split('|')[1];
+				var callback = attrs.showPopup.split('|')[1];
 
-				if (fn && !scope.$$phase) {
-					scope.$apply($parse(fn)(scope)); //如果有回调函数，则执行回调
+				if (callback && !scope.$$phase) {
+					var fn = $parse(callback);
+					scope.$apply(fn(scope)); //如果有回调函数，则执行回调
 				}
 
 			});

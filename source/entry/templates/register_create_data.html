@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>APP HTML</title>
+    <link rel="stylesheet" type="text/css" href="../../themes/entry.css" />
+</head>
+<body>
+
+    <header class="mod_header">
+        <a class="back_button">back</a>
+        <h1 class="title_content"><span>（</span>1<span>/3）</span>创建个人资料</h1>
+        <a class="right_button">下一步</a>
+    </header>
+
+    <section class="register_layout mod_scroll">
+        <div class="mod_layout">
+            <ul class="register_data">
+                <li class="nickname">
+                    <label>昵称</label>
+                    <input type="text" placeholder="用户名支持汉字、字母、数字、-和"></li>
+                <li class="gender">
+                    <span>
+                        <input name="gender" checked type="radio" value="1" />
+                        <label>女</label>
+                    </span>
+                    <span>
+                        <input name="gender" type="radio" value="2" />
+                        <label>男</label>
+                    </span>
+                </li>
+                <li class="location">北京市 海淀区</li>
+                <li class="post">请选择岗位</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="mod_popup">
+        <!-- <h2 class="mod_popup_title">选择位置</h2>
+        <div class="mod_popup_body chosen_location">
+            <div class="select_box">
+                <div class="line"></div>
+                <ul>
+                    <li>北京</li>
+                    <li>上海</li>
+                    <li>广州</li>
+                    <li>厦门</li>
+                </ul>
+            </div>
+            <div class="select_box">
+                <div class="line"></div>
+                <ul>
+                    <li>长宁区</li>
+                    <li>徐汇徐</li>
+                    <li>浦东新区</li>
+                    <li>闸北区</li>
+                </ul>
+            </div>
+        </div> -->
+        <h2 class="mod_popup_title">选择岗位</h2>
+        <div class="mod_popup_body chosen_post">
+            <ul>
+                <li>
+                    <input name="post" checked type="radio" value="1" />
+                    <label>园长</label>
+                </li>
+                <li>
+                    <input name="post" type="radio" value="2" />
+                    <label>保教主任</label>
+                </li>
+                <li>
+                    <input name="post" type="radio" value="2" />
+                    <label>教师</label>
+                </li>
+                <li>
+                    <input name="post" type="radio" value="3" />
+                    <label>其他</label>
+                </li>
+            </ul>
+        </div>
+        <div class="mod_popup_ctrl">
+            <a class="cancel">取消</a>
+            <a class="confirm">确定</a>
+        </div>
+    </div>
+    <div class="mod_mask" style="display:block;"></div>
+
+</body>
+</html>

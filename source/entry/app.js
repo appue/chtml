@@ -8,10 +8,59 @@ userEntry.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/entry.html',
             controller: 'entryCtrl'
         })
-        .state('login', { //登录页
+        //登录页
+        .state('login', {
             url: '/login',
             templateUrl: 'templates/login.html',
             controller: 'loginCtrl'
+        })
+        //登录-忘记密码页
+        .state('login.forget', {
+            url: '/login/forget',
+            templateUrl: 'templates/login_forget_password.html',
+            controller: 'loginForgetCtrl'
+        })
+        //登录-重置密码页
+        .state('login.reset', {
+            url: '/login/reset',
+            templateUrl: 'templates/login_reset_password.html',
+            controller: 'loginResetCtrl'
+        })
+        //注册-创建资料页
+        .state('register', {
+            url: '/register/create',
+            templateUrl: 'templates/register_create_data.html',
+            controller: 'registerCreateCtrl'
+        })
+        //注册-设置账号密码页
+        .state('register.account', {
+            url: '/register/account',
+            templateUrl: 'templates/register_set_account.html',
+            controller: 'registerAccountCtrl'
+        })
+        //注册-验证码页
+        .state('register.vcode', {
+            url: '/register/vcode',
+            templateUrl: 'templates/register_vcode.html',
+            controller: 'registerVcodeCtrl'
+        })
+        //注册-完成页
+        .state('register.done', {
+            url: '/register/done',
+            templateUrl: 'templates/register_done.html',
+            controller: 'registerDoneCtrl'
+        })
+        //注册-关注感兴趣栏目页
+        .state('register.column', {
+            url: '/register/column',
+            templateUrl: 'templates/register_take_column.html',
+            controller: 'registerColumnCtrl'
+        })
+        //注册-关注感兴趣的人页
+        .state('register.people', {
+            url: '/register/people',
+            templateUrl: 'templates/register_focus_people.html',
+            controller: 'registerFocusCtrl'
         });
 
     // 处理在状态配置中指定的路由之外的 url 请求
