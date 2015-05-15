@@ -1,22 +1,33 @@
-userEntry.controller('loginForgetCtrl', function ($scope, $state, $timeout, $stateParams) {
+userEntry.controller('loginForgetCtrl', function ($scope, routerRedirect, widget) {
 
-    $scope.popupConfirm = function (arg) {
-        console.log(arg);
+    $scope.inputVal = {}; //初始化ng-model
+
+    $scope.checkPhone = function () { //检查手机号码
+
+        if (!$scope.inputVal.phone) {
+            widget.msgToast('请输入用户名');
+            return;
+        }
+
+        if (!/^1[3|4|5|7|8][0-9]\d{4,8}$/.test($scope.inputVal.phone)) {
+            widget.msgToast('用户名格式不合法');
+            return;
+        }
+
+        var $thisPopup = angular.element(document.getElementById('popup_checkPhone'));
+
+        $thisPopup.removeClass('ng-hide');
+        $scope.showMask = true;
     };
 
-    $scope.itemClick = function (e) {
-        var $that = angular.element(e.delegationTarget);
+    $scope.sendMessage = function () { //跳验证码页
 
-        console.log($that);
+        routerRedirect.toJump({
+            'module': 'entry',
+            'hash': 'loginReset',
+            'filter': 'phone=' + $scope.inputVal.phone
+        });
 
-        //todo...
-
-        // 注：
-        // e 原始的event对象，但是增加了delegationTarget => 代理target元素
-        //
-        // 对于selector这块，如果引用了jQuery的话，则支持的是jquery的选择器
-        // 对于支持matchesSelector的浏览器来说，支持的就是标准的选择器；
-        // 否则的话只能支持tagName...
     };
 
 });

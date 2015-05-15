@@ -1,22 +1,83 @@
-userEntry.controller('loginResetCtrl', function ($scope, $state, $timeout, $stateParams) {
+userEntry.controller('loginResetCtrl', function ($scope, $stateParams, routerRedirect, widget) {
 
-    $scope.popupConfirm = function (arg) {
-        console.log(arg);
+    $scope.vHtml = '重新发送';
+    $scope.vDisable = true;
+    $scope.inputVal = {};
+
+    $scope.resendMessage = function (disable) {
+
+        if (disable) {
+            return;
+        }
+
+        widget.ajaxRequest({
+            noMask: true,
+            url: '$local/Tools/SendCheckCode',
+            data: {
+                Mobile: $stateParams.phone
+            },
+            success: function (data) {
+                var time = 30,
+                    countdown = function () { //倒计时
+                        if (time > 0) {
+                            $scope.vHtml = '重新发送' + time;
+                            time--;
+                            $timeout(countdown, 1000);
+                        } else {
+                            $scope.vHtml = '重发验证码';
+                            $scope.vDisable = false;
+                        }
+                    };
+
+                if (data.ShortMessage) {
+                    widget.msgToast(data.ShortMessage);
+                    $scope.vDisable = true;
+                    $timeout(countdown, 0);
+                } else {
+                    widget.msgToast(data.msg || '手机号无效');
+                }
+
+            }
+        });
+
     };
 
-    $scope.itemClick = function (e) {
-        var $that = angular.element(e.delegationTarget);
+    $scope.resendMessage(false); //页面首次请求
 
-        console.log($that);
+    $scope.submitPassword = function () {
+        if (!$scope.inputVal.vcode) {
+            widget.msgToast('请输入验证码');
+            return;
+        }
 
-        //todo...
+        if (!$scope.inputVal.password) {
+            widget.msgToast('请输入新密码');
+            return;
+        }
 
-        // 注：
-        // e 原始的event对象，但是增加了delegationTarget => 代理target元素
-        //
-        // 对于selector这块，如果引用了jQuery的话，则支持的是jquery的选择器
-        // 对于支持matchesSelector的浏览器来说，支持的就是标准的选择器；
-        // 否则的话只能支持tagName...
+        if ($scope.inputVal.password.length <= 5) {
+            widget.msgToast('新密码必须大于或等于6位');
+            return;
+        }
+
+        if (!$scope.inputVal.passwordCheck) {
+            widget.msgToast('请再次输入新密码');
+            return;
+        }
+
+        if ($scope.inputVal.passwordCheck !== $scope.inputVal.password) {
+            widget.msgToast('两次输入不相符，请重新输入');
+            return;
+        }
+
+        widget.ajaxRequest({
+            noMask: true,
+            url: '$local/Tools/SendCheckCode',
+            data: {
+                Mobile: 123
+            }
+        });
+
     };
 
 });

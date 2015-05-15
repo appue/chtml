@@ -1,24 +1,6 @@
 'use strict';
 
-angular.module('phoneApp').factory('Util', function ($http, $rootScope, $state, $compile, $ionicPopup, $ionicLoading, $timeout) {
-
-    var backDropDom = angular.element(document.querySelector('.backdrop'));
-
-    if (!backDropDom) {
-        angular.element(document.getElementsByTagName('body')[0]).append('<div class="backdrop"></div>');
-    }
-
-    var backDrop = { //重写遮罩层显示隐藏
-        retain: function () {
-            backDropDom.addClass('visible active');
-        },
-        release: function () {
-            backDropDom.removeClass('active');
-            $timeout(function () {
-                backDropDom.removeClass('visible');
-            }, 100);
-        }
-    };
+angular.module('phoneApp').factory('widget', function ($http, $rootScope, $state, $compile, $timeout) {
 
     /**
      * toast提示层
@@ -30,12 +12,12 @@ angular.module('phoneApp').factory('Util', function ($http, $rootScope, $state, 
 
         if (!toastDom.length) {
             var toastTpl = $compile('<div class="notifier" ng-click="notification=null" ng-show="notification"><span>{{notification}}</span></div>');
-            angular.element(document.getElementsByTagName('ion-nav-view')[0]).append(toastTpl($rootScope));
+            angular.element(document.getElementsByTagName('body')[0]).append(toastTpl($rootScope));
         }
 
         $timeout(function () {
             $rootScope.notification = msg;
-        });
+        }, 0);
 
         $timeout.cancel(toastTimer);
 
@@ -201,10 +183,10 @@ angular.module('phoneApp').factory('Util', function ($http, $rootScope, $state, 
             },
             effect = function () {
                 if (noLoad) {
-                    $ionicLoading.hide();
+                    // $ionicLoading.hide();
                 }
                 if (isPopup) {
-                    backDrop.release();
+                    // backDrop.release();
                 }
             };
 
@@ -216,31 +198,16 @@ angular.module('phoneApp').factory('Util', function ($http, $rootScope, $state, 
 
         if (noMask) {
 
-            $ionicLoading.show({
-                template: '<span class="ion-load-d"></span>'
-            });
+            // $ionicLoading.show({
+            //     template: '<span class="ion-load-d"></span>'
+            // });
 
-            backDrop.retain();
+            // backDrop.retain();
         }
 
         $http(configObj).success(function (data) {
             if (data && data.state === -200) { //判断登录
-                $ionicLoading.hide();
-                if (!loginPopup) {
-                    loginPopup = $ionicPopup.alert({
-                        template: '请重新登录',
-                        buttons: [{
-                            text: '知道了',
-                            type: 'button-positive',
-                            onTap: function () {
-                                localStorage.removeItem('phoneApp_USERAUTH');
-                                $state.go('phoneApp.login', {
-                                    OtherPage: 1
-                                });
-                            }
-                        }]
-                    });
-                }
+                // $ionicLoading.hide();
                 return;
             }
 
@@ -265,7 +232,6 @@ angular.module('phoneApp').factory('Util', function ($http, $rootScope, $state, 
     };
 
     return {
-        backDrop: backDrop,
         safeApply: safeApply,
         stickyTopScroll: stickyTopScroll,
         msgToast: msgToast,

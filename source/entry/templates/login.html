@@ -5,20 +5,20 @@
     <div class="mod_layout">
         <ul class="mod_list_default">
             <li class="phone">
-                <input type="number" placeholder="用户名(手机号码)"></li>
+                <input ng-model="inputVal.phone" type="number" placeholder="用户名(手机号码)"></li>
             <li class="password last_border_line">
-                <input type="password" placeholder="密码"></li>
+                <input ng-model="inputVal.password" type="password" placeholder="密码"></li>
         </ul>
-        <a class="login_button">登录</a>
+        <a ng-click="goLogin()" class="login_button">登录</a>
         <div class="forget_password">
-            <a ng-click="expression">忘记密码？</a>
+            <a ng-click="goForget()">忘记密码？</a>
         </div>
     </div>
 
     <h2 class="mod_layout_title">使用其他方式登录</h2>
 
     <div class="mod_layout">
-        <ul class="mod_list_default">
+        <ul class="mod_list_default" ngd-click="chooseLoginWay($event)" selector="a">
             <li class="icon_qq">
                 <a>QQ账号登录</a>
             </li>

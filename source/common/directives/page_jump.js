@@ -1,30 +1,27 @@
 angular.module('phoneApp')
 
-.directive('pageJump', function ($window, $state, $stateParams, $parse, routerRedirect) {
+.directive('pageJump', function ($stateParams, $parse, routerRedirect) {
 	return {
 		restrict: 'A',
 		link: function (scope, element, attrs) {
-			element.on('click', function () {
+			element.on('click', function (event) {
 
 				var params = scope.$eval(attrs.pageJump);
 
-				console.log(params);
+				if (params) {
 
-				// params.c();
+					if (typeof params === 'function' && !scope.$$phase) { //如果传进来的是fun，执行之，否则做为跳转参数使用
 
-				// if (attrs.pageJump) {
-				// 	$window.location.href = attrs.pageJump;
-				// }
-				// console.log(params.opts.href);
+						var fn = $parse(params);
+						scope.$apply(fn(scope));
 
-				// $window.location.href = params.opts.href;
-				// console.log();
-				// if (!ENV.isHybrid) {
-				// 	$window.location.href = params.opts.href.replace('index\.html', '');
-				// 	return;
-				// }
+					} else {
+						routerRedirect.toJump(params);
+					}
 
-				routerRedirect.toJump(params);
+				}
+
+				event.preventDefault();
 
 			});
 		}
