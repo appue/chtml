@@ -38,7 +38,7 @@
                     return;
                 }
 
-                var tmp = window.location.origin +'/'+ params.module +'/#/'+ params.hash,
+                var tmp = window.location.origin +'/'+ params.module +'/#'+ $state.get(params.hash).url,
                     url = params.filter ? tmp +'?'+ params.filter : tmp;
 
                 window.location.href = url;
@@ -53,7 +53,8 @@
         _slide: function(params){
             var self = this;
 
-            var options = {
+            var i,
+                options = {
                     'direction': 'left',
                     'duration': 500, 
                     'slowdownfactor': 3, 
@@ -64,9 +65,9 @@
                     'fixedPixelsBottom': 48
                 };
 
-            for (i in params.opts) options[i] = params.opts[i];
+            for (var i in params.opts) options[i] = params.opts[i];
 
-            options.href = '/'+ params.module +'/index.html#/'+ params.hash;
+            options.href = params.module +'/index.html#'+ $state.get(params.hash).url;
             
             window.plugins.nativepagetransitions.slide(
                 options,

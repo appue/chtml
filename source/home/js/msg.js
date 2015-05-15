@@ -21,7 +21,7 @@ angular.module('phoneApp')
             var self = this;
 
             $scope.itemClick = function(e) {
-                var $that = angular.element(e.target);
+                var $that = angular.element(e.delegationTarget);
 
                 var type = $that.attr('data-type'),
                     obj = {
@@ -50,8 +50,6 @@ angular.module('phoneApp')
                         obj.hash = 'msgSearch';
                     break;
                 }
-
-                    alert(JSON.stringify(obj));
 
                 routerRedirect.toJump(obj);
             };

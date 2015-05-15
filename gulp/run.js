@@ -3,12 +3,17 @@ var fs = require('fs'),
     os = require('os'),
     inject = require('gulp-inject');
 
-var runType = argv.run || ''; // dev、build
+var runType = argv.run || '', // dev、build
+    packageType = argv.g || 'app';
 
 module.exports = function (gulp, $) {
 
     gulp.task('tmpl', ['minjs'], function() {
-        gulp.start('connect');
+
+        if (packageType == 'web') {
+            gulp.start('connect');
+        }
+        
     });
     
 
