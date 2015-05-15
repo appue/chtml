@@ -5,9 +5,9 @@ angular.module('phoneApp')
  *	<header-bar
  *		title="string"     //定义标题
  *		transparent        //定义透明背景
- *		back="obj"         //定义后退按钮 参数可选
- *		left="obj"         //定义取消按钮名  参数可选
- *		right="obj"        //定义确定按钮名  参数可选
+ *		back="obj"         //定义后退按钮(可选)
+ *		left="obj"         //定义取消按钮名(可选)
+ *		right="obj"        //定义确定按钮名(可选)
  *	</header-bar>
  */
 
