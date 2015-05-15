@@ -20,7 +20,6 @@
         *     opts: {
         *         direction: 页面转动方向[left|right|up|down]
         *     },
-        *     isAnimate: 是否采用动画 true/false 默认true
         *     module: 所属的项目
         *     hash: hash值
         *     filter: ? 后面的参数

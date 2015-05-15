@@ -6,13 +6,24 @@ angular.module('phoneApp')
         replace: true,
         templateUrl: '../common/directives/footer_bar.html',
         controller: function ($scope) {
+            var obj = {
+                    'index': 1,
+                    'msg': 4
+                };
+
             $scope.menuChange = function(e) {
                 if (e.target.nodeName == 'LI') {
 
                     var $that = angular.element(e.target);
 
-                    var name = $that.attr('data-name'),
+                    var direction = 'up',
+                        currentName = $state.current.name,
+                        name = $that.attr('data-name'),
                         hash = $that.attr('data-hash');
+
+                    if (obj[hash] < obj[currentName] ) {
+                        direction = 'down';
+                    }
 
                     $that.addClass('current');
 
@@ -20,7 +31,7 @@ angular.module('phoneApp')
                         'module': name,
                         'hash': hash,
                         'opts': {
-                            'duration': 0
+                            'direction': direction
                         }
                     });
                 }
