@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.controller('HomeMsgCtrl', function ($scope, $state, $stateParams, routerRedirect) {
+.controller('HomeMsgCtrl', function ($scope, $state, $stateParams, $location, routerRedirect) {
     
     var view = {
         init: function() {
@@ -15,6 +15,8 @@ angular.module('phoneApp')
             var self = this;
 
             $scope.footerTab = 4;
+
+            console.log($location);
         },
 
         _setLink: function() {
@@ -32,7 +34,7 @@ angular.module('phoneApp')
                 switch (type) {
                     case 'praise': //--赞
                         obj.hash = 'msgPraise';
-                        obj.url = 'home/index.html#/msg/praise';
+                        obj.url = '/msg/praise/1';
                     break;
 
                     case 'comment': //--评论

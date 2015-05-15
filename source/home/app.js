@@ -23,7 +23,7 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
         controller: 'HomeIndexCtrl'
     })
     .state('msg', {
-        url: '/msg',
+        url: '/msg/:id',
         templateUrl: 'templates/msg.html',
         controller: 'HomeMsgCtrl'
     })

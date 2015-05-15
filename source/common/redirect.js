@@ -3,6 +3,11 @@
 .factory('routerRedirect', function($state, ENV) {
 
     var routerRedirect = {
+        toBack: function() {
+            var self = this;
+            
+            
+        },
         /*
         * 页面跳转
         * var options = {
@@ -44,7 +49,7 @@
                     return;
                 }
 
-                window.location.href = params.url;
+                window.location.href = window.location.origin +'/'+ params.module +'/index.html#'+ params.url;
 
                 return;
             } 
@@ -72,7 +77,7 @@
 
             // return;
             if (params.url) {
-                options.href = params.url;
+                options.href = params.module +'/index.html#'+ params.url;
             } else {
                 options.href = params.module +'/index.html#'+ $state.get(params.hash).url; 
             }
