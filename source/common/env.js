@@ -16,7 +16,10 @@ angular.module('phoneApp')
     };
 
     //--是APP环境
-    if (/appuewireless/.test(ua)) {
+    // if (/appuewireless/.test(ua)) {
+    //     ENV.isHybrid = true;
+    // }
+    if (isHybridCreatePhoneApp) {
         ENV.isHybrid = true;
     }
 

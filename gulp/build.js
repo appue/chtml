@@ -291,14 +291,25 @@ module.exports = function (gulp, $) {
     //--js 合并压缩
     gulp.task('minjs', function() {
         //--框架JS压缩合并
-        gulp.src([
+        var framejs = [
+                './source/lib/config.js',
                 './source/lib/angular.js',
                 './source/lib/angular-touch.js',
                 './source/lib/angular-ui-router.js'
-            ])
-            .pipe($.concat('frame.js'))
-            .pipe($.uglify())
-            .pipe(gulp.dest(buildFolder +'common'));
+            ];
+
+        if (packageType == 'web') {
+            gulp.src(framejs)
+                .pipe($.concat('frame.js'))
+                .pipe($.uglify())
+                .pipe(gulp.dest(buildFolder +'common'));
+        } else {
+            gulp.src(framejs)
+                .pipe($.concat('frame.js'))
+                .pipe($.replace(/isHybridCreatePhoneApp=false/g, 'isHybridCreatePhoneApp=true'))
+                .pipe($.uglify())
+                .pipe(gulp.dest(buildFolder +'common'));
+        }
 
 
         //--项目公共JS压缩、合并（包括公共模板数据）
