@@ -32,6 +32,7 @@ angular.module('phoneApp')
                 switch (type) {
                     case 'praise': //--赞
                         obj.hash = 'msgPraise';
+                        obj.url = 'home/index.html#/msg/praise';
                     break;
 
                     case 'comment': //--评论

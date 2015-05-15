@@ -20,29 +20,31 @@
         *     opts: {
         *         direction: 页面转动方向[left|right|up|down]
         *     },
-        *     isAnimate: 是否采用动画 true/false 默认true
-        *     module: 所属的项目
-        *     hash: hash值
-        *     filter: ? 后面的参数
+        *     module: 所属的项目[这种只对H5并且相同模块有效]
+        *     hash: hash值[这种只对H5并且相同模块有效]
+        *     filter: 传递的参数[这种只对H5并且相同模块有效]
+        *     url: 用于APP的跳转[对非同一模块并且APP中有效]
         */
         toJump: function (params) {
             var self = this;
 
             if (!ENV.isHybrid) {
 
-                var pathname = window.location.pathname.replace('\/', '').replace('\/', '');
-
+                var url,
+                    pathname = window.location.pathname.replace('\/', '').replace('\/', '');
 
                 if (pathname == params.module) {
-                    $state.go(params.hash);
+
+                    if (params.filter) {
+                        $state.go(params.hash, filter);
+                    } else {
+                        $state.go(params.hash);
+                    }
 
                     return;
                 }
 
-                var tmp = window.location.origin +'/'+ params.module +'/#'+ $state.get(params.hash).url,
-                    url = params.filter ? tmp +'?'+ params.filter : tmp;
-
-                window.location.href = url;
+                window.location.href = params.url;
 
                 return;
             } 
@@ -55,9 +57,6 @@
             var self = this;
 
             var i,
-                obj = {
-                    'isAnimate': true
-                },
                 options = {
                     'direction': 'left',
                     'duration': 500, 
@@ -67,20 +66,16 @@
                     'winphonedelay': 250, 
                     'fixedPixelsTop': 0,
                     'fixedPixelsBottom': 48
-                },
-                href = params.module +'/index.html#'+ $state.get(params.hash).url;
-
-            for (i in params) obj[i] = params[i];
+                };
 
             for (i in params.opts) options[i] = params.opts[i];
 
-            if (!obj.isAnimate) {
-                alert(2);
-                window.open('yejs://home', '_system');
-                return;
+            // return;
+            if (params.url) {
+                options.href = params.url;
+            } else {
+                options.href = params.module +'/index.html#'+ $state.get(params.hash).url; 
             }
-
-            options.href = href;
             
             window.plugins.nativepagetransitions.slide(
                 options,
