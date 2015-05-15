@@ -65,7 +65,7 @@
                     'fixedPixelsBottom': 48
                 };
 
-            for (var i in params.opts) options[i] = params.opts[i];
+            for (i in params.opts) options[i] = params.opts[i];
 
             options.href = params.module +'/index.html#'+ $state.get(params.hash).url;
             
