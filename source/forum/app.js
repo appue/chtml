@@ -15,16 +15,15 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     })
 
     /*------------------------------------
-    * 帖子列表
+    * 举报帖子
     * @params:
-    *     type: 栏目(cate)、圈子(club)、专题(subject)、活动(activity)
     *     id: 帖子ID
     */
-    // .state('artlist', {
-    //     url: '/list/{type}/{id}.html',
-    //     templateUrl: 'templates/list.html',
-    //     controller: 'tArticleList'
-    // })
+    .state('report', {
+        url: '/report/{id}.html',
+        templateUrl: 'templates/report.html',
+        controller: 'tReport'
+    })
 
     /*------------------------------------
     * 添加点评
