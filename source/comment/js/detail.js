@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.controller('tCommentAdd', function (
+.controller('tArticleDetail', function (
     $scope, 
     $state, 
     $stateParams, 

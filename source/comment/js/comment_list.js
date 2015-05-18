@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.controller('CommentListCtrl', function (
+.controller('tCommentList', function (
     $scope, 
     $state, 
     $stateParams, 
