@@ -8,7 +8,6 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-
     $scope.addComment = function() {
         var content = angular.element(document.querySelector('.js_textarea')).val();
 

@@ -156,7 +156,7 @@ module.exports = function (gulp, $) {
 
     gulp.task('word', function() {
 
-        $.livereload.listen();
+        // $.livereload.listen();
 
         gulp.src('./word/**/*.html')
             .pipe($.watch('word/**/*.html', function() {}))
