@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.controller('loginCtrl', function ($scope, routerRedirect, widget) {
+.controller('loginCtrl', function ($scope, widget) {
 
 	$scope.inputVal = {}; //初始化ng-model
 
@@ -20,7 +20,14 @@ angular.module('phoneApp')
 			return;
 		}
 
-		alert(1);
+		widget.ajaxRequest({
+			noMask: true,
+			url: '$local/Tools/SendCheckCode',
+			data: {
+				Mobile: 123
+			},
+			success: function (data) {}
+		});
 
 		//todo..
 	};

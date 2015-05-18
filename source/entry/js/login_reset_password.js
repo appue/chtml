@@ -84,28 +84,7 @@ userEntry.controller('loginResetCtrl', function ($scope, $stateParams, routerRed
             data: {
                 Mobile: 123
             },
-            success: function (data) {
-                var time = 30,
-                    countdown = function () { //倒计时
-                        if (time > 0) {
-                            $scope.vHtml = '重新发送' + time;
-                            time--;
-                            $timeout(countdown, 1000);
-                        } else {
-                            $scope.vHtml = '重发验证码';
-                            $scope.vDisable = false;
-                        }
-                    };
-
-                if (data.ShortMessage) {
-                    widget.msgToast(data.ShortMessage);
-                    $scope.vDisable = true;
-                    $timeout(countdown, 0);
-                } else {
-                    widget.msgToast(data.msg || '手机号无效');
-                }
-
-            }
+            success: function (data) {}
         });
 
     };
