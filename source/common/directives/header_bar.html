@@ -9,7 +9,10 @@
 	<!-- /定义左侧按钮 -->
 
 	<!-- 定义标题 -->
-	<h1 class="title_content">{{headerTitle}}</h1>
+	<h1 class="title_content">
+		{{headerTitle}}
+		<span ng-if="titleNum" class="color_green">{{titleNum}}</span>
+	</h1>
 	<!-- /定义标题 -->
 	
 	<!-- 定义右侧按钮 -->

@@ -12,7 +12,7 @@ angular.module('phoneApp')
     $scope.addComment = function() {
         var content = angular.element(document.querySelector('.js_textarea')).val();
 
-        if (content) return;
+        if (!content) return;
 
         widget.ajaxRequest({
             noMask: true,

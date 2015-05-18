@@ -27,7 +27,11 @@ angular.module('phoneApp')
 		// },
 		link: function (scope, element, attrs) {
 
-			scope.headerTitle = attrs.title || ''; //定义标题
+			if (attrs.title) { //定义标题
+				scope.headerTitle = attrs.title.split('|')[0] || '';
+				scope.titleNum = attrs.title.split('|')[1] || '';
+			}
+			// scope.headerTitle = attrs.title || ''; //定义标题
 
 			if (attrs.transparent !== undefined) { //定义背景是否透明
 				scope.transparent = true;
