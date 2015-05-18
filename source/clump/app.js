@@ -1,0 +1,37 @@
+angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
+
+.config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+
+    /*------------------------------------
+    * 全部圈子
+    */
+    .state('clubList', {
+        url: '/club/list.html',
+        templateUrl: 'templates/club_list.html',
+        controller: 'tClubList'
+    })
+
+    /*------------------------------------
+    * 热门圈子
+    */
+    .state('clubHot', {
+        url: '/club/hot.html',
+        templateUrl: 'templates/club_hot.html',
+        controller: 'tClubHot'
+    })
+
+    /*------------------------------------
+    * 点评列表
+    * @params:
+    *     id: 帖子ID
+    */
+    .state('list', {
+        url: '/comment/list/{id}.html',
+        templateUrl: 'templates/comment_list.html',
+        controller: 'tCommentList'
+    });
+
+    // $urlRouterProvider.when('', '/index');
+    // $urlRouterProvider.otherwise('/comment/add/{id}.html');
+});
