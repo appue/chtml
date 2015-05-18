@@ -6,8 +6,32 @@
         toBack: function() {
             var self = this;
             
-            
+            params.opts = {'direction': 'right'};
+
+            if (!ENV.isHybrid) {
+
+                var url,
+                    pathname = window.location.pathname.replace('\/', '').replace('\/', '');
+
+                if (pathname == params.module) {
+
+                    if (params.filter) {
+                        $state.go(params.hash, params.filter);
+                    } else {
+                        $state.go(params.hash);
+                    }
+
+                    return;
+                }
+
+                window.location.href = window.location.origin +'/'+ params.module +'/index.html#'+ params.url;
+
+                return;
+            }
+
+            self._slide(params);
         },
+
         /*
         * 页面跳转
         * var options = {
@@ -41,7 +65,7 @@
                 if (pathname == params.module) {
 
                     if (params.filter) {
-                        $state.go(params.hash, filter);
+                        $state.go(params.hash, params.filter);
                     } else {
                         $state.go(params.hash);
                     }

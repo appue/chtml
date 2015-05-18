@@ -23,10 +23,8 @@ angular.module('phoneApp')
 
                 // }
                 var params = scope.$eval(attrs.pageBack);
-
-                params.opts = {'direction': 'right'};
                 
-                routerRedirect.toJump(params);
+                routerRedirect.toBack(params);
             });
         }
     };
