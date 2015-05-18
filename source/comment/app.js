@@ -2,23 +2,31 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
 
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-    .state('detail', { //--帖子内容
+
+    //--帖子内容
+    .state('detail', {
         url: '/detail/{id}.html',
         templateUrl: 'templates/detail.html',
         controller: 'tArticleDetail'
     })
-    .state('artlist', { //--帖子内容
+
+    //--帖子内容
+    .state('artlist', {
         url: '/detail/{id}.html',
         templateUrl: 'templates/detail.html',
         controller: 'tArticleList'
     })
-    .state('add', { //--添加点评
+
+    //--添加点评
+    .state('add', {
         // abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
         url: '/add/{id}.html',
         templateUrl: 'templates/comment_add.html',
         controller: 'tCommentAdd'
     })
-    .state('list', { //--点评列表
+
+    //--点评列表
+    .state('list', {
         url: '/list/{id}.html',
         templateUrl: 'templates/comment_list.html',
         controller: 'tCommentList'
