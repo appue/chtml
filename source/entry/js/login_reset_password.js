@@ -1,14 +1,12 @@
-userEntry.controller('loginResetCtrl', function ($scope, $stateParams, $location, routerRedirect, widget) {
+userEntry.controller('loginResetCtrl', function ($scope, $stateParams, routerRedirect, widget) {
 
-    console.log($stateParams);
-    console.log($location.$$search);
-
-    // if (!$stateParams.phone) { //如果电话号码不存在，则返回上一页
-    //     routerRedirect.toJump({
-    //         'module': 'entry',
-    //         'hash': 'loginForget'
-    //     });
-    // }
+    if (!$stateParams.phone) { //如果电话号码不存在，则返回上一页
+        routerRedirect.toJump({
+            'module': 'entry',
+            'hash': 'loginForget',
+            'url': '/login/forget'
+        });
+    }
 
     $scope.vHtml = '重新发送';
     $scope.vDisable = true;
@@ -85,6 +83,28 @@ userEntry.controller('loginResetCtrl', function ($scope, $stateParams, $location
             url: '$local/Tools/SendCheckCode',
             data: {
                 Mobile: 123
+            },
+            success: function (data) {
+                var time = 30,
+                    countdown = function () { //倒计时
+                        if (time > 0) {
+                            $scope.vHtml = '重新发送' + time;
+                            time--;
+                            $timeout(countdown, 1000);
+                        } else {
+                            $scope.vHtml = '重发验证码';
+                            $scope.vDisable = false;
+                        }
+                    };
+
+                if (data.ShortMessage) {
+                    widget.msgToast(data.ShortMessage);
+                    $scope.vDisable = true;
+                    $timeout(countdown, 0);
+                } else {
+                    widget.msgToast(data.msg || '手机号无效');
+                }
+
             }
         });
 

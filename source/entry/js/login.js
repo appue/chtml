@@ -4,11 +4,6 @@ angular.module('phoneApp')
 
 	$scope.inputVal = {}; //初始化ng-model
 
-	$scope.backParam = {
-		'module': 'entry',
-		'hash': ' '
-	};
-
 	$scope.goLogin = function () {
 		if (!$scope.inputVal.phone) {
 			widget.msgToast('请输入用户名');
@@ -28,13 +23,6 @@ angular.module('phoneApp')
 		alert(1);
 
 		//todo..
-	};
-
-	$scope.goForget = function () {
-		routerRedirect.toJump({
-			'module': 'entry',
-			'hash': 'loginForget'
-		});
 	};
 
 	$scope.chooseLoginWay = function (e) {

@@ -1,4 +1,4 @@
-<header-bar back title="登录"></header-bar>
+<header-bar back="{'module':'entry','hash':' ', 'url': '/'}" title="登录"></header-bar>
 
 <section class="login_layout mod_scroll">
 
@@ -11,7 +11,7 @@
         </ul>
         <a ng-click="goLogin()" class="login_button">登录</a>
         <div class="forget_password">
-            <a ng-click="goForget()">忘记密码？</a>
+            <a page-jump="{'module':'entry','hash':'loginForget', 'url': '/login/forget'}">忘记密码？</a>
         </div>
     </div>
 

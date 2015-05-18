@@ -1,4 +1,4 @@
-userEntry.controller('loginForgetCtrl', function ($scope, routerRedirect, widget) {
+userEntry.controller('loginForgetCtrl', function ($scope, $state, routerRedirect, widget) {
 
     $scope.inputVal = {}; //初始化ng-model
 
@@ -20,12 +20,17 @@ userEntry.controller('loginForgetCtrl', function ($scope, routerRedirect, widget
         $scope.showMask = true;
     };
 
+    console.log($state.get('loginReset'));
+
     $scope.sendMessage = function () { //跳验证码页
 
         routerRedirect.toJump({
             'module': 'entry',
             'hash': 'loginReset',
-            'url': '/login/reset/' + $scope.inputVal.phone
+            'url': '/login/reset/' + $scope.inputVal.phone,
+            'filter': {
+                'phone': $scope.inputVal.phone
+            }
         });
 
     };
