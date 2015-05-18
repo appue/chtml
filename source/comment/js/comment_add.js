@@ -5,31 +5,26 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location, 
-    routerRedirect
+    routerRedirect,
+    widget
 ){
 
-    var view = {
-        init: function() {
-            var self = this;
+    $scope.addComment = function() {
+        var content = angular.element(document.querySelector('.js_textarea')).val();
 
-            self._setDeploy();
+        if (content) return;
 
-
-            self.addComment();
-        },
-
-        _setDeploy: function() {
-            var self = this;
-        },
-
-        addComment: function() {
-            var self = this;
-
-            $scope.addComment = function() {
-                alert(1);
+        widget.ajaxRequest({
+            noMask: true,
+            url: '$local/Tools/setArticleComment',
+            data: {
+                ArticleId: $stateParams.id,
+                Content: content
+            },
+            success: function (data) {
+                alert(data);
             }
-        }
-    }
+        });
+    };
 
-    view.init();
 });
