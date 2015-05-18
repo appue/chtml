@@ -16,15 +16,15 @@ angular.module('phoneApp')
     * 4、圈子发帖时间升序
     * 5、字母排序（所有的圈子全部吐出）
     */
-    // widget.ajaxRequest({
-    //     noMask: true,
-    //     url: '$local/Tools/getListClub',
-    //     data: {
-    //         SortType: 5
-    //     },
-    //     success: function (data) {
-    //         alert(data);
-    //     }
-    // });
+    widget.ajaxRequest({
+        noMask: true,
+        url: '$local/Tools/getListClub',
+        data: {
+            SortType: 5
+        },
+        success: function (data) {
+            alert(data);
+        }
+    });
 
 });
