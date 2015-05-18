@@ -8,6 +8,10 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
+    $scope.jumpClubList = {
+        'module': 'clump',
+        'hash': 'clubList'
+    };
 
     $scope.addReport = function() {
 
