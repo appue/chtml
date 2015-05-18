@@ -3,7 +3,7 @@
 .factory('routerRedirect', function($state, ENV) {
 
     var routerRedirect = {
-        toBack: function() {
+        toBack: function(params) {
             var self = this;
             
             params.opts = {'direction': 'right'};
