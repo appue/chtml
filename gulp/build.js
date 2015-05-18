@@ -168,7 +168,7 @@ module.exports = function (gulp, $) {
         var fd = argv.f;
 
         if (fd) {
-            return gulp.src('./source/'+ fd +'/*.html')
+            return gulp.src('./source/'+ fd +'/index.html')
                 .pipe(
                     $.inject(
                         gulp.src('./source/common/**/*.js', {read: false}), { 
@@ -191,7 +191,7 @@ module.exports = function (gulp, $) {
             getProject({
                 callback: function(folder){
                     folder.forEach( function(v) {
-                        return gulp.src('./source/'+ v +'/*.html')
+                        return gulp.src('./source/'+ v +'/index.html')
                             .pipe(
                                 $.inject(
                                     gulp.src('./source/common/**/*.js', {read: false}), { 
