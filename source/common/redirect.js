@@ -3,28 +3,21 @@
 .factory('routerRedirect', function($state, ENV) {
 
     var routerRedirect = {
-        toBack: function() {
+        toBack: function(params) {
             var self = this;
             
             params.opts = {'direction': 'right'};
 
             if (!ENV.isHybrid) {
 
-                var url,
-                    pathname = window.location.pathname.replace('\/', '').replace('\/', '');
+                if (params.from) {
 
-                if (pathname == params.module) {
-
-                    if (params.filter) {
-                        $state.go(params.hash, params.filter);
-                    } else {
-                        $state.go(params.hash);
-                    }
+                    window.location.href = window.location.origin + params.from;
 
                     return;
                 }
 
-                window.location.href = window.location.origin +'/'+ params.module +'/index.html#'+ params.url;
+                self._url(params);
 
                 return;
             }
@@ -58,27 +51,33 @@
             var self = this;
 
             if (!ENV.isHybrid) {
-
-                var url,
-                    pathname = window.location.pathname.replace('\/', '').replace('\/', '');
-
-                if (pathname == params.module) {
-
-                    if (params.filter) {
-                        $state.go(params.hash, params.filter);
-                    } else {
-                        $state.go(params.hash);
-                    }
-
-                    return;
-                }
-
-                window.location.href = window.location.origin +'/'+ params.module +'/index.html#'+ params.url;
+                self._url(params);
 
                 return;
             } 
             
             self._slide(params);
+
+        },
+
+        _url: function(params) {
+            var self = this;
+
+            var url,
+                pathname = window.location.pathname.replace('\/', '').replace('\/', '');
+
+            if (pathname == params.module) {
+
+                if (params.filter) {
+                    $state.go(params.hash, params.filter);
+                } else {
+                    $state.go(params.hash);
+                }
+
+                return;
+            }
+
+            window.location.href = window.location.origin +'/'+ params.module +'/index.html#'+ params.url;
 
         },
 
