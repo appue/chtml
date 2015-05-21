@@ -1,7 +1,12 @@
 userEntry.controller('registerCreateCtrl', function ($scope, $state, $timeout, $stateParams) {
 
-    $scope.popupConfirm = function (arg) {
-        console.log(arg);
+    $scope.inputVal = {};
+    $scope.inputVal.gender = 1;
+    $scope.inputVal.post = '园长';
+    $scope.inputVal.tmpPost = '园长';
+
+    $scope.popupConfirm = function () {
+        console.log($scope.inputVal);
     };
 
     $scope.itemClick = function (e) {

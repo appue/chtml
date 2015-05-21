@@ -5,24 +5,24 @@
         <ul class="register_data">
             <li class="nickname">
                 <label>昵称</label>
-                <input type="text" placeholder="用户名支持汉字、字母、数字、-和"></li>
+                <input ng-model="inputVal.nickname" type="text" placeholder="用户名支持汉字、字母、数字"></li>
             <li class="gender">
-                <span>
-                    <input name="gender" checked type="radio" value="1" />
+                <span ng-click="inputVal.gender = 1">
+                    <input name="gender" ng-checked="inputVal.gender == 1" type="radio">
                     <label>女</label>
                 </span>
-                <span>
-                    <input name="gender" type="radio" value="2" />
+                <span ng-click="inputVal.gender = 2">
+                    <input name="gender" ng-checked="inputVal.gender == 2" type="radio">
                     <label>男</label>
                 </span>
             </li>
-            <li class="location">北京市 海淀区</li>
-            <li class="post">请选择岗位</li>
+            <li show-popup="chooseLocation" class="location">北京市 海淀区</li>
+            <li show-popup="choosePost" class="post">{{inputVal.post}}</li>
         </ul>
     </div>
 </section>
 
-<popup id="register" title="选择位置">
+<popup id="chooseLocation" title="选择位置" popup-confirm="popupConfirm">
     <div class="chosen_location">
         <div class="select_box">
             <div class="line"></div>
@@ -45,23 +45,23 @@
     </div>
 </popup>
 
-<popup id="register1" title="选择岗位">
+<popup id="choosePost" title="选择岗位" popup-confirm="inputVal.post = inputVal.tmpPost">
     <div class="chosen_post">
         <ul>
-            <li>
-                <input name="post" checked type="radio" value="1" />
+            <li ng-click="inputVal.tmpPost = '园长'">
+                <input ng-checked="inputVal.tmpPost == '园长'" name="post" type="radio">
                 <label>园长</label>
             </li>
-            <li>
-                <input name="post" type="radio" value="2" />
+            <li ng-click="inputVal.tmpPost = '保教主任'">
+                <input ng-checked="inputVal.tmpPost == '保教主任'" name="post" type="radio">
                 <label>保教主任</label>
             </li>
-            <li>
-                <input name="post" type="radio" value="2" />
+            <li ng-click="inputVal.tmpPost = '教师'">
+                <input ng-checked="inputVal.tmpPost == '教师'" name="post" type="radio">
                 <label>教师</label>
             </li>
-            <li>
-                <input name="post" type="radio" value="3" />
+            <li ng-click="inputVal.tmpPost = '其他'">
+                <input ng-checked="inputVal.tmpPost == '其他'" name="post" type="radio">
                 <label>其他</label>
             </li>
         </ul>

@@ -64,9 +64,10 @@ angular.module('phoneApp')
 
 			function bind(attr) { //绑定按钮callback方法
 
-				// console.log($scope.$eval(attr));
-				if (attr && !$scope.$$phase) {
-					var fn = $parse(attr); //必须为function，否则无效
+				var isFn = angular.isFunction($scope.$eval(attr));
+
+				if (isFn && !$scope.$$phase) { //必须为function，否则无效
+					var fn = $parse(attr);
 					$scope.$apply(fn($scope)); //参数scope是你带进去的参数，如果不带则是整个scope域
 				}
 			}
@@ -120,9 +121,10 @@ angular.module('phoneApp')
 					}
 				}, 0);
 
-				var callback = attrs.showPopup.split('|')[1];
+				var callback = attrs.showPopup.split('|')[1],
+					isFn = angular.isFunction(scope.$eval(callback));
 
-				if (callback && !scope.$$phase) {
+				if (callback && isFn && !scope.$$phase) {
 					var fn = $parse(callback);
 					scope.$apply(fn(scope)); //如果有回调函数，则执行回调
 				}
