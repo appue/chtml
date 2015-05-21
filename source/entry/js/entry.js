@@ -1,13 +1,31 @@
-userEntry.controller('entryCtrl', function ($scope, $state, $timeout, $stateParams) {
+userEntry.controller('entryCtrl', function ($scope, routerRedirect, widget) {
 
 	$scope.popupConfirm = function (arg) {
 		console.log(arg);
 	};
 
 	$scope.itemClick = function (e) {
-		var $that = angular.element(e.delegationTarget);
+		var $that = angular.element(e.delegationTarget),
+			type = $that.attr('class').replace(' last_border_line', '');
 
-		console.log($that);
+		switch (type) {
+		case 'icon_weixin':
+			alert(1);
+			break;
+		case 'icon_mobile':
+			routerRedirect.toJump({
+				'module': 'entry',
+				'hash': 'registerCreate',
+				'url': '/register/create'
+			});
+			break;
+		case 'icon_qq':
+			alert(3);
+			break;
+		case 'icon_weibo':
+			alert(4);
+			break;
+		}
 
 		//todo...
 

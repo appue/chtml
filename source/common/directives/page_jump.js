@@ -10,7 +10,7 @@ angular.module('phoneApp')
 
 				if (params) {
 
-					if (typeof params === 'function' && !scope.$$phase) { //如果传进来的是fun，执行之，否则做为跳转参数使用
+					if (angular.isFunction(params) && !scope.$$phase) { //如果传进来的是fun，执行之，否则做为跳转参数使用
 
 						var fn = $parse(params);
 						scope.$apply(fn(scope));

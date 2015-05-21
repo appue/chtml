@@ -27,7 +27,7 @@ userEntry.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'loginResetCtrl'
         })
         //注册-创建资料页
-        .state('register', {
+        .state('registerCreate', {
             url: '/register/create',
             templateUrl: 'templates/register_create_data.html',
             controller: 'registerCreateCtrl'

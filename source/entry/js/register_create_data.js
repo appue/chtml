@@ -1,9 +1,36 @@
-userEntry.controller('registerCreateCtrl', function ($scope, $state, $timeout, $stateParams) {
+userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, routerRedirect, widget) {
 
-    $scope.inputVal = {};
-    $scope.inputVal.gender = 1;
-    $scope.inputVal.post = '园长';
-    $scope.inputVal.tmpPost = '园长';
+    var personalData = $cacheFactory.get('personalData');
+
+    if (personalData) {
+        $scope.inputVal = personalData.info();
+    } else {
+        $scope.inputVal = {
+            gender: 1,
+            post: '园长',
+            tmpPost: '园长'
+        };
+    }
+
+    $scope.goNextStep = function () { //检查手机号码
+
+        if (!$scope.inputVal.nickname) {
+            widget.msgToast('请输入昵称');
+            return;
+        }
+
+        if (personalData) {
+            personalData.destroy();
+        }
+
+        $cacheFactory('personalData', $scope.inputVal); //缓存数据
+
+        routerRedirect.toJump({
+            'module': 'entry',
+            'hash': 'registerAccount',
+            'url': '/register/account'
+        });
+    };
 
     $scope.popupConfirm = function () {
         console.log($scope.inputVal);
