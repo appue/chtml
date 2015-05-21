@@ -11,13 +11,12 @@ angular.module('phoneApp')
  *	</header-bar>
  */
 
-.directive('headerBar', function ($parse, $timeout) {
+.directive('headerBar', function ($sce) {
 	return {
 		restrict: 'E',
 		replace: true,
 		templateUrl: '../common/directives/header_bar.html',
 		// controller: function ($scope, $element, $attrs) {
-		// 	console.log($attrs);
 		// },
 		// compile: function (element, attrs, transclude) {
 		// 	return {
@@ -28,10 +27,8 @@ angular.module('phoneApp')
 		link: function (scope, element, attrs) {
 
 			if (attrs.title) { //定义标题
-				scope.headerTitle = attrs.title.split('|')[0] || '';
-				scope.titleNum = attrs.title.split('|')[1] || '';
+				scope.headerTitle = $sce.trustAsHtml(attrs.title || '');
 			}
-			// scope.headerTitle = attrs.title || ''; //定义标题
 
 			if (attrs.transparent !== undefined) { //定义背景是否透明
 				scope.transparent = true;
