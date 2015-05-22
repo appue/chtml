@@ -43,6 +43,7 @@
                 var url,
                     from = $location.$$search.from || '';
 
+                
                 if (from) {
 
                     url = (typeof(from) == 'string' && self._checkUrl(from)) ? from : '';
@@ -67,9 +68,7 @@
                 return;
             }
 
-            alert(window.location.href);
-            
-            // self._slide(params);
+            self._toRedirect(params, 2);
         },
 
         /*
@@ -91,7 +90,7 @@
                 return;
             } 
             
-            self._slide(params);
+            self._toRedirect(params, 1);
 
         },
 
@@ -120,7 +119,8 @@
 
         },
 
-        _slide: function(params){
+        //--type: 1:toJump; 2:toBack
+        _toRedirect: function(params, type) {
             var self = this;
 
             var i,
@@ -132,12 +132,40 @@
                     'androiddelay': 150,
                     'winphonedelay': 250, 
                     'fixedPixelsTop': 0,
-                    'fixedPixelsBottom': 48
+                    'fixedPixelsBottom': 0
                 };
 
             for (i in params.opts) options[i] = params.opts[i];
 
-            options.href = (params.url.length > 1) ? params.url[1] : params.url[0];
+            if (type == 2) {
+                var fromUrl;
+
+                window.location.href.replace(/.*\?/g, '?').toLowerCase().replace((/(?:[\?&])(\w+)=([^#&\s]*)/g), function (a, f, s) {
+                    // if (f == 'from') {
+                    // }
+
+                    fromUrl = decodeURIComponent(s);
+                });
+
+                // angular.forEach(arr, function(v, k) {
+                //     if (self._checkUrl(v)) {
+                //         fromUrl = v;
+                //     }
+                // });
+
+                options.href = fromUrl ? fromUrl : ((params.url.length > 1) ? params.url[1] : params.url[0]);
+
+            } else {
+
+                options.href = (params.url.length > 1) ? params.url[1] : params.url[0];
+
+            }
+
+            self._toAppurl(options);
+        },
+
+        _toAppurl: function(options){
+            var self = this;
 
             window.plugins.nativepagetransitions.slide(
                 options,

@@ -29,11 +29,12 @@ angular.module('phoneApp')
 
                     routerRedirect.toJump({
                         'opts': {
-                            'direction': direction
+                            'direction': direction,
+                            'fixedPixelsBottom': 48
                         },
                         'url': [
                             name +'/#/'+ hash,
-                            name +'/index.html#/'+ hash +'?from=sssss'
+                            name +'/index.html#/'+ hash
                         ]
                     });
                 }

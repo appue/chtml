@@ -43,6 +43,7 @@ angular.module('phoneApp')
                         url = [
                             'home/#/msg/praise',
                             'home/index.html#/msg/praise'
+                            // 'home/index.html#/msg/praise?from='+ encodeURIComponent('home/index.html#/msg/notice')
                         ];
                     break;
 
