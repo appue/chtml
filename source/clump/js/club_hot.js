@@ -15,6 +15,8 @@ angular.module('phoneApp')
 
             self._setDeploy();
 
+            self._setHeader();
+
             self._updateData();
         },
 
@@ -25,12 +27,20 @@ angular.module('phoneApp')
             $scope.jumpClubList = {
                 'module': 'clump',
                 'hash': 'clubList'
+                'url': [
+                    'clump/#/club/list.html',
+                    'clump/index.html#/club/list.html'
+                ]
             };
+        },
+
+        _setHeader: function() {
+            var self = this;
             
             //--设置返回按钮
             $scope.backParam = {
-                'module': 'home',
-                'hash': 'msg'
+                'url': [
+                ]
             };
         },
 
