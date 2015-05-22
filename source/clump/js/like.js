@@ -22,7 +22,7 @@ angular.module('phoneApp')
 
             self._setHeader();
 
-            self._updateData();
+            // self._updateData();
 
             self._setFalls();
         },

@@ -19,13 +19,44 @@ angular.module('phoneApp')
 
             self._setDeploy();
 
-            self._updateData();
+            // self._updateData();
         },
 
         _setDeploy: function () {
             var self = this;
 
+
             $scope.footerTab = 2;
+
+            $scope.urlMenu = [
+                {
+                    'title': '猜你喜欢',
+                    'list': {
+                        'url': [
+                            'clump/#/find/like.html',
+                            'clump/index.html#/find/like.html',
+                        ]
+                    }
+                },
+                {
+                    'title': '圈子',
+                    'list': {
+                        'url': [
+                            'clump/#/club/hot.html',
+                            'clump/index.html#/club/hot.html',
+                        ]
+                    }
+                },
+                {
+                    'title': '活动',
+                    'list': {
+                        'url': [
+                            'clump/#/like.html',
+                            'clump/index.html#/like.html',
+                        ]
+                    }
+                }
+            ]
         },
 
         _updateData: function () {

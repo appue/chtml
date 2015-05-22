@@ -16,7 +16,7 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     * 发现-猜你喜欢
     */
     .state('findLike', {
-        url: '/like.html',
+        url: '/find/like.html',
         templateUrl: 'templates/like.html',
         controller: 'tFindLike'
     })
@@ -51,5 +51,5 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     });
 
     // $urlRouterProvider.when('', '/index');
-    // $urlRouterProvider.otherwise('/comment/add/{id}.html');
+    $urlRouterProvider.otherwise('/find.html');
 });
