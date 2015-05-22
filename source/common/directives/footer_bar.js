@@ -1,15 +1,24 @@
 angular.module('phoneApp')
 
-.directive('footerBar', function ($state, routerRedirect) {
+.directive('footerBar', function (
+    $state, 
+    routerRedirect
+) {
+    var obj = [
+        ['home/#/index', 'home/index.html#/index'],
+        ['clump/#/find.html', 'clump/index.html#/find.htm'],
+        ['home/#/index', 'home/index.html#/index'],
+        ['home/#/msg', 'home/index.html#/msg'],
+        ['member/#/index', 'member/index.html#/index']
+    ];
+
     return {
         restrict: 'E',
         replace: true,
         templateUrl: '../common/directives/footer_bar.html',
         controller: function ($scope) {
-            var obj = {
-                    'index': 1,
-                    'msg': 4
-                };
+            // var currentUrl = $state.current.url.replace(/^\//g, '');
+            var current = $scope.footerTab;
 
             $scope.menuChange = function(e) {
                 if (e.target.nodeName == 'LI') {
@@ -17,11 +26,9 @@ angular.module('phoneApp')
                     var $that = angular.element(e.target);
 
                     var direction = 'up',
-                        currentName = $state.current.name,
-                        name = $that.attr('data-name'),
-                        hash = $that.attr('data-hash');
+                        id = $that.attr('data-id');
 
-                    if (obj[hash] < obj[currentName] ) {
+                    if (id < current) {
                         direction = 'down';
                     }
 
@@ -31,10 +38,7 @@ angular.module('phoneApp')
                         'opts': {
                             'direction': direction
                         },
-                        'url': [
-                            name +'/#/'+ hash,
-                            name +'/index.html#/'+ hash
-                        ]
+                        'url': obj[id-1]
                     });
                 }
             }

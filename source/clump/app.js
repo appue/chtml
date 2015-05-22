@@ -6,17 +6,17 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     /*------------------------------------
     * 发现首页
     */
-    .state('find', {
-        url: '/find.html',
+    .state('findIndex', {
+        url: '/find.htm',
         templateUrl: 'templates/find.html',
-        controller: 'tFind'
+        controller: 'tFindIndex'
     })
 
     /*------------------------------------
     * 发现-猜你喜欢
     */
     .state('findLike', {
-        url: '/find/like.html',
+        url: '/find/like.htm',
         templateUrl: 'templates/like.html',
         controller: 'tFindLike'
     })
@@ -25,7 +25,7 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     * 全部圈子
     */
     .state('clubList', {
-        url: '/club/list.html',
+        url: '/club/list.htm',
         templateUrl: 'templates/club_list.html',
         controller: 'tClubList'
     })
@@ -34,7 +34,7 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     * 热门圈子
     */
     .state('clubHot', {
-        url: '/club/hot.html',
+        url: '/club/hot.htm',
         templateUrl: 'templates/club_hot.html',
         controller: 'tClubHot'
     })
@@ -45,7 +45,7 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     *     id: 帖子ID
     */
     .state('list', {
-        url: '/comment/list/{id}.html',
+        url: '/comment/list/{id}.htm',
         templateUrl: 'templates/comment_list.html',
         controller: 'tCommentList'
     });

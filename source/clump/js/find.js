@@ -4,7 +4,7 @@
 */
 angular.module('phoneApp')
 
-.controller('tFind', function (
+.controller('tFindIndex', function (
     $scope, 
     $state, 
     $stateParams, 
@@ -33,8 +33,8 @@ angular.module('phoneApp')
                     'title': '猜你喜欢',
                     'list': {
                         'url': [
-                            'clump/#/find/like.html',
-                            'clump/index.html#/find/like.html',
+                            'clump/#/find/like.htm',
+                            'clump/index.html#/find/like.htm',
                         ]
                     }
                 },
@@ -42,8 +42,8 @@ angular.module('phoneApp')
                     'title': '圈子',
                     'list': {
                         'url': [
-                            'clump/#/club/hot.html',
-                            'clump/index.html#/club/hot.html',
+                            'clump/#/club/hot.htm',
+                            'clump/index.html#/club/hot.htm',
                         ]
                     }
                 },
@@ -51,8 +51,8 @@ angular.module('phoneApp')
                     'title': '活动',
                     'list': {
                         'url': [
-                            'clump/#/like.html',
-                            'clump/index.html#/like.html',
+                            'clump/#/like.htm',
+                            'clump/index.html#/like.htm',
                         ]
                     }
                 }

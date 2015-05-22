@@ -30,8 +30,8 @@ angular.module('phoneApp')
             //--设置返回按钮
             $scope.backParam = {
                 'url': [
-                    'clump/#/club/hot.html',
-                    'clump/index.html#/club/hot.html'
+                    'clump/#/club/hot.htm',
+                    'clump/index.html#/club/hot.htm'
                 ]
             };
         },

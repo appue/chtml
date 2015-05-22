@@ -26,8 +26,8 @@ angular.module('phoneApp')
             //--查看全部圈子
             $scope.jumpClubList = {
                 'url': [
-                    'clump/#/club/list.html',
-                    'clump/index.html#/club/list.html'
+                    'clump/#/club/list.htm',
+                    'clump/index.html#/club/list.htm'
                 ]
             };
         },
@@ -38,8 +38,8 @@ angular.module('phoneApp')
             //--设置返回按钮
             $scope.backParam = {
                 'url': [
-                    'clump/#/find.html',
-                    'clump/index.html#/find.html'
+                    'clump/#/find.htm',
+                    'clump/index.html#/find.htm'
                 ]
             };
         },
