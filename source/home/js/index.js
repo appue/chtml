@@ -10,11 +10,7 @@ angular.module('phoneApp')
     SetFalls, 
     routerRedirect
 ){
-    $scope.goIndex = function(){
-        // // $state.go('homes');
-        // window.loa.href = '#/index/homes'
-    }
-
+    
     var pageView = {
         init: function() {
             var self = this;
