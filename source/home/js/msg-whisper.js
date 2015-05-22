@@ -14,9 +14,15 @@ angular.module('phoneApp')
             var self = this;
 
             self._setDeploy();
+
+            self._setHeader();
         },
 
         _setDeploy: function() {
+            var self = this;
+        },
+
+        _setHeader: function() {
             var self = this;
             
             //--设置返回
