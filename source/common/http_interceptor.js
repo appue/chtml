@@ -17,32 +17,8 @@ angular.module('phoneApp').config(function ($provide, $httpProvider) {
         var httpInterceptor = {
 
             request: function (config) {
-                //-------------ToDo
-                var user = {
-                    'UserId': 12313,
-                    'Auth': 'asdfasdf'
-                };
-
-                localStorage.setItem('UserInfo', JSON.stringify(user));
-                //-------------ToDo
-
-                var obj = {
-                        UserId: '',
-                        Auth: ''
-                    },
-                    UserInfo = localStorage.getItem('UserInfo') || '';
-
-                if (UserInfo) {
-                    obj = {
-                        Header: {
-                            UserId: JSON.parse(UserInfo).UserId,
-                            Auth: JSON.parse(UserInfo).Auth
-                        }
-                    };
-                }
 
                 var raw = config.url;
-                config.params = angular.extend({}, config.params, obj);
 
                 if (raw.indexOf('$local') === 0) {
                     config.url = raw.replace('$local/', ENV.getLocalApi);

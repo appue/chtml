@@ -25,6 +25,8 @@ angular.module('phoneApp')
         _setDeploy: function() {
             var self = this;
 
+            alert(window.location.href);
+
             $scope.currentTab = 1;
             $scope.footerTab = 1;
         },

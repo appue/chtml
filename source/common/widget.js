@@ -159,7 +159,7 @@ angular.module('phoneApp').factory('widget', function ($http, $rootScope, $state
         noLoad: 请求结果是否需要loading效果,
         noMask: 请求结果是否需要mask效果,
         isPopup: 请求结果是否有popup,
-        isForm: 请求形式改为形式，增加param方法来封装postData
+        isForm: 请求形式改为形式，增加param方法来封装postData【默认false】
      }
      */
     var ajaxRequest = function (param) {
@@ -167,8 +167,38 @@ angular.module('phoneApp').factory('widget', function ($http, $rootScope, $state
             return;
         }
 
-        var data = param.data || {},
-            success = param.success,
+        var data = param.data || {};
+        
+        //--数据改造加用户信息start
+        //-------------ToDo
+        var user = {
+            'UserId': 12313,
+            'Auth': 'asdfasdf'
+        };
+
+        localStorage.setItem('UserInfo', JSON.stringify(user));
+        //-------------ToDo
+
+        var obj = {
+                UserId: '',
+                Auth: ''
+            },
+            UserInfo = localStorage.getItem('UserInfo') || '';
+
+        if (UserInfo) {
+            obj = {
+                Header: {
+                    UserId: JSON.parse(UserInfo).UserId,
+                    Auth: JSON.parse(UserInfo).Auth
+                }
+            };
+        }
+        
+        data = angular.extend({}, data, obj);
+        //--数据改造加用户信息end
+
+
+        var success = param.success,
             error = param.error,
             noLoad = !param.noLoad,
             noMask = !param.noMask,
