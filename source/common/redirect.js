@@ -1,6 +1,11 @@
 ﻿angular.module('phoneApp')
 
-.factory('routerRedirect', function($state, ENV) {
+.factory('routerRedirect', function(
+    $state,
+    $stateParams,
+    $location,
+    ENV
+) {
 
     /*
     * 页面跳转
@@ -33,13 +38,32 @@
             
             params.opts = {'direction': 'right'};
 
+            console.log($location);
+
             if (!ENV.isHybrid) {
 
-                if (params.from) {
+                var url,
+                    from = $location.$$search.from || '';
 
-                    window.location.href = window.location.origin + params.from;
+                if (from) {
 
-                    return;
+                    if (typeof(from) == 'string' && self._checkUrl(from)) {
+                        url = from;
+                    }
+
+                    if (typeof(from) == 'object') {
+                        angular.forEach(from, function(v, k) {
+                            if (self._checkUrl(v)) {
+                                url = v;
+                            }
+                        });
+                    }
+
+                    if (url) {
+                        window.location.href = from;
+
+                        return;
+                    }
                 }
 
                 self._url(params);
@@ -127,7 +151,11 @@
                     console.log(msg);
                 }
             );
-        }
+        },
+        
+        _checkUrl : function (url) {
+            return (url.indexOf("http://") >= 0 || url.indexOf("https://") >= 0);
+        },
     };
 
     return routerRedirect;
