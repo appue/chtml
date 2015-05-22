@@ -23,7 +23,7 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
         controller: 'HomeIndexCtrl'
     })
     .state('msg', {
-        url: '/msg/:id',
+        url: '/msg/',
         templateUrl: 'templates/msg.html',
         controller: 'HomeMsgCtrl'
     })
@@ -53,7 +53,7 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
         controller: 'HomeMsgWhisperCtrl'
     })
     .state('setFeedback', {
-        url: '/msg/feedback',
+        url: '/set/feedback',
         templateUrl: 'templates/set-feedback.html',
         controller: 'HomeSetFeedbackCtrl'
     })

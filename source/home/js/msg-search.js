@@ -1,8 +1,15 @@
+/*
+* 消息-搜索好友||消息-好友
+* /home/#/msg/search
+*/
 angular.module('phoneApp')
 
-.controller('HomeMsgSearchCtrl', function($scope, $state){
+.controller('HomeMsgSearchCtrl', function(
+    $scope, 
+    $state
+){
     
-    var view = {
+    var pageView = {
         init: function() {
             var self = this;
 
@@ -12,6 +19,7 @@ angular.module('phoneApp')
         _setDeploy: function() {
             var self = this;
             
+            //--设置返回
             $scope.backParam = {
                 'module': 'home',
                 'hash': 'msg'
@@ -19,5 +27,5 @@ angular.module('phoneApp')
         }
     };
 
-    view.init();
+    pageView.init();
 });

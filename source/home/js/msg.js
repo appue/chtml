@@ -1,8 +1,18 @@
+/*
+* 消息页面
+* /home/#/msg/
+*/
 angular.module('phoneApp')
 
-.controller('HomeMsgCtrl', function ($scope, $state, $stateParams, $location, routerRedirect) {
+.controller('HomeMsgCtrl', function (
+    $scope, 
+    $state, 
+    $stateParams, 
+    $location, 
+    routerRedirect
+) {
     
-    var view = {
+    var pageView = {
         init: function() {
             var self = this;
 
@@ -59,5 +69,5 @@ angular.module('phoneApp')
         }
     };
 
-    view.init();
+    pageView.init();
 });

@@ -1,8 +1,15 @@
+/*
+* 消息-私聊
+* /home/#/msg/whisper
+*/
 angular.module('phoneApp')
 
-.controller('HomeMsgWhisperCtrl', function($scope, $state){
+.controller('HomeMsgWhisperCtrl', function(
+    $scope, 
+    $state
+){
     
-    var view = {
+    var pageView = {
         init: function() {
             var self = this;
 
@@ -12,6 +19,7 @@ angular.module('phoneApp')
         _setDeploy: function() {
             var self = this;
             
+            //--设置返回
             $scope.backParam = {
                 'module': 'home',
                 'hash': 'msg'
@@ -19,5 +27,5 @@ angular.module('phoneApp')
         }
     };
 
-    view.init();
+    pageView.init();
 });

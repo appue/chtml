@@ -1,8 +1,15 @@
+/*
+* 设置-意见反馈
+* /home/#/set/feedback
+*/
 angular.module('phoneApp')
 
-.controller('HomeSetFeedbackCtrl', function($scope, $state){
+.controller('HomeSetFeedbackCtrl', function(
+    $scope, 
+    $state
+){
     
-    var view = {
+    var pageView = {
         init: function() {
             var self = this;
 
@@ -12,12 +19,13 @@ angular.module('phoneApp')
         _setDeploy: function() {
             var self = this;
             
+            //--设置返回
             $scope.backParam = {
                 'module': 'home',
-                'hash': 'msg'
+                'hash': 'setFeedback'
             };
         }
     };
 
-    view.init();
+    pageView.init();
 });

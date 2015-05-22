@@ -1,12 +1,21 @@
+/*
+* 首页
+* /home/#/index
+*/
 angular.module('phoneApp')
 
-.controller('HomeIndexCtrl', function($scope, $state, SetFalls, routerRedirect){
+.controller('HomeIndexCtrl', function(
+    $scope, 
+    $state, 
+    SetFalls, 
+    routerRedirect
+){
     $scope.goIndex = function(){
         // // $state.go('homes');
         // window.loa.href = '#/index/homes'
     }
 
-    var view = {
+    var pageView = {
         init: function() {
             var self = this;
 
@@ -67,5 +76,5 @@ angular.module('phoneApp')
         }
     }
 
-    view.init();
+    pageView.init();
 });
