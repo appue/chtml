@@ -28,11 +28,13 @@ angular.module('phoneApp')
                     $that.addClass('current');
 
                     routerRedirect.toJump({
-                        'module': name,
-                        'hash': hash,
                         'opts': {
                             'direction': direction
-                        }
+                        },
+                        'url': [
+                            name +'/#/'+ hash,
+                            name +'/index.html#/'+ hash
+                        ]
                     });
                 }
             }
