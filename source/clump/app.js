@@ -4,6 +4,15 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     $stateProvider
 
     /*------------------------------------
+    * 发现首页
+    */
+    .state('find', {
+        url: '/find.html',
+        templateUrl: 'templates/find.html',
+        controller: 'tFind'
+    })
+
+    /*------------------------------------
     * 全部圈子
     */
     .state('clubList', {
