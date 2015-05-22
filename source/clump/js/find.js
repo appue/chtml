@@ -51,8 +51,8 @@ angular.module('phoneApp')
                     'title': '活动',
                     'list': {
                         'url': [
-                            'clump/#/like.htm',
-                            'clump/index.html#/like.htm',
+                            'clump/#/activity/list.htm',
+                            'clump/index.html#/activity/list.htm',
                         ]
                     }
                 }

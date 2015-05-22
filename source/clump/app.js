@@ -40,6 +40,26 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     })
 
     /*------------------------------------
+    * 活动列表
+    */
+    .state('activityList', {
+        url: '/activity/list.htm',
+        templateUrl: 'templates/activity_list.html',
+        controller: 'tActivityList'
+    })
+
+    /*------------------------------------
+    * 发现-活动-晒图活动页
+    */
+    .state('activityDetailPhoto', {
+        url: '/activity/detail/photo.htm',
+        templateUrl: 'templates/activity_detail_photo.html',
+        controller: 'tActivityDetailPhoto'
+    })
+
+
+
+    /*------------------------------------
     * 点评列表
     * @params:
     *     id: 帖子ID
@@ -51,5 +71,5 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     });
 
     // $urlRouterProvider.when('', '/index');
-    $urlRouterProvider.otherwise('/find.html');
+    $urlRouterProvider.otherwise('/find.htm');
 });
