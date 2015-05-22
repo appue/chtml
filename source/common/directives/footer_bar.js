@@ -29,8 +29,7 @@ angular.module('phoneApp')
 
                     routerRedirect.toJump({
                         'opts': {
-                            'direction': direction,
-                            'fixedPixelsBottom': 48
+                            'direction': direction
                         },
                         'url': [
                             name +'/#/'+ hash,
