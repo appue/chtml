@@ -13,6 +13,15 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     })
 
     /*------------------------------------
+    * 发现-猜你喜欢
+    */
+    .state('findLike', {
+        url: '/like.html',
+        templateUrl: 'templates/like.html',
+        controller: 'tFindLike'
+    })
+
+    /*------------------------------------
     * 全部圈子
     */
     .state('clubList', {

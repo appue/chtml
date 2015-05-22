@@ -25,8 +25,6 @@ angular.module('phoneApp')
 
             //--查看全部圈子
             $scope.jumpClubList = {
-                'module': 'clump',
-                'hash': 'clubList'
                 'url': [
                     'clump/#/club/list.html',
                     'clump/index.html#/club/list.html'
