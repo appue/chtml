@@ -8,15 +8,38 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-    widget.ajaxRequest({
-        noMask: true,
-        url: '$local/Tools/getContentArticle',
-        data: {
-            ArticleId: $stateParams.id
+    
+    var pageView = {
+        init: function () {
+            var self = this;
+
+            self._setDeploy();
+
+            self._updateData();
         },
-        success: function (data) {
-            alert(data);
+
+        _setDeploy: function () {
+            var self = this;
+
+        },
+
+        _updateData: function () {
+            var self = this;
+    
+            widget.ajaxRequest({
+                noMask: true,
+                url: '$local/Tools/getContentArticle',
+                data: {
+                    ArticleId: $stateParams.id
+                },
+                success: function (data) {
+                    alert(data);
+                }
+            });
+
         }
-    });
+    };
+
+    pageView.init();
 
 });

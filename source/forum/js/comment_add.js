@@ -8,22 +8,44 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-    $scope.addComment = function() {
-        var content = angular.element(document.querySelector('.js_textarea')).val();
+    var pageView = {
+        init: function () {
+            var self = this;
 
-        if (!content) return;
+            self._setDeploy();
 
-        widget.ajaxRequest({
-            noMask: true,
-            url: '$local/Tools/setArticleComment',
-            data: {
-                ArticleId: $stateParams.id,
-                Content: content
-            },
-            success: function (data) {
-                alert(data);
-            }
-        });
-    };
+            self._updateData();
+        },
+
+        _setDeploy: function () {
+            var self = this;
+
+        },
+
+        _updateData: function () {
+            var self = this;
+
+            $scope.addComment = function() {
+                var content = angular.element(document.querySelector('.js_textarea')).val();
+
+                if (!content) return;
+
+                widget.ajaxRequest({
+                    noMask: true,
+                    url: '$local/Tools/setArticleComment',
+                    data: {
+                        ArticleId: $stateParams.id,
+                        Content: content
+                    },
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            };
+
+        }
+    }
+
+    pageView.init();
 
 });
