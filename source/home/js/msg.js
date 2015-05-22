@@ -36,35 +36,48 @@ angular.module('phoneApp')
                 var $that = angular.element(e.delegationTarget);
 
                 var type = $that.attr('data-type'),
-                    obj = {
-                        'module': 'home'
-                    };
-                
+                    url = [];
 
                 switch (type) {
                     case 'praise': //--赞
-                        obj.hash = 'msgPraise';
-                        obj.url = '/msg/praise/1';
+                        url = [
+                            'home/#/msg/praise',
+                            'home/index.html#/msg/praise'
+                        ];
                     break;
 
                     case 'comment': //--评论
-                        obj.hash = 'index';
+                        url = [
+                            'home/#/msg/praise',
+                            'home/index.html#/msg/praise'
+                        ];
                     break;
 
                     case 'notice': //--通知
-                        obj.hash = 'msgNotice';
+                        url = [
+                            'home/#/msg/notice',
+                            'home/index.html#/msg/notice'
+                        ];
                     break;
 
                     case 'whisper': //--私聊
-                        obj.hash = 'msgWhisper';
+                        url = [
+                            'home/#/msg/whisper',
+                            'home/index.html#/msg/whisper'
+                        ];
                     break;
 
                     case 'search': //--邀请好友
-                        obj.hash = 'msgSearch';
+                        url = [
+                            'home/#/msg/search',
+                            'home/index.html#/msg/search'
+                        ];
                     break;
                 }
 
-                routerRedirect.toJump(obj);
+                routerRedirect.toJump({
+                    'url': url
+                });
             };
         }
     };

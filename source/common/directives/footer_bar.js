@@ -33,7 +33,7 @@ angular.module('phoneApp')
                         },
                         'url': [
                             name +'/#/'+ hash,
-                            name +'/index.html#/'+ hash
+                            name +'/index.html#/'+ hash +'?from=sssss'
                         ]
                     });
                 }

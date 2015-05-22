@@ -45,9 +45,7 @@
 
                 if (from) {
 
-                    if (typeof(from) == 'string' && self._checkUrl(from)) {
-                        url = from;
-                    }
+                    url = (typeof(from) == 'string' && self._checkUrl(from)) ? from : '';
 
                     if (typeof(from) == 'object') {
                         angular.forEach(from, function(v, k) {
@@ -69,7 +67,9 @@
                 return;
             }
 
-            self._slide(params);
+            alert(window.location.href);
+            
+            // self._slide(params);
         },
 
         /*
@@ -115,8 +115,6 @@
             if (params.url.length > 0) {
                 url = params.url[0];
             }
-
-            alert(params.url[0]);
 
             window.location.href = window.location.origin +'/'+ url;
 

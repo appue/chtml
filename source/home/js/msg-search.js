@@ -21,8 +21,10 @@ angular.module('phoneApp')
             
             //--设置返回
             $scope.backParam = {
-                'module': 'home',
-                'hash': 'msg'
+                'url': [
+                    'home/#/msg',
+                    'home/index.html#/msg'
+                ]
             };
         }
     };
