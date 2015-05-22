@@ -9,7 +9,7 @@ angular.module('phoneApp')
         ['clump/#/find.htm', 'clump/index.html#/find.htm'],
         ['home/#/index', 'home/index.html#/index'],
         ['home/#/msg', 'home/index.html#/msg'],
-        ['home/#/index', 'home/index.html#/index']
+        ['member/#/index', 'member/index.html#/index']
     ];
 
     return {
