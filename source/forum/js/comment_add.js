@@ -20,6 +20,12 @@ angular.module('phoneApp')
         _setDeploy: function () {
             var self = this;
 
+            
+            //--设置返回按钮
+            $scope.backParam = {
+                'module': 'home',
+                'hash': 'msg'
+            };
         },
 
         _updateData: function () {
