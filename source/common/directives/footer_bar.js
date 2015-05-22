@@ -6,7 +6,7 @@ angular.module('phoneApp')
 ) {
     var obj = [
         ['home/#/index', 'home/index.html#/index'],
-        ['clump/#/find.html', 'clump/index.html#/find.htm'],
+        ['clump/#/find.htm', 'clump/index.html#/find.htm'],
         ['home/#/index', 'home/index.html#/index'],
         ['home/#/msg', 'home/index.html#/msg'],
         ['home/#/index', 'home/index.html#/index']
