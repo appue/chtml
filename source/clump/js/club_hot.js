@@ -8,26 +8,54 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-    $scope.jumpClubList = {
-        'module': 'clump',
-        'hash': 'clubList'
+
+    var pageView = {
+        init: function() {
+            var self = this;
+
+            self._setDeploy();
+
+            self._updateData();
+        },
+
+        _setDeploy: function () {
+            var self = this;
+
+            //--查看全部圈子
+            $scope.jumpClubList = {
+                'module': 'clump',
+                'hash': 'clubList'
+            };
+            
+            //--设置返回按钮
+            $scope.backParam = {
+                'module': 'home',
+                'hash': 'msg'
+            };
+        },
+
+        _updateData: function () {
+            var self = this;
+
+            $scope.addReport = function() {
+
+                widget.ajaxRequest({
+                    noMask: true,
+                    url: '$local/Tools/setReportArticle',
+                    data: {
+                        ArticleId: $stateParams.id, //-----帖子ID
+                        Contact: Contact,//-------联系方式
+                        ReportReason: ReportReason//--举报理由
+                    },
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+
+            };
+        }
     };
 
-    $scope.addReport = function() {
-
-        widget.ajaxRequest({
-            noMask: true,
-            url: '$local/Tools/setReportArticle',
-            data: {
-                ArticleId: $stateParams.id, //-----帖子ID
-                Contact: Contact,//-------联系方式
-                ReportReason: ReportReason//--举报理由
-            },
-            success: function (data) {
-                alert(data);
-            }
-        });
-
-    }
+    pageView.init();
 
 });
