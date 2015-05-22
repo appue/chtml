@@ -31,7 +31,7 @@
         *     module: 所属的项目[这种只对H5并且相同模块有效]
         *     hash: hash值[这种只对H5并且相同模块有效]
         *     filter: 传递的参数[这种只对H5并且相同模块有效]
-        *     url: 用于APP的跳转[对非同一模块并且APP中有效]
+        *     url: [h5, app] 用于非同一模块跳转和APP跳转
         */
         toBack: function(params) {
             var self = this;
