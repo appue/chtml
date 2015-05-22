@@ -90,7 +90,6 @@
                 return;
             } 
             
-            alert(params);
             self._toRedirect(params, 1);
 
         },
@@ -168,7 +167,6 @@
         _toAppurl: function(options){
             var self = this;
 
-            alert(options.href);
             window.plugins.nativepagetransitions.slide(
                 options,
                 function (msg) {
