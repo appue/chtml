@@ -1,0 +1,10 @@
+<header-bar back title="专题集锦"></header-bar>
+
+<section class="mod_scroll">
+    <ul class="unit_subject_list">
+        <li ng-repeat="(k, v) in SubjectList" page-jump="{{v.SiteUrl}}">
+            <div>{{v.ShortName}}</div>
+            <img src="{{v.ImageUrl}}" />
+        </li>
+    </ul>
+</section>

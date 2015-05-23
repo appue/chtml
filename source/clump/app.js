@@ -57,6 +57,24 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
         controller: 'tActivityDetailPhoto'
     })
 
+    /*------------------------------------
+    * 专题列表
+    */
+    .state('subjectList', {
+        url: '/subject/list.htm',
+        templateUrl: 'templates/subject_list.html',
+        controller: 'tSubjectList'
+    })
+
+    /*------------------------------------
+    * 专题内容
+    */
+    .state('subjectDetail', {
+        url: '/subject/detail-{id}.htm',
+        templateUrl: 'templates/subject_detail.html',
+        controller: 'tSubjectDetail'
+    })
+
 
 
     /*------------------------------------

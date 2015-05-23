@@ -1,16 +1,17 @@
 /*
-* 发现首页
-* /clump/#/find.html
+* 专题-内容
+* /clump/#/subject/detail.html
 */
 angular.module('phoneApp')
 
-.controller('tFindIndex', function (
+.controller('tSubjectDetail', function (
     $scope, 
     $state, 
     $stateParams, 
     $location, 
     routerRedirect,
-    widget
+    widget,
+    SetFalls
 ){
 
     var pageView = {
@@ -19,48 +20,22 @@ angular.module('phoneApp')
 
             self._setDeploy();
 
+            self._setHeader();
+
             // self._updateData();
+
+            self._setFalls();
         },
 
         _setDeploy: function () {
             var self = this;
+        },
 
-
-            $scope.footerTab = 2;
-
-            //--顶部菜单
-            $scope.urlMenu = [
-                {
-                    'title': '猜你喜欢',
-                    'list': {
-                        'url': [
-                            'clump/#/find/like.htm',
-                            'clump/index.html#/find/like.htm',
-                        ]
-                    }
-                },
-                {
-                    'title': '圈子',
-                    'list': {
-                        'url': [
-                            'clump/#/club/hot.htm',
-                            'clump/index.html#/club/hot.htm',
-                        ]
-                    }
-                },
-                {
-                    'title': '活动',
-                    'list': {
-                        'url': [
-                            'clump/#/activity/list.htm',
-                            'clump/index.html#/activity/list.htm',
-                        ]
-                    }
-                }
-            ];
-
-            //--更多专题
-            $scope.urlSubjectList = {
+        _setHeader: function () {
+            var self = this;
+            
+            //--设置返回按钮
+            $scope.backParam = {
                 'url': [
                     'clump/#/subject/list.htm',
                     'clump/index.html#/subject/list.htm'
@@ -88,6 +63,28 @@ angular.module('phoneApp')
                     alert(data);
                 }
             });
+        },
+
+        _setFalls: function() {
+            var self = this;
+
+            var obj = SetFalls.init({
+                'elem': '.js_falls'
+            }); 
+            
+            console.log(obj);
+
+            if (obj.x <= obj.y) {
+                document.querySelector('.js_falls').style.cssText = 'height:'+ obj.y +'px';
+            } else {
+                document.querySelector('.js_falls').style.cssText = 'height:'+ obj.x +'px';
+            }
+
+            var html = document.querySelectorAll('.js_falls li');
+
+            for(var i=0,len=html.length; i<len; i++) {
+                html[i].style.cssText = obj.layout[i].type +':0;top:'+ obj.layout[i].top +'px';
+            }
         }
     };
 
