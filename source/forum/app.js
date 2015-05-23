@@ -3,14 +3,6 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-    /*------------------------------------
-    * 一级栏目
-    */
-    .state('cateList', {
-        url: '/cate/list-{id}.htm',
-        templateUrl: 'templates/cate_list.html',
-        controller: 'tCateList'
-    })
 
     /*------------------------------------
     * 二级栏目
@@ -28,6 +20,15 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
         url: '/cate/list-last-{id}.htm',
         templateUrl: 'templates/cate_list_last.html',
         controller: 'tCateListLast'
+    })
+    
+    /*------------------------------------
+    * 一级栏目
+    */
+    .state('cateList', {
+        url: '/cate/list-{id}.htm',
+        templateUrl: 'templates/cate_list.html',
+        controller: 'tCateList'
     })
 
     /*------------------------------------
