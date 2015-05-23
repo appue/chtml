@@ -2,7 +2,7 @@
 
 <section class="mod_scroll">
     <ul class="unit_activity_list">
-        <li ng-repeat="(k, v) in DataList" page-jump="{{v.SiteUrl}}">
+        <li ng-repeat="(k, v) in DataList.ActivityList" page-jump="{{v.SiteUrl}}">
             <h2>{{v.ActivityName}}</h2>
             <h3>{{v.Description}}</h3>
             <img ng-if="k < 2" src="{{v.ImageUrl}}" />

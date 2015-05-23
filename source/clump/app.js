@@ -52,9 +52,18 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     * 发现-活动-晒图活动页
     */
     .state('activityDetailPhoto', {
-        url: '/activity/detail/photo.htm',
+        url: '/activity/detail/photo-{id}.htm',
         templateUrl: 'templates/activity_detail_photo.html',
         controller: 'tActivityDetailPhoto'
+    })
+
+    /*------------------------------------
+    * 发现-活动-话题活动页
+    */
+    .state('activityDetailArticle', {
+        url: '/activity/detail/article-{id}.htm',
+        templateUrl: 'templates/activity_article_photo.html',
+        controller: 'tActivityDetailArticle'
     })
 
     /*------------------------------------
