@@ -34,13 +34,27 @@ angular.module('phoneApp')
         _setHeader: function () {
             var self = this;
             
+            console.log($location);
+
             //--设置返回按钮
-            $scope.backParam = {
-                'url': [
-                    'clump/#/subject/list.htm',
-                    'clump/index.html#/subject/list.htm'
-                ]
-            };
+            var isFrom = $location.$$search.isFrom || '',
+                url;
+            if (isFrom == 'find') {
+                url = {
+                    'url': [
+                        'clump/#/find.htm',
+                        'clump/index.html#/find.htm'
+                    ]
+                };
+            } else {
+                url = {
+                    'url': [
+                        'clump/#/subject/list.htm',
+                        'clump/index.html#/subject/list.htm'
+                    ]
+                };
+            }
+            $scope.backParam = url;
         },
 
         _updateData: function () {
@@ -72,7 +86,7 @@ angular.module('phoneApp')
                 'elem': '.js_falls'
             }); 
             
-            console.log(obj);
+            // console.log(obj);
 
             if (obj.x <= obj.y) {
                 document.querySelector('.js_falls').style.cssText = 'height:'+ obj.y +'px';

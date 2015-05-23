@@ -19,7 +19,7 @@ angular.module('phoneApp')
 
             self._setDeploy();
 
-            // self._updateData();
+            self._updateData();
         },
 
         _setDeploy: function () {
@@ -71,23 +71,111 @@ angular.module('phoneApp')
         _updateData: function () {
             var self = this;
 
-            /*
-            * 1、每个圈子当天发帖量多的排前面，每24小时会自动更新一次（取前20个）
-            * 2、圈子ID降序
-            * 3、圈子发帖时间降序
-            * 4、圈子发帖时间升序
-            * 5、字母排序（所有的圈子全部吐出）
-            */
-            widget.ajaxRequest({
-                noMask: true,
-                url: '$local/Tools/getListClub',
-                data: {
-                    SortType: 5
-                },
-                success: function (data) {
-                    alert(data);
-                }
-            });
+            $scope.DataList = {
+                SubjectList: [
+                    {
+                        SubjectId: 1,
+                        ShortName: '送给孩子们的礼物',
+                        ImageUrl: '../themes/temp/1.jpg',
+                        SiteUrl: {
+                            'url': [
+                                'clump/#/subject/detail-1.htm?isFrom=find',
+                                'clump/index.html#/subject/detail-1.htm?isFrom=find'
+                            ]
+                        }
+                    },
+                    {
+                        SubjectId: 2,
+                        ShortName: '送给孩子们的礼物',
+                        ImageUrl: '../themes/temp/2.jpg',
+                        SiteUrl: {
+                            'url': [
+                                'clump/#/subject/detail-1.htm?isFrom=find',
+                                'clump/index.html#/subject/detail-1.htm?isFrom=find'
+                            ]
+                        }
+                    },
+                    {
+                        SubjectId: 3,
+                        ShortName: '送给孩子们的礼物',
+                        ImageUrl: '../themes/temp/3.jpg',
+                        SiteUrl: {
+                            'url': [
+                                'clump/#/subject/detail-1.htm?isFrom=find',
+                                'clump/index.html#/subject/detail-1.htm?isFrom=find'
+                            ]
+                        }
+                    }
+                ],
+
+                CategoryList: [
+                    {
+                        CateId: 1,
+                        CateName: '教案',
+                        SiteUrl: {
+                            'url': [
+                                'clump/#/subject/detail-1.htm',
+                                'clump/index.html#/subject/detail-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 2,
+                        CateName: '总结',
+                        SiteUrl: {
+                            'url': [
+                                'clump/#/subject/detail-1.htm',
+                                'clump/index.html#/subject/detail-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '玩教具',
+                        SiteUrl: {
+                            'url': [
+                                'clump/#/subject/detail-1.htm',
+                                'clump/index.html#/subject/detail-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 4,
+                        CateName: '环境创设'
+                    },
+                    {
+                        CateId: 5,
+                        CateName: '手工'
+                    },
+                    {
+                        CateId: 6,
+                        CateName: '手工'
+                    },
+                    {
+                        CateId: 7,
+                        CateName: '手工'
+                    },
+                    {
+                        CateId: 8,
+                        CateName: '手工'
+                    },
+                    {
+                        CateId: 9,
+                        CateName: '手工'
+                    },
+                    {
+                        CateId: 10,
+                        CateName: '手工'
+                    }
+                ]
+            };
+            // widget.ajaxRequest({
+            //     noMask: true,
+            //     url: '$local/Tools/getFindHome',
+            //     success: function (data) {
+            //         alert(data);
+            //     }
+            // });
         }
     };
 

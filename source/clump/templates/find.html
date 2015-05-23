@@ -21,17 +21,9 @@
 
     <div class="unit_find_subject">
         <ul>
-            <li>
-                <img src="../themes/temp/6.jpg" />
-                送给孩子们的礼物
-            </li>
-            <li>
-                <img src="../themes/temp/6.jpg" />
-                送给孩子们的礼物
-            </li>
-            <li>
-                <img src="../themes/temp/6.jpg" />
-                送给孩子们的礼物
+            <li ng-repeat="(k, v) in DataList.SubjectList" page-jump="{{v.SiteUrl}}">
+                <img src="{{v.ImageUrl}}" />
+                {{v.ShortName}}
             </li>
             <li page-jump="{{urlSubjectList}}" class="this_more">
                 更多
@@ -42,22 +34,9 @@
     <div class="unit_find_cate">
         <div>
             <ul>
-                <li>教案</li>
-                <li>计划</li>
-                <li>总结</li>
-                <li>玩教具</li>
-                <li>环境创设</li>
-                <li>手工</li>
-            </ul>
-
-
-            <ul>
-                <li>教案</li>
-                <li>计划</li>
-                <li>总结</li>
-                <li>玩教具</li>
-                <li>环境创设</li>
-                <li>手工</li>
+                <li ng-repeat="(k, v) in DataList.CategoryList" page-jump="{{v.SiteUrl}}">
+                    {{v.CateName}}
+                </li>
             </ul>
         </div>
     </div>
