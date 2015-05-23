@@ -4,6 +4,15 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     $stateProvider
 
     /*------------------------------------
+    * 一级栏目
+    */
+    .state('cateList', {
+        url: '/cate/list.htm',
+        templateUrl: 'templates/cate_list.html',
+        controller: 'tCateList'
+    })
+
+    /*------------------------------------
     * 帖子内容
     * @params:
     *     id: 帖子ID
