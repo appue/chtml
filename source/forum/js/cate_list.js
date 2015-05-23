@@ -22,7 +22,7 @@ angular.module('phoneApp')
 
             self._setHeader();
 
-            // self._updateData();
+            self._updateData();
 
             self._setFalls();
         },
@@ -45,17 +45,62 @@ angular.module('phoneApp')
 
         _updateData: function () {
             var self = this;
+
+            $scope.DataList = {
+                CategoryList: [
+                    {
+                        CateId: 1,
+                        CateName: '大班',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-sub-1.htm',
+                                'forum/index.html#/cate/list-sub-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 2,
+                        CateName: '中班',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-sub-2.htm',
+                                'forum/index.html#/cate/list-sub-2.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '小班',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-sub-3.htm',
+                                'forum/index.html#/cate/list-sub-3.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 4,
+                        CateName: '托班',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-sub-1.htm',
+                                'forum/index.html#/cate/list-sub-1.htm'
+                            ]
+                        }
+                    }
+                ],
+            };
     
-            widget.ajaxRequest({
-                noMask: true,
-                url: '$local/Tools/getContentArticle',
-                data: {
-                    ArticleId: $stateParams.id
-                },
-                success: function (data) {
-                    alert(data);
-                }
-            });
+            // widget.ajaxRequest({
+            //     noMask: true,
+            //     url: '$local/Tools/getContentArticle',
+            //     data: {
+            //         ArticleId: $stateParams.id
+            //     },
+            //     success: function (data) {
+            //         alert(data);
+            //     }
+            // });
 
         },
 

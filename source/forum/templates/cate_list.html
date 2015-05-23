@@ -3,10 +3,9 @@
 <section class="scrollfix">
     <div class="unit_find_cate_two">
         <ul class="this_list_cate">
-            <li>#大班</li>
-            <li>#中班</li>
-            <li>#小班</li>
-            <li>#托班</li>
+            <li ng-repeat="(k, v) in DataList.CategoryList" page-jump="{{v.SiteUrl}}">
+                #{{v.CateName}}
+            </li>
         </ul>
     </div>
 

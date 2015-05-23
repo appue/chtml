@@ -3,12 +3,9 @@
 <section class="scrollfix">
     <div class="unit_find_cate_three">
         <ul class="this_list_cate">
-            <li>#语言</li>
-            <li>#美工</li>
-            <li>#数学</li>
-            <li>#科学</li>
-            <li>#音乐</li>
-            <li>#健康</li>
+            <li ng-repeat="(k, v) in DataList.CategoryList" page-jump="{{v.SiteUrl}}">
+                #{{v.CateName}}
+            </li>
         </ul>
     </div>
 

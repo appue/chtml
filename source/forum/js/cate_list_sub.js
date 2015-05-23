@@ -22,7 +22,7 @@ angular.module('phoneApp')
 
             self._setHeader();
 
-            // self._updateData();
+            self._updateData();
 
             self._setFalls();
         },
@@ -45,17 +45,82 @@ angular.module('phoneApp')
 
         _updateData: function () {
             var self = this;
+
+            $scope.DataList = {
+                CategoryList: [
+                    {
+                        CateId: 1,
+                        CateName: '语言',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-last-1.htm',
+                                'forum/index.html#/cate/list-last-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 2,
+                        CateName: '美工',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-last-1.htm',
+                                'forum/index.html#/cate/list-last-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '数学',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-last-1.htm',
+                                'forum/index.html#/cate/list-last-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 4,
+                        CateName: '科学',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-last-1.htm',
+                                'forum/index.html#/cate/list-last-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 4,
+                        CateName: '音乐',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-last-1.htm',
+                                'forum/index.html#/cate/list-last-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 4,
+                        CateName: '健康',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-last-1.htm',
+                                'forum/index.html#/cate/list-last-1.htm'
+                            ]
+                        }
+                    }
+                ],
+            };
     
-            widget.ajaxRequest({
-                noMask: true,
-                url: '$local/Tools/getContentArticle',
-                data: {
-                    ArticleId: $stateParams.id
-                },
-                success: function (data) {
-                    alert(data);
-                }
-            });
+            // widget.ajaxRequest({
+            //     noMask: true,
+            //     url: '$local/Tools/getContentArticle',
+            //     data: {
+            //         ArticleId: $stateParams.id
+            //     },
+            //     success: function (data) {
+            //         alert(data);
+            //     }
+            // });
 
         },
 
