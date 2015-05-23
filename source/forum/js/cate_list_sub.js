@@ -1,10 +1,10 @@
 /*
-* 发现-一级栏目-列表
-* /clump/#/cate/list-{id}.html
+* 发现-二级栏目-列表
+* /clump/#/cate/list-sub-{id}.html
 */
 angular.module('phoneApp')
 
-.controller('tCateList', function (
+.controller('tCateListSub', function (
     $scope, 
     $state, 
     $stateParams, 
@@ -37,8 +37,8 @@ angular.module('phoneApp')
             //--设置返回按钮
             $scope.backParam = {
                 'url': [
-                    'clump/#/find.htm',
-                    'clump/index.html#/find.htm'
+                    'forum/#/cate/list-1.htm',
+                    'forum/index.html#/cate/list-1.htm'
                 ]
             };
         },

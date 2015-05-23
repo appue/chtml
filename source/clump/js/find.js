@@ -114,8 +114,8 @@ angular.module('phoneApp')
                         CateName: '教案',
                         SiteUrl: {
                             'url': [
-                                'clump/#/subject/detail-1.htm',
-                                'clump/index.html#/subject/detail-1.htm'
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
                             ]
                         }
                     },
@@ -124,8 +124,8 @@ angular.module('phoneApp')
                         CateName: '总结',
                         SiteUrl: {
                             'url': [
-                                'clump/#/subject/detail-1.htm',
-                                'clump/index.html#/subject/detail-1.htm'
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
                             ]
                         }
                     },
@@ -134,38 +134,10 @@ angular.module('phoneApp')
                         CateName: '玩教具',
                         SiteUrl: {
                             'url': [
-                                'clump/#/subject/detail-1.htm',
-                                'clump/index.html#/subject/detail-1.htm'
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
                             ]
                         }
-                    },
-                    {
-                        CateId: 4,
-                        CateName: '环境创设'
-                    },
-                    {
-                        CateId: 5,
-                        CateName: '手工'
-                    },
-                    {
-                        CateId: 6,
-                        CateName: '手工'
-                    },
-                    {
-                        CateId: 7,
-                        CateName: '手工'
-                    },
-                    {
-                        CateId: 8,
-                        CateName: '手工'
-                    },
-                    {
-                        CateId: 9,
-                        CateName: '手工'
-                    },
-                    {
-                        CateId: 10,
-                        CateName: '手工'
                     }
                 ]
             };

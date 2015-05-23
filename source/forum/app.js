@@ -7,9 +7,27 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     * 一级栏目
     */
     .state('cateList', {
-        url: '/cate/list.htm',
+        url: '/cate/list-{id}.htm',
         templateUrl: 'templates/cate_list.html',
         controller: 'tCateList'
+    })
+
+    /*------------------------------------
+    * 二级栏目
+    */
+    .state('cateListSub', {
+        url: '/cate/list-sub-{id}.htm',
+        templateUrl: 'templates/cate_list_sub.html',
+        controller: 'tCateListSub'
+    })
+
+    /*------------------------------------
+    * 三级栏目
+    */
+    .state('cateListLast', {
+        url: '/cate/list-last-{id}.htm',
+        templateUrl: 'templates/cate_list_last.html',
+        controller: 'tCateListLast'
     })
 
     /*------------------------------------
