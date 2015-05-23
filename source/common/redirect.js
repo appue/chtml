@@ -141,12 +141,11 @@
                 var fromUrl;
 
                 window.location.href.replace(/.*\?/g, '?').toLowerCase().replace((/(?:[\?&])(\w+)=([^#&\s]*)/g), function (a, f, s) {
-                    // if (f == 'from') {
-                    // }
 
-                    fromUrl = decodeURIComponent(s);
+                    fromUrl = (f == 'from') ? decodeURIComponent(s) : '';
+
                 });
-
+                
                 // angular.forEach(arr, function(v, k) {
                 //     if (self._checkUrl(v)) {
                 //         fromUrl = v;

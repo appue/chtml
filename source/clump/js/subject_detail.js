@@ -33,28 +33,24 @@ angular.module('phoneApp')
 
         _setHeader: function () {
             var self = this;
-            
-            console.log($location);
 
             //--设置返回按钮
-            var isFrom = $location.$$search.isFrom || '',
-                url;
+            var isFrom = $location.$$search.isFrom || '';
             if (isFrom == 'find') {
-                url = {
+                $scope.backParam = {
                     'url': [
                         'clump/#/find.htm',
                         'clump/index.html#/find.htm'
                     ]
                 };
             } else {
-                url = {
+                $scope.backParam = {
                     'url': [
                         'clump/#/subject/list.htm',
                         'clump/index.html#/subject/list.htm'
                     ]
                 };
             }
-            $scope.backParam = url;
         },
 
         _updateData: function () {
