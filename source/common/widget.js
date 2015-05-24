@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('phoneApp').factory('widget', function ($http, $rootScope, $state, $compile, $timeout) {
+angular.module('phoneApp').factory('widget', function ($http, $cacheFactory, $rootScope, $compile, $timeout, cachePool) {
 
     /**
      * toast提示层
@@ -25,6 +25,27 @@ angular.module('phoneApp').factory('widget', function ($http, $rootScope, $state
             $rootScope.notification = '';
         }, time || 2000);
 
+    };
+
+    /**
+     * 数据缓存 所有缓存都在数据池里操作
+     * @param key
+     * @param data 如果data不存在，则为取缓存，如果存在，则重写key的值
+     */
+    var dataPool = $cacheFactory('dataPool');
+    var cacheData = function (key, data) {
+
+        if (!angular.isString(key)) {
+            return false;
+        }
+
+        var tmpCache = dataPool.get(key);
+
+        if (data) {
+            dataPool.put(key, data); //缓存数据
+        } else {
+            return tmpCache ? tmpCache : false;
+        }
     };
 
     /**
@@ -168,7 +189,7 @@ angular.module('phoneApp').factory('widget', function ($http, $rootScope, $state
         }
 
         var data = param.data || {};
-        
+
         //--数据改造加用户信息start
         //-------------ToDo
         var user = {
@@ -176,24 +197,24 @@ angular.module('phoneApp').factory('widget', function ($http, $rootScope, $state
             'Auth': 'asdfasdf'
         };
 
-        localStorage.setItem('UserInfo', JSON.stringify(user));
+        cachePool.push('UserInfo', user, 2 / 24); //此处之后移动到登录页面
         //-------------ToDo
 
         var obj = {
                 UserId: '',
                 Auth: ''
             },
-            UserInfo = localStorage.getItem('UserInfo') || '';
+            UserInfo = cachePool.pull('UserInfo');
 
         if (UserInfo) {
             obj = {
                 Header: {
-                    UserId: JSON.parse(UserInfo).UserId,
-                    Auth: JSON.parse(UserInfo).Auth
+                    UserId: UserInfo.UserId,
+                    Auth: UserInfo.Auth
                 }
             };
         }
-        
+
         data = angular.extend({}, data, obj);
         //--数据改造加用户信息end
 
@@ -262,9 +283,10 @@ angular.module('phoneApp').factory('widget', function ($http, $rootScope, $state
     };
 
     return {
+        msgToast: msgToast,
+        cacheData: cacheData,
         safeApply: safeApply,
         stickyTopScroll: stickyTopScroll,
-        msgToast: msgToast,
         ajaxRequest: ajaxRequest
     };
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('phoneApp').factory('DataCachePool', function () {
+angular.module('phoneApp').factory('cachePool', function () {
 
     var fetchItem = function (key) {
         if (!key) {
@@ -17,6 +17,7 @@ angular.module('phoneApp').factory('DataCachePool', function () {
         if (!item) {
             return null;
         }
+
         return item;
     };
 
@@ -25,23 +26,17 @@ angular.module('phoneApp').factory('DataCachePool', function () {
     /**
      * 设置本地存储的值
      * @param key 本地存储name
-     * @param dataObj 本地存储对象，可以包含属性，如果是非object，则直接赋值给value属性，否则取对象属性
-     * @param expires 是否加过期时间限制
+     * @param data 本地存储对象
+     * @param expires 过期时间(可选)
      */
-    var pushData = function (key, dataObj, expires) {
-        if (!key || !dataObj) {
+    var pushData = function (key, data, expires) {
+        if (!key || !data) {
             return;
         }
 
-        var item = fetchItem(key) || {},
-            dataKey = 'value';
+        var item = fetchItem(key) || {};
 
-        if (typeof dataObj === 'object' && !angular.isArray(dataObj)) {
-            dataKey = dataObj.DataKey ? dataObj.DataKey : 'value';
-            item[dataKey] = dataObj.Data || undefined;
-        } else {
-            item[dataKey] = dataObj || undefined;
-        }
+        item.value = data || undefined; //暂时先取value键值，不做自定义处理
 
         item.expired = expires ? (Date.now() + ONE_DAY * expires) : undefined;
 
@@ -51,17 +46,16 @@ angular.module('phoneApp').factory('DataCachePool', function () {
     /**
      * 获取本地存储的值
      * @param key 本地存储name
-     * @param dataKey 本地存储name中的属性name
      * expired如果存在，则判断是否过期，不存在就是永久值
      */
-    var pullData = function (key, dataKey) {
+    var pullData = function (key) {
         var item = fetchItem(key),
             data;
 
         if (!item || item.expired && item.expired <= Date.now()) {
             return null;
         } else {
-            data = item[dataKey || 'value'];
+            data = item['value'];
         }
 
         return data;

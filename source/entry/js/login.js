@@ -2,6 +2,13 @@ angular.module('phoneApp')
 
 .controller('loginCtrl', function ($scope, widget) {
 
+	$scope.backParam = { //--设置返回按钮
+		'url': [
+			'entry/#/',
+			'entry/index.html#/'
+		]
+	};
+
 	$scope.inputVal = {}; //初始化ng-model
 
 	$scope.goLogin = function () {

@@ -1,13 +1,13 @@
-<header-bar back="{'module':'entry','hash':'registerCreate', 'url': '/register/create'}" right="下一步|goNextStep" title="<span>（</span>2<span>/3）</span>创建个人资料"></header-bar>
+<header-bar back right="下一步|goNextStep" title="<span>（</span>2<span>/3）</span>设置账号和密码"></header-bar>
 
 <section class="register_layout mod_scroll">
     <div class="mod_layout">
         <p class="account_password_tip">设置用于登录师乐汇的手机号和密码</p>
         <ul class="mod_list_default">
             <li class="phone">
-                <input type="number" placeholder="手机号码"></li>
+                <input ng-model="inputVal.phone" type="number" placeholder="手机号码"></li>
             <li class="password">
-                <input type="password" placeholder="密码"></li>
+                <input ng-model="inputVal.password" type="password" placeholder="密码"></li>
         </ul>
     </div>
 </section>

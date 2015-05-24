@@ -1,22 +1,38 @@
-userEntry.controller('registerVcodeCtrl', function ($scope, $state, $timeout, $stateParams) {
+userEntry.controller('registerVcodeCtrl', function ($scope, routerRedirect, widget) {
 
-    $scope.popupConfirm = function (arg) {
-        console.log(arg);
+    $scope.backParam = { //--设置返回按钮
+        'url': [
+            'entry/#/register/account.htm',
+            'entry/index.html#/register/account.htm'
+        ]
     };
 
-    $scope.itemClick = function (e) {
-        var $that = angular.element(e.delegationTarget);
+    $scope.goDone = function () { //点击去注册完成页
 
-        console.log($that);
+        if (!$scope.inputVal.phone) {
+            widget.msgToast('请输入手机号码');
+            return;
+        }
 
-        //todo...
+        if (!$scope.inputVal.password) {
+            widget.msgToast('请输入密码');
+            return;
+        }
 
-        // 注：
-        // e 原始的event对象，但是增加了delegationTarget => 代理target元素
-        //
-        // 对于selector这块，如果引用了jQuery的话，则支持的是jquery的选择器
-        // 对于支持matchesSelector的浏览器来说，支持的就是标准的选择器；
-        // 否则的话只能支持tagName...
+        if ($scope.inputVal.password.length <= 5) {
+            widget.msgToast('密码必须大于或等于6位');
+            return;
+        }
+
+        widget.cacheData('accountData', $scope.inputVal);
+
+        routerRedirect.toJump({
+            'url': [
+                'entry/#/register/vcode.htm',
+                'entry/index.html#/register/vcode.htm'
+            ]
+        });
+
     };
 
 });

@@ -1,16 +1,17 @@
 userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, routerRedirect, widget) {
 
-    var personalData = $cacheFactory.get('personalData');
+    $scope.backParam = { //--设置返回按钮
+        'url': [
+            'entry/#/',
+            'entry/index.html#/'
+        ]
+    };
 
-    if (personalData) {
-        $scope.inputVal = personalData.info();
-    } else {
-        $scope.inputVal = {
-            gender: 1,
-            post: '园长',
-            tmpPost: '园长'
-        };
-    }
+    $scope.inputVal = widget.cacheData('personalData') || {
+        gender: 1,
+        post: '园长',
+        tmpPost: '园长'
+    };
 
     $scope.goNextStep = function () { //检查手机号码
 
@@ -19,17 +20,15 @@ userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, rout
             return;
         }
 
-        if (personalData) {
-            personalData.destroy();
-        }
-
-        $cacheFactory('personalData', $scope.inputVal); //缓存数据
+        widget.cacheData('personalData', $scope.inputVal);
 
         routerRedirect.toJump({
-            'module': 'entry',
-            'hash': 'registerAccount',
-            'url': '/register/account'
+            'url': [
+                'entry/#/register/account.htm',
+                'entry/index.html#/register/account.htm'
+            ]
         });
+
     };
 
     $scope.popupConfirm = function () {

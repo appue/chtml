@@ -57,7 +57,6 @@ body {
     -webkit-text-size-adjust: none;
     font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 }
-
 a {
     text-decoration: none;
     outline: 0;
@@ -68,6 +67,13 @@ a:visited {
 }
 a:active, button:active {
     opacity: 0.7;
+}
+a.disable, button.disable {
+    opacity: 1 !important;
+    background-color: #ddd !important;
+    &.no_background {
+        background-color: transparent !important;
+    }
 }
 //文字超出显示...
 @mixin ellipsis {

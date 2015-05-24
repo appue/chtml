@@ -1,56 +1,13 @@
-userEntry.controller('loginResetCtrl', function ($scope, $stateParams, routerRedirect, widget) {
+userEntry.controller('loginResetCtrl', function ($scope, $cacheFactory, $stateParams, routerRedirect, widget) {
 
-    if (!$stateParams.phone) { //如果电话号码不存在，则返回上一页
-        routerRedirect.toJump({
-            'module': 'entry',
-            'hash': 'loginForget',
-            'url': '/login/forget'
-        });
-    }
-
-    $scope.vHtml = '重新发送';
-    $scope.vDisable = true;
-    $scope.inputVal = {};
-
-    $scope.resendMessage = function (disable) {
-
-        if (disable) {
-            return;
-        }
-
-        widget.ajaxRequest({
-            noMask: true,
-            url: '$local/Tools/SendCheckCode',
-            data: {
-                Mobile: $stateParams.phone
-            },
-            success: function (data) {
-                var time = 30,
-                    countdown = function () { //倒计时
-                        if (time > 0) {
-                            $scope.vHtml = '重新发送' + time;
-                            time--;
-                            $timeout(countdown, 1000);
-                        } else {
-                            $scope.vHtml = '重发验证码';
-                            $scope.vDisable = false;
-                        }
-                    };
-
-                if (data.ShortMessage) {
-                    widget.msgToast(data.ShortMessage);
-                    $scope.vDisable = true;
-                    $timeout(countdown, 0);
-                } else {
-                    widget.msgToast(data.msg || '手机号无效');
-                }
-
-            }
-        });
-
+    $scope.backParam = { //--设置返回按钮
+        'url': [
+            'entry/#/login/forget.htm',
+            'entry/index.html#/login/forget.htm'
+        ]
     };
 
-    $scope.resendMessage(false); //页面首次请求
+    $scope.inputVal = {};
 
     $scope.submitPassword = function () {
         if (!$scope.inputVal.vcode) {

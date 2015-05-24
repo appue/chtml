@@ -1,5 +1,12 @@
 userEntry.controller('entryCtrl', function ($scope, routerRedirect, widget) {
 
+	$scope.goLoginPage = {
+		'url': [
+			'entry/#/login.htm',
+			'entry/index.html#/login.htm'
+		]
+	};
+
 	$scope.popupConfirm = function (arg) {
 		console.log(arg);
 	};
@@ -14,9 +21,10 @@ userEntry.controller('entryCtrl', function ($scope, routerRedirect, widget) {
 			break;
 		case 'icon_mobile':
 			routerRedirect.toJump({
-				'module': 'entry',
-				'hash': 'registerCreate',
-				'url': '/register/create'
+				'url': [
+					'entry/#/register/create.htm',
+					'entry/index.html#/register/create.htm'
+				]
 			});
 			break;
 		case 'icon_qq':

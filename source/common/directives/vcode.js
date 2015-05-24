@@ -3,65 +3,63 @@
 angular.module('phoneApp')
 
 // 获取验证码
-.directive('getVerificationcode', function ($timeout, $rootScope, Util, DataCachePool) {
+.directive('getVcode', function ($stateParams, $timeout, routerRedirect, widget) {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
 
-            scope.validationDisabled = false; //验证码不可用
-            scope.validationEnable = true; //验证码可用
+            if (!$stateParams.phone) { //如果电话号码不存在，则返回上一页
+                routerRedirect.toJump(scope.backParam);
+            }
 
-            element.on('click', function () {
+            var vDisable = false;
 
-                if (!scope.inputVal.phoneNumber) {
-                    Util.msgToast('请输入手机号码');
+            function resendVcode() {
+
+                if (vDisable) {
                     return;
+                } else {
+                    vDisable = true;
                 }
 
-                if (!/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(scope.inputVal.phoneNumber)) {
-                    Util.msgToast('手机号码格式不合法');
-                    return;
-                }
-
-                if (attr.change && scope.inputVal.phoneNumber === DataCachePool.pull('USERNAME')) {
-                    Util.msgToast('请输入新的手机号码');
-                    return;
-                }
-
-                Util.ajaxRequest({
+                widget.ajaxRequest({
                     noMask: true,
-                    url: '$server/Tools/SendCheckCode',
+                    url: '$local/Tools/SendCheckCode',
                     data: {
-                        Mobile: scope.inputVal.phoneNumber
+                        Mobile: $stateParams.phone
                     },
                     success: function (data) {
                         var time = 30,
                             countdown = function () { //倒计时
                                 if (time > 0) {
-                                    scope.validationHtml = '重新发送' + time;
+                                    element.text('重新发送' + time);
                                     time--;
                                     $timeout(countdown, 1000);
                                 } else {
-                                    scope.validationHtml = '重新发送' + time;
-                                    scope.validationEnable = true;
-                                    scope.validationDisabled = false;
+                                    vDisable = false;
+                                    element.text('重发验证码').removeClass('disable');
                                 }
                             };
 
                         if (data.ShortMessage) {
-                            Util.msgToast(data.ShortMessage);
-                            scope.validationDisabled = true;
-                            scope.validationEnable = false;
-                            $timeout(countdown, 0);
+
+                            vDisable = true;
+                            element.addClass('disable');
+                            $timeout(countdown, 0); //开始倒计时
+                            widget.msgToast(data.ShortMessage);
+
                         } else {
-                            Util.msgToast(data.msg || '手机号无效');
+                            widget.msgToast(data.msg || '手机号无效');
                         }
 
                     }
                 });
 
+            };
 
-            });
+            resendVcode(); //页面首次请求
+
+            element.text('重新发送').addClass('disable').on('click', resendVcode);
 
         }
     };
