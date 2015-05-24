@@ -179,7 +179,7 @@
         
         _checkUrl : function (url) {
             return (url.indexOf("http://") >= 0 || url.indexOf("https://") >= 0);
-        },
+        }
     };
 
     return routerRedirect;
