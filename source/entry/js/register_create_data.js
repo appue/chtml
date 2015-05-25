@@ -7,10 +7,18 @@ userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, rout
         ]
     };
 
-    $scope.inputVal = widget.cacheData('personalData') || {
+    $scope.inputVal = widget.cacheData('personalData') || { //数据初始化
         gender: 1,
         post: '园长',
-        tmpPost: '园长'
+        tmpPost: '园长',
+        cityId: '1',
+        cityName: '上海',
+        villageId: '11',
+        villageName: '长宁区',
+        tmpCityId: '1',
+        tmpCityName: '上海',
+        tmpVillageId: '11',
+        tmpVillageName: '长宁区'
     };
 
     $scope.goNextStep = function () { //检查手机号码
@@ -31,23 +39,26 @@ userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, rout
 
     };
 
-    $scope.popupConfirm = function () {
-        console.log($scope.inputVal);
-    };
+    $scope.itemClick = function (e) { //所在地选择
+        var $that = angular.element(e.delegationTarget),
+            name = $that.text(),
+            cityId = $that.attr('data-cityId'),
+            villageId = $that.attr('data-villageId');
 
-    $scope.itemClick = function (e) {
-        var $that = angular.element(e.delegationTarget);
+        $that.parent('ul').find('li').removeClass('current');
 
-        console.log($that);
+        $that.addClass('current');
 
-        //todo...
+        if (cityId) {
+            $scope.inputVal.tmpCityId = cityId;
+            $scope.inputVal.tmpCityName = name;
+        }
 
-        // 注：
-        // e 原始的event对象，但是增加了delegationTarget => 代理target元素
-        //
-        // 对于selector这块，如果引用了jQuery的话，则支持的是jquery的选择器
-        // 对于支持matchesSelector的浏览器来说，支持的就是标准的选择器；
-        // 否则的话只能支持tagName...
+        if (villageId) {
+            $scope.inputVal.tmpVillageId = cityId;
+            $scope.inputVal.tmpVillageName = name;
+        }
+
     };
 
 });

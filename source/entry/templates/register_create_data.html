@@ -16,30 +16,28 @@
                     <label>男</label>
                 </span>
             </li>
-            <li show-popup="chooseLocation" class="location">北京市 海淀区</li>
+            <li show-popup="chooseLocation" class="location">{{inputVal.cityName}} {{inputVal.villageName}}</li>
             <li show-popup="choosePost" class="post">{{inputVal.post}}</li>
         </ul>
     </div>
 </section>
 
-<popup id="chooseLocation" title="选择位置" popup-confirm="popupConfirm">
-    <div class="chosen_location">
+<popup id="chooseLocation" title="选择位置" popup-confirm="inputVal.cityId = inputVal.tmpCityId;inputVal.cityName = inputVal.tmpCityName;inputVal.villageId = inputVal.tmpVillageId;inputVal.villageName = inputVal.tmpVillageName;">
+    <div class="chosen_location" ngd-click="itemClick($event)" selector="li">
         <div class="select_box">
-            <div class="line"></div>
             <ul>
-                <li>北京</li>
-                <li>上海</li>
-                <li>广州</li>
-                <li>厦门</li>
+                <li data-cityId="1">上海</li>
+                <li data-cityId="2">北京</li>
+                <li data-cityId="3">广州</li>
+                <li data-cityId="4">厦门</li>
             </ul>
         </div>
         <div class="select_box">
-            <div class="line"></div>
             <ul>
-                <li>长宁区</li>
-                <li>徐汇徐</li>
-                <li>浦东新区</li>
-                <li>闸北区</li>
+                <li data-villageId="11">长宁区</li>
+                <li data-villageId="12">徐汇徐</li>
+                <li data-villageId="13">浦东新区</li>
+                <li data-villageId="14">闸北区</li>
             </ul>
         </div>
     </div>
