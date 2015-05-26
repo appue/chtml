@@ -10,15 +10,8 @@ userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, rout
     $scope.inputVal = widget.cacheData('personalData') || { //数据初始化
         gender: 1,
         post: '园长',
-        tmpPost: '园长',
-        cityId: '1',
-        cityName: '上海',
-        villageId: '11',
-        villageName: '长宁区',
-        tmpCityId: '1',
-        tmpCityName: '上海',
-        tmpVillageId: '11',
-        tmpVillageName: '长宁区'
+        city: null,
+        village: null
     };
 
     $scope.goNextStep = function () { //检查手机号码
@@ -39,26 +32,67 @@ userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, rout
 
     };
 
-    $scope.itemClick = function (e) { //所在地选择
+    $scope.chooseLocation = function (e) { //所在地选择
         var $that = angular.element(e.delegationTarget),
             name = $that.text(),
-            cityId = $that.attr('data-cityId'),
-            villageId = $that.attr('data-villageId');
+            city = $that.attr('data-city'),
+            village = $that.attr('data-village');
 
         $that.parent('ul').find('li').removeClass('current');
 
         $that.addClass('current');
 
-        if (cityId) {
-            $scope.inputVal.tmpCityId = cityId;
-            $scope.inputVal.tmpCityName = name;
+        if (city) {
+            $scope.tmpCity = $scope.$eval(city);
         }
 
-        if (villageId) {
-            $scope.inputVal.tmpVillageId = cityId;
-            $scope.inputVal.tmpVillageName = name;
+        if (village) {
+            $scope.tmpVillage = $scope.$eval(village);
         }
 
     };
+
+    $scope.choosePost = function (e) { //岗位选择
+        var $that = angular.element(e.delegationTarget);
+
+        if ($that.length > 0) { //选择
+            $scope.tmpPost = $that.find('label').text();
+        } else { //确定
+            $scope.inputVal.post = $scope.tmpPost;
+        }
+
+    };
+
+    //todo...
+    $scope.cityList = [{
+        Id: 1,
+        Name: '上海'
+    }, {
+        Id: 2,
+        Name: '北京'
+    }, {
+        Id: 3,
+        Name: '广州'
+    }, {
+        Id: 4,
+        Name: '厦门'
+    }];
+
+    $scope.villageList = [{
+        Id: 11,
+        Name: '长宁区'
+    }, {
+        Id: 12,
+        Name: '徐汇徐'
+    }, {
+        Id: 13,
+        Name: '浦东新区'
+    }, {
+        Id: 14,
+        Name: '闸北区'
+    }];
+
+    $scope.inputVal.city = $scope.inputVal.city || $scope.cityList[0];
+    $scope.inputVal.village = $scope.inputVal.village || $scope.villageList[0];
 
 });
