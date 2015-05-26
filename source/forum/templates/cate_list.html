@@ -16,7 +16,8 @@
 
     <section class="js_content">
         <!--瀑布流-->
-        <ul class="js_falls mod_list_falls">
+        <div>
+        <ul class="mod_list_falls">
             <li ng-repeat="(k, v) in DataList.ArticleList" data-y="{{v.Images[0].Height}}">
                 <div class="this_border">
                     <a page-jump="{{v.SiteUrl}}">
@@ -40,6 +41,7 @@
                 </div>
             </li>
         </ul>
+        </div>
 
         <!--垂直平铺-->
         <ul class="mod_list_img_only" style="display:none;">
