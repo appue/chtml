@@ -11,6 +11,13 @@ angular.module('phoneApp')
         var raw = elm[0];
 
         elm.bind('scroll', function () {
+            var op = (raw.scrollTop / 100).toFixed(1);
+            if (op >= 1) {
+                op = 1;
+            }
+
+            elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
+
             if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
                 scope.$apply(attr.whenScrolled);
 
