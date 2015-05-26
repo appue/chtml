@@ -10,7 +10,7 @@ angular.module('phoneApp')
     return function (scope, elm, attr) {
         var raw = elm[0];
 
-        elm.bind('touchmove', function() {
+        elm.on('touchmove', function() {
             var op = (raw.scrollTop / 100).toFixed(1);
             if (op >= 1) {
                 op = 1;
@@ -19,7 +19,7 @@ angular.module('phoneApp')
             elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
         });
 
-        elm.bind('scroll', function () {
+        elm.on('scroll', function () {
             var op = (raw.scrollTop / 100).toFixed(1);
             if (op >= 1) {
                 op = 1;
