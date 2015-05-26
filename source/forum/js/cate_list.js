@@ -23,12 +23,123 @@ angular.module('phoneApp')
             self._setHeader();
 
             self._updateData();
-
-            self._setFalls();
         },
 
         _setDeploy: function () {
             var self = this;
+
+            $scope.loadMore = function() {
+                $scope.DataList.ArticleList.push(
+                    {
+                        ArticleId: 1,
+                        Images: [
+                            {
+                                ImageUrl: '../themes/temp/6.jpg',
+                                Description: '活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿',
+                                Width: 200,
+                                Height: 278
+                            }
+                        ],
+                        Author: {
+                            UserId: 1,
+                            ImageUrl: '../themes/temp/3.jpg',
+                            UserName: '帖子发布者名称'
+                        },
+                        CategoryList: [
+                            {
+                                CateId: 1,
+                                CateName: '泥工'
+                            },
+                            {
+                                CateId: 1,
+                                CateName: '废旧材料'
+                            },
+                            {
+                                CateId: 1,
+                                CateName: '玩教具'
+                            }
+                        ],
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/thread-1.htm',
+                                'forum/index.html#/thread-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        ArticleId: 1,
+                        Images: [
+                            {
+                                ImageUrl: '../themes/temp/7.jpg',
+                                Description: '活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿',
+                                Width: 200,
+                                Height: 200
+                            }
+                        ],
+                        Author: {
+                            UserId: 1,
+                            ImageUrl: '../themes/temp/3.jpg',
+                            UserName: '帖子发布者名称'
+                        },
+                        CategoryList: [
+                            {
+                                CateId: 1,
+                                CateName: '泥工'
+                            },
+                            {
+                                CateId: 1,
+                                CateName: '废旧材料'
+                            },
+                            {
+                                CateId: 1,
+                                CateName: '玩教具'
+                            }
+                        ],
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/thread-1.htm',
+                                'forum/index.html#/thread-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        ArticleId: 1,
+                        Images: [
+                            {
+                                ImageUrl: '../themes/temp/8.jpg',
+                                Description: '活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿',
+                                Width: 200,
+                                Height: 300
+                            }
+                        ],
+                        Author: {
+                            UserId: 1,
+                            ImageUrl: '../themes/temp/3.jpg',
+                            UserName: '帖子发布者名称'
+                        },
+                        CategoryList: [
+                            {
+                                CateId: 1,
+                                CateName: '泥工'
+                            },
+                            {
+                                CateId: 1,
+                                CateName: '废旧材料'
+                            },
+                            {
+                                CateId: 1,
+                                CateName: '玩教具'
+                            }
+                        ],
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/thread-1.htm',
+                                'forum/index.html#/thread-1.htm'
+                            ]
+                        }
+                    }
+                );
+            };
         },
 
         _setHeader: function () {
@@ -249,28 +360,6 @@ angular.module('phoneApp')
             //     }
             // });
 
-        },
-
-        _setFalls: function() {
-            var self = this;
-
-            var obj = SetFalls.init({
-                'elem': '.js_falls'
-            }); 
-            
-            // console.log(obj);
-
-            if (obj.x <= obj.y) {
-                document.querySelector('.js_falls').style.cssText = 'height:'+ obj.y +'px';
-            } else {
-                document.querySelector('.js_falls').style.cssText = 'height:'+ obj.x +'px';
-            }
-
-            var html = document.querySelectorAll('.js_falls li');
-
-            for(var i=0,len=html.length; i<len; i++) {
-                html[i].style.cssText = obj.layout[i].type +':0;top:'+ obj.layout[i].top +'px';
-            }
         }
     };
 
