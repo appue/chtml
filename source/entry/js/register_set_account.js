@@ -8,6 +8,7 @@ userEntry.controller('registerAccountCtrl', function ($scope, routerRedirect, wi
     };
 
     $scope.inputVal = widget.cacheData('accountData') || {};
+    $scope.inputVal.password = null;
 
     $scope.goNextStep = function () { //设置下一步按钮
 
@@ -30,8 +31,8 @@ userEntry.controller('registerAccountCtrl', function ($scope, routerRedirect, wi
 
         routerRedirect.toJump({
             'url': [
-                'entry/#/register/vcode/' + $scope.inputVal.phone + '.htm',
-                'entry/index.html#/register/vcode/' + $scope.inputVal.phone + '.htm'
+                'entry/#/register/vcode/' + $scope.inputVal.phone,
+                'entry/index.html#/register/vcode/' + $scope.inputVal.phone
             ]
         });
 

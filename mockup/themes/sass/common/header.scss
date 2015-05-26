@@ -44,8 +44,9 @@
         font-weight: bolder;
         color: #333;
         @include ellipsis;
-        &.full {
-            padding-left: 0;
+        span.full {
+            display: block;
+            padding-right: 15px;
             text-align: center;
         }
     }

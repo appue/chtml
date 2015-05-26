@@ -7,29 +7,19 @@ userEntry.controller('registerVcodeCtrl', function ($scope, routerRedirect, widg
         ]
     };
 
+    $scope.inputVal = {}; //数据初始化
+
     $scope.goDone = function () { //点击去注册完成页
 
-        if (!$scope.inputVal.phone) {
-            widget.msgToast('请输入手机号码');
+        if (!$scope.inputVal.vcode) {
+            widget.msgToast('请输入验证码');
             return;
         }
-
-        if (!$scope.inputVal.password) {
-            widget.msgToast('请输入密码');
-            return;
-        }
-
-        if ($scope.inputVal.password.length <= 5) {
-            widget.msgToast('密码必须大于或等于6位');
-            return;
-        }
-
-        widget.cacheData('accountData', $scope.inputVal);
 
         routerRedirect.toJump({
             'url': [
-                'entry/#/register/vcode.htm',
-                'entry/index.html#/register/vcode.htm'
+                'entry/#/register/done.htm',
+                'entry/index.html#/register/done.htm'
             ]
         });
 
