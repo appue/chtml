@@ -21,7 +21,7 @@ angular.module('phoneApp')
 
             self._setHeader();
 
-            self._updateData();
+            // self._updateData();
         },
 
         _setDeploy: function () {
@@ -34,6 +34,8 @@ angular.module('phoneApp')
             //--设置返回按钮
             $scope.backParam = {
                 'url': [
+                    '',
+                    ''
                 ]
             };
         },
