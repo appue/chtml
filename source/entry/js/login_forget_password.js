@@ -42,8 +42,8 @@ userEntry.controller('loginForgetCtrl', function ($scope, $cacheFactory, routerR
 
         routerRedirect.toJump({
             'url': [
-                'entry/#/login/reset/' + $scope.inputVal.phone + '.htm',
-                'entry/index.html#/login/reset/' + $scope.inputVal.phone + '.htm'
+                'entry/#/login/reset/' + $scope.inputVal.phone,
+                'entry/index.html#/login/reset/' + $scope.inputVal.phone
             ]
         });
 

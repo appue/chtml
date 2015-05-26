@@ -14,7 +14,7 @@ userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, rout
         village: null
     };
 
-    $scope.goNextStep = function () { //检查手机号码
+    $scope.goNextStep = function () { //下一步按钮
 
         if (!$scope.inputVal.nickname) {
             widget.msgToast('请输入昵称');
@@ -29,37 +29,6 @@ userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, rout
                 'entry/index.html#/register/account.htm'
             ]
         });
-
-    };
-
-    $scope.chooseLocation = function (e) { //所在地选择
-        var $that = angular.element(e.delegationTarget),
-            name = $that.text(),
-            city = $that.attr('data-city'),
-            village = $that.attr('data-village');
-
-        $that.parent('ul').find('li').removeClass('current');
-
-        $that.addClass('current');
-
-        if (city) {
-            $scope.tmpCity = $scope.$eval(city);
-        }
-
-        if (village) {
-            $scope.tmpVillage = $scope.$eval(village);
-        }
-
-    };
-
-    $scope.choosePost = function (e) { //岗位选择
-        var $that = angular.element(e.delegationTarget);
-
-        if ($that.length > 0) { //选择
-            $scope.tmpPost = $that.find('label').text();
-        } else { //确定
-            $scope.inputVal.post = $scope.tmpPost;
-        }
 
     };
 
@@ -94,5 +63,45 @@ userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, rout
 
     $scope.inputVal.city = $scope.inputVal.city || $scope.cityList[0];
     $scope.inputVal.village = $scope.inputVal.village || $scope.villageList[0];
+
+    function getVillageData() { //取地区数据
+        // todo...
+    }
+
+    $scope.popupLocation = function () { //呼出所在地弹层 todo...
+        $scope.tmpCity = $scope.inputVal.city || $scope.cityList[0];
+        $scope.tmpVillage = $scope.inputVal.village || $scope.villageList[0];
+    };
+
+    $scope.chooseLocation = function (e) { //所在地选择
+        var $that = angular.element(e.delegationTarget),
+            name = $that.text(),
+            city = $that.attr('data-city'),
+            village = $that.attr('data-village');
+
+        $that.parent('ul').find('li').removeClass('current');
+
+        $that.addClass('current');
+
+        if (city) {
+            $scope.tmpCity = $scope.$eval(city);
+        }
+
+        if (village) {
+            $scope.tmpVillage = $scope.$eval(village);
+        }
+
+    };
+
+    $scope.choosePost = function (e) { //岗位选择
+        var $that = angular.element(e.delegationTarget);
+
+        if ($that.length > 0) { //选择
+            $scope.tmpPost = $that.find('label').text();
+        } else { //确定
+            $scope.inputVal.post = $scope.tmpPost;
+        }
+
+    };
 
 });
