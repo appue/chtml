@@ -34,22 +34,23 @@ angular.module('phoneApp')
         template: '<ul class="mod_list_falls ng-transclude"></ul>',
         controller: function ($scope, $element, $attrs) {
 
+            /*
+            * obj---
+            * layout: [{
+            *     'z': //--索引值
+            *     'h': //--高度
+            *     'type': //--left or right
+            *     'top': //--距离上面的高度
+            * }]
+            */
             $scope.setFalls = function() {
-                var el = $element.find('li');
-
-                // layout: [{
-                //     'z': //--索引值
-                //     'h': //--高度
-                //     'type': //--left or right
-                //     'top': //--距离上面的高度
-                // }]
-                var obj = {
-                    'layout': [],
-                    'x': 0, //--左边总高度
-                    'y': 0 //--右边总高度
-                };
-
-                var w = $element.find('li')[0].offsetWidth,
+                var el = $element.find('li'),
+                    obj = {
+                        'layout': [],
+                        'x': 0, //--左边总高度
+                        'y': 0 //--右边总高度
+                    },
+                    w = $element.find('li')[0].offsetWidth,
                     p = w/200;
 
                 angular.forEach(el, function(v, k) {
