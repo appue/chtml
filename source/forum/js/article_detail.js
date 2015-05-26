@@ -1,3 +1,7 @@
+/*
+* 发现-帖子终极页(帖子详情页)
+* /clump/#/thread-{id}.htm
+*/
 angular.module('phoneApp')
 
 .controller('tArticleDetail', function (

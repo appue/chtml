@@ -37,8 +37,8 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     *     id: 帖子ID
     */
     .state('detail', {
-        url: '/detail/{id}.htm',
-        templateUrl: 'templates/detail.html',
+        url: '/thread-{id}.htm',
+        templateUrl: 'templates/article_detail.html',
         controller: 'tArticleDetail'
     })
 
