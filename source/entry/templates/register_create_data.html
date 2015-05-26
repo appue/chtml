@@ -16,50 +16,44 @@
                     <label>男</label>
                 </span>
             </li>
-            <li show-popup="chooseLocation" class="location">{{inputVal.cityName}} {{inputVal.villageName}}</li>
+            <li show-popup="chooseLocation" class="location">{{inputVal.city.Name}} {{inputVal.village.Name}}</li>
             <li show-popup="choosePost" class="post">{{inputVal.post}}</li>
         </ul>
     </div>
 </section>
 
-<popup id="chooseLocation" title="选择位置" popup-confirm="inputVal.cityId = inputVal.tmpCityId;inputVal.cityName = inputVal.tmpCityName;inputVal.villageId = inputVal.tmpVillageId;inputVal.villageName = inputVal.tmpVillageName;">
-    <div class="chosen_location" ngd-click="itemClick($event)" selector="li">
+<popup id="chooseLocation" title="选择位置" popup-confirm="inputVal.city = tmpCity;inputVal.village = tmpVillage;">
+    <div class="choose_location" ngd-click="chooseLocation($event)" selector="li">
         <div class="select_box">
             <ul>
-                <li data-cityId="1">上海</li>
-                <li data-cityId="2">北京</li>
-                <li data-cityId="3">广州</li>
-                <li data-cityId="4">厦门</li>
+                <li ng-class="{current:v.Id == inputVal.city.Id}" data-city="{{v}}" ng-repeat="(k, v) in cityList track by $index">{{v.Name}}</li>
             </ul>
         </div>
         <div class="select_box">
             <ul>
-                <li data-villageId="11">长宁区</li>
-                <li data-villageId="12">徐汇徐</li>
-                <li data-villageId="13">浦东新区</li>
-                <li data-villageId="14">闸北区</li>
+                <li ng-class="{current:v.Id == inputVal.village.Id}" data-village="{{v}}" ng-repeat="(k, v) in villageList track by $index">{{v.Name}}</li>
             </ul>
         </div>
     </div>
 </popup>
 
-<popup id="choosePost" title="选择岗位" popup-confirm="inputVal.post = inputVal.tmpPost">
-    <div class="chosen_post">
+<popup id="choosePost" title="选择岗位" ng-init="tmpPost = inputVal.post" popup-confirm="choosePost">
+    <div class="choose_post" ngd-click="choosePost($event)" selector="li">
         <ul>
-            <li ng-click="inputVal.tmpPost = '园长'">
-                <input ng-checked="inputVal.tmpPost == '园长'" name="post" type="radio">
+            <li>
+                <input ng-checked="tmpPost == '园长'" name="post" type="radio">
                 <label>园长</label>
             </li>
-            <li ng-click="inputVal.tmpPost = '保教主任'">
-                <input ng-checked="inputVal.tmpPost == '保教主任'" name="post" type="radio">
+            <li>
+                <input ng-checked="tmpPost == '保教主任'" name="post" type="radio">
                 <label>保教主任</label>
             </li>
-            <li ng-click="inputVal.tmpPost = '教师'">
-                <input ng-checked="inputVal.tmpPost == '教师'" name="post" type="radio">
+            <li>
+                <input ng-checked="tmpPost == '教师'" name="post" type="radio">
                 <label>教师</label>
             </li>
-            <li ng-click="inputVal.tmpPost = '其他'">
-                <input ng-checked="inputVal.tmpPost == '其他'" name="post" type="radio">
+            <li>
+                <input ng-checked="tmpPost == '其他'" name="post" type="radio">
                 <label>其他</label>
             </li>
         </ul>
