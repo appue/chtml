@@ -16,8 +16,6 @@ angular.module('phoneApp')
             var self = this;
 
             self._setDeploy();
-
-            alert(md5(1231));
             
             self._topChange();
 
