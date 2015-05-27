@@ -40,6 +40,15 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
     })
 
     /*------------------------------------
+    * 圈子详情页
+    */
+    .state('clubDetail', {
+        url: '/club/detail-{id}.htm',
+        templateUrl: 'templates/club_detail.html',
+        controller: 'tClubDetail'
+    })
+
+    /*------------------------------------
     * 活动列表
     */
     .state('activityList', {

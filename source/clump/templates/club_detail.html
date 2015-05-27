@@ -1,0 +1,84 @@
+<header-bar back transparent title=""></header-bar>
+
+<section class="scrollfix" when-scrolled="loadMore()">
+
+    <div class="unit_find_cate_info">
+        <div>
+            <img src="../themes/temp/6.jpg" />
+            <p>
+                孩子们的手工王国<br>
+                在这里，可以让孩子找到属于他们的手工创作天地。
+            </p>
+        </div>
+    </div>
+
+    <ul class="unit_club_other_info">
+        <li class="this_reg">
+            <p>签到 <span>8</span> / 连续签到 <span>4</span></p>
+            <button>签到</button>
+        </li>
+        <li class="this_user">
+            <p>圈成员：2280</p>
+            <i>查看排行榜</i>
+        </li>
+        <!--
+        <li class="this_user">
+            <p>圈成员：2280</p>
+            <button>加入圈子</button>
+        </li>
+        -->
+        <li class="this_acti">
+            <p>【活动】活动内容。</p>
+        </li>
+    </ul>
+
+    <div class="mod_title_text this_p">
+        <div>精选 10</div>
+    </div>
+    <div class="unit_find_subject">
+        <ul>
+            <li>
+                <img src="../themes/temp/6.jpg" />
+                #美工
+            </li>
+            <li>
+                <img src="../themes/temp/6.jpg" />
+                #美工
+            </li>
+            <li>
+                <img src="../themes/temp/6.jpg" />
+                #美工
+            </li>
+            <li>
+                <img src="../themes/temp/6.jpg" />
+                #美工
+            </li>
+        </ul>
+    </div>
+
+    <!--瀑布流-->
+    <falls>
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}">
+            <div class="this_border">
+                <a page-jump="{{v.SiteUrl}}">
+                    <img ng-src="{{v.Images[0].ImageUrl}}" />
+                    <article>
+                        <div class="this_text">{{v.Images[0].Description}}</div>
+                        
+                        <div class="this_star">
+                            256
+                        </div>
+
+                        <div class="this_user">
+                            <img ng-src="{{v.Author.ImageUrl}}" />
+                            <p>
+                                {{v.Author.UserName}}<br>
+                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                            </p>
+                        </div>
+                    </article>
+                </a>
+            </div>
+        </li>
+    </falls>
+</section>

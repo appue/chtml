@@ -10,8 +10,7 @@ angular.module('phoneApp')
     $stateParams, 
     $location, 
     routerRedirect,
-    widget,
-    SetFalls
+    widget
 ){
     
     var pageView = {

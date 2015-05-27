@@ -33,9 +33,9 @@
 
     <div class="unit_find_cate">
         <div>
-            <ul>
-                <li ng-repeat="(k, v) in DataList.CategoryList" page-jump="{{v.SiteUrl}}">
-                    {{v.CateName}}
+            <ul ng-repeat="(k, v) in CateList">
+                <li ng-repeat="(i, j) in v" page-jump="{{j.SiteUrl}}">
+                    {{j.CateName}}
                 </li>
             </ul>
         </div>

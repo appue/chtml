@@ -1,3 +1,7 @@
+/*
+* 热门圈子
+* /clump/#/club/hot.htm
+*/
 angular.module('phoneApp')
 
 .controller('tClubHot', function (

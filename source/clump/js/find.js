@@ -138,9 +138,113 @@ angular.module('phoneApp')
                                 'forum/index.html#/cate/list-1.htm'
                             ]
                         }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '玩教具',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '玩教具',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '玩教具',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '玩教具',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '玩教具',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '玩教具',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '玩教具',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '玩教具',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
+                            ]
+                        }
+                    },
+                    {
+                        CateId: 3,
+                        CateName: '玩教具',
+                        SiteUrl: {
+                            'url': [
+                                'forum/#/cate/list-1.htm',
+                                'forum/index.html#/cate/list-1.htm'
+                            ]
+                        }
                     }
                 ]
             };
+
+            $scope.CateList = [
+                [
+                    {CateId: 3, CateName: '教案', SiteUrl: {'url': ['forum/#/cate/list-1.htm', 'forum/index.html#/cate/list-1.htm'] } },
+                    {CateId: 3, CateName: '总结', SiteUrl: {'url': ['forum/#/cate/list-1.htm', 'forum/index.html#/cate/list-1.htm'] } },
+                    {CateId: 3, CateName: '玩教具', SiteUrl: {'url': ['forum/#/cate/list-1.htm', 'forum/index.html#/cate/list-1.htm'] } },
+                    {CateId: 3, CateName: '玩教具', SiteUrl: {'url': ['forum/#/cate/list-1.htm', 'forum/index.html#/cate/list-1.htm'] } },
+                    {CateId: 3, CateName: '玩教具', SiteUrl: {'url': ['forum/#/cate/list-1.htm', 'forum/index.html#/cate/list-1.htm'] } },
+                    {CateId: 3, CateName: '玩教具', SiteUrl: {'url': ['forum/#/cate/list-1.htm', 'forum/index.html#/cate/list-1.htm'] } }    
+                ],
+                [
+                    {CateId: 3, CateName: '玩教具', SiteUrl: {'url': ['forum/#/cate/list-1.htm', 'forum/index.html#/cate/list-1.htm'] } }
+                ]
+            ];
             // widget.ajaxRequest({
             //     noMask: true,
             //     url: '$local/Tools/getFindHome',
