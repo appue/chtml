@@ -293,6 +293,7 @@ module.exports = function (gulp, $) {
         //--框架JS压缩合并
         var framejs = [
                 './source/lib/fastclick.js',
+                './source/lib/iscroll-lite.js',
                 './source/lib/config.js',
                 './source/lib/angular.js',
                 './source/lib/angular-touch.js',
