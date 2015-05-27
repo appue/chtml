@@ -1,5 +1,8 @@
 angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
 
+.run(function() {
+    FastClick.attach(document.body);
+})
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 

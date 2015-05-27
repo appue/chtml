@@ -128,8 +128,8 @@
                     'direction': 'left',
                     'duration': 500, 
                     'slowdownfactor': 3, 
-                    'iosdelay': 100,
-                    'androiddelay': 150,
+                    'iosdelay': 1,
+                    'androiddelay': 70,
                     'winphonedelay': 250, 
                     'fixedPixelsTop': 0,
                     'fixedPixelsBottom': 0

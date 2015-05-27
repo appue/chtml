@@ -292,6 +292,7 @@ module.exports = function (gulp, $) {
     gulp.task('minjs', function() {
         //--框架JS压缩合并
         var framejs = [
+                './source/lib/fastclick.js',
                 './source/lib/config.js',
                 './source/lib/angular.js',
                 './source/lib/angular-touch.js',
