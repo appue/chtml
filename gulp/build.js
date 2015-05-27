@@ -287,17 +287,21 @@ module.exports = function (gulp, $) {
             ])
             .pipe(gulp.dest(buildFolder));
     });
-
+    
     //--js 合并压缩
     gulp.task('minjs', function() {
         //--框架JS压缩合并
         var framejs = [
                 './source/lib/fastclick.js',
                 './source/lib/iscroll-lite.js',
+                './source/lib/md5.js',
+
                 './source/lib/config.js',
                 './source/lib/angular.js',
                 './source/lib/angular-touch.js',
-                './source/lib/angular-ui-router.js'
+                './source/lib/angular-ui-router.js',
+
+                './source/lib/angular-base64.js'
             ];
 
         if (packageType == 'web') {
