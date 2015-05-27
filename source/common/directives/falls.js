@@ -10,6 +10,11 @@ angular.module('phoneApp')
     return function (scope, elm, attr) {
         var raw = elm[0];
 
+        scope.pageIndex = 1; //---------------------页面索引值，当前第几页
+        scope.pageSize = attr.pageSize || 5; //-----每页显示多少条
+        scope.pageTotal = attr.pageTotal || 10; //--总的条数
+
+
         elm.on('touchmove', function() {
             var op = (raw.scrollTop / 100).toFixed(1);
             if (op >= 1) {
@@ -27,7 +32,14 @@ angular.module('phoneApp')
 
             elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
 
+
             if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+
+                if (scope.pageIndex * scope.pageSize >= scope.pageTotal) {
+                    console.log('没有更多数据了！');
+                    return;
+                }
+
                 scope.$apply(attr.whenScrolled);
 
                 $timeout(scope.setFalls, 0);
