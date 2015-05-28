@@ -19,8 +19,6 @@ angular.module('phoneApp')
 
             self._setDeploy();
 
-            self._setSearch();
-
             self._updateData();
         },
 
@@ -60,9 +58,6 @@ angular.module('phoneApp')
                     }
                 }
             ];
-
-            //--搜索文本
-            $scope.keyword = "";
 
             //--更多专题
             $scope.urlSubjectList = {
@@ -257,26 +252,6 @@ angular.module('phoneApp')
             //         alert(data);
             //     }
             // });
-        },
-
-        _setSearch: function () {
-            $scope.toSearch = function () {
-                if ($scope.keyword) {
-                    routerRedirect.toJump({
-                        'url': [
-                            'search/#/result?keyword='+ $scope.keyword,
-                            'search/index.html#/result?keyword='+ $scope.keyword
-                        ]
-                    });
-                } else {
-                    routerRedirect.toJump({
-                        'url': [
-                            'search/#/index',
-                            'search/index.html#/index'
-                        ]
-                    });
-                }
-            };
         }
     };
 

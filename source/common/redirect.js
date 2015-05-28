@@ -114,7 +114,7 @@
             if (params.url.length > 0) {
                 url = params.url[0];
             }
-
+            
             window.location.href = window.location.origin +'/'+ url;
 
         },
