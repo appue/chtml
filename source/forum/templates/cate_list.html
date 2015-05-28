@@ -1,9 +1,9 @@
 <header-bar back transparent title="<span>教案</span>"></header-bar>
 
-<section class="scrollfix">
+<section class="scrollfix" when-scrolled="loadMore()">
     <div class="unit_find_cate_two">
         <ul class="this_list_cate">
-            <li ng-repeat="(k, v) in DataList.CategoryList" page-jump="{{v.SiteUrl}}">
+            <li ng-repeat="(k, v) in DataList.CategoryList track by $index" page-jump="{{v.SiteUrl}}">
                 #{{v.CateName}}
             </li>
         </ul>
