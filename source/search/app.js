@@ -15,6 +15,15 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
         controller: 'tSearchIndex'
     });
 
+    /*------------------------------------
+    * 搜索结果
+    */
+    .state('result', {
+        url: '/result',
+        templateUrl: 'templates/search-result.html',
+        controller: 'tSearchResult'
+    });
+
     // $urlRouterProvider.when('', '/index');
     $urlRouterProvider.otherwise('/index');
 });
