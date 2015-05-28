@@ -1,4 +1,4 @@
-userEntry.controller('registerCreateCtrl', function ($scope, $cacheFactory, routerRedirect, widget) {
+userEntry.controller('registerCreateCtrl', function ($scope, routerRedirect, widget) {
 
     $scope.backParam = { //--设置返回按钮
         'url': [

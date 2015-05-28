@@ -1,4 +1,4 @@
-userEntry.controller('registerFocusCtrl', function ($scope, $state, $timeout, $stateParams) {
+userEntry.controller('registerFocusCtrl', function ($scope) {
 
     $scope.popupConfirm = function (arg) {
         console.log(arg);

@@ -1,4 +1,4 @@
-userEntry.controller('registerColumnCtrl', function ($scope, $state, $timeout, $stateParams) {
+userEntry.controller('registerColumnCtrl', function ($scope) {
 
     $scope.popupConfirm = function (arg) {
         console.log(arg);

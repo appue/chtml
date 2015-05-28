@@ -1,4 +1,4 @@
-userEntry.controller('loginForgetCtrl', function ($scope, $cacheFactory, routerRedirect, widget) {
+userEntry.controller('loginForgetCtrl', function ($scope, routerRedirect, widget) {
 
     $scope.backParam = { //--设置返回按钮
         'url': [
