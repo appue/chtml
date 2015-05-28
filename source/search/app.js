@@ -13,7 +13,7 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
         url: '/index',
         templateUrl: 'templates/search.html',
         controller: 'tSearchIndex'
-    });
+    })
 
     /*------------------------------------
     * 搜索结果

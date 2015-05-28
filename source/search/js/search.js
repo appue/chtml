@@ -20,6 +20,9 @@ angular.module('phoneApp')
             self._setDeploy();
 
             // self._updateData();
+            
+
+            console.log($state);
         },
 
         _setDeploy: function () {
