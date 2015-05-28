@@ -18,25 +18,23 @@
         <!--瀑布流-->
         <falls>
             <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}">
-                <div class="this_border">
-                    <a page-jump="{{v.SiteUrl}}">
-                        <img ng-src="{{v.Images[0].ImageUrl}}" />
-                        <article>
-                            <div class="this_text">{{v.Images[0].Description}}</div>
-                            
-                            <div class="this_star">
-                                256
-                            </div>
+                <div class="this_border" page-jump="{{v.SiteUrl}}">
+                    <img ng-src="{{v.Images[0].ImageUrl}}" />
+                    <article>
+                        <div class="this_text">{{v.Images[0].Description}}</div>
+                        
+                        <div class="this_star">
+                            256
+                        </div>
 
-                            <div class="this_user">
-                                <img src="{{v.Author.ImageUrl}}" />
-                                <p>
-                                    {{v.Author.UserName}}<br>
-                                    <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
-                                </p>
-                            </div>
-                        </article>
-                    </a>
+                        <div class="this_user">
+                            <img src="{{v.Author.ImageUrl}}" />
+                            <p>
+                                {{v.Author.UserName}}<br>
+                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                            </p>
+                        </div>
+                    </article>
                 </div>
             </li>
         </falls>
