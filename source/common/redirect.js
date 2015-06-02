@@ -127,9 +127,9 @@
                 options = {
                     'direction': 'left',
                     'duration': 500, 
-                    'slowdownfactor': 4, 
-                    'iosdelay': 60,
-                    'androiddelay': 70,
+                    'slowdownfactor': 3, 
+                    'iosdelay': 100,
+                    'androiddelay': 150,
                     'winphonedelay': 250, 
                     'fixedPixelsTop': 0,
                     'fixedPixelsBottom': 0
