@@ -24,13 +24,14 @@ angular.module('phoneApp')
     }
 
     //--是否Android环境
-    if (/android/.test(ua)) {
+    if (ENV.isHybrid && /android/.test(ua)) {
         ENV.isAndroid = true;
     }
 
     //--是否苹果环境
-    if (/iphone|ipad|ipod/.test(ua)) {
+    if (ENV.isHybrid && /iphone|ipad|ipod/.test(ua)) {
         ENV.isApple = true;
+        document.getElementById('js_view').className = 'is_ios';
     }
 
     //--是否微信环境
