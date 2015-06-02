@@ -13,25 +13,28 @@ angular.module('phoneApp')
         scope.pageIndex = 1; //---------------------页面索引值，当前第几页
         scope.pageSize = attr.pageSize || 5; //-----每页显示多少条
         scope.pageTotal = attr.pageTotal || 10; //--总的条数
+        scope.showHeader = false;
 
+        if (scope.showHeader) {
+            elm.on('touchmove', function() {
+                var op = (raw.scrollTop / 100).toFixed(1);
+                if (op >= 1) {
+                    op = 1;
+                }
 
-        elm.on('touchmove', function() {
-            var op = (raw.scrollTop / 100).toFixed(1);
-            if (op >= 1) {
-                op = 1;
-            }
-
-            elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
-        });
+                elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
+            });
+        }
 
         elm.on('scroll', function () {
-            var op = (raw.scrollTop / 100).toFixed(1);
-            if (op >= 1) {
-                op = 1;
+            if (scope.showHeader) {
+                var op = (raw.scrollTop / 100).toFixed(1);
+                if (op >= 1) {
+                    op = 1;
+                }
+
+                elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
             }
-
-            elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
-
 
             if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
 
