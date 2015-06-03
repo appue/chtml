@@ -1,11 +1,10 @@
-<ul class="mod_tab_2">
-    <li ng-click="tabChange(1)" ng-class="{current : currentTab}">精品</li>
-    <li ng-click="tabChange(2)" ng-class="{current : !currentTab}">关注</li>
-    <i class="line"></i>
+<ul class="mod_tab_2" ng-init="currentTab=1">
+    <li ng-click="currentTab=1;pageIndex=1" ng-class="{current : currentTab==1}">精品</li>
+    <li ng-click="currentTab=2;pageIndex=1" ng-class="{current : currentTab==2}">关注</li>
+    <i class="line" ng-class="{tmp: currentTab == 2}"></i>
 </ul>
 
-<section class="unit_home" when-scrolled="loadMore()">
-    <!--幻灯片-->
+<section class="unit_home" when-scrolled="loadMore(currentTab)" ng-if="currentTab==1">
     <slide>
         <ul>
             <li>
@@ -28,6 +27,32 @@
         </ol>
     </slide>
 
+    <!--瀑布流-->
+    <falls>
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
+            <div class="this_border" page-jump="{{v.SiteUrl}}">
+                <img ng-src="{{v.Images[0].ImageUrl}}" />
+                <article>
+                    <div class="this_text">{{v.Images[0].Description}}</div>
+                    
+                    <div class="this_star">
+                        256
+                    </div>
+
+                    <div class="this_user">
+                        <img src="{{v.Author.ImageUrl}}" />
+                        <p>
+                            {{v.Author.UserName}}<br>
+                            <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </li>
+    </falls>
+</section>
+
+<section class="unit_home" when-scrolled="loadMore()" ng-if="currentTab==2">
     <!--瀑布流-->
     <falls>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
