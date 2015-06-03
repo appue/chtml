@@ -12,7 +12,7 @@ angular.module('phoneApp')
 
         scope.pageIndex = 1; //---------------------页面索引值，当前第几页
         scope.pageSize = attr.pageSize || 5; //-----每页显示多少条
-        scope.pageTotal = attr.pageTotal || 10; //--总的条数
+        scope.pageTotal = attr.pageTotal || 10000; //--总的条数
         scope.showHeader = false; //----------------页面头是否有透明过度
 
         if (scope.showHeader) {
