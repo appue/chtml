@@ -7,11 +7,32 @@ angular.module('phoneApp')
 .controller('HomeIndexCtrl', function (
     $scope, 
     $state,
+    cachePool,
     routerRedirect
 ){
     $scope.currentTab = 1;
     $scope.footerTab = 1;
     $scope.pageIndex = 1;
+
+    $scope.checkLogin = function () {
+
+        if (cachePool.pull('UserInfo')) {
+
+            $scope.currentTab = 2;
+            $scope.pageIndex = 1;
+
+        } else {
+
+            routerRedirect.toJump({
+                url: [
+                    'entry/#/login.htm',
+                    'entry/index.htm#/login.htm'
+                ]
+            })
+
+        }
+        
+    };
 
     $scope.loadMore = function () {
         $scope.pageIndex++;
