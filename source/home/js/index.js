@@ -10,6 +10,7 @@ angular.module('phoneApp')
     cachePool,
     routerRedirect
 ){
+
     $scope.currentTab = 1;
     $scope.footerTab = 1;
     $scope.pageIndex = 1;
