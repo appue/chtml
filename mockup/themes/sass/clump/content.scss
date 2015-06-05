@@ -47,7 +47,7 @@ $gray_val: #cacdcb;
         }
         li{
             display: block;
-            line-height: 20px;
+            line-height: 16px;
             width: 70px;
             text-align: center;
             font-size: 12px;
@@ -204,7 +204,7 @@ $gray_val: #cacdcb;
     padding: 4px 0;
     @include border_top_half;
     button{
-        @include button(100px, 36px);
+        @include button(120px, 36px);
         border: none;
         outline: none;
         margin: 0 auto;
