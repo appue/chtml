@@ -301,7 +301,8 @@ module.exports = function (gulp, $) {
                 './source/lib/angular-touch.js',
                 './source/lib/angular-ui-router.js',
 
-                './source/lib/angular-base64.js'
+                './source/lib/angular-base64.js',
+                './source/lib/ng-iscroll.js'
             ];
 
         if (packageType == 'web') {

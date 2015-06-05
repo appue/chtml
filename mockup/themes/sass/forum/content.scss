@@ -223,8 +223,13 @@
     background: #fff;
     overflow: hidden;
     padding: 0 10px 10px;
+    position: relative;
+    height: 90px;
     ul{
         display: -webkit-box;
+        position: absolute;
+        left: 0;
+        top: 0;
         &.this_left{
             li{
                 text-align: left;
@@ -236,7 +241,10 @@
             width: 70px;
             text-align: center;
             font-size: 12px;
-            margin-right: 10px;
+            margin-left: 10px;
+            &:last-child{
+                margin-right: 10px;
+            }
             img{
                 width: 70px;
                 height: 70px;

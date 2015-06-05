@@ -12,7 +12,15 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-    
+    $scope.$parent.myScrollOptions = {
+        'wrapper': {
+            snap: false,
+            onScrollEnd: function (){
+                alert('finshed scrolling wrapper');
+            }
+        },
+    };
+
     var pageView = {
         init: function () {
             var self = this;
