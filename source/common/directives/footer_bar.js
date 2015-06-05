@@ -86,7 +86,8 @@ angular.module('phoneApp')
                 //     $timeout(function() {
                         navigator.camera.getPicture(onSuccess, onFail, { 
                             quality: 50,
-                            destinationType: Camera.DestinationType.DATA_URL,
+                            // destinationType: Camera.DestinationType.DATA_URL,
+                            destinationType: Camera.DestinationType.FILE_URI,
                             // sourceType: Camera.PictureSourceType.PHOTOLIBRARY
                             sourceType: Camera.PictureSourceType.CAMERA
                         });
@@ -97,9 +98,9 @@ angular.module('phoneApp')
                             // image.src = "data:image/jpeg;base64," + imageData;
                             // var div = angular.element(document.getElementById('abc'));
                             // div.html("<img src=data:image/jpeg;base64," + imageData + " />");
-                            $rootScope.imageData = imageData;
+                            // $rootScope.imageData = imageData;
 
-                            sessionStorage.setItem('imageData', imageData);
+                            sessionStorage.setItem('imageData', encodeURIComponent(imageData));
 
                             routerRedirect.toJump({
                                 'url': [

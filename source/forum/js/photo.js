@@ -10,11 +10,15 @@ angular.module('phoneApp')
     $stateParams, 
     $location, 
     routerRedirect,
-    widget
+    widget,
+    $base64
 ){
-    var data = sessionStorage.getItem('imageData');
+    var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
 
-    alert(data);
+    $scope.data1 = data;
+    // $scope.imageData = $base64.encode(data);
+    // $scope.imageUrl = $base64.encode(unescape(encodeURIComponent(data)));
+
     
     //--设置返回按钮
     $scope.backParam = {
