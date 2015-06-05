@@ -6,6 +6,14 @@ angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
+    /*------------------------------------
+    * 发帖第一步
+    */
+    .state('photoIndex', {
+        url: '/photo/index.htm',
+        templateUrl: 'templates/photo.html',
+        controller: 'tPhotoIndex'
+    })
 
     /*------------------------------------
     * 二级栏目

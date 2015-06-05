@@ -16,7 +16,7 @@ angular.module('phoneApp')
         restrict: 'E',
         replace: true,
         templateUrl: '../common/directives/footer_bar.html',
-        controller: function ($scope, $rootScope, $compile) {
+        controller: function ($scope, $rootScope, $compile, $timeout) {
             // var currentUrl = $state.current.url.replace(/^\//g, '');
             var current = $scope.footerTab;
 
@@ -60,48 +60,61 @@ angular.module('phoneApp')
             };
 
             $scope.getPhoto = function () {
+                navigator.camera.getPicture(onSuccess, onFail, { 
+                    quality: 100,
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                });
 
-                alert(1);
-                // document.addEventListener("deviceready", onDeviceReady, false);
-                // function onDeviceReady() {
-                
-                //     navigator.camera.getPicture(onSuccess, onFail, { 
-                //         quality: 50,
-                //         destinationType: Camera.DestinationType.DATA_URL
-                //     });
+                function onSuccess(imageData) {
+                    // alert(imageData);
+                    // var image = document.getElementById('myImage');
+                    // image.src = "data:image/jpeg;base64," + imageData;
+                    var div = angular.element(document.getElementById('abc'));
+                    div.html("<img src=data:image/jpeg;base64," + imageData + " />");
+                }
 
-                //     function onSuccess(imageData) {
-                //         var image = document.getElementById('myImage');
-                //         image.src = "data:image/jpeg;base64," + imageData;
-                //     }
-
-                //     function onFail(message) {
-                //         alert('Failed because: ' + message);
-                //     }
-                // }
-            }
+                function onFail(message) {
+                    console.log("fail");
+                }
+            };
 
             $scope.setPhoto = function () {
+                // document.addEventListener("deviceready", onDeviceReady, false);
+                // function onDeviceReady() {
+                    
+                //     $timeout(function() {
+                        navigator.camera.getPicture(onSuccess, onFail, { 
+                            quality: 50,
+                            destinationType: Camera.DestinationType.DATA_URL,
+                            // sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                            sourceType: Camera.PictureSourceType.CAMERA
+                        });
 
-                alert(2);
-                document.addEventListener("deviceready", onDeviceReady, false);
-                function onDeviceReady() {
-                
-                    navigator.camera.getPicture(onSuccess, onFail, { 
-                        quality: 50,
-                        destinationType: Camera.DestinationType.DATA_URL
-                    });
+                        function onSuccess(imageData) {
+                            // alert(imageData);
+                            // var image = document.getElementById('myImage');
+                            // image.src = "data:image/jpeg;base64," + imageData;
+                            // var div = angular.element(document.getElementById('abc'));
+                            // div.html("<img src=data:image/jpeg;base64," + imageData + " />");
+                            $rootScope.imageData = imageData;
 
-                    function onSuccess(imageData) {
-                        var image = document.getElementById('myImage');
-                        image.src = "data:image/jpeg;base64," + imageData;
-                    }
+                            sessionStorage.setItem('imageData', imageData);
 
-                    function onFail(message) {
-                        alert('Failed because: ' + message);
-                    }
-                }
-            }
+                            routerRedirect.toJump({
+                                'url': [
+                                    'forum/#/photo/index.htm',
+                                    'forum/index.html#/photo/index.htm',
+                                ]
+                            });
+                        }
+
+                        function onFail(message) {
+                            console.log("fail");
+                        }
+                    // }, 0);
+                // }
+            };
         }
     };
 });
