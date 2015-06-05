@@ -12,7 +12,7 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-    $scope.$parent.myScrollOptions = {
+    $scope.myScrollOptions = {
         'wrapper': {
             snap: false,
             onScrollEnd: function (){

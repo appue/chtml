@@ -1,4 +1,4 @@
-var personalHomepage = angular.module('phoneApp', ['ui.router', 'DelegateEvents']);
+var personalHomepage = angular.module('phoneApp', ['ui.router', 'DelegateEvents', 'ng-iscroll']);
 
 personalHomepage.run(function () {
     FastClick.attach(document.body);
