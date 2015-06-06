@@ -70,7 +70,9 @@ $gray_val: #cacdcb;
 .mod_list_img{
     overflow: hidden;
     position: relative;
-    height: 100px;
+    // height: 100px;
+    background: #fff;
+    margin-bottom: 10px;
     ul{
         display: -webkit-box;
         position: absolute;
@@ -79,10 +81,14 @@ $gray_val: #cacdcb;
         li{
             display: block;
             width: 80px;
-            margin-right: 10px;
-            text-align: center;
+            margin-left: 10px;
+            // text-align: center;
             color: #333;
             font-size: 12px;
+            line-height: 16px;
+            &:last-child{
+                margin-right: 10px;
+            }
             .this_img{
                 width: 80px;
                 height: 80px;
@@ -100,7 +106,7 @@ $gray_val: #cacdcb;
                 background-size: 40px auto;
             }
             .this_title{
-                line-height: 20px;
+                padding: 5px 0;
             }
             .this_btn{
                 @include button(90%, 30px);
@@ -108,9 +114,7 @@ $gray_val: #cacdcb;
                 background: $green_val;
             }
             .this_tx{
-                line-height: 20px;
                 padding-bottom: 5px;
-                text-align: center;
                 color: $gray_val;
             }
         }

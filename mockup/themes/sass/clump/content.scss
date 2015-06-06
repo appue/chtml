@@ -34,40 +34,40 @@ $gray_val: #cacdcb;
 }
 
 
-.unit_find_subject{
-    background: #fff;
-    overflow: hidden;
-    padding: 0 10px 10px;
-    ul{
-        display: -webkit-box;
-        &.this_left{
-            li{
-                text-align: left;
-            }
-        }
-        li{
-            display: block;
-            line-height: 16px;
-            width: 70px;
-            text-align: center;
-            font-size: 12px;
-            margin-right: 10px;
-            img{
-                width: 70px;
-                height: 70px;
-                display: block;
-            }
-            &.this_more{
-                background: url(img/img_find_more.jpg) no-repeat center 0;
-                background-size: 100% auto;
-                padding-top: 70px;
-            }
-            p{
-                @include gray;
-            }
-        }
-    }
-}
+// .unit_find_subject{
+//     background: #fff;
+//     overflow: hidden;
+//     padding: 0 10px 10px;
+//     ul{
+//         display: -webkit-box;
+//         &.this_left{
+//             li{
+//                 text-align: left;
+//             }
+//         }
+//         li{
+//             display: block;
+//             line-height: 16px;
+//             width: 70px;
+//             text-align: center;
+//             font-size: 12px;
+//             margin-right: 10px;
+//             img{
+//                 width: 70px;
+//                 height: 70px;
+//                 display: block;
+//             }
+//             &.this_more{
+//                 background: url(img/img_find_more.jpg) no-repeat center 0;
+//                 background-size: 100% auto;
+//                 padding-top: 70px;
+//             }
+//             p{
+//                 @include gray;
+//             }
+//         }
+//     }
+// }
 
 
 .unit_find_cate{
