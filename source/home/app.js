@@ -12,8 +12,10 @@
 
 
 
-angular.module('phoneApp', ['ui.router', 'DelegateEvents'])
-
+angular.module('phoneApp', [
+    'ui.router',
+    'DelegateEvents'
+])
 .run(function() {
     FastClick.attach(document.body);
 })

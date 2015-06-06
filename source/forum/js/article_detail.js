@@ -21,6 +21,10 @@ angular.module('phoneApp')
         ]
     };
     
+    //--设置横向滚动
+    $scope.myScrollOptions = {
+        'wrapper': {}
+    };
     // widget.ajaxRequest({
     //     noMask: true,
     //     url: '$local/Tools/getContentArticle',

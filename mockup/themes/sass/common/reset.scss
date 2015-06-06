@@ -188,3 +188,15 @@ a.disable, button.disable {
     width: 100%;
     height: 100%;
 }
+
+
+//margin
+@mixin mb($margin:0px){
+    margin-bottom: $margin !important;
+}
+.mb0{
+    @include mb();
+}
+.mb10{
+    @include mb(10px);
+}

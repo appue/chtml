@@ -1,6 +1,6 @@
 <header-bar back transparent title="<span>教案</span>"></header-bar>
 
-<section class="scrollfix" when-scrolled="loadMore()">
+<section class="scrollfix" when-scrolled="loadMore()" ng-init="currentTab=1">
     <div class="unit_find_cate_two">
         <ul class="this_list_cate">
             <li ng-repeat="(k, v) in DataList.CategoryList track by $index" page-jump="{{v.SiteUrl}}">
@@ -10,68 +10,21 @@
     </div>
 
     <ul class="mod_tab_icon">
-        <li class="current">瀑布流</li>
-        <li>垂直平铺</li>
+        <li ng-click="currentTab=1" ng-class="{current : currentTab==1}">瀑布流</li>
+        <li ng-click="currentTab=2" ng-class="{current : currentTab==2}">垂直平铺</li>
     </ul>
 
-    <section class="js_content">
-        <!--瀑布流-->
-        <falls>
-            <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}">
-                <div class="this_border" page-jump="{{v.SiteUrl}}">
-                    <img ng-src="{{v.Images[0].ImageUrl}}" />
-                    <article>
-                        <div class="this_text">{{v.Images[0].Description}}</div>
-                        
-                        <div class="this_star">
-                            256
-                        </div>
-
-                        <div class="this_user">
-                            <img src="{{v.Author.ImageUrl}}" />
-                            <p>
-                                {{v.Author.UserName}}<br>
-                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-            </li>
-        </falls>
-
-<!--         <ul class="mod_list_falls">
-            <li ng-repeat="(k, v) in DataList.ArticleList" data-y="{{v.Images[0].Height}}">
-                <div class="this_border">
-                    <a page-jump="{{v.SiteUrl}}">
-                        <img src="{{v.Images[0].ImageUrl}}" />
-                        <article>
-                            <div class="this_text">{{v.Images[0].Description}}</div>
-                            
-                            <div class="this_star">
-                                256
-                            </div>
-
-                            <div class="this_user">
-                                <img src="{{v.Author.ImageUrl}}" />
-                                <p>
-                                    {{v.Author.UserName}}<br>
-                                    <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
-                                </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-            </li>
-        </ul> -->
-
-        <!--垂直平铺-->
-        <ul class="mod_list_img_only" style="display:none;">
-            <li ng-repeat="(k, v) in DataList.ArticleList track by $index" page-jump="{{v.SiteUrl}}">
+    <!--瀑布流-->
+    <falls ng-if="currentTab==1">
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
+            <div class="this_border" page-jump="{{v.SiteUrl}}">
                 <img ng-src="{{v.Images[0].ImageUrl}}" />
                 <article>
                     <div class="this_text">{{v.Images[0].Description}}</div>
-
-                    <div class="this_star">256</div>
+                    
+                    <div class="this_star">
+                        256
+                    </div>
 
                     <div class="this_user">
                         <img src="{{v.Author.ImageUrl}}" />
@@ -81,7 +34,27 @@
                         </p>
                     </div>
                 </article>
-            </li>
-        </ul>
-    </section>
+            </div>
+        </li>
+    </falls>
+
+    <!--垂直平铺-->
+    <ul class="mod_list_img_only" ng-if="currentTab==2">
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" page-jump="{{v.SiteUrl}}">
+            <img ng-src="{{v.Images[0].ImageUrl}}" />
+            <article>
+                <div class="this_text">{{v.Images[0].Description}}</div>
+
+                <div class="this_star">256</div>
+
+                <div class="this_user">
+                    <img src="{{v.Author.ImageUrl}}" />
+                    <p>
+                        {{v.Author.UserName}}<br>
+                        <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                    </p>
+                </div>
+            </article>
+        </li>
+    </ul>
 </section>

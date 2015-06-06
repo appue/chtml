@@ -1,6 +1,6 @@
 <header-bar back transparent title=""></header-bar>
 
-<section class="scrollfix">
+<section class="scrollfix" when-scrolled="loadMore()" ng-init="currentTab=1">
 
     <div class="unit_find_cate_info">
         <div>
@@ -12,15 +12,15 @@
         </div>
     </div>
 
-    <ul class="mod_tab_icon" style="margin-bottom:10px;">
-        <li class="current">瀑布流</li>
-        <li>垂直平铺</li>
+    <ul class="mod_tab_icon mb10">
+        <li ng-click="currentTab=1" ng-class="{current : currentTab==1}">瀑布流</li>
+        <li ng-click="currentTab=2" ng-class="{current : currentTab==2}">垂直平铺</li>
     </ul>
 
     <div class="mod_title_text this_p">
         <div>相关主题</div>
     </div>
-    <div class="mod_list_img" style="height:110px;" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
+    <div class="mod_list_img mb0" style="height:110px;" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
         <ul>
             <li>
                 <div class="this_img">
@@ -52,7 +52,7 @@
     </div>
     
     <!--瀑布流-->
-    <falls>
+    <falls ng-if="currentTab==1">
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
             <div class="this_border" page-jump="{{v.SiteUrl}}">
                 <img ng-src="{{v.Images[0].ImageUrl}}" />
@@ -77,19 +77,19 @@
 
 
     <!--垂直平铺-->
-    <ul class="mod_list_img_only" style="display:none;">
-        <li>
-            <img src="../themes/temp/img_1.jpg" />
+    <ul class="mod_list_img_only" ng-if="currentTab==2">
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" page-jump="{{v.SiteUrl}}">
+            <img ng-src="{{v.Images[0].ImageUrl}}" />
             <article>
-                <div class="this_text">所需材料：剪刀、彩纸、双面胶等等</div>
+                <div class="this_text">{{v.Images[0].Description}}</div>
 
                 <div class="this_star">256</div>
 
                 <div class="this_user">
-                    <img src="../themes/temp/3.jpg" />
+                    <img src="{{v.Author.ImageUrl}}" />
                     <p>
-                        开心每一天
-                        <br>发布到：#泥工  #废 旧材料  #玩教具习的
+                        {{v.Author.UserName}}<br>
+                        <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
                     </p>
                 </div>
             </article>

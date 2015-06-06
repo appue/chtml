@@ -74,7 +74,8 @@ angular.module('phoneApp')
             *     'top': //--距离上面的高度
             * }]
             */
-            $scope.setFalls = function() {
+            $scope.$parent.setFalls = function() {
+
                 var el = $element.find('li'),
                     obj = {
                         'layout': [],
@@ -83,7 +84,7 @@ angular.module('phoneApp')
                     },
                     w = $element.find('li')[0].offsetWidth,
                     p = w/200;
-
+                    
                 angular.forEach(el, function(v, k) {
 
                     angular.element(v).find('img').eq(0).css({
@@ -123,7 +124,7 @@ angular.module('phoneApp')
                 });
             };
 
-            $timeout($scope.setFalls, 0);
+            $timeout($scope.$parent.setFalls, 0);
             
         }
     };

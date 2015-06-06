@@ -1,6 +1,6 @@
 <header-bar back title="手工灯笼"></header-bar>
 
-<section class="scrollfix" style="padding-top:44px;">
+<section class="scrollfix" style="padding-top:44px;" when-scrolled="loadMore()">
 
     <div class="unit_activity_text">
         <h2>幼儿手工灯笼的各种做法</h2>
@@ -9,164 +9,29 @@
         </article>
     </div>
 
-    <ul class="js_falls mod_list_falls">
-        <li data-y="162">
-            <div class="this_border">
-                <a page-jump="{opts: {direction: 'left'}, module:'home', hash:'index'}">
-                    <img src="../themes/temp/1.jpg" />
-                    <article>
-                        <div class="this_text">
-                            所需材料：剪刀、彩纸、双面胶等等
-                        </div>
-                        
-                        <div class="this_star">
-                            256
-                        </div>
 
-                        <div class="this_user">
-                            <img src="../themes/temp/3.jpg" />
-                            <p>
-                                开心每一天<br>
-                                发布到：#泥工  #废 旧材料  #玩教具习的
-                            </p>
-                        </div>
-                    </article>
-                </a>
-            </div>
-        </li>
-        <li data-y="124">
-            <div class="this_border">
-                <a page-jump="{opts: {direction: 'right',href: '/home/index.html#/index2'}}">
-                    <img src="../themes/temp/2.jpg" />
-                    <article>
-                        <div class="this_text">
-                            活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿了幼儿科学学习的
-                        </div>
-                        <div class="this_star">
-                            256
-                        </div>
-                        <div class="this_user">
-                            <img src="../themes/temp/3.jpg" />
-                            <p>
-                                开心每一天<br>
-                                发布到：#泥工  #废 旧材料  #玩教具
-                            </p>
-                        </div>
-                    </article>
-                </a>
-            </div>
-        </li>
-        <li data-y="321">
-            <div class="this_border">
-                <a page-jump="{opts: {direction: 'down',href: '/home/index.html#/index1'}}">
-                    <img src="../themes/temp/4.jpg" />
-                    <article>
-                        <div class="this_text">
-                            所需材料：剪刀、彩纸、双面胶等等
-                        </div>
-                        
-                        <div class="this_star">
-                            256
-                        </div>
 
-                        <div class="this_user">
-                            <img src="../themes/temp/3.jpg" />
-                            <p>
-                                开心每一天<br>
-                                发布到：#泥工  #废 旧材料  #玩教具
-                            </p>
-                        </div>
-                    </article>
-                </a>
-            </div>
-        </li>
-        <li data-y="278">
-            <div class="this_border">
-                <a page-jump="{opts: {direction: 'up',href: '/home/index.html#/index3'}}">
-                    <img src="../themes/temp/5.jpg" />
-                    <article>
-                        <div class="this_text">
-                            所需材料：剪刀、彩纸、双面胶等等
-                        </div>
-                        
-                        <div class="this_star">
-                            256
-                        </div>
-
-                        <div class="this_user">
-                            <img src="../themes/temp/3.jpg" />
-                            <p>
-                                开心每一天<br>
-                                发布到：#泥工  #废 旧材料  #玩教具
-                            </p>
-                        </div>
-                    </article>
-                </a>
-            </div>
-        </li>
-        <li data-y="286">
-            <div class="this_border">
-                <img src="../themes/temp/6.jpg" />
+    <!--瀑布流-->
+    <falls>
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}">
+            <div class="this_border" page-jump="{{v.SiteUrl}}">
+                <img ng-src="{{v.Images[0].ImageUrl}}" />
                 <article>
-                    <div class="this_text">
-                        活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿了幼儿科学学习的
-                    </div>
-                    <div class="this_star">
-                        256
-                    </div>
-                    <div class="this_user">
-                        <img src="../themes/temp/3.jpg" />
-                        <p>
-                            开心每一天<br>
-                            发布到：#泥工  #废 旧材料  #玩教具
-                        </p>
-                    </div>
-                </article>
-            </div>
-        </li>
-        <li data-y="200">
-            <div class="this_border">
-                <img src="../themes/temp/7.jpg" />
-                <article>
-                    <div class="this_text">
-                        所需材料：剪刀、彩纸、双面胶等等
-                    </div>
+                    <div class="this_text">{{v.Images[0].Description}}</div>
                     
                     <div class="this_star">
                         256
                     </div>
 
                     <div class="this_user">
-                        <img src="../themes/temp/3.jpg" />
+                        <img ng-src="{{v.Author.ImageUrl}}" />
                         <p>
-                            开心每一天<br>
-                            发布到：#泥工  #废 旧材料  #玩教具
+                            {{v.Author.UserName}}<br>
+                            <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
                         </p>
                     </div>
                 </article>
             </div>
         </li>
-        <li data-y="300">
-            <div class="this_border">
-                <img src="../themes/temp/8.jpg" />
-                <article>
-                    <div class="this_text">
-                        所需材料：剪刀、彩纸、双面胶等等
-                    </div>
-                    
-                    <div class="this_star">
-                        256
-                    </div>
-
-                    <div class="this_user">
-                        <img src="../themes/temp/3.jpg" />
-                        <p>
-                            开心每一天<br>
-                            发布到：#泥工  #废 旧材料  #玩教具
-                        </p>
-                    </div>
-                </article>
-            </div>
-        </li>
-    </ul>
+    </falls>
 </section>
