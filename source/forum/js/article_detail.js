@@ -14,7 +14,7 @@ angular.module('phoneApp')
 ){
     
     //--设置返回按钮
-    var isFrom = $location.$$search.isFrom || '';
+    var isFrom = $location.$$search.isFrom || $location.$$search.isfrom || '';
 
     switch (isFrom) {
         case 'home':
