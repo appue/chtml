@@ -13,12 +13,7 @@ angular.module('phoneApp')
     widget
 ){
     $scope.myScrollOptions = {
-        'wrapper': {
-            snap: false,
-            onScrollEnd: function (){
-                alert('finshed scrolling wrapper');
-            }
-        },
+        'wrapper': {}
     };
 
     var pageView = {

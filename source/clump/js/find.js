@@ -12,7 +12,10 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-
+    $scope.myScrollOptions = {
+        'wrapper': {}
+    };
+    
     var pageView = {
         init: function () {
             var self = this;
