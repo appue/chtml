@@ -117,6 +117,13 @@ $gray_val: #cacdcb;
                 padding-bottom: 5px;
                 color: $gray_val;
             }
+
+            &.this_more{
+                background: url(img/img_find_more.jpg) no-repeat center 0;
+                background-size: 100% auto;
+                padding-top: 80px;
+                line-height: 30px;
+            }
         }
     }
 }

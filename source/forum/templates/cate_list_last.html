@@ -20,32 +20,37 @@
     <div class="mod_title_text this_p">
         <div>相关主题</div>
     </div>
-
-    <div class="unit_find_subject" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
+    <div class="mod_list_img" style="height:110px;" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
         <ul>
             <li>
-                <img src="../themes/temp/6.jpg" />
-                #美工
+                <div class="this_img">
+                    <img src="../../themes/temp/img.jpg" />
+                </div>
+                <div class="this_title">
+                    <span>#环境创设</span>
+                </div>
             </li>
             <li>
-                <img src="../themes/temp/6.jpg" />
-                #美工
+                <div class="this_img">
+                    <img src="../../themes/temp/img.jpg" />
+                </div>
+                <div class="this_title">#玩教具</div>
             </li>
             <li>
-                <img src="../themes/temp/6.jpg" />
-                #美工
+                <div class="this_img">
+                    <img src="../../themes/temp/img.jpg" />
+                </div>
+                <div class="this_title">#玩教具</div>
             </li>
             <li>
-                <img src="../themes/temp/6.jpg" />
-                #美工
-            </li>
-            <li>
-                <img src="../themes/temp/6.jpg" />
-                #美工
+                <div class="this_img">
+                    <img src="../../themes/temp/img.jpg" />
+                </div>
+                <div class="this_title">#玩教具</div>
             </li>
         </ul>
     </div>
-
+    
     <!--瀑布流-->
     <falls>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
