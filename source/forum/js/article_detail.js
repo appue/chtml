@@ -14,12 +14,36 @@ angular.module('phoneApp')
 ){
     
     //--设置返回按钮
-    $scope.backParam = {
-        'url': [
-            'forum/#/cate/list-sub-1.htm',
-            'forum/index.html#/cate/list-sub-1.htm'
-        ]
-    };
+    var isFrom = $location.$$search.isFrom || '';
+
+    switch (isFrom) {
+        case 'home':
+            $scope.backParam = {
+                'url': [
+                    'home/#/index',
+                    'home/index.html#/index'
+                ]
+            };
+        break;
+
+        case 'like':
+            $scope.backParam = {
+                'url': [
+                    'clump/#/find/like.htm',
+                    'clump/index.html#/find/like.htm'
+                ]
+            };
+        break;
+
+        default:
+            $scope.backParam = {
+                'url': [
+                    'forum/#/cate/list-sub-1.htm',
+                    'forum/index.html#/cate/list-sub-1.htm'
+                ]
+            };
+
+    }
     
     //--设置横向滚动
     $scope.myScrollOptions = {
