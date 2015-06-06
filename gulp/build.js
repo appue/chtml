@@ -99,11 +99,11 @@ module.exports = function (gulp, $) {
 
         switch (veros) {
             case 'win32':
-                url = 'start http://127.0.0.1:' + netPort;
+                url = 'start http://localhost:' + netPort;
             break;
 
             case 'darwin':
-                url = 'open http://127.0.0.1:' + netPort;
+                url = 'open http://localhost:' + netPort;
             break;
         }
 

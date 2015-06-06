@@ -42,6 +42,9 @@
         background-size: 4px auto;
     }
 }
+
+
+/*帖子终极页*/
 .comment_home {
     padding: 10px 10px 58px;
     .comment_layout {
@@ -170,8 +173,7 @@
         height: 152px;
         overflow: hidden;
         padding: 10px 0;
-        background-color: #fff;
-        // border-bottom: 2px solid #cacdcb;
+        background: #fff;
         -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
         position: relative;
         h2 {
@@ -209,14 +211,29 @@
                     margin-top: 3px;
                     color: $gray_val;
                 }
-                &:last-child {
-                    padding-right: 10px;
-                }
             }
         }
     }
 }
 
+
+
+.unit_article_content_login{
+    padding: 10px;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    h3{
+        font-size: 14px;
+        line-height: 30px;
+        margin-bottom: 5px;
+    }
+    button{
+        @include button(100px, 40px);
+        background: $green_val;
+        border: none;
+        font-size: 16px;
+    }
+}
 
 
 
