@@ -47,7 +47,8 @@
     .comment_layout {
         background-color: #fff;
         padding: 5px;
-        border-bottom: 2px solid #cacdcb;
+        // border-bottom: 2px solid #cacdcb;
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
         margin-bottom: 10px;
         .comment_img {
             width: 100%;
@@ -170,7 +171,8 @@
         overflow: hidden;
         padding: 10px 0;
         background-color: #fff;
-        border-bottom: 2px solid #cacdcb;
+        // border-bottom: 2px solid #cacdcb;
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
         position: relative;
         h2 {
             color: $green_val;
@@ -183,16 +185,15 @@
             position: absolute;
             top: 32px;
             left: 0;
-            width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
             li {
                 display: block;
                 width: 70px;
                 overflow: hidden;
-                margin: 0 10px;
+                margin-left: 10px;
                 font-size: 12px;
+                &:last-child{
+                    margin-right: 10px;
+                }
                 img {
                     width: 70px;
                     height: 70px;
