@@ -1,10 +1,11 @@
 <header-bar back transparent title="编辑照片" right="继续"></header-bar>
 
 <section class="unit_photo">
-    <img ng-src="{{data1}}" />
 
     <!--
+    <img ng-src="{{data1}}" />
     <div>{{imageData}}</div>
-    <img ng-src="data:image/jpg;base64,{{imageUrl}}" />
+    <img ng-src="{{imageUrl}}" />
     -->
+    <img data-ng-src="data:image/jpg;base64,{{imageUrl}}" />
 </section>

@@ -4,7 +4,7 @@
 */
 angular.module('phoneApp')
 
-.controller('tPhotoIndex', function (
+.controller('tPhotoEdit', function (
     $scope, 
     $state, 
     $stateParams, 
@@ -13,13 +13,13 @@ angular.module('phoneApp')
     widget,
     $base64
 ){
-    var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
+    // var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
 
-    $scope.data1 = data;
+    // $scope.data1 = data;
     // $scope.imageData = $base64.encode(data);
-    // $scope.imageUrl = $base64.encode(unescape(encodeURIComponent(data)));
+    $scope.imageUrl = $base64.encode(unescape(encodeURIComponent('/Users/bear/Documents/mp3/iscroll-master/demos/carousel/warhol.jpg')));
 
-    
+
     //--设置返回按钮
     $scope.backParam = {
         'url': [

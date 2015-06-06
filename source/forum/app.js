@@ -11,15 +11,6 @@ angular.module('phoneApp', [
     $stateProvider
 
     /*------------------------------------
-    * 发帖第一步
-    */
-    .state('photoIndex', {
-        url: '/photo/index.htm',
-        templateUrl: 'templates/photo.html',
-        controller: 'tPhotoIndex'
-    })
-
-    /*------------------------------------
     * 二级栏目
     */
     .state('cateListSub', {
@@ -89,6 +80,15 @@ angular.module('phoneApp', [
         url: '/comment/list/{id}.htm',
         templateUrl: 'templates/comment_list.html',
         controller: 'tCommentList'
+    })
+
+    /*------------------------------------
+    * 发帖第一步
+    */
+    .state('photoEdit', {
+        url: '/photo/edit.htm',
+        templateUrl: 'templates/photo.html',
+        controller: 'tPhotoEdit'
     });
 
     // $urlRouterProvider.when('', '/index');
