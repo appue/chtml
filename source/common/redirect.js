@@ -138,32 +138,29 @@
             for (i in params.opts) options[i] = params.opts[i];
 
             if (type == 2) {
-                /*
-                var fromUrl;
 
-                window.location.href.replace(/.*\?/g, '?').toLowerCase().replace((/(?:[\?&])(\w+)=([^#&\s]*)/g), function (a, f, s) {
-
-                    fromUrl = (f == 'from') ? decodeURIComponent(s) : '';
-
-                });
+                var url,
+                    from = $location.$$search.from || '';
                 
-                // angular.forEach(arr, function(v, k) {
-                //     if (self._checkUrl(v)) {
-                //         fromUrl = v;
-                //     }
-                // });
+                if (from) {
 
-                options.href = fromUrl ? fromUrl : ((params.url.length > 1) ? params.url[1] : params.url[0].replace('\/#', '\/index.html#'));
-                */
+                    url = (typeof(from) == 'string') ? from : '';
 
-                var fromUrl;
+                    if (typeof(from) == 'object') {
+                        angular.forEach(from, function(v, k) {
+                            url = v;
+                        });
+                    }
 
-                $location.$$absUrl.replace(/.*\?/g, '?').toLowerCase().replace((/(?:[\?&])(\w+)=([^#&\s]*)/g), function (a, f, s) {
-                    fromUrl = (f == 'from') ? decodeURIComponent(s) : '';
-                });
+                    if (!url) return;
 
-                options.href = fromUrl ? fromUrl : ((params.url.length > 1) ? params.url[1] : params.url[0]);
+                    options.href = url;
 
+                } else {
+
+                    options.href = (params.url.length > 1) ? params.url[1] : params.url[0].replace('\/#', '\/index.html#');
+
+                }
 
             } else {
 
