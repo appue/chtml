@@ -17,4 +17,9 @@ angular.module('phoneApp')
     };
 
 
+    $scope.url = {
+        'url': [
+            '/home/#/msg/chat-1.htm?from='+ currentUrl
+        ]
+    }
 });
