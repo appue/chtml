@@ -6,9 +6,11 @@ angular.module('phoneApp')
 
 .controller('HomeMsgWhisperCtrl', function(
     $scope, 
-    $state
+    $state,
+    widget
 ){
-
+    var currentUrl = widget.getCurrentUrl();
+    
     //--设置默认返回
     $scope.backParam = {
         'url': [
