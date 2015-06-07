@@ -3,7 +3,7 @@
     background: #fff;
     li {
         display: -webkit-box;
-        padding: 5px 0;
+        padding: 10px 0;
         @include border_bottom_half;
         &:last-child{
             border: none;

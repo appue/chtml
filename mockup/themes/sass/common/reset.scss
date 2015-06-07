@@ -101,6 +101,7 @@ a.disable, button.disable {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
+
 //按钮1(以popup确认按钮为标准) 参数：width, height
 @mixin button($width:90px, $height:34px) {
     width: $width;
@@ -112,11 +113,14 @@ a.disable, button.disable {
     text-align: center;
     border-radius: 3px;
     color: #fff;
+    outline: none;
 }
+
 //滚动容器
 .scrollfix {
     @include scrollfix;
 }
+
 //蒙版
 .mod_mask {
     position: fixed;
