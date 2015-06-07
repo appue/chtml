@@ -16,7 +16,6 @@ angular.module('phoneApp')
     $scope.pageIndex = 1;
 
     $scope.checkLogin = function () {
-
         if (cachePool.pull('UserInfo')) {
 
             $scope.currentTab = 2;
@@ -26,13 +25,11 @@ angular.module('phoneApp')
 
             routerRedirect.toJump({
                 url: [
-                    'entry/#/login.htm',
-                    'entry/index.htm#/login.htm'
+                    'entry/#/login.htm'
                 ]
             })
 
         }
-        
     };
 
     $scope.loadMore = function () {
