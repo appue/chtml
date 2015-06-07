@@ -179,7 +179,8 @@ a.disable, button.disable {
 .mod_layout {
     background-color: #fff;
     padding: 5px 10px;
-    border-bottom: 2px solid #cacdcb;
+    // border-bottom: 2px solid #cacdcb;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
     margin-bottom: 10px;
 }
 //定义白色布局标题

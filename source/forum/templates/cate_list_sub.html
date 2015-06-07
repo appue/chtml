@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="this_user">
-                        <img src="{{v.Author.ImageUrl}}" />
+                        <img ng-src="{{v.Author.ImageUrl}}" />
                         <p>
                             {{v.Author.UserName}}<br>
                             <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
@@ -50,7 +50,7 @@
                 <div class="this_star">256</div>
 
                 <div class="this_user">
-                    <img src="{{v.Author.ImageUrl}}" />
+                    <img ng-src="{{v.Author.ImageUrl}}" />
                     <p>
                         {{v.Author.UserName}}<br>
                         <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>

@@ -5,7 +5,7 @@
         <li ng-repeat="(k, v) in DataList.ActivityList" page-jump="{{v.SiteUrl}}">
             <h2>{{v.ActivityName}}</h2>
             <h3>{{v.Description}}</h3>
-            <img ng-if="k < 2" src="{{v.ImageUrl}}" />
+            <img ng-if="k < 2" ng-src="{{v.ImageUrl}}" />
         </li>
     </ul>
 </section>
