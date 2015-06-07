@@ -8,7 +8,8 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams, 
-    $location, 
+    $location,
+    cachePool,
     routerRedirect,
     widget
 ){
@@ -42,10 +43,16 @@ angular.module('phoneApp')
 
     }
     
-    //--设置横向滚动
-    $scope.myScrollOptions = {
-        'wrapper': {}
-    };
+    //--判断用户是否登录
+    if (cachePool.pull('UserInfo')) {
+        $scope.isLogin = true;
+        //--设置横向滚动
+        $scope.myScrollOptions = {
+            'wrapper': {}
+        };
+    } else {
+        $scope.isLogin = false;
+    }
 
     //--点评列表
     $scope.UrlCommentList = {

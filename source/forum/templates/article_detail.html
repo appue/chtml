@@ -86,10 +86,10 @@
         </div>
     </div>
 
-    <div class="mod_title_text this_p">
+    <div class="mod_title_text this_p" ng-if="isLogin">
         <div>老师们也在看</div>
     </div>
-    <div class="mod_list_img" style="height:140px;" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
+    <div class="mod_list_img" style="height:150px;" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50' ng-if="isLogin">
         <ul>
             <li>
                 <div class="this_img">
@@ -105,24 +105,36 @@
                 <div class="this_img">
                     <img src="../themes/temp/img.jpg" />
                 </div>
-                <div class="this_title">#玩教具</div>
+                <div class="this_title">
+                    <span>#环境创设</span>
+                    <span>#玩教具</span>
+                </div>
+                <div class="this_tx">22人看过</div>
             </li>
             <li>
                 <div class="this_img">
                     <img src="../themes/temp/img.jpg" />
                 </div>
-                <div class="this_title">#玩教具</div>
+                <div class="this_title">
+                    <span>#环境创设</span>
+                    <span>#玩教具</span>
+                </div>
+                <div class="this_tx">22人看过</div>
             </li>
             <li>
                 <div class="this_img">
                     <img src="../themes/temp/img.jpg" />
                 </div>
-                <div class="this_title">#玩教具</div>
+                <div class="this_title">
+                    <span>#环境创设</span>
+                    <span>#玩教具</span>
+                </div>
+                <div class="this_tx">22人看过</div>
             </li>
         </ul>
     </div>
     
-    <div class="unit_article_content_login">
+    <div class="unit_article_content_login" ng-if="!isLogin">
         <h3>想看看同行们发布的？</h3>
         <button>马上登录</button>
     </div>
