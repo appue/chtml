@@ -12,10 +12,9 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-
-
     $scope.currentTab = 1;
     $scope.pageIndex = 1;
+    $scope.showHeader = true;
     
     //--设置返回按钮
     $scope.backParam = {

@@ -10,10 +10,10 @@ angular.module('phoneApp')
     return function (scope, elm, attr) {
         var raw = elm[0];
 
-        scope.pageIndex = 1; //---------------------页面索引值，当前第几页
-        scope.pageSize = attr.pageSize || 5; //-----每页显示多少条
-        scope.pageTotal = attr.pageTotal || 10000; //--总的条数
-        scope.showHeader = false; //----------------页面头是否有透明过度
+        scope.pageIndex = scope.pageIndex || 1; //---------------------页面索引值，当前第几页
+        scope.pageSize = scope.pageSize || 5; //-----每页显示多少条
+        scope.pageTotal = scope.pageTotal || 10000; //--总的条数
+        scope.showHeader = scope.showHeader || false; //----------------页面头是否有透明过度
 
         if (scope.showHeader) {
             elm.on('touchmove', function() {
@@ -29,8 +29,8 @@ angular.module('phoneApp')
         elm.on('scroll', function () {
             if (scope.showHeader) {
                 var op = (raw.scrollTop / 100).toFixed(1);
-                if (op >= 1) {
-                    op = 1;
+                if (op >= 0.9) {
+                    op = 0.95;
                 }
 
                 elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
