@@ -27,7 +27,7 @@ angular.module('phoneApp')
 
             routerRedirect.toJump({
                 url: [
-                    'entry/#/login.htm'
+                    'entry/#/login.htm?from='+ currentUrl
                 ]
             })
 
