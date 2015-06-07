@@ -81,7 +81,7 @@
                 </p>
             </div>
         </div>
-        <div class="comment_more" page-jump="{{UrlCommentList}}">
+        <div class="comment_more" page-jump="{{redirectUrl.CommentList}}">
             更多评论>>
         </div>
     </div>
@@ -136,7 +136,7 @@
     
     <div class="unit_article_content_login" ng-if="!isLogin">
         <h3>想看看同行们发布的？</h3>
-        <button>马上登录</button>
+        <button page-jump="{{redirectUrl.Login}}">马上登录</button>
     </div>
 </section>
 

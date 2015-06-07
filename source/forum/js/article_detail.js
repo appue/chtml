@@ -54,12 +54,22 @@ angular.module('phoneApp')
         $scope.isLogin = false;
     }
 
-    //--点评列表
-    $scope.UrlCommentList = {
-        'url': [
-            'forum/#/comment/list/'+ $stateParams.id +'.htm'
-        ]
-    }
+    //--跳转URL
+    $scope.redirectUrl = {
+        //--点评列表
+        CommnetList: {
+            'url': [
+                'forum/#/comment/list/'+ $stateParams.id +'.htm'
+            ]
+        },
+
+        //--登录Url
+        Login: {
+            'url': [
+                'entry/#/login.htm'
+            ]  
+        }
+    };
 
 
 
