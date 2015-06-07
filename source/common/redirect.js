@@ -114,7 +114,7 @@
             if (params.url.length > 0) {
                 url = params.url[0];
             }
-            
+
             window.location.href = window.location.origin +'/'+ url;
 
         },
@@ -152,11 +152,11 @@
                 //     }
                 // });
 
-                options.href = fromUrl ? fromUrl : ((params.url.length > 1) ? params.url[1] : params.url[0]);
+                options.href = fromUrl ? fromUrl : ((params.url.length > 1) ? params.url[1] : params.url[0].replace('\/#', '\/index.html#'));
 
             } else {
 
-                options.href = (params.url.length > 1) ? params.url[1] : params.url[0];
+                options.href = (params.url.length > 1) ? params.url[1] : params.url[0].replace('\/#', '\/index.html#');
 
             }
 

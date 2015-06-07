@@ -1,140 +1,43 @@
-<header-bar back title="搜索结果"></header-bar>
+<header-bar back title="搜索<span class='color_green'>{{keyword}}</span>的结果"></header-bar>
 
 <ul class="mod_tab_4 tab_search">
-    <li>内容</li>
-    <li>标签</li>
-    <li>圈子</li>
-    <li class="current">用户</li> <i class="line"></i>
+    <li ng-click="currentTab=1" ng-class="{current : currentTab==1}">内容</li>
+    <li ng-click="currentTab=2" ng-class="{current : currentTab==2}">标签</li>
+    <li ng-click="currentTab=3" ng-class="{current : currentTab==3}">圈子</li>
+    <li ng-click="currentTab=4" ng-class="{current : currentTab==4}">用户</li>
+    <i class="line"></i>
 </ul>
 
 
 <!--搜索-搜索内容-->
-<section class="mod_scroll" style="padding:0;padding-top:90px;">
-    <ul class="mod_list_falls" style="height:1600px;">
-        <li style="left:0;top:0;">
-            <div class="this_border">
-                <img src="../../themes/temp/1.jpg" />
+<section class="mod_scroll" when-scrolled="loadMore()" style="padding:0;padding-top:85px;" ng-if="currentTab==1">
+    <!--瀑布流-->
+    <falls>
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
+            <div class="this_border" page-jump="{{v.SiteUrl}}">
+                <img ng-src="{{v.Images[0].ImageUrl}}" />
                 <article>
-                    <div class="this_text">所需材料：剪刀、彩纸、双面胶等等</div>
-
-                    <div class="this_star">256</div>
+                    <div class="this_text">{{v.Images[0].Description}}</div>
+                    
+                    <div class="this_star">
+                        256
+                    </div>
 
                     <div class="this_user">
-                        <img src="../../themes/temp/3.jpg" />
+                        <img src="{{v.Author.ImageUrl}}" />
                         <p>
-                            开心每一天
-                            <br>发布到：#泥工  #废 旧材料  #玩教具习的</p>
+                            {{v.Author.UserName}}<br>
+                            <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                        </p>
                     </div>
                 </article>
             </div>
         </li>
-        <li style="right:0;top:0;">
-            <div class="this_border">
-                <img src="../../themes/temp/2.jpg" />
-                <article>
-                    <div class="this_text">
-                        活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿了幼儿科学学习的
-                    </div>
-                    <div class="this_star">256</div>
-                    <div class="this_user">
-                        <img src="../../themes/temp/3.jpg" />
-                        <p>
-                            开心每一天
-                            <br>发布到：#泥工  #废 旧材料  #玩教具</p>
-                    </div>
-                </article>
-            </div>
-        </li>
-        <li style="left:0;top:280px;">
-            <div class="this_border">
-                <img src="../../themes/temp/4.jpg" />
-                <article>
-                    <div class="this_text">所需材料：剪刀、彩纸、双面胶等等</div>
-
-                    <div class="this_star">256</div>
-
-                    <div class="this_user">
-                        <img src="../../themes/temp/3.jpg" />
-                        <p>
-                            开心每一天
-                            <br>发布到：#泥工  #废 旧材料  #玩教具</p>
-                    </div>
-                </article>
-            </div>
-        </li>
-        <li style="right:0;top:320px;">
-            <div class="this_border">
-                <img src="../../themes/temp/5.jpg" />
-                <article>
-                    <div class="this_text">所需材料：剪刀、彩纸、双面胶等等</div>
-
-                    <div class="this_star">256</div>
-
-                    <div class="this_user">
-                        <img src="../../themes/temp/3.jpg" />
-                        <p>
-                            开心每一天
-                            <br>发布到：#泥工  #废 旧材料  #玩教具</p>
-                    </div>
-                </article>
-            </div>
-        </li>
-        <li style="left:0;top:680px;">
-            <div class="this_border">
-                <img src="../../themes/temp/6.jpg" />
-                <article>
-                    <div class="this_text">
-                        活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿了幼儿科学学习的
-                    </div>
-                    <div class="this_star">256</div>
-                    <div class="this_user">
-                        <img src="../../themes/temp/3.jpg" />
-                        <p>
-                            开心每一天
-                            <br>发布到：#泥工  #废 旧材料  #玩教具</p>
-                    </div>
-                </article>
-            </div>
-        </li>
-        <li style="right:0;top:690px;">
-            <div class="this_border">
-                <img src="../../themes/temp/7.jpg" />
-                <article>
-                    <div class="this_text">所需材料：剪刀、彩纸、双面胶等等</div>
-
-                    <div class="this_star">256</div>
-
-                    <div class="this_user">
-                        <img src="../../themes/temp/3.jpg" />
-                        <p>
-                            开心每一天
-                            <br>发布到：#泥工  #废 旧材料  #玩教具</p>
-                    </div>
-                </article>
-            </div>
-        </li>
-        <li style="right:0;top:1000px;">
-            <div class="this_border">
-                <img src="../../themes/temp/8.jpg" />
-                <article>
-                    <div class="this_text">所需材料：剪刀、彩纸、双面胶等等</div>
-
-                    <div class="this_star">256</div>
-
-                    <div class="this_user">
-                        <img src="../../themes/temp/3.jpg" />
-                        <p>
-                            开心每一天
-                            <br>发布到：#泥工  #废 旧材料  #玩教具</p>
-                    </div>
-                </article>
-            </div>
-        </li>
-    </ul>
+    </falls>
 </section>
 
 <!--搜索-搜索标签-->
-<section class="mod_scroll" style="padding:0;padding-top:90px;">
+<section class="mod_scroll" style="padding:0;padding-top:90px;" ng-if="currentTab==2">
     <ul class="mod_list_falls" style="height:400px;">
         <li style="left:0;top:0;">
             <div class="this_border">
@@ -168,7 +71,7 @@
 
 
 <!--搜索-搜索圈子-->
-<section class="mod_scroll" style="padding-top:95px;">
+<section class="mod_scroll" style="padding-top:95px;" ng-if="currentTab==3">
     <ul class="unit_keyword_club">
         <li>
             <div>
@@ -193,7 +96,7 @@
 
 
 <!--搜索-搜索用户-->
-<section class="mod_scroll" style="padding-top:95px;">
+<section class="mod_scroll" style="padding-top:95px;" ng-if="currentTab==4">
     <ul class="unit_keyword_user">
         <li>
             <img src="../../themes/temp/3.jpg" />

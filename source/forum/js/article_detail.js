@@ -20,8 +20,7 @@ angular.module('phoneApp')
         case 'home':
             $scope.backParam = {
                 'url': [
-                    'home/#/index',
-                    'home/index.html#/index'
+                    'home/#/index'
                 ]
             };
         break;
@@ -29,8 +28,7 @@ angular.module('phoneApp')
         case 'like':
             $scope.backParam = {
                 'url': [
-                    'clump/#/find/like.htm',
-                    'clump/index.html#/find/like.htm'
+                    'clump/#/find/like.htm'
                 ]
             };
         break;
@@ -38,8 +36,7 @@ angular.module('phoneApp')
         default:
             $scope.backParam = {
                 'url': [
-                    'forum/#/cate/list-sub-1.htm',
-                    'forum/index.html#/cate/list-sub-1.htm'
+                    'forum/#/cate/list-sub-1.htm'
                 ]
             };
 
@@ -49,6 +46,16 @@ angular.module('phoneApp')
     $scope.myScrollOptions = {
         'wrapper': {}
     };
+
+    //--点评列表
+    $scope.UrlCommentList = {
+        'url': [
+            'forum/#/comment/list/'+ $stateParams.id +'.htm'
+        ]
+    }
+
+
+
     // widget.ajaxRequest({
     //     noMask: true,
     //     url: '$local/Tools/getContentArticle',

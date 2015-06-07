@@ -10,7 +10,7 @@
     -webkit-box-sizing: border-box;
     -webkit-box-pack: justify;
     box-sizing: border-box;
-    background: rgba(255,255,255,1);
+    background: rgba(255,255,255,.95);
     @include border_bottom_half;
     &.transparent {
         background: rgba(255,255,255,0);

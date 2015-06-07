@@ -51,18 +51,19 @@ angular.module('phoneApp')
                         });
 
                     }
+
                     // if (isPush) {
                     //     key.push(scope.keyword);
                     // }
 
                     // cachePool.push('Keyword', key);
 
-                    // routerRedirect.toJump({
-                    //     'url': [
-                    //         'search/#/result?keyword='+ scope.keyword,
-                    //         'search/index.html#/result?keyword='+ scope.keyword
-                    //     ]
-                    // });
+                    routerRedirect.toJump({
+                        'url': [
+                            'search/#/result?keyword='+ encodeURIComponent(scope.keyword)
+                        ]
+                    });
+
                 } else {
 
                     if ($state.is('index')) {
@@ -73,8 +74,7 @@ angular.module('phoneApp')
 
                         routerRedirect.toJump({
                             'url': [
-                                'search/#/index',
-                                'search/index.html#/index'
+                                'search/#/index'
                             ]
                         });
 

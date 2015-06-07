@@ -1,33 +1,14 @@
 <header-bar back title="评论<span class='color_green'>123</span>"></header-bar>
 
-<section class="mod_scroll">
+<section class="mod_scroll" when-scrolled="loadMore()">
     <ul class="unit_comment_list">
-        <li>
-            <img src="../themes/temp/3.jpg" />
+        <li ng-repeat="(k, v) in DataList.CommentList track by $index">
+            <img ng-src="{{v.Author.ImageUrl}}" />
             <dl>
                 <dt>
-                    师乐汇 <i>04.07  11:12</i>
+                    {{v.Author.UserName}} <i>{{v.UpdateTime}}</i>
                 </dt>
-                <dd>手工灯笼制作，让家长和孩子一起动手，制作一个属于自己的灯笼，这是一件非常有意义的事情，相信它会成为你们难忘的回忆！</dd>
-            </dl>
-        </li>
-        <li>
-            <img src="../themes/temp/3.jpg" />
-            <dl>
-                <dt>
-                    师乐汇 <i>04.07  11:12</i>
-                </dt>
-                <dd>手工灯笼制作，让家长和孩子一起动手，制作一个属于自己的灯笼，这是一件非常有意义的事情，相信它会成为你们难忘的回忆！</dd>
-            </dl>
-        </li>
-        <li>
-            <img src="../themes/temp/3.jpg" />
-            <dl>
-                <dt>
-                    师乐汇
-                    <i>04.07  11:12</i>
-                </dt>
-                <dd>手工灯笼制作，让家长和孩子一起动手，制作一个属于自己的灯笼，这是一件非常有意义的事情，相信它会成为你们难忘的回忆！</dd>
+                <dd>{{v.Content}}</dd>
             </dl>
         </li>
     </ul>

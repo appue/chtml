@@ -163,9 +163,8 @@
         .comment_more {
             @include border_top_half;
             padding: 5px 5px 8px;
-            a {
-                color: $green_val;
-            }
+            color: $green_val;
+            line-height: 30px;
         }
     }
     // .comment_also_watch {
