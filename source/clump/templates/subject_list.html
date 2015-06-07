@@ -4,7 +4,7 @@
     <ul class="unit_subject_list">
         <li ng-repeat="(k, v) in SubjectList" page-jump="{{v.SiteUrl}}">
             <div>{{v.ShortName}}</div>
-            <img src="{{v.ImageUrl}}" />
+            <img ng-src="{{v.ImageUrl}}" />
         </li>
     </ul>
 </section>
