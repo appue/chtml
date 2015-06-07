@@ -1,6 +1,6 @@
 /*
 * 消息-聊天
-* /home/#/msg/chat
+* /home/#/msg/chat-{uid}.htm
 */
 angular.module('phoneApp')
 
@@ -8,32 +8,10 @@ angular.module('phoneApp')
     $scope, 
     $state
 ){
-    
-    var pageView = {
-        init: function() {
-            var self = this;
-
-            self._setDeploy();
-
-            self._setHeader();
-        },
-
-        _setDeploy: function() {
-            var self = this;
-        },
-
-        _setHeader: function() {
-            var self = this;
-            
-            //--设置返回
-            $scope.backParam = {
-                'url': [
-                    'home/#/msg',
-                    'home/index.html#/msg'
-                ]
-            };
-        }
+    //--设置默认返回
+    $scope.backParam = {
+        'url': [
+            'home/#/index'
+        ]
     };
-
-    pageView.init();
 });

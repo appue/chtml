@@ -50,6 +50,13 @@ angular.module('phoneApp')
             'url': [
                 'entry/#/login.htm?from='+ currentUrl
             ]  
+        },
+
+        //--私聊
+        Chat: {
+            'url': [
+                '/home/#/msg/chat-1.htm?from='+ currentUrl
+            ]
         }
     };
 

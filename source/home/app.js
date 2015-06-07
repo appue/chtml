@@ -21,42 +21,55 @@ angular.module('phoneApp', [
 })
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
+
     .state('index', {
         // abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
         url: '/index',
         templateUrl: 'templates/index.html',
         controller: 'HomeIndexCtrl'
     })
+
     .state('msg', {
         url: '/msg',
         templateUrl: 'templates/msg.html',
         controller: 'HomeMsgCtrl'
     })
+
+    /*------------------------------------
+    * 跟某一用户聊天
+    * @params:
+    *     uid: 用户ID
+    */
     .state('msgChat', {
-        url: '/msg/chat',
+        url: '/msg/chat-{uid}.htm',
         templateUrl: 'templates/msg-chat.html',
         controller: 'HomeMsgChatCtrl'
     })
+
     .state('msgNotice', {
         url: '/msg/notice',
         templateUrl: 'templates/msg-notice.html',
         controller: 'HomeMsgNoticeCtrl'
     })
+
     .state('msgPraise', {
         url: '/msg/praise',
         templateUrl: 'templates/msg-praise.html',
         controller: 'HomeMsgPraiseCtrl'
     })
+
     .state('msgSearch', {
         url: '/msg/search',
         templateUrl: 'templates/msg-search.html',
         controller: 'HomeMsgSearchCtrl'
     })
+
     .state('msgWhisper', {
-        url: '/msg/whisper',
+        url: '/msg/whisper.htm',
         templateUrl: 'templates/msg-whisper.html',
         controller: 'HomeMsgWhisperCtrl'
     })
+
     .state('setFeedback', {
         url: '/set/feedback',
         templateUrl: 'templates/set-feedback.html',
