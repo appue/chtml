@@ -8,7 +8,8 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams, 
-    $location, 
+    $location,
+    cachePool,
     routerRedirect,
     widget
 ){
@@ -18,6 +19,28 @@ angular.module('phoneApp')
         'url': [
             'clump/#/find.htm'
         ]
+    };
+
+
+    var key = cachePool.pull('Keyword') || [];
+
+    $scope.DataKeyword = [];
+
+    angular.forEach(key, function (v, k) {
+        $scope.DataKeyword.push({
+            'Keyword': v,
+            'SiteUrl': {
+                'url': [
+                    'search/#/result?keyword='+ encodeURIComponent(v)
+                ]
+            }
+        })
+    });
+
+    //--清除历史记录
+    $scope.clearHistory = function () {
+        cachePool.remove("Keyword");
+        $scope.DataKeyword = [];
     };
 
     /*

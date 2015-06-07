@@ -14,38 +14,10 @@
     <dl class="unit_keyword">
         <dt>
             历史搜索
-            <button>清空历史</button>
+            <button ng-click="clearHistory()">清空历史</button>
         </dt>
-        <dd>#语言</dd>
-        <dd>#孩子注意力不集中怎么办</dd>
-        <dd>#活动区</dd>
-        <dd>#玩教具</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
-        <dd>#环境创设</dd>
+        <dd ng-repeat="(k, v) in DataKeyword track by $index" page-jump="{{v.SiteUrl}}">
+            #{{v.Keyword}}
+        </dd>
     </dl>
 </section>

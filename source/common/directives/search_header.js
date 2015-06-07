@@ -29,34 +29,17 @@ angular.module('phoneApp')
             scope.toSearch = function () {
                 if (scope.keyword) {
 
-                    var isPush = true;
-                        key = cachePool.pull('Keyword') || [];
+                    var key = cachePool.pull('Keyword') || [];
 
-                    if (key.length >= 3) {
-
-                        angular.forEach(key, function (v, k){
-                            if (scope.keyword == v) {
-                                key.splice(k, 1);
-                            }
-                        });
+                    angular.forEach(key, function (v, k){
+                        if (scope.keyword == v) {
+                            key.splice(k, 1);
+                        }
+                    });
                         
-                        key.splice(0, 0, scope.keyword);
+                    key.splice(0, 0, scope.keyword);
 
-                    } else {
-
-                        angular.forEach(key, function (v, k){
-                            if (scope.keyword == v) {
-                                key.splice(k, 1);
-                            }
-                        });
-
-                    }
-
-                    // if (isPush) {
-                    //     key.push(scope.keyword);
-                    // }
-
-                    // cachePool.push('Keyword', key);
+                    cachePool.push('Keyword', key);
 
                     routerRedirect.toJump({
                         'url': [
