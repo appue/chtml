@@ -12,10 +12,10 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-    $scope.pageIndex = 1;
-    $scope.currentTab = 1;
+    $scope.$parent.pageIndex = 1;
+    $scope.$parent.currentTab = 1;
 
-    $scope.keyword = $location.$$search.keyword || '';
+    $scope.$parent.keyword = $location.$$search.keyword || '';
 
     //--设置返回
     $scope.backParam = {
