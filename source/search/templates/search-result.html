@@ -1,16 +1,16 @@
 <header-bar back title="搜索<span class='color_green'>{{keyword}}</span>的结果"></header-bar>
 
 <ul class="mod_tab_4 tab_search">
-    <li ng-click="currentTab=1" ng-class="{current : currentTab==1}">内容</li>
-    <li ng-click="currentTab=2" ng-class="{current : currentTab==2}">标签</li>
-    <li ng-click="currentTab=3" ng-class="{current : currentTab==3}">圈子</li>
-    <li ng-click="currentTab=4" ng-class="{current : currentTab==4}">用户</li>
+    <li ng-click="currentTab=1;pageIndex=1" ng-class="{current : currentTab==1}">内容</li>
+    <li ng-click="currentTab=2;pageIndex=1" ng-class="{current : currentTab==2}">标签</li>
+    <li ng-click="currentTab=3;pageIndex=1" ng-class="{current : currentTab==3}">圈子</li>
+    <li ng-click="currentTab=4;pageIndex=1" ng-class="{current : currentTab==4}">用户</li>
     <i class="line"></i>
 </ul>
 
 
 <!--搜索-搜索内容-->
-<section class="mod_scroll" when-scrolled="loadMore()" style="padding:0;padding-top:85px;" ng-if="currentTab==1">
+<section class="mod_scroll" when-scrolled="loadMore(currentTab)" style="padding:0;padding-top:85px;" ng-if="currentTab==1">
     <!--瀑布流-->
     <falls>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
@@ -41,7 +41,7 @@
     <ul class="mod_list_falls" style="height:400px;">
         <li style="left:0;top:0;">
             <div class="this_border">
-                <img src="../../themes/temp/1.jpg" />
+                <img src="../themes/temp/1.jpg" />
                 <article>
                     <div class="this_cate">
                         #玩教具 #泥工
@@ -52,7 +52,7 @@
         </li>
         <li style="right:0;top:0;">
             <div class="this_border">
-                <img src="../../themes/temp/2.jpg" />
+                <img src="../themes/temp/2.jpg" />
                 <article>
                     <div class="this_cate">#玩教具 #泥工 #泥工 #泥工</div>
                 </article>
@@ -60,7 +60,7 @@
         </li>
         <li style="right:0;top:145px;">
             <div class="this_border">
-                <img src="../../themes/temp/7.jpg" />
+                <img src="../themes/temp/7.jpg" />
                 <article>
                     <div class="this_cate">#玩教具 #泥工 #泥工 #泥工</div>
                 </article>
@@ -75,7 +75,7 @@
     <ul class="unit_keyword_club">
         <li>
             <div>
-                <img src="../../themes/temp/img.jpg" />
+                <img src="../themes/temp/img.jpg" />
                 <article>
                     <p>孩子们的营养餐</p>
                     玩教具  手工
@@ -84,7 +84,7 @@
         </li>
         <li>
             <div>
-                <img src="../../themes/temp/img.jpg" />
+                <img src="../themes/temp/img.jpg" />
                 <article>
                     <p>孩子们的营养餐</p>
                     玩教具  手工
@@ -99,17 +99,17 @@
 <section class="mod_scroll" style="padding-top:95px;" ng-if="currentTab==4">
     <ul class="unit_keyword_user">
         <li>
-            <img src="../../themes/temp/3.jpg" />
+            <img src="../themes/temp/3.jpg" />
             <p>吹口哨的柬埔寨girl</p>
             <div class="this_btn current">关注</div>
         </li>
         <li>
-            <img src="../../themes/temp/3.jpg" />
+            <img src="../themes/temp/3.jpg" />
             <p>吹口哨的柬埔寨girl</p>
             <div class="this_btn">已关注</div>
         </li>
         <li>
-            <img src="../../themes/temp/3.jpg" />
+            <img src="../themes/temp/3.jpg" />
             <p>吹口哨的柬埔寨girl</p>
             <div class="this_btn">互注</div>
         </li>

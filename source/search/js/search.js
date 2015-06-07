@@ -13,6 +13,12 @@ angular.module('phoneApp')
     widget
 ){
 
+    //--设置返回
+    $scope.backParam = {
+        'url': [
+            'clump/#/find.htm'
+        ]
+    };
 
     /*
     * 1、每个圈子当天发帖量多的排前面，每24小时会自动更新一次（取前20个）
