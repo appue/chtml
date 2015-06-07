@@ -23,8 +23,7 @@ angular.module('phoneApp')
     //--设置返回按钮
     $scope.backParam = {
         'url': [
-            'home/#/index',
-            'home/index.html#/index'
+            'home/#/index'
         ]
     };
 
