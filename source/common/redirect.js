@@ -138,6 +138,7 @@
             for (i in params.opts) options[i] = params.opts[i];
 
             if (type == 2) {
+                /*
                 var fromUrl;
 
                 window.location.href.replace(/.*\?/g, '?').toLowerCase().replace((/(?:[\?&])(\w+)=([^#&\s]*)/g), function (a, f, s) {
@@ -153,12 +154,23 @@
                 // });
 
                 options.href = fromUrl ? fromUrl : ((params.url.length > 1) ? params.url[1] : params.url[0].replace('\/#', '\/index.html#'));
+                */
+
+                var fromUrl;
+
+                $location.$$absUrl.replace(/.*\?/g, '?').toLowerCase().replace((/(?:[\?&])(\w+)=([^#&\s]*)/g), function (a, f, s) {
+                    fromUrl = (f == 'from') ? decodeURIComponent(s) : '';
+                });
+
+                options.href = fromUrl ? fromUrl : ((params.url.length > 1) ? params.url[1] : params.url[0]);
+
 
             } else {
 
                 options.href = (params.url.length > 1) ? params.url[1] : params.url[0].replace('\/#', '\/index.html#');
 
             }
+
 
             self._toAppurl(options);
         },

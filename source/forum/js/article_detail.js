@@ -17,31 +17,13 @@ angular.module('phoneApp')
     //--设置返回按钮
     var isFrom = $location.$$search.isFrom || $location.$$search.isfrom || '';
 
-    switch (isFrom) {
-        case 'home':
-            $scope.backParam = {
-                'url': [
-                    'home/#/index'
-                ]
-            };
-        break;
+    var currentUrl = widget.getCurrentUrl();
 
-        case 'like':
-            $scope.backParam = {
-                'url': [
-                    'clump/#/find/like.htm'
-                ]
-            };
-        break;
-
-        default:
-            $scope.backParam = {
-                'url': [
-                    'forum/#/cate/list-sub-1.htm'
-                ]
-            };
-
-    }
+    $scope.backParam = {
+        'url': [
+            'home/#/index'
+        ]
+    };
     
     //--判断用户是否登录
     if (cachePool.pull('UserInfo')) {
@@ -57,16 +39,16 @@ angular.module('phoneApp')
     //--跳转URL
     $scope.redirectUrl = {
         //--点评列表
-        CommnetList: {
+        CommentList: {
             'url': [
-                'forum/#/comment/list/'+ $stateParams.id +'.htm'
+                'forum/#/comment/list/'+ $stateParams.id +'.htm?from='+ currentUrl
             ]
         },
 
         //--登录Url
         Login: {
             'url': [
-                'entry/#/login.htm'
+                'entry/#/login.htm?from='+ currentUrl
             ]  
         }
     };

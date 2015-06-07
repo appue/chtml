@@ -7,7 +7,7 @@ angular.module('phoneApp')
     $location, 
     routerRedirect
 ) {
-    
+
     $scope.pageIndex = 1;
 
     //--设置返回按钮

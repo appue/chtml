@@ -1,6 +1,16 @@
 'use strict';
 
-angular.module('phoneApp').factory('widget', function ($http, $cacheFactory, $rootScope, $compile, $timeout, cachePool) {
+angular.module('phoneApp')
+.factory('widget', function (
+    $http, 
+    $cacheFactory, 
+    $rootScope, 
+    $compile, 
+    $timeout,
+    $location,
+    ENV,
+    cachePool
+) {
 
     /**
      * toast提示层
@@ -282,11 +292,32 @@ angular.module('phoneApp').factory('widget', function ($http, $cacheFactory, $ro
 
     };
 
+    /**
+     * 获得当前URL地址
+     */
+    var getCurrentUrl = function () {
+        var currentUrl,
+            url = $location.$$absUrl;
+        
+        if (ENV.isHybrid) {
+        
+            currentUrl = encodeURIComponent(url.replace(/.*\/www\//, ""));
+
+        } else {
+
+            currentUrl = encodeURIComponent(url);
+
+        }
+
+        return currentUrl;
+    };
+
     return {
         msgToast: msgToast,
         cacheData: cacheData,
         safeApply: safeApply,
         stickyTopScroll: stickyTopScroll,
-        ajaxRequest: ajaxRequest
+        ajaxRequest: ajaxRequest,
+        getCurrentUrl: getCurrentUrl
     };
 });
