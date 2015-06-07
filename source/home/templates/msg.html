@@ -1,4 +1,5 @@
 <section class="mod_scroll" style="padding-top:10px;">
+<!--
     <ul ngd-click="itemClick($event)" selector="li" class="unit_msg_list_03">
         <li data-type="praise" class="i_hit">
             <span class="i_new">赞</span>
@@ -14,6 +15,13 @@
         </li>
         <li data-type="search" class="i_friend">
             <span>邀请好友</span>
+        </li>
+    </ul>
+-->
+
+    <ul class="unit_msg_list_03">
+        <li ng-repeat="(k, v) in DataLink track by $index" page-jump="{{v.SiteUrl}}" class="{{v.ClassName}}">
+            <span ng-class="{i_new : v.isNew}">{{v.Title}}</span>
         </li>
     </ul>
 </section>

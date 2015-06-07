@@ -46,8 +46,12 @@ angular.module('phoneApp', [
         controller: 'HomeMsgChatCtrl'
     })
 
+    /*------------------------------------
+    * 通知
+    * @params:
+    */
     .state('msgNotice', {
-        url: '/msg/notice',
+        url: '/msg/notice.htm',
         templateUrl: 'templates/msg-notice.html',
         controller: 'HomeMsgNoticeCtrl'
     })
@@ -64,6 +68,11 @@ angular.module('phoneApp', [
         controller: 'HomeMsgSearchCtrl'
     })
 
+
+    /*------------------------------------
+    * 私聊
+    * @params:
+    */
     .state('msgWhisper', {
         url: '/msg/whisper.htm',
         templateUrl: 'templates/msg-whisper.html',

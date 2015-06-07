@@ -11,77 +11,92 @@ angular.module('phoneApp')
     $location, 
     routerRedirect
 ) {
-    
-    var pageView = {
-        init: function() {
-            var self = this;
 
-            self._setDeploy();
+    $scope.footerTab = 4;
 
-            self._setLink();
+    $scope.DataLink = [
+        {
+            Title: '赞',
+            ClassName: 'i_hit',
+            SiteUrl: {
+                'url': ['home/#/msg/praise']
+            },
+            isNew: true
         },
-
-        _setDeploy: function() {
-            var self = this;
-
-            $scope.footerTab = 4;
-
-            console.log($location);
+        {
+            Title: '评论',
+            ClassName: 'i_comment',
+            SiteUrl: {
+                'url': ['home/#/msg/praise']
+            },
+            isNew: false
         },
-
-        _setLink: function() {
-            var self = this;
-
-            $scope.itemClick = function(e) {
-                var $that = angular.element(e.delegationTarget);
-
-                var type = $that.attr('data-type'),
-                    url = [];
-
-                switch (type) {
-                    case 'praise': //--赞
-                        url = [
-                            'home/#/msg/praise',
-                            'home/index.html#/msg/praise'
-                            // 'home/index.html#/msg/praise?from='+ encodeURIComponent('home/index.html#/msg/notice')
-                        ];
-                    break;
-
-                    case 'comment': //--评论
-                        url = [
-                            'home/#/msg/praise',
-                            'home/index.html#/msg/praise'
-                        ];
-                    break;
-
-                    case 'notice': //--通知
-                        url = [
-                            'home/#/msg/notice',
-                            'home/index.html#/msg/notice'
-                        ];
-                    break;
-
-                    case 'whisper': //--私聊
-                        url = [
-                            'home/#/msg/whisper',
-                            'home/index.html#/msg/whisper'
-                        ];
-                    break;
-
-                    case 'search': //--邀请好友
-                        url = [
-                            'home/#/msg/search',
-                            'home/index.html#/msg/search'
-                        ];
-                    break;
-                }
-
-                routerRedirect.toJump({
-                    'url': url
-                });
-            };
+        {
+            Title: '通知',
+            ClassName: 'i_msg',
+            SiteUrl: {
+                'url': ['home/#/msg/notice.htm']
+            },
+            isNew: true
+        },
+        {
+            Title: '私聊',
+            ClassName: 'i_talk',
+            SiteUrl: {
+                'url': ['home/#/msg/whisper.htm']
+            },
+            isNew: false
+        },
+        {
+            Title: '邀请好友',
+            ClassName: 'i_friend',
+            SiteUrl: {
+                'url': ['home/#/msg/search']
+            },
+            isNew: false
         }
-    };
+    ];
 
-    pageView.init();
+    // $scope.itemClick = function(e) {
+    //     var $that = angular.element(e.delegationTarget);
+
+    //     var type = $that.attr('data-type'),
+    //         url = [];
+
+    //     switch (type) {
+    //         case 'praise': //--赞
+    //             url = [
+    //                 'home/#/msg/praise'
+    //             ];
+    //         break;
+
+    //         case 'comment': //--评论
+    //             url = [
+    //                 'home/#/msg/praise'
+    //             ];
+    //         break;
+
+    //         case 'notice': //--通知
+    //             url = [
+    //                 'home/#/msg/notice'
+    //             ];
+    //         break;
+
+    //         case 'whisper': //--私聊
+    //             url = [
+    //                 'home/#/msg/whisper'
+    //             ];
+    //         break;
+
+    //         case 'search': //--邀请好友
+    //             url = [
+    //                 'home/#/msg/search'
+    //             ];
+    //         break;
+    //     }
+
+    //     routerRedirect.toJump({
+    //         'url': url
+    //     });
+    // };
 });
