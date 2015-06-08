@@ -18,10 +18,13 @@ angular.module('phoneApp')
     
     //--设置返回按钮
     $scope.backParam = {
-        'url': [
-            'clump/#/club/list.htm',
-            'clump/index.html#/club/list.htm'
-        ]
+        'url': ['clump/#/club/list.htm']
+    };
+
+    $scope.redirectUrl = {
+        Ranking: {
+            'url': ['clump/#/club/ranking-'+ $stateParams.id +'.htm']
+        }
     };
 
     //--设置横向滚动
@@ -73,6 +76,10 @@ angular.module('phoneApp')
                 ImageUrl: '../themes/temp/8.jpg'//--栏目图片
             }
         ],
+
+        SiteUrl: {
+
+        },
 
         ArticleList: [
             {ArticleId: 1, Images: [{ImageUrl: '../themes/temp/1.jpg', Description: '所需材料：剪刀、彩纸、双面胶等等', Width: 200, Height: 162 } ], Author: {UserId: 1, ImageUrl: '../themes/temp/3.jpg', UserName: '帖子发布者名称'}, CategoryList: [{CateId: 1, CateName: '泥工'}, {CateId: 1, CateName: '废旧材料'}, {CateId: 1, CateName: '玩教具'} ], SiteUrl: {'url': ['forum/#/thread-1.htm?from='+currentUrl] } },

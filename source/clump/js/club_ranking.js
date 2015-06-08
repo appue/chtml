@@ -18,9 +18,7 @@ angular.module('phoneApp')
  
     //--设置返回按钮
     $scope.backParam = {
-        'url': [
-            'clump/#/find.htm'
-        ]
+        'url': ['clump/#/club/detail-'+ $stateParams.id +'.htm']
     };
 
 
