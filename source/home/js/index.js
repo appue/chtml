@@ -26,10 +26,8 @@ angular.module('phoneApp')
         } else {
 
             routerRedirect.toJump({
-                url: [
-                    'entry/#/login.htm?from='+ currentUrl
-                ]
-            })
+                url: ['entry/#/login.htm?from='+ currentUrl]
+            });
 
         }
     };
