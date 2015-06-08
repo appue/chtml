@@ -55,6 +55,15 @@ angular.module('phoneApp', [
     })
 
     /*------------------------------------
+    * 圈子成员排行
+    */
+    .state('clubRanking', {
+        url: '/club/ranking-{id}.htm',
+        templateUrl: 'templates/club_ranking.html',
+        controller: 'tClubRanking'
+    })
+
+    /*------------------------------------
     * 活动列表
     */
     .state('activityList', {

@@ -4,29 +4,33 @@
 
     <div class="unit_find_cate_info">
         <div>
-            <img src="../themes/temp/6.jpg" />
+            <img ng-src="{{DataList.ImageUrl}}" />
             <p>
-                孩子们的手工王国<br>
-                在这里，可以让孩子找到属于他们的手工创作天地。
+                {{DataList.ClubName}}<br>
+                {{DataList.Description}}
             </p>
         </div>
     </div>
 
-    <ul class="unit_club_other_info">
+    <ul class="unit_club_other_info" ng-if="DataList.StateJoin">
         <li class="this_reg">
-            <p>签到 <span>8</span> / 连续签到 <span>4</span></p>
+            <p>签到 <span>{{DataList.TotalSign}}</span> / 连续签到 <span>{{DataList.TotalAlwaysSign}}</span></p>
             <button>签到</button>
         </li>
         <li class="this_user">
-            <p>圈成员：2280</p>
+            <p>圈成员：{{DataList.TotalMember}}</p>
             <i>查看排行榜</i>
         </li>
-        <!--
+        <li class="this_acti">
+            <p>【活动】活动内容。</p>
+        </li>
+    </ul>
+
+    <ul class="unit_club_other_info" ng-if="!DataList.StateJoin">
         <li class="this_user">
-            <p>圈成员：2280</p>
+            <p>圈成员：{{DataList.TotalMember}}</p>
             <button>加入圈子</button>
         </li>
-        -->
         <li class="this_acti">
             <p>【活动】活动内容。</p>
         </li>
@@ -37,31 +41,13 @@
     </div>
     <div class="mod_list_img mb0" style="height:120px;" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
         <ul>
-            <li>
+            <li ng-repeat="(k, v) in DataList.CategoryList track by $index">
                 <div class="this_img">
-                    <img src="../themes/temp/img.jpg" />
+                    <img ng-src="{{v.ImageUrl}}" />
                 </div>
                 <div class="this_title">
-                    <span>#环境创设</span>
+                    <span>#{{v.CateName}}</span>
                 </div>
-            </li>
-            <li>
-                <div class="this_img">
-                    <img src="../themes/temp/img.jpg" />
-                </div>
-                <div class="this_title">#玩教具</div>
-            </li>
-            <li>
-                <div class="this_img">
-                    <img src="../themes/temp/img.jpg" />
-                </div>
-                <div class="this_title">#玩教具</div>
-            </li>
-            <li>
-                <div class="this_img">
-                    <img src="../themes/temp/img.jpg" />
-                </div>
-                <div class="this_title">#玩教具</div>
             </li>
         </ul>
     </div>
