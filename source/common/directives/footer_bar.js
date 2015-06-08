@@ -35,7 +35,7 @@ angular.module('phoneApp')
 
                     var $that = angular.element(e.target);
 
-                    var direction = 'up',
+                    var direction = 'left',
                         id = $that.attr('data-id');
 
                     $scope.footerTab = id;
@@ -55,7 +55,7 @@ angular.module('phoneApp')
                     }
 
                     if (id < current) {
-                        direction = 'down';
+                        direction = 'right';
                     }
 
                     $that.addClass('current');
