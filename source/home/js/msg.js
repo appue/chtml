@@ -23,14 +23,14 @@ angular.module('phoneApp')
             },
             isNew: true
         },
-        {
-            Title: '评论',
-            ClassName: 'i_comment',
-            SiteUrl: {
-                'url': ['home/#/msg/praise']
-            },
-            isNew: false
-        },
+        // {
+        //     Title: '评论',
+        //     ClassName: 'i_comment',
+        //     SiteUrl: {
+        //         'url': ['home/#/msg/praise']
+        //     },
+        //     isNew: false
+        // },
         {
             Title: '通知',
             ClassName: 'i_msg',
