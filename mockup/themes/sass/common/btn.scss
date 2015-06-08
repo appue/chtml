@@ -6,3 +6,16 @@ $gray_val: #cacdcb;
     @include button(100%, 40px);
     background: $green_val;
 }
+
+.btn_camera{
+    width: 50px;
+    height: 50px;
+    background: url(img/icon_camera_hover.png) no-repeat center center;
+    background-size: 100%;
+    position: fixed;
+    left: 50%;
+    bottom: 5px;
+    margin-left: -25px;
+    border: none;
+    outline: none;
+}
