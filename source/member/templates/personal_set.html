@@ -35,25 +35,19 @@
     <ul class="unit_owner_push">
         <li>
             <div>消息推送</div>
-            <a class="on_off open"></a>
+            <a ng-click="switchCtrl('isMsgPush')" ng-class="{close:!personalData.isMsgPush,open:personalData.isMsgPush}" class="on_off"></a>
         </li>
         <li>
             <div>只允许我关注的人跟我私聊</div>
-            <div>
-                <span class="this_open">开启</span>
-            </div>
+            <a ng-click="switchCtrl('isFocusOnly')" ng-class="{close:!personalData.isFocusOnly,open:personalData.isFocusOnly}" class="on_off"></a>
         </li>
         <li>
             <div>允许通过手机通讯录加我好友</div>
-            <div>
-                <span class="this_open">开启</span>
-            </div>
+            <a ng-click="switchCtrl('isTelAllow')" ng-class="{close:!personalData.isTelAllow,open:personalData.isTelAllow}" class="on_off"></a>
         </li>
         <li>
             <div>保存图片到相册</div>
-            <div>
-                <span class="this_open">开启</span>
-            </div>
+            <a ng-click="switchCtrl('isPhotoSave')" ng-class="{close:!personalData.isPhotoSave,open:personalData.isPhotoSave}" class="on_off"></a>
         </li>
         <li>
             <div>关于师乐汇</div>
