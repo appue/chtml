@@ -6,4 +6,10 @@ personalHomepage.controller('personalSetCtrl', function ($scope, $stateParams) {
 		]
 	};
 
+	$scope.goPassword = { //--去修改密码页
+		'url': [
+			'member/#/personal-' + $stateParams.id + '/set/password.htm'
+		]
+	};
+
 });

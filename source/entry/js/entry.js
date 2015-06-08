@@ -1,4 +1,4 @@
-userEntry.controller('entryCtrl', function ($scope, routerRedirect, widget) {
+userEntry.controller('entryCtrl', function ($scope, routerRedirect) {
 
 	$scope.goLoginPage = {
 		'url': [
