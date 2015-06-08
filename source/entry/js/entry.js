@@ -2,8 +2,7 @@ userEntry.controller('entryCtrl', function ($scope, routerRedirect, widget) {
 
 	$scope.goLoginPage = {
 		'url': [
-			'entry/#/login.htm',
-			'entry/index.html#/login.htm'
+			'entry/#/login.htm'
 		]
 	};
 
@@ -22,8 +21,7 @@ userEntry.controller('entryCtrl', function ($scope, routerRedirect, widget) {
 		case 'icon_mobile':
 			routerRedirect.toJump({
 				'url': [
-					'entry/#/register/create.htm',
-					'entry/index.html#/register/create.htm'
+					'entry/#/register/create.htm'
 				]
 			});
 			break;

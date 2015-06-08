@@ -2,8 +2,7 @@ userEntry.controller('registerVcodeCtrl', function ($scope, routerRedirect, widg
 
     $scope.backParam = { //--设置返回按钮
         'url': [
-            'entry/#/register/account.htm',
-            'entry/index.html#/register/account.htm'
+            'entry/#/register/account.htm'
         ]
     };
 
@@ -18,8 +17,7 @@ userEntry.controller('registerVcodeCtrl', function ($scope, routerRedirect, widg
 
         routerRedirect.toJump({
             'url': [
-                'entry/#/register/done.htm',
-                'entry/index.html#/register/done.htm'
+                'entry/#/register/done.htm'
             ]
         });
 

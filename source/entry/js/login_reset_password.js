@@ -2,8 +2,7 @@ userEntry.controller('loginResetCtrl', function ($scope, $stateParams, routerRed
 
     $scope.backParam = { //--设置返回按钮
         'url': [
-            'entry/#/login/forget.htm',
-            'entry/index.html#/login/forget.htm'
+            'entry/#/login/forget.htm'
         ]
     };
 

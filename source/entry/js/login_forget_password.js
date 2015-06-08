@@ -2,8 +2,7 @@ userEntry.controller('loginForgetCtrl', function ($scope, routerRedirect, widget
 
     $scope.backParam = { //--设置返回按钮
         'url': [
-            'entry/#/login.htm',
-            'entry/index.html#/login.htm'
+            'entry/#/login.htm'
         ]
     };
 
@@ -42,8 +41,7 @@ userEntry.controller('loginForgetCtrl', function ($scope, routerRedirect, widget
 
         routerRedirect.toJump({
             'url': [
-                'entry/#/login/reset/' + $scope.inputVal.phone,
-                'entry/index.html#/login/reset/' + $scope.inputVal.phone
+                'entry/#/login/reset/' + $scope.inputVal.phone
             ]
         });
 

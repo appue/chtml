@@ -1,39 +1,42 @@
-personalHomepage.controller('personalCtrl', function ($scope, $stateParams) {
+personalHomepage.controller('personalCtrl', function ($scope, $stateParams, routerRedirect) {
 
 	console.log($stateParams.id);
 
-	$scope.goAttention = { //--去关注页
-		'url': [
-			'member/#/personal-' + $stateParams.id + '/attention.htm',
-			'member/index.html#/personal-' + $stateParams.id + '/attention.htm'
-		]
+	$scope.footerTab = 5; //--底部tab初始化高亮
+
+	$scope.goDataSet = function () { //--主人态设置页，客人态查看资料页
+
+		var url = true ? '/set.htm' : '/data.htm';
+
+		routerRedirect.toJump({
+			'url': [
+				'member/#/personal-' + $stateParams.id + url
+			]
+		});
+
 	};
 
-	$scope.goData = { //--去查看资料页
+	$scope.goAttention = { //--去关注页
 		'url': [
-			'member/#/personal-' + $stateParams.id + '/data.htm',
-			'member/index.html#/personal-' + $stateParams.id + '/data.htm'
+			'member/#/personal-' + $stateParams.id + '/attention.htm'
 		]
 	};
 
 	$scope.goFans = { //--去粉丝页
 		'url': [
-			'member/#/personal-' + $stateParams.id + '/fans.htm',
-			'member/index.html#/personal-' + $stateParams.id + '/fans.htm'
+			'member/#/personal-' + $stateParams.id + '/fans.htm'
 		]
 	};
 
 	$scope.goLevel = { //--去用户等级页
 		'url': [
-			'member/#/personal-' + $stateParams.id + '/level.htm',
-			'member/index.html#/personal-' + $stateParams.id + '/level.htm'
+			'member/#/personal-' + $stateParams.id + '/level.htm'
 		]
 	};
 
 	$scope.goIssue = { //--去发布页
 		'url': [
-			'member/#/personal-' + $stateParams.id + '/issue.htm',
-			'member/index.html#/personal-' + $stateParams.id + '/issue.htm'
+			'member/#/personal-' + $stateParams.id + '/issue.htm'
 		]
 	};
 
