@@ -1,24 +1,34 @@
 angular.module('phoneApp')
 
 .directive('footerBar', function (
-    $state, 
+    $state,
+    cachePool,
     routerRedirect
 ) {
+
+    var uid = 0,
+        UserInfo = cachePool.pull('UserInfo') || '';
+
+    if (UserInfo) {
+        uid = UserInfo.UserId;
+    }
+
     var obj = [
-        ['home/#/index', 'home/index.html#/index'],
-        ['clump/#/find.htm', 'clump/index.html#/find.htm'],
-        ['home/#/index', 'home/index.html#/index'],
-        ['home/#/msg', 'home/index.html#/msg'],
-        ['member/#/index', 'member/index.html#/index']
+        ['home/#/index'],
+        ['clump/#/find.htm'],
+        ['home/#/index'],
+        ['home/#/msg'],
+        ['member/#/personal-'+ uid +'.htm']
     ];
 
     return {
         restrict: 'E',
         replace: true,
         templateUrl: '../common/directives/footer_bar.html',
-        controller: function ($scope, $rootScope, $compile, $timeout) {
+        controller: function ($scope, $rootScope, $compile, $timeout, widget) {
             // var currentUrl = $state.current.url.replace(/^\//g, '');
-            var current = $scope.footerTab;
+            var currentUrl = widget.getCurrentUrl(),
+                current = $scope.footerTab;
 
             $scope.menuChange = function(e) {
                 if (e.target.nodeName == 'LI') {
@@ -34,7 +44,13 @@ angular.module('phoneApp')
                         var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-click="getPhoto()">相册</li><li ng-click="setPhoto()">拍照</li></ul></div><section>');
                         angular.element(document.getElementsByTagName('body')[0]).append(toastTpl($scope));
 
+                        return;
+                    }
 
+                    if (id == 5 && !uid) {
+                        routerRedirect.toJump({
+                            url: ['entry/#/login.htm?from='+ currentUrl]
+                        });
                         return;
                     }
 
