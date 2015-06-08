@@ -4,8 +4,7 @@ angular.module('phoneApp')
 
 	$scope.backParam = { //--设置返回按钮
 		'url': [
-			'entry/#/',
-			'entry/index.html#/'
+			'entry/#/'
 		]
 	};
 

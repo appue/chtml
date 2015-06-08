@@ -2,8 +2,7 @@ userEntry.controller('registerAccountCtrl', function ($scope, routerRedirect, wi
 
     $scope.backParam = { //--设置返回按钮
         'url': [
-            'entry/#/register/create.htm',
-            'entry/index.html#/register/create.htm'
+            'entry/#/register/create.htm'
         ]
     };
 
@@ -31,8 +30,7 @@ userEntry.controller('registerAccountCtrl', function ($scope, routerRedirect, wi
 
         routerRedirect.toJump({
             'url': [
-                'entry/#/register/vcode/' + $scope.inputVal.phone,
-                'entry/index.html#/register/vcode/' + $scope.inputVal.phone
+                'entry/#/register/vcode/' + $scope.inputVal.phone
             ]
         });
 
