@@ -1,5 +1,6 @@
-<section class="unit_member">
-    <div class="unit_member_data" style="background:url(../../temp/9.jpg) no-repeat center bottom;background-size:100% auto">
+<section class="unit_member" when-scrolled="loadMore()" ng-init="currentTab=1">
+    
+    <div class="unit_member_data" style="background:url(../themes/temp/9.jpg) no-repeat center bottom;background-size:100% auto">
 
         <div page-back="backParam" class="this_back"></div>
 
@@ -8,60 +9,54 @@
             <i>图片 50</i>
             <i>赞 258</i>
         </div>
-        <img src="../../themes/temp/3.jpg" />
+        <img src="../themes/temp/3.jpg" />
         <h2>吹口哨的小女孩</h2>
     </div>
 
     <ul class="mod_tab_icon">
-        <li>瀑布流</li>
-        <li class="current">垂直平铺</li>
+        <li ng-click="currentTab=1" ng-class="{current : currentTab==1}">瀑布流</li>
+        <li ng-click="currentTab=2" ng-class="{current : currentTab==2}">垂直平铺</li>
     </ul>
 
-    <ul class="mod_list_img_only">
-        <li>
-            <img src="../../themes/temp/img_1.jpg" />
-            <article>
-                <div class="this_text">所需材料：剪刀、彩纸、双面胶等等</div>
 
-                <div class="this_star">256</div>
+    <!--瀑布流-->
+    <falls ng-if="currentTab==1">
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
+            <div class="this_border" page-jump="{{v.SiteUrl}}">
+                <img ng-src="{{v.Images[0].ImageUrl}}" />
+                <article>
+                    <div class="this_text">{{v.Images[0].Description}}</div>
+                    
+                    <div class="this_star">
+                        256
+                    </div>
 
-                <div class="this_user">
-                    <img src="../../themes/temp/3.jpg" />
-                    <p>
-                        开心每一天
-                        <br>发布到：#泥工  #废 旧材料  #玩教具习的
-                    </p>
-                </div>
-            </article>
+                    <div class="this_user">
+                        <img ng-src="{{v.Author.ImageUrl}}" />
+                        <p>
+                            {{v.Author.UserName}}<br>
+                            <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
         </li>
-        <li>
-            <img src="../../themes/temp/img_2.jpg" />
+    </falls>
+
+    <!--垂直平铺-->
+    <ul class="mod_list_img_only" ng-if="currentTab==2">
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" page-jump="{{v.SiteUrl}}">
+            <img ng-src="{{v.Images[0].ImageUrl}}" />
             <article>
-                <div class="this_text">
-                    活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿了幼儿科学学习的
-                </div>
-                <div class="this_star">256</div>
-                <div class="this_user">
-                    <img src="../../themes/temp/3.jpg" />
-                    <p>
-                        开心每一天
-                        <br>发布到：#泥工  #废 旧材料  #玩教具
-                    </p>
-                </div>
-            </article>
-        </li>
-        <li>
-            <img src="../../themes/temp/img_3.jpg" />
-            <article>
-                <div class="this_text">所需材料：剪刀、彩纸、双面胶等等</div>
+                <div class="this_text">{{v.Images[0].Description}}</div>
 
                 <div class="this_star">256</div>
 
                 <div class="this_user">
-                    <img src="../../themes/temp/3.jpg" />
+                    <img ng-src="{{v.Author.ImageUrl}}" />
                     <p>
-                        开心每一天
-                        <br>发布到：#泥工  #废 旧材料  #玩教具
+                        {{v.Author.UserName}}<br>
+                        <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
                     </p>
                 </div>
             </article>
