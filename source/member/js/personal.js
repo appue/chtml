@@ -42,7 +42,8 @@ personalHomepage.controller('personalCtrl', function ($scope, $stateParams, rout
 
 	$scope.myScrollOptions = {
 		'wrapper1': {},
-		'wrapper2': {}
+		'wrapper2': {},
+		'wrapper3': {}
 	};
 
 });
