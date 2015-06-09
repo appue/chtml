@@ -80,6 +80,9 @@ angular.module('ng-iscroll', [])
                     scope.myScroll = [];
                 }
 
+                var h = element.find('ul')[0].offsetHeight + 5;
+                element.css('height', h +'px');
+
                 scope.myScroll[scroll_key] = new IScroll(element[0], ngiScroll_opts);
             }
 
