@@ -8,6 +8,11 @@ $gray_val: #cacdcb;
     padding-bottom: 50px;
 }
 
+.unit_msg_scroll{
+    @include scrollfix;
+    padding-top:10px;
+}
+
 .unit_set_textarea{
     background: #fff;
     padding: 10px;
