@@ -2,6 +2,11 @@
     padding-bottom: 50px;
 }
 
+.unit_member_scroll{
+    @include scrollfix;
+    padding-bottom: 50px;
+}
+
 .unit_member_data{
     width: 100%;
     color: #fff;
