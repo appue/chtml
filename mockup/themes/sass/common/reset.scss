@@ -205,3 +205,27 @@ a.disable, button.disable {
 .mb10{
     @include mb(10px);
 }
+
+
+.is_ios{
+    .mod_tab_2,
+    .mod_header,
+    .mod_header_search{
+        border-top: 20px solid #fff !important;
+    }
+    .unit_home{
+        padding-top: 61px !important;
+    }
+    .mod_scroll{
+        padding-top: 74px !important;
+    }
+    .unit_find_cate_two,
+    .unit_find_cate_three,
+    .unit_find_cate_info{
+        padding-top: 70px !important;
+    }
+    .unit_find_scroll{
+        padding-top: 64px !important;
+    }
+}
+
