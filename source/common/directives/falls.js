@@ -18,8 +18,8 @@ angular.module('phoneApp')
         if (scope.showHeader) {
             elm.on('touchmove', function() {
                 var op = (raw.scrollTop / 100).toFixed(1);
-                if (op >= 1) {
-                    op = 1;
+                if (op >= 0.1) {
+                    op = 0.2;
                 }
 
                 elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
@@ -29,8 +29,8 @@ angular.module('phoneApp')
         elm.on('scroll', function () {
             if (scope.showHeader) {
                 var op = (raw.scrollTop / 100).toFixed(1);
-                if (op >= 0.9) {
-                    op = 0.95;
+                if (op >= 0.1) {
+                    op = 0.2;
                 }
 
                 elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
