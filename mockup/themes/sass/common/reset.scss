@@ -228,10 +228,15 @@ a.disable, button.disable {
         padding-top: 64px !important;
     }
     .unit_msg_scroll{
-        padding-top: 30px !important;
+        .unit_msg_list_03{
+            padding-top: 20px !important;
+        }
     }
     .unit_member_scroll{
         padding-top: 20px !important;
+    }
+    .unit_article_scroll{
+        padding-top: 30px !important;
     }
 }
 

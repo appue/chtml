@@ -45,7 +45,8 @@
 
 
 /*帖子终极页*/
-.comment_home {
+.unit_article_scroll {
+    @include scrollfix;
     padding: 10px 10px 58px;
     .comment_layout {
         background-color: #fff;
