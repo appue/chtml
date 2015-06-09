@@ -16,28 +16,22 @@ personalHomepage.controller('personalCtrl', function ($scope, $stateParams, rout
 
 	};
 
-	$scope.goAttention = { //--去关注页
-		'url': [
-			'member/#/personal-' + $stateParams.id + '/attention.htm'
-		]
-	};
+	$scope.redirectUrl = {
+		goAttention: { //--去关注页
+			'url': ['member/#/personal-' + $stateParams.id + '/attention.htm']
+		},
 
-	$scope.goFans = { //--去粉丝页
-		'url': [
-			'member/#/personal-' + $stateParams.id + '/fans.htm'
-		]
-	};
+		goFans: { //--去粉丝页
+			'url': ['member/#/personal-' + $stateParams.id + '/fans.htm']
+		},
 
-	$scope.goLevel = { //--去用户等级页
-		'url': [
-			'member/#/personal-' + $stateParams.id + '/level.htm'
-		]
-	};
+		goLevel: { //--去用户等级页
+			'url': ['member/#/personal-' + $stateParams.id + '/level.htm']
+		},
 
-	$scope.goIssue = { //--去发布页
-		'url': [
-			'member/#/personal-' + $stateParams.id + '/issue.htm'
-		]
+		goIssue: { //--去发布页
+			'url': ['member/#/personal-' + $stateParams.id + '/issue.htm']
+		}
 	};
 
 	$scope.myScrollOptions = {
