@@ -22,19 +22,23 @@ THE SOFTWARE.
 */
 
 
-angular.module('ng-iscroll', []).directive('ngIscroll', function () {
+angular.module('ng-iscroll', [])
+
+.directive('ngIscroll', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
             // default timeout
             var ngiScroll_timeout = 5;
 
-
             // default options
             var ngiScroll_opts = {
                 // snap: true,
                 // momentum: true,
                 // hScrollbar: false,
+                
+                // freeScroll: true,
+                eventPassthrough: 'vertical',
                 scrollX: true,
                 scrollY: false
             };
