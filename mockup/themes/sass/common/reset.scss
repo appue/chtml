@@ -202,6 +202,9 @@ a.disable, button.disable {
 .mb0{
     @include mb();
 }
+.mb5{
+    @include mb(5px);
+}
 .mb10{
     @include mb(10px);
 }
