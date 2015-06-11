@@ -1,4 +1,4 @@
-angular.module('ng-slide', [])
+angular.module('phoneApp')
 
 /*
 * 幻灯片播放
