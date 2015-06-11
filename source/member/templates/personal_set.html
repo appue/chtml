@@ -4,19 +4,19 @@
     <ul class="unit_owner_set">
         <li class="no">
             <p>昵称</p>
-            <p>吹口哨的小女孩</p>
+            <p>{{inputVal.nickname}}</p>
         </li>
-        <li show-popup="register">
+        <li show-popup="gender">
             <p>性别</p>
-            <p>女</p>
+            <p>{{inputVal.gender}}</p>
         </li>
-        <li>
+        <li show-popup="post">
             <p>岗位</p>
-            <p>园长</p>
+            <p>{{inputVal.post}}</p>
         </li>
-        <li>
+        <li show-popup="location">
             <p>地区</p>
-            <p>北京 海淀</p>
+            <p>{{inputVal.city.Name}} {{inputVal.village.Name}}</p>
         </li>
         <li>
             <p>订阅</p>
@@ -63,21 +63,53 @@
     <div class="unit_btn">退出登录</div>
 </section>
 
-<popup id="register" title="用户注册" popup-confirm="popupConfirm(123)" no-cancel>
-    <div class="choose_register" ngd-click="itemClick($event)" selector="li">
-        <ul class="mod_list_default">
-            <li class="icon_weixin">
-                <a>微信注册</a>
+<popup id="gender" title="选择性别" ng-init="tmpGender = inputVal.gender" popup-confirm="chooseGender(tmpGender)">
+    <div class="choose_gender">
+        <span ng-click="tmpGender = '女'">
+            <input name="gender" ng-checked="tmpGender == '女'" type="radio">
+            <label>女</label>
+        </span>
+        <span ng-click="tmpGender = '男'">
+            <input name="gender" ng-checked="tmpGender == '男'" type="radio">
+            <label>男</label>
+        </span>
+    </div>
+</popup>
+
+<popup id="post" title="选择岗位" popup-confirm="choosePost">
+    <div class="choose_post" ngd-click="choosePost($event)" selector="li">
+        <ul>
+            <li>
+                <input ng-checked="tmpPost == '园长'" name="post" type="radio">
+                <label>园长</label>
             </li>
-            <li class="icon_mobile">
-                <a>手机号注册</a>
+            <li>
+                <input ng-checked="tmpPost == '保教主任'" name="post" type="radio">
+                <label>保教主任</label>
             </li>
-            <li class="icon_qq">
-                <a>QQ注册</a>
+            <li>
+                <input ng-checked="tmpPost == '教师'" name="post" type="radio">
+                <label>教师</label>
             </li>
-            <li class="icon_weibo last_border_line">
-                <a>微博注册</a>
+            <li>
+                <input ng-checked="tmpPost == '其他'" name="post" type="radio">
+                <label>其他</label>
             </li>
         </ul>
+    </div>
+</popup>
+
+<popup id="location" title="选择地区" popup-confirm="popupLocation">
+    <div class="choose_location" ngd-click="chooseLocation($event)" selector="li">
+        <div class="select_box">
+            <ul>
+                <li ng-class="{current:v.Id == inputVal.city.Id}" data-city="{{v}}" ng-repeat="(k, v) in cityList track by $index">{{v.Name}}</li>
+            </ul>
+        </div>
+        <div class="select_box">
+            <ul>
+                <li ng-class="{current:v.Id == inputVal.village.Id}" data-village="{{v}}" ng-repeat="(k, v) in villageList track by $index">{{v.Name}}</li>
+            </ul>
+        </div>
     </div>
 </popup>
