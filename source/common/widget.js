@@ -240,7 +240,7 @@ angular.module('phoneApp')
                 url: param.url || '',
                 // params: /POST/ig.test(param.method) ? null : data,
                 // data: /POST/ig.test(param.method) ? (isForm ? paramObj(data) : data) : null,
-                data: isForm ? paramObj(data) : data,
+                data: data,
                 timeout: 15000
             },
             effect = function () {
@@ -252,11 +252,12 @@ angular.module('phoneApp')
                 }
             };
 
-        if (isForm) {
-            configObj.headers = {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            };
-        }
+        // if (isForm) {
+        //     configObj.headers = {
+        //         // 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        //         'Content-Type': 'application/json;charset=utf-8'
+        //     };
+        // }
 
         if (noMask) {
 
