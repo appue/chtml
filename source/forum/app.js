@@ -1,6 +1,6 @@
 angular.module('phoneApp', [
     'ui.router',
-    'DelegateEvents'
+    'DelegateEvents',
     'base64'
 ])
 .run(function() {
