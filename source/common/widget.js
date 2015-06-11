@@ -236,10 +236,11 @@ angular.module('phoneApp')
             isPopup = !param.isPopup,
             isForm = param.isForm,
             configObj = {
-                method: param.method || 'GET',
+                method: param.method || 'POST',
                 url: param.url || '',
-                params: /POST/ig.test(param.method) ? null : data,
-                data: /POST/ig.test(param.method) ? (isForm ? paramObj(data) : data) : null,
+                // params: /POST/ig.test(param.method) ? null : data,
+                // data: /POST/ig.test(param.method) ? (isForm ? paramObj(data) : data) : null,
+                data: isForm ? paramObj(data) : data,
                 timeout: 15000
             },
             effect = function () {
