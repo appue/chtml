@@ -6,7 +6,7 @@
             <p>昵称</p>
             <p>吹口哨的小女孩</p>
         </li>
-        <li>
+        <li show-popup="register">
             <p>性别</p>
             <p>女</p>
         </li>
@@ -62,3 +62,22 @@
 
     <div class="unit_btn">退出登录</div>
 </section>
+
+<popup id="register" title="用户注册" popup-confirm="popupConfirm(123)" no-cancel>
+    <div class="choose_register" ngd-click="itemClick($event)" selector="li">
+        <ul class="mod_list_default">
+            <li class="icon_weixin">
+                <a>微信注册</a>
+            </li>
+            <li class="icon_mobile">
+                <a>手机号注册</a>
+            </li>
+            <li class="icon_qq">
+                <a>QQ注册</a>
+            </li>
+            <li class="icon_weibo last_border_line">
+                <a>微博注册</a>
+            </li>
+        </ul>
+    </div>
+</popup>

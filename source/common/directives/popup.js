@@ -22,12 +22,6 @@ angular.module('phoneApp')
 		templateUrl: '../common/directives/popup.html',
 		controller: function ($scope, $element, $attrs) {
 
-			// var mask = document.querySelector('.mod_mask');
-			// if (!mask) { //页面如果没有mask层，则append一个新的进来
-			// 	var $body = angular.element(document.getElementsByTagName('body'));
-			// 	$body.append('<div ng-show="showPopup" class="mod_mask"></div>');
-			// }
-
 			$element.attr('id', 'popup_' + $attrs.id);
 
 			$scope['popup_' + $attrs.id]
@@ -104,12 +98,17 @@ angular.module('phoneApp')
  *	</ANY>
  */
 
-.directive('showPopup', function ($parse, $timeout) {
+.directive('showPopup', function ($parse, $compile, $timeout) {
 	return {
 		restrict: 'A',
 		link: function (scope, element, attrs) {
 
 			element.on('click', function (event) {
+
+				if (!document.querySelector('.mod_mask')) {
+					var maskTpl = $compile('<div ng-show="showMask" class="mod_mask"></div>');
+					angular.element(document.getElementById('js_view')).append(maskTpl(scope));
+				}
 
 				var popupName = attrs.showPopup.split('|')[0],
 					$thisPopup = angular.element(document.getElementById('popup_' + popupName));
