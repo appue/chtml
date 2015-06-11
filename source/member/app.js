@@ -1,7 +1,6 @@
 var personalHomepage = angular.module('phoneApp', [
     'ui.router',
-    'DelegateEvents',
-    'ng-iscroll'
+    'DelegateEvents'
 ]);
 
 personalHomepage.run(function () {

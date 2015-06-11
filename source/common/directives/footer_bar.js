@@ -25,7 +25,7 @@ angular.module('phoneApp')
         restrict: 'E',
         replace: true,
         templateUrl: '../common/directives/footer_bar.html',
-        controller: function ($scope, $rootScope, $compile, $timeout, widget) {
+        controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
             // var currentUrl = $state.current.url.replace(/^\//g, '');
             var currentUrl = widget.getCurrentUrl(),
                 current = $scope.footerTab;
@@ -41,8 +41,14 @@ angular.module('phoneApp')
                     $scope.footerTab = id;
 
                     if (id == 3) {
-                        var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-click="getPhoto()">相册</li><li ng-click="setPhoto()">拍照</li></ul></div><section>');
-                        angular.element(document.getElementsByTagName('body')[0]).append(toastTpl($scope));
+                        var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-click="getPhoto()">相册</li><li ng-click="setPhoto()">拍照</li></ul></div><section>'),
+                            el = document.querySelector('.js_mod_camera');
+
+                        if (el) {
+                            el.style.display = "block";
+                        } else {
+                            $element.after(toastTpl($scope));
+                        }
 
                         return;
                     }

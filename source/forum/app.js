@@ -1,7 +1,6 @@
 angular.module('phoneApp', [
     'ui.router',
-    'DelegateEvents',
-    'ng-iscroll',
+    'DelegateEvents'
     'base64'
 ])
 .run(function() {

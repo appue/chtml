@@ -1,7 +1,6 @@
 angular.module('phoneApp', [
     'ui.router',
-    'DelegateEvents',
-    'ng-iscroll'
+    'DelegateEvents'
 ])
 .run(function() {
     FastClick.attach(document.body);
