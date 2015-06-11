@@ -22,7 +22,7 @@ THE SOFTWARE.
 */
 
 
-angular.module('ng-iscroll', [])
+angular.module('phoneApp', [])
 
 .directive('ngIscroll', function () {
     return {
