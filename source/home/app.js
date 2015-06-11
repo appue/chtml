@@ -8,10 +8,6 @@
 //     });
 // }]);
 
-
-
-
-
 angular.module('phoneApp', [
     'ui.router',
     'DelegateEvents'
