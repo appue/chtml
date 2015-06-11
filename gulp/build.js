@@ -294,6 +294,7 @@ module.exports = function (gulp, $) {
         var framejs = [
                 './source/lib/fastclick.js',
                 './source/lib/iscroll-lite.js',
+                './source/lib/slide.js',
                 './source/lib/md5.js',
 
                 './source/lib/config.js',
@@ -302,7 +303,8 @@ module.exports = function (gulp, $) {
                 './source/lib/angular-ui-router.js',
 
                 './source/lib/angular-base64.js',
-                './source/lib/ng-iscroll.js'
+                './source/lib/ng-iscroll.js',
+                './source/lib/ng-slide.js'
             ];
 
         if (packageType == 'web') {

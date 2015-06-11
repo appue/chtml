@@ -14,7 +14,8 @@
 
 angular.module('phoneApp', [
     'ui.router',
-    'DelegateEvents'
+    'DelegateEvents',
+    'ng-slide'
 ])
 .run(function() {
     FastClick.attach(document.body);

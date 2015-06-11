@@ -78,9 +78,8 @@ angular.module('phoneApp')
 
                 var el = $element.find('li'),
                     obj = {
-                        'layout': [],
-                        'x': 0, //--左边总高度
-                        'y': 0 //--右边总高度
+                        'x': 10, //--左边总高度
+                        'y': 10 //--右边总高度
                     },
                     w = $element.find('li')[0].offsetWidth,
                     p = w/200;
@@ -94,23 +93,17 @@ angular.module('phoneApp')
                     var h = v.offsetHeight;
 
                     if (obj.x <= obj.y) {
-                        obj.layout.push({
-                            'z': k,
-                            'h': h,
-                            'type': 'left',
-                            'top': obj.x + 10
-                        });
-                        obj.x = obj.layout[k].top + h;
-                    } else {
-                        obj.layout.push({
-                            'z': k,
-                            'h': h,
-                            'type': 'right',
-                            'top': obj.y + 10
-                        });
-                        obj.y = obj.layout[k].top + h;
-                    }
 
+                        v.style.cssText = 'left:0;top:'+ obj.x +'px';
+                        obj.x = obj.x + 10 + h;
+
+                    } else {
+
+                        v.style.cssText = 'right:0;top:'+ obj.y +'px';
+                        obj.y = obj.y + 10 + h;
+
+                    }
+                    
                 });
 
                 if (obj.x <= obj.y) {
@@ -118,10 +111,6 @@ angular.module('phoneApp')
                 } else {
                     $element.css('height', obj.x +'px');
                 }
-
-                angular.forEach(el, function(v, k) {
-                    v.style.cssText = obj.layout[k].type +':0;top:'+ obj.layout[k].top +'px';
-                });
             };
 
             $timeout($scope.$parent.setFalls, 0);
