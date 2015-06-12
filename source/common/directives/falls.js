@@ -10,9 +10,6 @@ angular.module('phoneApp')
     return function (scope, elm, attr) {
         var raw = elm[0];
 
-        scope.pageIndex = scope.pageIndex || 1; //---------------------页面索引值，当前第几页
-        scope.pageSize = scope.pageSize || 5; //-----每页显示多少条
-        scope.pageTotal = scope.pageTotal || 100; //--总的条数
         scope.showHeader = scope.showHeader || false; //----------------页面头是否有透明过度
 
         if (scope.showHeader) {
@@ -38,11 +35,18 @@ angular.module('phoneApp')
 
             if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
 
-                scope.$parent.isLoading = true;
+                
 
                 if (scope.pageIndex * scope.pageSize >= scope.pageTotal) {
+                    
+                    angular.element(document.querySelector('.mod_no_more')).css('display', 'block');
                     console.log('没有更多数据了！');
+
                     return;
+                } else {
+                    
+                    angular.element(document.querySelector('.mod_list_loading')).css('display', 'block');
+
                 }
 
                 scope.$apply(attr.whenScrolled);
@@ -66,7 +70,7 @@ angular.module('phoneApp')
         transclude: true,
         template: '<ul class="mod_list_falls ng-transclude"></ul>',
         controller: function ($scope, $element, $attrs) {
-
+            $element.after('<div class="mod_list_loading">loading.....</div><div class="mod_no_more">没有更多数据了！</div>');
             /*
             * obj---
             * layout: [{
