@@ -40,7 +40,8 @@ angular.module('phoneApp')
                     SubjectList: [
                         {SubjectId: 1, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/8.jpg'},
                         {SubjectId: 2, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/7.jpg'},
-                        {SubjectId: 3, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/3.jpg'}
+                        {SubjectId: 3, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/3.jpg'},
+                        {SubjectId: 3, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/6.jpg'}
                     ],
                     CategoryList: [
                         {CateId: 1, CateName: '教案'},

@@ -1,6 +1,6 @@
 <header-bar back title="活动"></header-bar>
 
-<section class="mod_scroll">
+<section class="mod_scroll" when-scrolled="loadMore()">
     <ul class="unit_activity_list">
         <li ng-repeat="(k, v) in DataList.ActivityList" page-jump="{{v.SiteUrl}}">
             <h2>{{v.ActivityName}}</h2>
@@ -8,4 +8,6 @@
             <img ng-if="k < 2" ng-src="{{v.ImageUrl}}" />
         </li>
     </ul>
+    <div class="mod_list_loading" ng-if="isLoading">loading.....</div>
+    <div class="mod_no_more">没有更多数据了！</div>
 </section>

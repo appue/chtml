@@ -29,10 +29,7 @@ angular.module('phoneApp')
 
     //--设置返回按钮
     $scope.backParam = {
-        'url': [
-            'clump/#/activity/list.htm',
-            'clump/index.html#/activity/list.htm'
-        ]
+        'url': ['clump/#/activity/list.htm']
     };
 
     $scope.loadMore = function() {
@@ -53,22 +50,65 @@ angular.module('phoneApp')
         ]
     };
 
-    /*
-    * 1、每个圈子当天发帖量多的排前面，每24小时会自动更新一次（取前20个）
-    * 2、圈子ID降序
-    * 3、圈子发帖时间降序
-    * 4、圈子发帖时间升序
-    * 5、字母排序（所有的圈子全部吐出）
-    */
-    // widget.ajaxRequest({
-    //     noMask: true,
-    //     url: '$local/Tools/getListClub',
-    //     data: {
-    //         SortType: 5
-    //     },
-    //     success: function (data) {
-    //         alert(data);
-    //     }
-    // });
+
+    $scope.DataList = {
+        Content: {}
+    };
+
+    widget.ajaxRequest({
+        noMask: true,
+        url: 'getPhotoActivityInfo',
+        data: {
+            ActivityId: $stateParams.id,
+        },
+        success: function (data) {
+            var res = data;
+
+            angular.extend($scope.DataList, res.Content);
+
+            console.log($scope.DataList);
+        }
+    });
+
+    $scope.loadMore = function () {
+        if (!$scope.isLoading) {
+
+            $scope.pageIndex++;
+            $scope.isLoading = true;
+
+            widget.ajaxRequest({
+                noMask: true,
+                url: 'getPhotoActivityInfo',
+                data: {
+                    ActivityId: $stateParams.id,
+                },
+                success: function (data) {
+                    $scope.pageTotal = data.Total || 0;
+                    $scope.isLoading = false;
+
+                    console.log(data);
+                    var res = data;
+
+                    angular.forEach(res.ActivityList, function (v, k) {
+                        v.ActivityName = "【晒萌照】4D绘本";
+                        v.ImageUrl = "../themes/temp/img_2.jpg";
+                        v.Description = '涂一涂，扫一扫，涂鸦一秒变动画';
+
+                        v.SiteUrl = {
+                            'url': ['clump/#/activity/detail/'+ (v.ActivityType == 1 ? 'article' : 'photo') +'-'+ v.ActivityId +'.htm']
+                        };
+                        
+                        $scope.DataList.ActivityList.push(v);
+                    });
+
+                    console.log($scope.DataList);
+                }
+            });
+        }
+    };
+
+    // $scope.loadMore();
+
+
 
 });
