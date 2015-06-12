@@ -38,6 +38,8 @@ angular.module('phoneApp')
 
             if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
 
+                scope.$parent.isLoading = true;
+
                 if (scope.pageIndex * scope.pageSize >= scope.pageTotal) {
                     console.log('没有更多数据了！');
                     return;
