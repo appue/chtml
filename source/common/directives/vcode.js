@@ -3,7 +3,7 @@
 angular.module('phoneApp')
 
 // 获取验证码
-.directive('getVcode', function ($rootScope, $stateParams, $timeout, routerRedirect, widget) {
+.directive('getVcode', function ($rootScope, $stateParams, $timeout, routerRedirect, widget, $q) {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
@@ -40,9 +40,9 @@ angular.module('phoneApp')
 
                 widget.ajaxRequest({
                     noMask: true,
-                    url: '$local/Tools/SendCheckCode',
+                    url: '$api/getUserInfo',
                     data: {
-                        Mobile: $stateParams.phone
+                        UserId: 8
                     },
                     success: function (data) {
 
