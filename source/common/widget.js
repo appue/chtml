@@ -237,7 +237,7 @@ angular.module('phoneApp')
             isForm = param.isForm,
             configObj = {
                 method: param.method || 'POST',
-                url: param.url || '',
+                url: ENV.apiSocket + param.url || '',
                 // params: /POST/ig.test(param.method) ? null : data,
                 // data: /POST/ig.test(param.method) ? (isForm ? paramObj(data) : data) : null,
                 data: data,

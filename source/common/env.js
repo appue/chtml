@@ -5,8 +5,7 @@ angular.module('phoneApp')
     var ua = navigator.userAgent.toLowerCase();
 
     var ENV = {
-        getLocalApi: '/api/',
-        getServerApi: 'http://www.51mart.com.cn/Service/api/',
+        apiSocket: 'http://www.slh.seventhink.cn/api/',
 
         isHybrid: false, //-----是否APP环境
         isWeixin: false, //-----是否微信环境

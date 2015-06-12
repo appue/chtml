@@ -20,13 +20,9 @@ angular.module('phoneApp').config(function ($provide, $httpProvider) {
 
                 var raw = config.url;
 
-                if (raw.indexOf('$local') === 0) {
-                    config.url = raw.replace('$local/', ENV.getLocalApi);
-                }
-
-                if (raw.indexOf('$server') === 0) {
-                    config.url = raw.replace('$server/', ENV.getServerApi);
-                }
+                // if (raw.indexOf('$api') === 0) {
+                //     config.url = raw.replace("$api", ENV.apiSocket);
+                // }
 
                 return config || $q.when(config);
             },
