@@ -10,7 +10,9 @@
  *
  */
 
-angular.module('phoneApp').config(function ($provide, $httpProvider) {
+angular.module('phoneApp')
+
+.config(function ($provide, $httpProvider) {
 
     $provide.factory('httpInterceptor', function ($q, ENV) {
 
@@ -20,9 +22,7 @@ angular.module('phoneApp').config(function ($provide, $httpProvider) {
 
                 var raw = config.url;
 
-                // if (raw.indexOf('$api') === 0) {
-                //     config.url = raw.replace("$api", ENV.apiSocket);
-                // }
+                console.log(config);
 
                 return config || $q.when(config);
             },

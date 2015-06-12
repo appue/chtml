@@ -35,8 +35,6 @@ angular.module('phoneApp')
 
             if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
 
-                
-
                 if (scope.pageIndex * scope.pageSize >= scope.pageTotal) {
                     
                     angular.element(document.querySelector('.mod_no_more')).css('display', 'block');
@@ -51,7 +49,6 @@ angular.module('phoneApp')
 
                 scope.$apply(attr.whenScrolled);
 
-                $timeout(scope.setFalls, 0);
             }
         });
     };
@@ -71,17 +68,9 @@ angular.module('phoneApp')
         template: '<ul class="mod_list_falls ng-transclude"></ul>',
         controller: function ($scope, $element, $attrs) {
             $element.after('<div class="mod_list_loading">loading.....</div><div class="mod_no_more">没有更多数据了！</div>');
-            /*
-            * obj---
-            * layout: [{
-            *     'z': //--索引值
-            *     'h': //--高度
-            *     'type': //--left or right
-            *     'top': //--距离上面的高度
-            * }]
-            */
-            $scope.$parent.setFalls = function() {
 
+            $scope.$parent.setFalls = function() {
+                
                 var el = $element.find('li'),
                     obj = {
                         'x': 10, //--左边总高度
@@ -116,11 +105,13 @@ angular.module('phoneApp')
                     $element.css('height', obj.y +'px');
                 } else {
                     $element.css('height', obj.x +'px');
-                }
-            };
+                }   
 
-            $timeout($scope.$parent.setFalls, 0);
-            
+                $scope.$parent.isLoading = false;
+                
+                angular.element(document.querySelector('.mod_list_loading')).css('display', 'none');
+
+            };
         }
     };
 });

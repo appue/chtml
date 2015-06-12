@@ -1,6 +1,5 @@
-'use strict';
-
 angular.module('phoneApp')
+
 .factory('widget', function (
     $http, 
     $cacheFactory, 
