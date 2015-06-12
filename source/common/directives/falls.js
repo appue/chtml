@@ -70,7 +70,10 @@ angular.module('phoneApp')
             $element.after('<div class="mod_list_loading">loading.....</div><div class="mod_no_more">没有更多数据了！</div>');
 
             $scope.$parent.setFalls = function() {
-                
+
+                $scope.$parent.isLoading = false;
+                angular.element(document.querySelector('.mod_list_loading')).css('display', 'none');
+
                 var el = $element.find('li'),
                     obj = {
                         'x': 10, //--左边总高度
@@ -106,10 +109,6 @@ angular.module('phoneApp')
                 } else {
                     $element.css('height', obj.x +'px');
                 }   
-
-                $scope.$parent.isLoading = false;
-                
-                angular.element(document.querySelector('.mod_list_loading')).css('display', 'none');
 
             };
         }

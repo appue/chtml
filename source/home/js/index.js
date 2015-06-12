@@ -25,6 +25,9 @@ angular.module('phoneApp')
     $scope.pageSize = 6;
     $scope.isLoading = false;
 
+
+$scope.pageTotal = 100;
+
     $scope.checkLogin = function () {
         if (cachePool.pull('UserInfo')) {
 
@@ -94,8 +97,6 @@ angular.module('phoneApp')
                             });
 
                             $timeout($scope.setFalls, 0);
-
-                            $scope.pageTotal = 100;
                             
                         }
                     });

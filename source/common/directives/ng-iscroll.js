@@ -26,6 +26,7 @@ angular.module('phoneApp')
 
 .directive('ngIscroll', function () {
     return {
+        replace: false,
         restrict: 'A',
         link: function (scope, element, attr) {
             // default timeout
@@ -62,28 +63,28 @@ angular.module('phoneApp')
                 };
             }
 
-            if (scope.myScrollOptions) {
-                for (var i in scope.myScrollOptions) {
+            if (scope.$parent.myScrollOptions) {
+                for (var i in scope.$parent.myScrollOptions) {
                     if (i === scroll_key) {
-                        for (var k in scope.myScrollOptions[i]) {
-                            ngiScroll_opts[k] = scope.myScrollOptions[i][k];
+                        for (var k in scope.$parent.myScrollOptions[i]) {
+                            ngiScroll_opts[k] = scope.$parent.myScrollOptions[i][k];
                         }
                     } else {
-                        ngiScroll_opts[i] = scope.myScrollOptions[i];
+                        ngiScroll_opts[i] = scope.$root.myScrollOptions[i];
                     }
                 }
             }
 
             // iScroll initialize function
             function setScroll() {
-                if (scope.myScroll === undefined) {
-                    scope.myScroll = [];
+                if (scope.$parent.myScroll === undefined) {
+                    scope.$parent.myScroll = [];
                 }
 
                 var h = element.find('ul')[0].offsetHeight + 5;
                 element.css('height', h +'px');
 
-                scope.myScroll[scroll_key] = new IScroll(element[0], ngiScroll_opts);
+                scope.$parent.myScroll[scroll_key] = new IScroll(element[0], ngiScroll_opts);
             }
 
             // new specific setting for setting timeout using: ng-iscroll-timeout='{val}'
@@ -99,7 +100,7 @@ angular.module('phoneApp')
             // add ng-iscroll-refresher for watching dynamic content inside iscroll
             if (attr.ngIscrollRefresher !== undefined) {
                 scope.$watch(attr.ngIscrollRefresher, function () {
-                    if (scope.myScroll[scroll_key] !== undefined) scope.myScroll[scroll_key].refresh();
+                    if (scope.$parent.myScroll[scroll_key] !== undefined) scope.$parent.myScroll[scroll_key].refresh();
                 });
             }
         }

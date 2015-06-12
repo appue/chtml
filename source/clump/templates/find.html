@@ -8,9 +8,9 @@
     <div class="mod_title_text this_p">
         <div>专题集锦</div>
     </div>
-    <div class="mod_list_img mb0" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
+    <div class="mod_list_img mb0" id="wrapper" ng-iscroll="eventScroll" ng-iscroll-delay='50'>
         <ul>
-            <li ng-repeat="(k, v) in DataList.SubjectList" page-jump="{{v.SiteUrl}}">
+            <li ng-repeat="(k, v) in DataList.SubjectList track by $index" page-jump="{{v.SiteUrl}}">
                 <div class="this_img">
                     <img ng-src="{{v.ImageUrl}}" />
                 </div>
@@ -24,7 +24,7 @@
 
     <div class="unit_find_cate">
         <div>
-            <ul ng-repeat="(k, v) in CateList">
+            <ul ng-repeat="(k, v) in DataList.CateList track by $index">
                 <li ng-repeat="(i, j) in v" page-jump="{{j.SiteUrl}}">
                     {{j.CateName}}
                 </li>

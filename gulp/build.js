@@ -58,7 +58,8 @@ module.exports = function (gulp, $) {
     gulp.task('images', function() {
         return gulp.src([
                 './mockup/themes/**/*.jpg',
-                './mockup/themes/**/*.png'
+                './mockup/themes/**/*.png',
+                './mockup/themes/**/*.gif'
             ])
             .pipe(gulp.dest('./source/themes/'))
     });
