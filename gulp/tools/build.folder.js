@@ -6,7 +6,7 @@ module.exports = function() {
         exists = fs.existsSync(file);
 
     if (exists) {
-        dir = fs.readFileSync(file);
+        dir = fs.readFileSync(file).toString('utf8');
     }
 
     return dir;
