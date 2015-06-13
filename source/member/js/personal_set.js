@@ -8,10 +8,16 @@ personalHomepage.controller('personalSetCtrl', function ($scope, $stateParams) {
 
 	$scope.inputVal = { //属性数据初始化
 		nickname: '我是昵称',
-		gender: '男',
-		post: '园长',
-		city: null,
-		village: null
+		sex: '女',
+		job: '园长',
+		city: {
+			Id: 1,
+			Name: '上海'
+		},
+		village: {
+			Id: 11,
+			Name: '长宁区'
+		}
 	};
 
 	$scope.personalData = { //开关数据初始化
@@ -32,11 +38,6 @@ personalHomepage.controller('personalSetCtrl', function ($scope, $stateParams) {
 		$scope.personalData[type] = !$scope.personalData[type];
 
 		console.log($scope.personalData[type]);
-	};
-
-	$scope.chooseGender = function () {
-		$scope.inputVal.gender = $scope.tmpGender;
-		console.log($scope.inputVal.gender);
 	};
 
 	//todo...
@@ -68,27 +69,40 @@ personalHomepage.controller('personalSetCtrl', function ($scope, $stateParams) {
 		Name: '闸北区'
 	}];
 
-	$scope.inputVal.city = $scope.inputVal.city || $scope.cityList[0];
-	$scope.inputVal.village = $scope.inputVal.village || $scope.villageList[0];
+	//初始化临时数据
+	$scope.tmpSex = $scope.inputVal.sex;
+	$scope.tmpJob = $scope.inputVal.job;
+	$scope.tmpCity = $scope.inputVal.city || $scope.cityList[0];
+	$scope.tmpVillage = $scope.inputVal.village || $scope.villageList[0];
+
+	$scope.chooseSex = function (e) { //选择性别
+		var $that = angular.element(e.delegationTarget);
+
+		if ($that.length > 0) { //选择
+			$scope.tmpSex = $that.find('label').text();
+		} else { //确定
+			$scope.inputVal.sex = $scope.tmpSex;
+		}
+	};
+
+	$scope.chooseJob = function (e) { //岗位选择
+		var $that = angular.element(e.delegationTarget);
+
+		if ($that.length > 0) { //选择
+			$scope.tmpJob = $that.find('label').text();
+		} else { //确定
+			$scope.inputVal.job = $scope.tmpJob;
+		}
+
+	};
 
 	function getVillageData() { //取地区数据
 		// todo...
 	}
 
-	$scope.popupLocation = function () { //呼出所在地弹层 todo...
-		$scope.tmpCity = $scope.inputVal.city || $scope.cityList[0];
-		$scope.tmpVillage = $scope.inputVal.village || $scope.villageList[0];
-	};
-
-	$scope.choosePost = function (e) { //岗位选择
-		var $that = angular.element(e.delegationTarget);
-
-		if ($that.length > 0) { //选择
-			$scope.tmpPost = $that.find('label').text();
-		} else { //确定
-			$scope.inputVal.post = $scope.tmpPost;
-		}
-
+	$scope.popupLocation = function () { //确认所选的地区 todo...
+		$scope.inputVal.city = $scope.tmpCity;
+		$scope.inputVal.village = $scope.tmpVillage;
 	};
 
 	$scope.chooseLocation = function (e) { //所在地选择

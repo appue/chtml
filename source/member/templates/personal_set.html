@@ -8,11 +8,11 @@
         </li>
         <li show-popup="gender">
             <p>性别</p>
-            <p>{{inputVal.gender}}</p>
+            <p>{{inputVal.sex}}</p>
         </li>
         <li show-popup="post">
             <p>岗位</p>
-            <p>{{inputVal.post}}</p>
+            <p>{{inputVal.job}}</p>
         </li>
         <li show-popup="location">
             <p>地区</p>
@@ -63,36 +63,36 @@
     <div class="unit_btn">退出登录</div>
 </section>
 
-<popup id="gender" title="选择性别" ng-init="tmpGender = inputVal.gender" popup-confirm="chooseGender(tmpGender)">
-    <div class="choose_gender">
-        <span ng-click="tmpGender = '女'">
-            <input name="gender" ng-checked="tmpGender == '女'" type="radio">
+<popup id="gender" title="选择性别" popup-confirm="chooseSex">
+    <div class="choose_gender" ngd-click="chooseSex($event)" selector="span">
+        <span>
+            <input name="sex" ng-checked="tmpSex == '女'" type="radio">
             <label>女</label>
         </span>
-        <span ng-click="tmpGender = '男'">
-            <input name="gender" ng-checked="tmpGender == '男'" type="radio">
+        <span>
+            <input name="sex" ng-checked="tmpSex == '男'" type="radio">
             <label>男</label>
         </span>
     </div>
 </popup>
 
-<popup id="post" title="选择岗位" popup-confirm="choosePost">
-    <div class="choose_post" ngd-click="choosePost($event)" selector="li">
+<popup id="post" title="选择岗位" popup-confirm="chooseJob">
+    <div class="choose_post" ngd-click="chooseJob($event)" selector="li">
         <ul>
             <li>
-                <input ng-checked="tmpPost == '园长'" name="post" type="radio">
+                <input ng-checked="tmpJob == '园长'" name="post" type="radio">
                 <label>园长</label>
             </li>
             <li>
-                <input ng-checked="tmpPost == '保教主任'" name="post" type="radio">
+                <input ng-checked="tmpJob == '保教主任'" name="post" type="radio">
                 <label>保教主任</label>
             </li>
             <li>
-                <input ng-checked="tmpPost == '教师'" name="post" type="radio">
+                <input ng-checked="tmpJob == '教师'" name="post" type="radio">
                 <label>教师</label>
             </li>
             <li>
-                <input ng-checked="tmpPost == '其他'" name="post" type="radio">
+                <input ng-checked="tmpJob == '其他'" name="post" type="radio">
                 <label>其他</label>
             </li>
         </ul>
