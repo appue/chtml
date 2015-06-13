@@ -38,6 +38,8 @@ angular.module('phoneApp')
             var i = 0,
                 res = data;
 
+            res.CateList = [];
+
             angular.forEach(res.SubjectList, function(v, k) {
                 v.SiteUrl = {
                     'url': ['clump/#/subject/detail-'+ v.SubjectId +'.htm?from='+ currentUrl]
