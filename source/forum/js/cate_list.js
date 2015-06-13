@@ -36,17 +36,13 @@ angular.module('phoneApp')
         data: {
         },
         success: function (data) {
-            var res = {};
-
-            res.CategoryList = data.CategoryList || [];
-
-            angular.forEach(res.CategoryList, function (v, k) {
+            angular.forEach(data.CategoryList, function (v, k) {
                 v.SiteUrl = {
                     'url': ['forum/#/cate/list-sub-'+ v.CateId +'.htm?from='+ currentUrl]
                 }
             });
 
-            angular.extend($scope.DataList, res);
+            angular.extend($scope.DataList, data);
         }
     });
 

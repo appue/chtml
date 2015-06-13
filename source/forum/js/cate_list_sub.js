@@ -23,7 +23,7 @@ angular.module('phoneApp')
 
     //--设置返回按钮
     $scope.backParam = {
-        'url': ['forum/#/cate/list-1.htm']
+        'url': ['forum/#/cate/list-'+ $stateParams.id +'.htm']
     };
 
     $scope.DataList = {
