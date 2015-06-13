@@ -33,6 +33,18 @@ angular.module('phoneApp')
     $scope.$parent.myScrollOptions = { 'wrapper': {} };
 
 
+    widget.ajaxRequest({
+        noMask: true,
+        url: 'getListCategory',
+        data: {
+            CateId: $stateParams.id,
+            CateType: 1
+        },
+        success: function (data) {
+            angular.extend($scope.DataList, data);
+        }
+    });
+
     $scope.loadMore = function() {
         if (!$scope.isLoading) {
             

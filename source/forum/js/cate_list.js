@@ -43,6 +43,8 @@ angular.module('phoneApp')
             });
 
             angular.extend($scope.DataList, data);
+
+            console.log($scope.DataList);
         }
     });
 
