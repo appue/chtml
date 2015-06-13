@@ -85,10 +85,7 @@ angular.module('phoneApp')
 
             $scope.pageIndex++;
             $scope.isLoading = true;
-
-            console.log($scope.pageTotal);
-            console.log($scope.pageIndex * $scope.pageSize);
-
+            
             widget.ajaxRequest({
                 noMask: true,
                 url: 'getListActivity',

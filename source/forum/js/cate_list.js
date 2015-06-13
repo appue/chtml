@@ -8,57 +8,78 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams, 
-    $location, 
+    $location,
+    $timeout,
     routerRedirect,
     widget
 ){
     var currentUrl = widget.getCurrentUrl();
 
     $scope.currentTab = 1;
-    $scope.pageIndex = 1;
+    $scope.pageIndex = 0;
+    $scope.pageSize = 5;
+    $scope.isLoading = false;
     $scope.showHeader = true;
     
     //--设置返回按钮
     $scope.backParam = {
-        'url': [
-            'clump/#/find.htm'
-        ]
-    };
-
-    $scope.loadMore = function() {
-        $scope.pageIndex++;
-
-        $scope.DataList.ArticleList.push(
-            {ArticleId: 1, Images: [{ImageUrl: '../themes/temp/6.jpg', Description: '活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿', Width: 200, Height: 278 } ], Author: {UserId: 1, ImageUrl: '../themes/temp/3.jpg', UserName: '帖子发布者名称'}, CategoryList: [{CateId: 1, CateName: '泥工'}, {CateId: 1, CateName: '废旧材料'}, {CateId: 1, CateName: '玩教具'} ], SiteUrl: {'url': ['forum/#/thread-1.htm?from='+currentUrl] } },
-            {ArticleId: 1, Images: [{ImageUrl: '../themes/temp/7.jpg', Description: '活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿', Width: 200, Height: 200 } ], Author: {UserId: 1, ImageUrl: '../themes/temp/3.jpg', UserName: '帖子发布者名称'}, CategoryList: [{CateId: 1, CateName: '泥工'}, {CateId: 1, CateName: '废旧材料'}, {CateId: 1, CateName: '玩教具'} ], SiteUrl: {'url': ['forum/#/thread-1.htm?from='+currentUrl] } },
-            {ArticleId: 1, Images: [{ImageUrl: '../themes/temp/8.jpg', Description: '活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿', Width: 200, Height: 300 } ], Author: {UserId: 1, ImageUrl: '../themes/temp/3.jpg', UserName: '帖子发布者名称'}, CategoryList: [{CateId: 1, CateName: '泥工'}, {CateId: 1, CateName: '废旧材料'}, {CateId: 1, CateName: '玩教具'} ], SiteUrl: {'url': ['forum/#/thread-1.htm?from='+currentUrl] } }
-        );
+        'url': ['clump/#/find.htm']
     };
 
     $scope.DataList = {
-        CategoryList: [
-            {CateId: 1, CateName: '大班', SiteUrl: {'url': ['forum/#/cate/list-sub-1.htm?from='+currentUrl, 'forum/index.html#/cate/list-sub-1.htm?from='+currentUrl] } },
-            {CateId: 2, CateName: '中班', SiteUrl: {'url': ['forum/#/cate/list-sub-2.htm', 'forum/index.html#/cate/list-sub-2.htm'] } },
-            {CateId: 3, CateName: '小班', SiteUrl: {'url': ['forum/#/cate/list-sub-3.htm', 'forum/index.html#/cate/list-sub-3.htm'] } },
-            {CateId: 4, CateName: '托班', SiteUrl: {'url': ['forum/#/cate/list-sub-1.htm?from='+currentUrl, 'forum/index.html#/cate/list-sub-1.htm?from='+currentUrl] } }
-        ],
-
-        ArticleList: [
-            {ArticleId: 1, Images: [{ImageUrl: '../themes/temp/1.jpg', Description: '所需材料：剪刀、彩纸、双面胶等等', Width: 200, Height: 162 } ], Author: {UserId: 1, ImageUrl: '../themes/temp/3.jpg', UserName: '帖子发布者名称'}, CategoryList: [{CateId: 1, CateName: '泥工'}, {CateId: 1, CateName: '废旧材料'}, {CateId: 1, CateName: '玩教具'} ], SiteUrl: {'url': ['forum/#/thread-1.htm?from='+currentUrl] } },
-            {ArticleId: 1, Images: [{ImageUrl: '../themes/temp/2.jpg', Description: '活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿', Width: 200, Height: 124 } ], Author: {UserId: 1, ImageUrl: '../themes/temp/3.jpg', UserName: '帖子发布者名称'}, CategoryList: [{CateId: 1, CateName: '泥工'}, {CateId: 1, CateName: '废旧材料'}, {CateId: 1, CateName: '玩教具'} ], SiteUrl: {'url': ['forum/#/thread-1.htm?from='+currentUrl] } },
-            {ArticleId: 1, Images: [{ImageUrl: '../themes/temp/4.jpg', Description: '活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿', Width: 200, Height: 321 } ], Author: {UserId: 1, ImageUrl: '../themes/temp/3.jpg', UserName: '帖子发布者名称'}, CategoryList: [{CateId: 1, CateName: '泥工'}, {CateId: 1, CateName: '废旧材料'}, {CateId: 1, CateName: '玩教具'} ], SiteUrl: {'url': ['forum/#/thread-1.htm?from='+currentUrl] } },
-            {ArticleId: 1, Images: [{ImageUrl: '../themes/temp/5.jpg', Description: '活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿', Width: 200, Height: 278 } ], Author: {UserId: 1, ImageUrl: '../themes/temp/3.jpg', UserName: '帖子发布者名称'}, CategoryList: [{CateId: 1, CateName: '泥工'}, {CateId: 1, CateName: '废旧材料'}, {CateId: 1, CateName: '玩教具'} ], SiteUrl: {'url': ['forum/#/thread-1.htm?from='+currentUrl] } }
-        ]
+        ArticleList: []
     };
 
-    // widget.ajaxRequest({
-    //     noMask: true,
-    //     url: '$local/Tools/getContentArticle',
-    //     data: {
-    //         ArticleId: $stateParams.id
-    //     },
-    //     success: function (data) {
-    //         alert(data);
-    //     }
-    // });
+    widget.ajaxRequest({
+        noMask: true,
+        url: 'getListCategory',
+        data: {
+        },
+        success: function (data) {
+            var res = {};
+
+            res.CategoryList = data.CategoryList || [];
+
+            angular.forEach(res.CategoryList, function (v, k) {
+                v.SiteUrl = {
+                    'url': ['forum/#/cate/list-sub-'+ v.CateId +'.htm?from='+ currentUrl]
+                }
+            });
+
+            angular.extend($scope.DataList, res);
+        }
+    });
+
+    $scope.loadMore = function() {
+        if (!$scope.isLoading) {
+
+            $scope.isLoading = true;
+            $scope.pageIndex++;
+
+            widget.ajaxRequest({
+                noMask: true,
+                url: 'getListArticle',
+                data: {
+                },
+                success: function (data) {
+                    var res = data;
+
+                    $scope.isLoading = false;
+                    $scope.pageTotal = data.Total || 0;
+
+                    angular.forEach(res.ArticleList, function (v, k) {
+                        v.SiteUrl = {
+                            'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
+                        };
+
+                        $scope.DataList.ArticleList.push(v);
+                    });
+
+                    $timeout($scope.setFalls, 0);
+                }
+            });
+        }
+    };
+
+    $scope.loadMore();
 });

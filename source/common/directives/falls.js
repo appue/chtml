@@ -41,7 +41,7 @@ angular.module('phoneApp')
                     
                     console.log('没有更多数据了！');
 
-                    scope.$parent.isNoMore = true;
+                    scope.isNoMore = true;
 
                     return;
                 } else {

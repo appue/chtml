@@ -1,0 +1,20 @@
+{
+    "CategoryList": [
+        {
+            "CateId": 1,
+            "CateName": "大班"
+        },
+        {
+            "CateId": 2,
+            "CateName": "中班"
+        },
+        {
+            "CateId": 3,
+            "CateName": "小班"
+        },
+        {
+            "CateId": 4,
+            "CateName": "托班"
+        }
+    ]
+}

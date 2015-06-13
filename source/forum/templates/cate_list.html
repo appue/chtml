@@ -22,9 +22,7 @@
                 <article>
                     <div class="this_text">{{v.Images[0].Description}}</div>
                     
-                    <div class="this_star">
-                        256
-                    </div>
+                    <div class="this_star">{{v.TotalCollect}}</div>
 
                     <div class="this_user">
                         <img ng-src="{{v.Author.ImageUrl}}" />
@@ -45,7 +43,7 @@
             <article>
                 <div class="this_text">{{v.Images[0].Description}}</div>
 
-                <div class="this_star">256</div>
+                <div class="this_star">{{v.TotalCollect}}</div>
 
                 <div class="this_user">
                     <img ng-src="{{v.Author.ImageUrl}}" />
@@ -57,4 +55,7 @@
             </article>
         </li>
     </ul>
+
+    <div class="mod_list_loading" ng-if="isLoading">loading.....</div>
+    <div class="mod_no_more" ng-if="isNoMore">没有更多数据了！</div>
 </section>
