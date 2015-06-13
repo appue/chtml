@@ -22,8 +22,6 @@ angular.module('phoneApp')
 
                 var raw = config.url;
 
-                console.log(config);
-
                 return config || $q.when(config);
             },
 

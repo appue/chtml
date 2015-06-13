@@ -14,14 +14,12 @@ angular.module('phoneApp')
 ){
 
     $scope.pageIndex = 0;
+    $scope.pageSize = 5;
     $scope.isLoading = false;
 
     //--设置返回按钮
     $scope.backParam = {
-        'url': [
-            'clump/#/find.htm',
-            'clump/index.html#/find.htm'
-        ]
+        'url': ['clump/#/find.htm']
     };
 
 
@@ -88,19 +86,21 @@ angular.module('phoneApp')
             $scope.pageIndex++;
             $scope.isLoading = true;
 
+            console.log($scope.pageTotal);
+            console.log($scope.pageIndex * $scope.pageSize);
+
             widget.ajaxRequest({
                 noMask: true,
                 url: 'getListActivity',
                 data: {
                     ActivityType: 0,
                     PageIndex: $scope.pageIndex,
-                    PageSize: 5
+                    PageSize: $scope.pageSize
                 },
                 success: function (data) {
                     $scope.pageTotal = data.Total || 0;
                     $scope.isLoading = false;
 
-                    console.log(data);
                     var res = data;
 
                     angular.forEach(res.ActivityList, function (v, k) {
@@ -115,7 +115,6 @@ angular.module('phoneApp')
                         $scope.DataList.ActivityList.push(v);
                     });
 
-                    console.log($scope.DataList);
                 }
             });
         }

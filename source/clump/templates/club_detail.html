@@ -21,8 +21,8 @@
             <p>圈成员：{{DataList.TotalMember}}</p>
             <i page-jump="{{redirectUrl.Ranking}}">查看排行榜</i>
         </li>
-        <li class="this_acti">
-            <p>【活动】活动内容。</p>
+        <li class="this_acti" page-jump="{{DataList.ActivityList.SiteUrl}}">
+            <p>{{DataList.ActivityList.ActivityName}}</p>
         </li>
     </ul>
 
@@ -31,22 +31,22 @@
             <p>圈成员：{{DataList.TotalMember}}</p>
             <button>加入圈子</button>
         </li>
-        <li class="this_acti">
-            <p>【活动】活动内容。</p>
+        <li class="this_acti" page-jump="{{DataList.ActivityList.SiteUrl}}">
+            <p>{{DataList.ActivityList.ActivityName}}</p>
         </li>
     </ul>
 
-    <div class="mod_title_text this_p">
-        <div>精选 10</div>
+    <div class="mod_title_text this_p" ng-if="DataList.CategoryList.length > 0">
+        <div>精选 {{DataList.ArticleTop.length}}</div>
     </div>
-    <div class="mod_list_img mb0" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
-        <ul>
-            <li ng-repeat="(k, v) in DataList.CategoryList track by $index">
+    <div class="mod_list_img mb0" style="padding-top:10px;" id="wrapper" ng-iscroll="eventScroll" ng-iscroll-delay='50'  ng-if="DataList.ArticleTop.length > 0">
+        <ul style="top:10px;">
+            <li ng-repeat="(k, v) in DataList.ArticleTop track by $index" page-jump="{{v.SiteUrl}}">
                 <div class="this_img">
-                    <img ng-src="{{v.ImageUrl}}" />
+                    <img ng-src="{{v.Images[0].ImageUrl}}" />
                 </div>
                 <div class="this_title">
-                    <span>#{{v.CateName}}</span>
+                    <span ng-repeat="i in v.CategoryList track by $index">#{{i.CateName}}</span>
                 </div>
             </li>
         </ul>
@@ -60,9 +60,7 @@
                 <article>
                     <div class="this_text">{{v.Images[0].Description}}</div>
                     
-                    <div class="this_star">
-                        256
-                    </div>
+                    <div class="this_star">{{v.TotalCollect}}</div>
 
                     <div class="this_user">
                         <img ng-src="{{v.Author.ImageUrl}}" />

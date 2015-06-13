@@ -1,7 +1,7 @@
 <header-bar back title="圈子"></header-bar>
 
 <section class="mod_scroll">
-    <dl ng-repeat="(k, v) in DataList" class="unit_list_club">
+    <dl ng-repeat="(k, v) in DataList.ClubList" class="unit_list_club">
         <dt>{{v.Letter}}</dt>
         <dd ng-repeat="(i, j) in v.List" page-jump="{{j.SiteUrl}}">
             <div>
@@ -17,5 +17,5 @@
 </section>
 
 <section class="unit_letter">
-    <ul><li ng-repeat="(k, v) in DataList">{{v.Letter}}</li></ul>
+    <ul><li ng-repeat="(k, v) in DataList.ClubList">{{v.Letter}}</li></ul>
 </section>

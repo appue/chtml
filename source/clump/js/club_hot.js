@@ -12,41 +12,154 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
+    var currentUrl = widget.getCurrentUrl();
 
     //--查看全部圈子
     $scope.redirectUrl = {
         Club: {
-            'url': [
-                'clump/#/club/list.htm'
-            ]
+            'url': ['clump/#/club/list.htm']
         }
     };
 
     //--设置返回按钮
     $scope.backParam = {
-        'url': [
-            'clump/#/find.htm',
-            'clump/index.html#/find.htm'
-        ]
+        'url': ['clump/#/find.htm']
     };
 
 
+    widget.ajaxRequest({
+        noMask: true,
+        url: 'getHotListClub',
+        data: {
+            ShowNum: 20
+        },
+        success: function (data) {
+            var res = {};
 
-    $scope.addReport = function() {
+            res.ClubList = data.ClubList || [];
 
-        widget.ajaxRequest({
-            noMask: true,
-            url: '$local/Tools/setReportArticle',
-            data: {
-                ArticleId: $stateParams.id, //-----帖子ID
-                Contact: Contact,//-------联系方式
-                ReportReason: ReportReason//--举报理由
+            angular.forEach(res.ClubList, function (v, k) {
+                v.SiteUrl = {
+                    'url': ['/clump/#/club/detail-'+ v.ClubId +'.htm?from='+ currentUrl]
+                };
+            });
+
+            $scope.DataList = res;
+        },
+        error: function (data) {
+
+        }
+    });
+
+
+
+    $scope.DataList = {
+        ClubList: [
+            {
+                ClubId: 1,
+                ClubName: '孩子们的手工王国',
+                ImageUrl: '../themes/temp/7.jpg',
+                TotalUser: 200,
+                CategoryList: [
+                    {CateName: '玩教具'},
+                    {CateName: '手工'}
+                ],
+                SiteUrl: {
+                    'url': ['/clump/#/club/detail-1.htm?from='+ currentUrl]
+                }
             },
-            success: function (data) {
-                alert(data);
+            {
+                ClubId: 1,
+                ClubName: '孩子们的手工王国',
+                ImageUrl: '../themes/temp/7.jpg',
+                TotalUser: 200,
+                CategoryList: [
+                    {CateName: '玩教具'},
+                    {CateName: '手工'}
+                ],
+                SiteUrl: {
+                    'url': ['/clump/#/club/detail-1.htm?from='+ currentUrl]
+                }
+            },
+            {
+                ClubId: 1,
+                ClubName: '孩子们的手工王国',
+                ImageUrl: '../themes/temp/7.jpg',
+                TotalUser: 200,
+                CategoryList: [
+                    {CateName: '玩教具'},
+                    {CateName: '手工'}
+                ],
+                SiteUrl: {
+                    'url': ['/clump/#/club/detail-1.htm?from='+ currentUrl]
+                }
+            },
+            {
+                ClubId: 1,
+                ClubName: '孩子们的手工王国',
+                ImageUrl: '../themes/temp/7.jpg',
+                TotalUser: 200,
+                CategoryList: [
+                    {CateName: '玩教具'},
+                    {CateName: '手工'}
+                ],
+                SiteUrl: {
+                    'url': ['/clump/#/club/detail-1.htm?from='+ currentUrl]
+                }
+            },
+            {
+                ClubId: 1,
+                ClubName: '孩子们的手工王国',
+                ImageUrl: '../themes/temp/7.jpg',
+                TotalUser: 200,
+                CategoryList: [
+                    {CateName: '玩教具'},
+                    {CateName: '手工'}
+                ],
+                SiteUrl: {
+                    'url': ['/clump/#/club/detail-1.htm?from='+ currentUrl]
+                }
+            },
+            {
+                ClubId: 1,
+                ClubName: '孩子们的手工王国',
+                ImageUrl: '../themes/temp/7.jpg',
+                TotalUser: 200,
+                CategoryList: [
+                    {CateName: '玩教具'},
+                    {CateName: '手工'}
+                ],
+                SiteUrl: {
+                    'url': ['/clump/#/club/detail-1.htm?from='+ currentUrl]
+                }
+            },
+            {
+                ClubId: 1,
+                ClubName: '孩子们的手工王国',
+                ImageUrl: '../themes/temp/7.jpg',
+                TotalUser: 200,
+                CategoryList: [
+                    {CateName: '玩教具'},
+                    {CateName: '手工'}
+                ],
+                SiteUrl: {
+                    'url': ['/clump/#/club/detail-1.htm?from='+ currentUrl]
+                }
+            },
+            {
+                ClubId: 1,
+                ClubName: '孩子们的手工王国',
+                ImageUrl: '../themes/temp/7.jpg',
+                TotalUser: 200,
+                CategoryList: [
+                    {CateName: '玩教具'},
+                    {CateName: '手工'}
+                ],
+                SiteUrl: {
+                    'url': ['/clump/#/club/detail-1.htm?from='+ currentUrl]
+                }
             }
-        });
-
+        ]
     };
 
 });

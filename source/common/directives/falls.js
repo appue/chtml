@@ -11,6 +11,8 @@ angular.module('phoneApp')
         var raw = elm[0];
 
         scope.showHeader = scope.showHeader || false; //----------------页面头是否有透明过度
+        // elm.after('<div class="mod_list_loading" ng-if="isLoading">loading.....</div><div class="mod_no_more" ng-if="isNoMore">没有更多数据了！</div>');
+
 
         if (scope.showHeader) {
             elm.on('touchmove', function() {
@@ -37,18 +39,21 @@ angular.module('phoneApp')
 
                 if (scope.pageIndex * scope.pageSize >= scope.pageTotal) {
                     
-                    angular.element(document.querySelector('.mod_no_more')).css('display', 'block');
                     console.log('没有更多数据了！');
+
+                    scope.$parent.isNoMore = true;
 
                     return;
                 } else {
                     
-                    angular.element(document.querySelector('.mod_list_loading')).css('display', 'block');
+                    scope.$parent.isLoading = true;
+                    // angular.element(document.querySelector('.mod_list_loading')).css('display', 'block');
+                    
 
                 }
 
                 scope.$apply(attr.whenScrolled);
-
+                
             }
         });
     };
@@ -59,7 +64,8 @@ angular.module('phoneApp')
 */
 .directive('falls', function (
     $parse, 
-    $timeout
+    $timeout,
+    $rootScope
 ) {
     return {
         restrict: 'E',
@@ -67,12 +73,11 @@ angular.module('phoneApp')
         transclude: true,
         template: '<ul class="mod_list_falls ng-transclude"></ul>',
         controller: function ($scope, $element, $attrs) {
-            $element.after('<div class="mod_list_loading">loading.....</div><div class="mod_no_more">没有更多数据了！</div>');
 
             $scope.$parent.setFalls = function() {
-
+                $scope.isLoading = false;
                 $scope.$parent.isLoading = false;
-                angular.element(document.querySelector('.mod_list_loading')).css('display', 'none');
+                // angular.element(document.querySelector('.mod_list_loading')).css('display', 'none');
 
                 var el = $element.find('li'),
                     obj = {
@@ -111,6 +116,7 @@ angular.module('phoneApp')
                 }   
 
             };
+
         }
     };
 });
