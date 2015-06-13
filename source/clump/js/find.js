@@ -36,29 +36,7 @@ angular.module('phoneApp')
         data: {},
         success: function (data) {
             var i = 0,
-                res = {
-                    SubjectList: [
-                        {SubjectId: 1, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/8.jpg'},
-                        {SubjectId: 2, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/7.jpg'},
-                        {SubjectId: 3, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/3.jpg'},
-                        {SubjectId: 3, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/6.jpg'}
-                    ],
-                    CategoryList: [
-                        {CateId: 1, CateName: '教案'},
-                        {CateId: 2, CateName: '总结'},
-                        {CateId: 3, CateName: '玩教具'},
-                        {CateId: 4, CateName: '教案'},
-                        {CateId: 5, CateName: '总结'},
-                        {CateId: 6, CateName: '玩教具'},
-                        {CateId: 7, CateName: '教案'},
-                        {CateId: 8, CateName: '总结'},
-                        {CateId: 9, CateName: '玩教具'},
-                        {CateId: 10, CateName: '教案'},
-                        {CateId: 11, CateName: '总结'},
-                        {CateId: 12, CateName: '玩教具'}
-                    ],
-                    CateList: []
-                };
+                res = data;
 
             angular.forEach(res.SubjectList, function(v, k) {
                 v.SiteUrl = {
