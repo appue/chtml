@@ -8,3 +8,4 @@ mockup/themes/*.css
 /build/
 /.tmp/
 /.folder
+/api/
