@@ -24,9 +24,11 @@ angular.module('phoneApp')
         {'title': '活动', 'list': { 'url': ['clump/#/activity/list.htm'] } }
     ];
 
-    //--更多专题
-    $scope.urlSubjectList = {
-        'url': ['clump/#/subject/list.htm']
+    
+    $scope.redirectUrl = {
+        SubjectList: { //--更多专题
+            'url': ['clump/#/subject/list.htm']
+        }
     };
 
 
