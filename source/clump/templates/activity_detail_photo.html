@@ -3,10 +3,8 @@
 <section class="scrollfix" ng-style="appStyle" when-scrolled="loadMore()">
 
     <div class="unit_activity_text">
-        <h2>幼儿手工灯笼的各种做法{{DataList.Content.ActivityName}}</h2>
-        <article>
-        让孩子充分感受我国传统节日的气氛，传承中国传统文化，从中提高幼儿动手操作从中提高幼儿动手操作能力和艺术创造能力。相信它会成为你们难忘的回忆！
-        </article>
+        <h2>{{DataList.Content.ActivityName}}</h2>
+        <article>{{DataList.Content.Description}}</article>
     </div>
 
 
@@ -18,9 +16,7 @@
                 <article>
                     <div class="this_text">{{v.Images[0].Description}}</div>
                     
-                    <div class="this_star">
-                        256
-                    </div>
+                    <div class="this_star">{{v.TotalCollect}}</div>
 
                     <div class="this_user">
                         <img ng-src="{{v.Author.ImageUrl}}" />
@@ -33,6 +29,8 @@
             </div>
         </li>
     </falls>
+    <div class="mod_list_loading" ng-if="isLoading">loading.....</div>
+    <div class="mod_no_more" ng-if="isNoMore">没有更多数据了！</div>
 </section>
 
 <button class="btn_camera"></button>

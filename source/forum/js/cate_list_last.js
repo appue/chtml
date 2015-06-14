@@ -55,14 +55,12 @@ angular.module('phoneApp')
                 noMask: true,
                 url: 'getListArticle',
                 data: {
+                    CateId: $stateParams.id
                 },
                 success: function (data) {
-                    var res = data;
-
-                    $scope.isLoading = false;
                     $scope.pageTotal = data.Total || 0;
 
-                    angular.forEach(res.ArticleList, function (v, k) {
+                    angular.forEach(data.ArticleList, function (v, k) {
                         v.SiteUrl = {
                             'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
                         };
@@ -71,6 +69,7 @@ angular.module('phoneApp')
                     });
 
                     $timeout($scope.setFalls, 0);
+                    $scope.isLoading = false;
                 }
             });
         }
