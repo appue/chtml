@@ -37,23 +37,17 @@ angular.module('phoneApp')
     $scope.redirectUrl = {
         //--点评列表
         CommentList: {
-            'url': [
-                'forum/#/comment/list/'+ $stateParams.id +'.htm?from='+ currentUrl
-            ]
+            'url': ['forum/#/comment/list/'+ $stateParams.id +'.htm?from='+ currentUrl]
         },
 
         //--登录Url
         Login: {
-            'url': [
-                'entry/#/login.htm?from='+ currentUrl
-            ]  
+            'url': ['entry/#/login.htm?from='+ currentUrl]
         },
 
         //--私聊
         Chat: {
-            'url': [
-                '/home/#/msg/chat-1.htm?from='+ currentUrl
-            ]
+            'url': ['/home/#/msg/chat-1.htm?from='+ currentUrl]
         }
     };
 
