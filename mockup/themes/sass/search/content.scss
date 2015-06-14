@@ -1,4 +1,8 @@
-﻿.unit_keyword {
+﻿.search_home {
+    top: 44px;
+}
+
+.unit_keyword {
     background: #fff;
     padding: 10px;
     font-size: 0;
@@ -96,7 +100,17 @@
     }
 }
 
+.scroll_search_result{
+    @include scrollfix;
+    padding-top: 95px;
+}
 
-.tab_search{
-    top: 44px !important;
+.scroll_search_result_falls{
+    @include scrollfix;
+    padding-top: 85px;
+}
+
+.scroll_search_index {
+    @include scrollfix;
+    padding: 100px 10px 0;
 }

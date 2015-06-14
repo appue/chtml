@@ -1,6 +1,6 @@
 <header-bar back title="搜索<span class='color_green'>{{keyword}}</span>的结果"></header-bar>
 
-<ul class="mod_tab_4 tab_search">
+<ul class="mod_tab_4" ng-style="appStyle">
     <li ng-click="currentTab=1;pageIndex=1" ng-class="{current : currentTab==1}">内容</li>
     <li ng-click="currentTab=2;pageIndex=1" ng-class="{current : currentTab==2}">标签</li>
     <li ng-click="currentTab=3;pageIndex=1" ng-class="{current : currentTab==3}">圈子</li>
@@ -10,7 +10,7 @@
 
 
 <!--搜索-搜索内容-->
-<section class="mod_scroll" when-scrolled="loadMore(currentTab)" style="padding:0;padding-top:85px;" ng-if="currentTab==1">
+<section class="scroll_search_result_falls" when-scrolled="loadMore(currentTab)" ng-if="currentTab==1">
     <!--瀑布流-->
     <falls>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
@@ -37,7 +37,7 @@
 </section>
 
 <!--搜索-搜索标签-->
-<section class="mod_scroll" style="padding:0;padding-top:95px;" ng-if="currentTab==2">
+<section class="scroll_search_result" ng-if="currentTab==2">
     <ul class="mod_list_falls" style="height:400px;">
         <li style="left:0;top:0;">
             <div class="this_border">
@@ -71,7 +71,7 @@
 
 
 <!--搜索-搜索圈子-->
-<section class="mod_scroll" style="padding-top:95px;" ng-if="currentTab==3">
+<section class="scroll_search_result" ng-if="currentTab==3">
     <ul class="unit_keyword_club">
         <li>
             <div>
@@ -96,7 +96,7 @@
 
 
 <!--搜索-搜索用户-->
-<section class="mod_scroll" style="padding-top:95px;" ng-if="currentTab==4">
+<section class="scroll_search_result" ng-if="currentTab==4">
     <ul class="unit_keyword_user">
         <li>
             <img src="../themes/temp/3.jpg" />

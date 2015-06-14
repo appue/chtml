@@ -10,8 +10,19 @@ angular.module('phoneApp')
     $stateParams, 
     $location, 
     routerRedirect,
-    widget
+    widget,
+    ENV
 ){
+    if (ENV.isApple) {
+        $scope.appStyle = {
+            'top': '64px'
+        }
+    } else {
+        $scope.appStyle = {
+            'top': '44px'
+        }
+    }
+
     var currentUrl = widget.getCurrentUrl();
 
     $scope.currentTab = 1;

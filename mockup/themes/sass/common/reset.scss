@@ -213,7 +213,7 @@ a.disable, button.disable {
 .is_ios{
     .mod_header,
     .mod_tab_2,
-    .mod_header_search{
+    .search_find{
         border-top: 20px solid rgba(255, 255, 255, 0) !important;
     }
     .unit_home{
@@ -224,25 +224,37 @@ a.disable, button.disable {
     }
     .unit_find_cate_two,
     .unit_find_cate_three,
-    .unit_find_cate_info{
+    .unit_find_cate_info {
         padding-top: 70px !important;
     }
-    .unit_find_scroll{
+    .unit_find_scroll {
         padding-top: 64px !important;
     }
-    .unit_msg_scroll{
-        .unit_msg_list_03{
+    .unit_msg_scroll {
+        .unit_msg_list_03 {
             padding-top: 20px !important;
         }
     }
     .unit_member_scroll{
         padding-top: 20px !important;
     }
-    .unit_article_scroll{
+    .unit_article_scroll {
         padding-top: 30px !important;
     }
-    .unit_letter{
+    .unit_letter {
         padding-top: 20px;
+    }
+    .scroll_search_result {
+        padding-top: 115px !important;
+    }
+    .scroll_search_result_falls {
+        padding-top: 125px !important;
+    }
+    .search_home {
+        top: 64px;
+    }
+    .scroll_search_index {
+        padding: 120px 10px 0;
     }
 }
 
