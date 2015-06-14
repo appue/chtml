@@ -49,7 +49,7 @@
 
 .mod_tab_2{
     @include tab(0);
-    @include border_bottom_half;
+    // @include border_bottom_half;
     .line{
         @include tab_line(50%);
     }
