@@ -38,6 +38,18 @@ angular.module('phoneApp')
         data: {},
         success: function (data) {
 
+            // angular.forEach(data.PhotoList, function (v, k) {
+            //     if (ENV.isHybrid) {
+            //         v.SiteUrl = {
+            //             'url': [v.AppUrl]
+            //         };
+            //     } else {
+            //         v.SiteUrl = {
+            //             'url': [v.H5Url]
+            //         };
+            //     }
+            // });
+
             angular.forEach(data.ArticleList, function (v, k) {
                 v.SiteUrl = {
                     'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]

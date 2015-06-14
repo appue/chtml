@@ -6,7 +6,7 @@
     "TotalMember": 123,
     "TotalSign": 1,
     "TotalAlwaysSign": 0,
-    "StateJoin": false,
+    "StateJoin": true,
     "StateSign": false,
 
     "ActivityList": {
