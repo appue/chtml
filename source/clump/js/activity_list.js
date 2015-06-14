@@ -17,14 +17,13 @@ angular.module('phoneApp')
     $scope.pageIndex = 0;
     $scope.pageSize = 5;
     $scope.isLoading = false;
+    $scope.DataList = {
+        ActivityList: []
+    };
 
     //--设置返回按钮
     $scope.backParam = {
         'url': ['clump/#/find.htm']
-    };
-
-    $scope.DataList = {
-        ActivityList: []
     };
 
     $scope.loadMore = function () {
