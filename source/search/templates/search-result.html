@@ -25,10 +25,12 @@
 
                     <div class="this_user">
                         <img src="{{v.Author.ImageUrl}}" />
-                        <p>
-                            {{v.Author.UserName}}<br>
-                            <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
-                        </p>
+                        <dl>
+                            <dt>{{v.Author.UserName}}</dt>
+                            <dd>
+                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                            </dd>
+                        </dl>
                     </div>
                 </article>
             </div>
