@@ -49,7 +49,7 @@ angular.module('phoneApp')
         url: 'getHomeImage',
         success: function (data) {
             angular.extend($scope.DataList, data);
-            $scope.eventSlide = data.ImageList.length;
+            $scope.eventSlide = true;
         },
         error: function (data) {
         }

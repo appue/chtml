@@ -1,25 +1,15 @@
 <header-bar back title="猜你喜欢"></header-bar>
 
 <section class="scrollfix" ng-style="appStyle" when-scrolled="loadMore()">
-    <div class="mod_slide" ng-slide>
+    <div class="mod_slide" ng-slide="eventSlide">
         <ul>
-            <li>
-                <img src="../themes/temp/img_1.jpg" />
-                <div>幼儿园生活环境布置：编织乐</div>
-            </li>
-            <li>
-                <img src="../themes/temp/img_2.jpg" />
-                <div>幼儿园生活环境布置：编织乐</div>
-            </li>
-            <li>
-                <img src="../themes/temp/img_3.jpg" />
-                <div>幼儿园生活环境布置：编织乐</div>
+            <li ng-repeat="v in DataList.PhotoList track by $index" page-jump="v.SiteUrl">
+                <img ng-src="{{v.ImageUrl}}" />
+                <div>{{v.Title}}</div>
             </li>
         </ul>
         <ol>
-            <li class="current"></li>
-            <li></li>
-            <li></li>
+            <li ng-repeat="(k, v) in DataList.PhotoList track by $index" ng-class="{current: k==0}"></li>
         </ol>
     </div>
 
@@ -27,14 +17,12 @@
     <!--瀑布流-->
     <falls>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
-            <div class="this_border" page-jump="{{v.SiteUrl}}">
+            <div class="this_border" page-jump="v.SiteUrl">
                 <img ng-src="{{v.Images[0].ImageUrl}}" />
                 <article>
                     <div class="this_text">{{v.Images[0].Description}}</div>
                     
-                    <div class="this_star">
-                        256
-                    </div>
+                    <div class="this_star">{{v.TotalCollect}}</div>
 
                     <div class="this_user">
                         <img ng-src="{{v.Author.ImageUrl}}" />
