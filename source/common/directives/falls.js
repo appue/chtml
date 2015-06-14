@@ -85,8 +85,11 @@ angular.module('phoneApp')
                     var $el = $element;
                 }
 
-                var el = $el.find('li'),
-                    obj = {
+                var el = $el.find('li');
+
+                if (el.length == 0) return;
+
+                var obj = {
                         'x': 10, //--左边总高度
                         'y': 10 //--右边总高度
                     },
@@ -122,6 +125,8 @@ angular.module('phoneApp')
                 }   
 
             };
+
+            $timeout($scope.$parent.setFalls, 0);
 
         }
     };
