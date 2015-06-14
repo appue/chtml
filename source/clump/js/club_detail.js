@@ -96,7 +96,7 @@ angular.module('phoneApp')
                     });
                     
                     $timeout($scope.setFalls, 0);
-                    // $scope.isLoading = false;
+                    $scope.isLoading = false;
                 },
                 error: function (data) {
                 }

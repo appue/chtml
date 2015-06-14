@@ -15,23 +15,35 @@ angular.module('phoneApp')
     var currentUrl = widget.getCurrentUrl();
 
     $scope.DataList = {
-        ArticleList: []
+        ListLeft: [], 
+        ListRight: []
     };
 
     $scope.currentTab = 1;
     $scope.footerTab = 1;
 
     $scope.pageIndex = 0;
+    $scope.pageIndexLeft = 0;
+    $scope.pageIndexRight = 0;
     $scope.pageSize = 5;
     $scope.isLoading = false;
 
+    $scope.showLeft = function () {
+        $scope.currentTab = 1;
+        // $scope.pageIndex = 0;
+        $scope.isLoading = false;
 
-    $scope.checkLogin = function () {
+        $scope.loadMore();
+    };
+
+    $scope.showRight = function () {
         if (cachePool.pull('UserInfo')) {
 
             $scope.currentTab = 2;
-            $scope.pageIndex = 1;
+            // $scope.pageIndex = 0;
             $scope.isLoading = false;
+
+            $scope.loadMore();
 
         } else {
 
@@ -55,65 +67,79 @@ angular.module('phoneApp')
         }
     });
 
-    $scope.loadMore = function (currentTab) {
+    $scope.loadMore = function () {
 
         if (!$scope.isLoading) {
 
-            $scope.pageIndex++;
             $scope.isLoading = true;
 
-            switch (currentTab) {
-                case 1:
-                    //--获取最新列表
-                    widget.ajaxRequest({
-                        isDrop: true,
-                        noMask: true,
-                        url: 'getHomeArticle',
-                        data: {
-                            PageIndex: $scope.pageIndex,
-                            PageSize: $scope.pageSize
-                        },
-                        success: function (data) {
-                            $scope.pageTotal = data.Total || 0;
-                            $scope.isLoading = false;
+            if ($scope.currentTab == 1) {
+                $scope.pageIndexLeft++;
+                $scope.pageIndex = $scope.pageIndexLeft;
 
-                            angular.forEach(data.ArticleList, function (v, k) {
-                                v.SiteUrl = {
-                                    'url': ['forum/#/thread-1.htm?from='+ currentUrl]
-                                }
-                                $scope.DataList.ArticleList.push(v);
-                            });
+                //--获取最新列表
+                widget.ajaxRequest({
+                    isDrop: true,
+                    noMask: true,
+                    url: 'getHomeArticle',
+                    data: {
+                        PageIndex: $scope.pageIndex,
+                        PageSize: $scope.pageSize
+                    },
+                    success: function (data) {
+                        $scope.pageTotalLeft = data.Total || 0;
+                        $scope.pageTotal = $scope.pageTotalLeft;
 
-                            $timeout($scope.setFalls, 0);
-                        },
-                        error: function (data) {
-                        }
-                    });
-                break;
+                        angular.forEach(data.ArticleList, function (v, k) {
+                            v.SiteUrl = {
+                                'url': ['forum/#/thread-1.htm?from='+ currentUrl]
+                            }
+                            $scope.DataList.ListLeft.push(v);
+                        });
 
-                case 2:
-                    //--关注列表
-                    widget.ajaxRequest({
-                        noMask: true,
-                        url: 'getHomeFollow',
-                        data: {
-                            PageIndex: $scope.pageIndex,
-                            PageSize: $scope.pageSize
-                        },
-                        success: function (data) {
-                            console.log('2success');
-                            $scope.isLoading = false;
-                        },
-                        error: function (data) {
-                            console.log('2error');
-                            $scope.isLoading = false;
-                        }
-                    });
-                break;
+                        $timeout($scope.setFalls, 0);
+                        $scope.isLoading = false;
+                    },
+                    error: function (data) {
+                        $scope.isLoading = false;
+                    }
+                });
+
+            } else {
+                $scope.pageIndexRight++;
+                $scope.pageIndex = $scope.pageIndexRight;
+
+                //--关注列表
+                widget.ajaxRequest({
+                    noMask: true,
+                    url: 'getHomeFollow',
+                    data: {
+                        PageIndex: $scope.pageIndex,
+                        PageSize: $scope.pageSize
+                    },
+                    success: function (data) {
+                        $scope.pageTotalRight = data.Total || 0;
+                        $scope.pageTotal = $scope.pageTotalRight;
+
+                        angular.forEach(data.ArticleList, function (v, k) {
+                            v.SiteUrl = {
+                                'url': ['forum/#/thread-1.htm?from='+ currentUrl]
+                            }
+                            $scope.DataList.ListRight.push(v);
+                        });
+
+                        $timeout($scope.setFalls, 0);
+                        $scope.isLoading = false;
+                    },
+                    error: function (data) {
+                        $scope.isLoading = false;
+                    }
+                });
+
             }
         }
     };
     
-    $scope.loadMore(1);
+    $scope.loadMore();
 
 });
