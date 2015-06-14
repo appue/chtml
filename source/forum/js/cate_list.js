@@ -20,15 +20,12 @@ angular.module('phoneApp')
     $scope.pageSize = 5;
     $scope.isLoading = false;
     $scope.showHeader = true;
-    
-    //--设置返回按钮
-    $scope.backParam = {
-        'url': ['clump/#/find.htm']
-    };
-
     $scope.DataList = {
         ArticleList: []
     };
+    
+    //--设置返回按钮
+    $scope.backParam = { 'url': ['clump/#/find.htm'] };
 
     widget.ajaxRequest({
         noMask: true,
@@ -39,12 +36,10 @@ angular.module('phoneApp')
             angular.forEach(data.CategoryList, function (v, k) {
                 v.SiteUrl = {
                     'url': ['forum/#/cate/list-sub-'+ v.CateId +'.htm?from='+ currentUrl]
-                }
+                };
             });
 
             angular.extend($scope.DataList, data);
-
-            console.log($scope.DataList);
         }
     });
 
