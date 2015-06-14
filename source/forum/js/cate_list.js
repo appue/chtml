@@ -15,6 +15,8 @@ angular.module('phoneApp')
 ){
     var currentUrl = widget.getCurrentUrl();
 
+    $scope.headerTitle = $location.$$search.title || "";
+
     $scope.currentTab = 1;
     $scope.pageIndex = 0;
     $scope.pageSize = 5;
@@ -35,7 +37,7 @@ angular.module('phoneApp')
         success: function (data) {
             angular.forEach(data.CategoryList, function (v, k) {
                 v.SiteUrl = {
-                    'url': ['forum/#/cate/list-sub-'+ v.CateId +'.htm?from='+ currentUrl]
+                    'url': ['forum/#/cate/list-sub-'+ v.CateId +'.htm?title='+ encodeURIComponent(v.CateName) +'&from='+ currentUrl]
                 };
             });
 

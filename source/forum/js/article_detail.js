@@ -15,7 +15,7 @@ angular.module('phoneApp')
 ){
     
     //--设置返回按钮
-    var isFrom = $location.$$search.isFrom || $location.$$search.isfrom || '';
+    // var isFrom = $location.$$search.isFrom || $location.$$search.isfrom || '';
 
     var currentUrl = widget.getCurrentUrl();
 
