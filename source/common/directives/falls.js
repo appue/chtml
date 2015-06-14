@@ -75,8 +75,8 @@ angular.module('phoneApp')
         controller: function ($scope, $element, $attrs) {
 
             $scope.$parent.setFalls = function() {
-                $scope.isLoading = false;
-                $scope.$parent.isLoading = false;
+                // $scope.isLoading = false;
+                // $scope.$parent.isLoading = false;
                 // angular.element(document.querySelector('.mod_list_loading')).css('display', 'none');
 
                 var el = $element.find('li'),
