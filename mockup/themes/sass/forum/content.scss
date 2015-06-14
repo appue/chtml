@@ -54,6 +54,15 @@
         // border-bottom: 2px solid #cacdcb;
         -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
         margin-bottom: 10px;
+        .imgart_content {
+            padding-bottom: 10px;
+            li {
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
         .comment_img {
             width: 100%;
             display: block;
@@ -107,6 +116,7 @@
                 }
             }
         }
+        
         .comment_heart {
             @include border_bottom_half;
             a {
@@ -126,6 +136,7 @@
                 margin-bottom: 5px;
             }
         }
+
         .comment_input {
             display: -webkit-box;
             padding: 10px 5px;

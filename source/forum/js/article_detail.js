@@ -19,11 +19,8 @@ angular.module('phoneApp')
 
     var currentUrl = widget.getCurrentUrl();
 
-    $scope.backParam = {
-        'url': [
-            'home/#/index'
-        ]
-    };
+    $scope.backParam = { 'url': ['home/#/index'] };
+    $scope.DataList = {};
     
     //--判断用户是否登录
     if (cachePool.pull('UserInfo')) {
@@ -62,15 +59,21 @@ angular.module('phoneApp')
 
 
 
-    // widget.ajaxRequest({
-    //     noMask: true,
-    //     url: '$local/Tools/getContentArticle',
-    //     data: {
-    //         ArticleId: $stateParams.id
-    //     },
-    //     success: function (data) {
-    //         alert(data);
-    //     }
-    // });
+    widget.ajaxRequest({
+        noMask: true,
+        url: 'getContentArticle',
+        data: {
+            ArticleId: $stateParams.id
+        },
+        success: function (data) {
+            angular.forEach(data.ArticleList, function (v, k) {
+                v.SiteUrl = {
+                    'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
+                }
+            });
+
+            angular.extend($scope.DataList, data)
+        }
+    });
 
 });

@@ -5,79 +5,56 @@
 
 <section class="unit_article_scroll">
     <div class="comment_layout">
-
-        <img class="comment_img" src="../themes/temp/9.jpg" />
-        <p class="comment_txt">
-            手工灯笼制作，让家长和孩子一起动手，制作一个属于自己的灯笼，这是一件非常有意义的事情，相信它会成为你们难忘的回忆！
-        </p>
-
-        <img class="comment_img" src="../themes/temp/4.jpg" />
-        <p class="comment_txt">
-            手工灯笼制作，让家长和孩子一起动手，制作一个属于自己的灯笼，这是一件非常有意义的事情，相信它会成为你们难忘的回忆！
-        </p>
+        <ul class="imgart_content">
+            <li ng-repeat="(k, v) in DataList.Images track by $index">
+                <img ng-src="{{v.ImageUrl}}" />
+                {{v.Description}}
+            </li>
+        </ul>
 
         <div class="person_detail">
-            <img class="person_img" src="../themes/temp/1.jpg">
+            <img class="person_img" ng-src="{{DataList.Author.ImageUrl}}">
             <div>
                 <h3>
                     <span class="time">5天前</span>
-                    师乐汇
+                    {{DataList.Author.UserName}}
                     <span class="private_chat" page-jump="{{redirectUrl.Chat}}">私聊</span>
                 </h3>
                 <p>
                     发布到：
-                    <span>#泥工</span>
-                    <span>#废旧材料</span>
-                    <span>#玩教具</span>
+                    <span ng-repeat="(k, v) in DataList.Affect.CategoryList track by $index">#{{v.CateName}}</span>
                 </p>
             </div>
         </div>
     </div>
+
+
     <div class="comment_layout">
         <p class="comment_txt">
-            <span class="color_green">1</span>
-            人赞过，
-            <span class="color_green">8</span>
-            次浏览
+            <span class="color_green">{{DataList.Total.TotalPraise}}</span>人赞过，
+            <span class="color_green">{{DataList.Total.TotalCollect}}</span>次浏览
         </p>
 
         <div class="comment_heart">
             <a class="heart"></a>
-            <img class="person_img" src="../themes/temp/1.jpg">
-            <img class="person_img" src="../themes/temp/1.jpg">
-            <img class="person_img" src="../themes/temp/1.jpg">
-            <img class="person_img" src="../themes/temp/1.jpg">
-            <img class="person_img" src="../themes/temp/1.jpg">
-            <img class="person_img" src="../themes/temp/1.jpg">
+            <img class="person_img" ng-repeat="(k, v) in DataList.PraiseUser track by $index" ng-src="{{v.ImageUrl}}" />
         </div>
 
-        <div class="comment_input">
+<!--         <div class="comment_input">
             <img class="person_img" src="../themes/temp/1.jpg">
             <div>
                 <input type="text" placeholder="说说你的评论">
             </div>
-        </div>
-        <div class="person_detail">
-            <img class="person_img" src="../themes/temp/1.jpg">
+        </div> -->
+        <div class="person_detail" ng-repeat="v in DataList.CommentList track by $index">
+            <img class="person_img" ng-src="{{v.Author.ImageUrl}}">
             <div>
                 <h3>
-                    <span class="time">04.07  11:12</span>
-                    师乐汇
+                    <span class="time">{{v.UpdateTime}}</span>
+                    {{v.Author.UserName}}
                 </h3>
                 <p>
-                    手工灯笼制作，让家长和孩子一起动手，制作一个属于自己的灯笼，这是一件非常有意义的事情，相信它会成为你们难忘的回忆！
-                </p>
-            </div>
-        </div>
-        <div class="person_detail" ng-click="chk()">
-            <img class="person_img" src="../themes/temp/1.jpg">
-            <div>
-                <h3>
-                    <span class="time">04.07  11:12</span>
-                    师乐汇
-                </h3>
-                <p>
-                    手工灯笼制作，让家长和孩子一起动手，制作一个属于自己的灯笼，这是一件非常有意义的事情，相信它会成为你们难忘的回忆！
+                    {{v.Content}}
                 </p>
             </div>
         </div>
@@ -86,50 +63,19 @@
         </div>
     </div>
 
-    <div class="mod_title_text this_p" ng-if="isLogin">
+    <div class="mod_title_text this_p" ng-if="DataList.ArticleList.length > 0">
         <div>老师们也在看</div>
     </div>
-    <div class="mod_list_img" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50' ng-if="isLogin">
+    <div class="mod_list_img" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50' ng-if="DataList.ArticleList.length > 0">
         <ul>
-            <li>
+            <li ng-repeat="v in DataList.ArticleList" page-jump="{{v.SiteUrl}}">
                 <div class="this_img">
-                    <img src="../themes/temp/img.jpg" />
+                    <img ng-src="{{v.Images[0].ImageUrl}}" />
                 </div>
                 <div class="this_title">
-                    <span>#环境创设</span>
-                    <span>#玩教具</span>
+                    <span ng-repeat="i in v.CategoryList">#{{i.CateName}}</span>
                 </div>
-                <div class="this_tx">22人看过</div>
-            </li>
-            <li>
-                <div class="this_img">
-                    <img src="../themes/temp/img.jpg" />
-                </div>
-                <div class="this_title">
-                    <span>#环境创设</span>
-                    <span>#玩教具</span>
-                </div>
-                <div class="this_tx">22人看过</div>
-            </li>
-            <li>
-                <div class="this_img">
-                    <img src="../themes/temp/img.jpg" />
-                </div>
-                <div class="this_title">
-                    <span>#环境创设</span>
-                    <span>#玩教具</span>
-                </div>
-                <div class="this_tx">22人看过</div>
-            </li>
-            <li>
-                <div class="this_img">
-                    <img src="../themes/temp/img.jpg" />
-                </div>
-                <div class="this_title">
-                    <span>#环境创设</span>
-                    <span>#玩教具</span>
-                </div>
-                <div class="this_tx">22人看过</div>
+                <div class="this_tx">{{v.TotalHit}}人看过</div>
             </li>
         </ul>
     </div>
