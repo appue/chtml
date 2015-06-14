@@ -211,10 +211,10 @@ a.disable, button.disable {
 
 
 .is_ios{
-    .mod_tab_2,
     .mod_header,
+    .mod_tab_2,
     .mod_header_search{
-        border-top: 20px solid #fff !important;
+        border-top: 20px solid rgba(255, 255, 255, 0) !important;
     }
     .unit_home{
         padding-top: 61px !important;
@@ -240,6 +240,9 @@ a.disable, button.disable {
     }
     .unit_article_scroll{
         padding-top: 30px !important;
+    }
+    .unit_letter{
+        padding-top: 20px;
     }
 }
 
