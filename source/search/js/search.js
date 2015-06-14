@@ -15,24 +15,19 @@ angular.module('phoneApp')
 ){
 
     //--设置返回
-    $scope.backParam = {
-        'url': [
-            'clump/#/find.htm'
-        ]
-    };
-
+    $scope.backParam = { 'url': ['clump/#/find.htm'] };
 
     var key = cachePool.pull('Keyword') || [];
 
-    $scope.DataKeyword = [];
+    $scope.DataList = {
+        HistoryKey: []
+    }
 
     angular.forEach(key, function (v, k) {
-        $scope.DataKeyword.push({
+        $scope.DataList.HistoryKey.push({
             'Keyword': v,
             'SiteUrl': {
-                'url': [
-                    'search/#/result?keyword='+ encodeURIComponent(v)
-                ]
+                'url': ['search/#/result?keyword='+ encodeURIComponent(v)]
             }
         })
     });
@@ -40,25 +35,23 @@ angular.module('phoneApp')
     //--清除历史记录
     $scope.clearHistory = function () {
         cachePool.remove("Keyword");
-        $scope.DataKeyword = [];
+        $scope.DataList.HistoryKey = [];
     };
 
-    /*
-    * 1、每个圈子当天发帖量多的排前面，每24小时会自动更新一次（取前20个）
-    * 2、圈子ID降序
-    * 3、圈子发帖时间降序
-    * 4、圈子发帖时间升序
-    * 5、字母排序（所有的圈子全部吐出）
-    */
-    // widget.ajaxRequest({
-    //     noMask: true,
-    //     url: '$local/Tools/getListClub',
-    //     data: {
-    //         SortType: 5
-    //     },
-    //     success: function (data) {
-    //         alert(data);
-    //     }
-    // });
+
+    widget.ajaxRequest({
+        noMask: true,
+        url: 'getSearch',
+        data: {},
+        success: function (data) {
+            angular.forEach(data.KeywordList, function (v, k) {
+                v.SiteUrl = {
+                    'url': ['search/#/result?keyword='+ encodeURIComponent(v.Keyword)]
+                };
+            });
+
+            angular.extend($scope.DataList, data);
+        }
+    });
 
 });
