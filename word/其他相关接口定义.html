@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="phoneApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>API</title>
+    <link rel="stylesheet" type="text/css" href="themes.css" />
+</head>
+<body>
+    <h1>其他相关接口定义</h1>
+
+
+    <!---------------------------------------------------->
+    <h2>1.聊天接口定义</h2>
+    <h3>接口名称：getListChat</h3>
+    <h4>postData:</h4>
+    <pre>
+    {
+
+        Header: {
+            UserId: <i>//--当前登录用户ID（未登录传空）</i>
+            Auth: <i>//----当前登录用户Auth（未登录传空）</i>
+        }
+    }
+    </pre>
+
+    <h4>getData:</h4>
+    <pre>
+    {   
+        ChatList: [
+            {
+                UpdateTime: <i>//--聊天发表时间</i>
+                Content: <i>//-----聊天内容</i>
+            }
+        ]
+    }
+    </pre>
+</body>
+</html>
