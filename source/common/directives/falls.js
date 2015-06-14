@@ -74,17 +74,23 @@ angular.module('phoneApp')
         template: '<ul class="mod_list_falls ng-transclude"></ul>',
         controller: function ($scope, $element, $attrs) {
 
-            $scope.$parent.setFalls = function() {
+            $scope.$parent.setFalls = function(elem) {
                 // $scope.isLoading = false;
                 // $scope.$parent.isLoading = false;
                 // angular.element(document.querySelector('.mod_list_loading')).css('display', 'none');
 
-                var el = $element.find('li'),
+                if (elem) {
+                    var $el = angular.element(document.querySelector(elem));
+                } else {
+                    var $el = $element;
+                }
+
+                var el = $el.find('li'),
                     obj = {
                         'x': 10, //--左边总高度
                         'y': 10 //--右边总高度
                     },
-                    w = $element.find('li')[0].offsetWidth,
+                    w = $el.find('li')[0].offsetWidth,
                     p = w/200;
                     
                 angular.forEach(el, function(v, k) {
@@ -110,9 +116,9 @@ angular.module('phoneApp')
                 });
 
                 if (obj.x <= obj.y) {
-                    $element.css('height', obj.y +'px');
+                    $el.css('height', obj.y +'px');
                 } else {
-                    $element.css('height', obj.x +'px');
+                    $el.css('height', obj.x +'px');
                 }   
 
             };

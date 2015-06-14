@@ -31,6 +31,15 @@ angular.module('phoneApp')
     $scope.showLeft = function () {
         $scope.currentTab = 1;
         // $scope.pageIndex = 0;
+
+        if ($scope.pageIndexLeft * $scope.pageSize >= $scope.pageTotalLeft) {
+            $scope.isLoading = true;
+            $timeout(function () {
+                $scope.setFalls('.mod_list_falls');
+            }, 0);
+            return;
+        }
+                
         $scope.isLoading = false;
 
         $scope.loadMore();
@@ -41,8 +50,16 @@ angular.module('phoneApp')
 
             $scope.currentTab = 2;
             // $scope.pageIndex = 0;
-            $scope.isLoading = false;
 
+            if ($scope.pageIndexRight * $scope.pageSize >= $scope.pageTotalRight) {
+                $scope.isLoading = true;
+                $timeout(function () {
+                    $scope.setFalls('.mod_list_falls');
+                }, 0);
+                return;
+            }
+
+            $scope.isLoading = false;
             $scope.loadMore();
 
         } else {
