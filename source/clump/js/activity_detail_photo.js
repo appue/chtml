@@ -1,6 +1,6 @@
 /*
 * 发现-活动-晒图活动页
-* /clump/#/activity/detail/photo.html
+* /clump/#/activity/detail/photo-{id}.htm
 */
 angular.module('phoneApp')
 

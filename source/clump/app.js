@@ -85,7 +85,7 @@ angular.module('phoneApp', [
     */
     .state('activityDetailArticle', {
         url: '/activity/detail/article-{id}.htm',
-        templateUrl: 'templates/activity_article_photo.html',
+        templateUrl: 'templates/activity_detail_article.html',
         controller: 'tActivityDetailArticle'
     })
 
