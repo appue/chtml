@@ -22,17 +22,19 @@
         * 如果主人ID为空，该列表直接返回空数据（主人ID就是Header里面的UserID）
         */
         </i>
-        UserId: <i>//------对方的用户ID</i>
+        UserId: <i>//-------对方的用户ID</i>
 
-        PageIndex: <i>//---当前页码</i>
-        PageSize: <i>//----每页显示多少条记录</i>
+        PageIndex: <i>//----当前页码</i>
+        PageSize: <i>//-----每页显示多少条记录</i>
 
-        FromId: <i>//------小的聊天信息ID（不是UserId）</i>
-        ToId: <i>//--------大的聊天信息ID（不是UserId）</i>
+        FromId: <i>//-------小的聊天信息ID（不是UserId）</i>
+        ToId: <i>//---------大的聊天信息ID（不是UserId）</i>
+
+        Pull: <i>//--需要拉取数据状态（True/False）,True: 是拉取新的记录,False: 是拉取历史记录</i>
 
         Header: {
-            UserId: <i>//--当前登录用户ID（未登录传空）</i>
-            Auth: <i>//----当前登录用户Auth（未登录传空）</i>
+            UserId: <i>//---当前登录用户ID（未登录传空）</i>
+            Auth: <i>//-----当前登录用户Auth（未登录传空）</i>
         }
     }
     </pre>
