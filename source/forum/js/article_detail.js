@@ -63,7 +63,7 @@ angular.module('phoneApp')
     };
 
 
-
+    //--获取帖子内容
     widget.ajaxRequest({
         noMask: true,
         url: 'getContentArticle',
@@ -89,5 +89,19 @@ angular.module('phoneApp')
             $scope.myScrollOptions = { 'wrapper': {} };
         }
     });
+
+    //--赞帖子
+    $scope.setPraise = function () {
+        alert(1);
+        widget.ajaxRequest({
+            noMask: true,
+            url: 'setArticlePraise',
+            data: {
+                ArticleId: $stateParams.id
+            },
+            success: function (data) {
+            }
+        });
+    };
 
 });

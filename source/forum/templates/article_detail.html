@@ -49,8 +49,8 @@
             <span class="color_green">{{DataList.Total.TotalCollect}}</span>次浏览
         </p>
 
-        <div class="comment_heart">
-            <a class="heart"></a>
+        <div class="comment_heart" ng-if="DataList.PraiseUser.length > 0">
+            <a class="heart" ng-click="setPraise()"></a>
             <img class="person_img" ng-repeat="(k, v) in DataList.PraiseUser track by $index" ng-src="{{v.ImageUrl}}" />
         </div>
 
