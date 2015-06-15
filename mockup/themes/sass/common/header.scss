@@ -126,3 +126,21 @@
         background-size: auto 25px;
     }
 }
+
+.mod_show_layout {
+    position: fixed;
+    right: 20px;
+    top: 50px;
+    z-index: 101;
+    background: rgba(0,0,0,0.8);
+    width: 100px;
+    li {
+        color: #fff;
+        line-height: 40px;
+        text-align: center;
+        @include border_bottom_half;
+        &:last-child {
+            border: none;
+        }
+    }
+}

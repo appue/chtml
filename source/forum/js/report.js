@@ -8,26 +8,26 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-    
-            
+
     //--设置返回按钮
     $scope.backParam = {
-        'url': [
-        ]
+        'url': ['forum/#/thread-'+ $stateParams.id +'.htm']
     };
-    
-    $scope.addReport = function() {
 
+    $scope.inputVal = {};
+    
+    $scope.submitData = function() {
+        
         widget.ajaxRequest({
             noMask: true,
-            url: '$local/Tools/setReportArticle',
+            url: 'setReportArticle',
             data: {
                 ArticleId: $stateParams.id, //-----帖子ID
-                Contact: Contact,//-------联系方式
-                ReportReason: ReportReason//--举报理由
+                Contact: $scope.inputVal.contact,//-------联系方式
+                ReportReason: $scope.inputVal.content //--举报理由
             },
             success: function (data) {
-                alert(data);
+                widget.msgToast('感谢您的举报！');
             }
         });
 

@@ -23,15 +23,16 @@ angular.module('phoneApp')
     $scope.DataList = {};
     
     //--判断用户是否登录
-    if (cachePool.pull('UserInfo')) {
+    var userInfo = cachePool.pull('UserInfo');
+    if (userInfo) {
         $scope.isLogin = true;
-        //--设置横向滚动
-        $scope.myScrollOptions = {
-            'wrapper': {}
-        };
     } else {
         $scope.isLogin = false;
     }
+
+    $scope.showLayout = function () {
+        $scope.isShowLayout = !$scope.isShowLayout;
+    };
 
     //--跳转URL
     $scope.redirectUrl = {
@@ -48,6 +49,16 @@ angular.module('phoneApp')
         //--私聊
         Chat: {
             'url': ['/home/#/msg/chat-1.htm?from='+ currentUrl]
+        },
+
+        //--举报
+        Report: {
+            'url': ['forum/#/report/'+ $stateParams.id +'.htm?from='+ currentUrl]
+        },
+
+        //--编辑
+        Edit: {
+
         }
     };
 
@@ -66,7 +77,16 @@ angular.module('phoneApp')
                 }
             });
 
-            angular.extend($scope.DataList, data)
+            angular.extend($scope.DataList, data);
+
+            if (userInfo.UserId == data.Author.UserId) {
+                $scope.isOwner = true;  
+            } else {
+                $scope.isOwner = false;
+            }
+
+            //--设置横向滚动
+            $scope.myScrollOptions = { 'wrapper': {} };
         }
     });
 

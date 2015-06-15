@@ -1,7 +1,21 @@
 <header class="mod_header transparent comment_header">
     <a class="back_button" page-back="{{backParam}}">back</a>
-    <a class="right_menu_gray"></a>
+    <a class="right_menu_gray" ng-click="showLayout()"></a>
 </header>
+
+<div class="mod_show_layout" ng-if="isShowLayout">
+    <ul ng-if="isOwner">
+        <li>编辑</li>
+        <li>删除</li>
+    </ul>
+    <ul ng-if="!isOwner">
+        <li page-jump="redirectUrl.Report">举报</li>
+<!--         <li page-jump="redirect.Report">收藏</li>
+        <li page-jump="redirect.Report">分享</li>
+        <li page-jump="redirect.Report">点评</li>
+        <li page-jump="redirect.Report">赞</li> -->
+    </ul>
+</div>
 
 <section class="unit_article_scroll">
     <div class="comment_layout">
