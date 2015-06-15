@@ -13,7 +13,6 @@
 
     <!---------------------------------------------------->
     <h2>1.聊天接口定义</h2>
-    <em>默认显示当前1天内的聊天记录，每拉一次提前一天</em>
     <h3>接口名称：getListChat</h3>
     <h4>postData:</h4>
     <pre>
@@ -23,7 +22,13 @@
         * 如果主人ID为空，该列表直接返回空数据（主人ID就是Header里面的UserID）
         */
         </i>
-        UserId: <i>//-------对方的用户ID</i>
+        UserId: <i>//------对方的用户ID</i>
+
+        PageIndex: <i>//---当前页码</i>
+        PageSize: <i>//----每页显示多少条记录</i>
+
+        FromId: <i>//------小的聊天信息ID（不是UserId）</i>
+        ToId: <i>//--------大的聊天信息ID（不是UserId）</i>
 
         Header: {
             UserId: <i>//--当前登录用户ID（未登录传空）</i>
@@ -35,18 +40,31 @@
     <h4>getData:</h4>
     <pre>
     {   
-        ChatList: [
+        <i>这里只有两个用户的信息</i>
+        UserInfo: [
             {
+                UserId: <i>//------聊天发表时间</i>
+                UserImage: <i>//---用户头像</i>
+                Username: <i>//----用户名称</i>
+            }
+        ]
+
+
+
+        ChatList: [
+            {   
+                ChatId: <i>//------聊天记录ID</i>
                 UpdateTime: <i>//--聊天发表时间</i>
-                Content: <i>//-----聊天内容</i>
-                UserId: <i>//------该聊天信息的用户ID</i>
+                Message: <i>//-----聊天内容</i>
+                Sender: <i>//------发送该聊天信息的UserID</i>
             }
         ]
         
         <i>此处格式固定，服务器返回验证数据</i>
         Response: {
-            Time: <i>//--------------服务器当前时间</i>
-            State: <i>//-------------用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）</i>
+            Time: <i>//------------服务器当前时间</i>
+            State: <i>//-----------用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）</i>
+            Ack: <i>//-------------记录提交返回的状态（Success、Failure）</i>
         }
     }
     </pre>
