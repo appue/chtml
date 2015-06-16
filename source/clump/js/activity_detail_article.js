@@ -19,7 +19,7 @@ angular.module('phoneApp')
 
     var currentUrl = widget.getCurrentUrl();
 
-    $scope.backParam = { 'url': ['home/#/index'] };
+    $scope.backParam = { 'url': ['clump/#/activity/list.htm'] };
     $scope.DataList = {};
     
     //--判断用户是否登录
