@@ -12,8 +12,24 @@ angular.module('phoneApp')
     cachePool,
     routerRedirect,
     widget
-){
-    $timeout(function () {
-        $state.go('index');
-    }, 2000);
+){  
+
+    $scope.startImages = [
+        {
+            ImageUrl: '../themes/temp/start_3.jpg',
+        },
+        {
+            ImageUrl: '../themes/temp/start_2.jpg',
+        },
+        {
+            ImageUrl: '../themes/temp/start_1.jpg',
+        },
+        {
+            ImageUrl: '../themes/temp/start_4.jpg',
+        }
+    ];
+
+    // $timeout(function () {
+    //     $state.go('index');
+    // }, 2000);
 });
