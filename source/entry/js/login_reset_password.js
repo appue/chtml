@@ -35,10 +35,11 @@ userEntry.controller('loginResetCtrl', function ($scope, $stateParams, routerRed
         }
 
         widget.ajaxRequest({
-            noMask: true,
-            url: '$local/Tools/SendCheckCode',
+            url: 'getClubHotUser',
             data: {
-                Mobile: 123
+                Phone: $stateParams.phone,
+                PhoneCode: $scope.inputVal.vcode,
+                Password: md5($scope.inputVal.password)
             },
             success: function (data) {}
         });

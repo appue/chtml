@@ -42,27 +42,15 @@ angular.module('phoneApp')
                     noMask: true,
                     url: 'getClubHotUser',
                     data: {
-                        UserId: 8
+                        Phone: $stateParams.phone
                     },
                     success: function (data) {
-
-                        console.log(data);
-
                         if (data.ShortMessage) {
-
                             countdown(); //开始倒计时
-
                             widget.msgToast(data.ShortMessage);
-
                         } else {
-
                             widget.msgToast(data.msg || '手机号无效');
-
                         }
-
-                    },
-                    error: function () { //待删除...
-                        countdown();
                     }
                 });
 

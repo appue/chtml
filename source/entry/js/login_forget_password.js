@@ -1,4 +1,4 @@
-userEntry.controller('loginForgetCtrl', function ($scope, routerRedirect, widget) {
+userEntry.controller('loginForgetCtrl', function ($scope, $compile, routerRedirect, widget) {
 
     $scope.backParam = { //--设置返回按钮
         'url': [
@@ -22,30 +22,24 @@ userEntry.controller('loginForgetCtrl', function ($scope, routerRedirect, widget
 
         widget.cacheData('loginPhone', $scope.inputVal);
 
+        if (!document.querySelector('.mod_mask')) {
+            var maskTpl = $compile('<div ng-show="showMask" class="mod_mask"></div>');
+            angular.element(document.getElementById('js_view')).append(maskTpl($scope));
+        }
+
         var $thisPopup = angular.element(document.getElementById('popup_checkPhone'));
 
         $thisPopup.removeClass('ng-hide');
         $scope.showMask = true;
-        
+
     };
 
     $scope.sendMessage = function () { //跳验证码页
-
-        // routerRedirect.toJump({
-        //     'module': 'entry',
-        //     'hash': 'loginReset',
-        //     'url': '/login/reset/' + $scope.inputVal.phone,
-        //     'filter': {
-        //         'phone': $scope.inputVal.phone
-        //     }
-        // });
-
         routerRedirect.toJump({
             'url': [
                 'entry/#/login/reset/' + $scope.inputVal.phone
             ]
         });
-
     };
 
 });
