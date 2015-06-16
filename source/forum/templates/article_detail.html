@@ -10,6 +10,7 @@
     </ul>
     <ul ng-if="!isOwner">
         <li page-jump="redirectUrl.Report">举报</li>
+
 <!--         <li page-jump="redirect.Report">收藏</li>
         <li page-jump="redirect.Report">分享</li>
         <li page-jump="redirect.Report">点评</li>
@@ -45,8 +46,10 @@
 
     <div class="comment_layout">
         <p class="comment_txt">
-            <span class="color_green">{{DataList.Total.TotalPraise}}</span>人赞过，
-            <span class="color_green">{{DataList.Total.TotalCollect}}</span>次浏览
+            <span class="color_green">{{DataList.Total.TotalPraise}}</span>人赞过,
+            <span class="color_green">{{DataList.Total.TotalCollect}}</span>次浏览,
+            <span class="color_green">{{DataList.Total.TotalComment}}</span>条评论,
+            被收藏<span class="color_green">{{DataList.Total.TotalComment}}</span>次
         </p>
 
         <div class="comment_heart" ng-if="DataList.PraiseUser.length > 0">
