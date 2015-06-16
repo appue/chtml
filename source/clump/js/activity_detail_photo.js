@@ -38,9 +38,11 @@ angular.module('phoneApp')
         'url': ['clump/#/activity/list.htm']
     };
 
+
+    //--获取活动的基本信息
     widget.ajaxRequest({
         noMask: true,
-        url: 'getPhotoActivityInfo',
+        url: 'getActivityInfo',
         data: {
             ActivityId: $stateParams.id,
         },
@@ -49,6 +51,8 @@ angular.module('phoneApp')
         }
     });
 
+
+    //--获取活动的帖子列表
     $scope.loadMore = function () {
         if (!$scope.isLoading) {
 
