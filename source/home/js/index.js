@@ -12,6 +12,12 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
+    document.addEventListener("deviceready", onDeviceReady, false);
+    
+    function onDeviceReady() {
+        StatusBar.show();
+    }
+
     var currentUrl = widget.getCurrentUrl();
 
     $scope.DataList = {

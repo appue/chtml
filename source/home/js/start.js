@@ -13,7 +13,6 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){  
-
     $scope.startImages = [
         {
             ImageUrl: '../themes/temp/start_3.jpg',
@@ -30,6 +29,9 @@ angular.module('phoneApp')
     ];
 
     $timeout(function () {
-        $state.go('index');
+        // $state.go('index');
+        routerRedirect.toJump({
+            'url': ['home/#/entry.htm']
+        })
     }, 4000);
 });
