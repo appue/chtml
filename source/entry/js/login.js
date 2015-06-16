@@ -3,9 +3,7 @@ angular.module('phoneApp')
 .controller('loginCtrl', function ($scope, widget) {
 
 	$scope.backParam = { //--设置返回按钮
-		'url': [
-			'home/#/entry.htm'
-		]
+		'url': ['home/#/index']
 	};
 
 	$scope.inputVal = {}; //初始化ng-model
