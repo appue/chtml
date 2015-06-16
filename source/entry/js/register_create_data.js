@@ -1,9 +1,7 @@
 userEntry.controller('registerCreateCtrl', function ($scope, routerRedirect, widget) {
 
     $scope.backParam = { //--设置返回按钮
-        'url': [
-            'home/#/entry.htm'
-        ]
+        'url': ['home/#/entry.htm']
     };
 
     $scope.inputVal = widget.cacheData('personalData') || { //数据初始化
@@ -23,9 +21,7 @@ userEntry.controller('registerCreateCtrl', function ($scope, routerRedirect, wid
         widget.cacheData('personalData', $scope.inputVal);
 
         routerRedirect.toJump({
-            'url': [
-                'entry/#/register/account.htm'
-            ]
+            'url': ['entry/#/register/account.htm']
         });
 
     };
