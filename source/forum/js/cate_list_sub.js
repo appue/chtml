@@ -52,7 +52,7 @@ angular.module('phoneApp')
 
             angular.forEach(res.CategoryList, function (v, k) {
                 v.SiteUrl = {
-                    'url': ['forum/#/cate/list-last-'+ v.CateId +'.htm?title='+ encodeURIComponent +'&from='+ currentUrl]
+                    'url': ['forum/#/cate/list-last-'+ v.CateId +'.htm']
                 };
             });
 
