@@ -8,9 +8,12 @@ angular.module('phoneApp')
     $scope, 
     $state,
     $timeout,
+    $timeout,
     cachePool,
     routerRedirect,
     widget
 ){
-
+    $timeout(function () {
+        $state.go('index');
+    }, 2000);
 });
