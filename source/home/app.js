@@ -26,7 +26,7 @@ angular.module('phoneApp', [
      * 入口页面
      */
     .state('entry', {
-        url: '/entry',
+        url: '/entry.htm',
         templateUrl: 'templates/entry.html',
         controller: 'entryCtrl'
     })
@@ -76,7 +76,6 @@ angular.module('phoneApp', [
         templateUrl: 'templates/msg-search.html',
         controller: 'HomeMsgSearchCtrl'
     })
-
 
     /*------------------------------------
      * 私聊
