@@ -29,7 +29,7 @@ angular.module('phoneApp')
         }
     ];
 
-    // $timeout(function () {
-    //     $state.go('index');
-    // }, 2000);
+    $timeout(function () {
+        $state.go('index');
+    }, 4000);
 });
