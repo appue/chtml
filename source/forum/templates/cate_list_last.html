@@ -52,7 +52,7 @@
     </div>
     
     <!--瀑布流-->
-    <falls ng-if="currentTab==1">
+    <falls ng-show="currentTab==1">
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
             <div class="this_border" page-jump="{{v.SiteUrl}}">
                 <img ng-src="{{v.Images[0].ImageUrl}}" />
@@ -77,7 +77,7 @@
 
 
     <!--垂直平铺-->
-    <ul class="mod_list_img_only" ng-if="currentTab==2">
+    <ul ng-if="currentTab==2" class="mod_list_img_only">
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" page-jump="{{v.SiteUrl}}">
             <img ng-src="{{v.Images[0].ImageUrl}}" />
             <article>

@@ -126,8 +126,6 @@ angular.module('phoneApp')
 
             };
 
-            $timeout($scope.$parent.setFalls, 0);
-
         }
     };
 });

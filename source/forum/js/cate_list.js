@@ -29,6 +29,12 @@ angular.module('phoneApp')
     //--设置返回按钮
     $scope.backParam = { 'url': ['clump/#/find.htm'] };
 
+    $scope.$watch('currentTab', function () {
+        if ($scope.currentTab == 1) {
+            $timeout($scope.$parent.setFalls, 0);
+        }
+    });
+
     widget.ajaxRequest({
         noMask: true,
         url: 'getListCategory',
