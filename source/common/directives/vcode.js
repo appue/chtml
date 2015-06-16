@@ -3,7 +3,7 @@
 angular.module('phoneApp')
 
 // 获取验证码
-.directive('getVcode', function ($rootScope, $stateParams, $timeout, routerRedirect, widget, $q) {
+.directive('getVcode', function ($rootScope, $stateParams, $timeout, routerRedirect, widget, $http, $q) {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
@@ -38,37 +38,92 @@ angular.module('phoneApp')
 
                 $rootScope.vDisableTime = 30;
 
-                widget.ajaxRequest({
-                    noMask: true,
-                    url: '$api/getUserInfo',
-                    data: {
-                        UserId: 8
-                    },
-                    success: function (data) {
+                // widget.ajaxRequest({
+                //     noMask: true,
+                //     url: 'getClubHotUser',
+                //     data: {
+                //         UserId: 8
+                //     },
+                //     success: function (data) {
 
-                        if (data.ShortMessage) {
+                //         console.log(data);
 
-                            countdown(); //开始倒计时
+                //         if (data.ShortMessage) {
 
-                            widget.msgToast(data.ShortMessage);
+                //             countdown(); //开始倒计时
 
-                        } else {
+                //             widget.msgToast(data.ShortMessage);
 
-                            widget.msgToast(data.msg || '手机号无效');
+                //         } else {
 
-                        }
+                //             widget.msgToast(data.msg || '手机号无效');
 
-                    },
-                    error: function () { //待删除...
-                        countdown();
-                    }
-                });
+                //         }
+
+                //     },
+                //     error: function () { //待删除...
+                //         countdown();
+                //     }
+                // });
 
             }
 
             resendVcode(); //页面首次请求
 
             element.text('重新发送(' + $rootScope.vDisableTime + ')').addClass('disable').on('click', resendVcode);
+
+
+
+            var defer = $q.defer();
+            var promise = defer.promise;
+
+            promise.then(function success(data) {
+                console.log(data);
+
+                var anotherDeferred = $q.defer();
+
+                $timeout(function () {
+                    anotherDeferred.resolve('bar');
+                }, 1000);
+
+                return anotherDeferred.promise;
+
+            }, function error(data) {
+                console.log(data);
+            }).then(function success(data) {
+                console.log(data);
+            });
+
+            // defer.notify(3);
+            // defer.resolve(1);
+            // defer.reject(2);
+
+            // $q.all({
+            //     first: $http.get('http://127.0.0.1:9999/api/getClubHotUser.json'),
+            //     second: $http.get('http://127.0.0.1:9999/api/getClubHotUser.json')
+            // }).then(function (arr) {
+            //     console.log(arr);
+            // });
+
+            function getJson(arg) {
+                var deferred = $q.defer();
+                var url = 'http://127.0.0.1:9999/api/' + arg + '.json';
+
+                $http.get(url).success(function (d) {
+                    console.log(d);
+                    deferred.resolve(d);
+                });
+
+                return deferred.promise;
+            }
+
+            getJson('getClubHotUser')
+                .then(getJson('getClubHotUser'))
+                .then(getJson('getClubHotUser'))
+                .then(getJson('getClubHotUser'))
+                .then(function (data) {
+                    console.log(data);
+                });
 
         }
     };
