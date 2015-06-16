@@ -11,12 +11,19 @@
 angular.module('phoneApp', [
     'ui.router',
     'DelegateEvents'
-])
-.run(function() {
+]).run(function () {
     FastClick.attach(document.body);
-})
-.config(function ($stateProvider, $urlRouterProvider) {
+}).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
+
+    /*------------------------------------
+     * 入口页面
+     */
+    .state(' ', {
+        url: '/',
+        templateUrl: 'templates/entry.html',
+        controller: 'entryCtrl'
+    })
 
     .state('index', {
         // abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
@@ -32,10 +39,10 @@ angular.module('phoneApp', [
     })
 
     /*------------------------------------
-    * 跟某一用户聊天
-    * @params:
-    *     uid: 用户ID
-    */
+     * 跟某一用户聊天
+     * @params:
+     *     uid: 用户ID
+     */
     .state('msgChat', {
         url: '/msg/chat-{uid}.htm',
         templateUrl: 'templates/msg-chat.html',
@@ -43,9 +50,9 @@ angular.module('phoneApp', [
     })
 
     /*------------------------------------
-    * 通知
-    * @params:
-    */
+     * 通知
+     * @params:
+     */
     .state('msgNotice', {
         url: '/msg/notice.htm',
         templateUrl: 'templates/msg-notice.html',
@@ -66,9 +73,9 @@ angular.module('phoneApp', [
 
 
     /*------------------------------------
-    * 私聊
-    * @params:
-    */
+     * 私聊
+     * @params:
+     */
     .state('msgWhisper', {
         url: '/msg/whisper.htm',
         templateUrl: 'templates/msg-whisper.html',

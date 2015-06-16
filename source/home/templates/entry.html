@@ -1,4 +1,4 @@
-<section class="login_entry">
+<section class="entry">
     <div class='login_bg'></div>
     <div class="entry_button">
         <a show-popup="register" class="register">注册</a>
@@ -9,7 +9,7 @@
     </div>
 </section>
 
-<popup id="register" title="用户注册" popup-confirm="popupConfirm(123)" no-cancel>
+<popup id="register" title="用户注册" no-confirm no-cancel>
     <div class="choose_register" ngd-click="itemClick($event)" selector="li">
         <ul class="mod_list_default">
             <li class="icon_weixin">
@@ -26,8 +26,4 @@
             </li>
         </ul>
     </div>
-</popup>
-
-<popup id="register1" title="用户注册1111" popup-confirm="popupConfirm(456)" no-confirm>
-    <div class="choose_register">12345</div>
 </popup>

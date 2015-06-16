@@ -4,7 +4,7 @@ angular.module('phoneApp')
 
 	$scope.backParam = { //--设置返回按钮
 		'url': [
-			'entry/#/'
+			'home/#/'
 		]
 	};
 
@@ -26,23 +26,27 @@ angular.module('phoneApp')
 			return;
 		}
 
+		if ($scope.inputVal.password.length <= 5) {
+			widget.msgToast('新密码必须大于或等于6位');
+			return;
+		}
+
 		widget.ajaxRequest({
-			noMask: true,
-			url: '$local/Tools/SendCheckCode',
+			url: 'getLogin',
 			data: {
-				Mobile: 123
+				Phone: $scope.inputVal.phone,
+				Password: md5($scope.inputVal.password)
 			},
-			success: function (data) {}
+			success: function (data) { //todo...
+
+			}
 		});
 
-		//todo..
 	};
 
 	$scope.chooseLoginWay = function (e) {
 		var $that = angular.element(e.delegationTarget);
 		console.log($that);
 	};
-
-
 
 });

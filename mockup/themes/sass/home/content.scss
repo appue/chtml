@@ -1,23 +1,65 @@
 ﻿$bgcolor: #e6e8e7;
 $green_val: #3cc482;
 $gray_val: #cacdcb;
-
-.unit_home{
+.entry {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    .login_bg {
+        width: 143px;
+        height: 52px;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        margin-left: -72px;
+        background: url(img/login_bg.png) no-repeat;
+        background-size: 143px 52px;
+    }
+    .entry_button {
+        width: 136px;
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        margin-left: -68px;
+        a {
+            font-size: 15px;
+            @include button(136px, 36px);
+            &.register {
+                background-color: #3cc482;
+                margin-bottom: 13px;
+            }
+            &.login {
+                line-height: 34px;
+                border: 1px solid #3cc482;
+                color: #3cc482;
+                background-color: #fff;
+            }
+        }
+    }
+    .entry_help {
+        width: 100%;
+        position: absolute;
+        bottom: 20px;
+        text-align: center;
+    }
+}
+.choose_register {
+    padding: 0 10px;
+}
+.unit_home {
     @include scrollfix;
     padding-top: 41px;
     padding-bottom: 50px;
 }
-
-.unit_msg_scroll{
+.unit_msg_scroll {
     @include scrollfix;
-    // padding-top:10px;
+    // padding-top: 10px;
 }
-
-.unit_set_textarea{
+.unit_set_textarea {
     background: #fff;
     padding: 10px;
     margin-bottom: 10px;
-    textarea{
+    textarea {
         @include border_half;
         width: 100%;
         line-height: 20px;
@@ -25,16 +67,16 @@ $gray_val: #cacdcb;
         -webkit-box-sizing: border-box;
         height: 150px;
     }
-    .this_input{
+    .this_input {
         display: -webkit-box;
         padding: 10px 0;
         -webkit-box-align: center;
         @include border_bottom_half;
-        label{
+        label {
             display: block;
             width: 80px;
         }
-        input{
+        input {
             display: block;
             line-height: 20px;
             padding: 5px;
@@ -42,15 +84,13 @@ $gray_val: #cacdcb;
             @include border_half;
         }
     }
-    .this_text{
+    .this_text {
         line-height: 20px;
         padding: 10px 0;
         font-size: 12px;
     }
 }
-
-
-.unit_msg_footer{
+.unit_msg_footer {
     background: #fff;
     position: fixed;
     left: 0;
@@ -59,7 +99,7 @@ $gray_val: #cacdcb;
     padding: 5px;
     display: -webkit-box;
     -webkit-box-sizing: border-box;
-    input{
+    input {
         display: block;
         -webkit-box-flex: 1;
         @include border_half;
@@ -67,7 +107,7 @@ $gray_val: #cacdcb;
         padding: 0 5px;
         line-height: 30px;
     }
-    button{
+    button {
         width: 60px;
         border: 0;
         font-size: 14px;
@@ -75,28 +115,26 @@ $gray_val: #cacdcb;
         background: $green_val;
     }
 }
-
-
-.unit_msg_talk{
-    h2{
+.unit_msg_talk {
+    h2 {
         @include gray;
         line-height: 20px;
         font-size: 12px;
         text-align: center;
     }
-    .this_list{
+    .this_list {
         margin-bottom: 10px;
         display: -webkit-box;
-        img{
+        img {
             width: 30px;
             height: 30px;
             display: block;
             margin-right: 10px;
             -webkit-border-radius: 30px;
         }
-        div{
+        div {
             -webkit-box-flex: 1;
-            article{
+            article {
                 padding: 5px;
                 line-height: 16px;
                 // font-size: 12px;
@@ -105,8 +143,8 @@ $gray_val: #cacdcb;
                 display: block;
                 -webkit-box-flex: 1;
                 -webkit-border-radius: 3px;
-                -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.1);
-                &:after{
+                -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
+                &:after {
                     content: "";
                     display: block;
                     width: 0;
@@ -118,26 +156,26 @@ $gray_val: #cacdcb;
                 }
             }
         }
-        &.this_left{
-            article{
+        &.this_left {
+            article {
                 background: #fff;
-                &:after{
+                &:after {
                     left: -10px;
                     border-color: transparent #fff transparent transparent;
                 }
             }
         }
-        &.this_right{
+        &.this_right {
             -webkit-box-direction: reverse;
-            img{
+            img {
                 margin-right: 0;
                 margin-left: 10px;
             }
-            article{
+            article {
                 background: $green_val;
                 color: #fff;
                 float: right;
-                &:after{
+                &:after {
                     right: -10px;
                     border-color: transparent transparent transparent $green_val;
                 }
@@ -145,19 +183,17 @@ $gray_val: #cacdcb;
         }
     }
 }
-
-
-.unit_msg_search_friend{
+.unit_msg_search_friend {
     background: #fff;
     position: relative;
     margin-bottom: 10px;
-    input{
+    input {
         width: 100%;
         line-height: 30px;
         padding: 5px 10px;
         -webkit-box-sizing: border-box;
     }
-    button{
+    button {
         position: absolute;
         right: 0;
         top: 0;

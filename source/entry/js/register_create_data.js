@@ -2,7 +2,7 @@ userEntry.controller('registerCreateCtrl', function ($scope, routerRedirect, wid
 
     $scope.backParam = { //--设置返回按钮
         'url': [
-            'entry/#/'
+            'home/#/'
         ]
     };
 

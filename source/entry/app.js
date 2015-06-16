@@ -1,16 +1,10 @@
 var userEntry = angular.module('phoneApp', ['ui.router', 'DelegateEvents']);
 
-userEntry.run(function() {
+userEntry.run(function () {
     FastClick.attach(document.body);
-})
-.config(function ($stateProvider, $urlRouterProvider) {
+}).config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-        .state(' ', { //入口页面
-            url: '/',
-            templateUrl: 'templates/entry.html',
-            controller: 'entryCtrl'
-        })
         //登录页
         .state('login', {
             url: '/login.htm',

@@ -38,33 +38,33 @@ angular.module('phoneApp')
 
                 $rootScope.vDisableTime = 30;
 
-                // widget.ajaxRequest({
-                //     noMask: true,
-                //     url: 'getClubHotUser',
-                //     data: {
-                //         UserId: 8
-                //     },
-                //     success: function (data) {
+                widget.ajaxRequest({
+                    noMask: true,
+                    url: 'getClubHotUser',
+                    data: {
+                        UserId: 8
+                    },
+                    success: function (data) {
 
-                //         console.log(data);
+                        console.log(data);
 
-                //         if (data.ShortMessage) {
+                        if (data.ShortMessage) {
 
-                //             countdown(); //开始倒计时
+                            countdown(); //开始倒计时
 
-                //             widget.msgToast(data.ShortMessage);
+                            widget.msgToast(data.ShortMessage);
 
-                //         } else {
+                        } else {
 
-                //             widget.msgToast(data.msg || '手机号无效');
+                            widget.msgToast(data.msg || '手机号无效');
 
-                //         }
+                        }
 
-                //     },
-                //     error: function () { //待删除...
-                //         countdown();
-                //     }
-                // });
+                    },
+                    error: function () { //待删除...
+                        countdown();
+                    }
+                });
 
             }
 
@@ -74,25 +74,25 @@ angular.module('phoneApp')
 
 
 
-            var defer = $q.defer();
-            var promise = defer.promise;
+            // var defer = $q.defer();
+            // var promise = defer.promise;
 
-            promise.then(function success(data) {
-                console.log(data);
+            // promise.then(function success(data) {
+            //     console.log(data);
 
-                var anotherDeferred = $q.defer();
+            //     var anotherDeferred = $q.defer();
 
-                $timeout(function () {
-                    anotherDeferred.resolve('bar');
-                }, 1000);
+            //     $timeout(function () {
+            //         anotherDeferred.resolve('bar');
+            //     }, 1000);
 
-                return anotherDeferred.promise;
+            //     return anotherDeferred.promise;
 
-            }, function error(data) {
-                console.log(data);
-            }).then(function success(data) {
-                console.log(data);
-            });
+            // }, function error(data) {
+            //     console.log(data);
+            // }).then(function success(data) {
+            //     console.log(data);
+            // });
 
             // defer.notify(3);
             // defer.resolve(1);
@@ -105,25 +105,25 @@ angular.module('phoneApp')
             //     console.log(arr);
             // });
 
-            function getJson(arg) {
-                var deferred = $q.defer();
-                var url = 'http://127.0.0.1:9999/api/' + arg + '.json';
+            // function getJson(arg) {
+            //     var deferred = $q.defer();
+            //     var url = 'http://127.0.0.1:9999/api/' + arg + '.json';
 
-                $http.get(url).success(function (d) {
-                    console.log(d);
-                    deferred.resolve(d);
-                });
+            //     $http.get(url).success(function (d) {
+            //         console.log(d);
+            //         deferred.resolve(d);
+            //     });
 
-                return deferred.promise;
-            }
+            //     return deferred.promise;
+            // }
 
-            getJson('getClubHotUser')
-                .then(getJson('getClubHotUser'))
-                .then(getJson('getClubHotUser'))
-                .then(getJson('getClubHotUser'))
-                .then(function (data) {
-                    console.log(data);
-                });
+            // getJson('getClubHotUser')
+            //     .then(getJson('getClubHotUser'))
+            //     .then(getJson('getClubHotUser'))
+            //     .then(getJson('getClubHotUser'))
+            //     .then(function (data) {
+            //         console.log(data);
+            //     });
 
         }
     };

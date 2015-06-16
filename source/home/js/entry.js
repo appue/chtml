@@ -1,13 +1,9 @@
-userEntry.controller('entryCtrl', function ($scope, routerRedirect) {
+angular.module('phoneApp').controller('entryCtrl', function ($scope, routerRedirect) {
 
 	$scope.goLoginPage = {
 		'url': [
 			'entry/#/login.htm'
 		]
-	};
-
-	$scope.popupConfirm = function (arg) {
-		console.log(arg);
 	};
 
 	$scope.itemClick = function (e) {

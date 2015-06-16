@@ -26,6 +26,7 @@ userEntry.controller('loginForgetCtrl', function ($scope, routerRedirect, widget
 
         $thisPopup.removeClass('ng-hide');
         $scope.showMask = true;
+        
     };
 
     $scope.sendMessage = function () { //跳验证码页
