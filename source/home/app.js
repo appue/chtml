@@ -16,11 +16,17 @@ angular.module('phoneApp', [
 }).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
+    .state('start', {
+        url: '/start.htm',
+        templateUrl: 'templates/start.html',
+        controller: 'tHomeStart'
+    })
+
     /*------------------------------------
      * 入口页面
      */
-    .state(' ', {
-        url: '/',
+    .state('entry', {
+        url: '/entry',
         templateUrl: 'templates/entry.html',
         controller: 'entryCtrl'
     })
@@ -89,5 +95,13 @@ angular.module('phoneApp', [
     })
 
     // $urlRouterProvider.when('', '/index');
-    $urlRouterProvider.otherwise('/index');
+    // 处理在状态配置中指定的路由之外的 url 请求
+    var isShow = localStorage.getItem('PHONEAPP_START');
+
+    if (isShow && JSON.parse(isShow) === 1) {
+        $urlRouterProvider.otherwise('/index');
+    } else {
+        $urlRouterProvider.otherwise('/start.htm');
+    }
+
 });
