@@ -10,12 +10,16 @@ angular.module('phoneApp')
     $timeout,
     cachePool,
     routerRedirect,
-    widget
+    widget,
+    ENV
 ){
-    document.addEventListener("deviceready", onDeviceReady, false);
     
-    function onDeviceReady() {
-        StatusBar.show();
+    if (ENV.isHybrid) {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        
+        function onDeviceReady() {
+            StatusBar.show();
+        }
     }
 
     var currentUrl = widget.getCurrentUrl();
