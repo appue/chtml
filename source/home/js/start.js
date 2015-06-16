@@ -30,8 +30,7 @@ angular.module('phoneApp')
 
     $timeout(function () {
         routerRedirect.toJump({
-            // 'url': ['home/#/entry.htm']
-            'url': ['home/#/index']
+            'url': ['home/#/entry.htm']
         })
     }, 4000);
 });
