@@ -29,6 +29,12 @@ angular.module('phoneApp')
     //--设置返回按钮
     $scope.backParam = { 'url': ['clump/#/find.htm'] };
 
+    $scope.$watch('currentTab', function () {
+        if ($scope.currentTab == 1) {
+            $timeout($scope.$parent.setFalls, 0);
+        }
+    });
+
     widget.ajaxRequest({
         noMask: true,
         url: 'getListCategory',
@@ -37,7 +43,7 @@ angular.module('phoneApp')
         success: function (data) {
             angular.forEach(data.CategoryList, function (v, k) {
                 v.SiteUrl = {
-                    'url': ['forum/#/cate/list-sub-'+ v.CateId +'.htm?title='+ encodeURIComponent(v.CateName) +'&from='+ currentUrl]
+                    'url': ['forum/#/cate/list-sub-'+ v.CateId +'.htm?title='+ encodeURIComponent(v.CateName)]
                 };
             });
 

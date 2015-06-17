@@ -19,16 +19,22 @@ angular.module('phoneApp')
     $scope.pageIndex = 0;
     $scope.pageSize = 5;
     $scope.isLoading = false;
+    $scope.DataList = {
+        ArticleList: []
+    };
+
 
     //--设置返回按钮
     $scope.backParam = {
         'url': ['forum/#/cate/list-sub-'+ $stateParams.id +'.htm']
     };
 
-    $scope.DataList = {
-        ArticleList: []
-    };
-
+    $scope.$watch('currentTab', function () {
+        if ($scope.currentTab == 1) {
+            $timeout($scope.$parent.setFalls, 0);
+        }
+    });
+    
     //--设置横向滚动
     $scope.$parent.myScrollOptions = { 'wrapper': {} };
 

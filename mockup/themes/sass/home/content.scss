@@ -205,3 +205,34 @@ $gray_val: #cacdcb;
         background-size: 25px auto;
     }
 }
+
+
+
+
+.start {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+    ul {
+        display: -webkit-box;
+        li {
+            display: block;
+            width: 100%;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        z-index: 2;
+        background: url(img/login_bg.png) #fff no-repeat center center;
+        background-size: 140px auto;
+    }
+}

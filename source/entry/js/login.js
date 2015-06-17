@@ -1,11 +1,21 @@
 angular.module('phoneApp')
 
-.controller('loginCtrl', function ($scope, widget) {
+.controller('loginCtrl', function (
+	$scope, 
+	widget,
+	ENV
+) {
 
+    if (ENV.isHybrid) {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        
+        function onDeviceReady() {
+            StatusBar.show();
+        }
+    }
+    
 	$scope.backParam = { //--设置返回按钮
-		'url': [
-			'home/#/entry.htm'
-		]
+		'url': ['home/#/index']
 	};
 
 	$scope.inputVal = {}; //初始化ng-model

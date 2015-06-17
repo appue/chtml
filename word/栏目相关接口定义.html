@@ -17,14 +17,7 @@
     <h4>postData:</h4>
     <pre>
     {
-        CateId: <i>//----栏目ID（调用一级栏目不需要CateId）</i>
-        <i>
-        /*
-        * 1、显示当前栏目下的子栏目(默认类型为1)
-        * 2、显示该栏目下的子栏目(包括子栏目下的子栏目）
-        * 3、该栏目的兄弟栏目
-        */</i>
-        CateType: <i>//--栏目类型</i>
+        CateId: <i>//----栏目ID（当CateId为零或者空时表示调用一级栏目）</i>
 
         Header: {
             UserId: <i>//--当前登录用户ID（未登录传空）</i>
@@ -36,11 +29,9 @@
     <h4>getData:</h4>
     <pre>
     {   
-        <i>
-        /*
+        <i>/*
         * 当前栏目的信息
-        */
-        </i>
+        */</i>
         CurrentCate: {
             CateId: <i>//-------栏目ID</i>
             CateName: <i>//-----栏目名称</i>
@@ -49,6 +40,10 @@
             RelatedClub: <i>//--相关圈子</i>
         }
 
+
+        <i>/*
+        * 如果CateId为空或者0时，CategoryList显示的将是一级栏目列表，如果不为空，就显示该栏目下的子栏目列表
+        */</i>
         CategoryList: [
             {
                 CateId: <i>//-------栏目ID</i>

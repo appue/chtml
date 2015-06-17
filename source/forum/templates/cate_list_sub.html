@@ -3,7 +3,7 @@
 <section class="scrollfix" when-scrolled="loadMore()" ng-init="currentTab=1">
     <div class="unit_find_cate_three">
         <ul class="this_list_cate">
-            <li ng-repeat="(k, v) in DataList.CategoryList" page-jump="{{v.SiteUrl}}">
+            <li ng-repeat="(k, v) in DataList.CategoryList track by $index" page-jump="{{v.SiteUrl}}">
                 #{{v.CateName}}
             </li>
         </ul>
@@ -16,7 +16,7 @@
     
     
     <!--瀑布流-->
-    <falls ng-if="currentTab==1">
+    <falls ng-show="currentTab==1">
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
             <div class="this_border" page-jump="{{v.SiteUrl}}">
                 <img ng-src="{{v.Images[0].ImageUrl}}" />
@@ -41,7 +41,7 @@
 
 
     <!--垂直平铺-->
-    <ul class="mod_list_img_only" ng-if="currentTab==2">
+    <ul ng-if="currentTab==2" class="mod_list_img_only">
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" page-jump="{{v.SiteUrl}}">
             <img ng-src="{{v.Images[0].ImageUrl}}" />
             <article>

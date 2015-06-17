@@ -12,6 +12,9 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
+
+    $scope.DataList = {};
+
     //--设置返回按钮
     $scope.backParam = {
         'url': ['clump/#/club/hot.htm']
@@ -54,7 +57,7 @@ angular.module('phoneApp')
 
             });
 
-            $scope.DataList = res;
+            angular.extend($scope.DataList, res);
         },
         error: function (data) {
 

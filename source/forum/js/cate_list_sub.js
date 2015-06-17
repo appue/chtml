@@ -22,15 +22,21 @@ angular.module('phoneApp')
     $scope.pageSize = 5;
     $scope.isLoading = false;
     $scope.showHeader = true;
+    $scope.DataList = {
+        ArticleList: []
+    };
+
 
     //--设置返回按钮
     $scope.backParam = {
         'url': ['forum/#/cate/list-'+ $stateParams.id +'.htm']
     };
 
-    $scope.DataList = {
-        ArticleList: []
-    };
+    $scope.$watch('currentTab', function () {
+        if ($scope.currentTab == 1) {
+            $timeout($scope.$parent.setFalls, 0);
+        }
+    });
 
     widget.ajaxRequest({
         noMask: true,
@@ -46,7 +52,7 @@ angular.module('phoneApp')
 
             angular.forEach(res.CategoryList, function (v, k) {
                 v.SiteUrl = {
-                    'url': ['forum/#/cate/list-last-'+ v.CateId +'.htm?title='+ encodeURIComponent +'&from='+ currentUrl]
+                    'url': ['forum/#/cate/list-last-'+ v.CateId +'.htm']
                 };
             });
 
