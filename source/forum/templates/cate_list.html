@@ -1,7 +1,12 @@
-<header-bar back transparent title="{{headerTitle}}"></header-bar>
+<!-- <header-bar back transparent title="{{headerTitle}}"></header-bar> -->
+<header class="mod_header transparent">
+    <a page-back="{{backParam}}" class="back_button"></a>
+    <h1 class="title_content" ng-if="DataList.CategoryList.length > 0">{{headerTitle}}</h1>
+</header>
 
 <section class="scrollfix" when-scrolled="loadMore()" ng-init="currentTab=1">
-    <div class="unit_find_cate_two">
+
+    <div ng-if="DataList.CategoryList.length > 0" ng-class="cateClass">
         <ul class="this_list_cate">
             <li ng-repeat="(k, v) in DataList.CategoryList track by $index" page-jump="{{v.SiteUrl}}">
                 #{{v.CateName}}
@@ -9,10 +14,56 @@
         </ul>
     </div>
 
+
+    <div ng-if="DataList.CategoryList.length == 0" class="unit_find_cate_info">
+        <div>
+            <img ng-src="{{DataList.CurrentCate.ImageUrl}}" />
+            <p>
+                {{DataList.CurrentCate.CateName}}<br>
+                {{DataList.CurrentCate.Description}}
+            </p>
+        </div>
+    </div>
+
+
     <ul class="mod_tab_icon">
         <li ng-click="currentTab=1" ng-class="{current : currentTab==1}">瀑布流</li>
         <li ng-click="currentTab=2" ng-class="{current : currentTab==2}">垂直平铺</li>
     </ul>
+
+<!--         <div class="mod_title_text this_p">
+            <div>相关主题</div>
+        </div>
+        <div class="mod_list_img mb0" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
+            <ul>
+                <li>
+                    <div class="this_img">
+                        <img src="../themes/temp/img.jpg" />
+                    </div>
+                    <div class="this_title">
+                        <span>#环境创设</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="this_img">
+                        <img src="../themes/temp/img.jpg" />
+                    </div>
+                    <div class="this_title">#玩教具</div>
+                </li>
+                <li>
+                    <div class="this_img">
+                        <img src="../themes/temp/img.jpg" />
+                    </div>
+                    <div class="this_title">#玩教具</div>
+                </li>
+                <li>
+                    <div class="this_img">
+                        <img src="../themes/temp/img.jpg" />
+                    </div>
+                    <div class="this_title">#玩教具</div>
+                </li>
+            </ul>
+        </div> -->
 
     <!--瀑布流-->
     <falls ng-show="currentTab==1">
