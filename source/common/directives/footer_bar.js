@@ -3,7 +3,8 @@ angular.module('phoneApp')
 .directive('footerBar', function (
     $state,
     cachePool,
-    routerRedirect
+    routerRedirect,
+    ENV
 ) {
 
     var uid = 0,
@@ -40,23 +41,28 @@ angular.module('phoneApp')
 
                     $scope.footerTab = id;
 
-                    if (id == 3) {
-                        var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
-                            el = document.querySelector('.js_mod_camera');
-
-                        if (el) {
-                            el.style.display = "block";
-                        } else {
-                            $element.after(toastTpl($scope));
-                        }
-
-                        return;
-                    }
-
-                    if ((id== 4 || id == 5) && !uid) {
+                    if ((id == 3 || id== 4 || id == 5) && !uid) {
                         routerRedirect.toJump({
                             url: ['entry/#/login.htm?from='+ currentUrl]
                         });
+                        return;
+                    }
+
+                    if (id == 3) {
+
+                        if (ENV.isHybrid) {
+                            var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
+                                el = document.querySelector('.js_mod_camera');
+
+                            if (el) {
+                                el.style.display = "block";
+                            } else {
+                                $element.after(toastTpl($scope));
+                            }
+                        } else {
+                            widget.msgToast('请下载APP吧！');
+                        }
+
                         return;
                     }
 
