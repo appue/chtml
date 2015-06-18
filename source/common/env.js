@@ -6,7 +6,7 @@ angular.module('phoneApp')
 
     var ENV = {
         // apiSocket: 'http://www.slh.seventhink.cn/api/',
-        apiSocket: 'http://127.0.0.1:9999/api/',
+        apiSocket: '/api/',
 
         isHybrid: false, //-----是否APP环境
         isWeixin: false, //-----是否微信环境
