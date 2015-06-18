@@ -41,7 +41,7 @@ angular.module('phoneApp')
                     $scope.footerTab = id;
 
                     if (id == 3) {
-                        var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-click="getPhoto()">相册</li><li ng-click="setPhoto()">拍照</li></ul></div><section>'),
+                        var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
                             el = document.querySelector('.js_mod_camera');
 
                         if (el) {
@@ -135,6 +135,80 @@ angular.module('phoneApp')
                     // }, 0);
                 // }
             };
+        }
+    };
+})
+
+
+.directive('ngPhoto', function (
+    $parse, 
+    $timeout
+) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+
+            element.on('click', function () {
+                navigator.camera.getPicture(onSuccess, onFail, { 
+                    quality: 100,
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                });
+            });
+
+            function onSuccess(imageData) {
+                // alert(imageData);
+                // var image = document.getElementById('myImage');
+                // image.src = "data:image/jpeg;base64," + imageData;
+                var div = angular.element(document.getElementById('abc'));
+                div.html("<img src=data:image/jpeg;base64," + imageData + " />");
+            }
+
+            function onFail(message) {
+                console.log("fail");
+            }
+
+        }
+    };
+})
+
+.directive('ngCamera', function (
+    $parse, 
+    $timeout
+) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            
+            element.on('click', function () {
+                navigator.camera.getPicture(onSuccess, onFail, { 
+                    quality: 50,
+                    // destinationType: Camera.DestinationType.DATA_URL,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    // sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                    sourceType: Camera.PictureSourceType.CAMERA
+                });
+            });
+
+            function onSuccess(imageData) {
+                // alert(imageData);
+                // var image = document.getElementById('myImage');
+                // image.src = "data:image/jpeg;base64," + imageData;
+                // var div = angular.element(document.getElementById('abc'));
+                // div.html("<img src=data:image/jpeg;base64," + imageData + " />");
+                // $rootScope.imageData = imageData;
+
+                sessionStorage.setItem('imageData', encodeURIComponent(imageData));
+
+                routerRedirect.toJump({
+                    'url': ['forum/#/photo/edit.htm']
+                });
+            }
+
+            function onFail(message) {
+                console.log("fail");
+            }
+
         }
     };
 });
