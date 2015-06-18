@@ -8,7 +8,8 @@ angular.module('phoneApp')
     $timeout,
     $location,
     ENV,
-    cachePool
+    cachePool,
+    routerRedirect
 ) {
 
     /**
@@ -313,12 +314,33 @@ angular.module('phoneApp')
         return currentUrl;
     };
 
+    /**
+     * 获得当前URL地址
+     */
+    var toLogin = function () {
+
+        var uid = 0,
+            UserInfo = cachePool.pull('UserInfo') || '';
+
+        if (UserInfo) {
+            uid = UserInfo.UserId;
+        }
+
+        if (!uid) {
+            routerRedirect.toJump({
+                url: ['entry/#/login.htm?from='+ getCurrentUrl()]
+            });
+        }
+
+    };
+
     return {
         msgToast: msgToast,
         cacheData: cacheData,
         safeApply: safeApply,
         stickyTopScroll: stickyTopScroll,
         ajaxRequest: ajaxRequest,
-        getCurrentUrl: getCurrentUrl
+        getCurrentUrl: getCurrentUrl,
+        toLogin: toLogin
     };
 });

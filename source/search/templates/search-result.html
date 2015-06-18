@@ -1,6 +1,6 @@
 <header-bar back title="搜索<span class='color_green'>{{keyword}}</span>的结果"></header-bar>
 
-<ul class="mod_tab_4" ng-style="appStyle">
+<ul class="mod_tab_4 tab_search_result">
     <li ng-click="currentTab=1;pageIndex=1" ng-class="{current : currentTab==1}">内容</li>
     <li ng-click="currentTab=2;pageIndex=1" ng-class="{current : currentTab==2}">标签</li>
     <li ng-click="currentTab=3;pageIndex=1" ng-class="{current : currentTab==3}">圈子</li>
@@ -10,7 +10,7 @@
 
 
 <!--搜索-搜索内容-->
-<section class="scroll_search_result_falls" when-scrolled="loadMore(currentTab)" ng-if="currentTab==1">
+<section class="scroll_search_result_falls" when-scrolled="loadMore()" ng-show="currentTab==1">
     <!--瀑布流-->
     <falls>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
@@ -19,12 +19,10 @@
                 <article>
                     <div class="this_text">{{v.Images[0].Description}}</div>
                     
-                    <div class="this_star">
-                        256
-                    </div>
+                    <div class="this_star">{{v.TotalCollect}}</div>
 
                     <div class="this_user">
-                        <img src="{{v.Author.ImageUrl}}" />
+                        <img ng-src="{{v.Author.ImageUrl}}" />
                         <dl>
                             <dt>{{v.Author.UserName}}</dt>
                             <dd>

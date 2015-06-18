@@ -53,7 +53,7 @@ angular.module('phoneApp')
                         return;
                     }
 
-                    if (id == 5 && !uid) {
+                    if ((id== 4 || id == 5) && !uid) {
                         routerRedirect.toJump({
                             url: ['entry/#/login.htm?from='+ currentUrl]
                         });

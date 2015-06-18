@@ -4,7 +4,7 @@
 */
 angular.module('phoneApp')
 
-.controller('HomeMsgSearchCtrl', function(
+.controller('tMsgSearch', function(
     $scope, 
     $state
 ){
@@ -12,9 +12,7 @@ angular.module('phoneApp')
 
     //--设置默认返回
     $scope.backParam = {
-        'url': [
-            'home/#/msg'
-        ]
+        'url': ['home/#/msg']
     };
     
 });

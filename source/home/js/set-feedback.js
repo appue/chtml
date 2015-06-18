@@ -4,7 +4,7 @@
 */
 angular.module('phoneApp')
 
-.controller('HomeSetFeedbackCtrl', function(
+.controller('tSetFeedback', function(
     $scope, 
     $state
 ){
@@ -12,9 +12,7 @@ angular.module('phoneApp')
 
     //--设置默认返回
     $scope.backParam = {
-        'url': [
-            'home/#/msg'
-        ]
+        'url': ['home/#/msg']
     };
     
 });

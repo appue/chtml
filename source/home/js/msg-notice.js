@@ -4,16 +4,14 @@
 */
 angular.module('phoneApp')
 
-.controller('HomeMsgNoticeCtrl', function(
+.controller('tMsgNotice', function(
     $scope, 
     $state
 ){
 
     //--设置默认返回
     $scope.backParam = {
-        'url': [
-            'home/#/msg'
-        ]
+        'url': ['home/#/msg']
     };
 
 });

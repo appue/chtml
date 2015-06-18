@@ -8,41 +8,62 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams, 
-    $location, 
+    $location,
+    $timeout,
     routerRedirect,
-    widget,
-    ENV
+    widget
 ){
-    if (ENV.isApple) {
-        $scope.appStyle = {
-            'top': '64px'
-        }
-    } else {
-        $scope.appStyle = {
-            'top': '44px'
-        }
-    }
 
     var currentUrl = widget.getCurrentUrl();
 
     $scope.currentTab = 1;
     $scope.pageIndex = 0;
+    $scope.pageSize = 5;
+    $scope.isLoading = false;
+    $scope.DataList = {
+        ArticleList: []
+    };
 
     $scope.keyword = $location.$$search.keyword || '';
 
     //--设置返回
     $scope.backParam = { 'url': ['search/#/index'] };
 
-    widget.ajaxRequest({
-        noMask: true,
-        url: 'getSearchContent',
-        data: {
-            Keyword: $scope.keyword,
-            Type: $scope.currentTab
-        },
-        success: function (data) {
-            console.log(1);
+    $scope.$watch('currentTab', function () {
+        if ($scope.currentTab == 1) {
+            $timeout($scope.setFalls, 0);
         }
     });
 
+    $scope.loadMore = function() {
+        if (!$scope.isLoading) {
+
+            $scope.isLoading = true;
+            $scope.pageIndex++;
+
+            widget.ajaxRequest({
+                noMask: true,
+                url: 'getSearchContent',
+                data: {
+                    CateId: $stateParams.id
+                },
+                success: function (data) {
+                    $scope.pageTotal = data.Total || 0;
+
+                    angular.forEach(data.ArticleList, function (v, k) {
+                        v.SiteUrl = {
+                            'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
+                        };
+
+                        $scope.DataList.ArticleList.push(v);
+                    });
+
+                    $timeout($scope.setFalls, 0);
+                    $scope.isLoading = false;
+                }
+            });
+        }
+    };
+
+    $scope.loadMore();
 });

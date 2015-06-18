@@ -4,14 +4,12 @@
 */
 angular.module('phoneApp')
 
-.controller('HomeMsgChatCtrl', function(
+.controller('tMsgChat', function(
     $scope, 
     $state
 ){
     //--设置默认返回
     $scope.backParam = {
-        'url': [
-            'home/#/index'
-        ]
+        'url': ['home/#/index']
     };
 });
