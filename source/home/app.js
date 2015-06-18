@@ -97,7 +97,7 @@ angular.module('phoneApp', [
     // 处理在状态配置中指定的路由之外的 url 请求
     var isShow = localStorage.getItem('PHONEAPP_START');
 
-    if (isShow && JSON.parse(isShow) === 1) {
+    if (isShow) {
         $urlRouterProvider.otherwise('/index');
     } else {
         $urlRouterProvider.otherwise('/start.htm');

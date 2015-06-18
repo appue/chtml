@@ -13,6 +13,9 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){  
+
+    localStorage.setItem('PHONEAPP_START', true);
+
     $scope.startImages = [
         {
             ImageUrl: '../themes/temp/start_1.jpg',
