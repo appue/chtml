@@ -22,6 +22,7 @@ angular.module('phoneApp')
     $scope.pageSize = 5;
     $scope.isLoading = false;
     $scope.showHeader = true;
+    $scope.cateClass = "unit_find_cate_two";
     $scope.DataList = {
         ArticleList: []
     };
@@ -41,9 +42,13 @@ angular.module('phoneApp')
         data: {
         },
         success: function (data) {
+            if (data.CategoryList.length % 3 == 0) {
+                $scope.cateClass = "unit_find_cate_three";
+            }
+
             angular.forEach(data.CategoryList, function (v, k) {
                 v.SiteUrl = {
-                    'url': ['forum/#/cate/list-sub-'+ v.CateId +'.htm?title='+ encodeURIComponent(v.CateName)]
+                    'url': ['forum/#/cate/list-'+ v.CateId +'.htm']
                 };
             });
 
