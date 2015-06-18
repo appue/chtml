@@ -21,10 +21,10 @@ angular.module('phoneApp')
 
     //--设置返回按钮
     $scope.backParam = {
-        'url': ['home/#/index']
+        'url': ['forum/#/photo/edit.htm']
     };
     $scope.nextPage = {
-        'url': ['forum/#/photo/title.htm']
+        'url': ['forum/#/photo/cate.htm']
     };
 
     $scope.currentTab = true;
