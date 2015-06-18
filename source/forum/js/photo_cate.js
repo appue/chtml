@@ -4,7 +4,7 @@
 */
 angular.module('phoneApp')
 
-.controller('tPhotoEdit', function (
+.controller('tPhotoCate', function (
     $scope, 
     $state, 
     $stateParams, 
