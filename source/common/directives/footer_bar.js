@@ -125,10 +125,7 @@ angular.module('phoneApp')
                             sessionStorage.setItem('imageData', encodeURIComponent(imageData));
 
                             routerRedirect.toJump({
-                                'url': [
-                                    'forum/#/photo/index.htm',
-                                    'forum/index.html#/photo/index.htm',
-                                ]
+                                'url': ['forum/#/photo/edit.htm']
                             });
                         }
 

@@ -1,11 +1,77 @@
-<header-bar back transparent title="编辑照片" right="继续"></header-bar>
+<header-bar back title="编辑照片" right="继续"></header-bar>
 
 <section class="unit_photo">
+    <div>
+        <img ng-src="{{imageUrl}}" />
+    </div>
 
-    <!--
-    <img ng-src="{{data1}}" />
-    <div>{{imageData}}</div>
-    <img ng-src="{{imageUrl}}" />
-    -->
-    <img data-ng-src="data:image/jpg;base64,{{imageUrl}}" />
+    
+
+    <ul class="this_tab">
+        <li ng-class="{current: currentTab}" ng-click="changeTab()">水印</li>
+        <li ng-class="{current: !currentTab}" ng-click="changeTab()">滤镜</li>
+        <li>|</li>
+    </ul>
+
+    <div ng-show="currentTab">
+        <div class="this_scroll" id="wrapper1" ng-iscroll="eventScroll" ng-iscroll-delay='50'>
+            <ul>
+                <li class="current">
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+                <li>
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+                <li>
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+                <li>
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+                <li>
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+                <li>
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-show="!currentTab">
+        <div class="this_scroll" id="wrapper2" ng-iscroll="eventScroll" ng-iscroll-delay='50'>
+            <ul>
+                <li class="current">
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+                <li>
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+                <li>
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+                <li>
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+                <li>
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+                <li>
+                    <img src="../themes/temp/7.jpg" />
+                    原图
+                </li>
+            </ul>
+        </div>
+    </div>
 </section>
