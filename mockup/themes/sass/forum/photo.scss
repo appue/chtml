@@ -1,8 +1,12 @@
 ﻿.unit_photo{
     padding-top: 44px;
-    img{
-        width: 100%;
+
+    .this_photo {
+        img{
+            width: 100%;
+        }
     }
+
     .this_tab {
         background: #eee;
         padding-bottom: 10px;
@@ -59,6 +63,78 @@
                     img {
                         border: 1px solid #3cc482;
                     }
+                }
+            }
+        }
+    }
+
+    .this_edit_title {
+        padding: 10px;
+        ul {
+            background: #fff;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+            li {
+                padding: 10px;
+                height: 70px;
+                display: -webkit-box;
+                -webkit-box-align: stretch;
+                img {
+                    width: 70px;
+                    display: block;
+                    margin-right: 10px;
+                }
+                textarea {
+                    display: block;
+                    outline: none;
+                    height: 70px;
+                    -webkit-box-flex: 1;
+                    @include border_bottom_half;
+                }
+                div {
+                    width: 70px;
+                    height: 70px;
+                    background: #eee;
+                    position: relative;
+                    &:before,
+                    &:after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        background: #ccc;
+                    }
+                    &:before {
+                        width: 20px;
+                        height: 4px;
+                        margin-left: -10px;
+                        margin-top: -2px;
+                    }
+                    &:after {
+                        width: 4px;
+                        height: 20px;
+                        margin-left: -2px;
+                        margin-top: -10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .this_list_cate {
+        padding: 10px;
+        ul {
+            background: #fff;
+            padding: 0 10px;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+            li {
+                line-height: 30px;
+                padding: 10px 0;
+                background: url(img/icon_arrow.png) no-repeat right center;
+                background-size: 10px auto;
+                @include border_bottom_half;
+                &:last-child {
+                    border: none;
                 }
             }
         }
