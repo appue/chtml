@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.factory('ENV', function() {
+.factory('ENV', function($location) {
     
     var ua = navigator.userAgent.toLowerCase();
 
@@ -37,6 +37,11 @@ angular.module('phoneApp')
     //--是否微信环境
     if (/micromessenger/.test(ua)) {
         ENV.isWeixin = true;
+    }
+
+    if (ENV.isHybrid) {
+        var url = $location.$$absUrl;
+        ENV.apiSocket = url.replace(/www\/.*/gi, 'www') + ENV.apiSocket;
     }
 
     return ENV;
