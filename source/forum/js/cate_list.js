@@ -15,7 +15,7 @@ angular.module('phoneApp')
 ){
     var currentUrl = widget.getCurrentUrl();
 
-    $scope.headerTitle = $location.$$search.title || "";
+    // $scope.headerTitle = $location.$$search.title || "";
 
     $scope.currentTab = 1;
     $scope.pageIndex = 0;
@@ -53,6 +53,8 @@ angular.module('phoneApp')
             });
 
             angular.extend($scope.DataList, data);
+
+            $scope.headerTitle = $scope.DataList.CurrentCate.CateName;
         }
     });
 

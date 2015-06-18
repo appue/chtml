@@ -1,4 +1,8 @@
-<header-bar back transparent title="{{headerTitle}}"></header-bar>
+<!-- <header-bar back transparent title="{{headerTitle}}"></header-bar> -->
+<header class="mod_header transparent">
+    <a page-back="{{backParam}}" class="back_button"></a>
+    <h1 class="title_content" ng-if="DataList.CategoryList.length > 0">{{headerTitle}}</h1>
+</header>
 
 <section class="scrollfix" when-scrolled="loadMore()" ng-init="currentTab=1">
 
