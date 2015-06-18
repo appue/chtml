@@ -95,7 +95,7 @@ angular.module('phoneApp', [
         controller: 'tPhotoTitle'
     })
     .state('photoCate', {
-        url: '/photo/cate.htm',
+        url: '/photo/cate-{id}.htm',
         templateUrl: 'templates/photo_cate.html',
         controller: 'tPhotoCate'
     });

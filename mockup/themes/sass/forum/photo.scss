@@ -78,10 +78,40 @@
                 height: 70px;
                 display: -webkit-box;
                 -webkit-box-align: stretch;
-                img {
-                    width: 70px;
-                    display: block;
+                div {
                     margin-right: 10px;
+                    position: relative;
+                    img {
+                        width: 70px;
+                        display: block;
+                    }
+                    span {
+                        display: block;
+                        width: 16px;
+                        height: 16px;
+                        background: #ddd;
+                        position: absolute;
+                        right: -3px;
+                        top: -3px;
+                        -webkit-border-radius: 16px;
+                        &:before,
+                        &:after {
+                            content: "";
+                            display: block;
+                            width: 10px;
+                            height: 2px;
+                            background: #777;
+                            position: absolute;
+                            left: 3px;
+                            top: 7px;
+                        }
+                        &:before {
+                            -webkit-transform: rotate(45deg);
+                        }
+                        &:after {
+                            -webkit-transform: rotate(-45deg);
+                        }
+                    }
                 }
                 textarea {
                     display: block;
@@ -90,7 +120,7 @@
                     -webkit-box-flex: 1;
                     @include border_bottom_half;
                 }
-                div {
+                p {
                     width: 70px;
                     height: 70px;
                     background: #eee;
