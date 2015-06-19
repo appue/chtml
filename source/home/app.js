@@ -111,18 +111,14 @@ angular.module('phoneApp', [
 
     // $urlRouterProvider.when('', '/index');
 
-    $urlRouterProvider.when(/index/, function ($match, $stateParams) {
-        alert(1);
-    });
-
 
     // 处理在状态配置中指定的路由之外的 url 请求
-    // var isShow = localStorage.getItem('PHONEAPP_START');
+    var isShow = localStorage.getItem('PHONEAPP_START');
 
-    // if (isShow) {
-    //     $urlRouterProvider.otherwise('/index');
-    // } else {
-    //     $urlRouterProvider.otherwise('/start.htm');
-    // }
+    if (isShow) {
+        $urlRouterProvider.otherwise('/index');
+    } else {
+        $urlRouterProvider.otherwise('/start.htm');
+    }
 
 });
