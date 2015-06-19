@@ -37,7 +37,7 @@ angular.module('phoneApp')
         success: function (data) {
             angular.forEach(data.ClubList, function (v, k) {
                 v.SiteUrl = {
-                    'url': ['/clump/#/club/detail-'+ v.ClubId +'.htm?from='+ currentUrl]
+                    'url': ['clump/#/club/detail-'+ v.ClubId +'.htm?from='+ currentUrl]
                 };
             });
             angular.extend($scope.DataList, data);
