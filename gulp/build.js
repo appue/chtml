@@ -305,6 +305,7 @@ module.exports = function (gulp, $) {
                 './source/lib/iscroll-lite.js',
                 './source/lib/slide.js',
                 './source/lib/md5.js',
+                './source/lib/megapix-image.js',
 
                 './source/lib/config.js',
                 './source/lib/angular.js',

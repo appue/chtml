@@ -2,9 +2,23 @@
     padding-top: 44px;
 
     .this_photo {
+        position: relative;
         img{
             width: 100%;
+            visibility: hidden;
         }
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+    }
+
+    .this_tmp_canvas {
+        width: 0;
+        height: 0;
+        overflow: hidden;
     }
 
     .this_tab {

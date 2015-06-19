@@ -5,6 +5,7 @@
 angular.module('phoneApp')
 
 .controller('tPhotoTitle', function (
+    $rootScope,
     $scope, 
     $state, 
     $stateParams, 
@@ -13,7 +14,11 @@ angular.module('phoneApp')
     widget
 ){
 
-    $scope.DataList = {};
+    var data = $rootScope.CameraImages; //此处之后移动到登录页面
+
+    $scope.DataList = {
+        ImagesList: []
+    };
 
     //--设置返回按钮
     $scope.backParam = {
@@ -37,24 +42,32 @@ angular.module('phoneApp')
         }
     };
 
-    $scope.DataList.ImagesList = [
-        {
-            ImageUrl: '../themes/temp/7.jpg',
+
+    angular.forEach(data, function (v, k) {
+        $scope.DataList.ImagesList.push({
+            ImageUrl: v,
             Content: ''
-        },
-        {
-            ImageUrl: '../themes/temp/7.jpg',
-            Content: ''
-        },
-        {
-            ImageUrl: '../themes/temp/7.jpg',
-            Content: ''
-        },
-        {
-            ImageUrl: '../themes/temp/7.jpg',
-            Content: ''
-        }
-    ];
+        });
+    });
+
+    // $scope.DataList.ImagesList = [
+    //     {
+    //         ImageUrl: '../themes/temp/7.jpg',
+    //         Content: ''
+    //     },
+    //     {
+    //         ImageUrl: '../themes/temp/7.jpg',
+    //         Content: ''
+    //     },
+    //     {
+    //         ImageUrl: '../themes/temp/7.jpg',
+    //         Content: ''
+    //     },
+    //     {
+    //         ImageUrl: '../themes/temp/7.jpg',
+    //         Content: ''
+    //     }
+    // ];
 
     $scope.dataDelete = function (key) {
         $scope.DataList.ImagesList.splice(key, 1);

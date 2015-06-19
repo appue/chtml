@@ -5,27 +5,100 @@
 angular.module('phoneApp')
 
 .controller('tPhotoEdit', function (
-    $scope, 
+    $rootScope,
+    $scope,
     $state, 
     $stateParams, 
-    $location, 
+    $location,
+    $timeout,
     routerRedirect,
-    widget,
-    $base64
+    widget
 ){
-    var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
-
-    // $scope.data1 = data;
-    // $scope.imageData = $base64.encode(data);
-    $scope.imageUrl = "../themes/temp/9.jpg";
-
     //--设置返回按钮
     $scope.backParam = {
         'url': ['home/#/index']
     };
-    $scope.nextPage = {
-        'url': ['forum/#/photo/title.htm']
+
+    var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
+
+    // $scope.data1 = data;
+    // $scope.imageData = $base64.encode(data);
+    // $scope.imageUrl = data;
+
+
+    $scope.ImageData = {
+        // imageUrl: '../themes/temp/2.jpg',
+        imageUrl: data
     };
+
+
+    var image = new Image();
+
+    image.onload = function(){
+
+        $scope.ImageData.nw = image.naturalWidth,
+        $scope.ImageData.nh = image.naturalHeight,
+        $scope.ImageData.bw = document.querySelector('.this_photo').offsetWidth,
+        $scope.ImageData.bh = document.querySelector('.this_photo').offsetHeight;
+
+        var canvas = document.createElement('canvas');
+        canvas.width = $scope.ImageData.bw;
+        canvas.height = $scope.ImageData.bh;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(image, 0, 0, $scope.ImageData.bw, $scope.ImageData.bh);
+
+        angular.element(document.querySelector('.this_photo')).append(canvas);
+
+
+    };
+    image.src = $scope.ImageData.imageUrl;
+
+
+
+
+    $scope.nextPage = function () {
+
+        var canvas = document.querySelector('#tmp');
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(image, 0, 0);
+
+        var mpImg = new MegaPixImage(image);
+
+        mpImg.render(canvas, {
+            maxHeight: 100
+        }, function () {
+            var ctx = document.querySelector('#tmp');
+            // var data = ctx.toDataURL("image/jpeg");
+
+            // sessionStorage.setItem('a', data);
+
+            var data = [ctx.toDataURL("image/jpeg")];
+
+            // cachePool.push('CameraImage', data, 1 / 24); //此处之后移动到登录页面
+            $rootScope.CameraImages = data;
+
+            routerRedirect.toJump({
+                'url': ['forum/#/photo/title.htm']
+            });
+        });
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // $scope.nextPage = {
+    //     'url': ['forum/#/photo/title.htm']
+    // };
 
     $scope.currentTab = true;
 
