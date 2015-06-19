@@ -1,7 +1,6 @@
 angular.module('phoneApp', [
     'ui.router',
-    'DelegateEvents',
-    'base64'
+    'DelegateEvents'
 ])
 .run(function() {
     FastClick.attach(document.body);

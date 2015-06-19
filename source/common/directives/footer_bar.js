@@ -98,8 +98,8 @@ angular.module('phoneApp')
                     // alert(imageData);
                     // var image = document.getElementById('myImage');
                     // image.src = "data:image/jpeg;base64," + imageData;
-                    var div = angular.element(document.getElementById('abc'));
-                    div.html("<img src=data:image/jpeg;base64," + imageData + " />");
+                    // var div = angular.element(document.getElementById('abc'));
+                    // div.html("<img src=data:image/jpeg;base64," + imageData + " />");
                 }
 
                 function onFail(message) {
