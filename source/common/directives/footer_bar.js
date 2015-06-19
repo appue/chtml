@@ -148,61 +148,28 @@ angular.module('phoneApp')
 
 .directive('ngPhoto', function (
     $parse, 
-    $timeout
+    $timeout,
+    routerRedirect
 ) {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
 
             element.on('click', function () {
-                navigator.camera.getPicture(onSuccess, onFail, { 
-                    quality: 100,
-                    destinationType: Camera.DestinationType.DATA_URL,
-                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY
-                });
+                document.addEventListener("deviceready", onDeviceReady, false);
+
+                function onDeviceReady() {
+                    navigator.camera.getPicture(onSuccess, onFail, { 
+                        quality: 100,
+                        // destinationType: Camera.DestinationType.DATA_URL,
+                        destinationType: Camera.DestinationType.FILE_URI,
+                        sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                    });
+                }
             });
 
             function onSuccess(imageData) {
-                // alert(imageData);
-                // var image = document.getElementById('myImage');
-                // image.src = "data:image/jpeg;base64," + imageData;
-                var div = angular.element(document.getElementById('abc'));
-                div.html("<img src=data:image/jpeg;base64," + imageData + " />");
-            }
-
-            function onFail(message) {
-                console.log("fail");
-            }
-
-        }
-    };
-})
-
-.directive('ngCamera', function (
-    $parse, 
-    $timeout
-) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attr) {
-            
-            element.on('click', function () {
-                navigator.camera.getPicture(onSuccess, onFail, { 
-                    quality: 50,
-                    // destinationType: Camera.DestinationType.DATA_URL,
-                    destinationType: Camera.DestinationType.FILE_URI,
-                    // sourceType: Camera.PictureSourceType.PHOTOLIBRARY
-                    sourceType: Camera.PictureSourceType.CAMERA
-                });
-            });
-
-            function onSuccess(imageData) {
-                // alert(imageData);
-                // var image = document.getElementById('myImage');
-                // image.src = "data:image/jpeg;base64," + imageData;
-                // var div = angular.element(document.getElementById('abc'));
-                // div.html("<img src=data:image/jpeg;base64," + imageData + " />");
-                // $rootScope.imageData = imageData;
+                console.log("获取图片成功！");
 
                 sessionStorage.setItem('imageData', encodeURIComponent(imageData));
 
@@ -212,7 +179,55 @@ angular.module('phoneApp')
             }
 
             function onFail(message) {
-                console.log("fail");
+                console.log("获取图片失败！");
+            }
+
+        }
+    };
+})
+
+.directive('ngCamera', function (
+    $parse, 
+    $timeout,
+    routerRedirect
+) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            
+            element.on('click', function () {
+                document.addEventListener("deviceready", onDeviceReady, false);
+                
+                function onDeviceReady() {
+                    navigator.camera.getPicture(onSuccess, onFail, { 
+                        quality: 50,
+                        // destinationType: Camera.DestinationType.DATA_URL,
+                        destinationType: Camera.DestinationType.FILE_URI,
+                        // sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                        sourceType: Camera.PictureSourceType.CAMERA
+                    });
+                }
+            });
+
+            function onSuccess(imageData) {
+                // alert(imageData);
+                // var image = document.getElementById('myImage');
+                // image.src = "data:image/jpeg;base64," + imageData;
+                // var div = angular.element(document.getElementById('abc'));
+                // div.html("<img src=data:image/jpeg;base64," + imageData + " />");
+                // $rootScope.imageData = imageData;
+                console.log("获取图片成功！");
+
+
+                sessionStorage.setItem('imageData', encodeURIComponent(imageData));
+
+                routerRedirect.toJump({
+                    'url': ['forum/#/photo/edit.htm']
+                });
+            }
+
+            function onFail(message) {
+                console.log("获取图片失败！");
             }
 
         }
