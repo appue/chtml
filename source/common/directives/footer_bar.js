@@ -59,6 +59,10 @@ angular.module('phoneApp')
                             } else {
                                 $element.after(toastTpl($scope));
                             }
+
+                            $scope.noScroll = {
+                                'overflow-y': 'hidden'
+                            };
                         } else {
                             widget.msgToast('请下载APP吧！');
                         }
@@ -85,61 +89,10 @@ angular.module('phoneApp')
                 var $that = angular.element(e.delegationTarget);
                 
                 $that.parent().css('display', 'none');
-            };
 
-            $scope.getPhoto = function () {
-                navigator.camera.getPicture(onSuccess, onFail, { 
-                    quality: 100,
-                    destinationType: Camera.DestinationType.DATA_URL,
-                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY
-                });
-
-                function onSuccess(imageData) {
-                    // alert(imageData);
-                    // var image = document.getElementById('myImage');
-                    // image.src = "data:image/jpeg;base64," + imageData;
-                    // var div = angular.element(document.getElementById('abc'));
-                    // div.html("<img src=data:image/jpeg;base64," + imageData + " />");
-                }
-
-                function onFail(message) {
-                    console.log("fail");
-                }
-            };
-
-            $scope.setPhoto = function () {
-                // document.addEventListener("deviceready", onDeviceReady, false);
-                // function onDeviceReady() {
-                    
-                //     $timeout(function() {
-                        navigator.camera.getPicture(onSuccess, onFail, { 
-                            quality: 50,
-                            // destinationType: Camera.DestinationType.DATA_URL,
-                            destinationType: Camera.DestinationType.FILE_URI,
-                            // sourceType: Camera.PictureSourceType.PHOTOLIBRARY
-                            sourceType: Camera.PictureSourceType.CAMERA
-                        });
-
-                        function onSuccess(imageData) {
-                            // alert(imageData);
-                            // var image = document.getElementById('myImage');
-                            // image.src = "data:image/jpeg;base64," + imageData;
-                            // var div = angular.element(document.getElementById('abc'));
-                            // div.html("<img src=data:image/jpeg;base64," + imageData + " />");
-                            // $rootScope.imageData = imageData;
-
-                            sessionStorage.setItem('imageData', encodeURIComponent(imageData));
-
-                            routerRedirect.toJump({
-                                'url': ['forum/#/photo/edit.htm']
-                            });
-                        }
-
-                        function onFail(message) {
-                            console.log("fail");
-                        }
-                    // }, 0);
-                // }
+                $scope.noScroll = {
+                    'overflow-y': 'auto'
+                };
             };
         }
     };
