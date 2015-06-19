@@ -1,9 +1,12 @@
-angular.module('phoneApp').controller('entryCtrl', function ($scope, routerRedirect) {
+angular.module('phoneApp')
+
+.controller('entryCtrl', function (
+	$scope, 
+	routerRedirect
+) {
 
 	$scope.goLoginPage = {
-		'url': [
-			'entry/#/login.htm'
-		]
+		'url': ['entry/#/login.htm']
 	};
 
 	$scope.itemClick = function (e) {

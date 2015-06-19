@@ -88,6 +88,16 @@ angular.module('phoneApp', [
         url: '/photo/edit.htm',
         templateUrl: 'templates/photo.html',
         controller: 'tPhotoEdit'
+    })
+    .state('photoTitle', {
+        url: '/photo/title.htm',
+        templateUrl: 'templates/photo_title.html',
+        controller: 'tPhotoTitle'
+    })
+    .state('photoCate', {
+        url: '/photo/cate-{id}.htm',
+        templateUrl: 'templates/photo_cate.html',
+        controller: 'tPhotoCate'
     });
 
     // $urlRouterProvider.when('', '/index');

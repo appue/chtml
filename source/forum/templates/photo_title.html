@@ -1,0 +1,19 @@
+<header-bar back title="详情" right="继续|nextPage()"></header-bar>
+
+<section class="unit_photo">
+
+    <div class="this_edit_title">
+        <ul>
+            <li ng-repeat="(k, v) in DataList.ImagesList">
+                <div ng-click="dataDelete(k)">
+                    <img ng-src="{{v.ImageUrl}}" />
+                    <span></span>
+                </div>
+                <textarea ng-model="v.Content" placeholder="写下您想说的话（必填）"></textarea>
+            </li>
+            <li>
+                <p></p>
+            </li>
+        </ul>
+    </div>
+</section>

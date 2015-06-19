@@ -4,7 +4,7 @@
 */
 angular.module('phoneApp')
 
-.controller('HomeMsgWhisperCtrl', function(
+.controller('tMsgWhisper', function(
     $scope, 
     $state,
     widget
@@ -13,15 +13,11 @@ angular.module('phoneApp')
     
     //--设置默认返回
     $scope.backParam = {
-        'url': [
-            'home/#/msg'
-        ]
+        'url': ['home/#/msg']
     };
 
 
     $scope.url = {
-        'url': [
-            '/home/#/msg/chat-1.htm?from='+ currentUrl
-        ]
+        'url': ['/home/#/msg/chat-1.htm?from='+ currentUrl ]
     }
 });

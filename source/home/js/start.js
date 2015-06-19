@@ -13,6 +13,11 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){  
+
+    localStorage.setItem('PHONEAPP_START', false);
+
+    $scope.eventSlide = true;
+
     $scope.startImages = [
         {
             ImageUrl: '../themes/temp/start_1.jpg',
@@ -32,5 +37,5 @@ angular.module('phoneApp')
         routerRedirect.toJump({
             'url': ['home/#/entry.htm']
         })
-    }, 4000);
+    }, 8000);
 });

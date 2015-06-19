@@ -41,7 +41,7 @@ angular.module('phoneApp', [
     .state('msg', {
         url: '/msg',
         templateUrl: 'templates/msg.html',
-        controller: 'HomeMsgCtrl'
+        controller: 'tMsg'
     })
 
     /*------------------------------------
@@ -52,7 +52,7 @@ angular.module('phoneApp', [
     .state('msgChat', {
         url: '/msg/chat-{uid}.htm',
         templateUrl: 'templates/msg-chat.html',
-        controller: 'HomeMsgChatCtrl'
+        controller: 'tMsgChat'
     })
 
     /*------------------------------------
@@ -62,19 +62,19 @@ angular.module('phoneApp', [
     .state('msgNotice', {
         url: '/msg/notice.htm',
         templateUrl: 'templates/msg-notice.html',
-        controller: 'HomeMsgNoticeCtrl'
+        controller: 'tMsgNotice'
     })
 
     .state('msgPraise', {
         url: '/msg/praise',
         templateUrl: 'templates/msg-praise.html',
-        controller: 'HomeMsgPraiseCtrl'
+        controller: 'tMsgPraise'
     })
 
     .state('msgSearch', {
         url: '/msg/search',
         templateUrl: 'templates/msg-search.html',
-        controller: 'HomeMsgSearchCtrl'
+        controller: 'tMsgSearch'
     })
 
     /*------------------------------------
@@ -84,20 +84,20 @@ angular.module('phoneApp', [
     .state('msgWhisper', {
         url: '/msg/whisper.htm',
         templateUrl: 'templates/msg-whisper.html',
-        controller: 'HomeMsgWhisperCtrl'
+        controller: 'tMsgWhisper'
     })
 
     .state('setFeedback', {
         url: '/set/feedback',
         templateUrl: 'templates/set-feedback.html',
-        controller: 'HomeSetFeedbackCtrl'
+        controller: 'tSetFeedback'
     })
 
     // $urlRouterProvider.when('', '/index');
     // 处理在状态配置中指定的路由之外的 url 请求
     var isShow = localStorage.getItem('PHONEAPP_START');
 
-    if (isShow && JSON.parse(isShow) === 1) {
+    if (isShow) {
         $urlRouterProvider.otherwise('/index');
     } else {
         $urlRouterProvider.otherwise('/start.htm');

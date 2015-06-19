@@ -4,13 +4,13 @@
 */
 angular.module('phoneApp')
 
-.controller('HomeMsgCtrl', function (
-    $scope, 
-    $state, 
-    $stateParams, 
-    $location, 
-    routerRedirect
+.controller('tMsg', function (
+    $scope,
+    routerRedirect,
+    widget
 ) {
+    
+    widget.toLogin();
 
     $scope.footerTab = 4;
 

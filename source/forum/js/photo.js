@@ -13,19 +13,34 @@ angular.module('phoneApp')
     widget,
     $base64
 ){
-    // var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
+    var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
 
     // $scope.data1 = data;
     // $scope.imageData = $base64.encode(data);
-    $scope.imageUrl = $base64.encode(unescape(encodeURIComponent('/Users/bear/Documents/mp3/iscroll-master/demos/carousel/warhol.jpg')));
-
+    $scope.imageUrl = "../themes/temp/9.jpg";
 
     //--设置返回按钮
     $scope.backParam = {
-        'url': [
-            'home/#/index'
-        ]
+        'url': ['home/#/index']
+    };
+    $scope.nextPage = {
+        'url': ['forum/#/photo/title.htm']
     };
 
+    $scope.currentTab = true;
 
+    $scope.myScrollOptions = { 
+        'wrapper1': {},
+        'wrapper2': {}
+    };
+
+    $scope.changeTab = function () {
+        $scope.currentTab = !$scope.currentTab;
+
+        if ($scope.currentTab) {
+            $scope.eventScroll = "wrapper1";
+        } else {
+            $scope.eventScroll = "wrapper2";
+        }
+    }
 });

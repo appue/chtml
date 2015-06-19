@@ -86,5 +86,8 @@ angular.module('phoneApp')
     $scope.loadMore();
 
 
+    $scope.addPhoto = function () {
+
+    };
 
 });
