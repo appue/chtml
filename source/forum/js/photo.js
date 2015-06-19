@@ -1,6 +1,6 @@
 /*
-* 发现-一级栏目-列表
-* /clump/#/cate/list-{id}.html
+* 编辑图片
+* /forum/#/photo/edit.html
 */
 angular.module('phoneApp')
 
@@ -19,7 +19,7 @@ angular.module('phoneApp')
         'url': ['home/#/index']
     };
 
-    var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
+    // var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
 
     // $scope.data1 = data;
     // $scope.imageData = $base64.encode(data);
@@ -27,7 +27,7 @@ angular.module('phoneApp')
 
 
     $scope.ImageData = {
-        // imageUrl: '../themes/temp/2.jpg',
+        // imageUrl: '../themes/temp/9.jpg',
         imageUrl: data
     };
 
@@ -67,15 +67,31 @@ angular.module('phoneApp')
         mpImg.render(canvas, {
             maxHeight: 100
         }, function () {
-            var ctx = document.querySelector('#tmp');
+
             // var data = ctx.toDataURL("image/jpeg");
 
             // sessionStorage.setItem('a', data);
+            var isRepeat = false,
+                ctx = document.querySelector('#tmp'),
+                data = ctx.toDataURL("image/jpeg"),
+                lastData = $rootScope.CameraImages || [];
 
-            var data = [ctx.toDataURL("image/jpeg")];
+            
+            angular.forEach(lastData, function (v, k) {
+                if (v.ImageUrl == data) {
+                    isRepeat = true;
+                    return;
+                }
+            });
 
-            // cachePool.push('CameraImage', data, 1 / 24); //此处之后移动到登录页面
-            $rootScope.CameraImages = data;
+            if (!isRepeat) {
+                lastData.push({
+                    ImageUrl: data,
+                    Content: ''
+                });
+            }
+
+            $rootScope.CameraImages = lastData;
 
             routerRedirect.toJump({
                 'url': ['forum/#/photo/title.htm']

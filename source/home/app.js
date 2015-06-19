@@ -10,6 +10,7 @@
 
 angular.module('phoneApp', [
     'ui.router',
+    'ui.router.router',
     'DelegateEvents'
 ]).run(function () {
     FastClick.attach(document.body);
@@ -40,6 +41,9 @@ angular.module('phoneApp', [
 
     .state('msg', {
         url: '/msg',
+        resolve: { isCheck: function () {
+            return true;
+        }},
         templateUrl: 'templates/msg.html',
         controller: 'tMsg'
     })
@@ -51,6 +55,9 @@ angular.module('phoneApp', [
      */
     .state('msgChat', {
         url: '/msg/chat-{uid}.htm',
+        resolve: { isCheck: function () {
+            return true;
+        }},
         templateUrl: 'templates/msg-chat.html',
         controller: 'tMsgChat'
     })
@@ -61,12 +68,18 @@ angular.module('phoneApp', [
      */
     .state('msgNotice', {
         url: '/msg/notice.htm',
+        resolve: { isCheck: function () {
+            return true;
+        }},
         templateUrl: 'templates/msg-notice.html',
         controller: 'tMsgNotice'
     })
 
     .state('msgPraise', {
         url: '/msg/praise',
+        resolve: { isCheck: function () {
+            return true;
+        }},
         templateUrl: 'templates/msg-praise.html',
         controller: 'tMsgPraise'
     })
@@ -83,6 +96,9 @@ angular.module('phoneApp', [
      */
     .state('msgWhisper', {
         url: '/msg/whisper.htm',
+        resolve: { isCheck: function () {
+            return true;
+        }},
         templateUrl: 'templates/msg-whisper.html',
         controller: 'tMsgWhisper'
     })
@@ -94,13 +110,19 @@ angular.module('phoneApp', [
     })
 
     // $urlRouterProvider.when('', '/index');
-    // 处理在状态配置中指定的路由之外的 url 请求
-    var isShow = localStorage.getItem('PHONEAPP_START');
 
-    if (isShow) {
-        $urlRouterProvider.otherwise('/index');
-    } else {
-        $urlRouterProvider.otherwise('/start.htm');
-    }
+    $urlRouterProvider.when(/index/, function ($match, $stateParams) {
+        alert(1);
+    });
+
+
+    // 处理在状态配置中指定的路由之外的 url 请求
+    // var isShow = localStorage.getItem('PHONEAPP_START');
+
+    // if (isShow) {
+    //     $urlRouterProvider.otherwise('/index');
+    // } else {
+    //     $urlRouterProvider.otherwise('/start.htm');
+    // }
 
 });
