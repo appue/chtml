@@ -19,7 +19,7 @@ angular.module('phoneApp')
         'url': ['home/#/index']
     };
 
-    // var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
+    var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
 
     // $scope.data1 = data;
     // $scope.imageData = $base64.encode(data);
@@ -99,22 +99,7 @@ angular.module('phoneApp')
         });
 
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // $scope.nextPage = {
-    //     'url': ['forum/#/photo/title.htm']
-    // };
+    
 
     $scope.currentTab = true;
 
