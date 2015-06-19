@@ -310,9 +310,7 @@ module.exports = function (gulp, $) {
                 './source/lib/config.js',
                 './source/lib/angular.js',
                 './source/lib/angular-touch.js',
-                './source/lib/angular-ui-router.js',
-
-                './source/lib/angular-base64.js'
+                './source/lib/angular-ui-router.js'
             ];
 
         if (packageType == 'web') {
