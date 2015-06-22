@@ -40,7 +40,7 @@ angular.module('phoneApp', [
     })
 
     .state('msg', {
-        url: '/msg',
+        url: '/msg.htm',
         resolve: { isCheck: function () {
             return true;
         }},

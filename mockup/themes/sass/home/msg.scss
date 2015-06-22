@@ -1,0 +1,48 @@
+﻿.msg_comment_list {
+    li {
+        background: #fff;
+        padding: 10px;
+        @include border_bottom_half;
+        display: -webkit-box;
+        div:nth-child(1) {
+            width: 70px;
+            overflow: hidden;
+            margin-right: 10px;
+            img {
+                width: 100%;
+            }
+        }
+        dl {
+            margin-right: 10px;
+            -webkit-box-flex: 1;
+            dd {
+                font-size: 12px;
+                line-height: 16px;
+                em {
+                    color: #ccc;
+                    display: block;
+                    line-height: 25px;
+                    @include ellipsis;
+                }
+                p {
+                    @include multi_ellipsis(3);
+                }
+                i {
+                    color: #ccc;
+                    display: block;
+                    line-height: 25px;
+                }
+            }
+        }
+        div:last-child {
+            width: 50px;
+            overflow: hidden;
+            img {
+                width: 100%;
+            }
+        }
+        &:last-child {
+            border: none;
+        }
+    }
+}

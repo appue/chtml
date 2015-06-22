@@ -13,7 +13,7 @@ angular.module('phoneApp')
     
     //--设置默认返回
     $scope.backParam = {
-        'url': ['home/#/msg']
+        'url': ['home/#/msg.htm']
     };
 
 

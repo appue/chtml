@@ -18,7 +18,7 @@ angular.module('phoneApp')
         ['home/#/index'],
         ['clump/#/find.htm'],
         ['home/#/index'],
-        ['home/#/msg'],
+        ['home/#/msg.htm'],
         ['member/#/personal-'+ uid +'.htm']
     ];
 

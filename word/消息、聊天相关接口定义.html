@@ -181,32 +181,33 @@
     {   
         CommentList: [
             {
-                CommentId: <i>//------评论ID</i>
+                CommentId: <i>//--------评论ID</i>
 
                 Article: {
-                    ArticleId: <i>//--评论关联的帖子ID</i>
-                    ImageUrl: <i>//---帖子图片（取第一张）</i>
+                    ArticleId: <i>//----评论关联的帖子ID</i>
+                    Description: <i>//--帖子描述</i>
+                    ImageUrl: <i>//-----帖子图片（取第一张）</i>
                 }
                 
                 Author: {
-                    UserId: <i>//-----评论发布者ID</i>
-                    ImageUrl: <i>//---评论发布者头像</i>
-                    UserName: <i>//---评论发布者名称</i>
+                    UserId: <i>//-------评论发布者ID</i>
+                    ImageUrl: <i>//-----评论发布者头像</i>
+                    UserName: <i>//-----评论发布者名称</i>
                 }
 
-                isRead: <i>//---------是否已读(True/False)</i>
+                isRead: <i>//-----------是否已读(True/False)</i>
 
-                UpdateTime: <i>//-----评论更新时间</i>
-                Content: <i>//--------评论内容</i>
+                UpdateTime: <i>//-------评论更新时间</i>
+                Content: <i>//----------评论内容</i>
             }
         ]
-        Total: <i>//------------------评论总数</i>
+        Total: <i>//--------------------评论总数</i>
         
         <i>此处格式固定，服务器返回验证数据</i>
         Response: {
-            Time: <i>//---------------服务器当前时间</i>
-            State: <i>//--------------用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）</i>
-            Ack: <i>//----------------记录提交返回的状态（Success、Failure）</i>
+            Time: <i>//-----------------服务器当前时间</i>
+            State: <i>//----------------用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）</i>
+            Ack: <i>//------------------记录提交返回的状态（Success、Failure）</i>
         }
     }
     </pre>

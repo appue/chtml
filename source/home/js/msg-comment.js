@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.controller('tCommentList', function (
+.controller('tMsgComment', function (
     $scope, 
     $state, 
     $stateParams, 
@@ -20,7 +20,7 @@ angular.module('phoneApp')
 
     //--设置返回按钮
     $scope.backParam = {
-        'url': ['forum/#/thread-'+ $stateParams.id  +'.htm']
+        'url': ['home/#/msg.htm']
     };
 
 
@@ -32,13 +32,8 @@ angular.module('phoneApp')
 
             widget.ajaxRequest({
                 noMask: true,
-                url: 'getListComment',
-                data: {
-                    SortType: 1,
-                    ArticleId: $stateParams.id,
-                    PageIndex: $scope.pageIndex,
-                    PageSize: $scope.pageSize
-                },
+                url: 'getMsgComment',
+                data: {},
                 success: function (data) {
                     $scope.pageTotal = data.Total || 0;
 

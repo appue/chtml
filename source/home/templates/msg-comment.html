@@ -1,15 +1,18 @@
-<header-bar back title="评论列表<span class='color_green'></span>"></header-bar>
+<header-bar back title="评论"></header-bar>
 
 <section class="mod_scroll" when-scrolled="loadMore()">
-    <ul class="unit_comment_list">
+    <ul class="msg_comment_list">
         <li ng-repeat="(k, v) in DataList.CommentList track by $index">
-            <img ng-src="{{v.Author.ImageUrl}}" />
+            <div><img ng-src="{{v.Author.ImageUrl}}" /></div>
             <dl>
-                <dt>
-                    {{v.Author.UserName}} <i>{{v.UpdateTime}}</i>
-                </dt>
-                <dd>{{v.Content}}</dd>
+                <dt>{{v.Author.UserName}}</dt>
+                <dd>
+                    <em>评论了 {{v.Article.Description}}</em>
+                    <p>{{v.Content}}</p>
+                    <i>{{v.UpdateTime}}</i>
+                </dd>
             </dl>
+            <div><img ng-src="{{v.Article.ImageUrl}}" /></div>
         </li>
     </ul>
 </section>
