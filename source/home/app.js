@@ -63,8 +63,7 @@ angular.module('phoneApp', [
     })
 
     /*------------------------------------
-     * 通知
-     * @params:
+     * 消息中心-通知
      */
     .state('msgNotice', {
         url: '/msg/notice.htm',
@@ -75,8 +74,23 @@ angular.module('phoneApp', [
         controller: 'tMsgNotice'
     })
 
+    /*------------------------------------
+     * 消息中心-评论
+     */
+    .state('msgComment', {
+        url: '/msg/comment.htm',
+        resolve: { isCheck: function () {
+            return true;
+        }},
+        templateUrl: 'templates/msg-comment.html',
+        controller: 'tMsgComment'
+    })
+
+    /*------------------------------------
+     * 消息中心-赞
+     */
     .state('msgPraise', {
-        url: '/msg/praise',
+        url: '/msg/praise.htm',
         resolve: { isCheck: function () {
             return true;
         }},
@@ -84,15 +98,17 @@ angular.module('phoneApp', [
         controller: 'tMsgPraise'
     })
 
+    /*------------------------------------
+     * 消息中心-邀请好友
+     */
     .state('msgSearch', {
-        url: '/msg/search',
+        url: '/msg/search.htm',
         templateUrl: 'templates/msg-search.html',
         controller: 'tMsgSearch'
     })
 
     /*------------------------------------
-     * 私聊
-     * @params:
+     * 消息中心-私聊
      */
     .state('msgWhisper', {
         url: '/msg/whisper.htm',

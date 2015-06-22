@@ -19,7 +19,7 @@ angular.module('phoneApp')
             Title: '赞',
             ClassName: 'i_hit',
             SiteUrl: {
-                'url': ['home/#/msg/praise']
+                'url': ['home/#/msg/praise.htm']
             },
             isNew: true
         },
@@ -27,7 +27,7 @@ angular.module('phoneApp')
             Title: '评论',
             ClassName: 'i_comment',
             SiteUrl: {
-                'url': ['home/#/msg/praise']
+                'url': ['home/#/msg/comment.htm']
             },
             isNew: false
         },
@@ -51,7 +51,7 @@ angular.module('phoneApp')
             Title: '邀请好友',
             ClassName: 'i_friend',
             SiteUrl: {
-                'url': ['home/#/msg/search']
+                'url': ['home/#/msg/search.htm']
             },
             isNew: false
         }
