@@ -7,8 +7,14 @@ userEntry.controller('registerCreateCtrl', function ($scope, routerRedirect, wid
     $scope.inputVal = widget.cacheData('personalData') || { //数据初始化
         sex: 1,
         job: '园长',
-        city: null,
-        village: null
+        city: {
+            Id: 2,
+            Name: '北京'
+        },
+        village: {
+            Id: 23,
+            Name: '朝阳区'
+        }
     };
 
     $scope.goNextStep = function () { //下一步按钮

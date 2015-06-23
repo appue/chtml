@@ -16,13 +16,15 @@
                     <label>男</label>
                 </span>
             </li>
-            <li show-popup="chooseLocation|popupLocation" class="location">{{inputVal.city.Name}} {{inputVal.village.Name}}</li>
+            <li show-popup="location" class="location">{{inputVal.city.Name}} {{inputVal.village.Name}}</li>
             <li show-popup="chooseJob" class="post">{{inputVal.job}}</li>
         </ul>
     </div>
 </section>
 
-<location-data></location-data>
+<popup id="location" title="选择位置" popup-confirm="confirmLocation">
+    <location-data></location-data>
+</popup>
 
 <popup id="chooseJob" title="选择岗位" ng-init="tmpJob = inputVal.job" popup-confirm="chooseJob">
     <div class="choose_post" ngd-click="chooseJob($event)" selector="li">
