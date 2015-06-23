@@ -305,13 +305,12 @@ module.exports = function (gulp, $) {
                 './source/lib/iscroll-lite.js',
                 './source/lib/slide.js',
                 './source/lib/md5.js',
+                './source/lib/megapix-image.js',
 
                 './source/lib/config.js',
                 './source/lib/angular.js',
                 './source/lib/angular-touch.js',
-                './source/lib/angular-ui-router.js',
-
-                './source/lib/angular-base64.js'
+                './source/lib/angular-ui-router.js'
             ];
 
         if (packageType == 'web') {

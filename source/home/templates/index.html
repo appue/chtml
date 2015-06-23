@@ -4,7 +4,7 @@
     <i class="line" ng-class="{tmp: currentTab == 2}"></i>
 </ul>
 
-<section class="unit_home" when-scrolled="loadMore()">
+<section class="unit_home" ng-style="noScroll" when-scrolled="loadMore()">
     <div ng-if="currentTab==1">
         <div class="mod_slide" ng-slide="eventSlide">
             <ul>

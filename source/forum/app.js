@@ -1,7 +1,6 @@
 angular.module('phoneApp', [
     'ui.router',
-    'DelegateEvents',
-    'base64'
+    'DelegateEvents'
 ])
 .run(function() {
     FastClick.attach(document.body);
@@ -66,6 +65,9 @@ angular.module('phoneApp', [
     .state('add', {
         // abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
         url: '/comment/add/{id}.htm',
+        resolve: { isCheck: function () {
+            return true;
+        }},
         templateUrl: 'templates/comment_add.html',
         controller: 'tCommentAdd'
     })
@@ -86,16 +88,25 @@ angular.module('phoneApp', [
     */
     .state('photoEdit', {
         url: '/photo/edit.htm',
+        resolve: { isCheck: function () {
+            return true;
+        }},
         templateUrl: 'templates/photo.html',
         controller: 'tPhotoEdit'
     })
     .state('photoTitle', {
         url: '/photo/title.htm',
+        resolve: { isCheck: function () {
+            return true;
+        }},
         templateUrl: 'templates/photo_title.html',
         controller: 'tPhotoTitle'
     })
     .state('photoCate', {
         url: '/photo/cate-{id}.htm',
+        resolve: { isCheck: function () {
+            return true;
+        }},
         templateUrl: 'templates/photo_cate.html',
         controller: 'tPhotoCate'
     });

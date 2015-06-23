@@ -19,18 +19,18 @@ angular.module('phoneApp')
             Title: '赞',
             ClassName: 'i_hit',
             SiteUrl: {
-                'url': ['home/#/msg/praise']
+                'url': ['home/#/msg/praise.htm']
             },
             isNew: true
         },
-        // {
-        //     Title: '评论',
-        //     ClassName: 'i_comment',
-        //     SiteUrl: {
-        //         'url': ['home/#/msg/praise']
-        //     },
-        //     isNew: false
-        // },
+        {
+            Title: '评论',
+            ClassName: 'i_comment',
+            SiteUrl: {
+                'url': ['home/#/msg/comment.htm']
+            },
+            isNew: false
+        },
         {
             Title: '通知',
             ClassName: 'i_msg',
@@ -51,7 +51,7 @@ angular.module('phoneApp')
             Title: '邀请好友',
             ClassName: 'i_friend',
             SiteUrl: {
-                'url': ['home/#/msg/search']
+                'url': ['home/#/msg/search.htm']
             },
             isNew: false
         }

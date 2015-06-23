@@ -1,10 +1,25 @@
 ﻿.unit_photo{
+    @include scrollfix;
     padding-top: 44px;
 
     .this_photo {
+        position: relative;
         img{
             width: 100%;
+            visibility: hidden;
         }
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+    }
+
+    .this_tmp_canvas {
+        width: 0;
+        height: 0;
+        overflow: hidden;
     }
 
     .this_tab {
@@ -64,6 +79,9 @@
                         border: 1px solid #3cc482;
                     }
                 }
+                &:last-child {
+                    margin-right: 10px;
+                }
             }
         }
     }
@@ -80,10 +98,19 @@
                 -webkit-box-align: stretch;
                 div {
                     margin-right: 10px;
+                    width: 70px;
+                    height: 70px;
                     position: relative;
-                    img {
+                    background: #f8f8f8;
+                    p {
+                        overflow: hidden;
                         width: 70px;
-                        display: block;
+                        height: 70px;
+                        img {
+                            height: 100%;
+                            margin: 0 auto;
+                            display: block;
+                        }
                     }
                     span {
                         display: block;
@@ -120,10 +147,11 @@
                     -webkit-box-flex: 1;
                     @include border_bottom_half;
                 }
-                p {
+                i {
                     width: 70px;
                     height: 70px;
                     background: #eee;
+                    display: block;
                     position: relative;
                     &:before,
                     &:after {

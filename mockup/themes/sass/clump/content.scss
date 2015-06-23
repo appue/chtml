@@ -11,6 +11,10 @@ $gray_val: #cacdcb;
     padding: 44px 0 58px;
 }
 
+.scroll_activity_detail_photo {
+    @include scrollfix;
+    padding-top: 44px;
+}
 
 .unit_find_top{
     width: 100%;
