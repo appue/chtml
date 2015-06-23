@@ -7,53 +7,40 @@
                 <label>昵称</label>
                 <input ng-model="inputVal.nickname" type="text" placeholder="用户名支持汉字、字母、数字"></li>
             <li class="gender">
-                <span ng-click="inputVal.gender = 1">
-                    <input name="gender" ng-checked="inputVal.gender == 1" type="radio">
+                <span ng-click="inputVal.sex = 1">
+                    <input name="sex" ng-checked="inputVal.sex == 1" type="radio">
                     <label>女</label>
                 </span>
-                <span ng-click="inputVal.gender = 2">
-                    <input name="gender" ng-checked="inputVal.gender == 2" type="radio">
+                <span ng-click="inputVal.sex = 2">
+                    <input name="sex" ng-checked="inputVal.sex == 2" type="radio">
                     <label>男</label>
                 </span>
             </li>
             <li show-popup="chooseLocation|popupLocation" class="location">{{inputVal.city.Name}} {{inputVal.village.Name}}</li>
-            <li show-popup="choosePost" class="post">{{inputVal.post}}</li>
+            <li show-popup="chooseJob" class="post">{{inputVal.job}}</li>
         </ul>
     </div>
 </section>
 
-<popup id="chooseLocation" title="选择位置" popup-confirm="inputVal.city = tmpCity;inputVal.village = tmpVillage;">
-    <div class="choose_location" ngd-click="chooseLocation($event)" selector="li">
-        <div class="select_box">
-            <ul>
-                <li ng-class="{current:v.Id == inputVal.city.Id}" data-city="{{v}}" ng-repeat="(k, v) in cityList track by $index">{{v.Name}}</li>
-            </ul>
-        </div>
-        <div class="select_box">
-            <ul>
-                <li ng-class="{current:v.Id == inputVal.village.Id}" data-village="{{v}}" ng-repeat="(k, v) in villageList track by $index">{{v.Name}}</li>
-            </ul>
-        </div>
-    </div>
-</popup>
+<location-data></location-data>
 
-<popup id="choosePost" title="选择岗位" ng-init="tmpPost = inputVal.post" popup-confirm="choosePost">
-    <div class="choose_post" ngd-click="choosePost($event)" selector="li">
+<popup id="chooseJob" title="选择岗位" ng-init="tmpJob = inputVal.job" popup-confirm="chooseJob">
+    <div class="choose_post" ngd-click="chooseJob($event)" selector="li">
         <ul>
             <li>
-                <input ng-checked="tmpPost == '园长'" name="post" type="radio">
+                <input ng-checked="tmpJob == '园长'" name="job" type="radio">
                 <label>园长</label>
             </li>
             <li>
-                <input ng-checked="tmpPost == '保教主任'" name="post" type="radio">
+                <input ng-checked="tmpJob == '保教主任'" name="job" type="radio">
                 <label>保教主任</label>
             </li>
             <li>
-                <input ng-checked="tmpPost == '教师'" name="post" type="radio">
+                <input ng-checked="tmpJob == '教师'" name="job" type="radio">
                 <label>教师</label>
             </li>
             <li>
-                <input ng-checked="tmpPost == '其他'" name="post" type="radio">
+                <input ng-checked="tmpJob == '其他'" name="job" type="radio">
                 <label>其他</label>
             </li>
         </ul>
