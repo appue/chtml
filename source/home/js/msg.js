@@ -5,12 +5,8 @@
 angular.module('phoneApp')
 
 .controller('tMsg', function (
-    $scope,
-    routerRedirect,
-    widget
+    $scope
 ) {
-    
-    widget.toLogin();
 
     $scope.footerTab = 4;
 
