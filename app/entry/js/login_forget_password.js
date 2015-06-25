@@ -1,4 +1,5 @@
-userEntry.controller('loginForgetCtrl', function ($scope, $compile, routerRedirect, widget) {
+angular.module('phoneApp')
+.controller('loginForgetCtrl', function ($scope, $compile, routerRedirect, widget) {
 
     $scope.backParam = { //--设置返回按钮
         'url': [

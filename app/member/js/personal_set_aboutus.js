@@ -1,4 +1,5 @@
-personalHomepage.controller('personalSetAboutusCtrl', function ($scope) {
+angular.module('phoneApp')
+.controller('personalSetAboutusCtrl', function ($scope) {
 
 
 });

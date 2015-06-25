@@ -1,4 +1,5 @@
-userEntry.controller('loginResetCtrl', function ($scope, $stateParams, routerRedirect, widget) {
+angular.module('phoneApp')
+.controller('loginResetCtrl', function ($scope, $stateParams, routerRedirect, widget) {
 
     $scope.backParam = { //--设置返回按钮
         'url': [

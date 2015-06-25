@@ -4,7 +4,7 @@
 */
 angular.module('phoneApp')
 
-.controller('tMsg', function (
+.controller('tMsgIndex', function (
     $scope
 ) {
 

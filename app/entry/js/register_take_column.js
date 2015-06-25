@@ -1,4 +1,5 @@
-userEntry.controller('registerColumnCtrl', function ($scope) {
+angular.module('phoneApp')
+.controller('registerColumnCtrl', function ($scope) {
 
     $scope.popupConfirm = function (arg) {
         console.log(arg);

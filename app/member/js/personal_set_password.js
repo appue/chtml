@@ -1,4 +1,5 @@
-personalHomepage.controller('personalSetPasswordCtrl', function ($scope, $stateParams, widget) {
+angular.module('phoneApp')
+.controller('personalSetPasswordCtrl', function ($scope, $stateParams, widget) {
 
 	$scope.backParam = { //--设置返回按钮
 		'url': [

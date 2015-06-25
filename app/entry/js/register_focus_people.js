@@ -1,4 +1,5 @@
-userEntry.controller('registerFocusCtrl', function ($scope) {
+angular.module('phoneApp')
+.controller('registerFocusCtrl', function ($scope) {
 
     $scope.popupConfirm = function (arg) {
         console.log(arg);

@@ -1,4 +1,5 @@
-userEntry.controller('registerDoneCtrl', function ($scope) {
+angular.module('phoneApp')
+.controller('registerDoneCtrl', function ($scope) {
 
 
 });

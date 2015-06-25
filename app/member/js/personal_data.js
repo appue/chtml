@@ -1,4 +1,5 @@
-personalHomepage.controller('personalDataCtrl', function ($scope, $stateParams) {
+angular.module('phoneApp')
+.controller('personalDataCtrl', function ($scope, $stateParams) {
 
 	$scope.backParam = { //--设置返回按钮
 		'url': [

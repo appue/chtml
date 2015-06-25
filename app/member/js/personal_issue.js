@@ -1,4 +1,5 @@
-personalHomepage.controller('personalIssueCtrl', function (
+angular.module('phoneApp')
+.controller('personalIssueCtrl', function (
     $scope,
     $stateParams,
     widget

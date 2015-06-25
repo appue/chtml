@@ -1,4 +1,5 @@
-personalHomepage.controller('personalCtrl', function ($scope, $stateParams, routerRedirect) {
+angular.module('phoneApp')
+.controller('personalCtrl', function ($scope, $stateParams, routerRedirect) {
 
 	console.log($stateParams.id);
 

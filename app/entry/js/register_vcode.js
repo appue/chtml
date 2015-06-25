@@ -1,4 +1,5 @@
-userEntry.controller('registerVcodeCtrl', function ($scope, routerRedirect, widget) {
+angular.module('phoneApp')
+.controller('registerVcodeCtrl', function ($scope, routerRedirect, widget) {
 
     $scope.backParam = { //--设置返回按钮
         'url': [
