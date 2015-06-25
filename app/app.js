@@ -24,11 +24,11 @@ angular.module('phoneApp', [
         // abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
         url: '/index',
         templateUrl: 'templates/index.html',
-        controller: 'HomeIndexCtrl'
+        controller: 'tHome'
     })
 
     .state('msg', {
-        url: '/msg.htm',
+        url: '/msg/index.htm',
         resolve: { isCheck: function () {
             return true;
         }},
