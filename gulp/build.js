@@ -145,54 +145,29 @@ module.exports = function (gulp, $) {
     
 
     gulp.task('inject', function() {
-        var fd = argv.f;
-
-        if (fd) {
-            return gulp.src('./app/'+ fd +'/index.html')
-                .pipe(
-                    $.inject(
-                        gulp.src('./app/common/**/*.js', {read: false}), { 
-                            relative: true, 
-                            name: 'injectcommon' 
-                        }
-                    )
+        return gulp.src('./app/index.html')
+            .pipe(
+                $.inject(
+                    gulp.src('./app/common/**/*.js', {read: false}), { 
+                        relative: true, 
+                        name: 'injectcommon' 
+                    }
                 )
-                .pipe(
-                    $.inject(
-                        gulp.src(['./app/'+ fd +'/js/*.js', './app/themes/'+ fd +'.css'], {read: false}), { 
-                            relative: true 
-                        }
-                    )
+            )
+            .pipe(
+                $.inject(
+                    gulp.src([
+                            './app/**/*.js',
+                            '!./**/app.js',
+                            '!./app/common/**/*.js',
+                            '!./app/lib/*',
+                            '!./app/api/*',
+                            '!./app/themes/*'
+                        ], 
+                        {read: false}), {relative: true}
                 )
-                .pipe(gulp.dest('./app/'+ fd));
-
-        } else {
-
-            getProject({
-                callback: function(folder){
-                    folder.forEach( function(v) {
-                        return gulp.src('./app/'+ v +'/index.html')
-                            .pipe(
-                                $.inject(
-                                    gulp.src('./app/common/**/*.js', {read: false}), { 
-                                        relative: true, 
-                                        name: 'injectcommon' 
-                                    }
-                                )
-                            )
-                            .pipe(
-                                $.inject(
-                                    gulp.src(['./app/'+ v +'/js/*.js', './app/themes/'+ v +'.css'], {read: false}), {
-                                        relative: true
-                                    }
-                                )
-                            )
-                            .pipe(gulp.dest('./app/'+ v));
-                    });
-                }
-            });
-        }
-
+            )
+            .pipe(gulp.dest('./app/'));
     });
 
     
