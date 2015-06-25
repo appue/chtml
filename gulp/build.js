@@ -255,9 +255,6 @@ module.exports = function (gulp, $) {
     gulp.task('minjs', function() {
         //--框架JS压缩合并
         var framejs = [
-                './app/lib/fastclick.js',
-                './app/lib/iscroll-lite.js',
-                './app/lib/slide.js',
                 './app/lib/md5.js',
                 './app/lib/megapix-image.js',
 

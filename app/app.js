@@ -1,26 +1,26 @@
 angular.module('phoneApp', [
-    'ionic',
-    'pasvaz.bindonce'
+    'ionic'
+    // 'pasvaz.bindonce'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
     //开始页面
-    .state('start', {
-        url: '/start.htm',
-        templateUrl: 'tp/start.html',
-        controller: 'tStart'
-    })
+    // .state('start', {
+    //     url: '/start.htm',
+    //     templateUrl: 'home/tp/start.html',
+    //     controller: 'tStart'
+    // })
     //首页
     .state('index', {
         url: '/index',
-        templateUrl: 'tp/index.html',
+        templateUrl: 'home/tp/index.html',
         controller: 'tHome'
     })
     //消息中心首页
     .state('msgIndex', {
         url: '/msg/index.htm',
-        templateUrl: 'tp/index.html',
+        templateUrl: 'home/tp/msg.html',
         controller: 'tMsgIndex'
     })
     /*------------------------------------
@@ -33,7 +33,7 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'templates/msg-chat.html',
+        templateUrl: 'home/tp/msg-chat.html',
         controller: 'tMsgChat'
     })
     /*------------------------------------
@@ -44,7 +44,7 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'templates/msg-notice.html',
+        templateUrl: 'home/tp/msg-notice.html',
         controller: 'tMsgNotice'
     })
     /*------------------------------------
@@ -55,7 +55,7 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'templates/msg-comment.html',
+        templateUrl: 'home/tp/msg-comment.html',
         controller: 'tMsgComment'
     })
     /*------------------------------------
@@ -66,7 +66,7 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'templates/msg-praise.html',
+        templateUrl: 'home/tp/msg-praise.html',
         controller: 'tMsgPraise'
     })
     /*------------------------------------
@@ -74,7 +74,7 @@ angular.module('phoneApp', [
      */
     .state('msgSearch', {
         url: '/msg/search.htm',
-        templateUrl: 'templates/msg-search.html',
+        templateUrl: 'home/tp/msg-search.html',
         controller: 'tMsgSearch'
     })
     /*------------------------------------
@@ -85,18 +85,112 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'templates/msg-whisper.html',
+        templateUrl: 'home/tp/msg-whisper.html',
         controller: 'tMsgWhisper'
     })
 
     .state('setFeedback', {
         url: '/set/feedback',
-        templateUrl: 'templates/set-feedback.html',
+        templateUrl: 'home/tp/set-feedback.html',
         controller: 'tSetFeedback'
     })
 
 
 
+
+
+
+    //发现首页
+    .state('findIndex', {
+        url: '/clump/find.htm',
+        templateUrl: 'clump/tp/find.html',
+        controller: 'tFindIndex'
+    })
+    //发现-猜你喜欢
+    .state('findLike', {
+        url: '/clump/like.htm',
+        templateUrl: 'clump/tp/like.html',
+        controller: 'tFindLike'
+    })
+    //全部圈子
+    .state('clubList', {
+        url: '/club/list.htm',
+        templateUrl: 'clump/tp/club_list.html',
+        controller: 'tClubList'
+    })
+    //热门圈子
+    .state('clubHot', {
+        url: '/club/hot.htm',
+        templateUrl: 'clump/tp/club_hot.html',
+        controller: 'tClubHot'
+    })
+    //圈子详情页
+    .state('clubDetail', {
+        url: '/club/detail-{id}.htm',
+        templateUrl: 'clump/tp/club_detail.html',
+        controller: 'tClubDetail'
+    })
+    //圈子成员排行
+    .state('clubRanking', {
+        url: '/club/ranking-{id}.htm',
+        templateUrl: 'clump/tp/club_ranking.html',
+        controller: 'tClubRanking'
+    })
+    //活动列表
+    .state('activityList', {
+        url: '/activity/list.htm',
+        templateUrl: 'clump/tp/activity_list.html',
+        controller: 'tActivityList'
+    })
+    //活动详情
+    // .state('activityDetail', {
+    //     url: '/activity/detail-{type}-{id}.htm',
+    //     templateUrl: 'templates/activity_detail.html',
+    //     controller: 'tActivityDetail'
+    // })
+    //活动-晒图活动页
+    .state('activityDetailPhoto', {
+        url: '/activity/detail/photo-{id}.htm',
+        templateUrl: 'clump/tp/activity_detail_photo.html',
+        controller: 'tActivityDetailPhoto'
+    })
+
+    /*------------------------------------
+    * 发现-活动-话题活动页
+    */
+    .state('activityDetailArticle', {
+        url: '/activity/detail/article-{id}.htm',
+        templateUrl: 'clump/tp/activity_detail_article.html',
+        controller: 'tActivityDetailArticle'
+    })
+
+    /*------------------------------------
+    * 专题列表
+    */
+    .state('subjectList', {
+        url: '/subject/list.htm',
+        templateUrl: 'clump/tp/subject_list.html',
+        controller: 'tSubjectList'
+    })
+
+    /*------------------------------------
+    * 专题内容
+    */
+    .state('subjectDetail', {
+        url: '/subject/detail-{id}.htm',
+        templateUrl: 'clump/tp/subject_detail.html',
+        controller: 'tSubjectDetail'
+    })
+    /*------------------------------------
+    * 点评列表
+    * @params:
+    *     id: 帖子ID
+    */
+    .state('list', {
+        url: '/comment/list/{id}.htm',
+        templateUrl: 'clump/tp/comment_list.html',
+        controller: 'tCommentList'
+    });
 
 
 
@@ -125,7 +219,7 @@ angular.module('phoneApp', [
     if (isShow) {
         $urlRouterProvider.otherwise('/index');
     } else {
-        $urlRouterProvider.otherwise('/start.htm');
+        $urlRouterProvider.otherwise('/index');
     }
 
 });
