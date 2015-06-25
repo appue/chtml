@@ -1,0 +1,111 @@
+<header class="mod_header transparent comment_header">
+    <a class="back_button" page-back="{{backParam}}">back</a>
+    <a class="right_menu_gray" ng-click="showLayout()"></a>
+</header>
+
+<div class="mod_show_layout" ng-if="isShowLayout">
+    <ul ng-if="isOwner">
+        <li>编辑</li>
+        <li>删除</li>
+    </ul>
+    <ul ng-if="!isOwner">
+        <li page-jump="redirectUrl.Report">举报</li>
+
+<!--         <li page-jump="redirect.Report">收藏</li>
+        <li page-jump="redirect.Report">分享</li>
+        <li page-jump="redirect.Report">点评</li>
+        <li page-jump="redirect.Report">赞</li> -->
+    </ul>
+</div>
+
+<section class="unit_article_scroll">
+    <div class="comment_layout">
+        <ul class="imgart_content">
+            <li ng-repeat="(k, v) in DataList.Images track by $index">
+                <img ng-src="{{v.ImageUrl}}" />
+                {{v.Description}}
+            </li>
+        </ul>
+
+        <div class="person_detail">
+            <img class="person_img" ng-src="{{DataList.Author.ImageUrl}}">
+            <div>
+                <h3>
+                    <span class="time">5天前</span>
+                    {{DataList.Author.UserName}}
+                    <span class="private_chat" page-jump="{{redirectUrl.Chat}}">私聊</span>
+                </h3>
+                <p>
+                    发布到：
+                    <span ng-repeat="(k, v) in DataList.Affect.CategoryList track by $index">#{{v.CateName}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="comment_layout">
+        <p class="comment_txt">
+            <span class="color_green">{{DataList.Total.TotalPraise}}</span>人赞过,
+            <span class="color_green">{{DataList.Total.TotalCollect}}</span>次浏览,
+            <span class="color_green">{{DataList.Total.TotalComment}}</span>条评论,
+            被收藏<span class="color_green">{{DataList.Total.TotalComment}}</span>次
+        </p>
+
+        <div class="comment_heart" ng-if="DataList.PraiseUser.length > 0">
+            <a class="heart" ng-click="setPraise()"></a>
+            <img class="person_img" ng-repeat="(k, v) in DataList.PraiseUser track by $index" ng-src="{{v.ImageUrl}}" />
+        </div>
+
+<!--         <div class="comment_input">
+            <img class="person_img" src="../themes/temp/1.jpg">
+            <div>
+                <input type="text" placeholder="说说你的评论">
+            </div>
+        </div> -->
+        <div class="person_detail" ng-repeat="v in DataList.CommentList track by $index">
+            <img class="person_img" ng-src="{{v.Author.ImageUrl}}">
+            <div>
+                <h3>
+                    <span class="time">{{v.UpdateTime}}</span>
+                    {{v.Author.UserName}}
+                </h3>
+                <p>
+                    {{v.Content}}
+                </p>
+            </div>
+        </div>
+        <div class="comment_more" page-jump="{{redirectUrl.CommentList}}">
+            更多评论>>
+        </div>
+    </div>
+
+    <div class="mod_title_text this_p" ng-if="DataList.ArticleList.length > 0">
+        <div>老师们也在看</div>
+    </div>
+    <div class="mod_list_img" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50' ng-if="DataList.ArticleList.length > 0">
+        <ul>
+            <li ng-repeat="v in DataList.ArticleList" page-jump="{{v.SiteUrl}}">
+                <div class="this_img">
+                    <img ng-src="{{v.Images[0].ImageUrl}}" />
+                </div>
+                <div class="this_title">
+                    <span ng-repeat="i in v.CategoryList">#{{i.CateName}}</span>
+                </div>
+                <div class="this_tx">{{v.TotalHit}}人看过</div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="unit_article_content_login" ng-if="!isLogin">
+        <h3>想看看同行们发布的？</h3>
+        <button page-jump="{{redirectUrl.Login}}">马上登录</button>
+    </div>
+</section>
+
+<footer class="comment_footer">
+    <a class="footer_heart">赞9</a>
+    <a class="footer_comment">评论9</a>
+    <a class="footer_share">分享9</a>
+    <a class="footer_collect">收藏9</a>
+</footer>

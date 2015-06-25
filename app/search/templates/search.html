@@ -1,0 +1,21 @@
+<header-bar back title="搜索"></header-bar>
+<search-header class="search_home"></search-header>
+
+<section class="scroll_search_index">
+    <dl class="unit_keyword">
+        <dt>热门搜索</dt>
+        <dd ng-repeat="v in DataList.KeywordList track by $index" page-jump="v.SiteUrl">
+            #{{v.Keyword}}
+        </dd>
+    </dl>
+
+    <dl class="unit_keyword">
+        <dt>
+            历史搜索
+            <button ng-click="clearHistory()">清空历史</button>
+        </dt>
+        <dd ng-repeat="(k, v) in DataList.HistoryKey track by $index" page-jump="{{v.SiteUrl}}">
+            #{{v.Keyword}}
+        </dd>
+    </dl>
+</section>

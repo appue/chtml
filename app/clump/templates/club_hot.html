@@ -1,0 +1,29 @@
+<header-bar back title="圈子HOT" right="全部圈子|redirectUrl.Club"></header-bar>
+
+<!--只显示HOT 6个-->
+<section class="mod_scroll" style="padding-bottom:10px;">
+    <ul class="unit_club_list_num">
+        <li ng-repeat="(k, v) in DataList.ClubList track by $index" page-jump="{{v.SiteUrl}}">
+            <i>{{k + 1}}</i>
+            <img ng-src="{{v.ImageUrl}}" />
+            <div>
+                <h2>{{v.ClubName}}</h2>
+                <span ng-repeat="i in v.CategoryList">{{i.CateName}} </span><br>
+                成员：{{v.TotalUser}}
+            </div>
+        </li>
+<!--         <li>
+            <i>2</i>
+            <img src="../themes/temp/7.jpg" />
+            <div>
+                <h2>孩子们的手工王国</h2>
+                玩教具  手工<br>
+                成员：258
+            </div>
+        </li> -->
+    </ul>
+</section>
+
+<!-- <div class="unit_footer_btn">
+    <button page-jump="{{jumpClubList}}">查看全部圈子</button>
+</div> -->

@@ -1,0 +1,11 @@
+<header-bar back title="成员排行榜"></header-bar>
+
+<section class="mod_scroll">
+    <ul class="unit_club_user_list">
+        <li ng-repeat="(k, v) in DataList.UserList track by $index" page-jump="v.SiteUrl">
+            <i>{{k+1}}</i>
+            <img ng-src="{{v.ImageUrl}}" />
+            <p>{{v.UserName}}</p>
+        </li>
+    </ul>
+</section>

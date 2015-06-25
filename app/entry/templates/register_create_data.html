@@ -1,0 +1,48 @@
+<header-bar back right="下一步|goNextStep" title="<span>（</span>1<span>/3）</span>创建个人资料"></header-bar>
+
+<section class="register_layout mod_scroll">
+    <div class="mod_layout">
+        <ul class="register_data">
+            <li class="nickname">
+                <label>昵称</label>
+                <input ng-model="inputVal.nickname" type="text" placeholder="用户名支持汉字、字母、数字"></li>
+            <li class="gender">
+                <span ng-click="inputVal.sex = 1">
+                    <input name="sex" ng-checked="inputVal.sex == 1" type="radio">
+                    <label>女</label>
+                </span>
+                <span ng-click="inputVal.sex = 2">
+                    <input name="sex" ng-checked="inputVal.sex == 2" type="radio">
+                    <label>男</label>
+                </span>
+            </li>
+            <li show-popup="chooseLocation|popupLocation" class="location">{{inputVal.city.Name}} {{inputVal.village.Name}}</li>
+            <li show-popup="chooseJob" class="post">{{inputVal.job}}</li>
+        </ul>
+    </div>
+</section>
+
+<location-data></location-data>
+
+<popup id="chooseJob" title="选择岗位" ng-init="tmpJob = inputVal.job" popup-confirm="chooseJob">
+    <div class="choose_post" ngd-click="chooseJob($event)" selector="li">
+        <ul>
+            <li>
+                <input ng-checked="tmpJob == '园长'" name="job" type="radio">
+                <label>园长</label>
+            </li>
+            <li>
+                <input ng-checked="tmpJob == '保教主任'" name="job" type="radio">
+                <label>保教主任</label>
+            </li>
+            <li>
+                <input ng-checked="tmpJob == '教师'" name="job" type="radio">
+                <label>教师</label>
+            </li>
+            <li>
+                <input ng-checked="tmpJob == '其他'" name="job" type="radio">
+                <label>其他</label>
+            </li>
+        </ul>
+    </div>
+</popup>

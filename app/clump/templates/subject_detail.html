@@ -1,0 +1,57 @@
+<header-bar back transparent title=""></header-bar>
+
+<section class="scrollfix" when-scrolled="loadMore()">
+
+    <div class="unit_find_cate_info">
+        <div>
+            <img ng-src="{{DataList.ImageUrl}}" />
+            <p>
+                {{DataList.LongName}}<br>
+                {{DataList.Description}}
+            </p>
+        </div>
+        <button page-jump="redirectUrl.Club">加入{{DataList.ClubName}}</button>
+    </div>
+
+    <div class="mod_title_text this_p">
+        <div>相关主题</div>
+    </div>
+    <div class="mod_list_img mb0" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
+        <ul>
+            <li ng-repeat="v in DataList.CategoryList track by $index" page-jump="v.SiteUrl">
+                <div class="this_img">
+                    <img ng-src="{{v.ImageUrl}}" />
+                </div>
+                <div class="this_title">
+                    <span>#{{v.CateName}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+ 
+
+    <!--瀑布流-->
+    <falls>
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}">
+            <div class="this_border" page-jump="v.SiteUrl">
+                <img ng-src="{{v.Images[0].ImageUrl}}" />
+                <article>
+                    <div class="this_text">{{v.Images[0].Description}}</div>
+                    
+                    <div class="this_star">{{v.TotalCollect}}</div>
+
+                    <div class="this_user">
+                        <img ng-src="{{v.Author.ImageUrl}}" />
+                        <dl>
+                            <dt>{{v.Author.UserName}}</dt>
+                            <dd>
+                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </article>
+            </div>
+        </li>
+    </falls>
+</section>

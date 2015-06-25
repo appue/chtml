@@ -1,0 +1,116 @@
+<!-- <header-bar back transparent title="{{headerTitle}}"></header-bar> -->
+<header class="mod_header transparent">
+    <a page-back="{{backParam}}" class="back_button"></a>
+    <h1 class="title_content" ng-if="DataList.CategoryList.length > 0">{{headerTitle}}</h1>
+</header>
+
+<section class="scrollfix" when-scrolled="loadMore()" ng-init="currentTab=1">
+
+    <div ng-if="DataList.CategoryList.length > 0" ng-class="cateClass">
+        <ul class="this_list_cate">
+            <li ng-repeat="(k, v) in DataList.CategoryList track by $index" page-jump="{{v.SiteUrl}}">
+                #{{v.CateName}}
+            </li>
+        </ul>
+    </div>
+
+
+    <div ng-if="DataList.CategoryList.length == 0" class="unit_find_cate_info">
+        <div>
+            <img ng-src="{{DataList.CurrentCate.ImageUrl}}" />
+            <p>
+                {{DataList.CurrentCate.CateName}}<br>
+                {{DataList.CurrentCate.Description}}
+            </p>
+        </div>
+    </div>
+
+
+    <ul class="mod_tab_icon">
+        <li ng-click="currentTab=1" ng-class="{current : currentTab==1}">瀑布流</li>
+        <li ng-click="currentTab=2" ng-class="{current : currentTab==2}">垂直平铺</li>
+    </ul>
+
+<!--         <div class="mod_title_text this_p">
+            <div>相关主题</div>
+        </div>
+        <div class="mod_list_img mb0" id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay='50'>
+            <ul>
+                <li>
+                    <div class="this_img">
+                        <img src="../themes/temp/img.jpg" />
+                    </div>
+                    <div class="this_title">
+                        <span>#环境创设</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="this_img">
+                        <img src="../themes/temp/img.jpg" />
+                    </div>
+                    <div class="this_title">#玩教具</div>
+                </li>
+                <li>
+                    <div class="this_img">
+                        <img src="../themes/temp/img.jpg" />
+                    </div>
+                    <div class="this_title">#玩教具</div>
+                </li>
+                <li>
+                    <div class="this_img">
+                        <img src="../themes/temp/img.jpg" />
+                    </div>
+                    <div class="this_title">#玩教具</div>
+                </li>
+            </ul>
+        </div> -->
+
+    <!--瀑布流-->
+    <falls ng-show="currentTab==1">
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
+            <div class="this_border" page-jump="{{v.SiteUrl}}">
+                <img ng-src="{{v.Images[0].ImageUrl}}" />
+                <article>
+                    <div class="this_text">{{v.Images[0].Description}}</div>
+                    
+                    <div class="this_star">{{v.TotalCollect}}</div>
+
+                    <div class="this_user">
+                        <img ng-src="{{v.Author.ImageUrl}}" />
+                        <dl>
+                            <dt>{{v.Author.UserName}}</dt>
+                            <dd>
+                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </article>
+            </div>
+        </li>
+    </falls>
+
+    <!--垂直平铺-->
+    <ul ng-if="currentTab==2" class="mod_list_img_only">
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" page-jump="{{v.SiteUrl}}">
+            <img ng-src="{{v.Images[0].ImageUrl}}" />
+            <article>
+                <div class="this_text">{{v.Images[0].Description}}</div>
+
+                <div class="this_star">{{v.TotalCollect}}</div>
+
+                <div class="this_user">
+                    <img ng-src="{{v.Author.ImageUrl}}" />
+                    <dl>
+                        <dt>{{v.Author.UserName}}</dt>
+                        <dd>
+                            <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                        </dd>
+                    </dl>
+                </div>
+            </article>
+        </li>
+    </ul>
+
+    <div class="mod_list_loading" ng-if="isLoading">loading.....</div>
+    <div class="mod_no_more" ng-if="isNoMore">没有更多数据了！</div>
+</section>

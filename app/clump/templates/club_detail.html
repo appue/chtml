@@ -1,0 +1,81 @@
+<header-bar back transparent title=""></header-bar>
+
+<section class="scrollfix" when-scrolled="loadMore()">
+
+    <div class="unit_find_cate_info">
+        <div>
+            <img ng-src="{{DataList.ImageUrl}}" />
+            <p>
+                {{DataList.ClubName}}<br>
+                {{DataList.Description}}
+            </p>
+        </div>
+    </div>
+
+    <ul class="unit_club_other_info" ng-if="DataList.StateJoin">
+        <li class="this_reg">
+            <p>签到 <span>{{DataList.TotalSign}}</span> / 连续签到 <span>{{DataList.TotalAlwaysSign}}</span></p>
+            <button>签到</button>
+        </li>
+        <li class="this_user">
+            <p>圈成员：{{DataList.TotalMember}}</p>
+            <i page-jump="{{redirectUrl.Ranking}}">查看排行榜</i>
+        </li>
+        <li class="this_acti" page-jump="{{DataList.ActivityList.SiteUrl}}">
+            <p>{{DataList.ActivityList.ActivityName}}</p>
+        </li>
+    </ul>
+
+    <ul class="unit_club_other_info" ng-if="!DataList.StateJoin">
+        <li class="this_user">
+            <p>圈成员：{{DataList.TotalMember}}</p>
+            <button>加入圈子</button>
+        </li>
+        <li class="this_acti" page-jump="{{DataList.ActivityList.SiteUrl}}">
+            <p>{{DataList.ActivityList.ActivityName}}</p>
+        </li>
+    </ul>
+
+    <div class="mod_title_text this_p" ng-if="DataList.CategoryList.length > 0">
+        <div>精选 {{DataList.ArticleTop.length}}</div>
+    </div>
+    <div class="mod_list_img mb0" style="padding-top:10px;" id="wrapper" ng-iscroll="eventScroll" ng-iscroll-delay='50'  ng-if="DataList.ArticleTop.length > 0">
+        <ul style="top:10px;">
+            <li ng-repeat="(k, v) in DataList.ArticleTop track by $index" page-jump="{{v.SiteUrl}}">
+                <div class="this_img">
+                    <img ng-src="{{v.Images[0].ImageUrl}}" />
+                </div>
+                <div class="this_title">
+                    <span ng-repeat="i in v.CategoryList track by $index">#{{i.CateName}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!--瀑布流-->
+    <falls>
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}">
+            <div class="this_border" page-jump="{{v.SiteUrl}}">
+                <img ng-src="{{v.Images[0].ImageUrl}}" />
+                <article>
+                    <div class="this_text">{{v.Images[0].Description}}</div>
+                    
+                    <div class="this_star">{{v.TotalCollect}}</div>
+
+                    <div class="this_user">
+                        <img ng-src="{{v.Author.ImageUrl}}" />
+                        <dl>
+                            <dt>{{v.Author.UserName}}</dt>
+                            <dd>
+                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </article>
+            </div>
+        </li>
+    </falls>
+</section>
+
+
+<button class="btn_camera" ng-camera></button>
