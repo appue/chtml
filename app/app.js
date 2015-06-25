@@ -143,27 +143,11 @@ angular.module('phoneApp', [
         controller: 'tActivityList'
     })
     //活动详情
-    // .state('activityDetail', {
-    //     url: '/activity/detail-{type}-{id}.htm',
-    //     templateUrl: 'templates/activity_detail.html',
-    //     controller: 'tActivityDetail'
-    // })
-    //活动-晒图活动页
-    .state('activityDetailPhoto', {
-        url: '/activity/detail/photo-{id}.htm',
-        templateUrl: 'clump/tp/activity_detail_photo.html',
-        controller: 'tActivityDetailPhoto'
+    .state('activityDetail', {
+        url: '/activity/detail-{type}-{id}.htm',
+        templateUrl: 'templates/activity_detail.html',
+        controller: 'tActivityDetail'
     })
-
-    /*------------------------------------
-    * 发现-活动-话题活动页
-    */
-    .state('activityDetailArticle', {
-        url: '/activity/detail/article-{id}.htm',
-        templateUrl: 'clump/tp/activity_detail_article.html',
-        controller: 'tActivityDetailArticle'
-    })
-
     /*------------------------------------
     * 专题列表
     */
