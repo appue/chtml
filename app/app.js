@@ -23,11 +23,7 @@ angular.module('phoneApp', [
         templateUrl: 'home/tp/msg.html',
         controller: 'tMsgIndex'
     })
-    /*------------------------------------
-     * 跟某一用户聊天
-     * @params:
-     *     uid: 用户ID
-     */
+    //跟某一用户聊天
     .state('msgChat', {
         url: '/msg/chat-{uid}.htm',
         resolve: { isCheck: function () {
@@ -36,9 +32,7 @@ angular.module('phoneApp', [
         templateUrl: 'home/tp/msg-chat.html',
         controller: 'tMsgChat'
     })
-    /*------------------------------------
-     * 消息中心-通知
-     */
+    //消息中心-通知
     .state('msgNotice', {
         url: '/msg/notice.htm',
         resolve: { isCheck: function () {
@@ -47,9 +41,7 @@ angular.module('phoneApp', [
         templateUrl: 'home/tp/msg-notice.html',
         controller: 'tMsgNotice'
     })
-    /*------------------------------------
-     * 消息中心-评论
-     */
+    //消息中心-评论
     .state('msgComment', {
         url: '/msg/comment.htm',
         resolve: { isCheck: function () {
@@ -58,9 +50,7 @@ angular.module('phoneApp', [
         templateUrl: 'home/tp/msg-comment.html',
         controller: 'tMsgComment'
     })
-    /*------------------------------------
-     * 消息中心-赞
-     */
+    //消息中心-赞
     .state('msgPraise', {
         url: '/msg/praise.htm',
         resolve: { isCheck: function () {
@@ -69,17 +59,13 @@ angular.module('phoneApp', [
         templateUrl: 'home/tp/msg-praise.html',
         controller: 'tMsgPraise'
     })
-    /*------------------------------------
-     * 消息中心-邀请好友
-     */
+    //消息中心-邀请好友
     .state('msgSearch', {
         url: '/msg/search.htm',
         templateUrl: 'home/tp/msg-search.html',
         controller: 'tMsgSearch'
     })
-    /*------------------------------------
-     * 消息中心-私聊
-     */
+    //消息中心-私聊
     .state('msgWhisper', {
         url: '/msg/whisper.htm',
         resolve: { isCheck: function () {
@@ -148,18 +134,13 @@ angular.module('phoneApp', [
         templateUrl: 'templates/activity_detail.html',
         controller: 'tActivityDetail'
     })
-    /*------------------------------------
-    * 专题列表
-    */
+    //专题列表
     .state('subjectList', {
         url: '/subject/list.htm',
         templateUrl: 'clump/tp/subject_list.html',
         controller: 'tSubjectList'
     })
-
-    /*------------------------------------
-    * 专题内容
-    */
+    //专题内容
     .state('subjectDetail', {
         url: '/subject/detail-{id}.htm',
         templateUrl: 'clump/tp/subject_detail.html',
