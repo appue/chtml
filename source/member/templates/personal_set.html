@@ -99,17 +99,6 @@
     </div>
 </popup>
 
-<popup id="location" title="选择地区" popup-confirm="popupLocation">
-    <div class="choose_location" ngd-click="chooseLocation($event)" selector="li">
-        <div class="select_box">
-            <ul>
-                <li ng-class="{current:v.Id == inputVal.city.Id}" data-city="{{v}}" ng-repeat="(k, v) in cityList track by $index">{{v.Name}}</li>
-            </ul>
-        </div>
-        <div class="select_box">
-            <ul>
-                <li ng-class="{current:v.Id == inputVal.village.Id}" data-village="{{v}}" ng-repeat="(k, v) in villageList track by $index">{{v.Name}}</li>
-            </ul>
-        </div>
-    </div>
+<popup id="location" title="选择位置" popup-confirm="confirmLocation">
+    <location-data></location-data>
 </popup>
