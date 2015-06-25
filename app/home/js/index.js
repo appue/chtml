@@ -4,7 +4,7 @@
 */
 angular.module('phoneApp')
 
-.controller('HomeIndexCtrl', function (
+.controller('tHome', function (
     $scope, 
     $state,
     $timeout,

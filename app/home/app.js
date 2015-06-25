@@ -44,7 +44,7 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'templates/msg.html',
+        templateUrl: 'tp/msg.html',
         controller: 'tMsg'
     })
 

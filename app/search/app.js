@@ -13,7 +13,7 @@ angular.module('phoneApp', [
     */
     .state('index', {
         url: '/index',
-        templateUrl: 'templates/search.html',
+        templateUrl: 'tp/search.html',
         controller: 'tSearchIndex'
     })
 
@@ -22,7 +22,7 @@ angular.module('phoneApp', [
     */
     .state('result', {
         url: '/result',
-        templateUrl: 'templates/search-result.html',
+        templateUrl: 'tp/search-result.html',
         controller: 'tSearchResult'
     });
 
