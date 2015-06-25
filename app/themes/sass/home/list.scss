@@ -1,0 +1,207 @@
+﻿.unit_msg_list_01{
+    background: #fff;
+    padding: 0 10px 10px;
+    li{
+        display: -webkit-box;
+        padding: 10px 0;
+        @include border_bottom_half;
+        img{
+            margin-right: 10px;
+            display: block;
+            -webkit-border-radius: 40px;
+            width: 40px;
+            height: 40px;
+        }
+        dl{
+            -webkit-box-flex: 1;
+            dt{
+                line-height: 20px;
+                i{
+                    font-size: 12px;
+                    @include gray;
+                    float: right;
+                }
+            }
+            dd{
+                font-size: 12px;
+                @include gray;
+            }
+        }
+    }
+}
+
+
+.unit_msg_list_02{
+    background: #fff;
+    padding: 0 10px 10px;
+    li{
+        display: -webkit-box;
+        padding: 10px 0;
+        @include border_bottom_half;
+        img{
+            margin-right: 10px;
+            display: block;
+            -webkit-border-radius: 40px;
+            width: 40px;
+            height: 40px;
+        }
+        dl{
+            -webkit-box-flex: 1;
+            dt{
+                line-height: 25px;
+                @include green;
+            }
+            dd{
+                font-size: 12px;
+                &:last-child{
+                    @include gray;
+                }
+            }
+        }
+    }
+}
+
+.unit_msg_list_03{
+    background: #fff;
+    padding: 0 10px 10px;
+    li{
+        @include border_bottom_half;
+        background-image: url(img/icon_setting.png);
+        background-repeat: no-repeat;
+        background-size: 25px auto;
+        text-indent: 25px;
+        line-height: 20px;
+        padding: 10px 0;
+        &.i_hit{
+            background-position: 0 10px;
+        }
+        &.i_comment{
+            background-position: 0 -20px;
+        }
+        &.i_msg{
+            background-position: 0 -54px;
+        }
+        &.i_talk{
+            background-position: 0 -86px;
+        }
+        &.i_friend{
+            background-position: 0 -118px;
+        }
+        span{
+            padding-right: 10px;
+            position: relative;
+            &.i_new:after{
+                position: absolute;
+                content: "";
+                display: block;
+                right: 0;
+                top: 0;
+                width: 6px;
+                height: 6px;
+                background: red;
+                -webkit-border-radius: 6px;
+            }
+        }
+    }
+}
+
+
+.unit_msg_list_04{
+    background: #fff;
+    padding: 0 10px 10px;
+    li{
+        display: -webkit-box;
+        padding: 10px 0;
+        @include border_bottom_half;
+        img{
+            margin-right: 10px;
+            display: block;
+            -webkit-border-radius: 40px;
+            width: 40px;
+            height: 40px;
+        }
+        dl{
+            -webkit-box-flex: 1;
+            dt{
+                line-height: 25px;
+                @include green;
+            }
+            dd{
+                font-size: 12px;
+                i{
+                    @include gray;
+                }
+            }
+        }
+        div{
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            img{
+                -webkit-border-radius: 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+.unit_msg_list_user{
+    background: #fff;
+    padding: 5px;
+    li{
+        display: -webkit-box;
+        padding: 5px;
+        @include border_bottom_half;
+        -webkit-box-align: center;
+        img{
+            display: block;
+            width: 40px;
+            height: 40px;
+            margin-right: 5px;
+            -webkit-border-radius: 40px;
+        }
+        p{
+            display: block;
+            -webkit-box-flex: 1;
+            @include ellipsis;
+        }
+        .this_btn{
+            @include button(70px, 30px);
+            background: #cacdcb;
+            &.current{
+                background: #3cc482;
+            }
+        }
+    }
+}
+
+
+.unit_msg_list_search{
+    background: #fff;
+    padding: 0 10px;
+    li{
+        background-image: url(img/icon_friend.png);
+        background-repeat: no-repeat;
+        background-size: 25px auto;
+        line-height: 20px;
+        padding: 10px 0;
+        text-indent: 30px;
+        @include border_bottom_half;
+        &:last-child{
+            border: none;
+        }
+        &.i_weibo{
+            background-position: 0 10px;
+        }
+        &.i_weixin{
+            background-position: 0 -30px;
+        }
+        &.i_qq{
+            background-position: 0 -70px;
+        }
+        &.i_friend{
+            background-position: 0 -110px;
+        }
+    }
+}

@@ -1,0 +1,174 @@
+﻿$bgcolor: #e6e8e7;
+$green_val: #3cc482;
+$gray_val: #cacdcb;
+
+
+/*
+* 圈子列表
+* 发现-圈子.html
+*/
+.unit_club_list_num{
+    background: #fff;
+    padding: 0 10px;
+    li{
+        padding: 10px 0;
+        display: -webkit-box;
+        @include border_bottom_half;
+        -webkit-box-align: center;
+        &:last-child{
+            border: none;
+        }
+        i{
+            display: block;
+            text-align: center;
+            width: 15px;
+            margin-right: 10px;
+            line-height: 20px;
+            text-align: left;
+        }
+        img{
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        div{
+            display: block;
+            -webkit-box-flex: 1;
+            line-height: 20px;
+            @include gray;
+            h2{
+                color: #000;
+                font-size: 14px;
+                @include ellipsis;
+            }
+        }
+    }
+}
+
+/*专题-列表.html*/
+.unit_subject_list{
+    background: #fff;
+    padding: 0 10px;
+    li{
+        display: -webkit-box;
+        padding: 10px 0;
+        @include border_bottom_half;
+        &:last-child{
+            border: none;
+        }
+        -webkit-box-align: center;
+        div{
+            -webkit-box-flex: 1;
+            @include ellipsis;
+        }
+        img{
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+
+
+/*发现-活动.html*/
+.unit_activity_list{
+    background: #fff;
+    padding: 0 10px;
+    li{
+        padding: 10px 0;
+        background: url(img/icon_arrow.png) no-repeat right center;
+        background-size: 10px auto;
+        &:nth-child(1),
+        &:nth-child(2){
+            background: none;
+        }
+        @include border_bottom_half;
+        &:last-child{
+            border: none;
+        }
+        h2{
+            line-height: 20px;
+            @include ellipsis;
+        }
+        h3{
+            font-size: 12px;
+            @include gray;
+            line-height: 20px;
+            @include ellipsis;
+        }
+        img{
+            width: 100%;
+            display: block;
+            margin-top: 10px;
+        }
+    }
+}
+
+
+/*发现-圈子-全部列表.html*/
+.unit_list_club{
+    @include border_half;
+    dt{
+        line-height: 25px;
+    }
+    dd{
+        background: #fff;
+        padding: 0 10px;
+        div{
+            display: -webkit-box;
+            padding: 10px 0;
+            @include border_bottom_half;
+            &:last-child{
+                border: none;
+            }
+            img{
+                width: 70px;
+                height: 70px;
+                display: block;
+                margin-right: 10px;
+            }
+            article{
+                display: block;
+                -webkit-box-flex: 1;
+                line-height: 20px;
+                // font-size: 12px;
+                color: #cacdcb;
+                p{
+                    font-size: 16px;
+                    color: #000;
+                    line-height: 30px;
+                    @include ellipsis;
+                }
+            }
+        }
+    }
+}
+
+
+/*发现-圈子成员排行.html*/
+.unit_club_user_list{
+    background: #fff;
+    padding: 0 10px;
+    li{
+        padding: 5px 0;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        @include border_bottom_half;
+        &:last-child{
+            border: none;
+        }
+        i,
+        p,
+        img{
+            display: block;
+        }
+        i{
+            min-width: 30px;
+        }
+        img{
+            width: 40px;
+            height: 40px;
+            margin-right: 5px;
+            -webkit-border-radius: 40px;
+        }
+    }
+}
