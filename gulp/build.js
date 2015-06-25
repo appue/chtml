@@ -8,7 +8,7 @@ var getProject = require('./tools/folder.js'),
 
 var runType     = argv.run || '', // dev、build
     packageType = argv.g || 'app', // 默认打APP的包，如果要打H5的包就 --g web
-    cssPath     = './mockup/themes',
+    cssPath     = './app/themes',
     netPath     = '',
     d           = new Date(),
     version     = d.getTime(),
@@ -21,8 +21,7 @@ if (packageType == 'web') {
 switch (runType) {
     case 'dev':
         netPort = argv.port || 9999;
-        cssPath = './source/themes/';
-        netPath = './source/';
+        netPath = './app/';
     break;
 
     case 'build':
@@ -35,16 +34,16 @@ switch (runType) {
         netPath = './word/';
     break;
 
-    default: //--html
-        netPort = argv.port || 7777;
-        netPath = './mockup/';
+    default: //--dev
+        netPort = argv.port || 9999;
+        netPath = './app/';
 }
 
 module.exports = function (gulp, $) {
 
     gulp.task('sass', function() {
 
-        return gulp.src('./mockup/themes/*.scss')
+        return gulp.src('./app/themes/*.scss')
             .pipe($.plumber())
             .pipe($.sass())
             .pipe($.autoprefixer('last 3 version'))
@@ -55,22 +54,12 @@ module.exports = function (gulp, $) {
     });
 
 
-    gulp.task('images', function() {
-        return gulp.src([
-                './mockup/themes/**/*.jpg',
-                './mockup/themes/**/*.png',
-                './mockup/themes/**/*.gif'
-            ])
-            .pipe(gulp.dest('./source/themes/'))
-    });
-
-
     gulp.task('clean', function() {
         var dir = buildFolder;
 
         if (runType == 'dev') {
 
-            dir = './source/themes';
+            dir = './app/themes';
 
         } else if (runType == 'build') {
 
@@ -117,18 +106,10 @@ module.exports = function (gulp, $) {
 
         $.livereload.listen();
 
-        if (!runType) {
-
-            gulp.src('./mockup/**/*.html')
-                .pipe($.watch('./mockup/**/*.html', function() {}))
-                .pipe($.livereload());
-
-        }
-
-        gulp.src('./mockup/themes/**/*.scss')
+        gulp.src('./app/themes/**/*.scss')
             .pipe($.plumber())
-            .pipe($.watch('./mockup/themes/**/*.scss', function() {
-                gulp.src('./mockup/themes/*.scss')
+            .pipe($.watch('./app/themes/**/*.scss', function() {
+                gulp.src('./app/themes/*.scss')
                     .pipe($.plumber())
                     .pipe($.sass())
                     .pipe($.autoprefixer('last 3 version'))
@@ -140,17 +121,15 @@ module.exports = function (gulp, $) {
             }))
 
 
-        if (runType == 'dev') {
-            gulp.src([
-                    './source/**/*.html',
-                    './source/**/*.js'
-                ])
-                .pipe($.watch([
-                    './source/**/*.html',
-                    './source/**/*.js'
-                ]))
-                .pipe($.livereload())
-        }
+        gulp.src([
+                './app/**/*.html',
+                './app/**/*.js'
+            ])
+            .pipe($.watch([
+                './app/**/*.html',
+                './app/**/*.js'
+            ]))
+            .pipe($.livereload())
 
     });
 
@@ -169,10 +148,10 @@ module.exports = function (gulp, $) {
         var fd = argv.f;
 
         if (fd) {
-            return gulp.src('./source/'+ fd +'/index.html')
+            return gulp.src('./app/'+ fd +'/index.html')
                 .pipe(
                     $.inject(
-                        gulp.src('./source/common/**/*.js', {read: false}), { 
+                        gulp.src('./app/common/**/*.js', {read: false}), { 
                             relative: true, 
                             name: 'injectcommon' 
                         }
@@ -180,22 +159,22 @@ module.exports = function (gulp, $) {
                 )
                 .pipe(
                     $.inject(
-                        gulp.src(['./source/'+ fd +'/js/*.js', './source/themes/'+ fd +'.css'], {read: false}), { 
+                        gulp.src(['./app/'+ fd +'/js/*.js', './app/themes/'+ fd +'.css'], {read: false}), { 
                             relative: true 
                         }
                     )
                 )
-                .pipe(gulp.dest('./source/'+ fd));
+                .pipe(gulp.dest('./app/'+ fd));
 
         } else {
 
             getProject({
                 callback: function(folder){
                     folder.forEach( function(v) {
-                        return gulp.src('./source/'+ v +'/index.html')
+                        return gulp.src('./app/'+ v +'/index.html')
                             .pipe(
                                 $.inject(
-                                    gulp.src('./source/common/**/*.js', {read: false}), { 
+                                    gulp.src('./app/common/**/*.js', {read: false}), { 
                                         relative: true, 
                                         name: 'injectcommon' 
                                     }
@@ -203,12 +182,12 @@ module.exports = function (gulp, $) {
                             )
                             .pipe(
                                 $.inject(
-                                    gulp.src(['./source/'+ v +'/js/*.js', './source/themes/'+ v +'.css'], {read: false}), {
+                                    gulp.src(['./app/'+ v +'/js/*.js', './app/themes/'+ v +'.css'], {read: false}), {
                                         relative: true
                                     }
                                 )
                             )
-                            .pipe(gulp.dest('./source/'+ v));
+                            .pipe(gulp.dest('./app/'+ v));
                     });
                 }
             });
@@ -238,7 +217,7 @@ module.exports = function (gulp, $) {
                 }
 
                 folder.forEach( function(v) {
-                    return gulp.src('./source/'+ v +'/*.html')
+                    return gulp.src('./app/'+ v +'/*.html')
                         .pipe($.htmlReplace({ 'js': jsFiles }))
                         .pipe(gulp.dest(buildFolder + v));
                 });
@@ -250,7 +229,7 @@ module.exports = function (gulp, $) {
     //--生成JS模板数据
     gulp.task('templates', function() {
         //--生成公共JS模板数据
-        gulp.src('./source/common/**/*.html')
+        gulp.src('./app/common/**/*.html')
             .pipe($.ngHtml2js({
                 moduleName: "phoneApp",
                 prefix: "../common/"
@@ -261,7 +240,7 @@ module.exports = function (gulp, $) {
         getProject({
             callback: function(folder){
                 folder.forEach( function(v) {
-                    return gulp.src('./source/'+ v +'/templates/*.html')
+                    return gulp.src('./app/'+ v +'/templates/*.html')
                         .pipe($.ngHtml2js({
                             moduleName: "phoneApp",
                             prefix: "templates/"
@@ -275,7 +254,7 @@ module.exports = function (gulp, $) {
     //--css 迁移
     gulp.task('movecss', function() {
         return gulp.src([
-                './source/**/*.css'
+                './app/**/*.css'
             ])
             .pipe(gulp.dest(buildFolder));
     });
@@ -283,8 +262,8 @@ module.exports = function (gulp, $) {
     //--image 迁移
     gulp.task('moveimages', function() {
         return gulp.src([
-                './source/**/*.jpg',
-                './source/**/*.png'
+                './app/**/*.jpg',
+                './app/**/*.png'
             ])
             .pipe(gulp.dest(buildFolder));
     });
@@ -292,7 +271,7 @@ module.exports = function (gulp, $) {
     //--json 迁移
     gulp.task('movejson', function() {
         return gulp.src([
-                './source/**/*.json'
+                './app/**/*.json'
             ])
             .pipe(gulp.dest(buildFolder));
     });
@@ -301,16 +280,16 @@ module.exports = function (gulp, $) {
     gulp.task('minjs', function() {
         //--框架JS压缩合并
         var framejs = [
-                './source/lib/fastclick.js',
-                './source/lib/iscroll-lite.js',
-                './source/lib/slide.js',
-                './source/lib/md5.js',
-                './source/lib/megapix-image.js',
+                './app/lib/fastclick.js',
+                './app/lib/iscroll-lite.js',
+                './app/lib/slide.js',
+                './app/lib/md5.js',
+                './app/lib/megapix-image.js',
 
-                './source/lib/config.js',
-                './source/lib/angular.js',
-                './source/lib/angular-touch.js',
-                './source/lib/angular-ui-router.js'
+                './app/lib/config.js',
+                './app/lib/angular.js',
+                './app/lib/angular-touch.js',
+                './app/lib/angular-ui-router.js'
             ];
 
         if (packageType == 'web') {
@@ -329,7 +308,7 @@ module.exports = function (gulp, $) {
 
         //--项目公共JS压缩、合并（包括公共模板数据）
         gulp.src([
-                './source/common/**/*.js',
+                './app/common/**/*.js',
                 './.tmp/common/**/*.js'
             ])
             .pipe($.concat('common.js'))
@@ -342,9 +321,9 @@ module.exports = function (gulp, $) {
             callback: function(folder){
                 folder.forEach( function(v) {
                     return gulp.src([
-                            './source/'+ v +'/app.js',
+                            './app/'+ v +'/app.js',
                             './.tmp/'+ v +'/*.js',
-                            './source/'+ v +'/js/**/*.js'
+                            './app/'+ v +'/js/**/*.js'
                         ])
                         .pipe($.concat('index.js'))
                         .pipe($.ngAnnotate())
