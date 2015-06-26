@@ -10,6 +10,11 @@ angular.module('phoneApp', [
     //     templateUrl: 'home/tp/start.html',
     //     controller: 'tStart'
     // })
+    .state('index', {
+        abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
+        url: '/index',
+        templateUrl: 'home/tp/main.html'
+    })
     //首页
     .state('index', {
         url: '/index',
