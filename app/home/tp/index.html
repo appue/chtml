@@ -1,21 +1,16 @@
-
-<ion-nav-bar animation="nav-title-slide-ios7" no-tap-scroll="true">
-</ion-nav-bar>
-
-<ion-nav-view>
-    <ion-view>
-        <ion-content>
+<ion-view>
+<ion-content>
 
 
-        
-            <ul class="mod_tab_2" ng-init="currentTab=1">
-                <li ng-click="showLeft()" ng-class="{current : currentTab==1}">精品</li>
-                <li ng-click="showRight();" ng-class="{current : currentTab==2}">关注</li>
-                <i class="line" ng-class="{tmp: currentTab == 2}"></i>
-            </ul>
 
-<section class="unit_home" ng-style="noScroll" when-scrolled="loadMore()">
-    <div ng-if="currentTab==1">
+    <ul class="mod_tab_2" ng-init="currentTab=1">
+        <li ng-click="showLeft()" ng-class="{current : currentTab==1}">精品</li>
+        <li ng-click="showRight();" ng-class="{current : currentTab==2}">关注</li>
+        <i class="line" ng-class="{tmp: currentTab == 2}"></i>
+    </ul>
+
+    <section ng-style="noScroll" when-scrolled="loadMore()">
+        <div ng-if="currentTab==1">
         <div class="mod_slide" ng-slide="eventSlide">
             <ul>
                 <li ng-repeat="(k, v) in DataList.ImageList track by $index">
@@ -81,6 +76,5 @@
 </section>
 
 <footer-bar></footer-bar>
-        </ion-content>
-    </ion-view>
-</ion-nav-view>
+</ion-content>
+</ion-view>

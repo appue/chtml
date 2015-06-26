@@ -10,14 +10,14 @@ angular.module('phoneApp', [
     //     templateUrl: 'home/tp/start.html',
     //     controller: 'tStart'
     // })
-    .state('index', {
+    .state('home', {
         abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
-        url: '/index',
+        url: '/home',
         templateUrl: 'home/tp/main.html'
     })
     //首页
-    .state('index', {
-        url: '/index',
+    .state('home.index', {
+        url: '/index.htm',
         templateUrl: 'home/tp/index.html',
         controller: 'tHome'
     })
@@ -186,9 +186,9 @@ angular.module('phoneApp', [
     var isShow = localStorage.getItem('PHONEAPP_START');
 
     if (isShow) {
-        $urlRouterProvider.otherwise('/index');
+        $urlRouterProvider.otherwise('/home/index.htm');
     } else {
-        $urlRouterProvider.otherwise('/index');
+        $urlRouterProvider.otherwise('/home/index.htm');
     }
 
 });
