@@ -162,7 +162,8 @@ module.exports = function (gulp, $) {
                             '!./app/common/**/*.js',
                             '!./app/lib/*',
                             '!./app/api/*',
-                            '!./app/themes/*'
+                            '!./app/themes/*',
+                            '!./app/bower_components/**/*.js'
                         ], 
                         {read: false}), {relative: true}
                 )
