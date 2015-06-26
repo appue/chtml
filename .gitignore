@@ -9,3 +9,4 @@ mockup/themes/*.css
 /.tmp/
 /.folder
 app/themes/all.css
+app/bower_components/

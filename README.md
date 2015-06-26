@@ -4,6 +4,7 @@
 运行环境基于nodejs、npm、gulp，去网上下载相关的代码安装吧
 
 ## 二、初始化数据
+- bower install
 - npm install
 
 ## 三、运行
@@ -17,7 +18,7 @@
 在运行开发环境前需要运行命令：
 - gulp inject (--f [项目名称])
 
-- gulp --run dev
+- gulp
 
 4.JS编译成正式环境下的代码
 - gulp --run build || gulp --run build --g app [生成APP压缩包]
