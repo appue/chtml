@@ -124,12 +124,14 @@ module.exports = function (gulp, $) {
         gulp.src([
                 './app/**/*.html',
                 './app/**/*.js',
-                '!./app/bower_components/*.js'
+                '!./app/bower_components/**/*.html',
+                '!./app/bower_components/**/*.js'
             ])
             .pipe($.watch([
                 './app/**/*.html',
                 './app/**/*.js',
-                '!./app/bower_components/*.js'
+                '!./app/bower_components/**/*.html',
+                '!./app/bower_components/**/*.js'
             ]))
             .pipe($.livereload())
 
