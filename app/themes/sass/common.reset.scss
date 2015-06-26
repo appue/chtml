@@ -121,16 +121,6 @@ a.disable, button.disable {
     @include scrollfix;
 }
 
-//蒙版
-.mod_mask {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 200;
-    background: rgba(0, 0, 0, .4);
-    width: 100%;
-    height: 100%;
-}
 //toast样式
 .notifier {
     position: absolute;

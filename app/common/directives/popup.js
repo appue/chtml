@@ -105,10 +105,10 @@ angular.module('phoneApp')
 
 			element.on('click', function (event) {
 
-				if (!document.querySelector('.mod_mask')) {
-					var maskTpl = $compile('<div ng-show="showMask" class="mod_mask"></div>');
-					angular.element(document.getElementById('js_view')).append(maskTpl(scope));
-				}
+				// if (!document.querySelector('.mod_mask')) {
+				// 	var maskTpl = $compile('<div ng-show="showMask" class="mod_mask"></div>');
+				// 	angular.element(document.getElementById('js_view')).append(maskTpl(scope));
+				// }
 
 				var popupName = attrs.showPopup.split('|')[0],
 					$thisPopup = angular.element(document.getElementById('popup_' + popupName));

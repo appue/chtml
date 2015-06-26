@@ -1,0 +1,36 @@
+<ion-view class="entry">
+
+    <div class='login_bg'></div>
+
+    <div class="entry_button">
+        <a show-popup="register" class="register">注册</a>
+        <a page-jump="goLoginPage" class="login">登录</a>
+    </div>
+    <div class="entry_help">
+        <a>? 帮助与反馈</a>
+    </div>
+
+</ion-view>
+
+<ion-nav-buttons side="right">
+    <a ng-click="deleteMoreGoods($event);" ng-show="noResults"></a>
+</ion-nav-buttons>
+
+<popup id="register" title="用户注册" no-confirm no-cancel>
+    <div class="choose_register" ngd-click="itemClick($event)" selector="li">
+        <ul class="mod_list_default">
+            <li class="icon_weixin">
+                <a>微信注册</a>
+            </li>
+            <li class="icon_mobile">
+                <a>手机号注册</a>
+            </li>
+            <li class="icon_qq">
+                <a>QQ注册</a>
+            </li>
+            <li class="icon_weibo last_border_line">
+                <a>微博注册</a>
+            </li>
+        </ul>
+    </div>
+</popup>

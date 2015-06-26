@@ -1,3 +1,45 @@
+.entry {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    .login_bg {
+        width: 143px;
+        height: 52px;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        margin-left: -72px;
+        background: url(img/login_bg.png) no-repeat;
+        background-size: 143px 52px;
+    }
+    .entry_button {
+        width: 136px;
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        margin-left: -68px;
+        a {
+            font-size: 15px;
+            @include button(136px, 36px);
+            &.register {
+                background-color: #3cc482;
+                margin-bottom: 13px;
+            }
+            &.login {
+                line-height: 34px;
+                border: 1px solid #3cc482;
+                color: #3cc482;
+                background-color: #fff;
+            }
+        }
+    }
+    .entry_help {
+        width: 100%;
+        position: absolute;
+        bottom: 20px;
+        text-align: center;
+    }
+}
 .login_entry {
     width: 100%;
     height: 100%;
