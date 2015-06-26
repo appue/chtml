@@ -20,7 +20,7 @@ module.exports = function (gulp, $) {
     gulp.task('html', ['sass', 'connect', 'watch']);
 
 
-    gulp.task('dev', ['sass', 'images', 'connect', 'watch']);
+    gulp.task('dev', ['sass', 'connect', 'watch']);
 
     
     gulp.task('build', ['replacehtml', 'templates', 'movecss', 'moveimages', 'movejson'], function() {
@@ -34,8 +34,8 @@ module.exports = function (gulp, $) {
     gulp.task('run', ['clean'], function () {
 
         switch (runType) {
-            case 'dev':
-                gulp.start('dev'); //----开发调试任务启动
+            case 'html':
+                gulp.start('html'); //---静态资源服务
             break;
 
             case 'build':
@@ -47,7 +47,7 @@ module.exports = function (gulp, $) {
             break;
 
             default:
-                gulp.start('html'); //---静态资源服务
+                gulp.start('dev'); //----开发调试任务启动
         }
 
     });
