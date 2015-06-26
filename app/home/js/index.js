@@ -14,8 +14,8 @@ angular.module('phoneApp')
     ENV
 ){
 
-    $ionicLoading.show({
-      template: 'Loading...'
-    });
+    // $ionicLoading.show({
+    //   template: 'Loading...'
+    // });
 
 });

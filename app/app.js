@@ -21,15 +21,23 @@ angular.module('phoneApp', [
         templateUrl: 'home/tp/index.html',
         controller: 'tHome'
     })
+
+
+    //消息中心
+    .state('msg', {
+        abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
+        url: '/msg',
+        templateUrl: 'home/tp/main.html'
+    })
     //消息中心首页
-    .state('msgIndex', {
-        url: '/msg/index.htm',
+    .state('msg.index', {
+        url: '/index.htm',
         templateUrl: 'home/tp/msg.html',
         controller: 'tMsgIndex'
     })
     //跟某一用户聊天
-    .state('msgChat', {
-        url: '/msg/chat-{uid}.htm',
+    .state('msg.chat', {
+        url: '/chat-{uid}.htm',
         resolve: { isCheck: function () {
             return true;
         }},
@@ -37,8 +45,8 @@ angular.module('phoneApp', [
         controller: 'tMsgChat'
     })
     //消息中心-通知
-    .state('msgNotice', {
-        url: '/msg/notice.htm',
+    .state('msg.notice', {
+        url: '/notice.htm',
         resolve: { isCheck: function () {
             return true;
         }},
@@ -46,8 +54,8 @@ angular.module('phoneApp', [
         controller: 'tMsgNotice'
     })
     //消息中心-评论
-    .state('msgComment', {
-        url: '/msg/comment.htm',
+    .state('msg.comment', {
+        url: '/comment.htm',
         resolve: { isCheck: function () {
             return true;
         }},
@@ -55,8 +63,8 @@ angular.module('phoneApp', [
         controller: 'tMsgComment'
     })
     //消息中心-赞
-    .state('msgPraise', {
-        url: '/msg/praise.htm',
+    .state('msg.praise', {
+        url: '/praise.htm',
         resolve: { isCheck: function () {
             return true;
         }},
@@ -64,27 +72,20 @@ angular.module('phoneApp', [
         controller: 'tMsgPraise'
     })
     //消息中心-邀请好友
-    .state('msgSearch', {
-        url: '/msg/search.htm',
+    .state('msg.search', {
+        url: '/search.htm',
         templateUrl: 'home/tp/msg-search.html',
         controller: 'tMsgSearch'
     })
     //消息中心-私聊
-    .state('msgWhisper', {
-        url: '/msg/whisper.htm',
+    .state('msg.whisper', {
+        url: '/whisper.htm',
         resolve: { isCheck: function () {
             return true;
         }},
         templateUrl: 'home/tp/msg-whisper.html',
         controller: 'tMsgWhisper'
     })
-
-    .state('setFeedback', {
-        url: '/set/feedback',
-        templateUrl: 'home/tp/set-feedback.html',
-        controller: 'tSetFeedback'
-    })
-
 
 
 
