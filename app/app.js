@@ -4,12 +4,7 @@ angular.module('phoneApp', [
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-    //开始页面
-    // .state('start', {
-    //     url: '/start.htm',
-    //     templateUrl: 'home/tp/start.html',
-    //     controller: 'tStart'
-    // })
+    /*------------------------首页模块------------------------*/
     .state('home', {
         abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
         url: '/home',
@@ -23,16 +18,16 @@ angular.module('phoneApp', [
     })
 
 
-    //消息中心
+    /*------------------------消息中心模块------------------------*/
     .state('msg', {
         abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
         url: '/msg',
-        templateUrl: 'home/tp/main.html'
+        templateUrl: 'message/tp/main.html'
     })
     //消息中心首页
     .state('msg.index', {
         url: '/index.htm',
-        templateUrl: 'home/tp/msg.html',
+        templateUrl: 'message/tp/index.html',
         controller: 'tMsgIndex'
     })
     //跟某一用户聊天
@@ -41,7 +36,7 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'home/tp/msg-chat.html',
+        templateUrl: 'message/tp/chat.html',
         controller: 'tMsgChat'
     })
     //消息中心-通知
@@ -50,7 +45,7 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'home/tp/msg-notice.html',
+        templateUrl: 'message/tp/notice.html',
         controller: 'tMsgNotice'
     })
     //消息中心-评论
@@ -59,7 +54,7 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'home/tp/msg-comment.html',
+        templateUrl: 'message/tp/comment.html',
         controller: 'tMsgComment'
     })
     //消息中心-赞
@@ -68,13 +63,13 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'home/tp/msg-praise.html',
+        templateUrl: 'message/tp/praise.html',
         controller: 'tMsgPraise'
     })
     //消息中心-邀请好友
     .state('msg.search', {
         url: '/search.htm',
-        templateUrl: 'home/tp/msg-search.html',
+        templateUrl: 'message/tp/search.html',
         controller: 'tMsgSearch'
     })
     //消息中心-私聊
@@ -83,13 +78,21 @@ angular.module('phoneApp', [
         resolve: { isCheck: function () {
             return true;
         }},
-        templateUrl: 'home/tp/msg-whisper.html',
+        templateUrl: 'message/tp/whisper.html',
         controller: 'tMsgWhisper'
     })
 
 
 
 
+
+
+    /*------------------------发现模块------------------------*/
+    .state('forum', {
+        abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
+        url: '/forum',
+        templateUrl: 'forum/tp/main.html'
+    })
 
     //发现首页
     .state('findIndex', {
