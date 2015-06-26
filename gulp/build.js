@@ -123,11 +123,13 @@ module.exports = function (gulp, $) {
 
         gulp.src([
                 './app/**/*.html',
-                './app/**/*.js'
+                './app/**/*.js',
+                '!./app/bower_components/*.js'
             ])
             .pipe($.watch([
                 './app/**/*.html',
-                './app/**/*.js'
+                './app/**/*.js',
+                '!./app/bower_components/*.js'
             ]))
             .pipe($.livereload())
 
@@ -216,10 +218,10 @@ module.exports = function (gulp, $) {
         getProject({
             callback: function(folder){
                 folder.forEach( function(v) {
-                    return gulp.src('./app/'+ v +'/templates/*.html')
+                    return gulp.src('./app/'+ v +'/tp/*.html')
                         .pipe($.ngHtml2js({
                             moduleName: "phoneApp",
-                            prefix: "templates/"
+                            prefix: "tp/"
                         }))
                         .pipe(gulp.dest("./.tmp/"+ v));
                 });

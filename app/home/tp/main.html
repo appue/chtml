@@ -1,10 +1,25 @@
 <!-- 主头部容器 -->
-<ion-nav-bar class="bar-positive" animation="nav-title-slide-ios7" no-tap-scroll="true"></ion-nav-bar>
+<!-- <ion-nav-bar class="home_header" animation="nav-title-slide-ios7" no-tap-scroll="true">
+</ion-nav-bar> -->
+
+<!-- <ion-header-bar class="">
+    <ul class="mod_tab_2" ng-init="currentTab=1">
+        <li ng-click="showLeft()" ng-class="{current : currentTab==1}">精品</li>
+        <li ng-click="showRight();" ng-class="{current : currentTab==2}">关注</li>
+        <i class="line" ng-class="{tmp: currentTab == 2}"></i>
+    </ul>
+</ion-header-bar> -->
+
+<ion-nav-bar>
+    <ion-nav-back-button class="button-clear" ng-click="myGoBack()">
+        <i class="ion-arrow-left-c"></i> Back
+    </ion-nav-back-button>
+</ion-nav-bar>
 
 <!-- 主页面容器 -->
 <ion-nav-view></ion-nav-view>
 
 <!-- 主头部后退 -->
-<ion-nav-buttons side="left">
+<!-- <ion-nav-buttons side="left">
     <button epbuy-back class="button button-icon ion-arrow-left-c back-button"></button>
-</ion-nav-buttons>
+</ion-nav-buttons> -->

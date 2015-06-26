@@ -9,13 +9,22 @@ angular.module('phoneApp')
     $state,
     $timeout,
     $ionicLoading,
-    cachePool,
-    widget,
-    ENV
+    $ionicBackdrop,
+    $ionicHistory
 ){
 
     // $ionicLoading.show({
     //   template: 'Loading...'
     // });
+
+// $ionicBackdrop.retain();
+
+$scope.a = function () {
+    $state.go('msg.index');
+};
+
+    $scope.myGoBack = function() {
+        $ionicHistory.goBack();
+    };
 
 });
