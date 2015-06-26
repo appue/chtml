@@ -1,6 +1,5 @@
 angular.module('phoneApp', [
     'ionic'
-    // 'pasvaz.bindonce'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider

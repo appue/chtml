@@ -8,165 +8,171 @@ angular.module('phoneApp')
     $scope, 
     $state,
     $timeout,
+    $ionicLoading,
     cachePool,
-    routerRedirect,
     widget,
     ENV
 ){
+
+    // $ionicLoading.show({
+    //   template: 'Loading...'
+    // });
     
-    if (ENV.isHybrid) {
-        document.addEventListener("deviceready", onDeviceReady, false);
+    // if (ENV.isHybrid) {
+    //     document.addEventListener("deviceready", onDeviceReady, false);
         
-        function onDeviceReady() {
-            StatusBar.show();
-        }
-    }
+    //     function onDeviceReady() {
+    //         StatusBar.show();
+    //     }
+    // }
 
-    var currentUrl = widget.getCurrentUrl();
+    // var currentUrl = widget.getCurrentUrl();
 
-    $scope.DataList = {
-        ListLeft: [], 
-        ListRight: []
-    };
+    // $scope.DataList = {
+    //     ListLeft: [], 
+    //     ListRight: []
+    // };
 
-    $scope.currentTab = 1;
-    $scope.footerTab = 1;
+    // $scope.currentTab = 1;
+    // $scope.footerTab = 1;
 
-    $scope.pageIndex = 0;
-    $scope.pageIndexLeft = 0;
-    $scope.pageIndexRight = 0;
-    $scope.pageSize = 5;
-    $scope.isLoading = false;
+    // $scope.pageIndex = 0;
+    // $scope.pageIndexLeft = 0;
+    // $scope.pageIndexRight = 0;
+    // $scope.pageSize = 5;
+    // $scope.isLoading = false;
 
-    $scope.showLeft = function () {
-        $scope.currentTab = 1;
-        // $scope.pageIndex = 0;
+    // $scope.showLeft = function () {
+    //     $scope.currentTab = 1;
+    //     // $scope.pageIndex = 0;
 
-        if ($scope.pageIndexLeft * $scope.pageSize >= $scope.pageTotalLeft) {
-            $scope.isLoading = true;
-            $timeout(function () {
-                $scope.setFalls('.mod_list_falls');
-            }, 0);
-            return;
-        }
+    //     if ($scope.pageIndexLeft * $scope.pageSize >= $scope.pageTotalLeft) {
+    //         $scope.isLoading = true;
+    //         $timeout(function () {
+    //             $scope.setFalls('.mod_list_falls');
+    //         }, 0);
+    //         return;
+    //     }
                 
-        $scope.isLoading = false;
+    //     $scope.isLoading = false;
 
-        $scope.loadMore();
-    };
+    //     $scope.loadMore();
+    // };
 
-    $scope.showRight = function () {
-        if (cachePool.pull('UserInfo')) {
+    // $scope.showRight = function () {
+    //     if (cachePool.pull('UserInfo')) {
 
-            $scope.currentTab = 2;
-            // $scope.pageIndex = 0;
+    //         $scope.currentTab = 2;
+    //         // $scope.pageIndex = 0;
 
-            if ($scope.pageIndexRight * $scope.pageSize >= $scope.pageTotalRight) {
-                $scope.isLoading = true;
-                $timeout(function () {
-                    $scope.setFalls('.mod_list_falls');
-                }, 0);
-                return;
-            }
+    //         if ($scope.pageIndexRight * $scope.pageSize >= $scope.pageTotalRight) {
+    //             $scope.isLoading = true;
+    //             $timeout(function () {
+    //                 $scope.setFalls('.mod_list_falls');
+    //             }, 0);
+    //             return;
+    //         }
 
-            $scope.isLoading = false;
-            $scope.loadMore();
+    //         $scope.isLoading = false;
+    //         $scope.loadMore();
 
-        } else {
+    //     } else {
 
-            routerRedirect.toJump({
-                url: ['entry/#/login.htm?from='+ currentUrl]
-            });
+    //         // routerRedirect.toJump({
+    //         //     url: ['entry/#/login.htm?from='+ currentUrl]
+    //         // });
 
-        }
-    };
+    //         $state.go('msgIndex');
+
+    //     }
+    // };
 
 
-    //--获取幻灯片图片
-    widget.ajaxRequest({
-        noMask: true,
-        url: 'getHomeImage',
-        success: function (data) {
-            angular.extend($scope.DataList, data);
-            $scope.eventSlide = true;
-        },
-        error: function (data) {
-        }
-    });
+    // //--获取幻灯片图片
+    // widget.ajaxRequest({
+    //     noMask: true,
+    //     url: 'getHomeImage',
+    //     success: function (data) {
+    //         angular.extend($scope.DataList, data);
+    //         $scope.eventSlide = true;
+    //     },
+    //     error: function (data) {
+    //     }
+    // });
 
-    $scope.loadMore = function () {
+    // $scope.loadMore = function () {
 
-        if (!$scope.isLoading) {
+    //     if (!$scope.isLoading) {
 
-            $scope.isLoading = true;
+    //         $scope.isLoading = true;
 
-            if ($scope.currentTab == 1) {
-                $scope.pageIndexLeft++;
-                $scope.pageIndex = $scope.pageIndexLeft;
+    //         if ($scope.currentTab == 1) {
+    //             $scope.pageIndexLeft++;
+    //             $scope.pageIndex = $scope.pageIndexLeft;
 
-                //--获取最新列表
-                widget.ajaxRequest({
-                    isDrop: true,
-                    noMask: true,
-                    url: 'getHomeArticle',
-                    data: {
-                        PageIndex: $scope.pageIndex,
-                        PageSize: $scope.pageSize
-                    },
-                    success: function (data) {
-                        $scope.pageTotalLeft = data.Total || 0;
-                        $scope.pageTotal = $scope.pageTotalLeft;
+    //             //--获取最新列表
+    //             widget.ajaxRequest({
+    //                 isDrop: true,
+    //                 noMask: true,
+    //                 url: 'getHomeArticle',
+    //                 data: {
+    //                     PageIndex: $scope.pageIndex,
+    //                     PageSize: $scope.pageSize
+    //                 },
+    //                 success: function (data) {
+    //                     $scope.pageTotalLeft = data.Total || 0;
+    //                     $scope.pageTotal = $scope.pageTotalLeft;
 
-                        angular.forEach(data.ArticleList, function (v, k) {
-                            v.SiteUrl = {
-                                'url': ['forum/#/thread-1.htm?from='+ currentUrl]
-                            }
-                            $scope.DataList.ListLeft.push(v);
-                        });
+    //                     angular.forEach(data.ArticleList, function (v, k) {
+    //                         v.SiteUrl = {
+    //                             'url': ['forum/#/thread-1.htm?from='+ currentUrl]
+    //                         }
+    //                         $scope.DataList.ListLeft.push(v);
+    //                     });
 
-                        $timeout($scope.setFalls, 0);
-                        $scope.isLoading = false;
-                    },
-                    error: function (data) {
-                        $scope.isLoading = false;
-                    }
-                });
+    //                     $timeout($scope.setFalls, 0);
+    //                     $scope.isLoading = false;
+    //                 },
+    //                 error: function (data) {
+    //                     $scope.isLoading = false;
+    //                 }
+    //             });
 
-            } else {
-                $scope.pageIndexRight++;
-                $scope.pageIndex = $scope.pageIndexRight;
+    //         } else {
+    //             $scope.pageIndexRight++;
+    //             $scope.pageIndex = $scope.pageIndexRight;
 
-                //--关注列表
-                widget.ajaxRequest({
-                    noMask: true,
-                    url: 'getHomeFollow',
-                    data: {
-                        PageIndex: $scope.pageIndex,
-                        PageSize: $scope.pageSize
-                    },
-                    success: function (data) {
-                        $scope.pageTotalRight = data.Total || 0;
-                        $scope.pageTotal = $scope.pageTotalRight;
+    //             //--关注列表
+    //             widget.ajaxRequest({
+    //                 noMask: true,
+    //                 url: 'getHomeFollow',
+    //                 data: {
+    //                     PageIndex: $scope.pageIndex,
+    //                     PageSize: $scope.pageSize
+    //                 },
+    //                 success: function (data) {
+    //                     $scope.pageTotalRight = data.Total || 0;
+    //                     $scope.pageTotal = $scope.pageTotalRight;
 
-                        angular.forEach(data.ArticleList, function (v, k) {
-                            v.SiteUrl = {
-                                'url': ['forum/#/thread-1.htm?from='+ currentUrl]
-                            }
-                            $scope.DataList.ListRight.push(v);
-                        });
+    //                     angular.forEach(data.ArticleList, function (v, k) {
+    //                         v.SiteUrl = {
+    //                             'url': ['forum/#/thread-1.htm?from='+ currentUrl]
+    //                         }
+    //                         $scope.DataList.ListRight.push(v);
+    //                     });
 
-                        $timeout($scope.setFalls, 0);
-                        $scope.isLoading = false;
-                    },
-                    error: function (data) {
-                        $scope.isLoading = false;
-                    }
-                });
+    //                     $timeout($scope.setFalls, 0);
+    //                     $scope.isLoading = false;
+    //                 },
+    //                 error: function (data) {
+    //                     $scope.isLoading = false;
+    //                 }
+    //             });
 
-            }
-        }
-    };
+    //         }
+    //     }
+    // };
     
-    $scope.loadMore();
+    // $scope.loadMore();
 
 });
