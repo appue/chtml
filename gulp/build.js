@@ -182,7 +182,10 @@ module.exports = function (gulp, $) {
         }
 
         return gulp.src('./app/index.html')
-            .pipe($.htmlReplace({ 'js': jsFiles }))
+            .pipe($.htmlReplace({
+                'css': 'themes/all.css?v='+ version,
+                'js': jsFiles
+            }))
             .pipe(gulp.dest(buildFolder));
     });
 
