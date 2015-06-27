@@ -19,11 +19,6 @@ if (packageType == 'web') {
 }
 
 switch (runType) {
-    case 'dev':
-        netPort = argv.port || 9999;
-        netPath = './app/';
-    break;
-
     case 'build':
         netPort = argv.port || 8888;
         netPath = buildFolder;
@@ -55,23 +50,15 @@ module.exports = function (gulp, $) {
 
 
     gulp.task('clean', function() {
-        var dir = buildFolder;
-
-        if (runType == 'dev') {
-
-            dir = './app/themes';
-
-        } else if (runType == 'build') {
-
-            dir = [buildFolder, './.tmp'];
-
-        } else {
-
+        
+        if (runType !== 'build') {
             return;
-
         }
 
-        return gulp.src(dir, {read: false})
+        return gulp.src([
+                buildFolder,
+                './.tmp'
+            ], {read: false})
             // .pipe($.clean());
             .pipe($.rimraf({ force: true })); 
     });
@@ -118,7 +105,7 @@ module.exports = function (gulp, $) {
                     }))
                     .pipe(gulp.dest(cssPath))
                     .pipe($.livereload());
-            }))
+            }));
 
 
         gulp.src([
@@ -133,7 +120,7 @@ module.exports = function (gulp, $) {
                 '!./app/bower_components/**/*.html',
                 '!./app/bower_components/**/*.js'
             ]))
-            .pipe($.livereload())
+            .pipe($.livereload());
 
     });
 
@@ -147,7 +134,7 @@ module.exports = function (gulp, $) {
             .pipe($.livereload());
     });
     
-
+    //--JS 注入到页面中
     gulp.task('inject', function() {
         return gulp.src('./app/index.html')
             .pipe(
@@ -178,57 +165,39 @@ module.exports = function (gulp, $) {
     
     //--html js 替换
     gulp.task('replacehtml', function() {
-        getProject({
-            callback: function(folder){
-                var jsFiles = [
-                    '../cordova.js?v='+ version,
-                    '../cordova_plugins.js?v='+ version,
-                    '../common/frame.js?v='+ version,
-                    'index.js?v='+ version,
-                    '../common/common.js?v='+ version
-                ];
+        var jsFiles = [
+            '../cordova.js?v='+ version,
+            '../cordova_plugins.js?v='+ version,
+            'frame.js?v='+ version,
+            'common.js?v='+ version,
+            'index.js?v='+ version
+        ];
 
-                if (packageType == 'web') {
-                    jsFiles = [
-                        '../common/frame.js?v='+ version,
-                        'index.js?v='+ version,
-                        '../common/common.js?v='+ version
-                    ];
-                }
+        if (packageType == 'web') {
+            jsFiles = [
+                'frame.js?v='+ version,
+                'common.js?v='+ version,
+                'index.js?v='+ version
+            ];
+        }
 
-                folder.forEach( function(v) {
-                    return gulp.src('./app/'+ v +'/*.html')
-                        .pipe($.htmlReplace({ 'js': jsFiles }))
-                        .pipe(gulp.dest(buildFolder + v));
-                });
-            }
-        });
+        return gulp.src('./app/index.html')
+            .pipe($.htmlReplace({ 'js': jsFiles }))
+            .pipe(gulp.dest(buildFolder));
     });
 
 
     //--生成JS模板数据
     gulp.task('templates', function() {
-        //--生成公共JS模板数据
-        gulp.src('./app/common/**/*.html')
+        return gulp.src([
+                './app/**/*.html',
+                '!./app/index.html'
+            ])
             .pipe($.ngHtml2js({
                 moduleName: "phoneApp",
-                prefix: "../common/"
+                prefix: ""
             }))
-            .pipe(gulp.dest("./.tmp/common"));
-
-        //--根据项目生成项目模板数据
-        getProject({
-            callback: function(folder){
-                folder.forEach( function(v) {
-                    return gulp.src('./app/'+ v +'/tp/*.html')
-                        .pipe($.ngHtml2js({
-                            moduleName: "phoneApp",
-                            prefix: "tp/"
-                        }))
-                        .pipe(gulp.dest("./.tmp/"+ v));
-                });
-            }
-        });
+            .pipe(gulp.dest("./.tmp/"));
     });
 
     //--css 迁移
@@ -264,22 +233,29 @@ module.exports = function (gulp, $) {
                 './app/lib/megapix-image.js',
 
                 './app/lib/config.js',
-                './app/lib/angular.js',
-                './app/lib/angular-touch.js',
-                './app/lib/angular-ui-router.js'
+
+                './app/bower_components/angular/angular.js',
+                './app/bower_components/angular-animate/angular-animate.js',
+                './app/bower_components/angular-touch/angular-touch.js',
+                './app/bower_components/angular-route/angular-route.js',
+                './app/bower_components/angular-sanitize/angular-sanitize.js',
+                './app/bower_components/angular-ui-router/release/angular-ui-router.js',
+                './app/bower_components/angular-bindonce/bindonce.js',
+                './app/bower_components/ionic/release/js/ionic.js',
+                './app/bower_components/ionic/release/js/ionic-angular.js'
             ];
 
         if (packageType == 'web') {
             gulp.src(framejs)
                 .pipe($.concat('frame.js'))
                 .pipe($.uglify())
-                .pipe(gulp.dest(buildFolder +'common'));
+                .pipe(gulp.dest(buildFolder));
         } else {
             gulp.src(framejs)
                 .pipe($.concat('frame.js'))
                 .pipe($.replace(/isHybridCreatePhoneApp=false/g, 'isHybridCreatePhoneApp=true'))
                 .pipe($.uglify())
-                .pipe(gulp.dest(buildFolder +'common'));
+                .pipe(gulp.dest(buildFolder));
         }
 
 
@@ -291,23 +267,20 @@ module.exports = function (gulp, $) {
             .pipe($.concat('common.js'))
             .pipe($.ngAnnotate())
             .pipe($.uglify())
-            .pipe(gulp.dest(buildFolder +'common'));
+            .pipe(gulp.dest(buildFolder));
 
         //--项目中的JS压缩、合并（包括项目模板数据）
-        getProject({
-            callback: function(folder){
-                folder.forEach( function(v) {
-                    return gulp.src([
-                            './app/'+ v +'/app.js',
-                            './.tmp/'+ v +'/*.js',
-                            './app/'+ v +'/js/**/*.js'
-                        ])
-                        .pipe($.concat('index.js'))
-                        .pipe($.ngAnnotate())
-                        .pipe($.uglify())
-                        .pipe(gulp.dest(buildFolder + v));
-                });
-            }
-        });
+        gulp.src([
+                './.tmp/**/*.js',
+                './app/**/*.js',
+
+                '!./.tmp/common/**/*.js',
+                '!./app/common/**/*.js',
+                '!./app/lib/**/*.js'
+            ])
+            .pipe($.concat('index.js'))
+            .pipe($.ngAnnotate())
+            .pipe($.uglify())
+            .pipe(gulp.dest(buildFolder));
     });
 };

@@ -13,6 +13,9 @@ angular.module('phoneApp')
     $ionicHistory
 ){
 
+    $scope.currentTab = 1;
+
+    
     // $ionicLoading.show({
     //   template: 'Loading...'
     // });
