@@ -1,37 +1,43 @@
-<search-header class="search_find"></search-header>
+<ioc-view hide-nav-bar="true">
+    <ioc-content>
+        <search-header class="search_find"></search-header>
 
-<section class="unit_find_scroll" ng-style="noScroll">
-    <ul class="unit_find_top">
-        <li ng-repeat="i in urlMenu" page-jump={{i.list}}>{{i.title}}</li>
-    </ul>
-
-    <div class="mod_title_text this_p">
-        <div>专题集锦</div>
-        <div page-jump="redirectUrl.SubjectList">更多 &gt;</div>
-    </div>
-    <div class="mod_list_img mb0" id="wrapper" ng-iscroll="eventScroll" ng-iscroll-delay='50'>
-        <ul>
-            <li ng-repeat="(k, v) in DataList.SubjectList track by $index" page-jump="{{v.SiteUrl}}">
-                <div class="this_img">
-                    <img ng-src="{{v.ImageUrl}}" />
-                </div>
-                <div class="this_title">{{v.ShortName}}</div>
-            </li>
-            <li page-jump="redirectUrl.SubjectList" class="this_more">
-                更多
-            </li>
-        </ul>
-    </div>
-
-    <div class="unit_find_cate">
-        <div>
-            <ul ng-repeat="(k, v) in DataList.CateList track by $index">
-                <li ng-repeat="(i, j) in v" page-jump="{{j.SiteUrl}}">
-                    {{j.CateName}}
-                </li>
+        <section class="unit_find_scroll" ng-style="noScroll">
+            <ul class="unit_find_top">
+                <li ng-repeat="i in urlMenu" page-jump={{i.list}}>{{i.title}}</li>
             </ul>
-        </div>
-    </div>
-</section>
 
-<footer-bar></footer-bar>
+            <div class="mod_title_text this_p">
+                <div>专题集锦</div>
+                <div page-jump="redirectUrl.SubjectList">更多 &gt;</div>
+            </div>
+            <div class="mod_list_img mb0" id="wrapper" ng-iscroll="eventScroll" ng-iscroll-delay='50'>
+                <ul>
+                    <li ng-repeat="(k, v) in DataList.SubjectList track by $index" page-jump="{{v.SiteUrl}}">
+                        <div class="this_img">
+                            <img ng-src="{{v.ImageUrl}}" />
+                        </div>
+                        <div class="this_title">{{v.ShortName}}</div>
+                    </li>
+                    <li page-jump="redirectUrl.SubjectList" class="this_more">
+                        更多
+                    </li>
+                </ul>
+            </div>
+
+            <div class="unit_find_cate">
+                <div>
+                    <ul ng-repeat="(k, v) in DataList.CateList track by $index">
+                        <li ng-repeat="(i, j) in v" page-jump="{{j.SiteUrl}}">
+                            {{j.CateName}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+
+        <footer-bar></footer-bar>
+    </ioc-content>
+</ioc-view>

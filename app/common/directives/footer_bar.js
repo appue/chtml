@@ -14,12 +14,23 @@ angular.module('phoneApp')
         uid = UserInfo.UserId;
     }
 
-    var obj = [
-        ['home/#/index'],
-        ['clump/#/find.htm'],
-        ['home/#/index'],
-        ['home/#/msg.htm'],
-        ['member/#/personal-'+ uid +'.htm']
+    var SiteUrl = [
+        {
+            'route': 'home.index'
+        },
+        {
+            'route': 'forum.find'
+        },
+        {
+            'route': 'home.index'
+        },
+        {
+            'route': 'msg.index'
+        },
+        {
+            'route': 'member.index',
+            'options': {}
+        }
     ];
 
     return {
@@ -41,12 +52,12 @@ angular.module('phoneApp')
 
                     $scope.footerTab = id;
 
-                    if ((id == 3 || id== 4 || id == 5) && !uid) {
-                        routerRedirect.toJump({
-                            url: ['entry/#/login.htm?from='+ currentUrl]
-                        });
-                        return;
-                    }
+                    // if ((id == 3 || id== 4 || id == 5) && !uid) {
+                    //     routerRedirect.toJump({
+                    //         url: ['entry/#/login.htm?from='+ currentUrl]
+                    //     });
+                    //     return;
+                    // }
 
                     if (id == 3) {
 
@@ -76,12 +87,7 @@ angular.module('phoneApp')
 
                     $that.addClass('current');
 
-                    routerRedirect.toJump({
-                        'opts': {
-                            'direction': direction
-                        },
-                        'url': obj[id-1]
-                    });
+                    $state.go(SiteUrl[id-1].route, SiteUrl[id-1].options || {});
                 }
             };
 

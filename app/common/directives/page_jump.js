@@ -1,6 +1,10 @@
 angular.module('phoneApp')
 
-.directive('pageJump', function ($stateParams, $parse, routerRedirect) {
+.directive('pageJump', function (
+	$state,
+	$stateParams,
+	$parse
+) {
 	return {
 		restrict: 'A',
 		link: function (scope, element, attrs) {
@@ -16,7 +20,7 @@ angular.module('phoneApp')
 						scope.$apply(fn(scope));
 
 					} else {
-						routerRedirect.toJump(params);
+						$state.go(params.route, params.options || {});
 					}
 
 				}

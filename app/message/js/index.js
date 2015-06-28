@@ -15,7 +15,8 @@ angular.module('phoneApp')
             Title: '赞',
             ClassName: 'i_hit',
             SiteUrl: {
-                'url': ['home/#/msg/praise.htm']
+                'route': 'msg.praise',
+                'options': {}
             },
             isNew: true
         },
