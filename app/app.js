@@ -208,13 +208,13 @@ angular.module('phoneApp', [
 
         /*==========活动==========*/
         //活动列表
-        .state('activityList', {
+        .state('forum.activity-list', {
             url: '/activity/list.htm',
             templateUrl: 'forum/tp/activity_list.html',
             controller: 'tActivityList'
         })
         //活动详情
-        .state('activityDetail', {
+        .state('forum.activity-detail', {
             url: '/activity/detail-{type}-{id}.htm',
             templateUrl: 'forum/tp/activity_detail.html',
             controller: 'tActivityDetail'

@@ -1,13 +1,25 @@
-<header-bar back title="活动"></header-bar>
+<ion-header-bar align-title="left">
+    <div class="buttons">
+        <button class="button icon-left ion-chevron-left button-clear button-white" ng-click="$ionicGoBack()"></button>
+    </div>
+    <h1 class="title">活动列表</h1>
+</ion-header-bar>
 
-<section class="mod_scroll" when-scrolled="loadMore()">
-    <ul class="unit_activity_list">
-        <li ng-repeat="(k, v) in DataList.ActivityList" page-jump="{{v.SiteUrl}}">
-            <h2>{{v.ActivityName}}</h2>
-            <h3>{{v.Description}}</h3>
-            <img ng-if="k < 2" ng-src="{{v.ImageUrl}}" />
-        </li>
-    </ul>
-    <div class="mod_list_loading" ng-if="isLoading">loading.....</div>
-    <div class="mod_no_more" ng-if="isNoMore">没有更多数据了！</div>
-</section>
+<ion-view>
+    <ion-content>
+        <section class="mod_wrapper">
+            <div class="forum_activity_list">
+                <a ng-repeat="(k, v) in DataList.ActivityList" href="{{v.SiteUrl}}">
+                    <h2>{{v.ActivityName}}</h2>
+                    <h3>{{v.Description}}</h3>
+                    <img ng-if="k < 2" ng-src="{{v.ImageUrl}}" />
+                </a>
+            </div>
+
+            <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore">
+            </ion-infinite-scroll>
+
+            <div class="mod_no_more" ng-if="!Deploy.isMore">没有更多数据了！</div>
+        </section>
+    </ion-content>
+</ion-view>

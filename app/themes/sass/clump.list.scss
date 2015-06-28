@@ -24,38 +24,3 @@ $gray_val: #cacdcb;
         }
     }
 }
-
-
-/*发现-活动.html*/
-.unit_activity_list{
-    background: #fff;
-    padding: 0 10px;
-    li{
-        padding: 10px 0;
-        background: url(img/icon_arrow.png) no-repeat right center;
-        background-size: 10px auto;
-        &:nth-child(1),
-        &:nth-child(2){
-            background: none;
-        }
-        @include border_bottom_half;
-        &:last-child{
-            border: none;
-        }
-        h2{
-            line-height: 20px;
-            @include ellipsis;
-        }
-        h3{
-            font-size: 12px;
-            @include gray;
-            line-height: 20px;
-            @include ellipsis;
-        }
-        img{
-            width: 100%;
-            display: block;
-            margin-top: 10px;
-        }
-    }
-}
