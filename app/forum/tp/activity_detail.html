@@ -1,0 +1,38 @@
+<header-bar back title="手工灯笼"></header-bar>
+
+<section class="scroll_activity_detail_photo" when-scrolled="loadMore()">
+
+    <div class="unit_activity_text">
+        <h2>{{DataList.Content.ActivityName}}</h2>
+        <article>{{DataList.Content.Description}}</article>
+    </div>
+
+
+    <!--瀑布流-->
+    <falls>
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}">
+            <div class="this_border" page-jump="{{v.SiteUrl}}">
+                <img ng-src="{{v.Images[0].ImageUrl}}" />
+                <article>
+                    <div class="this_text">{{v.Images[0].Description}}</div>
+                    
+                    <div class="this_star">{{v.TotalCollect}}</div>
+
+                    <div class="this_user">
+                        <img ng-src="{{v.Author.ImageUrl}}" />
+                        <dl>
+                            <dt>{{v.Author.UserName}}</dt>
+                            <dd>
+                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </article>
+            </div>
+        </li>
+    </falls>
+    <div class="mod_list_loading" ng-if="isLoading">loading.....</div>
+    <div class="mod_no_more" ng-if="isNoMore">没有更多数据了！</div>
+</section>
+
+<button class="btn_camera" ng-camera></button>

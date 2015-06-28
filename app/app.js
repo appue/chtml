@@ -167,65 +167,64 @@ angular.module('phoneApp', [
             url: '/forum',
             templateUrl: 'forum/tp/main.html'
         })
-
         //发现首页
-        .state('findIndex', {
-            url: '/clump/find.htm',
-            templateUrl: 'clump/tp/find.html',
+        .state('forum.find', {
+            url: '/find.htm',
+            templateUrl: 'forum/tp/find.html',
             controller: 'tFindIndex'
         })
         //发现-猜你喜欢
-        .state('findLike', {
-            url: '/clump/like.htm',
-            templateUrl: 'clump/tp/like.html',
+        .state('forum.link', {
+            url: '/like.htm',
+            templateUrl: 'forum/tp/like.html',
             controller: 'tFindLike'
         })
         //全部圈子
-        .state('clubList', {
+        .state('forum.clubList', {
             url: '/club/list.htm',
-            templateUrl: 'clump/tp/club_list.html',
+            templateUrl: 'forum/tp/club_list.html',
             controller: 'tClubList'
         })
         //热门圈子
         .state('clubHot', {
             url: '/club/hot.htm',
-            templateUrl: 'clump/tp/club_hot.html',
+            templateUrl: 'forum/tp/club_hot.html',
             controller: 'tClubHot'
         })
         //圈子详情页
         .state('clubDetail', {
             url: '/club/detail-{id}.htm',
-            templateUrl: 'clump/tp/club_detail.html',
+            templateUrl: 'forum/tp/club_detail.html',
             controller: 'tClubDetail'
         })
         //圈子成员排行
         .state('clubRanking', {
             url: '/club/ranking-{id}.htm',
-            templateUrl: 'clump/tp/club_ranking.html',
+            templateUrl: 'forum/tp/club_ranking.html',
             controller: 'tClubRanking'
         })
         //活动列表
         .state('activityList', {
             url: '/activity/list.htm',
-            templateUrl: 'clump/tp/activity_list.html',
+            templateUrl: 'forum/tp/activity_list.html',
             controller: 'tActivityList'
         })
         //活动详情
         .state('activityDetail', {
             url: '/activity/detail-{type}-{id}.htm',
-            templateUrl: 'entry/tp/activity_detail.html',
+            templateUrl: 'forum/tp/activity_detail.html',
             controller: 'tActivityDetail'
         })
         //专题列表
         .state('subjectList', {
             url: '/subject/list.htm',
-            templateUrl: 'clump/tp/subject_list.html',
+            templateUrl: 'forum/tp/subject_list.html',
             controller: 'tSubjectList'
         })
         //专题内容
         .state('subjectDetail', {
             url: '/subject/detail-{id}.htm',
-            templateUrl: 'clump/tp/subject_detail.html',
+            templateUrl: 'forum/tp/subject_detail.html',
             controller: 'tSubjectDetail'
         })
         /*------------------------------------
@@ -235,7 +234,7 @@ angular.module('phoneApp', [
          */
         .state('list', {
             url: '/comment/list/{id}.htm',
-            templateUrl: 'clump/tp/comment_list.html',
+            templateUrl: 'forum/tp/comment_list.html',
             controller: 'tCommentList'
         });
 
@@ -244,10 +243,10 @@ angular.module('phoneApp', [
         // 处理在状态配置中指定的路由之外的 url 请求
         var isShow = localStorage.getItem('PHONEAPP_START');
 
-        // if (isShow) {
-        //     $urlRouterProvider.otherwise('/home/index.htm');
-        // } else {
-        //     $urlRouterProvider.otherwise('/home/index.htm');
-        // }
+        if (isShow) {
+            $urlRouterProvider.otherwise('/home/index.htm');
+        } else {
+            $urlRouterProvider.otherwise('/home/index.htm');
+        }
 
     });
