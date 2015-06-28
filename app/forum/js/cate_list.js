@@ -22,7 +22,7 @@ angular.module('phoneApp')
     $scope.pageSize = 5;
     $scope.isLoading = false;
     $scope.showHeader = true;
-    $scope.cateClass = "unit_find_cate_two";
+    $scope.cateClass = "forum_cate_two_list";
     $scope.DataList = {
         ArticleList: []
     };
@@ -43,7 +43,7 @@ angular.module('phoneApp')
         },
         success: function (data) {
             if (data.CategoryList.length % 3 == 0) {
-                $scope.cateClass = "unit_find_cate_three";
+                $scope.cateClass = "forum_cate_three_list";
             }
 
             angular.forEach(data.CategoryList, function (v, k) {

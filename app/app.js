@@ -227,6 +227,13 @@ angular.module('phoneApp', [
             templateUrl: 'forum/tp/subject_detail.html',
             controller: 'tSubjectDetail'
         })
+
+        //栏目列表
+        .state('forum.cate', {
+            url: '/cate/list-{id}.htm',
+            templateUrl: 'forum/tp/cate_list.html',
+            controller: 'tCateList'
+        })
         //帖子内容 id: 帖子ID
         .state('forum.detail', {
             url: '/thread-{id}.htm',
