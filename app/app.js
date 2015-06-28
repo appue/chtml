@@ -174,7 +174,7 @@ angular.module('phoneApp', [
             controller: 'tFindIndex'
         })
         //发现-猜你喜欢
-        .state('forum.link', {
+        .state('forum.like', {
             url: '/like.htm',
             templateUrl: 'forum/tp/like.html',
             controller: 'tFindLike'
@@ -226,6 +226,12 @@ angular.module('phoneApp', [
             url: '/subject/detail-{id}.htm',
             templateUrl: 'forum/tp/subject_detail.html',
             controller: 'tSubjectDetail'
+        })
+        //帖子内容 id: 帖子ID
+        .state('forum.detail', {
+            url: '/thread-{id}.htm',
+            templateUrl: 'forum/tp/article_detail.html',
+            controller: 'tArticleDetail'
         })
         /*------------------------------------
          * 点评列表

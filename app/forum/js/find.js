@@ -9,25 +9,32 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location, 
-    routerRedirect,
     widget
 ){
-    var currentUrl = widget.getCurrentUrl();
-            
-
     $scope.footerTab = 2;
 
     //--顶部菜单
-    $scope.urlMenu = [
-        {'title': '猜你喜欢', 'list': { 'url': ['clump/#/find/like.htm'] } },
-        {'title': '圈子', 'list': { 'url': ['clump/#/club/hot.htm'] } },
-        {'title': '活动', 'list': { 'url': ['clump/#/activity/list.htm'] } }
-    ];
+    $scope.DataList = {
+    };
 
     
     $scope.redirectUrl = {
+        Menu: [
+            {
+                'title': '猜你喜欢',
+                'url': '#/forum/like.htm'
+            },
+            {
+                'title': '圈子',
+                'url': '#/forum/club/hot.htm'
+            },
+            {
+                'title': '活动',
+                'url': '#/forum/activity/list.htm'
+            }
+        ],
         SubjectList: { //--更多专题
-            'url': ['clump/#/subject/list.htm']
+            'url': '#/forum/subject/list.htm'
         }
     };
 
@@ -44,14 +51,12 @@ angular.module('phoneApp')
 
             angular.forEach(res.SubjectList, function(v, k) {
                 v.SiteUrl = {
-                    'url': ['clump/#/subject/detail-'+ v.SubjectId +'.htm?from='+ currentUrl]
+                    'url': ['clump/#/subject/detail-'+ v.SubjectId +'.htm']
                 };
             });
 
             angular.forEach(res.CategoryList, function(v, k) {
-                v.SiteUrl = {
-                    'url': ['forum/#/cate/list-'+ v.CateId +'.htm?title='+ encodeURIComponent(v.CateName)]
-                };
+                v.SiteUrl = '#/forum/cate/list-'+ v.CateId +'.htm?title='+ encodeURIComponent(v.CateName);
 
                 if (res.CateList[i]) {
                     res.CateList[i].push(v);

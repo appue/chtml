@@ -1,40 +1,38 @@
-<header-bar back title="猜你喜欢"></header-bar>
+<ion-view view-title="猜你喜欢">
+    <ion-content>
 
-<section class="scrollfix" ng-style="appStyle" when-scrolled="loadMore()">
-    <div class="mod_slide" ng-slide="eventSlide">
-        <ul>
-            <li ng-repeat="v in DataList.PhotoList track by $index" page-jump="v.SiteUrl">
-                <img ng-src="{{v.ImageUrl}}" />
-                <div>{{v.Title}}</div>
-            </li>
-        </ul>
-        <ol>
-            <li ng-repeat="(k, v) in DataList.PhotoList track by $index" ng-class="{current: k==0}"></li>
-        </ol>
-    </div>
-
-
-    <!--瀑布流-->
-    <falls>
-        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
-            <div class="this_border" page-jump="v.SiteUrl">
-                <img ng-src="{{v.Images[0].ImageUrl}}" />
-                <article>
-                    <div class="this_text">{{v.Images[0].Description}}</div>
-                    
-                    <div class="this_star">{{v.TotalCollect}}</div>
-
-                    <div class="this_user">
-                        <img ng-src="{{v.Author.ImageUrl}}" />
-                        <dl>
-                            <dt>{{v.Author.UserName}}</dt>
-                            <dd>
-                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
-                            </dd>
-                        </dl>
+            <ion-slide-box auto-play="true" does-continue="true" ng-if="DataList.PhotoList">
+                <ion-slide ng-repeat="(k, v) in DataList.PhotoList track by $index">
+                    <div class="mod_slide_tab">
+                        <img ng-src="{{v.ImageUrl}}" />
+                        <p>{{v.Title}}</p>
                     </div>
-                </article>
-            </div>
-        </li>
-    </falls>
-</section>
+                </ion-slide>
+            </ion-slide-box>
+
+
+            <!--瀑布流-->
+            <falls>
+                <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
+                    <a class="this_border" href="{{v.SiteUrl}}">
+                        <img ng-src="{{v.Images[0].ImageUrl}}" />
+                        <article>
+                            <div class="this_text">{{v.Images[0].Description}}</div>
+                            
+                            <div class="this_star">{{v.TotalCollect}}</div>
+
+                            <div class="this_user">
+                                <img ng-src="{{v.Author.ImageUrl}}" />
+                                <dl>
+                                    <dt>{{v.Author.UserName}}</dt>
+                                    <dd>
+                                        <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </article>
+                    </a>
+                </li>
+            </falls>
+    </ion-content>
+</ion-view>

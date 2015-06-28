@@ -51,9 +51,7 @@ angular.module('phoneApp')
             // });
 
             angular.forEach(data.ArticleList, function (v, k) {
-                v.SiteUrl = {
-                    'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
-                };
+                v.SiteUrl = '#/forum/thread-'+ v.ArticleId +'.htm';
             });
 
             angular.extend($scope.DataList, data);

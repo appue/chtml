@@ -13,15 +13,14 @@
     }
     div{
         display: block;
-        &:nth-child(1){
-            color: #50c88c;
-            -webkit-box-flex: 1;
-        }
-        &:nth-child(2){
-            width: 80px;
-            color: #d9dbda;
-            font-size: 12px;
-            text-align: right;
-        }
+        color: #50c88c;
+        -webkit-box-flex: 1;
+    }
+    a {
+        display: block;
+        width: 80px;
+        color: #d9dbda;
+        font-size: 12px;
+        text-align: right;
     }
 }

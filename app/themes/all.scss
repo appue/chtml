@@ -24,6 +24,9 @@ $gray_val: #cacdcb;
 @import "sass/entry.login.scss";
 @import "sass/entry.register.scss";
 
+@import "sass/forum.find.scss"; //发现首页
+@import "sass/forum.detail.scss"; //帖子详情页
+
 @import "sass/forum.content.scss";
 @import "sass/forum.list.scss";
 @import "sass/forum.photo.scss";

@@ -23,19 +23,13 @@ angular.module('phoneApp')
         ListRight: []
     };
     
-    // $ionicLoading.show({
-    //   template: 'Loading...'
-    // });
+    //显示loadding
+    $ionicLoading.show({
+      template: 'Loading...'
+    });
 
-// $ionicBackdrop.retain();
 
-$scope.a = function () {
-    $state.go('msg.index');
-};
-
-    $scope.myGoBack = function() {
-        $ionicHistory.goBack();
-    };
+    //$ionicBackdrop.retain();
 
 
 
@@ -45,8 +39,11 @@ $scope.a = function () {
         url: 'getHomeImage',
         success: function (data) {
             angular.extend($scope.DataList, data);
+
+            $ionicLoading.hide();
         },
         error: function (data) {
+            $ionicLoading.hide();
         }
     });
 

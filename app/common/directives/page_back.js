@@ -33,12 +33,9 @@ angular.module('phoneApp')
                 // routerRedirect.toBack(params);
 
                 // $ionicHistory.goBack();
-
-                if ($rootScope.$ionicGoBack()) {
-                    $rootScope.$ionicGoBack();
-                } else {
-                    $state.go('msg.index');
-                }
+                // alert($rootScope.$ionicGoBack())
+                
+                $rootScope.$ionicGoBack();
             });
         }
     };
