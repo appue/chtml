@@ -5,34 +5,31 @@
 angular.module('phoneApp')
 
 .controller('tCateList', function (
-    $scope, 
-    $state, 
-    $stateParams, 
-    $location,
+    $scope,
+    $stateParams,
     $timeout,
-    routerRedirect,
+    $ionicNavBarDelegate,
     widget
 ){
-    var currentUrl = widget.getCurrentUrl();
-
     // $scope.headerTitle = $location.$$search.title || "";
 
-    $scope.currentTab = 1;
-    $scope.pageIndex = 0;
-    $scope.pageSize = 5;
-    $scope.isLoading = false;
-    $scope.showHeader = true;
-    $scope.cateClass = "forum_cate_two_list";
+    $scope.Deploy = {
+        currentTab: 1,
+        pageIndex: 0,
+        pageSize: 5,
+        isLoading: false,
+        showHeader: true,
+        isMore: true
+    };
     $scope.DataList = {
         ArticleList: []
     };
-    
-    //--设置返回按钮
-    $scope.backParam = { 'url': ['clump/#/find.htm'] };
 
-    $scope.$watch('currentTab', function () {
-        if ($scope.currentTab == 1) {
-            $timeout($scope.$parent.setFalls, 0);
+    $scope.cateClass = "forum_cate_two_list";
+
+    $scope.$watch('Deploy.currentTab', function () {
+        if ($scope.Deploy.currentTab == 1) {
+            $timeout($scope.setFalls, 0);
         }
     });
 
@@ -47,22 +44,25 @@ angular.module('phoneApp')
             }
 
             angular.forEach(data.CategoryList, function (v, k) {
-                v.SiteUrl = {
-                    'url': ['forum/#/cate/list-'+ v.CateId +'.htm']
-                };
+                v.SiteUrl = '#/forum/cate/list-'+ v.CateId +'.htm';
             });
 
             angular.extend($scope.DataList, data);
 
-            $scope.headerTitle = $scope.DataList.CurrentCate.CateName;
+            $ionicNavBarDelegate.title($scope.DataList.CurrentCate.CateName);
         }
     });
 
     $scope.loadMore = function() {
-        if (!$scope.isLoading) {
+        if (!$scope.Deploy.isLoading) {
 
-            $scope.isLoading = true;
-            $scope.pageIndex++;
+            $scope.Deploy.isLoading = true;
+            $scope.Deploy.pageIndex++;
+
+            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
+                $scope.Deploy.isMore = false;
+                return;
+            }
 
             widget.ajaxRequest({
                 noMask: true,
@@ -71,22 +71,26 @@ angular.module('phoneApp')
                     CateId: $stateParams.id
                 },
                 success: function (data) {
-                    $scope.pageTotal = data.Total || 0;
+                    $scope.Deploy.pageTotal = data.Total || 0;
 
                     angular.forEach(data.ArticleList, function (v, k) {
-                        v.SiteUrl = {
-                            'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
-                        };
+                        v.SiteUrl = '#/forum/thread-'+ v.ArticleId +'.htm';
 
                         $scope.DataList.ArticleList.push(v);
                     });
 
                     $timeout($scope.setFalls, 0);
-                    $scope.isLoading = false;
+
+                    $scope.Deploy.isLoading = false;
+
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
                 }
             });
         }
     };
 
-    $scope.loadMore();
+
+    $scope.$on('$stateChangeSuccess', function() {
+        $scope.loadMore();
+    });
 });

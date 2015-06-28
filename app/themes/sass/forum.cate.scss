@@ -42,12 +42,12 @@
     background-size: 100% 100%;
     padding: 50px 0 20px;
     font-size: 12px;
-    .this_list_cate{
+    div {
         text-align: center;
         margin: 0 auto;
         font-size: 0;
         width: 200px;
-        li{
+        a {
             border: 1px solid #fff;
             color: #fff;
             text-align: center;
@@ -62,17 +62,17 @@
 }
 
 
-.forum_cate_three_list{
+.forum_cate_three_list {
     background: url(img/img_find_cate_bg.jpg) no-repeat center 0;
     background-size: 100% 100%;
     padding: 50px 0 20px;
     font-size: 12px;
-    .this_list_cate{
+    div {
         width: 280px;
         text-align: center;
         margin: 0 auto;
         font-size: 0;
-        li{
+        a {
             border: 1px solid #fff;
             color: #fff;
             text-align: center;

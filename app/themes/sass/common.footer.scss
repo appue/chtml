@@ -3,6 +3,7 @@ $green_val: #3cc482;
 $gray_val: #cacdcb;
 
 .mod_footer {
+    @include border_top_half;
     background: #fff;
     width: 100%;
     height: 48px;

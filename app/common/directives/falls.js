@@ -1,65 +1,6 @@
 angular.module('phoneApp')
 
 /*
-* scroll 事件绑定
-*/
-.directive('whenScrolled', function (
-    $parse, 
-    $timeout
-) {
-    return function (scope, elm, attr) {
-        var raw = elm[0];
-
-        scope.showHeader = scope.showHeader || false; //----------------页面头是否有透明过度
-        // elm.after('<div class="mod_list_loading" ng-if="isLoading">loading.....</div><div class="mod_no_more" ng-if="isNoMore">没有更多数据了！</div>');
-
-
-        if (scope.showHeader) {
-            elm.on('touchmove', function() {
-                var op = (raw.scrollTop / 100).toFixed(1);
-                if (op >= 0.1) {
-                    op = 0.2;
-                }
-
-                elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
-            });
-        }
-
-        elm.on('scroll', function () {
-            if (scope.showHeader) {
-                var op = (raw.scrollTop / 100).toFixed(1);
-                if (op >= 0.1) {
-                    op = 0.2;
-                }
-
-                elm.parent().find('header').eq(0).css('background', 'rgba(255,255,255,'+ op +')');
-            }
-
-            if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
-
-                if (scope.pageIndex * scope.pageSize >= scope.pageTotal) {
-                    
-                    console.log('没有更多数据了！');
-
-                    scope.isNoMore = true;
-
-                    return;
-                } else {
-                    
-                    scope.$parent.isLoading = true;
-                    // angular.element(document.querySelector('.mod_list_loading')).css('display', 'block');
-                    
-
-                }
-
-                scope.$apply(attr.whenScrolled);
-                
-            }
-        });
-    };
-})
-
-/*
 * 瀑布流布局
 */
 .directive('falls', function (
