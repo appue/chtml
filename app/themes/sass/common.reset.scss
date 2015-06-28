@@ -168,6 +168,12 @@ a.disable, button.disable {
     @include scrollfix;
     padding: 54px 10px 48px;
 }
+.mod_wrapper {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
 //定义白色布局
 .mod_layout {
     background-color: #fff;

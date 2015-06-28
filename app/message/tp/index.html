@@ -1,7 +1,7 @@
 <ion-view hide-nav-bar="true">
     <ion-content>
         <ul class="unit_msg_list_03">
-            <li ng-repeat="(k, v) in DataLink track by $index" page-jump="{{v.SiteUrl}}" class="{{v.ClassName}}">
+            <li nav-direction="forward" ng-repeat="(k, v) in DataLink track by $index" page-jump="{{v.SiteUrl}}" class="{{v.ClassName}}">
                 <span ng-class="{i_new : v.isNew}">{{v.Title}}</span>
             </li>
         </ul>

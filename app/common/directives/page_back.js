@@ -1,6 +1,12 @@
 angular.module('phoneApp')
 
-.directive('pageBack', function ($window, $state, $stateParams, routerRedirect) {
+.directive('pageBack', function (
+    $window, 
+    $state,
+    $rootScope,
+    $stateParams,
+    $ionicHistory
+) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -24,7 +30,18 @@ angular.module('phoneApp')
                 // }
                 var params = scope.$eval(attrs.pageBack);
                 
-                routerRedirect.toBack(params);
+                // routerRedirect.toBack(params);
+
+                // $ionicHistory.goBack();
+
+                // 
+                console.log($ionicHistory);
+
+                // if ($rootScope.$ionicGoBack()) {
+                //     $rootScope.$ionicGoBack();
+                // } else {
+                    $state.go('msg.index');
+                // }
             });
         }
     };

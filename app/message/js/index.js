@@ -42,14 +42,14 @@ angular.module('phoneApp')
                 'route': 'msg.whisper'
             },
             isNew: false
-        },
-        {
-            Title: '邀请好友',
-            ClassName: 'i_friend',
-            SiteUrl: {
-                'route': 'msg.search'
-            },
-            isNew: false
         }
+        // {
+        //     Title: '邀请好友',
+        //     ClassName: 'i_friend',
+        //     SiteUrl: {
+        //         'route': 'msg.search'
+        //     },
+        //     isNew: false
+        // }
     ];
 });
