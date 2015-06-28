@@ -58,6 +58,9 @@ body {
     // font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-family: Arial, "Lucida Grande", Verdana, "Microsoft YaHei";
 }
+.pane, .view{
+    background: $bgcolor;
+}
 a {
     text-decoration: none;
     outline: 0;
