@@ -1,13 +1,7 @@
 <footer class="mod_footer">
-    <ul ng-click="menuChange($event)">
-        <li nav-transition="none" data-id="1" ng-class="{current : footerTab == 1}">首页</li>
-
-        <li nav-transition="none" data-id="2" ng-class="{current : footerTab == 2}">发现</li>
-
-        <li nav-transition="none" data-id="3" ng-class="{current : footerTab == 3}"></li>
-
-        <li nav-transition="none" data-id="4" ng-class="{current : footerTab == 4}" class="news">消息</li>
-            
-        <li nav-transition="none" data-id="5" ng-class="{current : footerTab == 5}">我</li>
-    </ul>
+    <a nav-transition="none" ng-class="{current : footerTab == 1}"  href="#/home/index.htm">首页</a>
+    <a nav-transition="none" ng-class="{current : footerTab == 2}"  href="#/forum/find.htm">发现</a>
+    <p nav-transition="none" ng-class="{current : footerTab == 3}"></p>
+    <a nav-transition="none" ng-class="{current : footerTab == 4}"  href="#/msg/index.htm">消息</a>
+    <a nav-transition="none" ng-class="{current : footerTab == 5}"  href="">我</a>
 </footer>

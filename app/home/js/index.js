@@ -10,11 +10,18 @@ angular.module('phoneApp')
     $timeout,
     $ionicLoading,
     $ionicBackdrop,
-    $ionicHistory
+    $ionicHistory,
+    widget
 ){
 
+    $scope.footerTab = 1;
     $scope.currentTab = 1;
 
+
+    $scope.DataList = {
+        ListLeft: [], 
+        ListRight: []
+    };
     
     // $ionicLoading.show({
     //   template: 'Loading...'
@@ -29,5 +36,18 @@ $scope.a = function () {
     $scope.myGoBack = function() {
         $ionicHistory.goBack();
     };
+
+
+
+    //--获取幻灯片图片
+    widget.ajaxRequest({
+        noMask: true,
+        url: 'getHomeImage',
+        success: function (data) {
+            angular.extend($scope.DataList, data);
+        },
+        error: function (data) {
+        }
+    });
 
 });

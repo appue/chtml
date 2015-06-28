@@ -34,14 +34,11 @@ angular.module('phoneApp')
 
                 // $ionicHistory.goBack();
 
-                // 
-                console.log($ionicHistory);
-
-                // if ($rootScope.$ionicGoBack()) {
-                //     $rootScope.$ionicGoBack();
-                // } else {
+                if ($rootScope.$ionicGoBack()) {
+                    $rootScope.$ionicGoBack();
+                } else {
                     $state.go('msg.index');
-                // }
+                }
             });
         }
     };

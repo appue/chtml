@@ -3,7 +3,6 @@ $green_val: #3cc482;
 $gray_val: #cacdcb;
 
 .mod_footer {
-    @include border_top_half;
     background: #fff;
     width: 100%;
     height: 48px;
@@ -11,75 +10,156 @@ $gray_val: #cacdcb;
     left: 0;
     bottom: 0;
     z-index: 100;
-    ul {
-        display: -webkit-box;
-        li {
-            line-height: 28px;
-            text-align: center;
-            color: #cacdcb;
-            width: 0;
-            padding-top: 20px;
-            cursor: pointer;
-            -webkit-box-flex: 1;
+    display: -webkit-box;
+    a,
+    p {
+        line-height: 28px;
+        text-align: center;
+        color: #cacdcb;
+        padding-top: 20px;
+        cursor: pointer;
+        display: block;
+        width: 0;
+        -webkit-box-flex: 1;
+    }
+    a {
+        &:active, &.current {
+            color: #3cc482;
+        }
+        &:nth-child(1) {
+            background: url(img/icon_home.png) no-repeat center 5px;
+            background-size: auto 20px;
             &:active, &.current {
-                color: #3cc482;
-            }
-            &:nth-child(1) {
-                background: url(img/icon_home.png) no-repeat center 5px;
+                background: url(img/icon_home_hover.png) no-repeat center 5px;
                 background-size: auto 20px;
-                &:active, &.current {
-                    background: url(img/icon_home_hover.png) no-repeat center 5px;
-                    background-size: auto 20px;
-                }
             }
-            &:nth-child(2) {
-                background: url(img/icon_find.png) no-repeat center 5px;
+        }
+        &:nth-child(2) {
+            background: url(img/icon_find.png) no-repeat center 5px;
+            background-size: auto 20px;
+            &:active, &.current {
+                background: url(img/icon_find_hover.png) no-repeat center 5px;
                 background-size: auto 20px;
-                &:active, &.current {
-                    background: url(img/icon_find_hover.png) no-repeat center 5px;
-                    background-size: auto 20px;
-                }
             }
-            &:nth-child(3) {
-                background: url(img/icon_camera.png) no-repeat center 4px;
-                background-size: auto 40px;
-                &:active, &.current {
-                    background: url(img/icon_camera_hover.png) no-repeat center 4px;
-                    background-size: auto 40px;
-                }
-            }
-            &:nth-child(4) {
-                background: url(img/icon_msg.png) no-repeat center 5px;
+        }
+        // &:nth-child(3) {
+        // }
+        &:nth-child(4) {
+            background: url(img/icon_msg.png) no-repeat center 5px;
+            background-size: auto 20px;
+            position: relative;
+            &:active, &.current {
+                background: url(img/icon_msg_hover.png) no-repeat center 5px;
                 background-size: auto 20px;
-                position: relative;
-                &:active, &.current {
-                    background: url(img/icon_msg_hover.png) no-repeat center 5px;
-                    background-size: auto 20px;
-                }
-                &.news:after {
-                    position: absolute;
-                    top: 5px;
-                    right: 50%;
-                    margin-right: -23px;
-                    content: "";
-                    width: 6px;
-                    height: 6px;
-                    background: red;
-                    display: block;
-                    -webkit-border-radius: 6px;
-                }
             }
-            &:nth-child(5) {
-                background: url(img/icon_member.png) no-repeat center 5px;
+            &.news:after {
+                position: absolute;
+                top: 5px;
+                right: 50%;
+                margin-right: -23px;
+                content: "";
+                width: 6px;
+                height: 6px;
+                background: red;
+                display: block;
+                -webkit-border-radius: 6px;
+            }
+        }
+        &:nth-child(5) {
+            background: url(img/icon_member.png) no-repeat center 5px;
+            background-size: auto 20px;
+            &:active, &.current {
+                background: url(img/icon_member_hover.png) no-repeat center 5px;
                 background-size: auto 20px;
-                &:active, &.current {
-                    background: url(img/icon_member_hover.png) no-repeat center 5px;
-                    background-size: auto 20px;
-                }
             }
         }
     }
+    p {
+        background: url(img/icon_camera.png) no-repeat center 4px;
+        background-size: auto 40px;
+        &:active, &.current {
+            background: url(img/icon_camera_hover.png) no-repeat center 4px;
+            background-size: auto 40px;
+        }
+    }
+    // @include border_top_half;
+    // background: #fff;
+    // width: 100%;
+    // height: 48px;
+    // position: fixed;
+    // left: 0;
+    // bottom: 0;
+    // z-index: 100;
+    // ul {
+    //     display: -webkit-box;
+    //     li {
+    //         line-height: 28px;
+    //         text-align: center;
+    //         color: #cacdcb;
+    //         width: 0;
+    //         padding-top: 20px;
+    //         cursor: pointer;
+    //         -webkit-box-flex: 1;
+    //         &:active, &.current {
+    //             color: #3cc482;
+    //         }
+    //         &:nth-child(1) {
+    //             background: url(img/icon_home.png) no-repeat center 5px;
+    //             background-size: auto 20px;
+    //             &:active, &.current {
+    //                 background: url(img/icon_home_hover.png) no-repeat center 5px;
+    //                 background-size: auto 20px;
+    //             }
+    //         }
+    //         &:nth-child(2) {
+    //             background: url(img/icon_find.png) no-repeat center 5px;
+    //             background-size: auto 20px;
+    //             &:active, &.current {
+    //                 background: url(img/icon_find_hover.png) no-repeat center 5px;
+    //                 background-size: auto 20px;
+    //             }
+    //         }
+    //         &:nth-child(3) {
+    //             background: url(img/icon_camera.png) no-repeat center 4px;
+    //             background-size: auto 40px;
+    //             &:active, &.current {
+    //                 background: url(img/icon_camera_hover.png) no-repeat center 4px;
+    //                 background-size: auto 40px;
+    //             }
+    //         }
+    //         &:nth-child(4) {
+    //             background: url(img/icon_msg.png) no-repeat center 5px;
+    //             background-size: auto 20px;
+    //             position: relative;
+    //             &:active, &.current {
+    //                 background: url(img/icon_msg_hover.png) no-repeat center 5px;
+    //                 background-size: auto 20px;
+    //             }
+    //             &.news:after {
+    //                 position: absolute;
+    //                 top: 5px;
+    //                 right: 50%;
+    //                 margin-right: -23px;
+    //                 content: "";
+    //                 width: 6px;
+    //                 height: 6px;
+    //                 background: red;
+    //                 display: block;
+    //                 -webkit-border-radius: 6px;
+    //             }
+    //         }
+    //         &:nth-child(5) {
+    //             background: url(img/icon_member.png) no-repeat center 5px;
+    //             background-size: auto 20px;
+    //             &:active, &.current {
+    //                 background: url(img/icon_member_hover.png) no-repeat center 5px;
+    //                 background-size: auto 20px;
+    //             }
+    //         }
+    //     }
+    // }
 }
+
 .comment_footer {
     display: -webkit-box;
     @include border_top_half;
