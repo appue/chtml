@@ -36,6 +36,12 @@ switch (runType) {
 
 module.exports = function (gulp, $) {
 
+    //拉取依赖框架
+    gulp.task('bower', function() {
+        return bower()
+            .pipe(gulp.dest('lib/'))
+    });
+
     gulp.task('sass', function() {
 
         return gulp.src('./app/themes/*.scss')
@@ -208,6 +214,7 @@ module.exports = function (gulp, $) {
         return gulp.src([
                 './app/**/*.css'
             ])
+            // .pipe($.minifyCss())
             .pipe(gulp.dest(buildFolder));
     });
 
@@ -215,7 +222,8 @@ module.exports = function (gulp, $) {
     gulp.task('moveimages', function() {
         return gulp.src([
                 './app/**/*.jpg',
-                './app/**/*.png'
+                './app/**/*.png',
+                '!./app/themes/logo/*'
             ])
             .pipe(gulp.dest(buildFolder));
     });
