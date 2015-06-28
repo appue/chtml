@@ -1,29 +1,28 @@
-<header-bar back title="圈子HOT" right="全部圈子|redirectUrl.Club"></header-bar>
+<ion-header-bar align-title="left">
+    <div class="buttons">
+        <button class="button icon-left ion-chevron-left button-clear button-white" ng-click="$ionicGoBack()"></button>
+    </div>
+    <h1 class="title">圈子HOT</h1>
+    <div class="buttons">
+        <a class="button button-clear" href="#/forum/club/list.htm">全部圈子</a>
+    </div>
+</ion-header-bar>
 
-<!--只显示HOT 6个-->
-<section class="mod_scroll" style="padding-bottom:10px;">
-    <ul class="unit_club_list_num">
-        <li ng-repeat="(k, v) in DataList.ClubList track by $index" page-jump="{{v.SiteUrl}}">
-            <i>{{k + 1}}</i>
-            <img ng-src="{{v.ImageUrl}}" />
-            <div>
-                <h2>{{v.ClubName}}</h2>
-                <span ng-repeat="i in v.CategoryList">{{i.CateName}} </span><br>
-                成员：{{v.TotalUser}}
-            </div>
-        </li>
-<!--         <li>
-            <i>2</i>
-            <img src="../themes/temp/7.jpg" />
-            <div>
-                <h2>孩子们的手工王国</h2>
-                玩教具  手工<br>
-                成员：258
-            </div>
-        </li> -->
-    </ul>
-</section>
-
-<!-- <div class="unit_footer_btn">
-    <button page-jump="{{jumpClubList}}">查看全部圈子</button>
-</div> -->
+<ion-view>
+    <ion-content>
+        <section class="mod_wrapper">
+            <!--只显示HOT 6个-->
+            <div class="forum_club_hot_list">
+                <a ng-repeat="(k, v) in DataList.ClubList track by $index" href="{{v.SiteUrl}}">
+                    <i>{{k + 1}}</i>
+                    <img ng-src="{{v.ImageUrl}}" />
+                    <div>
+                        <h2>{{v.ClubName}}</h2>
+                        <span ng-repeat="i in v.CategoryList">{{i.CateName}} </span><br>
+                        成员：{{v.TotalUser}}
+                    </div>
+                </a>
+            </ul>
+        </section>
+    </ion-content>
+</ion-view>

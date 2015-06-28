@@ -13,21 +13,20 @@ angular.module('phoneApp')
     routerRedirect,
     widget
 ){
-    var currentUrl = widget.getCurrentUrl();
-
-    $scope.pageIndex = 0;
-    $scope.pageSize = 5;
-    $scope.isLoading = false;
+    $scope.Deploy = {
+        pageIndex: 0,
+        pageSize: 5,
+        isLoading: false,
+        isMore: true
+    };
     
     //--设置返回按钮
-    $scope.backParam = {
-        'url': ['clump/#/club/list.htm']
-    };
+    // $scope.backParam = {
+    //     'url': ['clump/#/club/list.htm']
+    // };
 
     $scope.redirectUrl = {
-        Ranking: {
-            'url': ['clump/#/club/ranking-'+ $stateParams.id +'.htm']
-        }
+        Ranking: '#/forum/club/ranking-'+ $stateParams.id +'.htm'
     };
 
     $scope.DataList = {
@@ -44,15 +43,11 @@ angular.module('phoneApp')
             if (data.ActivityList && data.ActivityList.ActivityId) {
                 var type = (data.ActivityList.ActivityType == 1) ? 'article' : 'photo';
 
-               data.ActivityList.SiteUrl = {
-                    'url': ['clump/#/activity/detail/'+ type +'-'+ data.ActivityList.ActivityId +'.htm?from='+ currentUrl]
-                }
+               data.ActivityList.SiteUrl = '#/forum/activity/detail-'+ type +'-'+ data.ActivityList.ActivityId +'.htm';
             }
 
             angular.forEach(data.ArticleTop, function (v, k) {
-                v.SiteUrl = {
-                    'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
-                };
+                v.SiteUrl = '#/forum/thread-'+ v.ArticleId +'.htm';
             });
 
             angular.extend($scope.DataList, data);
@@ -64,11 +59,15 @@ angular.module('phoneApp')
     });
 
     $scope.loadMore = function () {
+        if (!$scope.Deploy.isLoading) {
 
-        if (!$scope.isLoading) {
+            $scope.Deploy.isLoading = true;
+            $scope.Deploy.pageIndex++;
 
-            $scope.isLoading = true;
-            $scope.pageIndex++;
+            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
+                $scope.Deploy.isMore = false;
+                return;
+            }
 
             //--获取最新列表
             widget.ajaxRequest({
@@ -83,20 +82,22 @@ angular.module('phoneApp')
                 success: function (data) {
                     var res = {};
 
-                    $scope.pageTotal = data.Total || 0;
+                    $scope.Deploy.pageTotal = data.Total || 0;
 
                     res.ArticleList = data.ArticleList || [];
 
                     angular.forEach(res.ArticleList, function (v, k) {
-                        v.SiteUrl = {
-                            'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
-                        };
+                        v.SiteUrl = '#/forum/thread-'+ v.ArticleId +'.htm';
 
                         $scope.DataList.ArticleList.push(v);
                     });
                     
+
                     $timeout($scope.setFalls, 0);
-                    $scope.isLoading = false;
+
+                    $scope.Deploy.isLoading = false;
+
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
                 },
                 error: function (data) {
                 }
@@ -106,5 +107,8 @@ angular.module('phoneApp')
 
     };
 
-    $scope.loadMore();
+
+    $scope.$on('$stateChangeSuccess', function() {
+        $scope.loadMore();
+    });
 });

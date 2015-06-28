@@ -7,9 +7,7 @@ angular.module('phoneApp')
 .controller('tClubList', function (
     $scope, 
     $state, 
-    $stateParams, 
-    $location, 
-    routerRedirect,
+    $stateParams,
     widget
 ){
 
@@ -30,9 +28,7 @@ angular.module('phoneApp')
             var res = {ClubList: []};
 
             angular.forEach(data.ClubList, function (v, k) {
-                v.SiteUrl = {
-                    'url': ['clump/#/club/detail-'+ v.ClubId +'.htm']
-                };
+                v.SiteUrl = '#/forum/club/detail-'+ v.ClubId +'.htm';
 
                 if (res.ClubList.length == 0) {
 
@@ -58,6 +54,8 @@ angular.module('phoneApp')
             });
 
             angular.extend($scope.DataList, res);
+
+            console.log($scope.DataList);
         },
         error: function (data) {
 

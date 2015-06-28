@@ -28,6 +28,11 @@ $gray_val: #cacdcb;
 @import "sass/forum.cate.scss"; //栏目页
 @import "sass/forum.detail.scss"; //帖子详情页
 
+@import "sass/forum.club.hot.scss"; //热门圈子
+@import "sass/forum.club.detail.scss"; //圈子详情
+@import "sass/forum.club.ranking.scss"; //圈子成员排行
+@import "sass/forum.club.list.scss"; //全部圈子
+
 @import "sass/forum.content.scss";
 @import "sass/forum.list.scss";
 @import "sass/forum.photo.scss";

@@ -179,30 +179,34 @@ angular.module('phoneApp', [
             templateUrl: 'forum/tp/like.html',
             controller: 'tFindLike'
         })
-        //全部圈子
-        .state('forum.clubList', {
-            url: '/club/list.htm',
-            templateUrl: 'forum/tp/club_list.html',
-            controller: 'tClubList'
-        })
+
+        /*==========圈子==========*/
         //热门圈子
-        .state('clubHot', {
+        .state('forum.club-hot', {
             url: '/club/hot.htm',
             templateUrl: 'forum/tp/club_hot.html',
             controller: 'tClubHot'
         })
+        //全部圈子
+        .state('forum.club-list', {
+            url: '/club/list.htm',
+            templateUrl: 'forum/tp/club_list.html',
+            controller: 'tClubList'
+        })
         //圈子详情页
-        .state('clubDetail', {
+        .state('forum.club-detail', {
             url: '/club/detail-{id}.htm',
             templateUrl: 'forum/tp/club_detail.html',
             controller: 'tClubDetail'
         })
         //圈子成员排行
-        .state('clubRanking', {
+        .state('forum.club-ranking', {
             url: '/club/ranking-{id}.htm',
             templateUrl: 'forum/tp/club_ranking.html',
             controller: 'tClubRanking'
         })
+
+        /*==========活动==========*/
         //活动列表
         .state('activityList', {
             url: '/activity/list.htm',
@@ -215,6 +219,8 @@ angular.module('phoneApp', [
             templateUrl: 'forum/tp/activity_detail.html',
             controller: 'tActivityDetail'
         })
+        
+        /*==========专题==========*/
         //专题列表
         .state('subjectList', {
             url: '/subject/list.htm',
@@ -228,6 +234,7 @@ angular.module('phoneApp', [
             controller: 'tSubjectDetail'
         })
 
+        /*==========栏目==========*/
         //栏目列表
         .state('forum.cate', {
             url: '/cate/list-{id}.htm',
