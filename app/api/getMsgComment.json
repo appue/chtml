@@ -6,12 +6,12 @@
             "Article": {
                 "ArticleId": 2,
                 "Description": "帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述",
-                "ImageUrl": "../themes/temp/9.jpg"
+                "ImageUrl": "themes/temp/9.jpg"
             },
 
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/7.jpg",
+                "ImageUrl": "themes/temp/7.jpg",
                 "UserName": "评论发布者名称"
             },
 
@@ -24,12 +24,12 @@
             "Article": {
                 "ArticleId": 2,
                 "Description": "帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述",
-                "ImageUrl": "../themes/temp/9.jpg"
+                "ImageUrl": "themes/temp/9.jpg"
             },
 
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/7.jpg",
+                "ImageUrl": "themes/temp/7.jpg",
                 "UserName": "评论发布者名称"
             },
 
@@ -42,12 +42,12 @@
             "Article": {
                 "ArticleId": 2,
                 "Description": "帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述",
-                "ImageUrl": "../themes/temp/9.jpg"
+                "ImageUrl": "themes/temp/9.jpg"
             },
 
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/7.jpg",
+                "ImageUrl": "themes/temp/7.jpg",
                 "UserName": "评论发布者名称"
             },
 
@@ -60,12 +60,12 @@
             "Article": {
                 "ArticleId": 2,
                 "Description": "帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述",
-                "ImageUrl": "../themes/temp/9.jpg"
+                "ImageUrl": "themes/temp/9.jpg"
             },
 
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/7.jpg",
+                "ImageUrl": "themes/temp/7.jpg",
                 "UserName": "评论发布者名称"
             },
 
@@ -78,12 +78,12 @@
             "Article": {
                 "ArticleId": 2,
                 "Description": "帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述",
-                "ImageUrl": "../themes/temp/9.jpg"
+                "ImageUrl": "themes/temp/9.jpg"
             },
 
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/7.jpg",
+                "ImageUrl": "themes/temp/7.jpg",
                 "UserName": "评论发布者名称"
             },
 
@@ -96,12 +96,12 @@
             "Article": {
                 "ArticleId": 2,
                 "Description": "帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述",
-                "ImageUrl": "../themes/temp/9.jpg"
+                "ImageUrl": "themes/temp/9.jpg"
             },
 
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/7.jpg",
+                "ImageUrl": "themes/temp/7.jpg",
                 "UserName": "评论发布者名称"
             },
 
@@ -114,12 +114,12 @@
             "Article": {
                 "ArticleId": 2,
                 "Description": "帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述",
-                "ImageUrl": "../themes/temp/9.jpg"
+                "ImageUrl": "themes/temp/9.jpg"
             },
 
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/7.jpg",
+                "ImageUrl": "themes/temp/7.jpg",
                 "UserName": "评论发布者名称"
             },
 
@@ -132,12 +132,12 @@
             "Article": {
                 "ArticleId": 2,
                 "Description": "帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述",
-                "ImageUrl": "../themes/temp/9.jpg"
+                "ImageUrl": "themes/temp/9.jpg"
             },
 
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/7.jpg",
+                "ImageUrl": "themes/temp/7.jpg",
                 "UserName": "评论发布者名称"
             },
 
@@ -150,12 +150,12 @@
             "Article": {
                 "ArticleId": 2,
                 "Description": "帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述帖子描述",
-                "ImageUrl": "../themes/temp/9.jpg"
+                "ImageUrl": "themes/temp/9.jpg"
             },
 
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/7.jpg",
+                "ImageUrl": "themes/temp/7.jpg",
                 "UserName": "评论发布者名称"
             },
 

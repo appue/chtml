@@ -4,7 +4,7 @@
             "ArticleId": 1,
             "Images": [
                 {
-                    "ImageUrl": "../themes/temp/1.jpg",
+                    "ImageUrl": "themes/temp/1.jpg",
                     "Description": "所需材料：剪刀、彩纸、双面胶等等",
                     "Width": 200,
                     "Height": 162
@@ -12,7 +12,7 @@
             ],
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/3.jpg",
+                "ImageUrl": "themes/temp/3.jpg",
                 "UserName": "帖子发布者名称"
             },
             "CategoryList": [
@@ -35,7 +35,7 @@
             "ArticleId": 2,
             "Images": [
                 {
-                    "ImageUrl": "../themes/temp/2.jpg",
+                    "ImageUrl": "themes/temp/2.jpg",
                     "Description": "所需材料：剪刀、彩纸、双面胶等等",
                     "Width": 200,
                     "Height": 200
@@ -43,7 +43,7 @@
             ],
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/3.jpg",
+                "ImageUrl": "themes/temp/3.jpg",
                 "UserName": "帖子发布者名称"
             },
             "CategoryList": [
@@ -66,7 +66,7 @@
             "ArticleId": 3,
             "Images": [
                 {
-                    "ImageUrl": "../themes/temp/4.jpg",
+                    "ImageUrl": "themes/temp/4.jpg",
                     "Description": "所需材料：剪刀、彩纸、双面胶等等",
                     "Width": 200,
                     "Height": 280
@@ -74,7 +74,7 @@
             ],
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/3.jpg",
+                "ImageUrl": "themes/temp/3.jpg",
                 "UserName": "帖子发布者名称"
             },
             "CategoryList": [

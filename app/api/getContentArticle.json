@@ -2,19 +2,19 @@
     "ArticleId": 1,
     "Images": [
         {
-            "ImageUrl": "../themes/temp/9.jpg", 
+            "ImageUrl": "themes/temp/9.jpg", 
             "Description": "手工灯笼制作，让家长和孩子一起动手，制作一个属于自己的灯笼，这是一件非常有意义的事情，相信它会成为你们难忘的回忆！", 
             "Width": 200, 
             "Height": 278
         },
         {
-            "ImageUrl": "../themes/temp/img_3.jpg", 
+            "ImageUrl": "themes/temp/img_3.jpg", 
             "Description": "活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿", 
             "Width": 200, 
             "Height": 278
         },
         {
-            "ImageUrl": "../themes/temp/img_2.jpg", 
+            "ImageUrl": "themes/temp/img_2.jpg", 
             "Description": "活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿", 
             "Width": 200, 
             "Height": 278
@@ -22,7 +22,7 @@
     ],
     "Author": {
         "UserId": 1, 
-        "ImageUrl": "../themes/temp/3.jpg", 
+        "ImageUrl": "themes/temp/3.jpg", 
         "UserName": "帖子发布者名称"
     },
 
@@ -68,22 +68,22 @@
         {
             "UserId": 1,
             "UserName": "赞过该帖子的用户名称",
-            "ImageUrl": "../themes/temp/1.jpg"
+            "ImageUrl": "themes/temp/1.jpg"
         },
         {
             "UserId": 1,
             "UserName": "赞过该帖子的用户名称",
-            "ImageUrl": "../themes/temp/2.jpg"
+            "ImageUrl": "themes/temp/2.jpg"
         },
         {
             "UserId": 1,
             "UserName": "赞过该帖子的用户名称",
-            "ImageUrl": "../themes/temp/3.jpg"
+            "ImageUrl": "themes/temp/3.jpg"
         },
         {
             "UserId": 1,
             "UserName": "赞过该帖子的用户名称",
-            "ImageUrl": "../themes/temp/4.jpg"
+            "ImageUrl": "themes/temp/4.jpg"
         }
     ],
 
@@ -95,7 +95,7 @@
             "ArticleId": 2,
             "Author": {
                 "UserId": 1,
-                "ImageUrl": "../themes/temp/4.jpg",
+                "ImageUrl": "themes/temp/4.jpg",
                 "UserName": "评论发布者名称"
             },
 
@@ -107,7 +107,7 @@
             "ArticleId": 2,
             "Author": {
                 "UserId": 2,
-                "ImageUrl": "../themes/temp/3.jpg",
+                "ImageUrl": "themes/temp/3.jpg",
                 "UserName": "评论发布者名称"
             },
 
@@ -121,7 +121,7 @@
             "ArticleId": 12, 
             "Images": [
                 {
-                    "ImageUrl": "../themes/temp/7.jpg", 
+                    "ImageUrl": "themes/temp/7.jpg", 
                     "Description": "活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿", 
                     "Width": 200, 
                     "Height": 278 
@@ -129,7 +129,7 @@
             ], 
             "Author": {
                 "UserId": 1, 
-                "ImageUrl": "../themes/temp/3.jpg", 
+                "ImageUrl": "themes/temp/3.jpg", 
                 "UserName": "帖子发布者名称"
             },
             "CategoryList": [
@@ -152,7 +152,7 @@
             "ArticleId": 13, 
             "Images": [
                 {
-                    "ImageUrl": "../themes/temp/3.jpg", 
+                    "ImageUrl": "themes/temp/3.jpg", 
                     "Description": "活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿", 
                     "Width": 200, 
                     "Height": 278 
@@ -160,7 +160,7 @@
             ], 
             "Author": {
                 "UserId": 1, 
-                "ImageUrl": "../themes/temp/3.jpg", 
+                "ImageUrl": "themes/temp/3.jpg", 
                 "UserName": "帖子发布者名称"
             },
             "CategoryList": [
@@ -183,7 +183,7 @@
             "ArticleId": 14, 
             "Images": [
                 {
-                    "ImageUrl": "../themes/temp/5.jpg", 
+                    "ImageUrl": "themes/temp/5.jpg", 
                     "Description": "活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿", 
                     "Width": 200, 
                     "Height": 278 
@@ -191,7 +191,7 @@
             ], 
             "Author": {
                 "UserId": 1, 
-                "ImageUrl": "../themes/temp/3.jpg", 
+                "ImageUrl": "themes/temp/3.jpg", 
                 "UserName": "帖子发布者名称"
             },
             "CategoryList": [
@@ -214,7 +214,7 @@
             "ArticleId": 21, 
             "Images": [
                 {
-                    "ImageUrl": "../themes/temp/5.jpg", 
+                    "ImageUrl": "themes/temp/5.jpg", 
                     "Description": "活动意图：《3-6岁儿童学习与发展指南》（以下简称《指南》）告诉我们，幼儿科学学习的方式是直接感知、亲身体验和实际操作，因此，让幼儿", 
                     "Width": 200, 
                     "Height": 278 
@@ -222,7 +222,7 @@
             ], 
             "Author": {
                 "UserId": 1, 
-                "ImageUrl": "../themes/temp/3.jpg", 
+                "ImageUrl": "themes/temp/3.jpg", 
                 "UserName": "帖子发布者名称"
             },
             "CategoryList": [
