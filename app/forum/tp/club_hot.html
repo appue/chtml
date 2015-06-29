@@ -4,7 +4,7 @@
     </div>
     <h1 class="title">圈子HOT</h1>
     <div class="buttons">
-        <a class="button button-clear" href="#/forum/club/list.htm">全部圈子</a>
+        <a class="button button-clear" ui-sref="forum.club-list">全部圈子</a>
     </div>
 </ion-header-bar>
 
@@ -13,7 +13,7 @@
         <section class="mod_wrapper">
             <!--只显示HOT 6个-->
             <div class="forum_club_hot_list">
-                <a ng-repeat="(k, v) in DataList.ClubList track by $index" href="{{v.SiteUrl}}">
+                <a ng-repeat="(k, v) in DataList.ClubList track by $index" ui-sref="forum.club-detail({id: v.ClubId})">
                     <i>{{k + 1}}</i>
                     <img ng-src="{{v.ImageUrl}}" />
                     <div>

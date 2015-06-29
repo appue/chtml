@@ -1,7 +1,4 @@
-/*
-* 发现-猜你喜欢
-* /clump/#/club/ranking-{id}.html
-*/
+// 圈子成员排行榜
 angular.module('phoneApp')
 
 .controller('tClubRanking', function (
@@ -12,11 +9,6 @@ angular.module('phoneApp')
 ){
     $scope.DataList = {};
 
-    //--设置返回按钮
-    $scope.backParam = {
-        'url': ['#/forum/club/detail-'+ $stateParams.id +'.htm']
-    };
-
     widget.ajaxRequest({
         noMask: true,
         url: 'getClubHotUser',
@@ -24,9 +16,9 @@ angular.module('phoneApp')
             ClubId: $stateParams.id
         },
         success: function (data) {
-            angular.forEach(data.UserList, function (v, k) {
-                v.SiteUrl = '#/member/personal-'+ v.UserId +'.htm';
-            });
+            // angular.forEach(data.UserList, function (v, k) {
+            //     v.SiteUrl = '#/member/personal-'+ v.UserId +'.htm';
+            // });
 
             angular.extend($scope.DataList, data);
         }

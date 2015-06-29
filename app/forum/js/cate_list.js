@@ -18,14 +18,12 @@ angular.module('phoneApp')
         pageIndex: 0,
         pageSize: 5,
         isLoading: false,
-        showHeader: true,
-        isMore: true
+        isMore: true,
+        cateClass: "forum_cate_two_list"
     };
     $scope.DataList = {
         ArticleList: []
     };
-
-    $scope.cateClass = "forum_cate_two_list";
 
     $scope.$watch('Deploy.currentTab', function () {
         if ($scope.Deploy.currentTab == 1) {
@@ -40,12 +38,12 @@ angular.module('phoneApp')
         },
         success: function (data) {
             if (data.CategoryList.length % 3 == 0) {
-                $scope.cateClass = "forum_cate_three_list";
+                $scope.Deploy.cateClass = "forum_cate_three_list";
             }
 
-            angular.forEach(data.CategoryList, function (v, k) {
-                v.SiteUrl = '#/forum/cate/list-'+ v.CateId +'.htm';
-            });
+            // angular.forEach(data.CategoryList, function (v, k) {
+            //     v.SiteUrl = '#/forum/cate/list-'+ v.CateId +'.htm';
+            // });
 
             angular.extend($scope.DataList, data);
 
@@ -71,19 +69,24 @@ angular.module('phoneApp')
                     CateId: $stateParams.id
                 },
                 success: function (data) {
-                    $scope.Deploy.pageTotal = data.Total || 0;
+                    if (data.ArticleList && data.ArticleList.length > 0) {
+                        $scope.Deploy.pageTotal = data.Total || 0;
 
-                    angular.forEach(data.ArticleList, function (v, k) {
-                        v.SiteUrl = '#/forum/thread-'+ v.ArticleId +'.htm';
+                        $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
 
-                        $scope.DataList.ArticleList.push(v);
-                    });
+                        $scope.DataList.ArticleList = [];
+                        $timeout($scope.setFalls, 0);
 
-                    $timeout($scope.setFalls, 0);
+                        $scope.Deploy.isLoading = false;
 
-                    $scope.Deploy.isLoading = false;
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
 
-                    $scope.$broadcast('scroll.infiniteScrollComplete');
+                    } else {
+
+                        $scope.Deploy.isLoading = true;
+                        $scope.Deploy.isMore = false;
+
+                    }
                 }
             });
         }

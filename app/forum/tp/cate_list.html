@@ -1,8 +1,8 @@
 <ion-view>
     <ion-content ng-model="Deploy.currentTab" ng-init="Deploy.currentTab=1">
-        <div ng-if="DataList.CategoryList.length > 0" ng-class="cateClass">
+        <div ng-if="DataList.CategoryList.length > 0" ng-class="Deploy.cateClass">
             <div>
-                <a ng-repeat="(k, v) in DataList.CategoryList track by $index" href="{{v.SiteUrl}}">
+                <a ng-repeat="(k, v) in DataList.CategoryList track by $index" ui-sref="forum.cate({id: v.CateId})">
                     #{{v.CateName}}
                 </a>
             </div>
@@ -21,15 +21,19 @@
 
 
         <ul class="mod_tab_icon">
-            <li ng-click="Deploy.currentTab=1" ng-class="{current : Deploy.currentTab==1}">瀑布流</li>
-            <li ng-click="Deploy.currentTab=2" ng-class="{current : Deploy.currentTab==2}">垂直平铺</li>
+            <li ng-click="Deploy.currentTab=1" ng-class="{current : Deploy.currentTab==1}">
+                瀑布流
+            </li>
+            <li ng-click="Deploy.currentTab=2" ng-class="{current : Deploy.currentTab==2}">
+                垂直平铺
+            </li>
         </ul>
 
         
         <!--瀑布流-->
         <falls ng-show="Deploy.currentTab==1">
             <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
-                <a class="this_border" href="{{v.SiteUrl}}">
+                <a class="this_border" ui-sref="forum.detail({id: v.ArticleId})">
                     <img ng-src="{{v.Images[0].ImageUrl}}" />
                     <article>
                         <div class="this_text">{{v.Images[0].Description}}</div>
@@ -53,7 +57,7 @@
         <!--垂直平铺-->
         <ul ng-if="Deploy.currentTab==2" class="mod_list_img_only">
             <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
-                <a class="this_border" href="{{v.SiteUrl}}">
+                <a class="this_border" ui-sref="forum.detail({id: v.ArticleId})">
                     <img ng-src="{{v.Images[0].ImageUrl}}" />
                     <article>
                         <div class="this_text">{{v.Images[0].Description}}</div>

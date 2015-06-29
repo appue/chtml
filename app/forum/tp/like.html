@@ -8,7 +8,7 @@
 <ion-view>
     <ion-content>
 
-        <ion-slide-box auto-play="true" does-continue="true" ng-if="DataList.PhotoList">
+        <ion-slide-box auto-play="true" does-continue="true" ng-if="DataList.PhotoList.length > 0">
             <ion-slide ng-repeat="(k, v) in DataList.PhotoList track by $index">
                 <div class="mod_slide_tab">
                     <img ng-src="{{v.ImageUrl}}" />
@@ -21,7 +21,7 @@
         <!--瀑布流-->
         <falls>
             <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
-                <a class="this_border" href="{{v.SiteUrl}}">
+                <a class="this_border" ui-sref="forum.detail({id: v.ArticleId})">
                     <img ng-src="{{v.Images[0].ImageUrl}}" />
                     <article>
                         <div class="this_text">{{v.Images[0].Description}}</div>

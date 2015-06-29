@@ -222,13 +222,13 @@ angular.module('phoneApp', [
         
         /*==========专题==========*/
         //专题列表
-        .state('subjectList', {
+        .state('forum.subject-list', {
             url: '/subject/list.htm',
             templateUrl: 'forum/tp/subject_list.html',
             controller: 'tSubjectList'
         })
         //专题内容
-        .state('subjectDetail', {
+        .state('forum.subject-detail', {
             url: '/subject/detail-{id}.htm',
             templateUrl: 'forum/tp/subject_detail.html',
             controller: 'tSubjectDetail'

@@ -19,20 +19,6 @@ angular.module('phoneApp')
 
     
     $scope.redirectUrl = {
-        Menu: [
-            {
-                'title': '猜你喜欢',
-                'url': '#/forum/like.htm'
-            },
-            {
-                'title': '圈子',
-                'url': '#/forum/club/hot.htm'
-            },
-            {
-                'title': '活动',
-                'url': '#/forum/activity/list.htm'
-            }
-        ],
         SubjectList: { //--更多专题
             'url': '#/forum/subject/list.htm'
         }
@@ -49,14 +35,14 @@ angular.module('phoneApp')
 
             res.CateList = [];
 
-            angular.forEach(res.SubjectList, function(v, k) {
-                v.SiteUrl = {
-                    'url': ['clump/#/subject/detail-'+ v.SubjectId +'.htm']
-                };
-            });
+            // angular.forEach(res.SubjectList, function(v, k) {
+            //     v.SiteUrl = {
+            //         'url': ['clump/#/subject/detail-'+ v.SubjectId +'.htm']
+            //     };
+            // });
 
             angular.forEach(res.CategoryList, function(v, k) {
-                v.SiteUrl = '#/forum/cate/list-'+ v.CateId +'.htm?title='+ encodeURIComponent(v.CateName);
+                // v.SiteUrl = '#/forum/cate/list-'+ v.CateId +'.htm?title='+ encodeURIComponent(v.CateName);
 
                 if (res.CateList[i]) {
                     res.CateList[i].push(v);
