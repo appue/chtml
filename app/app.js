@@ -1,5 +1,6 @@
 angular.module('phoneApp', [
-        'ionic'
+        'ionic',
+        'DelegateEvents'
     ])
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider

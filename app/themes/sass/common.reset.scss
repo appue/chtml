@@ -1,83 +1,51 @@
-﻿$bgcolor: #e6e8e7;
-html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, em, button {
-    margin: 0;
-    padding: 0;
-}
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-    display: block;
-}
-html {
-    height: 100%;
-}
-img {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    vertical-align: top;
-}
-input, textarea, select {
-    border: none;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    resize: none;
-    outline: 0;
-    box-shadow: none;
-    -webkit-appearance: none;
-    background-color: transparent;
-}
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
-table {
-    border-collapse: collapse;
-}
-a {
-    color: #333;
-    text-decoration: none;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-size: 100%;
-    font-weight: normal;
-}
-ol, ul, li {
-    list-style: none;
-}
-dfn, em, i {
-    font-style: normal;
-}
-body {
-    height: 100%;
-    font-size: 14px;
-    line-height: 1.5;
-    background: $bgcolor;
-    // -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-text-size-adjust: none;
-    // font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-family: Arial, "Lucida Grande", Verdana, "Microsoft YaHei";
-}
-.pane, .view{
+﻿//主view背景色
+.pane, .view {
     background: $bgcolor;
 }
-a {
-    text-decoration: none;
-    outline: 0;
-    color: #333;
+//icon字体
+.ion-loading {
+    font-family: "Ionicons";
 }
-a:visited {
-    text-decoration: none;
+// 加载中样式
+.loading {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    margin-top: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -20px 0 0 -35px;
+    z-index: 10;
+    .ion-loading {
+        color: #fff;
+        position: absolute;
+        font-size: 50px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        left: 50%;
+        top: 50%;
+        margin: -25px 0 0 -25px;
+        -webkit-animation: mod_loading 1.58s linear infinite;
+        animation: mod_loading 1.58s linear infinite;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+    }
+    .ion-loading:before {
+        content: "\f29d";
+    }
 }
-// a:active
-button:active {
-    opacity: 0.7;
+@-webkit-keyframes mod_loading {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
-a.disable, button.disable {
-    opacity: 1 !important;
-    background-color: #ddd !important;
-    &.no_background {
-        background-color: transparent !important;
+@keyframes mod_loading {
+    to {
+        transform: rotate(360deg);
     }
 }
 //文字超出显示...
@@ -93,18 +61,6 @@ a.disable, button.disable {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-@mixin scrollfix {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
 //按钮1(以popup确认按钮为标准) 参数：width, height
 @mixin button($width:90px, $height:34px) {
     width: $width;
@@ -118,12 +74,6 @@ a.disable, button.disable {
     color: #fff;
     outline: none;
 }
-
-//滚动容器
-.scrollfix {
-    @include scrollfix;
-}
-
 //toast样式
 .notifier {
     position: absolute;
@@ -139,47 +89,19 @@ a.disable, button.disable {
         background-color: rgba(0, 0, 0, .6);
     }
 }
-//加载ing
-.mod_loading {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    z-index: 201;
-    background: url(images/loading.png) no-repeat 0 0;
-    background-size: 100% auto;
-    width: 30px;
-    height: 30px;
-    margin-left: -15px;
-    margin-top: -15px;
-    display: none;
-    -webkit-animation: loadimg 1s linear infinite;
-    -webkit-transform-origin: 50% 50%;
-}
-@-webkit-keyframes loadimg {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
-}
 //定义滚动容器
-.mod_scroll {
-    @include scrollfix;
-    padding: 54px 10px 48px;
-}
 .mod_wrapper {
     padding-top: 10px;
     padding-right: 10px;
-    padding-bottom: 10px;
     padding-left: 10px;
+    padding-bottom: 10px;
 }
 //定义白色布局
 .mod_layout {
     background-color: #fff;
     padding: 5px 10px;
     // border-bottom: 2px solid #cacdcb;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
     margin-bottom: 10px;
 }
 //定义白色布局标题
@@ -192,38 +114,30 @@ a.disable, button.disable {
     width: 100%;
     height: 100%;
 }
-
-
 //margin
-@mixin mb($margin:0px){
+@mixin mb($margin:0px) {
     margin-bottom: $margin !important;
 }
-.mb0{
+.mb0 {
     @include mb();
 }
-.mb5{
+.mb5 {
     @include mb(5px);
 }
-.mb10{
+.mb10 {
     @include mb(10px);
 }
-
-
-.is_ios{
-    .mod_header,
-    .mod_tab_2,
-    .search_find{
+.is_ios {
+    .mod_header, .mod_tab_2, .search_find {
         border-top: 20px solid rgba(255, 255, 255, 0) !important;
     }
-    .unit_home{
+    .unit_home {
         padding-top: 61px !important;
     }
-    .mod_scroll{
+    .mod_wrapper {
         padding-top: 74px !important;
     }
-    .unit_find_cate_two,
-    .unit_find_cate_three,
-    .unit_find_cate_info {
+    .unit_find_cate_two, .unit_find_cate_three, .unit_find_cate_info {
         padding-top: 70px !important;
     }
     .unit_find_scroll {
@@ -234,7 +148,7 @@ a.disable, button.disable {
             padding-top: 20px !important;
         }
     }
-    .unit_member_scroll{
+    .unit_member_scroll {
         padding-top: 20px !important;
     }
     .unit_article_scroll {
@@ -255,24 +169,20 @@ a.disable, button.disable {
     .scroll_search_index {
         padding: 120px 10px 0;
     }
-    .unit_photo,
-    .scroll_activity_detail_photo {
+    .unit_photo, .scroll_activity_detail_photo {
         padding-top: 64px;
     }
     .tab_search_result {
         top: 64px;
     }
 }
-
-
-.mod_list_loading{
+.mod_list_loading {
     text-align: center;
     line-height: 30px;
     margin-bottom: 10px;
 }
-
 //没有数据
-.mod_no_more{
+.mod_no_more {
     text-align: center;
     line-height: 30px;
     margin-bottom: 10px;
