@@ -1,19 +1,19 @@
 angular.module('phoneApp')
 
-.controller('loginCtrl', function (
-	$scope, 
-	widget,
-	ENV
-) {
+.controller('loginCtrl', function ($scope, $rootScope, $timeout, widget, ENV) {
 
-    if (ENV.isHybrid) {
-        document.addEventListener("deviceready", onDeviceReady, false);
-        
-        function onDeviceReady() {
-            StatusBar.show();
-        }
-    }
-    
+	if (ENV.isHybrid) {
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		function onDeviceReady() {
+			StatusBar.show();
+		}
+	}
+
+	$rootScope.rightButton = {
+		name: '下一步'
+	}
+
 	$scope.backParam = { //--设置返回按钮
 		'url': ['home/#/index']
 	};
@@ -48,7 +48,7 @@ angular.module('phoneApp')
 				Password: md5($scope.inputVal.password)
 			},
 			success: function (data) { //todo...
-
+				$scope.addressId = "12312";
 			}
 		});
 
