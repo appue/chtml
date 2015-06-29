@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.controller('loginCtrl', function ($scope, $rootScope, $timeout, widget, ENV) {
+.controller('loginCtrl', function ($scope, widget, ENV) {
 
 	if (ENV.isHybrid) {
 		document.addEventListener("deviceready", onDeviceReady, false);
@@ -8,10 +8,6 @@ angular.module('phoneApp')
 		function onDeviceReady() {
 			StatusBar.show();
 		}
-	}
-
-	$rootScope.rightButton = {
-		name: '下一步'
 	}
 
 	$scope.backParam = { //--设置返回按钮

@@ -1,8 +1,9 @@
 <!-- 主头部容器 -->
-<ion-nav-bar no-tap-scroll="true" align-title="left">
+<ion-nav-bar class="mod_header" no-tap-scroll="true" align-title="left">
 	<!-- 主头部后退 -->
-	<ion-nav-buttons side="left"><i class="ion-arrow-left-c"></i></ion-nav-buttons>
-	<ion-nav-buttons ng-show="rightButton" side="right">{{rightButton.name}}</ion-nav-buttons>
+	<ion-nav-buttons side="left">
+		<button page-back class="back_button"></button>
+	</ion-nav-buttons>
 </ion-nav-bar>
 
 <!-- 主页面容器 -->

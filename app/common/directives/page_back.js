@@ -1,12 +1,6 @@
 angular.module('phoneApp')
 
-.directive('pageBack', function (
-    $window, 
-    $state,
-    $rootScope,
-    $stateParams,
-    $ionicHistory
-) {
+.directive('pageBack', function ($window, $state, $rootScope, $stateParams, $ionicHistory) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -25,17 +19,13 @@ angular.module('phoneApp')
 
                 // } else { // 默认执行浏览器后退
 
-                //     $window.history.back();
+                    $window.history.back();
 
                 // }
-                var params = scope.$eval(attrs.pageBack);
-                
-                // routerRedirect.toBack(params);
 
                 // $ionicHistory.goBack();
-                // alert($rootScope.$ionicGoBack())
-                
-                $rootScope.$ionicGoBack();
+
+                // $rootScope.$ionicGoBack();
             });
         }
     };

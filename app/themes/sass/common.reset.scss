@@ -1,6 +1,22 @@
-﻿a, a:hover {
+﻿/* ----------------------------reset--------------------------- */
+input, textarea, select, button {
+    border: none;
+    resize: none;
+    outline: 0;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+}
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+a, a:hover {
     text-decoration: none;
 }
+
+/* ------------------------------------------------------------- */
 //主view背景色
 .pane, .view {
     background: $bgcolor;
