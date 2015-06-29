@@ -48,7 +48,8 @@ angular.module('phoneApp')
             angular.forEach(data.ArticleList, function (v, k) {
                 v.SiteUrl = '#/forum/thread-'+ v.ArticleId +'.htm';
 
-                $scope.DataList.ArticleList.push(v);
+                // $scope.DataList.ArticleList.push(v);
+                angular.extend($scope.DataList, data);
             });
 
             $timeout($scope.setFalls, 0);
