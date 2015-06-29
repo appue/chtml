@@ -1,13 +1,15 @@
 angular.module('phoneApp')
 
-.controller('entryCtrl', function ($scope, $state, $ionicPopup, routerRedirect) {
+.controller('entryCtrl', function ($scope, $state, $timeout, $ionicPopup) {
 
 	var registerPopup = null;
 	$scope.registerSelect = function () {
 		registerPopup = $ionicPopup.alert({
 			title: '用户注册',
 			okText: '取消',
-			template: '<div class="choose_register" ngd-click="itemClick($event)" selector="li"><ul class="mod_list_default"><li class="icon_weixin"><a>微信注册</a></li><li ui-sref="entry.registerCreate" class="icon_mobile"><a>手机号注册</a></li><li class="icon_qq"><a>QQ注册</a></li><li class="icon_weibo last_border_line"><a>微博注册</a></li></ul></div>'
+			okType: 'cancel',
+			scope: $scope,
+			template: '<div class="choose_register" ngd-click="itemClick($event)" selector="li"><ul class="mod_list_default"><li class="icon_weixin"><a>微信注册</a></li><li class="icon_mobile"><a>手机号注册</a></li><li class="icon_qq"><a>QQ注册</a></li><li class="icon_weibo last_border_line"><a>微博注册</a></li></ul></div>'
 		});
 	};
 
@@ -15,13 +17,16 @@ angular.module('phoneApp')
 		var $that = angular.element(e.delegationTarget),
 			type = $that.attr('class').replace(' last_border_line', '');
 
+		registerPopup.close();
+
 		switch (type) {
 		case 'icon_weixin':
 			alert(1);
 			break;
 		case 'icon_mobile':
-			alert(1);
-			registerPopup.close();
+			$timeout(function () {
+				$state.go('entry.registerCreate');
+			}, 100);
 			break;
 		case 'icon_qq':
 			alert(3);

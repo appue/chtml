@@ -101,17 +101,14 @@
 }
 
 .scroll_search_result{
-    @include scrollfix;
     padding-top: 95px;
 }
 
 .scroll_search_result_falls{
-    @include scrollfix;
     padding-top: 85px;
 }
 
 .scroll_search_index {
-    @include scrollfix;
     padding: 100px 10px 0;
 }
 

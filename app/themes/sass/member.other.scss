@@ -263,7 +263,6 @@
         height: 150px;
         position: relative;
         ul {
-            @include scrollfix;
             width: 95px;
             height: 150px;
             li {

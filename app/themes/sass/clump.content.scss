@@ -3,12 +3,10 @@
 }
 
 .unit_find_scroll{
-    @include scrollfix;
     padding: 44px 0 58px;
 }
 
 .scroll_activity_detail_photo {
-    @include scrollfix;
     padding-top: 44px;
 }
 

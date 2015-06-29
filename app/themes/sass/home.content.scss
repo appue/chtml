@@ -44,12 +44,10 @@
     padding: 0 10px;
 }
 .unit_home {
-    // @include scrollfix;
     padding-top: 41px;
     padding-bottom: 50px;
 }
 .unit_msg_scroll {
-    @include scrollfix;
     // padding-top: 10px;
 }
 .unit_set_textarea {
