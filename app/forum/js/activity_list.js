@@ -44,9 +44,7 @@ angular.module('phoneApp')
                     $scope.pageTotal = data.Total || 0;
 
                     angular.forEach(data.ActivityList, function (v, k) {
-                        v.SiteUrl = {
-                            'url': ['clump/#/activity/detail/'+ (v.ActivityType == 1 ? 'article' : 'photo') +'-'+ v.ActivityId +'.htm']
-                        };
+                        // v.ActivityType = (v.ActivityType == 1) ? 'article' : 'photo';
                         $scope.DataList.ActivityList.push(v);
                     });
 
