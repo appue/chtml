@@ -36,7 +36,7 @@ angular.module('phoneApp')
     return {
         restrict: 'E',
         replace: true,
-        templateUrl: '../common/directives/footer_bar.html',
+        templateUrl: 'common/directives/footer_bar.html',
         controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
             // var currentUrl = $state.current.url.replace(/^\//g, '');
             var currentUrl = widget.getCurrentUrl(),

@@ -19,7 +19,7 @@ angular.module('phoneApp')
 		restrict: 'E',
 		replace: true,
 		transclude: true,
-		templateUrl: '../common/directives/popup.html',
+		templateUrl: 'common/directives/popup.html',
 		controller: function ($scope, $element, $attrs) {
 
 			$element.attr('id', 'popup_' + $attrs.id);

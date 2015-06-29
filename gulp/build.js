@@ -220,6 +220,14 @@ module.exports = function (gulp, $) {
             .pipe(gulp.dest(buildFolder));
     });
 
+    //字体文件
+    gulp.task('movefonts', function() {
+        return gulp.src([
+                './app/themes/fonts/*'
+            ])
+            .pipe(gulp.dest(buildFolder+ 'themes/fonts'));
+    });
+
     //--image 迁移
     gulp.task('moveimages', function() {
         return gulp.src([
@@ -262,25 +270,27 @@ module.exports = function (gulp, $) {
         if (packageType == 'web') {
             gulp.src(framejs)
                 .pipe($.concat('frame.js'))
-                .pipe($.uglify())
+                // .pipe($.uglify())
                 .pipe(gulp.dest(buildFolder));
         } else {
             gulp.src(framejs)
                 .pipe($.concat('frame.js'))
                 .pipe($.replace(/isHybridCreatePhoneApp=false/g, 'isHybridCreatePhoneApp=true'))
-                .pipe($.uglify())
+                // .pipe($.uglify())
                 .pipe(gulp.dest(buildFolder));
         }
 
 
         //--项目公共JS压缩、合并（包括公共模板数据）
         gulp.src([
-                './app/common/**/*.js',
-                './.tmp/common/**/*.js'
+                './app/app.js',
+                
+                './.tmp/common/**/*.js',
+                './app/common/**/*.js'
             ])
             .pipe($.concat('common.js'))
             .pipe($.ngAnnotate())
-            .pipe($.uglify())
+            // .pipe($.uglify())
             .pipe(gulp.dest(buildFolder));
 
         //--项目中的JS压缩、合并（包括项目模板数据）
@@ -290,14 +300,15 @@ module.exports = function (gulp, $) {
 
                 '!./.tmp/bower_components/**/*.js',
                 '!./.tmp/common/**/*.js',
-                
+
+                '!./app/app.js',
                 '!./app/lib/**/*.js',
                 '!./app/common/**/*.js',
                 '!./app/bower_components/**/*.js'
             ])
             .pipe($.concat('index.js'))
             .pipe($.ngAnnotate())
-            .pipe($.uglify())
+            // .pipe($.uglify())
             .pipe(gulp.dest(buildFolder));
     });
 };

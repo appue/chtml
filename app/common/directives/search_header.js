@@ -13,7 +13,7 @@ angular.module('phoneApp')
     return {
         restrict: 'E',
         replace: true,
-        templateUrl: '../common/directives/search_header.html',
+        templateUrl: 'common/directives/search_header.html',
         // controller: function ($scope, $element, $attrs) {
         // },
         // compile: function (element, attrs, transclude) {
