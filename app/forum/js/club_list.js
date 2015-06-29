@@ -1,22 +1,12 @@
-/*
-* 全部圈子
-* /clump/#/club/list.htm
-*/
+// 全部圈子
 angular.module('phoneApp')
 
 .controller('tClubList', function (
-    $scope, 
-    $state, 
-    $stateParams,
+    $scope,
     widget
 ){
 
     $scope.DataList = {};
-
-    //--设置返回按钮
-    $scope.backParam = {
-        'url': ['clump/#/club/hot.htm']
-    };
 
     widget.ajaxRequest({
         noMask: true,
@@ -28,7 +18,7 @@ angular.module('phoneApp')
             var res = {ClubList: []};
 
             angular.forEach(data.ClubList, function (v, k) {
-                v.SiteUrl = '#/forum/club/detail-'+ v.ClubId +'.htm';
+                // v.SiteUrl = '#/forum/club/detail-'+ v.ClubId +'.htm';
 
                 if (res.ClubList.length == 0) {
 
@@ -54,8 +44,6 @@ angular.module('phoneApp')
             });
 
             angular.extend($scope.DataList, res);
-
-            console.log($scope.DataList);
         },
         error: function (data) {
 
