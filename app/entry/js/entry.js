@@ -1,12 +1,14 @@
 angular.module('phoneApp')
 
-.controller('entryCtrl', function (
-	$scope, 
-	routerRedirect
-) {
+.controller('entryCtrl', function ($scope, $state, $ionicPopup, routerRedirect) {
 
-	$scope.goLoginPage = {
-		'url': ['entry/#/login.htm']
+	var registerPopup = null;
+	$scope.registerSelect = function () {
+		registerPopup = $ionicPopup.alert({
+			title: '用户注册',
+			okText: '取消',
+			template: '<div class="choose_register" ngd-click="itemClick($event)" selector="li"><ul class="mod_list_default"><li class="icon_weixin"><a>微信注册</a></li><li ui-sref="entry.registerCreate" class="icon_mobile"><a>手机号注册</a></li><li class="icon_qq"><a>QQ注册</a></li><li class="icon_weibo last_border_line"><a>微博注册</a></li></ul></div>'
+		});
 	};
 
 	$scope.itemClick = function (e) {
@@ -18,11 +20,8 @@ angular.module('phoneApp')
 			alert(1);
 			break;
 		case 'icon_mobile':
-			routerRedirect.toJump({
-				'url': [
-					'entry/#/register/create.htm'
-				]
-			});
+			alert(1);
+			registerPopup.close();
 			break;
 		case 'icon_qq':
 			alert(3);

@@ -1,8 +1,4 @@
-﻿$bgcolor: #e6e8e7;
-$green_val: #3cc482;
-$gray_val: #cacdcb;
-
-.mod_footer {
+﻿.mod_footer {
     @include border_top_half;
     background: #fff;
     width: 100%;

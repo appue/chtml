@@ -14,7 +14,7 @@ angular.module('phoneApp')
  *	</popup>
  */
 
-.directive('popup', function ($parse, $timeout) {
+.directive('popup', function ($parse, $timeout, $ionicBackdrop) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -72,7 +72,7 @@ angular.module('phoneApp')
 
 				$timeout(function () {
 					$allPopup.addClass('ng-hide');
-					$scope.showMask = false;
+					$ionicBackdrop.release();
 				}, 0);
 
 				var $that = angular.element(event.target);
@@ -98,7 +98,7 @@ angular.module('phoneApp')
  *	</ANY>
  */
 
-.directive('showPopup', function ($parse, $compile, $timeout) {
+.directive('showPopup', function ($parse, $compile, $timeout, $ionicBackdrop) {
 	return {
 		restrict: 'A',
 		link: function (scope, element, attrs) {
@@ -116,7 +116,7 @@ angular.module('phoneApp')
 				$timeout(function () {
 					if (popupName) {
 						$thisPopup.removeClass('ng-hide');
-						scope.showMask = true;
+						$ionicBackdrop.retain();
 					}
 				}, 0);
 

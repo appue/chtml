@@ -1,8 +1,4 @@
-﻿$bgcolor: #e6e8e7;
-$green_val: #3cc482;
-$gray_val: #cacdcb;
-
-.unit_btn{
+﻿.unit_btn{
     @include button(100%, 40px);
     background: $green_val;
 }
