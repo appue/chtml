@@ -200,6 +200,7 @@ module.exports = function (gulp, $) {
     gulp.task('templates', function() {
         return gulp.src([
                 './app/**/*.html',
+                '!./app/bower_components/**/*.html',
                 '!./app/index.html'
             ])
             .pipe($.ngHtml2js({
@@ -212,7 +213,8 @@ module.exports = function (gulp, $) {
     //--css 迁移
     gulp.task('movecss', function() {
         return gulp.src([
-                './app/**/*.css'
+                './app/**/*.css',
+                '!./app/bower_components/**/*.css'
             ])
             // .pipe($.minifyCss())
             .pipe(gulp.dest(buildFolder));
@@ -231,7 +233,8 @@ module.exports = function (gulp, $) {
     //--json 迁移
     gulp.task('movejson', function() {
         return gulp.src([
-                './app/**/*.json'
+                './app/**/*.json',
+                '!./app/bower_components/**/*.json'
             ])
             .pipe(gulp.dest(buildFolder));
     });
@@ -285,9 +288,12 @@ module.exports = function (gulp, $) {
                 './.tmp/**/*.js',
                 './app/**/*.js',
 
+                '!./.tmp/bower_components/**/*.js',
                 '!./.tmp/common/**/*.js',
+                
+                '!./app/lib/**/*.js',
                 '!./app/common/**/*.js',
-                '!./app/lib/**/*.js'
+                '!./app/bower_components/**/*.js'
             ])
             .pipe($.concat('index.js'))
             .pipe($.ngAnnotate())
