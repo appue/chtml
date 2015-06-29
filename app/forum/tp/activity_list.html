@@ -9,7 +9,7 @@
     <ion-content>
         <section class="mod_wrapper">
             <div class="forum_activity_list">
-                <a ng-repeat="(k, v) in DataList.ActivityList" href="{{v.SiteUrl}}">
+                <a ng-repeat="(k, v) in DataList.ActivityList" ui-sref="forum.activity-detail({type: (v.ActivityType == 1) ? 'article' : 'photo',id: v.ActivityId})">
                     <h2>{{v.ActivityName}}</h2>
                     <h3>{{v.Description}}</h3>
                     <img ng-if="k < 2" ng-src="{{v.ImageUrl}}" />

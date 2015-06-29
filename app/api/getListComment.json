@@ -5,7 +5,7 @@
 			"ArticleId": 2,
 			"Author": {
 				"UserId": 1,
-				"ImageUrl": "../themes/temp/7.jpg",
+				"ImageUrl": "themes/temp/7.jpg",
 				"UserName": "评论发布者名称"
 			},
 			"UpdateTime": "04.07 11:12",
@@ -16,7 +16,7 @@
 			"ArticleId": 2,
 			"Author": {
 				"UserId": 1,
-				"ImageUrl": "../themes/temp/7.jpg",
+				"ImageUrl": "themes/temp/7.jpg",
 				"UserName": "评论发布者名称"
 			},
 			"UpdateTime": "04.07 11:12",
@@ -27,7 +27,7 @@
 			"ArticleId": 2,
 			"Author": {
 				"UserId": 1,
-				"ImageUrl": "../themes/temp/7.jpg",
+				"ImageUrl": "themes/temp/7.jpg",
 				"UserName": "评论发布者名称"
 			},
 			"UpdateTime": "04.07 11:12",
@@ -38,7 +38,7 @@
 			"ArticleId": 2,
 			"Author": {
 				"UserId": 1,
-				"ImageUrl": "../themes/temp/7.jpg",
+				"ImageUrl": "themes/temp/7.jpg",
 				"UserName": "评论发布者名称"
 			},
 			"UpdateTime": "04.07 11:12",
@@ -49,7 +49,7 @@
 			"ArticleId": 2,
 			"Author": {
 				"UserId": 1,
-				"ImageUrl": "../themes/temp/7.jpg",
+				"ImageUrl": "themes/temp/7.jpg",
 				"UserName": "评论发布者名称"
 			},
 			"UpdateTime": "04.07 11:12",
@@ -60,7 +60,7 @@
 			"ArticleId": 2,
 			"Author": {
 				"UserId": 1,
-				"ImageUrl": "../themes/temp/7.jpg",
+				"ImageUrl": "themes/temp/7.jpg",
 				"UserName": "评论发布者名称"
 			},
 			"UpdateTime": "04.07 11:12",
@@ -71,7 +71,7 @@
 			"ArticleId": 2,
 			"Author": {
 				"UserId": 1,
-				"ImageUrl": "../themes/temp/7.jpg",
+				"ImageUrl": "themes/temp/7.jpg",
 				"UserName": "评论发布者名称"
 			},
 			"UpdateTime": "04.07 11:12",

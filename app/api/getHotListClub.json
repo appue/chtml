@@ -3,7 +3,7 @@
         {
             "ClubId": 1,
             "ClubName": "孩子们的手工王国",
-            "ImageUrl": "../themes/temp/7.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "TotalUser": 200,
             "CategoryList": [
                 {
@@ -17,7 +17,7 @@
         {
             "ClubId": 2,
             "ClubName": "孩子们的手工王国",
-            "ImageUrl": "../themes/temp/7.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "TotalUser": 200,
             "CategoryList": [
                 {
@@ -31,7 +31,7 @@
         {
             "ClubId": 3,
             "ClubName": "孩子们的手工王国",
-            "ImageUrl": "../themes/temp/7.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "TotalUser": 200,
             "CategoryList": [
                 {
@@ -45,7 +45,7 @@
         {
             "ClubId": 4,
             "ClubName": "孩子们的手工王国",
-            "ImageUrl": "../themes/temp/7.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "TotalUser": 200,
             "CategoryList": [
                 {
@@ -59,7 +59,7 @@
         {
             "ClubId": 5,
             "ClubName": "孩子们的手工王国",
-            "ImageUrl": "../themes/temp/7.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "TotalUser": 200,
             "CategoryList": [
                 {
@@ -73,7 +73,7 @@
         {
             "ClubId": 6,
             "ClubName": "孩子们的手工王国",
-            "ImageUrl": "../themes/temp/7.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "TotalUser": 200,
             "CategoryList": [
                 {
@@ -87,7 +87,7 @@
         {
             "ClubId": 7,
             "ClubName": "孩子们的手工王国",
-            "ImageUrl": "../themes/temp/7.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "TotalUser": 200,
             "CategoryList": [
                 {
@@ -101,7 +101,7 @@
         {
             "ClubId": 8,
             "ClubName": "孩子们的手工王国",
-            "ImageUrl": "../themes/temp/7.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "TotalUser": 200,
             "CategoryList": [
                 {
@@ -115,7 +115,7 @@
         {
             "ClubId": 9,
             "ClubName": "孩子们的手工王国",
-            "ImageUrl": "../themes/temp/7.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "TotalUser": 200,
             "CategoryList": [
                 {
@@ -129,7 +129,7 @@
         {
             "ClubId": 10,
             "ClubName": "孩子们的手工王国",
-            "ImageUrl": "../themes/temp/7.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "TotalUser": 200,
             "CategoryList": [
                 {

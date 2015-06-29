@@ -74,7 +74,6 @@ angular.module('phoneApp')
 
                         $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
 
-                        $scope.DataList.ArticleList = [];
                         $timeout($scope.setFalls, 0);
 
                         $scope.Deploy.isLoading = false;
