@@ -5,7 +5,8 @@
 angular.module('phoneApp')
 
 .controller('tHome', function (
-    $scope, 
+    $scope,
+    $rootScope,
     $state,
     $timeout,
     $ionicLoading,
@@ -84,6 +85,7 @@ angular.module('phoneApp')
             }
 
             $scope.Deploy.isLoading = false;
+
             $scope.loadMore();
 
         } else {
@@ -164,7 +166,7 @@ angular.module('phoneApp')
 
                         $scope.Deploy.isLoading = false;
 
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                        // $scope.$broadcast('scroll.infiniteScrollComplete');
                     },
                     error: function (data) {
                         $scope.Deploy.isLoading = false;

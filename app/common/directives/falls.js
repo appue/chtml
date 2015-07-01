@@ -11,7 +11,6 @@ angular.module('phoneApp')
         transclude: true,
         template: '<ul class="mod_list_falls ng-transclude"></ul>',
         controller: function ($scope, $element, $attrs) {
-
             $rootScope.setFalls = function(elem) {
                 // $scope.isLoading = false;
                 // $scope.$parent.isLoading = false;
