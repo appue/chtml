@@ -22,6 +22,7 @@ angular.module('phoneApp')
         currentTab: 1,
         pageIndex: 0,
         pageSize: 5,
+        isMore: true,
         isLoading: false
     };
     $scope.DataList = {
