@@ -1,15 +1,73 @@
-<ion-view >
-    <ion-content>
+<ion-view hide-nav-bar="true">
+    <ul class="mod_tab_2" ng-init="Deploy.currentTab=1">
+        <li ng-click="Deploy.showLeft()" ng-class="{current : Deploy.currentTab==1}">精品</li>
+        <li ng-click="Deploy.showRight();" ng-class="{current : Deploy.currentTab==2}">关注</li>
+        <i class="line" ng-class="{tmp: Deploy.currentTab == 2}"></i>
+    </ul>
 
-        <ion-slide-box auto-play="true" does-continue="true" ng-if="DataList.ImageList">
-            <ion-slide ng-repeat="(k, v) in DataList.ImageList track by $index">
-                <div class="mod_slide_tab">
-                    <img ng-src="{{v.ImageUrl}}" />
-                    <p>{{v.Title}}</p>
-                </div>
-            </ion-slide>
-        </ion-slide-box>
+    <ion-content style="padding-top:50px;padding-bottom:50px;">
         
+        <div ng-if="Deploy.currentTab==1">
+
+            <ion-slide-box auto-play="true" does-continue="true" ng-if="DataList.ImageList">
+                <ion-slide ng-repeat="(k, v) in DataList.ImageList track by $index">
+                    <div class="mod_slide_tab">
+                        <img ng-src="{{v.ImageUrl}}" />
+                        <p>{{v.Title}}</p>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+
+            <!--瀑布流-->
+            <falls>
+                <li ng-repeat="(k, v) in DataList.ListLeft track by $index" data-y="{{v.Images[0].Height}}" >
+                    <div class="this_border" page-jump="{{v.SiteUrl}}">
+                        <img ng-src="{{v.Images[0].ImageUrl}}" />
+                        <article>
+                            <div class="this_text">{{v.Images[0].Description}}</div>
+                            
+                            <div class="this_star">{{v.TotalCollect}}</div>
+
+                            <div class="this_user">
+                                <img ng-src="{{v.Author.ImageUrl}}" />
+                                <dl>
+                                    <dt>{{v.Author.UserName}}</dt>
+                                    <dd>
+                                        <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </article>
+                    </div>
+                </li>
+            </falls>
+        </div>
+
+        <div ng-if="Deploy.currentTab==2">
+            <!--瀑布流-->
+            <falls>
+                <li ng-repeat="(k, v) in DataList.ListRight track by $index" data-y="{{v.Images[0].Height}}" >
+                    <div class="this_border" page-jump="{{v.SiteUrl}}">
+                        <img ng-src="{{v.Images[0].ImageUrl}}" />
+                        <article>
+                            <div class="this_text">{{v.Images[0].Description}}</div>
+                            
+                            <div class="this_star">{{v.TotalCollect}}</div>
+
+                            <div class="this_user">
+                                <img ng-src="{{v.Author.ImageUrl}}" />
+                                <dl>
+                                    <dt>{{v.Author.UserName}}</dt>
+                                    <dd>
+                                        <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </article>
+                    </div>
+                </li>
+            </falls>
+        </div>
     </ion-content>
 </ion-view>
 

@@ -1,11 +1,8 @@
 angular.module('phoneApp')
 
-/*
-* 瀑布流布局
-*/
+// 瀑布流布局
 .directive('falls', function (
-    $parse, 
-    $timeout,
+    $parse,
     $rootScope
 ) {
     return {
@@ -15,7 +12,7 @@ angular.module('phoneApp')
         template: '<ul class="mod_list_falls ng-transclude"></ul>',
         controller: function ($scope, $element, $attrs) {
 
-            $scope.$parent.setFalls = function(elem) {
+            $rootScope.setFalls = function(elem) {
                 // $scope.isLoading = false;
                 // $scope.$parent.isLoading = false;
                 // angular.element(document.querySelector('.mod_list_loading')).css('display', 'none');
