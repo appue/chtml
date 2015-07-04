@@ -1,11 +1,13 @@
-<ion-view hide-nav-bar="true">
+<ion-header-bar>
     <ul class="mod_tab_2" ng-model="Deploy.currentTab" ng-init="Deploy.currentTab=1">
         <li ng-click="Deploy.currentTab=1;" ng-class="{current : Deploy.currentTab==1}">精品</li>
         <li ng-click="Deploy.currentTab=2;" ng-class="{current : Deploy.currentTab==2}">关注</li>
         <i class="line" ng-class="{tmp: Deploy.currentTab == 2}"></i>
     </ul>
+</ion-header-bar>
 
-    <ion-content overflow-scroll="true" style="padding-top:40px;">
+<ion-view hide-nav-bar="true">
+    <ion-content overflow-scroll="true">
         <section ng-if="Deploy.currentTab==1">
             <ion-slide-box auto-play="true" does-continue="true" ng-if="DataList.ImageList">
                 <ion-slide ng-repeat="(k, v) in DataList.ImageList track by $index">
@@ -74,4 +76,6 @@
     </ion-content>
 </ion-view>
 
-<footer-bar></footer-bar>
+<ion-footer-bar>
+    <footer-bar></footer-bar>
+</ion-footer-bar>

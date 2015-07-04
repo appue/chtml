@@ -10,14 +10,12 @@ angular.module('phoneApp')
     $stateParams, 
     $location,
     cachePool,
-    routerRedirect,
-    widget
+    widget,
+    $ionicSideMenuDelegate
 ){
     
     //--设置返回按钮
     // var isFrom = $location.$$search.isFrom || $location.$$search.isfrom || '';
-
-    var currentUrl = widget.getCurrentUrl();
 
     $scope.backParam = { 'url': ['home/#/index'] };
     $scope.DataList = {};
@@ -38,22 +36,22 @@ angular.module('phoneApp')
     $scope.redirectUrl = {
         //--点评列表
         CommentList: {
-            'url': ['forum/#/comment/list/'+ $stateParams.id +'.htm?from='+ currentUrl]
+            'url': ['forum/#/comment/list/'+ $stateParams.id +'.htm']
         },
 
         //--登录Url
         Login: {
-            'url': ['entry/#/login.htm?from='+ currentUrl]
+            'url': ['entry/#/login.htm']
         },
 
         //--私聊
         Chat: {
-            'url': ['/home/#/msg/chat-1.htm?from='+ currentUrl]
+            'url': ['/home/#/msg/chat-1.htm']
         },
 
         //--举报
         Report: {
-            'url': ['forum/#/report/'+ $stateParams.id +'.htm?from='+ currentUrl]
+            'url': ['forum/#/report/'+ $stateParams.id +'.htm']
         },
 
         //--编辑
@@ -61,7 +59,6 @@ angular.module('phoneApp')
 
         }
     };
-
 
     //--获取帖子内容
     widget.ajaxRequest({
@@ -73,7 +70,7 @@ angular.module('phoneApp')
         success: function (data) {
             angular.forEach(data.ArticleList, function (v, k) {
                 v.SiteUrl = {
-                    'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
+                    'url': ['forum/#/thread-'+ v.ArticleId +'.htm']
                 }
             });
 
@@ -104,4 +101,11 @@ angular.module('phoneApp')
         });
     };
 
+
+
+
+
+    $scope.toggleRightSideMenu = function() {
+        $ionicSideMenuDelegate.toggleRight();
+    };
 });

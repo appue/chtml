@@ -1,135 +1,148 @@
 ﻿/*帖子终极页*/
 .forum_detail {
     padding: 10px 10px 58px;
-    .comment_layout {
-        background-color: #fff;
+
+    .this_detail_content {
+        background: #fff;
         padding: 5px;
-        // border-bottom: 2px solid #cacdcb;
-        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
-        margin-bottom: 10px;
         .imgart_content {
             padding-bottom: 10px;
             li {
+                padding-bottom: 5px;
+                &:last-child {
+                    padding-bottom: 0;
+                }
                 img {
                     display: block;
                     width: 100%;
+                    padding-bottom: 5px;
                 }
             }
         }
-        .comment_img {
-            width: 100%;
+    }
+
+    .this_detail_wrapper {
+        padding: 10px;
+        background: #fff;
+        margin-bottom: 10px;
+    }
+
+    .this_text_01 {
+        line-height: 30px;
+        @include multi_ellipsis(1);
+        span {
+            color: $green_val;
+        }
+    }
+
+    .this_user_images {
+        padding: 10px 0;
+        display: -webkit-box;
+        a, img {
+            width: 25px;
+            height: 25px;
             display: block;
+            margin-right: 5px;
         }
-        .comment_txt {
-            line-height: 18px;
-            padding: 5px 5px 10px;
+        a {
+            background: url(img/icon_heart_gray.png) no-repeat 0 center;
+            background-size: 25px auto;
         }
-        .person_img {
-            width: 28px;
-            height: 28px;
-            -webkit-border-radius: 14px;
+        img {
+            -webkit-border-radius: 30px;
         }
-        .person_detail {
-            width: 100%;
+    }
+
+    .this_comment_list {
+        width: 100%;
+        @include border_top_half;
+        li {
+            padding: 10px 0;
             display: -webkit-box;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            @include border_top_half;
-            padding: 10px 0 10px 5px;
-            overflow: hidden;
-            .person_img {
-                margin-right: 6px;
+            @include border_bottom_half;
+            img {
+                width: 30px;
+                height: 30px;
                 display: block;
+                -webkit-border-radius: 40px;
+                margin-right: 5px;
             }
-            div {
+            dl {
+                width: 0;
+                margin-bottom: 0;
                 -webkit-box-flex: 1;
-            }
-            h3 {
-                line-height: 12px;
-                margin-bottom: 5px;
-                color: $green_val;
-                span {
-                    color: $gray_val;
-                    &.time {
+                dt {
+                    color: $green_val;
+                    span {
+                        color: $gray_val;
                         float: right;
-                        margin-right: 3px;
+                        font-weight: normal;
                     }
-                    &.private_chat {
-                        margin-left: 10px;
-                        padding-left: 18px;
-                        background: url(img/icon_chat_gray.png) no-repeat left 1px;
-                        background-size: 15px auto;
+                    a {
+                        // width: 30px;
+                        height: 20px;
+                        display: inline-block;
+                        padding-left: 23px;
+                        color: $gray_val;
+                        background: url(img/icon_chat_gray.png) no-repeat 0 center;
+                        background-size: 20px auto;
                     }
                 }
-            }
-            p {
-                span {
-                    display: inline-block;
-                    margin-right: 6px;
+                dd {
+                    padding-top: 5px;
+                    line-height: 20px;
+                    i {
+                        margin-right: 5px;
+                    }
                 }
             }
         }
-        
-        .comment_heart {
-            @include border_bottom_half;
-            a {
-                float: left;
-                display: block;
-                margin-left: 2px;
-                margin-right: 10px;
-                width: 28px;
-                height: 28px;
-                background: url(img/icon_heart_gray.png) no-repeat center;
-                background-size: 20px auto;
-                &.heart {
-                }
+    }
+
+    .this_comment_more {
+        color: $green_val;
+        line-height: 30px;
+        display: block;
+        padding-top: 10px;
+        font-weight: bolder;
+    }
+}
+
+
+.detail_side_menu {
+    a {
+        display: block;
+        line-height: 40px;
+        text-indent: 40px;
+        font-weight: bolder;
+        @include border_bottom_half;
+
+        &.i_heart {
+            background: url(img/icon_heart_gray.png) no-repeat 10px center;
+            background-size: 20px auto;
+            &.has {
+                background-image: url(img/icon_heart_green.png);
             }
-            .person_img {
-                margin-right: 10px;
-                margin-bottom: 5px;
+        }
+        &.i_comment {
+            background: url(img/icon_comment.png) no-repeat 10px center;
+            background-size: 20px auto;
+        }
+        &.i_share {
+            background: url(img/icon_share.png) no-repeat 10px center;
+            background-size: 20px auto;
+        }
+        &.i_collect {
+            background: url(img/icon_star_gray.png) no-repeat 10px center;
+            background-size: 20px auto;
+            &.has {
+                background-image: url(img/icon_star_green.png);
             }
         }
 
-        .comment_input {
-            display: -webkit-box;
-            padding: 10px 5px;
-            .person_img {
-                display: block;
-                margin-top: 2px;
-                margin-right: 12px;
-            }
-            div {
-                -webkit-box-flex: 1;
-                padding: 0 8px;
-                @include border_half;
-                background-color: #f6f6f6;
-                position: relative;
-                &:before {
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    top: 10px;
-                    left: -6px;
-                    width: 10px;
-                    height: 10px;
-                    @include border_left_half;
-                    @include border_bottom_half;
-                    border-left-width: 1px;
-                    background-color: #f6f6f6;
-                    -webkit-transform: rotate(45deg);
-                    transform: rotate(45deg);
-                }
-                input {
-                    width: 100%;
-                    line-height: 32px;
-                }
-            }
-        }
-        .comment_more {
-            @include border_top_half;
-            padding: 5px 5px 8px;
+        span {
+            margin-left: 5px;
             color: $green_val;
-            line-height: 30px;
         }
     }
 }

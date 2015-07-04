@@ -82,8 +82,6 @@
             border-left: 5px solid $bgcolor;
             border-right: 5px solid $bgcolor;
             color: #333;
-        }
-        .this_border {
             display: block;
             background: #fff;
             img {
@@ -131,6 +129,12 @@
                     dt {
                         @include multi_ellipsis(1);
                         color: $green_val;
+                    }
+                    dd {
+                        @include multi_ellipsis(2);
+                        span {
+                            margin-right: 5px;
+                        }
                     }
                 }
             }
@@ -202,44 +206,57 @@
         margin-bottom: 10px;
         font-size: 12px;
         @include border_bottom_half;
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
         &:last-child {
             margin-bottom: 0;
         }
-        img {
-            width: 100%;
-        }
-        article {
-            padding: 0 10px 10px;
-            .this_text {
-                font-size: 12px;
-                line-height: 20px;
-                @include multi_ellipsis();
+        .this_border {
+            color: #333;
+            img {
+                width: 100%;
             }
-            .this_star {
-                @include border_bottom_half;
-                line-height: 25px;
-                background: url(img/icon_star.png) no-repeat 0 center;
-                background-size: 10px auto;
-                text-indent: 15px;
-                color: $gray_val;
-                margin-bottom: 10px;
-            }
-            .this_user {
-                display: -webkit-box;
-                img {
-                    width: 50px;
-                    height: 50px;
-                    margin-right: 10px;
-                    -webkit-border-radius: 50px;
+            article {
+                padding: 0 10px 5px;
+                .this_text {
+                    font-size: 12px;
+                    line-height: 20px;
+                    @include multi_ellipsis();
                 }
-                p {
-                    -webkit-box-flex: 1;
-                    &:first-line {
-                        color: $green_val;
-                        font-size: 14px;
+                .this_star {
+                    @include border_bottom_half;
+                    line-height: 25px;
+                    background: url(img/icon_star.png) no-repeat 0 center;
+                    background-size: 10px auto;
+                    text-indent: 15px;
+                    color: $gray_val;
+                    margin-bottom: 5px;
+                }
+                .this_user {
+                    padding-top: 5px;
+                    display: -webkit-box;
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        margin-right: 10px;
+                        -webkit-border-radius: 50px;
                     }
-                    span {
-                        margin-right: 5px;
+                    dl {
+                        padding: 0;
+                        margin: 0;
+                        display: block;
+                        padding-left: 5px;
+                        -webkit-box-flex: 1;
+                        line-height: 16px;
+                        dt {
+                            @include multi_ellipsis(1);
+                            color: $green_val;
+                        }
+                        dd {
+                            @include multi_ellipsis(2);
+                            span {
+                                margin-right: 5px;
+                            }
+                        }
                     }
                 }
             }

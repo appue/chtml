@@ -1,113 +1,134 @@
-<ion-view view-title="详情">
-    <ion-content>
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu side="right" class="detail_side_menu">
+        <a class="i_heart">编辑</a>
+        <a class="i_comment">删除</a>
 
-        <div class="mod_show_layout" ng-if="isShowLayout">
-            <ul ng-if="isOwner">
-                <li>编辑</li>
-                <li>删除</li>
-            </ul>
-            <ul ng-if="!isOwner">
-                <li page-jump="redirectUrl.Report">举报</li>
+        <a class="i_heart has">赞<span>9</span></a>
+        <a class="i_comment">发表评论</a>
+        <a class="i_share">分享</a>
+        <a class="i_collect has">收藏<span>123</span></a>
+    </ion-side-menu>
 
-        <!--         <li page-jump="redirect.Report">收藏</li>
-                <li page-jump="redirect.Report">分享</li>
-                <li page-jump="redirect.Report">点评</li>
-                <li page-jump="redirect.Report">赞</li> -->
-            </ul>
-        </div>
+    <ion-side-menu-content edge-drag-threshold="true" drag-content="true">
+shar
+        <ion-view view-title="详情">
+            <ion-content overflow-scroll="true">
 
-        <section class="forum_detail">
-            <div class="comment_layout">
-                <ul class="imgart_content">
-                    <li ng-repeat="(k, v) in DataList.Images track by $index">
-                        <img ng-src="{{v.ImageUrl}}" />
-                        {{v.Description}}
-                    </li>
-                </ul>
 
-                <div class="person_detail">
-                    <img class="person_img" ng-src="{{DataList.Author.ImageUrl}}">
-                    <div>
-                        <h3>
-                            <span class="time">5天前</span>
-                            {{DataList.Author.UserName}}
-                            <span class="private_chat" page-jump="{{redirectUrl.Chat}}">私聊</span>
-                        </h3>
-                        <p>
-                            发布到：
-                            <span ng-repeat="(k, v) in DataList.Affect.CategoryList track by $index">#{{v.CateName}}</span>
-                        </p>
+              <button ng-click="toggleRightSideMenu()">
+                Toggle Left Side Menu
+              </button>
+
+                <div class="mod_show_layout" ng-if="isShowLayout">
+                    <ul ng-if="isOwner">
+                        <li>编辑</li>
+                        <li>删除</li>
+                    </ul>
+                    <ul ng-if="!isOwner">
+                        <li page-jump="redirectUrl.Report">举报</li>
+
+                <!--         <li page-jump="redirect.Report">收藏</li>
+                        <li page-jump="redirect.Report">分享</li>
+                        <li page-jump="redirect.Report">点评</li>
+                        <li page-jump="redirect.Report">赞</li> -->
+                    </ul>
+                </div>
+
+                <section class="forum_detail">
+                    <div class="this_detail_content">
+                        <ul class="imgart_content">
+                            <li ng-repeat="(k, v) in DataList.Images track by $index">
+                                <img ng-src="{{v.ImageUrl}}" />
+                                {{v.Description}}
+                            </li>
+                        </ul>
+
+                        <ul class="this_comment_list">
+                            <li>
+                                <img ng-src="{{DataList.Author.ImageUrl}}">
+                                <dl>
+                                    <dt>
+                                        <span>5天前</span>
+                                        {{DataList.Author.UserName}}
+                                        <a ui-sref="{{redirectUrl.Chat}}">私聊</a>
+                                    </dt>
+                                    <dd>
+                                        发布到：
+                                        <i ng-repeat="(k, v) in DataList.Affect.CategoryList track by $index">#{{v.CateName}}</i>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
 
 
-            <div class="comment_layout">
-                <p class="comment_txt">
-                    <span class="color_green">{{DataList.Total.TotalPraise}}</span>人赞过,
-                    <span class="color_green">{{DataList.Total.TotalCollect}}</span>次浏览,
-                    <span class="color_green">{{DataList.Total.TotalComment}}</span>条评论,
-                    被收藏<span class="color_green">{{DataList.Total.TotalComment}}</span>次
-                </p>
+                    <div class="this_detail_wrapper">
+                        <div class="this_text_01">
+                            <span>{{DataList.Total.TotalPraise}}</span>人赞过,
+                            <span>{{DataList.Total.TotalCollect}}</span>次浏览,
+                            <span>{{DataList.Total.TotalComment}}</span>条评论,
+                            被收藏<span>{{DataList.Total.TotalComment}}</span>次
+                        </div>
 
-                <div class="comment_heart" ng-if="DataList.PraiseUser.length > 0">
-                    <a class="heart" ng-click="setPraise()"></a>
-                    <img class="person_img" ng-repeat="(k, v) in DataList.PraiseUser track by $index" ng-src="{{v.ImageUrl}}" />
-                </div>
+                        <div class="this_user_images" ng-if="DataList.PraiseUser.length > 0">
+                            <a ng-click="setPraise()"></a>
+                            <img ng-repeat="(k, v) in DataList.PraiseUser track by $index" ng-src="{{v.ImageUrl}}" />
+                        </div>
 
-        <!--         <div class="comment_input">
-                    <img class="person_img" src="../themes/temp/1.jpg">
-                    <div>
-                        <input type="text" placeholder="说说你的评论">
-                    </div>
-                </div> -->
-                <div class="person_detail" ng-repeat="v in DataList.CommentList track by $index">
-                    <img class="person_img" ng-src="{{v.Author.ImageUrl}}">
-                    <div>
-                        <h3>
-                            <span class="time">{{v.UpdateTime}}</span>
-                            {{v.Author.UserName}}
-                        </h3>
-                        <p>
-                            {{v.Content}}
-                        </p>
-                    </div>
-                </div>
-                <div class="comment_more" page-jump="{{redirectUrl.CommentList}}">
-                    更多评论>>
-                </div>
-            </div>
-
-            <div class="mod_title_text this_p" ng-if="DataList.ArticleList.length > 0">
-                <div>老师们也在看</div>
-            </div>
-            <div class="mod_list_img" ng-if="DataList.ArticleList.length > 0">
-                <ion-scroll direction="x" scrollbar-x="false" locking="false">
-                    <div class="this_wrapper">
-                        <a ng-repeat="(k, v) in DataList.ArticleList track by $index" href="{{v.SiteUrl}}">
-                            <div class="this_img">
-                                <img ng-src="{{v.Images[0].ImageUrl}}" />
+                <!--         <div class="comment_input">
+                            <img class="person_img" src="../themes/temp/1.jpg">
+                            <div>
+                                <input type="text" placeholder="说说你的评论">
                             </div>
-                            <div class="this_title">
-                                <span ng-repeat="i in v.CategoryList">#{{i.CateName}}</span>
-                            </div>
-                            <div class="this_tx">{{v.TotalHit}}人看过</div>
-                        </a>
-                    </div>
-                </ion-scroll>
-            </div>
-            
-            <div class="unit_article_content_login" ng-if="!isLogin">
-                <h3>想看看同行们发布的？</h3>
-                <button page-jump="{{redirectUrl.Login}}">马上登录</button>
-            </div>
-        </section>
-    </ion-content>
+                        </div> -->
 
-    <footer class="comment_footer">
-        <a class="footer_heart">赞9</a>
-        <a class="footer_comment">评论9</a>
-        <a class="footer_share">分享9</a>
-        <a class="footer_collect">收藏9</a>
-    </footer>
-</ion-view>
+                        <ul class="this_comment_list">
+                            <li ng-repeat="v in DataList.CommentList track by $index">
+                                <img ng-src="{{v.Author.ImageUrl}}">
+                                <dl>
+                                    <dt>
+                                        <span>{{v.UpdateTime}}</span>
+                                        {{v.Author.UserName}}
+                                    </dt>
+                                    <dd>{{v.Content}}</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                        <a class="this_comment_more" ui-sref="forum.comment">更多评论>></a>
+                    </div>
+
+                    <div class="mod_title_text this_p" ng-if="DataList.ArticleList.length > 0">
+                        <div>老师们也在看</div>
+                    </div>
+                    <div class="mod_list_img" ng-if="DataList.ArticleList.length > 0">
+                        <ion-scroll direction="x" scrollbar-x="false" locking="false">
+                            <div class="this_wrapper">
+                                <a ng-repeat="(k, v) in DataList.ArticleList track by $index" href="{{v.SiteUrl}}">
+                                    <div class="this_img">
+                                        <img ng-src="{{v.Images[0].ImageUrl}}" />
+                                    </div>
+                                    <div class="this_title">
+                                        <span ng-repeat="i in v.CategoryList">#{{i.CateName}}</span>
+                                    </div>
+                                    <div class="this_tx">{{v.TotalHit}}人看过</div>
+                                </a>
+                            </div>
+                        </ion-scroll>
+                    </div>
+                    
+                    <div class="unit_article_content_login" ng-if="!isLogin">
+                        <h3>想看看同行们发布的？</h3>
+                        <button page-jump="{{redirectUrl.Login}}">马上登录</button>
+                    </div>
+                </section>
+            </ion-content>
+
+<!--             <footer class="comment_footer">
+                <a class="footer_heart">赞9</a>
+                <a class="footer_comment">评论9</a>
+                <a class="footer_share">分享9</a>
+                <a class="footer_collect">收藏9</a>
+            </footer> -->
+        </ion-view>
+    </ion-side-menu-content>
+</ion-side-menus>

@@ -8,9 +8,16 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams, 
-    $location, 
+    $location,
+    $ionicLoading,
     widget
 ){
+
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
+
     $scope.footerTab = 2;
 
     //--顶部菜单
@@ -58,11 +65,10 @@ angular.module('phoneApp')
 
             $scope.DataList = res;
 
-            //--设置滚动
-            $scope.$parent.myScrollOptions = { 'wrapper': {} };
-            $scope.eventScroll = "wrapper";
+            $ionicLoading.hide();
         },
         error: function (data) {
+            $ionicLoading.hide();
         }
     });
 

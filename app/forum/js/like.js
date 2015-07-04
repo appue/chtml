@@ -4,8 +4,14 @@ angular.module('phoneApp')
 .controller('tFindLike', function (
     $scope,
     $timeout,
+    $ionicLoading,
     widget
 ){
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
+
     //--设置返回按钮
     // $scope.backParam = { 'route': '#/forum/clump/find.htm' };
 
@@ -19,6 +25,11 @@ angular.module('phoneApp')
             angular.extend($scope.DataList, data);
 
             $timeout($scope.setFalls, 0);
+
+            $ionicLoading.hide();
+        },
+        error: function (data) {
+            $ionicLoading.hide();
         }
     });
 });

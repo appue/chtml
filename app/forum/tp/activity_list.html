@@ -6,7 +6,7 @@
 </ion-header-bar>
 
 <ion-view>
-    <ion-content>
+    <ion-content overflow-scroll="true">
         <section class="mod_wrapper">
             <div class="forum_activity_list">
                 <a ng-repeat="(k, v) in DataList.ActivityList" ui-sref="forum.activity-detail({type: (v.ActivityType == 1) ? 'article' : 'photo',id: v.ActivityId})">

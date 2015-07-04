@@ -18,11 +18,6 @@ angular.module('phoneApp')
     var initConfig = {
         init: function  () {
             var self = this;
-    
-            //显示loadding
-            $ionicLoading.show({
-                template: 'Loading...'
-            });
 
             $scope.footerTab = 1;
             $scope.DataList = {};
@@ -35,6 +30,11 @@ angular.module('phoneApp')
         },
 
         deploy: function () {
+            //显示loadding
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+
             angular.extend($scope.Deploy, {
                 pageIndex: 0,
                 pageSize: 5,
@@ -68,6 +68,7 @@ angular.module('phoneApp')
 
 
     $scope.$watch('Deploy.currentTab', function () {
+
         initConfig.deploy();
 
         $scope.loadMore();
@@ -106,6 +107,8 @@ angular.module('phoneApp')
                         $scope.Deploy.isLoading = false;
 
                         $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                        $ionicLoading.hide();
                     },
                     error: function (data) {
                         $scope.Deploy.isLoading = false;
@@ -139,6 +142,8 @@ angular.module('phoneApp')
                         $scope.Deploy.isLoading = false;
 
                         $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                        $ionicLoading.hide();
                     },
                     error: function (data) {
                         $scope.Deploy.isLoading = false;

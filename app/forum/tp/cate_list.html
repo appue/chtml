@@ -55,7 +55,7 @@
         </falls>
 
         <!--垂直平铺-->
-        <ul ng-if="Deploy.currentTab==2" class="mod_list_img_only">
+        <ul ng-show="Deploy.currentTab==2" class="mod_list_img_only">
             <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
                 <a class="this_border" ui-sref="forum.detail({id: v.ArticleId})">
                     <img ng-src="{{v.Images[0].ImageUrl}}" />
