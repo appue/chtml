@@ -6,7 +6,7 @@
 </ion-header-bar>
 
 <ion-view>
-    <ion-content>
+    <ion-content overflow-scroll="true">
 
         <ion-slide-box auto-play="true" does-continue="true" ng-if="DataList.PhotoList.length > 0">
             <ion-slide ng-repeat="(k, v) in DataList.PhotoList track by $index">

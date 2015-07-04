@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-content ng-model="Deploy.currentTab" ng-init="Deploy.currentTab=1">
+    <ion-content overflow-scroll="true" ng-model="Deploy.currentTab" ng-init="Deploy.currentTab=1">
         <div ng-if="DataList.CategoryList.length > 0" ng-class="Deploy.cateClass">
             <div>
                 <a ng-repeat="(k, v) in DataList.CategoryList track by $index" ui-sref="forum.cate({id: v.CateId})">
