@@ -18,8 +18,8 @@ $gray_val: #cacdcb;
 @import "sass/common.title.scss";
 
 
-@import "sass/clump.content.scss";
-@import "sass/clump.list.scss";
+// @import "sass/clump.content.scss";
+// @import "sass/clump.list.scss";
 
 @import "sass/entry.login.scss";
 @import "sass/entry.register.scss";
@@ -36,8 +36,10 @@ $gray_val: #cacdcb;
 @import "sass/forum.activity.list.scss"; //活动列表
 @import "sass/forum.activity.detail.scss"; //活动详情
 
-@import "sass/forum.content.scss";
-@import "sass/forum.list.scss";
+@import "sass/forum.subject.list.scss"; //专题列表
+
+// @import "sass/forum.content.scss";
+// @import "sass/forum.list.scss";
 @import "sass/forum.photo.scss";
 
 @import "sass/home.content.scss";

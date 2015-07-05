@@ -1,0 +1,21 @@
+﻿.forum_subject_list {
+    background: #fff;
+    padding: 0 10px;
+    a {
+        display: -webkit-box;
+        padding: 10px 0;
+        @include border_bottom_half;
+        &:last-child{
+            border: 0;
+        }
+        -webkit-box-align: center;
+        div{
+            -webkit-box-flex: 1;
+            @include ellipsis;
+        }
+        img{
+            width: 40px;
+            height: 40px;
+        }
+    }
+}

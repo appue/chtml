@@ -8,54 +8,74 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams, 
-    $location, 
-    routerRedirect,
+    $location,
+    $ionicLoading,
     widget
 ){
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
 
-    var currentUrl = widget.getCurrentUrl();
-
-    $scope.pageIndex = 0;
-    $scope.pageSize = 15;
-    $scope.isLoading = false;
+    $scope.Deploy = {
+        pageIndex: 0,
+        pageSize: 15,
+        isLoading: false,
+        isMore: true
+    };
     $scope.DataList = {
         SubjectList: []
     };
             
-    //--设置返回按钮
-    $scope.backParam = { 'url': ['clump/#/find.htm'] };
 
     $scope.loadMore = function () {
-        if (!$scope.isLoading) {
+        if (!$scope.Deploy.isLoading) {
 
-            $scope.isLoading = true;
-            $scope.pageIndex++;
+            $scope.Deploy.isLoading = true;
+            $scope.Deploy.pageIndex++;
+
+            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
+                $scope.Deploy.isMore = false;
+                return;
+            }
 
             widget.ajaxRequest({
                 noMask: true,
                 url: 'getListSubject',
                 data: {
                     SortType: 1,
-                    PageIndex: $scope.pageIndex,
-                    PageSize: $scope.pageSize
+                    PageIndex: $scope.Deploy.pageIndex,
+                    PageSize: $scope.Deploy.pageSize
                 },
                 success: function (data) {
-                    $scope.pageTotal = data.Total || 0;
+                    if (data.SubjectList && data.SubjectList.length > 0) {
+                        $scope.Deploy.pageTotal = data.Total || 0;
 
-                    angular.forEach(data.SubjectList, function (v, k) {
-                        v.SiteUrl = {
-                            'url': ['clump/#/subject/detail-'+ v.SubjectId +'.htm']
-                        };
+                        $scope.DataList.SubjectList = $scope.DataList.SubjectList.concat(data.SubjectList);
 
-                        $scope.DataList.SubjectList.push(v);
-                    });
+                        $scope.Deploy.isLoading = false;
 
-                    $scope.isLoading = false;
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                    } else {
+
+                        $scope.Deploy.isLoading = true;
+                        $scope.Deploy.isMore = false;
+
+                    }
+
+                    $ionicLoading.hide();
+                },
+                error: function (data) {
+                    $ionicLoading.hide();
                 }
             });
         }
     };
 
-    $scope.loadMore();
+
+    $scope.$on('$stateChangeSuccess', function() {
+        $scope.loadMore();
+    });
 
 });
