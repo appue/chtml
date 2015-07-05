@@ -12,7 +12,6 @@ angular.module('phoneApp')
     $location,
     $timeout,
     $ionicLoading,
-    routerRedirect,
     widget
 ){
     //--设置返回按钮
@@ -94,9 +93,9 @@ angular.module('phoneApp')
 
             $rootScope.CameraImages = lastData;
 
-            routerRedirect.toJump({
-                'url': ['forum/#/photo/title.htm']
-            });
+            // routerRedirect.toJump({
+            //     'url': ['forum/#/photo/title.htm']
+            // });
         });
 
     };

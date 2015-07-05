@@ -3,7 +3,6 @@ angular.module('phoneApp')
 .directive('footerBar', function (
     $state,
     cachePool,
-    routerRedirect,
     ENV
 ) {
 
@@ -107,8 +106,7 @@ angular.module('phoneApp')
 
 .directive('ngPhoto', function (
     $parse, 
-    $timeout,
-    routerRedirect
+    $timeout
 ) {
     return {
         restrict: 'A',
@@ -132,9 +130,9 @@ angular.module('phoneApp')
 
                 sessionStorage.setItem('imageData', encodeURIComponent(imageData));
 
-                routerRedirect.toJump({
-                    'url': ['forum/#/photo/edit.htm']
-                });
+                // .toJump({
+                //     'url': ['forum/#/photo/edit.htm']
+                // });
             }
 
             function onFail(message) {
@@ -147,8 +145,7 @@ angular.module('phoneApp')
 
 .directive('ngCamera', function (
     $parse, 
-    $timeout,
-    routerRedirect
+    $timeout
 ) {
     return {
         restrict: 'A',
@@ -180,9 +177,9 @@ angular.module('phoneApp')
 
                 sessionStorage.setItem('imageData', encodeURIComponent(imageData));
 
-                routerRedirect.toJump({
-                    'url': ['forum/#/photo/edit.htm']
-                });
+                // routerRedirect.toJump({
+                //     'url': ['forum/#/photo/edit.htm']
+                // });
             }
 
             function onFail(message) {

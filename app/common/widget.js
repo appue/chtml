@@ -7,9 +7,8 @@ angular.module('phoneApp')
     $compile, 
     $timeout,
     $location,
-    ENV,
     cachePool,
-    routerRedirect
+    ENV
 ) {
 
     /**
@@ -329,9 +328,9 @@ angular.module('phoneApp')
         }
 
         if (!uid) {
-            routerRedirect.toJump({
-                url: ['entry/#/login.htm?from='+ getCurrentUrl()]
-            });
+            // routerRedirect.toJump({
+            //     url: ['entry/#/login.htm?from='+ getCurrentUrl()]
+            // });
         }
 
     };

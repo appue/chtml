@@ -11,7 +11,6 @@ angular.module('phoneApp')
     $stateParams, 
     $location, 
     $ionicLoading,
-    routerRedirect,
     widget
 ){
 
@@ -45,9 +44,9 @@ angular.module('phoneApp')
         if (empty) {
             widget.msgToast('写点你想说的话吧！');
         } else {
-            routerRedirect.toJump({
-                'url': ['forum/#/photo/cate-0.htm']
-            });
+            // routerRedirect.toJump({
+            //     'url': ['forum/#/photo/cate-0.htm']
+            // });
         }
     };
 

@@ -3,13 +3,13 @@
 angular.module('phoneApp')
 
 // 获取验证码
-.directive('getVcode', function ($rootScope, $stateParams, $timeout, routerRedirect, widget, $http, $q) {
+.directive('getVcode', function ($rootScope, $stateParams, $timeout, widget, $http, $q) {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
 
             if (!$stateParams.phone) { //如果电话号码不存在，则返回上一页
-                routerRedirect.toJump(scope.backParam);
+                // routerRedirect.toJump(scope.backParam);
                 return;
             }
 

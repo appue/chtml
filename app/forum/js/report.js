@@ -6,7 +6,6 @@ angular.module('phoneApp')
     $stateParams, 
     $location, 
     $ionicLoading,
-    routerRedirect,
     widget
 ){
     //显示loadding
@@ -15,9 +14,9 @@ angular.module('phoneApp')
     });
 
     //--设置返回按钮
-    $scope.backParam = {
-        'url': ['forum/#/thread-'+ $stateParams.id +'.htm']
-    };
+    // $scope.backParam = {
+    //     'url': ['forum/#/thread-'+ $stateParams.id +'.htm']
+    // };
 
     $scope.inputData = {};
     

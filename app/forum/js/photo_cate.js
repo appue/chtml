@@ -10,7 +10,6 @@ angular.module('phoneApp')
     $stateParams, 
     $location, 
     $ionicLoading,
-    routerRedirect,
     widget
 ){
     //--设置返回按钮

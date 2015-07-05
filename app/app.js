@@ -225,6 +225,11 @@ angular.module('phoneApp', [
         //消息中心首页
         .state('forum.msg-index', {
             url: '/msg/index.htm',
+            resolve: {
+                isCheck: function () {
+                    return true;
+                }
+            },
             templateUrl: 'forum/tp/msg_index.html',
             controller: 'tMsgIndex'
         })
@@ -264,6 +269,11 @@ angular.module('phoneApp', [
         //消息中心-邀请好友
         .state('forum.msg-search', {
             url: '/msg/search.htm',
+            resolve: {
+                isCheck: function () {
+                    return true;
+                }
+            },
             templateUrl: 'forum/tp/msg_search.html',
             controller: 'tMsgSearch'
         })

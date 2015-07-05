@@ -6,7 +6,6 @@ angular.module('phoneApp')
     $stateParams, 
     $location, 
     $ionicLoading,
-    routerRedirect,
     widget
 ){
     //显示loadding

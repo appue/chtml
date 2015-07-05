@@ -10,7 +10,6 @@ angular.module('phoneApp')
     $timeout,
     $timeout,
     cachePool,
-    routerRedirect,
     widget
 ){  
 
@@ -34,8 +33,5 @@ angular.module('phoneApp')
     ];
 
     $timeout(function () {
-        routerRedirect.toJump({
-            'url': ['home/#/entry.htm']
-        })
     }, 8000);
 });
