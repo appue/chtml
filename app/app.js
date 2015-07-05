@@ -87,80 +87,6 @@ angular.module('phoneApp', [
         })
 
 
-        /*------------------------消息中心模块------------------------*/
-        .state('msg', {
-            abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
-            url: '/msg',
-            templateUrl: 'message/tp/main.html'
-        })
-        //消息中心首页
-        .state('msg.index', {
-            url: '/index.htm',
-            templateUrl: 'message/tp/index.html',
-            controller: 'tMsgIndex'
-        })
-        //跟某一用户聊天
-        .state('msg.chat', {
-            url: '/chat-{uid}.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
-            templateUrl: 'message/tp/chat.html',
-            controller: 'tMsgChat'
-        })
-        //消息中心-通知
-        .state('msg.notice', {
-            url: '/notice.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
-            templateUrl: 'message/tp/notice.html',
-            controller: 'tMsgNotice'
-        })
-        //消息中心-评论
-        .state('msg.comment', {
-            url: '/comment.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
-            templateUrl: 'message/tp/comment.html',
-            controller: 'tMsgComment'
-        })
-        //消息中心-赞
-        .state('msg.praise', {
-            url: '/praise.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
-            templateUrl: 'message/tp/praise.html',
-            controller: 'tMsgPraise'
-        })
-        //消息中心-邀请好友
-        .state('msg.search', {
-            url: '/search.htm',
-            templateUrl: 'message/tp/search.html',
-            controller: 'tMsgSearch'
-        })
-        //消息中心-私聊
-        .state('msg.whisper', {
-            url: '/whisper.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
-            templateUrl: 'message/tp/whisper.html',
-            controller: 'tMsgWhisper'
-        })
-
 
         /*------------------------发现模块------------------------*/
         .state('forum', {
@@ -252,7 +178,7 @@ angular.module('phoneApp', [
         /*==========点评==========*/
         //点评列表
         .state('forum.comment-list', {
-            url: '/comment/list/{id}.htm',
+            url: '/comment/list-{id}.htm',
             templateUrl: 'forum/tp/comment_list.html',
             controller: 'tCommentList'
         })
@@ -269,7 +195,81 @@ angular.module('phoneApp', [
             url: '/search/result',
             templateUrl: 'forum/tp/search-result.html',
             controller: 'tSearchResult'
-        });
+        })
+
+
+        /*==========聊天==========*/
+        //跟某一用户聊天
+        .state('forum.chat', {
+            url: '/chat-{uid}.htm',
+            resolve: {
+                isCheck: function () {
+                    return true;
+                }
+            },
+            templateUrl: 'forum/tp/chat.html',
+            controller: 'tMsgChat'
+        })
+
+
+
+        /*==========消息中心==========*/
+        //消息中心首页
+        .state('forum.msg-index', {
+            url: '/msg/index.htm',
+            templateUrl: 'forum/tp/message_index.html',
+            controller: 'tMsgIndex'
+        })
+        //消息中心-通知
+        .state('forum.msg-notice', {
+            url: '/msg/notice.htm',
+            resolve: {
+                isCheck: function () {
+                    return true;
+                }
+            },
+            templateUrl: 'forum/tp/message_notice.html',
+            controller: 'tMsgNotice'
+        })
+        //消息中心-评论
+        .state('forum.msg-comment', {
+            url: '/msg/comment.htm',
+            resolve: {
+                isCheck: function () {
+                    return true;
+                }
+            },
+            templateUrl: 'forum/tp/message_comment.html',
+            controller: 'tMsgComment'
+        })
+        //消息中心-赞
+        .state('forum.msg-praise', {
+            url: '/msg/praise.htm',
+            resolve: {
+                isCheck: function () {
+                    return true;
+                }
+            },
+            templateUrl: 'forum/tp/message_praise.html',
+            controller: 'tMsgPraise'
+        })
+        //消息中心-邀请好友
+        .state('forum.msg-search', {
+            url: '/msg/search.htm',
+            templateUrl: 'forum/tp/message_search.html',
+            controller: 'tMsgSearch'
+        })
+        //消息中心-私聊
+        .state('forum.msg-whisper', {
+            url: '/msg/whisper.htm',
+            resolve: {
+                isCheck: function () {
+                    return true;
+                }
+            },
+            templateUrl: 'forum/tp/message_whisper.html',
+            controller: 'tMsgWhisper'
+        })
 
         // $urlRouterProvider.when('', '/index');
 

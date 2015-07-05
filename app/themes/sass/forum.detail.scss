@@ -5,6 +5,8 @@
     .this_detail_content {
         background: #fff;
         padding: 5px;
+        margin-bottom: 10px;
+        @include shadow();
         .imgart_content {
             padding-bottom: 10px;
             li {
@@ -25,6 +27,7 @@
         padding: 10px;
         background: #fff;
         margin-bottom: 10px;
+        @include shadow();
     }
 
     .this_text_01 {
@@ -105,6 +108,44 @@
         display: block;
         padding-top: 10px;
         font-weight: bolder;
+    }
+
+    .this_comment_add {
+        display: -webkit-box;
+        padding: 10px 0;
+        img {
+            width: 30px;
+            height: 30px;
+            display: block;
+            margin-right: 20px;
+            -webkit-border-radius: 30px;
+        }
+        div {
+            -webkit-box-flex: 1;
+            padding: 0 8px;
+            @include border_half;
+            background-color: #f6f6f6;
+            position: relative;
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 10px;
+                left: -6px;
+                width: 10px;
+                height: 10px;
+                @include border_left_half;
+                @include border_bottom_half;
+                border-left-width: 1px;
+                background-color: #f6f6f6;
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+            input {
+                width: 100%;
+                line-height: 32px;
+            }
+        }
     }
 }
 

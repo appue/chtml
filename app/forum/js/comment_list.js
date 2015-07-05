@@ -1,3 +1,4 @@
+// 评论列表
 angular.module('phoneApp')
 
 .controller('tCommentList', function (
@@ -6,34 +7,33 @@ angular.module('phoneApp')
     $stateParams, 
     $location, 
     $ionicLoading,
-    routerRedirect,
     widget
 ) {
     //显示loadding
     $ionicLoading.show({
         template: 'Loading...'
     });
-
-    // $scope.headerTitle = $location.$$search.title || "";
     
-    $scope.pageIndex = 0;
-    $scope.pageSize = 15;
-    $scope.isLoading = false;
+    $scope.Deploy = {
+        pageIndex: 0,
+        pageSize: 15,
+        isLoading: false,
+        isMore: true
+    };
     $scope.DataList = {
         CommentList: []
     };
 
-    //--设置返回按钮
-    $scope.backParam = {
-        'url': ['forum/#/thread-'+ $stateParams.id  +'.htm']
-    };
-
-
     $scope.loadMore = function() {
-        if (!$scope.isLoading) {
-            
-            $scope.isLoading = true;
-            $scope.pageIndex++;
+        if (!$scope.Deploy.isLoading) {
+
+            $scope.Deploy.isLoading = true;
+            $scope.Deploy.pageIndex++;
+
+            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
+                $scope.Deploy.isMore = false;
+                return;
+            }
 
             widget.ajaxRequest({
                 noMask: true,
@@ -41,21 +41,38 @@ angular.module('phoneApp')
                 data: {
                     SortType: 1,
                     ArticleId: $stateParams.id,
-                    PageIndex: $scope.pageIndex,
-                    PageSize: $scope.pageSize
+                    PageIndex: $scope.Deploy.pageIndex,
+                    PageSize: $scope.Deploy.pageSize
                 },
                 success: function (data) {
-                    $scope.pageTotal = data.Total || 0;
 
-                    angular.forEach(data.CommentList, function (v, k) {
-                        $scope.DataList.CommentList.push(v);
-                    });
+                    if (data.CommentList && data.CommentList.length > 0) {
+                        $scope.Deploy.pageTotal = data.Total || 0;
 
-                    $scope.isLoading = false;
+                        $scope.DataList.CommentList = $scope.DataList.CommentList.concat(data.CommentList);
+
+                        $scope.Deploy.isLoading = false;
+
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                    } else {
+
+                        $scope.Deploy.isLoading = true;
+                        $scope.Deploy.isMore = false;
+
+                    }
+
+                    $ionicLoading.hide();
+                },
+                error: function (data) {
+                    $ionicLoading.hide();
                 }
             });
         }
     };
 
-    $scope.loadMore();
+
+    $scope.$on('$stateChangeSuccess', function() {
+        $scope.loadMore();
+    });
 });

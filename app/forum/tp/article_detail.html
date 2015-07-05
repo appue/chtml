@@ -32,7 +32,7 @@
                             <dt>
                                 <span>5天前</span>
                                 {{DataList.Author.UserName}}
-                                <a ui-sref="{{redirectUrl.Chat}}">私聊</a>
+                                <a ui-sref="forum.chat({uid: 123123})">私聊</a>
                             </dt>
                             <dd>
                                 发布到：
@@ -57,14 +57,16 @@
                     <img ng-repeat="(k, v) in DataList.PraiseUser track by $index" ng-src="{{v.ImageUrl}}" />
                 </div>
 
-        <!--         <div class="comment_input">
-                    <img class="person_img" src="../themes/temp/1.jpg">
+                <!--
+                <div class="this_comment_add">
+                    <img src="../themes/temp/1.jpg">
                     <div>
                         <input type="text" placeholder="说说你的评论">
                     </div>
-                </div> -->
+                </div>
+                -->
 
-                <ul class="this_comment_list">
+                <ul ng-if="DataList.CommentList.length > 0" class="this_comment_list">
                     <li ng-repeat="v in DataList.CommentList track by $index">
                         <img ng-src="{{v.Author.ImageUrl}}">
                         <dl>
@@ -76,7 +78,7 @@
                         </dl>
                     </li>
                 </ul>
-                <a class="this_comment_more" ui-sref="forum.comment">更多评论>></a>
+                <a class="this_comment_more" ui-sref="forum.comment-list({id: 1})">更多评论>></a>
             </div>
 
             <div class="mod_title_text this_p" ng-if="DataList.ArticleList.length > 0">

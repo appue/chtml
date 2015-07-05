@@ -71,12 +71,6 @@ angular.module('phoneApp')
             ArticleId: $stateParams.id
         },
         success: function (data) {
-            angular.forEach(data.ArticleList, function (v, k) {
-                v.SiteUrl = {
-                    'url': ['forum/#/thread-'+ v.ArticleId +'.htm']
-                }
-            });
-
             angular.extend($scope.DataList, data);
 
             if (userInfo.UserId == data.Author.UserId) {
