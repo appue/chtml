@@ -92,9 +92,7 @@ angular.module('phoneApp')
         };
 
 
-        $scope.$on('$stateChangeSuccess', function() {
-            $scope.loadMore();
-        });
+        $scope.loadMore();
     } else {
 
         //--获取帖子内容

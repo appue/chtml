@@ -155,7 +155,5 @@ angular.module('phoneApp')
         }
     };
     
-    $scope.$on('$stateChangeSuccess', function() {
-        $scope.loadMore();
-    });
+    $scope.loadMore();
 });

@@ -7,11 +7,18 @@
     <ion-content overflow-scroll="true" ng-model="Deploy.currentTab" ng-init="Deploy.currentTab=1">
 
         <div ng-if="DataList.CategoryList.length > 0" ng-class="Deploy.cateClass">
-            <div>
+<!--             <div>
                 <a ng-repeat="(k, v) in DataList.CategoryList track by $index" ui-sref="forum.cate({id: v.CateId})">
                     #{{v.CateName}}
                 </a>
-            </div>
+            </div> -->
+
+
+            <ul>
+                <li ng-repeat="(k, v) in DataList.CategoryList track by $index" ng-click="refreshView(v.CateId)">
+                    #{{v.CateName}}
+                </li>
+            </ul>
         </div>
 
         <div ng-if="DataList.CategoryList.length == 0" class="forum_cate_description">

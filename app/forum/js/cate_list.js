@@ -18,6 +18,7 @@ angular.module('phoneApp')
     });
 
     $scope.Deploy = {
+        cateId: $stateParams.id,
         currentTab: 1,
         pageIndex: 0,
         pageSize: 5,
@@ -35,27 +36,32 @@ angular.module('phoneApp')
         }
     });
 
-    widget.ajaxRequest({
-        noMask: true,
-        url: 'getListCategory',
-        data: {
-        },
-        success: function (data) {
-            if (data.CategoryList.length % 3 == 0) {
-                $scope.Deploy.cateClass = "forum_cate_three_list";
+    $scope.loadCate = function (type) {
+        widget.ajaxRequest({
+            noMask: true,
+            url: 'getListCategory',
+            data: {
+                CateId: $scope.Deploy.cateId
+            },
+            success: function (data) {
+                if (type && type == "refresh") {
+                    $scope.DataList.CurrentCate = "";
+                    $scope.DataList.CategoryList = "";
+                }
+
+                if (data.CategoryList.length % 3 == 0) {
+                    $scope.Deploy.cateClass = "forum_cate_three_list";
+                }
+
+                $scope.DataList.CurrentCate = data.CurrentCate;
+                $scope.DataList.CategoryList = data.CategoryList;
+
+                $ionicNavBarDelegate.title($scope.DataList.CurrentCate.CateName);
             }
+        });
+    };
 
-            // angular.forEach(data.CategoryList, function (v, k) {
-            //     v.SiteUrl = '#/forum/cate/list-'+ v.CateId +'.htm';
-            // });
-
-            angular.extend($scope.DataList, data);
-
-            $ionicNavBarDelegate.title($scope.DataList.CurrentCate.CateName);
-        }
-    });
-
-    $scope.loadMore = function() {
+    $scope.loadMore = function(type) {
         if (!$scope.Deploy.isLoading) {
 
             $scope.Deploy.isLoading = true;
@@ -70,10 +76,17 @@ angular.module('phoneApp')
                 noMask: true,
                 url: 'getListArticle',
                 data: {
-                    CateId: $stateParams.id
+                    CateId: $scope.Deploy.cateId,
+                    PageSize: $scope.Deploy.pageSize,
+                    PageIndex: $scope.Deploy.pageIndex
                 },
                 success: function (data) {
                     if (data.ArticleList && data.ArticleList.length > 0) {
+
+                        if (type && type == "refresh") {
+                            $scope.DataList.ArticleList = [];
+                        }
+
                         $scope.Deploy.pageTotal = data.Total || 0;
 
                         $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
@@ -90,7 +103,7 @@ angular.module('phoneApp')
                         $scope.Deploy.isMore = false;
 
                     }
-
+                    
                     $ionicLoading.hide();
                 },
                 error: function (data) {
@@ -100,8 +113,29 @@ angular.module('phoneApp')
         }
     };
 
+    $scope.refreshView = function (id) {
+        
+        $ionicLoading.show({
+            template: 'Loading...'
+        });
 
-    $scope.$on('$stateChangeSuccess', function() {
-        $scope.loadMore();
-    });
+        angular.extend($scope.Deploy, {
+            cateId: id,
+            currentTab: 1,
+            pageIndex: 0,
+            isLoading: false,
+            isMore: true,
+            pageTotal: 0
+        });
+
+        $scope.DataList = {
+            ArticleList: []
+        };
+
+        $scope.loadCate("refresh");
+        $scope.loadMore("refresh");
+    };
+
+    $scope.loadCate();
+    $scope.loadMore();
 });
