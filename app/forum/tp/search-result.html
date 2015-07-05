@@ -1,117 +1,127 @@
-<header-bar back title="搜索<span class='color_green'>{{keyword}}</span>的结果"></header-bar>
-
-<ul class="mod_tab_4 tab_search_result">
-    <li ng-click="currentTab=1;pageIndex=1" ng-class="{current : currentTab==1}">内容</li>
-    <li ng-click="currentTab=2;pageIndex=1" ng-class="{current : currentTab==2}">标签</li>
-    <li ng-click="currentTab=3;pageIndex=1" ng-class="{current : currentTab==3}">圈子</li>
-    <li ng-click="currentTab=4;pageIndex=1" ng-class="{current : currentTab==4}">用户</li>
-    <i class="line"></i>
-</ul>
+<ion-header-bar align-title="left">
+    <div class="buttons">
+        <button class="button icon-left ion-chevron-left button-clear button-white" ng-click="$ionicGoBack()"></button>
+    </div>
+    <h1 class="title">搜索<span class='color_green'>{{keyword}}</span>的结果</h1>
+</ion-header-bar>
 
 
-<!--搜索-搜索内容-->
-<section class="scroll_search_result_falls" when-scrolled="loadMore()" ng-show="currentTab==1">
-    <!--瀑布流-->
-    <falls>
-        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
-            <div class="this_border" page-jump="{{v.SiteUrl}}">
-                <img ng-src="{{v.Images[0].ImageUrl}}" />
-                <article>
-                    <div class="this_text">{{v.Images[0].Description}}</div>
-                    
-                    <div class="this_star">{{v.TotalCollect}}</div>
+<ion-view>
+    <ion-content overflow-scroll="true">
+        <ul class="mod_tab_4 tab_search_result">
+            <li ng-click="Deploy.currentTab=1;pageIndex=1" ng-class="{current : Deploy.currentTab==1}">内容</li>
+            <li ng-click="Deploy.currentTab=2;pageIndex=1" ng-class="{current : Deploy.currentTab==2}">标签</li>
+            <li ng-click="Deploy.currentTab=3;pageIndex=1" ng-class="{current : Deploy.currentTab==3}">圈子</li>
+            <li ng-click="Deploy.currentTab=4;pageIndex=1" ng-class="{current : Deploy.currentTab==4}">用户</li>
+            <i class="line"></i>
+        </ul>
 
-                    <div class="this_user">
-                        <img ng-src="{{v.Author.ImageUrl}}" />
-                        <dl>
-                            <dt>{{v.Author.UserName}}</dt>
-                            <dd>
-                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
-                            </dd>
-                        </dl>
+
+        <!--搜索-搜索内容-->
+        <section ng-if="Deploy.currentTab==1">
+            <!--瀑布流-->
+            <falls>
+                <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
+                    <a class="this_border" page-jump="{{v.SiteUrl}}">
+                        <img ng-src="{{v.Images[0].ImageUrl}}" />
+                        <article>
+                            <div class="this_text">{{v.Images[0].Description}}</div>
+                            
+                            <div class="this_star">{{v.TotalCollect}}</div>
+
+                            <div class="this_user">
+                                <img ng-src="{{v.Author.ImageUrl}}" />
+                                <dl>
+                                    <dt>{{v.Author.UserName}}</dt>
+                                    <dd>
+                                        <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </article>
+                    </a>
+                </li>
+            </falls>
+        </section>
+
+        <!--搜索-搜索标签-->
+        <section ng-if="currentTab==2">
+            <ul class="mod_list_falls" style="height:400px;">
+                <li style="left:0;top:0;">
+                    <div class="this_border">
+                        <img src="../themes/temp/1.jpg" />
+                        <article>
+                            <div class="this_cate">
+                                #玩教具 #泥工
+                                    #玩教具 #泥工
+                            </div>
+                        </article>
                     </div>
-                </article>
-            </div>
-        </li>
-    </falls>
-</section>
-
-<!--搜索-搜索标签-->
-<section class="scroll_search_result" ng-if="currentTab==2">
-    <ul class="mod_list_falls" style="height:400px;">
-        <li style="left:0;top:0;">
-            <div class="this_border">
-                <img src="../themes/temp/1.jpg" />
-                <article>
-                    <div class="this_cate">
-                        #玩教具 #泥工
-                            #玩教具 #泥工
+                </li>
+                <li style="right:0;top:0;">
+                    <div class="this_border">
+                        <img src="../themes/temp/2.jpg" />
+                        <article>
+                            <div class="this_cate">#玩教具 #泥工 #泥工 #泥工</div>
+                        </article>
                     </div>
-                </article>
-            </div>
-        </li>
-        <li style="right:0;top:0;">
-            <div class="this_border">
-                <img src="../themes/temp/2.jpg" />
-                <article>
-                    <div class="this_cate">#玩教具 #泥工 #泥工 #泥工</div>
-                </article>
-            </div>
-        </li>
-        <li style="right:0;top:145px;">
-            <div class="this_border">
-                <img src="../themes/temp/7.jpg" />
-                <article>
-                    <div class="this_cate">#玩教具 #泥工 #泥工 #泥工</div>
-                </article>
-            </div>
-        </li>
-    </ul>
-</section>
+                </li>
+                <li style="right:0;top:145px;">
+                    <div class="this_border">
+                        <img src="../themes/temp/7.jpg" />
+                        <article>
+                            <div class="this_cate">#玩教具 #泥工 #泥工 #泥工</div>
+                        </article>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
 
-<!--搜索-搜索圈子-->
-<section class="scroll_search_result" ng-if="currentTab==3">
-    <ul class="unit_keyword_club">
-        <li>
-            <div>
-                <img src="../themes/temp/img.jpg" />
-                <article>
-                    <p>孩子们的营养餐</p>
-                    玩教具  手工
-                    <br>成员：258</article>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img src="../themes/temp/img.jpg" />
-                <article>
-                    <p>孩子们的营养餐</p>
-                    玩教具  手工
-                    <br>成员：258</article>
-            </div>
-        </li>
-    </ul>
-</section>
+        <!--搜索-搜索圈子-->
+        <section ng-if="currentTab==3">
+            <ul class="unit_keyword_club">
+                <li>
+                    <div>
+                        <img src="../themes/temp/img.jpg" />
+                        <article>
+                            <p>孩子们的营养餐</p>
+                            玩教具  手工
+                            <br>成员：258</article>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img src="../themes/temp/img.jpg" />
+                        <article>
+                            <p>孩子们的营养餐</p>
+                            玩教具  手工
+                            <br>成员：258</article>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
 
-<!--搜索-搜索用户-->
-<section class="scroll_search_result" ng-if="currentTab==4">
-    <ul class="unit_keyword_user">
-        <li>
-            <img src="../themes/temp/3.jpg" />
-            <p>吹口哨的柬埔寨girl</p>
-            <div class="this_btn current">关注</div>
-        </li>
-        <li>
-            <img src="../themes/temp/3.jpg" />
-            <p>吹口哨的柬埔寨girl</p>
-            <div class="this_btn">已关注</div>
-        </li>
-        <li>
-            <img src="../themes/temp/3.jpg" />
-            <p>吹口哨的柬埔寨girl</p>
-            <div class="this_btn">互注</div>
-        </li>
-    </ul>
-</section>
+        <!--搜索-搜索用户-->
+        <section ng-if="currentTab==4">
+            <ul class="unit_keyword_user">
+                <li>
+                    <img src="../themes/temp/3.jpg" />
+                    <p>吹口哨的柬埔寨girl</p>
+                    <div class="this_btn current">关注</div>
+                </li>
+                <li>
+                    <img src="../themes/temp/3.jpg" />
+                    <p>吹口哨的柬埔寨girl</p>
+                    <div class="this_btn">已关注</div>
+                </li>
+                <li>
+                    <img src="../themes/temp/3.jpg" />
+                    <p>吹口哨的柬埔寨girl</p>
+                    <div class="this_btn">互注</div>
+                </li>
+            </ul>
+        </section>
+    </ion-content>
+</ion-view>

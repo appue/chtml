@@ -6,8 +6,7 @@ angular.module('phoneApp')
 .directive('searchHeader', function (
     $state,
     widget,
-    cachePool,
-    routerRedirect
+    cachePool
 ) {
 
     return {
@@ -41,25 +40,19 @@ angular.module('phoneApp')
 
                     cachePool.push('Keyword', key);
 
-                    routerRedirect.toJump({
-                        'url': [
-                            'search/#/result?keyword='+ encodeURIComponent(scope.keyword)
-                        ]
+                    $state.go('forum.search-result', {
+                        keyword: encodeURIComponent(scope.keyword)
                     });
 
                 } else {
-
+                    
                     if ($state.is('index')) {
 
                         widget.msgToast('请输入关键字！');
 
                     } else {
 
-                        routerRedirect.toJump({
-                            'url': [
-                                'search/#/index'
-                            ]
-                        });
+                        $state.go('forum.search');
 
                     }
                 }

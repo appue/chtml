@@ -203,7 +203,7 @@ angular.module('phoneApp', [
         })
         //搜索结果
         .state('forum.search-result', {
-            url: '/search/result',
+            url: '/search/result?keyword',
             templateUrl: 'forum/tp/search-result.html',
             controller: 'tSearchResult'
         })

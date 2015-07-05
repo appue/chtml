@@ -32,7 +32,7 @@ angular.module('phoneApp')
     $scope.keyword = $location.$$search.keyword || '';
 
 
-    $scope.$watch('currentTab', function () {
+    $scope.$watch('Deploy.currentTab', function () {
         if ($scope.currentTab == 1) {
             $timeout($scope.setFalls, 0);
         }
@@ -54,10 +54,6 @@ angular.module('phoneApp')
                     $scope.pageTotal = data.Total || 0;
 
                     angular.forEach(data.ArticleList, function (v, k) {
-                        v.SiteUrl = {
-                            'url': ['forum/#/thread-'+ v.ArticleId +'.htm']
-                        };
-
                         $scope.DataList.ArticleList.push(v);
                     });
 
@@ -73,8 +69,5 @@ angular.module('phoneApp')
         }
     };
 
-
-    $scope.$on('$stateChangeSuccess', function() {
-        $scope.loadMore();
-    });
+    $scope.loadMore();
 });
