@@ -197,7 +197,6 @@ angular.module('phoneApp', [
             controller: 'tSearchResult'
         })
 
-
         /*==========聊天==========*/
         //跟某一用户聊天
         .state('forum.chat', {
@@ -210,8 +209,6 @@ angular.module('phoneApp', [
             templateUrl: 'forum/tp/chat.html',
             controller: 'tMsgChat'
         })
-
-
 
         /*==========消息中心==========*/
         //消息中心首页
