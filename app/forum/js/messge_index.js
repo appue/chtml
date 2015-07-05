@@ -15,7 +15,7 @@ angular.module('phoneApp')
             Title: '赞',
             ClassName: 'i_hit',
             SiteUrl: {
-                'route': 'msg.praise'
+                'route': 'forum.msg-praise'
             },
             isNew: true
         },
@@ -23,7 +23,7 @@ angular.module('phoneApp')
             Title: '评论',
             ClassName: 'i_comment',
             SiteUrl: {
-                'route': 'msg.comment'
+                'route': 'forum.msg-comment'
             },
             isNew: false
         },
@@ -31,7 +31,7 @@ angular.module('phoneApp')
             Title: '通知',
             ClassName: 'i_msg',
             SiteUrl: {
-                'route': 'msg.notice'
+                'route': 'forum.msg-notice'
             },
             isNew: true
         },
@@ -39,7 +39,7 @@ angular.module('phoneApp')
             Title: '私聊',
             ClassName: 'i_talk',
             SiteUrl: {
-                'route': 'msg.whisper'
+                'route': 'forum.msg-whisper'
             },
             isNew: false
         }
@@ -47,7 +47,7 @@ angular.module('phoneApp')
         //     Title: '邀请好友',
         //     ClassName: 'i_friend',
         //     SiteUrl: {
-        //         'route': 'msg.search'
+        //         'route': 'forum.msg-search'
         //     },
         //     isNew: false
         // }

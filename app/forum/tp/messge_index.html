@@ -1,10 +1,10 @@
 <ion-view>
     <ion-content>
-        <ul class="unit_msg_list_03">
-            <li nav-direction="forward" ng-repeat="(k, v) in DataLink track by $index" page-jump="{{v.SiteUrl}}" class="{{v.ClassName}}">
+        <div class="msg_index">
+            <a nav-direction="forward" ng-repeat="(k, v) in DataLink track by $index" ui-sref="{{v.SiteUrl}}" class="{{v.ClassName}}">
                 <span ng-class="{i_new : v.isNew}">{{v.Title}}</span>
-            </li>
-        </ul>
+            </a>
+        </div>
     </ion-content>
     <footer-bar></footer-bar>
 </ion-view>
