@@ -14,33 +14,25 @@ angular.module('phoneApp')
         {
             Title: '赞',
             ClassName: 'i_hit',
-            SiteUrl: {
-                'route': 'forum.msg-praise'
-            },
+            SiteUrl: 'forum.msg-praise',
             isNew: true
         },
         {
             Title: '评论',
             ClassName: 'i_comment',
-            SiteUrl: {
-                'route': 'forum.msg-comment'
-            },
+            SiteUrl: 'forum.msg-comment',
             isNew: false
         },
         {
             Title: '通知',
             ClassName: 'i_msg',
-            SiteUrl: {
-                'route': 'forum.msg-notice'
-            },
+            SiteUrl: 'forum.msg-notice',
             isNew: true
         },
         {
             Title: '私聊',
             ClassName: 'i_talk',
-            SiteUrl: {
-                'route': 'forum.msg-whisper'
-            },
+            SiteUrl: 'forum.msg-talk',
             isNew: false
         }
         // {

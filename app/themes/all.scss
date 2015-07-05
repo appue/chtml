@@ -50,12 +50,15 @@ $gray_val: #cacdcb;
 @import "sass/home.content.scss";
 @import "sass/home.index.scss";
 @import "sass/home.list.scss";
-@import "sass/home.msg.scss";
 @import "sass/home.start.scss";
 
 
 @import "sass/message.index.scss"; //消息中心首页
 @import "sass/message.chat.scss"; //聊天
+@import "sass/message.praise.scss"; //赞
+@import "sass/message.comment.scss"; //评论
+@import "sass/message.notice.scss"; //通知
+@import "sass/message.talk.scss"; //私聊
 
 @import "sass/member.content.scss";
 @import "sass/member.list.scss";

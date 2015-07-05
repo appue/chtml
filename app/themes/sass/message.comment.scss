@@ -5,14 +5,17 @@
         @include border_bottom_half;
         display: -webkit-box;
         div:nth-child(1) {
-            width: 70px;
+            width: 40px;
             overflow: hidden;
             margin-right: 10px;
             img {
-                width: 100%;
+                width: 40px;
+                height: 40px;
+                -webkit-border-radius: 40px;
             }
         }
         dl {
+            margin: 0;
             margin-right: 10px;
             -webkit-box-flex: 1;
             dd {
@@ -25,6 +28,7 @@
                     @include ellipsis;
                 }
                 p {
+                    margin: 0;
                     @include multi_ellipsis(3);
                 }
                 i {

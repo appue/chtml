@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-content>
+    <ion-content overflow-scroll="true">
         <div class="msg_index">
             <a nav-direction="forward" ng-repeat="(k, v) in DataLink track by $index" ui-sref="{{v.SiteUrl}}" class="{{v.ClassName}}">
                 <span ng-class="{i_new : v.isNew}">{{v.Title}}</span>

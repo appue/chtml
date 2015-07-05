@@ -214,7 +214,7 @@ angular.module('phoneApp', [
         //消息中心首页
         .state('forum.msg-index', {
             url: '/msg/index.htm',
-            templateUrl: 'forum/tp/message_index.html',
+            templateUrl: 'forum/tp/msg_index.html',
             controller: 'tMsgIndex'
         })
         //消息中心-通知
@@ -225,7 +225,7 @@ angular.module('phoneApp', [
                     return true;
                 }
             },
-            templateUrl: 'forum/tp/message_notice.html',
+            templateUrl: 'forum/tp/msg_notice.html',
             controller: 'tMsgNotice'
         })
         //消息中心-评论
@@ -236,7 +236,7 @@ angular.module('phoneApp', [
                     return true;
                 }
             },
-            templateUrl: 'forum/tp/message_comment.html',
+            templateUrl: 'forum/tp/msg_comment.html',
             controller: 'tMsgComment'
         })
         //消息中心-赞
@@ -247,25 +247,25 @@ angular.module('phoneApp', [
                     return true;
                 }
             },
-            templateUrl: 'forum/tp/message_praise.html',
+            templateUrl: 'forum/tp/msg_praise.html',
             controller: 'tMsgPraise'
         })
         //消息中心-邀请好友
         .state('forum.msg-search', {
             url: '/msg/search.htm',
-            templateUrl: 'forum/tp/message_search.html',
+            templateUrl: 'forum/tp/msg_search.html',
             controller: 'tMsgSearch'
         })
         //消息中心-私聊
-        .state('forum.msg-whisper', {
-            url: '/msg/whisper.htm',
+        .state('forum.msg-talk', {
+            url: '/msg/talk.htm',
             resolve: {
                 isCheck: function () {
                     return true;
                 }
             },
-            templateUrl: 'forum/tp/message_whisper.html',
-            controller: 'tMsgWhisper'
+            templateUrl: 'forum/tp/msg_talk.html',
+            controller: 'tMsgTalk'
         })
 
         // $urlRouterProvider.when('', '/index');
