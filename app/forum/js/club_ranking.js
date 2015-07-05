@@ -27,6 +27,11 @@ angular.module('phoneApp')
             // });
 
             angular.extend($scope.DataList, data);
+
+            $ionicLoading.hide();
+        },
+        error: function (data) {
+            $ionicLoading.hide();
         }
     });
 

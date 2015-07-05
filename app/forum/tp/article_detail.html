@@ -85,7 +85,7 @@
             <div class="mod_list_img" ng-if="DataList.ArticleList.length > 0">
                 <ion-scroll direction="x" scrollbar-x="false" locking="false">
                     <div class="this_wrapper">
-                        <a ng-repeat="(k, v) in DataList.ArticleList track by $index" href="{{v.SiteUrl}}">
+                        <a ng-repeat="(k, v) in DataList.ArticleList track by $index" ui-sref="forum.detail({id: v.ArticleId})">
                             <div class="this_img">
                                 <img ng-src="{{v.Images[0].ImageUrl}}" />
                             </div>
@@ -100,7 +100,7 @@
             
             <div class="mod_login_01" ng-if="!isLogin">
                 <h3>想看看同行们发布的？</h3>
-                <button page-jump="{{redirectUrl.Login}}">马上登录</button>
+                <a ui-sref="member">马上登录</button>
             </div>
         </section>
     </ion-content>

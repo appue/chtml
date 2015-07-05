@@ -21,7 +21,6 @@ angular.module('phoneApp')
     //--设置返回按钮
     // var isFrom = $location.$$search.isFrom || $location.$$search.isfrom || '';
 
-    $scope.backParam = { 'url': ['home/#/index'] };
     $scope.DataList = {};
     
     //--判断用户是否登录
@@ -86,8 +85,10 @@ angular.module('phoneApp')
                 $scope.isOwner = false;
             }
 
-            //--设置横向滚动
-            $scope.myScrollOptions = { 'wrapper': {} };
+            $ionicLoading.hide();
+        },
+        error: function (data) {
+            $ionicLoading.hide();
         }
     });
 

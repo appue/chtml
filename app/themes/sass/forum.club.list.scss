@@ -42,3 +42,24 @@
         }
     }
 }
+
+
+.forum_club_letter {
+    width: 20px;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 51;
+    background: rgba(0, 0, 0, .5);
+    ul {
+        padding-top: 50px;
+        li {
+            display: block;
+            line-height: 16px;
+            text-align: center;
+            color: #fff;
+            font-size: 12px;
+        }
+    }
+}

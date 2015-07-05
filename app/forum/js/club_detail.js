@@ -11,7 +11,6 @@ angular.module('phoneApp')
     $location,
     $timeout,
     $ionicLoading,
-    routerRedirect,
     widget
 ){
     //显示loadding
@@ -32,7 +31,7 @@ angular.module('phoneApp')
     // };
 
     $scope.redirectUrl = {
-        Ranking: '#/forum/club/ranking-'+ $stateParams.id +'.htm'
+        Ranking: "#/forum/club/ranking-"+ $stateParams.id +".htm",
     };
 
     $scope.DataList = {
@@ -47,20 +46,18 @@ angular.module('phoneApp')
         },
         success: function (data) {
             if (data.ActivityList && data.ActivityList.ActivityId) {
-                var type = (data.ActivityList.ActivityType == 1) ? 'article' : 'photo';
+                var id = data.ActivityList.ActivityId,
+                    type = data.ActivityList.ActivityType == 1 ? "article" : "photo";
 
-               data.ActivityList.SiteUrl = '#/forum/activity/detail-'+ type +'-'+ data.ActivityList.ActivityId +'.htm';
+                data.ActivityList.SiteUrl = "#/forum/activity/detail-"+ type +"-"+ id +".htm";
             }
-
-            angular.forEach(data.ArticleTop, function (v, k) {
-                v.SiteUrl = '#/forum/thread-'+ v.ArticleId +'.htm';
-            });
 
             angular.extend($scope.DataList, data);
 
-            //--设置滚动
-            $scope.$parent.myScrollOptions = { 'wrapper': {} };
-            $scope.eventScroll = "wrapper";
+            $ionicLoading.hide();
+        },
+        error: function (data) {
+            $ionicLoading.hide();
         }
     });
 
@@ -106,6 +103,7 @@ angular.module('phoneApp')
                     $scope.$broadcast('scroll.infiniteScrollComplete');
                 },
                 error: function (data) {
+                    $ionicLoading.hide();
                 }
             });
 

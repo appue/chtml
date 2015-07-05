@@ -4,17 +4,15 @@
     margin-bottom: 10px;
     padding: 0 10px;
     @include border_bottom_half;
-    li{
+    li {
+        text-indent: 30px;
+        display: -webkit-box;
+        padding: 10px 0;
+        line-height: 30px;
         background-image: url(img/icon_club.png);
         background-repeat: no-repeat;
-        display: -webkit-box;
-        line-height: 30px;
-        padding: 10px 0;
-        text-indent: 30px;
         @include border_bottom_half;
-        &:last-child{
-            border: none;
-        }
+
         &.this_reg{
             background-position: 0 13px;
             background-size: 30px auto;
@@ -50,9 +48,17 @@
             background-image: url(img/icon_club.png), url(img/icon_arrow.png);
             background-position: 0 -68px, right center;
             background-size: 30px auto, 13px auto;
-
+            a {
+                display: block;
+                line-height: 30px;
+                width: 100%;
+            }
         }
-        p{
+        &:last-child {
+            border: none;
+        }
+        p {
+            margin: 0;
             -webkit-box-flex: 1;
         }
     }

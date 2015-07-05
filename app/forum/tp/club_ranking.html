@@ -7,15 +7,13 @@
 
 <!-- 共显示20个用户 -->
 <ion-view>
-    <ion-content overflow-scroll="true">
-        <section class="mod_wrapper">
-            <div class="forum_club_ranking">
-                <a ng-repeat="(k, v) in DataList.UserList track by $index" ui-sref="member">
-                    <i>{{k+1}}</i>
-                    <img ng-src="{{v.ImageUrl}}" />
-                    <p>{{v.UserName}}</p>
-                </a>
-            </div>
-        </section>
+    <ion-content overflow-scroll="true" class="mod_wrapper">
+        <div class="forum_club_ranking">
+            <a ng-repeat="(k, v) in DataList.UserList track by $index" ui-sref="member">
+                <i>{{k+1}}</i>
+                <img ng-src="{{v.ImageUrl}}" />
+                <p>{{v.UserName}}</p>
+            </a>
+        </div>
     </ion-content>
 </ion-view>
