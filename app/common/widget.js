@@ -202,12 +202,12 @@ angular.module('phoneApp')
 
         //--数据改造加用户信息start
         //-------------ToDo
-        var user = {
-            'UserId': 12313,
-            'Auth': 'asdfasdf'
-        };
+        // var user = {
+        //     'UserId': 12313,
+        //     'Auth': 'asdfasdf'
+        // };
 
-        cachePool.push('UserInfo', user, 2 / 24); //此处之后移动到登录页面
+        // cachePool.push('UserInfo', user, 2 / 24); //此处之后移动到登录页面
         //-------------ToDo
 
         var obj = {
@@ -234,10 +234,12 @@ angular.module('phoneApp')
             isPopup = !param.isPopup,
             isForm = param.isForm,
             configObj = {
-                // method: param.method || 'POST',
-                // url: ENV.apiSocket + param.url || '',
-                method: 'GET',
-                url: ENV.apiSocket + param.url +'.json' || '',
+                method: param.method || 'POST',
+                url: ENV.apiSocket + param.url || '',
+                
+                // method: 'GET',
+                // url: ENV.apiSocket + param.url +'.json' || '',
+
                 // params: /POST/ig.test(param.method) ? null : data,
                 // data: /POST/ig.test(param.method) ? (isForm ? paramObj(data) : data) : null,
                 data: data,
