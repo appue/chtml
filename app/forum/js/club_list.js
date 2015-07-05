@@ -3,8 +3,13 @@ angular.module('phoneApp')
 
 .controller('tClubList', function (
     $scope,
+    $ionicLoading,
     widget
 ){
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
 
     $scope.DataList = {};
 

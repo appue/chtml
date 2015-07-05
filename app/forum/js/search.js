@@ -5,30 +5,25 @@
 angular.module('phoneApp')
 
 .controller('tSearchIndex', function (
-    $scope, 
-    $state, 
-    $stateParams, 
-    $location,
+    $scope,
+    $ionicLoading,
     cachePool,
-    routerRedirect,
     widget
 ){
-
-    //--设置返回
-    $scope.backParam = { 'url': ['clump/#/find.htm'] };
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
 
     var key = cachePool.pull('Keyword') || [];
 
     $scope.DataList = {
         HistoryKey: []
-    }
+    };
 
     angular.forEach(key, function (v, k) {
         $scope.DataList.HistoryKey.push({
-            'Keyword': v,
-            'SiteUrl': {
-                'url': ['search/#/result?keyword='+ encodeURIComponent(v)]
-            }
+            'Keyword': v
         })
     });
 
@@ -44,13 +39,11 @@ angular.module('phoneApp')
         url: 'getSearch',
         data: {},
         success: function (data) {
-            angular.forEach(data.KeywordList, function (v, k) {
-                v.SiteUrl = {
-                    'url': ['search/#/result?keyword='+ encodeURIComponent(v.Keyword)]
-                };
-            });
-
             angular.extend($scope.DataList, data);
+            $ionicLoading.hide();
+        },
+        error: function (data) {
+            $ionicLoading.hide();
         }
     });
 

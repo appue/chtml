@@ -10,27 +10,27 @@ angular.module('phoneApp')
     $stateParams, 
     $location, 
     $timeout,
-    routerRedirect,
+    $ionicLoading,
     widget
 ){
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
 
-    var currentUrl = widget.getCurrentUrl();
-
-    $scope.pageIndex = 0;
-    $scope.pageSize = 5;
-    $scope.isLoading = false;
+    $scope.Deploy = {
+        currentTab: 1,
+        pageIndex: 0,
+        pageSize: 5,
+        isLoading: false,
+        isMore: true
+    };
     $scope.DataList = {
         ArticleList: []
     };
+
+
     $scope.redirectUrl = {};
-
-    //--设置返回按钮
-    // var isFrom = $location.$$search.isFrom || '';
-    $scope.backParam = { 'url': ['clump/#/subject/list.htm'] };
-
-
-    //--设置横向滚动
-    $scope.myScrollOptions = {'wrapper': {} };
     
     widget.ajaxRequest({
         noMask: true,
@@ -41,16 +41,8 @@ angular.module('phoneApp')
         success: function (data) {
 
             if (data.ClubId) {
-                $scope.redirectUrl.Club = {
-                    'url': ['clump/#/club/detail-'+ data.ClubId +'.htm?from='+ currentUrl]
-                }
+                $scope.redirectUrl.Club = "forum.club-detail({id: "+ data.ClubId +"})";
             }
-
-            angular.forEach(data.CategoryList, function (v, k) {
-                v.SiteUrl = {
-                    'url': ['forum/#/cate/list-'+ v.CateId +'.htm?from='+ currentUrl]
-                };
-            });
 
             angular.extend($scope.DataList, data);
         }
@@ -58,34 +50,54 @@ angular.module('phoneApp')
 
 
     $scope.loadMore = function() {
-        if (!$scope.isLoading) {
+        if (!$scope.Deploy.isLoading) {
 
-            $scope.isLoading = true;
-            $scope.pageIndex++;
+            $scope.Deploy.isLoading = true;
+            $scope.Deploy.pageIndex++;
+
+            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
+                $scope.Deploy.isMore = false;
+                return;
+            }
 
             widget.ajaxRequest({
                 noMask: true,
                 url: 'getListArticle',
                 data: {
-                    CateId: $stateParams.id
+                    CateId: $stateParams.id,
+                    PageSize: $scope.Deploy.PageSize,
+                    PageIndex: $scope.Deploy.PageIndex
                 },
                 success: function (data) {
-                    $scope.pageTotal = data.Total || 0;
+                    if (data.ArticleList && data.ArticleList.length > 0) {
+                        $scope.Deploy.pageTotal = data.Total || 0;
 
-                    angular.forEach(data.ArticleList, function (v, k) {
-                        v.SiteUrl = {
-                            'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
-                        };
+                        $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
 
-                        $scope.DataList.ArticleList.push(v);
-                    });
+                        $timeout($scope.setFalls, 0);
 
-                    $timeout($scope.setFalls, 0);
-                    $scope.isLoading = false;
+                        $scope.Deploy.isLoading = false;
+
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                    } else {
+
+                        $scope.Deploy.isLoading = true;
+                        $scope.Deploy.isMore = false;
+
+                    }
+
+                    $ionicLoading.hide();
+                },
+                error: function (data) {
+                    $ionicLoading.hide();
                 }
             });
         }
     };
 
-    $scope.loadMore();
+
+    $scope.$on('$stateChangeSuccess', function() {
+        $scope.loadMore();
+    });
 });

@@ -9,9 +9,14 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location,
+    $ionicLoading,
     cachePool,
     widget
 ){
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
     
     //--设置返回按钮
     // var isFrom = $location.$$search.isFrom || $location.$$search.isfrom || '';

@@ -248,15 +248,27 @@ angular.module('phoneApp', [
             templateUrl: 'forum/tp/article_detail.html',
             controller: 'tArticleDetail'
         })
-        /*------------------------------------
-         * 点评列表
-         * @params:
-         *     id: 帖子ID
-         */
-        .state('list', {
+
+        /*==========点评==========*/
+        //点评列表
+        .state('forum.comment-list', {
             url: '/comment/list/{id}.htm',
             templateUrl: 'forum/tp/comment_list.html',
             controller: 'tCommentList'
+        })
+
+        /*==========搜索==========*/
+        //搜索首页
+        .state('forum.search', {
+            url: '/search/index',
+            templateUrl: 'forum/tp/search.html',
+            controller: 'tSearchIndex'
+        })
+        //搜索结果
+        .state('forum.search-result', {
+            url: '/search/result',
+            templateUrl: 'forum/tp/search-result.html',
+            controller: 'tSearchResult'
         });
 
         // $urlRouterProvider.when('', '/index');

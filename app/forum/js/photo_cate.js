@@ -9,6 +9,7 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location, 
+    $ionicLoading,
     routerRedirect,
     widget
 ){

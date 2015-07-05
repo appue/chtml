@@ -5,8 +5,14 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams,
+    $ionicLoading,
     widget
 ){
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
+    
     $scope.DataList = {};
 
     widget.ajaxRequest({

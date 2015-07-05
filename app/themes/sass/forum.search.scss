@@ -1,8 +1,4 @@
-﻿.search_home {
-    top: 44px;
-}
-
-.unit_keyword {
+﻿.forum_search_keyword {
     background: #fff;
     padding: 10px;
     font-size: 0;
@@ -24,15 +20,17 @@
         }
     }
     dd {
-        @include green;
-        display: inline-block;
-        @include border_half;
-        padding: 0 5px;
-        font-size: 14px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        cursor: pointer;
-        line-height: 30px;
+        a {
+            @include green;
+            display: inline-block;
+            @include border_half;
+            padding: 0 5px;
+            font-size: 14px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            line-height: 30px;   
+        }
     }
 }
 
@@ -98,20 +96,4 @@
             }
         }
     }
-}
-
-.scroll_search_result{
-    padding-top: 95px;
-}
-
-.scroll_search_result_falls{
-    padding-top: 85px;
-}
-
-.scroll_search_index {
-    padding: 100px 10px 0;
-}
-
-.tab_search_result {
-    top: 44px;
 }

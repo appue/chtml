@@ -10,24 +10,27 @@ angular.module('phoneApp')
     $stateParams, 
     $location,
     $timeout,
-    routerRedirect,
+    $ionicLoading,
     widget
 ){
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
 
-    var currentUrl = widget.getCurrentUrl();
-
-    $scope.currentTab = 1;
-    $scope.pageIndex = 0;
-    $scope.pageSize = 5;
-    $scope.isLoading = false;
+    $scope.Deploy = {
+        currentTab: 1,
+        pageIndex: 0,
+        pageSize: 5,
+        isLoading: false,
+        isMore: true
+    };
     $scope.DataList = {
         ArticleList: []
     };
 
     $scope.keyword = $location.$$search.keyword || '';
 
-    //--设置返回
-    $scope.backParam = { 'url': ['search/#/index'] };
 
     $scope.$watch('currentTab', function () {
         if ($scope.currentTab == 1) {
@@ -52,7 +55,7 @@ angular.module('phoneApp')
 
                     angular.forEach(data.ArticleList, function (v, k) {
                         v.SiteUrl = {
-                            'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
+                            'url': ['forum/#/thread-'+ v.ArticleId +'.htm']
                         };
 
                         $scope.DataList.ArticleList.push(v);
@@ -60,10 +63,18 @@ angular.module('phoneApp')
 
                     $timeout($scope.setFalls, 0);
                     $scope.isLoading = false;
+                    
+                    $ionicLoading.hide();
+                },
+                error: function (data) {
+                    $ionicLoading.hide();
                 }
             });
         }
     };
 
-    $scope.loadMore();
+
+    $scope.$on('$stateChangeSuccess', function() {
+        $scope.loadMore();
+    });
 });

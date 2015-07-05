@@ -5,9 +5,14 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location, 
+    $ionicLoading,
     routerRedirect,
     widget
 ) {
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
 
     // $scope.headerTitle = $location.$$search.title || "";
     

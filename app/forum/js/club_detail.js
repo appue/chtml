@@ -10,9 +10,15 @@ angular.module('phoneApp')
     $stateParams, 
     $location,
     $timeout,
+    $ionicLoading,
     routerRedirect,
     widget
 ){
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
+    
     $scope.Deploy = {
         pageIndex: 0,
         pageSize: 5,

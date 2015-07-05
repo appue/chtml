@@ -11,6 +11,7 @@ angular.module('phoneApp')
     $stateParams, 
     $location,
     $timeout,
+    $ionicLoading,
     routerRedirect,
     widget
 ){

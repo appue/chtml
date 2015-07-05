@@ -37,6 +37,9 @@ $gray_val: #cacdcb;
 @import "sass/forum.activity.detail.scss"; //活动详情
 
 @import "sass/forum.subject.list.scss"; //专题列表
+@import "sass/forum.subject.detail.scss"; //专题详情
+
+@import "sass/forum.search.scss"; //搜索
 
 // @import "sass/forum.content.scss";
 // @import "sass/forum.list.scss";
@@ -51,7 +54,5 @@ $gray_val: #cacdcb;
 @import "sass/member.content.scss";
 @import "sass/member.list.scss";
 @import "sass/member.other.scss";
-
-@import "sass/search.content.scss";
 
 
