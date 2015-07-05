@@ -1,38 +1,156 @@
-<header-bar back title="手工灯笼"></header-bar>
+<ion-view ng-if="Deploy.isType">
+    <ion-header-bar align-title="left">
+        <div class="buttons">
+            <button class="button icon-left ion-chevron-left button-clear button-white" ng-click="$ionicGoBack()"></button>
+        </div>
+        <h1 class="title">手工灯笼</h1>
+    </ion-header-bar>
 
-<section class="scroll_activity_detail_photo" when-scrolled="loadMore()">
+    <ion-content overflow-scroll="true">
 
-    <div class="unit_activity_text">
-        <h2>{{DataList.Content.ActivityName}}</h2>
-        <article>{{DataList.Content.Description}}</article>
-    </div>
+        <div class="mod_description_01">
+            <h2>{{DataList.Content.ActivityName}}</h2>
+            <article>{{DataList.Content.Description}}</article>
+        </div>
+
+        <!--瀑布流-->
+        <falls>
+            <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}">
+                <a class="this_border" ui-sref="forum.detail({id: v.ArticleId})">
+                    <img ng-src="{{v.Images[0].ImageUrl}}" />
+                    <article>
+                        <div class="this_text">{{v.Images[0].Description}}</div>
+                        
+                        <div class="this_star">{{v.TotalCollect}}</div>
+
+                        <div class="this_user">
+                            <img ng-src="{{v.Author.ImageUrl}}" />
+                            <dl>
+                                <dt>{{v.Author.UserName}}</dt>
+                                <dd>
+                                    <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </article>
+                </a>
+            </li>
+        </falls>
+
+        <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore">
+        </ion-infinite-scroll>
+
+        <div class="mod_no_more" ng-if="!Deploy.isMore">没有更多数据了！</div>
+
+        <button class="btn_camera" ng-camera></button>
+    </ion-content>
+</ion-view>
 
 
-    <!--瀑布流-->
-    <falls>
-        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}">
-            <div class="this_border" page-jump="{{v.SiteUrl}}">
-                <img ng-src="{{v.Images[0].ImageUrl}}" />
-                <article>
-                    <div class="this_text">{{v.Images[0].Description}}</div>
-                    
-                    <div class="this_star">{{v.TotalCollect}}</div>
+<ion-view ng-if="!Deploy.isType">
+    <ion-content overflow-scroll="true">
+        <div class="mod_show_layout" ng-if="isShowLayout">
+            <ul ng-if="isOwner">
+                <li>编辑</li>
+                <li>删除</li>
+            </ul>
+            <ul ng-if="!isOwner">
+                <li page-jump="redirectUrl.Report">举报</li>
+                <!--    
+                <li page-jump="redirect.Report">收藏</li>
+                <li page-jump="redirect.Report">分享</li>
+                <li page-jump="redirect.Report">点评</li>
+                <li page-jump="redirect.Report">赞</li>
+                -->
+            </ul>
+        </div>
 
-                    <div class="this_user">
-                        <img ng-src="{{v.Author.ImageUrl}}" />
+        <section class="forum_detail">
+            <div class="this_detail_content">
+                <ul class="imgart_content">
+                    <li ng-repeat="(k, v) in DataList.Images track by $index">
+                        <img ng-src="{{v.ImageUrl}}" />
+                        {{v.Description}}
+                    </li>
+                </ul>
+
+                <ul class="this_comment_list">
+                    <li>
+                        <img ng-src="{{DataList.Author.ImageUrl}}">
                         <dl>
-                            <dt>{{v.Author.UserName}}</dt>
+                            <dt>
+                                <span>5天前</span>
+                                {{DataList.Author.UserName}}
+                                <a ui-sref="msg">私聊</a>
+                            </dt>
                             <dd>
-                                <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                                发布到：
+                                <i ng-repeat="(k, v) in DataList.Affect.CategoryList track by $index">#{{v.CateName}}</i>
                             </dd>
                         </dl>
-                    </div>
-                </article>
+                    </li>
+                </ul>
             </div>
-        </li>
-    </falls>
-    <div class="mod_list_loading" ng-if="isLoading">loading.....</div>
-    <div class="mod_no_more" ng-if="isNoMore">没有更多数据了！</div>
-</section>
 
-<button class="btn_camera" ng-camera></button>
+
+            <div class="this_detail_wrapper">
+                <div class="this_text_01">
+                    <span>{{DataList.Total.TotalPraise}}</span>人赞过,
+                    <span>{{DataList.Total.TotalCollect}}</span>次浏览,
+                    <span>{{DataList.Total.TotalComment}}</span>条评论,
+                    被收藏<span>{{DataList.Total.TotalComment}}</span>次
+                </div>
+
+                <div class="this_user_images" ng-if="DataList.PraiseUser.length > 0">
+                    <a ng-click="setPraise()"></a>
+                    <img ng-repeat="(k, v) in DataList.PraiseUser track by $index" ng-src="{{v.ImageUrl}}" />
+                </div>
+
+        <!--         <div class="comment_input">
+                    <img class="person_img" src="../themes/temp/1.jpg">
+                    <div>
+                        <input type="text" placeholder="说说你的评论">
+                    </div>
+                </div> -->
+
+                <ul class="this_comment_list">
+                    <li ng-repeat="v in DataList.CommentList track by $index">
+                        <img ng-src="{{v.Author.ImageUrl}}">
+                        <dl>
+                            <dt>
+                                <span>{{v.UpdateTime}}</span>
+                                {{v.Author.UserName}}
+                            </dt>
+                            <dd>{{v.Content}}</dd>
+                        </dl>
+                    </li>
+                </ul>
+                <a class="this_comment_more" ui-sref="forum.comment">更多评论>></a>
+            </div>
+
+            <div class="mod_title_text this_p" ng-if="DataList.ArticleList.length > 0">
+                <div>老师们也在看</div>
+            </div>
+            <div class="mod_list_img" ng-if="DataList.ArticleList.length > 0">
+                <ion-scroll direction="x" scrollbar-x="false" locking="false">
+                    <div class="this_wrapper">
+                        <a ng-repeat="(k, v) in DataList.ArticleList track by $index" href="{{v.SiteUrl}}">
+                            <div class="this_img">
+                                <img ng-src="{{v.Images[0].ImageUrl}}" />
+                            </div>
+                            <div class="this_title">
+                                <span ng-repeat="i in v.CategoryList">#{{i.CateName}}</span>
+                            </div>
+                            <div class="this_tx">{{v.TotalHit}}人看过</div>
+                        </a>
+                    </div>
+                </ion-scroll>
+            </div>
+            
+            <div class="mod_login_01" ng-if="!isLogin">
+                <h3>想看看同行们发布的？</h3>
+                <a ui-sref="msg">马上登录</a>
+            </div>
+        </section>
+    </ion-content>
+</ion-view>

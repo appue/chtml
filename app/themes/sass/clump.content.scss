@@ -76,21 +76,6 @@
 }
 
 /*发现-活动-晒图活动页.html*/
-.unit_activity_text{
-    background: url(img/bg_activity_text.jpg) no-repeat center;
-    background-size: 100% 100%;
-    color: #fff;
-    padding: 10px;
-    h2{
-        text-align: center;
-        font-size: 16px;
-        line-height: 30px;
-    }
-    article{
-        padding: 10px 20px;
-        font-size: 12px;
-    }
-}
 
 
 /*发现-圈子-全部列表.html*/
@@ -111,24 +96,5 @@
             color: #fff;
             font-size: 12px;
         }
-    }
-}
-
-
-
-.unit_article_content_login{
-    padding: 10px;
-    background: #fff;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
-    h3{
-        font-size: 14px;
-        line-height: 30px;
-        margin-bottom: 5px;
-    }
-    button{
-        @include button(100px, 40px);
-        background: $green_val;
-        border: none;
-        font-size: 16px;
     }
 }

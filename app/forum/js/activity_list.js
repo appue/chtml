@@ -8,52 +8,66 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams, 
-    $location, 
-    routerRedirect,
+    $location,
+    $ionicLoading,
     widget
 ){
-    var currentUrl = widget.getCurrentUrl();
 
-    $scope.pageIndex = 0;
-    $scope.pageSize = 5;
-    $scope.isLoading = false;
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
+
+    $scope.Deploy = {
+        pageIndex: 0,
+        pageSize: 10,
+        isLoading: false,
+        isMore: true
+    };
     $scope.DataList = {
         ActivityList: []
     };
 
-    //--设置返回按钮
-    $scope.backParam = {
-        'url': ['clump/#/find.htm']
-    };
-
     $scope.loadMore = function () {
-        if (!$scope.isLoading) {
+        if (!$scope.Deploy.isLoading) {
 
-            $scope.isLoading = true;
-            $scope.pageIndex++;
+            $scope.Deploy.isLoading = true;
+            $scope.Deploy.pageIndex++;
+
+            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
+                $scope.Deploy.isMore = false;
+                return;
+            }
             
             widget.ajaxRequest({
                 noMask: true,
                 url: 'getListActivity',
                 data: {
                     ActivityType: 0,
-                    PageIndex: $scope.pageIndex,
-                    PageSize: $scope.pageSize
+                    PageIndex: $scope.Deploy.pageIndex,
+                    PageSize: $scope.Deploy.pageSize
                 },
                 success: function (data) {
-                    $scope.pageTotal = data.Total || 0;
+                    $scope.Deploy.pageTotal = data.Total || 0;
 
-                    angular.forEach(data.ActivityList, function (v, k) {
-                        // v.ActivityType = (v.ActivityType == 1) ? 'article' : 'photo';
-                        $scope.DataList.ActivityList.push(v);
-                    });
+                    $scope.DataList.ActivityList = $scope.DataList.ActivityList.concat(data.ActivityList);
 
-                    $scope.isLoading = false;
+                    $scope.Deploy.isLoading = false;
+
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                    $ionicLoading.hide();
+                },
+                error: function (data) {
+                    $ionicLoading.hide();
                 }
             });
         }
     };
 
-    $scope.loadMore();
+
+    $scope.$on('$stateChangeSuccess', function() {
+        $scope.loadMore();
+    });
 
 });
