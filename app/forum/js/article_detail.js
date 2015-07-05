@@ -10,8 +10,7 @@ angular.module('phoneApp')
     $stateParams, 
     $location,
     cachePool,
-    widget,
-    $ionicSideMenuDelegate
+    widget
 ){
     
     //--设置返回按钮
@@ -99,13 +98,5 @@ angular.module('phoneApp')
             success: function (data) {
             }
         });
-    };
-
-
-
-
-
-    $scope.toggleRightSideMenu = function() {
-        $ionicSideMenuDelegate.toggleRight();
     };
 });
