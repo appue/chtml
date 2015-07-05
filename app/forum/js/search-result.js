@@ -29,7 +29,7 @@ angular.module('phoneApp')
         ArticleList: []
     };
 
-    $scope.keyword = $location.$$search.keyword || '';
+    $scope.keyword = decodeURIComponent($location.$$search.keyword) || '';
 
 
     $scope.$watch('Deploy.currentTab', function () {

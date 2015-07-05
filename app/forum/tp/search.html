@@ -11,7 +11,7 @@
         <search-header class="search_home"></search-header>
 
         <section class="mod_wrapper">
-            <dl class="forum_search_keyword">
+            <dl class="forum_search_keyword" ng-if="DataList.KeywordList.length > 0">
                 <dt>热门搜索</dt>
                 <dd>
                     <a ng-repeat="v in DataList.KeywordList track by $index" ui-sref="forum.search-result({keyword: encodeURIComponent(v.Keyword)})">
@@ -20,7 +20,7 @@
                 </dd>
             </dl>
 
-            <dl class="forum_search_keyword">
+            <dl class="forum_search_keyword" ng-if="DataList.HistoryKey.length > 0">
                 <dt>
                     历史搜索
                     <button ng-click="clearHistory()">清空历史</button>
