@@ -38,15 +38,16 @@ angular.module('phoneApp')
             widget.ajaxRequest({
                 noMask: true,
                 url: 'getMsgComment',
-                data: {},
+                data: {
+                    PageIndex: $scope.Deploy.pageIndex,
+                    PageSize: $scope.Deploy.pageSize
+                },
                 success: function (data) {
                     if (data.CommentList && data.CommentList.length > 0) {
+
                         $scope.Deploy.pageTotal = data.Total || 0;
-
                         $scope.DataList.CommentList = $scope.DataList.CommentList.concat(data.CommentList);
-
                         $scope.Deploy.isLoading = false;
-
                         $scope.$broadcast('scroll.infiniteScrollComplete');
 
                     } else {
@@ -64,7 +65,6 @@ angular.module('phoneApp')
             });
         }
     };
-
 
     $scope.loadMore();
 });

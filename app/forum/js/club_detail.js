@@ -79,30 +79,27 @@ angular.module('phoneApp')
                 url: 'getListArticle',
                 data: {
                     ClubId: $stateParams.id,
-                    PageIndex: $scope.pageIndex,
-                    PageSize: $scope.pageSize
+                    PageIndex: $scope.Deploy.pageIndex,
+                    PageSize: $scope.Deploy.pageSize
                 },
                 success: function (data) {
-                    var res = {};
+                    if (data.ArticleList && data.ArticleList.length > 0) {
 
-                    $scope.Deploy.pageTotal = data.Total || 0;
+                        $scope.Deploy.pageTotal = data.Total || 0;
+                        $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
+                        $timeout($scope.setFalls, 0);
+                        $scope.Deploy.isLoading = false;
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
 
-                    res.ArticleList = data.ArticleList || [];
+                    } else {
 
-                    angular.forEach(res.ArticleList, function (v, k) {
-                        v.SiteUrl = '#/forum/thread-'+ v.ArticleId +'.htm';
+                        $scope.Deploy.isLoading = true;
+                        $scope.Deploy.isMore = false;
 
-                        $scope.DataList.ArticleList.push(v);
-                    });
-                    
-
-                    $timeout($scope.setFalls, 0);
-
-                    $scope.Deploy.isLoading = false;
-
-                    $scope.$broadcast('scroll.infiniteScrollComplete');
+                    }
                 },
                 error: function (data) {
+                    $scope.Deploy.isLoading = false;
                     $ionicLoading.hide();
                 }
             });

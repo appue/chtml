@@ -45,14 +45,11 @@ angular.module('phoneApp')
                     PageSize: $scope.Deploy.pageSize
                 },
                 success: function (data) {
-
                     if (data.CommentList && data.CommentList.length > 0) {
+
                         $scope.Deploy.pageTotal = data.Total || 0;
-
                         $scope.DataList.CommentList = $scope.DataList.CommentList.concat(data.CommentList);
-
                         $scope.Deploy.isLoading = false;
-
                         $scope.$broadcast('scroll.infiniteScrollComplete');
 
                     } else {

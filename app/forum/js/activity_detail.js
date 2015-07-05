@@ -62,17 +62,16 @@ angular.module('phoneApp')
                     url: 'getListArticle',
                     data: {
                         ActivityId: $stateParams.id,
+                        PageIndex: $scope.Deploy.pageIndex,
+                        PageSize: $scope.Deploy.pageSize
                     },
                     success: function (data) {
                         if (data.ArticleList && data.ArticleList.length > 0) {
+
                             $scope.Deploy.pageTotal = data.Total || 0;
-
                             $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
-
                             $timeout($scope.setFalls, 0);
-
                             $scope.Deploy.isLoading = false;
-
                             $scope.$broadcast('scroll.infiniteScrollComplete');
 
                         } else {
@@ -85,14 +84,15 @@ angular.module('phoneApp')
                         $ionicLoading.hide();
                     },
                     error: function (data) {
+                        $scope.Deploy.isLoading = false;
                         $ionicLoading.hide();
                     }
                 });
             }
         };
 
-
         $scope.loadMore();
+
     } else {
 
         //--获取帖子内容
@@ -103,12 +103,6 @@ angular.module('phoneApp')
                 ArticleId: $stateParams.id
             },
             success: function (data) {
-                // angular.forEach(data.ArticleList, function (v, k) {
-                //     v.SiteUrl = {
-                //         'url': ['forum/#/thread-'+ v.ArticleId +'.htm?from='+ currentUrl]
-                //     }
-                // });
-
                 angular.extend($scope.DataList, data);
 
                 // if (userInfo.UserId == data.Author.UserId) {

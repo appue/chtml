@@ -22,7 +22,7 @@ angular.module('phoneApp')
             'route': 'forum.find'
         },
         {
-            'route': 'home.index'
+            'route': 'forum.index'
         },
         {
             'route': 'msg.index'

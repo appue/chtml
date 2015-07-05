@@ -11,7 +11,6 @@ angular.module('phoneApp')
     widget
 ){
 
-
     //显示loadding
     $ionicLoading.show({
         template: 'Loading...'
@@ -42,16 +41,16 @@ angular.module('phoneApp')
             widget.ajaxRequest({
                 noMask: true,
                 url: 'getMsgTalk',
-                data: {},
+                data: {
+                    PageIndex: $scope.Deploy.pageIndex,
+                    PageSize: $scope.Deploy.pageSize
+                },
                 success: function (data) {
                     if (data.TalkList && data.TalkList.length > 0) {
 
                         $scope.Deploy.pageTotal = data.Total || 0;
-
                         $scope.DataList.TalkList = $scope.DataList.TalkList.concat(data.TalkList);
-
                         $scope.Deploy.isLoading = false;
-
                         $scope.$broadcast('scroll.infiniteScrollComplete');
 
                     } else {

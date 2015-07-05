@@ -40,16 +40,16 @@ angular.module('phoneApp')
             widget.ajaxRequest({
                 noMask: true,
                 url: 'getMsgNotice',
-                data: {},
+                data: {
+                    PageIndex: $scope.Deploy.pageIndex,
+                    PageSize: $scope.Deploy.pageSize
+                },
                 success: function (data) {
                     if (data.NoticeList && data.NoticeList.length > 0) {
 
                         $scope.Deploy.pageTotal = data.Total || 0;
-
                         $scope.DataList.NoticeList = $scope.DataList.NoticeList.concat(data.NoticeList);
-
                         $scope.Deploy.isLoading = false;
-
                         $scope.$broadcast('scroll.infiniteScrollComplete');
 
                     } else {

@@ -5,6 +5,8 @@ angular.module('phoneApp', [
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
 
+
+
         /*------------------------首页模块------------------------*/
         .state('home', {
             abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
@@ -94,6 +96,15 @@ angular.module('phoneApp', [
             url: '/forum',
             templateUrl: 'forum/tp/main.html'
         })
+
+        /*==========首页==========*/
+        //首页
+        .state('forum.index', {
+            url: '/index.htm',
+            templateUrl: 'forum/tp/index.html',
+            controller: 'tDefault'
+        })
+
         //发现首页
         .state('forum.find', {
             url: '/find.htm',
@@ -274,9 +285,9 @@ angular.module('phoneApp', [
         var isShow = localStorage.getItem('PHONEAPP_START');
 
         if (isShow) {
-            $urlRouterProvider.otherwise('/home/index.htm');
+            $urlRouterProvider.otherwise('/forum/index.htm');
         } else {
-            $urlRouterProvider.otherwise('/home/index.htm');
+            $urlRouterProvider.otherwise('/forum/index.htm');
         }
 
     });

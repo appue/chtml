@@ -49,12 +49,10 @@ angular.module('phoneApp')
                 },
                 success: function (data) {
                     if (data.SubjectList && data.SubjectList.length > 0) {
+                        
                         $scope.Deploy.pageTotal = data.Total || 0;
-
                         $scope.DataList.SubjectList = $scope.DataList.SubjectList.concat(data.SubjectList);
-
                         $scope.Deploy.isLoading = false;
-
                         $scope.$broadcast('scroll.infiniteScrollComplete');
 
                     } else {

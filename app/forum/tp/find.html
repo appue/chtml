@@ -8,13 +8,11 @@
             <a ui-sref="forum.activity-list">活动</a>
         </div>
 
-        <div class="mod_title_text this_p">
+        <div class="mod_title_text this_p" ng-if="DataList.SubjectList.length > 0">
             <div>专题集锦</div>
             <a ui-sref="forum.subject-list">更多 &gt;</a>
         </div>
-
-        
-        <div class="mod_list_img mb0" ng-if="DataList.SubjectList">
+        <div class="mod_list_img mb0" ng-if="DataList.SubjectList.length > 0">
             <ion-scroll direction="x" scrollbar-x="false" locking="false">
                 <div class="this_wrapper">
                     <a ng-repeat="(k, v) in DataList.SubjectList track by $index" ui-sref="forum.subject-detail({id: v.SubjectId})">
@@ -29,7 +27,7 @@
             </ion-scroll>
         </div>
 
-        <div class="forum_find_cate" style="margin-bottom:50px;">
+        <div class="forum_find_cate" ng-if="DataList.CateList.length > 0">
             <div>
                 <p ng-repeat="(k, v) in DataList.CateList track by $index">
                     <a ng-repeat="(i, j) in v" ui-sref="forum.cate({id: j.CateId})">

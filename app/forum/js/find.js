@@ -20,17 +20,7 @@ angular.module('phoneApp')
 
     $scope.footerTab = 2;
 
-    //--顶部菜单
-    $scope.DataList = {
-    };
-
-    
-    $scope.redirectUrl = {
-        SubjectList: { //--更多专题
-            'url': '#/forum/subject/list.htm'
-        }
-    };
-
+    $scope.DataList = {};
 
     widget.ajaxRequest({
         noMask: true,
@@ -42,15 +32,7 @@ angular.module('phoneApp')
 
             res.CateList = [];
 
-            // angular.forEach(res.SubjectList, function(v, k) {
-            //     v.SiteUrl = {
-            //         'url': ['clump/#/subject/detail-'+ v.SubjectId +'.htm']
-            //     };
-            // });
-
             angular.forEach(res.CategoryList, function(v, k) {
-                // v.SiteUrl = '#/forum/cate/list-'+ v.CateId +'.htm?title='+ encodeURIComponent(v.CateName);
-
                 if (res.CateList[i]) {
                     res.CateList[i].push(v);
                 } else {
@@ -71,24 +53,4 @@ angular.module('phoneApp')
             $ionicLoading.hide();
         }
     });
-
-
-
-
-    // $scope.DataList = {
-    //     SubjectList: [
-    //         {SubjectId: 1, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/8.jpg', SiteUrl: {'url': ['clump/#/subject/detail-1.htm?isFrom=find', 'clump/index.html#/subject/detail-1.htm?isFrom=find'] } },
-    //         {SubjectId: 2, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/7.jpg', SiteUrl: {'url': ['clump/#/subject/detail-1.htm?isFrom=find'] } },
-    //         {SubjectId: 3, ShortName: '送给孩子们的礼物', ImageUrl: '../themes/temp/3.jpg', SiteUrl: {'url': ['clump/#/subject/detail-1.htm?isFrom=find'] } }
-    //     ],
-
-    //     CategoryList: [
-
-    //         {CateId: 3, CateName: '玩教具', SiteUrl: {'url': ['forum/#/cate/list-1.htm'] } },
-    //         {CateId: 3, CateName: '玩教具', SiteUrl: {'url': ['forum/#/cate/list-1.htm'] } },
-    //         {CateId: 3, CateName: '玩教具', SiteUrl: {'url': ['forum/#/cate/list-1.htm'] } },
-    //         {CateId: 3, CateName: '玩教具', SiteUrl: {'url': ['forum/#/cate/list-1.htm'] } },
-    //         {CateId: 3, CateName: '玩教具', SiteUrl: {'url': ['forum/#/cate/list-1.htm'] } }
-    //     ]
-    // };
 });

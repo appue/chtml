@@ -48,17 +48,26 @@ angular.module('phoneApp')
                     PageSize: $scope.Deploy.pageSize
                 },
                 success: function (data) {
-                    $scope.Deploy.pageTotal = data.Total || 0;
+                    if (data.ActivityList && data.ActivityList.length > 0) {
+                        $scope.Deploy.pageTotal = data.Total || 0;
 
-                    $scope.DataList.ActivityList = $scope.DataList.ActivityList.concat(data.ActivityList);
+                        $scope.DataList.ActivityList = $scope.DataList.ActivityList.concat(data.ActivityList);
 
-                    $scope.Deploy.isLoading = false;
+                        $scope.Deploy.isLoading = false;
 
-                    $scope.$broadcast('scroll.infiniteScrollComplete');
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                    } else {
+
+                        $scope.Deploy.isMore = false;
+                        $scope.Deploy.isLoading = true;
+
+                    }
 
                     $ionicLoading.hide();
                 },
                 error: function (data) {
+                    $scope.Deploy.isLoading = false;
                     $ionicLoading.hide();
                 }
             });

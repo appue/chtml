@@ -43,16 +43,16 @@ angular.module('phoneApp')
             widget.ajaxRequest({
                 noMask: true,
                 url: 'getMsgPraise',
-                data: {},
+                data: {
+                    PageIndex: $scope.Deploy.pageIndex,
+                    PageSize: $scope.Deploy.pageSize
+                },
                 success: function (data) {
                     if (data.PraiseList && data.PraiseList.length > 0) {
 
                         $scope.Deploy.pageTotal = data.Total || 0;
-
                         $scope.DataList.PraiseList = $scope.DataList.PraiseList.concat(data.PraiseList);
-
                         $scope.Deploy.isLoading = false;
-
                         $scope.$broadcast('scroll.infiniteScrollComplete');
 
                     } else {

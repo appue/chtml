@@ -12,6 +12,10 @@ angular.module('phoneApp')
     $ionicLoading.show({
         template: 'Loading...'
     });
+
+    $scope.Deploy = {
+        isMore: true
+    };
     
     $scope.DataList = {};
 
@@ -22,11 +26,11 @@ angular.module('phoneApp')
             ClubId: $stateParams.id
         },
         success: function (data) {
-            // angular.forEach(data.UserList, function (v, k) {
-            //     v.SiteUrl = '#/member/personal-'+ v.UserId +'.htm';
-            // });
-
-            angular.extend($scope.DataList, data);
+            if (data.UserList && data.UserList.length > 0) {
+                angular.extend($scope.DataList, data);
+            } else {
+                $scope.Deploy.isMore = false;
+            }
 
             $ionicLoading.hide();
         },

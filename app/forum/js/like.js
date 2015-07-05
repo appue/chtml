@@ -12,6 +12,10 @@ angular.module('phoneApp')
         template: 'Loading...'
     });
 
+    $scope.Deploy = {
+        isMore: true
+    };
+
     $scope.DataList = {};
 
     widget.ajaxRequest({
@@ -21,7 +25,11 @@ angular.module('phoneApp')
         success: function (data) {
             angular.extend($scope.DataList, data);
 
-            $timeout($scope.setFalls, 0);
+            if (data.ArticleList && data.ArticleList.length > 0) {
+                $timeout($scope.setFalls, 0);
+            } else {
+                $scope.Deploy.isMore = false;
+            }
 
             $ionicLoading.hide();
         },

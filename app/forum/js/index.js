@@ -1,10 +1,7 @@
-/*
-* 首页
-* /home/#/index
-*/
+// 首页
 angular.module('phoneApp')
 
-.controller('tHome', function (
+.controller('tDefault', function (
     $scope,
     $rootScope,
     $state,
@@ -122,6 +119,7 @@ angular.module('phoneApp')
                 });
 
             } else {
+                
                 $scope.Deploy.pageIndex++;
 
                 if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
