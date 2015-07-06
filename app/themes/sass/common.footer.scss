@@ -20,13 +20,13 @@
         -webkit-box-flex: 1;
     }
     a {
-        &:active, &.current {
+        &.activated, &.current {
             color: #3cc482;
         }
         &:nth-child(1) {
             background: url(img/icon_home.png) no-repeat center 5px;
             background-size: auto 20px;
-            &:active, &.current {
+            &.activated, &.current {
                 background: url(img/icon_home_hover.png) no-repeat center 5px;
                 background-size: auto 20px;
             }
@@ -34,7 +34,7 @@
         &:nth-child(2) {
             background: url(img/icon_find.png) no-repeat center 5px;
             background-size: auto 20px;
-            &:active, &.current {
+            &.activated, &.current {
                 background: url(img/icon_find_hover.png) no-repeat center 5px;
                 background-size: auto 20px;
             }
@@ -45,7 +45,7 @@
             background: url(img/icon_msg.png) no-repeat center 5px;
             background-size: auto 20px;
             position: relative;
-            &:active, &.current {
+            &.activated, &.current {
                 background: url(img/icon_msg_hover.png) no-repeat center 5px;
                 background-size: auto 20px;
             }
@@ -65,7 +65,7 @@
         &:nth-child(5) {
             background: url(img/icon_member.png) no-repeat center 5px;
             background-size: auto 20px;
-            &:active, &.current {
+            &.activated, &.current {
                 background: url(img/icon_member_hover.png) no-repeat center 5px;
                 background-size: auto 20px;
             }
@@ -74,7 +74,7 @@
     p {
         background: url(img/icon_camera.png) no-repeat center 4px;
         background-size: auto 40px;
-        &:active, &.current {
+        &.activated, &.current {
             background: url(img/icon_camera_hover.png) no-repeat center 4px;
             background-size: auto 40px;
         }
@@ -97,13 +97,13 @@
     //         padding-top: 20px;
     //         cursor: pointer;
     //         -webkit-box-flex: 1;
-    //         &:active, &.current {
+    //         &.activated, &.current {
     //             color: #3cc482;
     //         }
     //         &:nth-child(1) {
     //             background: url(img/icon_home.png) no-repeat center 5px;
     //             background-size: auto 20px;
-    //             &:active, &.current {
+    //             &.activated, &.current {
     //                 background: url(img/icon_home_hover.png) no-repeat center 5px;
     //                 background-size: auto 20px;
     //             }
@@ -111,7 +111,7 @@
     //         &:nth-child(2) {
     //             background: url(img/icon_find.png) no-repeat center 5px;
     //             background-size: auto 20px;
-    //             &:active, &.current {
+    //             &.activated, &.current {
     //                 background: url(img/icon_find_hover.png) no-repeat center 5px;
     //                 background-size: auto 20px;
     //             }
@@ -119,7 +119,7 @@
     //         &:nth-child(3) {
     //             background: url(img/icon_camera.png) no-repeat center 4px;
     //             background-size: auto 40px;
-    //             &:active, &.current {
+    //             &.activated, &.current {
     //                 background: url(img/icon_camera_hover.png) no-repeat center 4px;
     //                 background-size: auto 40px;
     //             }
@@ -128,7 +128,7 @@
     //             background: url(img/icon_msg.png) no-repeat center 5px;
     //             background-size: auto 20px;
     //             position: relative;
-    //             &:active, &.current {
+    //             &.activated, &.current {
     //                 background: url(img/icon_msg_hover.png) no-repeat center 5px;
     //                 background-size: auto 20px;
     //             }
@@ -148,7 +148,7 @@
     //         &:nth-child(5) {
     //             background: url(img/icon_member.png) no-repeat center 5px;
     //             background-size: auto 20px;
-    //             &:active, &.current {
+    //             &.activated, &.current {
     //                 background: url(img/icon_member_hover.png) no-repeat center 5px;
     //                 background-size: auto 20px;
     //             }

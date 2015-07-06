@@ -10,10 +10,6 @@ angular.module('phoneApp')
 		}
 	}
 
-	$scope.backParam = { //--设置返回按钮
-		'url': ['home/#/index']
-	};
-
 	$scope.inputVal = {}; //初始化ng-model
 
 	$scope.goLogin = function () {

@@ -2,13 +2,11 @@ angular.module('phoneApp')
 
 /** 
  *  引用方法：
- *	<location-data></location-data>
+ *	<ANY location-popup></ANY>
  */
-.directive('locationData', function (widget, cachePool) {
+.directive('locationPopup', function ($ionicPopup, widget, cachePool) {
 	return {
-		restrict: 'E',
-		replace: true,
-		templateUrl: '../common/directives/location_data.html',
+		restrict: 'A',
 		link: function (scope, element, attrs) {
 
 			var location = cachePool.pull('LocationData');
@@ -16,12 +14,12 @@ angular.module('phoneApp')
 			if (location) {
 				scope.cityList = location;
 			} else {
-				widget.ajaxRequest({
-					url: 'getCityList',
-					success: function (data) {
-						scope.cityList = data;
-					}
-				});
+				// widget.ajaxRequest({
+				// 	url: 'getCityList',
+				// 	success: function (data) {
+				// 		scope.cityList = data.CityList;
+				// 	}
+				// });
 			}
 
 			//todo...
@@ -86,10 +84,24 @@ angular.module('phoneApp')
 
 			};
 
-			scope.$parent.confirmLocation = function () { //确认所在地位置
-				scope.inputVal.city = scope.tmpCity;
-				scope.inputVal.village = scope.tmpVillage;
-			};
+			element.bind('click', function () { //呼出弹出层
+
+				$ionicPopup.confirm({
+					title: '选择位置',
+					cancelText: '取消',
+					cancelType: 'cancel',
+					okText: '确定',
+					okType: 'confirm',
+					scope: scope,
+					templateUrl: '../common/directives/location_popup.html'
+				}).then(function (res) {
+					if (res) { //确认所在地位置
+						scope.inputVal.city = scope.tmpCity;
+						scope.inputVal.village = scope.tmpVillage;
+					}
+				});
+
+			});
 
 		}
 	};

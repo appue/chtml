@@ -17,7 +17,7 @@
         }
         a {
             -webkit-box-flex: 1;
-            &:active {
+            &.activated {
                 opacity: 1 !important;
                 background-color: #ccc !important;
             }

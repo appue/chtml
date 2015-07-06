@@ -1,5 +1,5 @@
 angular.module('phoneApp')
-.controller('registerDoneCtrl', function ($scope) {
+	.controller('registerDoneCtrl', function ($scope, $timeout) {
 
 
-});
+	});
