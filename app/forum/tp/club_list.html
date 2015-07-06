@@ -24,7 +24,7 @@
         <div class="mod_no_more" ng-if="!Deploy.isMore">没有数据了！</div>
     </ion-content>
 
-    <section class="forum_club_letter" ng-if="Deploy.isMore">
+    <section class="forum_club_letter" ng-if="DataList.ClubList.length > 0">
         <ul><li ng-repeat="(k, v) in DataList.ClubList">{{v.Letter}}</li></ul>
     </section>
 </ion-view>
