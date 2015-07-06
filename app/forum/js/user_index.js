@@ -1,12 +1,39 @@
 angular.module('phoneApp')
 .controller('tUserIndex', function (
 	$scope,
-	$stateParams
+	$stateParams,
+    $ionicLoading,
+    widget
 ) {
+
+    //显示loadding
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
 
 	console.log($stateParams.id);
 
 	$scope.footerTab = 5; //--底部tab初始化高亮
+
+	$scope.DataList = {};
+
+    widget.ajaxRequest({
+        noMask: true,
+        url: 'getUserInfo',
+        data: {
+            UserId: 1
+        },
+        success: function (data) {
+        	angular.extend($scope.DataList, data);
+            $ionicLoading.hide();
+        },
+        error: function (data) {
+            $ionicLoading.hide();
+        }
+    });
+
+
+
 
 	$scope.goDataSet = function () { //--主人态设置页，客人态查看资料页
 

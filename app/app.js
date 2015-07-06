@@ -289,6 +289,20 @@ angular.module('phoneApp', [
             controller: 'tMsgTalk'
         })
 
+
+        /*==========会员中心==========*/
+        //个人主页（主、客人态）
+        .state('forum.user-index', {
+            url: '/user/index.htm',
+            resolve: {
+                isCheck: function () {
+                    return true;
+                }
+            },
+            templateUrl: 'forum/tp/user_index.html',
+            controller: 'tUserIndex'
+        })
+
         // $urlRouterProvider.when('', '/index');
 
         // 处理在状态配置中指定的路由之外的 url 请求

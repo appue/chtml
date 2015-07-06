@@ -1,8 +1,8 @@
 { 
     "UserInfo": {
-        "UserImage": "themes/temp/1.jpg",
+        "UserImage": "themes/temp/3.jpg",
         "Username": "用户名称",
-        "Exper": "经验值",
+        "Exper": "12",
         "RankName": "用户等级名称",
         "TotalFollow": 12,
         "TotalFans": 132
@@ -11,21 +11,42 @@
     "ArticleList": [
         {
             "CateId": 1,
-            "ImageUrl": "themes/temp/2.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "CateName": "栏目名称",
             "TotalArticle": 123,
             "TotalPraise": 90 
         },
         {
             "CateId": 2,
-            "ImageUrl": "themes/temp/2.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
             "CateName": "栏目名称",
             "TotalArticle": 87,
             "TotalPraise": 67 
         },
         {
             "CateId": 3,
-            "ImageUrl": "themes/temp/2.jpg",
+            "ImageUrl": "themes/temp/7.jpg",
+            "CateName": "栏目名称",
+            "TotalArticle": 46,
+            "TotalPraise": 344 
+        },
+        {
+            "CateId": 3,
+            "ImageUrl": "themes/temp/7.jpg",
+            "CateName": "栏目名称",
+            "TotalArticle": 46,
+            "TotalPraise": 344 
+        },
+        {
+            "CateId": 3,
+            "ImageUrl": "themes/temp/7.jpg",
+            "CateName": "栏目名称",
+            "TotalArticle": 46,
+            "TotalPraise": 344 
+        },
+        {
+            "CateId": 3,
+            "ImageUrl": "themes/temp/7.jpg",
             "CateName": "栏目名称",
             "TotalArticle": 46,
             "TotalPraise": 344 
@@ -35,21 +56,49 @@
     "CollectList":[
         {
             "CateId": 3,
-            "ImageUrl": "themes/temp/2.jpg",
+            "ImageUrl": "themes/temp/6.jpg",
             "CateName": "栏目名称",
             "TotalArticle": 46,
             "TotalPraise": 344 
         },
         {
             "CateId": 3,
-            "ImageUrl": "themes/temp/2.jpg",
+            "ImageUrl": "themes/temp/6.jpg",
             "CateName": "栏目名称",
             "TotalArticle": 46,
             "TotalPraise": 344 
         },
         {
             "CateId": 3,
-            "ImageUrl": "themes/temp/2.jpg",
+            "ImageUrl": "themes/temp/6.jpg",
+            "CateName": "栏目名称",
+            "TotalArticle": 46,
+            "TotalPraise": 344 
+        },
+        {
+            "CateId": 3,
+            "ImageUrl": "themes/temp/6.jpg",
+            "CateName": "栏目名称",
+            "TotalArticle": 46,
+            "TotalPraise": 344 
+        },
+        {
+            "CateId": 3,
+            "ImageUrl": "themes/temp/6.jpg",
+            "CateName": "栏目名称",
+            "TotalArticle": 46,
+            "TotalPraise": 344 
+        },
+        {
+            "CateId": 3,
+            "ImageUrl": "themes/temp/6.jpg",
+            "CateName": "栏目名称",
+            "TotalArticle": 46,
+            "TotalPraise": 344 
+        },
+        {
+            "CateId": 3,
+            "ImageUrl": "themes/temp/6.jpg",
             "CateName": "栏目名称",
             "TotalArticle": 46,
             "TotalPraise": 344 
@@ -57,6 +106,30 @@
     ],
 
     "ClubList": [
+        {
+            "ClubId": 1,
+            "ImageUrl": "themes/temp/7.jpg",
+            "ClubName": "圈子名称",
+            "TodayNews": 123
+        },
+        {
+            "ClubId": 1,
+            "ImageUrl": "themes/temp/7.jpg",
+            "ClubName": "圈子名称",
+            "TodayNews": 123
+        },
+        {
+            "ClubId": 1,
+            "ImageUrl": "themes/temp/7.jpg",
+            "ClubName": "圈子名称",
+            "TodayNews": 123
+        },
+        {
+            "ClubId": 1,
+            "ImageUrl": "themes/temp/7.jpg",
+            "ClubName": "圈子名称",
+            "TodayNews": 123
+        },
         {
             "ClubId": 1,
             "ImageUrl": "themes/temp/7.jpg",

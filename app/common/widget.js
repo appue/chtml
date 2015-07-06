@@ -233,11 +233,11 @@ angular.module('phoneApp')
             isPopup = !param.isPopup,
             isForm = param.isForm,
             configObj = {
-                method: param.method || 'POST',
-                url: ENV.apiSocket + param.url || '',
+                // method: param.method || 'POST',
+                // url: ENV.apiSocket + param.url || '',
                 
-                // method: 'GET',
-                // url: ENV.apiSocket + param.url +'.json' || '',
+                method: 'GET',
+                url: ENV.apiSocket + param.url +'.json' || '',
 
                 // params: /POST/ig.test(param.method) ? null : data,
                 // data: /POST/ig.test(param.method) ? (isForm ? paramObj(data) : data) : null,

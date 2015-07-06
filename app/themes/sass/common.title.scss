@@ -4,11 +4,15 @@
     background: #fff;
     line-height: 40px;
     @include border_top_half;
-    &.this_p{
+    &.this_p {
         padding: 0 10px;
-        border: none;
+        border: 0;
     }
-    div{
+    &.this_a {
+        // padding: 0 10px;
+        margin: 0 10px;
+    }
+    div {
         display: block;
         color: #50c88c;
         font-size: 16px;
