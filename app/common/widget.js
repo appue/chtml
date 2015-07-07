@@ -182,24 +182,10 @@ angular.module('phoneApp')
 
     /**
      * ajax请求
-     * @param param = {
-        method: 请求方式,
-        url: 请求地址,
-        success: 请求成功回调,
-        error: 请求失败回调,
-        data: 'POST数据',
-        noLoad: 请求结果是否需要loading效果,
-        noMask: 请求结果是否需要mask效果,
-        isPopup: 请求结果是否有popup,
-        isForm: 请求形式改为形式，增加param方法来封装postData【默认false】
-     }
      */
     var ajaxRequest = function (params) {
-        if (!params) {
-            return;
-        }
 
-        var data = params.data || {};
+        if (!params) return;
 
         //--数据改造加用户信息start
         //-------------ToDo
@@ -211,7 +197,8 @@ angular.module('phoneApp')
         // cachePool.push('UserInfo', user, 2 / 24); //此处之后移动到登录页面
         //-------------ToDo
 
-        var obj = {
+        var data = params.data || {},
+            obj = {
                 Header: {
                     UserId: '',
                     Auth: ''
@@ -221,27 +208,28 @@ angular.module('phoneApp')
 
         if (UserInfo) {
             obj.Header.UserId = UserInfo.UserId;
-            obj.Header.Auth = UserInfo.Auth
+            obj.Header.Auth = UserInfo.Auth;
         }
 
         data = angular.extend({}, data, obj);
         //--数据改造加用户信息end
 
         var options = {
-                success: function () {},
-                error: function () {},
-                showLoading: true,
-                isPopup: false,
-                config: {
-                    // method: param.method || 'POST',
-                    // url: ENV.apiSocket + param.url || '',
-                    
-                    method: 'GET',
-                    url: ENV.apiSocket + params.url +'.json' || '',
+                success: function () {}, //--成功回调
+                error: function () {}, //----错误回调
+                showPage: false, //----------是否启用分页功能
+                showLoading: true, //--------是否显示loading
+                isPopup: false, //-----------请求结果是否有popup
+            },
+            ajaxConfig = { //-----------------ajax请求配置
+                // method: param.method || 'POST',
+                // url: ENV.apiSocket + param.url || '',
+                
+                method: 'GET',
+                url: ENV.apiSocket + params.url +'.json' || '',
 
-                    data: data,
-                    timeout: 15000
-                }
+                data: data,
+                timeout: 15000
             },
             effect = function () {
                 if (options.showLoading) {
@@ -260,7 +248,8 @@ angular.module('phoneApp')
             });
         }
 
-        $http(options.config).success(function (data) {
+        $http(ajaxConfig).success(function (data) {
+
             if (data && typeof options.success === 'function') {
                 options.success(data);
             }

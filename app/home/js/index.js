@@ -78,8 +78,7 @@ angular.module('phoneApp')
 
                 //--获取最新列表
                 widget.ajaxRequest({
-                    isDrop: true,
-                    noMask: true,
+                    isPage
                     url: 'getHomeArticle',
                     data: {
                         PageIndex: $scope.Deploy.pageIndex,
