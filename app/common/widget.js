@@ -8,6 +8,7 @@ angular.module('phoneApp')
     $timeout,
     $location,
     $ionicLoading,
+    $ionicBackdrop,
     cachePool,
     ENV
 ) {
@@ -250,7 +251,7 @@ angular.module('phoneApp')
                     $ionicLoading.hide();
                 }
                 if (isPopup) {
-                    backDrop.release();
+                    $ionicBackdrop.release();
                 }
             };
 
@@ -262,12 +263,9 @@ angular.module('phoneApp')
         // }
 
         if (noMask) {
-
             $ionicLoading.show({
                 templateUrl: 'common/directives/mod_loading.html'
             });
-
-            backDrop.retain();
         }
 
         $http(configObj).success(function (data) {
