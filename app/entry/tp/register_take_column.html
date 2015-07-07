@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>APP HTML</title>
-    <link rel="stylesheet" type="text/css" href="../../themes/entry.css" />
-</head>
-<body>
+<ion-view title="订阅喜爱的栏目">
 
-    <header class="mod_header">
-        <h1 class="title_content">订阅喜爱的栏目</h1>
-        <a class="right_button">下一步</a>
-    </header>
+    <ion-nav-buttons side="right">
+        <button class="right_button" ng-click="goNextStep()">下一步</button>
+    </ion-nav-buttons>
 
-    <section class="register_layout mod_wrapper">
+    <ion-content class="register_layout mod_wrapper">
         <div class="mod_layout">
             <h3 class="column_title">
                 <span>
@@ -50,7 +40,6 @@
                     <img src="../../themes/temp/7.jpg">文案</li>
             </ul>
         </div>
-    </section>
+    </ion-content>
 
-</body>
-</html>
+</ion-view>

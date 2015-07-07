@@ -39,7 +39,7 @@ angular.module('phoneApp')
 				Phone: $scope.inputVal.phone,
 				Password: md5($scope.inputVal.password)
 			},
-			success: function (data) {
+			success: function (data) { //todo...
 				cachePool.push('UserInfo', {
 					Auth: data.Auth,
 					UserId: data.UserId
