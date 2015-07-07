@@ -194,12 +194,12 @@ angular.module('phoneApp')
         isForm: 请求形式改为形式，增加param方法来封装postData【默认false】
      }
      */
-    var ajaxRequest = function (param) {
-        if (!param) {
+    var ajaxRequest = function (params) {
+        if (!params) {
             return;
         }
 
-        var data = param.data || {};
+        var data = params.data || {};
 
         //--数据改造加用户信息start
         //-------------ToDo
@@ -227,63 +227,50 @@ angular.module('phoneApp')
         data = angular.extend({}, data, obj);
         //--数据改造加用户信息end
 
+        var options = {
+                success: function () {},
+                error: function () {},
+                showLoading: true,
+                isPopup: false,
+                config: {
+                    // method: param.method || 'POST',
+                    // url: ENV.apiSocket + param.url || '',
+                    
+                    method: 'GET',
+                    url: ENV.apiSocket + params.url +'.json' || '',
 
-        var success = param.success,
-            error = param.error,
-            noLoad = !param.noLoad,
-            noMask = !param.noMask,
-            isPopup = !param.isPopup,
-            isForm = param.isForm,
-            configObj = {
-                // method: param.method || 'POST',
-                // url: ENV.apiSocket + param.url || '',
-                
-                method: 'GET',
-                url: ENV.apiSocket + param.url +'.json' || '',
-
-                // params: /POST/ig.test(param.method) ? null : data,
-                // data: /POST/ig.test(param.method) ? (isForm ? paramObj(data) : data) : null,
-                data: data,
-                timeout: 15000
+                    data: data,
+                    timeout: 15000
+                }
             },
             effect = function () {
-                if (noLoad) {
+                if (options.showLoading) {
                     $ionicLoading.hide();
                 }
-                if (isPopup) {
+                if (options.isPopup) {
                     $ionicBackdrop.release();
                 }
             };
 
-        // if (isForm) {
-        //     configObj.headers = {
-        //         // 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        //         'Content-Type': 'application/json;charset=utf-8'
-        //     };
-        // }
+        for (var i in params) options[i] = params[i];
 
-        if (noMask) {
+        if (options.showLoading) {
             $ionicLoading.show({
                 templateUrl: 'common/directives/mod_loading.html'
             });
         }
 
-        $http(configObj).success(function (data) {
-            if (data && data.state === -200) { //判断登录
-                $ionicLoading.hide();
-                return;
-            }
-
-            if (data && typeof success === 'function') {
-                success(data);
+        $http(options.config).success(function (data) {
+            if (data && typeof options.success === 'function') {
+                options.success(data);
             }
 
             effect();
 
         }).error(function (data) {
 
-            if (typeof error === 'function') {
-                error(data);
+            if (typeof options.error === 'function') {
+                options.error(data);
             } else {
                 msgToast('请检查你的网络');
             }
@@ -294,25 +281,6 @@ angular.module('phoneApp')
 
     };
 
-    /**
-     * 获得当前URL地址
-     */
-    var getCurrentUrl = function () {
-        var currentUrl,
-            url = $location.$$absUrl;
-        
-        if (ENV.isHybrid) {
-        
-            currentUrl = encodeURIComponent(url.replace(/.*\/www\//, ""));
-
-        } else {
-
-            currentUrl = encodeURIComponent(url);
-
-        }
-
-        return currentUrl;
-    };
 
     /**
      * 获得当前URL地址
@@ -340,7 +308,6 @@ angular.module('phoneApp')
         safeApply: safeApply,
         stickyTopScroll: stickyTopScroll,
         ajaxRequest: ajaxRequest,
-        getCurrentUrl: getCurrentUrl,
         toLogin: toLogin
     };
 });

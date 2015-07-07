@@ -50,7 +50,7 @@ angular.module('phoneApp')
     initConfig.init();
 
 
-    //$ionicBackdrop.retain();
+    $ionicBackdrop.retain();
 
     //--获取幻灯片图片
     widget.ajaxRequest({
