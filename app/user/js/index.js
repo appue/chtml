@@ -25,8 +25,8 @@ angular.module('phoneApp')
 
     if (!$stateParams.id) {
         if (!$scope.Deploy.userId) {
-            $ionicViewSwitcher.nextDirection('swap'); //back
-            // $state.go('forum.user-login');
+            $ionicViewSwitcher.nextDirection('none'); //back
+            $state.go('forum.login');
             return;
         } else {
             $scope.userId = $scope.Deploy.userId;
@@ -36,17 +36,16 @@ angular.module('phoneApp')
     }
 
     widget.ajaxRequest({
-        noMask: true,
         url: 'getUserInfo',
         data: {
             UserId: $scope.userId
         },
         success: function (data) {
 
-            if (data.Response && data.Response.State) {
-
+            if (data.Response && data.Response.State && ($scope.Deploy.userId == $stateParams.id)) {
+                $scope.Deploy.isLogin = true;
             } else {
-
+                $scope.Deploy.isLogin = false;
             }
 
         	angular.extend($scope.DataList, data);
