@@ -7,6 +7,7 @@ angular.module('phoneApp')
     $compile, 
     $timeout,
     $location,
+    $ionicLoading,
     cachePool,
     ENV
 ) {
@@ -246,10 +247,10 @@ angular.module('phoneApp')
             },
             effect = function () {
                 if (noLoad) {
-                    // $ionicLoading.hide();
+                    $ionicLoading.hide();
                 }
                 if (isPopup) {
-                    // backDrop.release();
+                    backDrop.release();
                 }
             };
 
@@ -262,16 +263,16 @@ angular.module('phoneApp')
 
         if (noMask) {
 
-            // $ionicLoading.show({
-            //     template: '<span class="ion-load-d"></span>'
-            // });
+            $ionicLoading.show({
+                templateUrl: 'common/directives/mod_loading.html'
+            });
 
-            // backDrop.retain();
+            backDrop.retain();
         }
 
         $http(configObj).success(function (data) {
             if (data && data.state === -200) { //判断登录
-                // $ionicLoading.hide();
+                $ionicLoading.hide();
                 return;
             }
 

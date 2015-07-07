@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.controller('loginCtrl', function ($scope, widget, ENV) {
+.controller('loginCtrl', function ($scope, widget, cachePool, ENV) {
 
 	if (ENV.isHybrid) {
 		document.addEventListener("deviceready", onDeviceReady, false);
@@ -39,8 +39,11 @@ angular.module('phoneApp')
 				Phone: $scope.inputVal.phone,
 				Password: md5($scope.inputVal.password)
 			},
-			success: function (data) { //todo...
-				$scope.addressId = "12312";
+			success: function (data) {
+				cachePool.push('UserInfo', {
+					Auth: data.Auth,
+					UserId: data.UserId
+				}, 2 / 24);
 			}
 		});
 
