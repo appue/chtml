@@ -228,8 +228,6 @@ angular.module('phoneApp')
                 return;
             }
 
-            console.log($scope.Deploy.pageIndex);
-
             angular.extend(postOpt, {
                 PageIndex: $scope.Deploy.pageIndex,
                 PageSize: $scope.Deploy.pageSize
@@ -266,9 +264,11 @@ angular.module('phoneApp')
         for (var i in params) options[i] = params[i];
 
         if (options.showLoading) {
-            $ionicLoading.show({
-                templateUrl: 'common/directives/mod_loading.html'
-            });
+            if (!options.showPage || (options.showPage && options.PageIndex < 2)) {
+                $ionicLoading.show({
+                    templateUrl: 'common/directives/mod_loading.html'
+                });
+            }
         }
 
         $http(ajaxConfig).success(function (data) {
@@ -297,33 +297,11 @@ angular.module('phoneApp')
 
     };
 
-
-    /**
-     * 获得当前URL地址
-     */
-    var toLogin = function () {
-
-        var uid = 0,
-            UserInfo = cachePool.pull('UserInfo') || '';
-
-        if (UserInfo) {
-            uid = UserInfo.UserId;
-        }
-
-        if (!uid) {
-            // routerRedirect.toJump({
-            //     url: ['entry/#/login.htm?from='+ getCurrentUrl()]
-            // });
-        }
-
-    };
-
     return {
         msgToast: msgToast,
         cacheData: cacheData,
         safeApply: safeApply,
         stickyTopScroll: stickyTopScroll,
-        ajaxRequest: ajaxRequest,
-        toLogin: toLogin
+        ajaxRequest: ajaxRequest
     };
 });
