@@ -21,80 +21,73 @@ angular.module('phoneApp', [
         })
 
 
-        /*------------------------登录注册模块------------------------*/
-        .state('entry', {
-            abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
-            url: '/entry',
-            templateUrl: 'entry/tp/main.html'
-        })
-        //入口页
-        .state('entry.entry', {
-            url: '/entry.htm',
-            templateUrl: 'entry/tp/entry.html',
-            controller: 'entryCtrl'
-        })
-        //登录页
-        .state('entry.login', {
-            url: '/login.htm',
-            templateUrl: 'entry/tp/login.html',
-            controller: 'loginCtrl'
-        })
-        //登录-忘记密码页
-        .state('entry.loginForget', {
-            url: '/login/forget.htm',
-            templateUrl: 'entry/tp/login_forget_password.html',
-            controller: 'loginForgetCtrl'
-        })
-        //登录-重置密码页
-        .state('entry.loginReset', {
-            url: '/login/reset/:phone', //@params:phone
-            templateUrl: 'entry/tp/login_reset_password.html',
-            controller: 'loginResetCtrl'
-        })
-        //注册-创建资料页
-        .state('entry.registerCreate', {
-            url: '/register/create.htm',
-            templateUrl: 'entry/tp/register_create_data.html',
-            controller: 'registerCreateCtrl'
-        })
-        //注册-设置账号密码页
-        .state('entry.registerAccount', {
-            url: '/register/account.htm',
-            templateUrl: 'entry/tp/register_set_account.html',
-            controller: 'registerAccountCtrl'
-        })
-        //注册-验证码页
-        .state('entry.registerVcode', {
-            url: '/register/vcode/:phone', //@params:phone
-            templateUrl: 'entry/tp/register_vcode.html',
-            controller: 'registerVcodeCtrl'
-        })
-        //注册-完成页
-        .state('entry.registerDone', {
-            url: '/register/done.htm',
-            templateUrl: 'entry/tp/register_done.html',
-            controller: 'registerDoneCtrl'
-        })
-        //注册-关注感兴趣栏目页
-        .state('entry.registerColumn', {
-            url: '/register/column.htm',
-            templateUrl: 'entry/tp/register_take_column.html',
-            controller: 'registerColumnCtrl'
-        })
-        //注册-关注感兴趣的人页
-        .state('entry.registerPeople', {
-            url: '/register/people.htm',
-            templateUrl: 'entry/tp/register_focus_people.html',
-            controller: 'registerFocusCtrl'
-        })
-
-
-
         /*------------------------发现模块------------------------*/
         .state('forum', {
             abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
             url: '/forum',
             templateUrl: 'forum/tp/main.html'
+        })
+
+        /*========注册登录========*/
+        //入口页
+        .state('forum.entry', {
+            url: '/entry.htm',
+            templateUrl: 'entry/tp/entry.html',
+            controller: 'entryCtrl'
+        })
+        //登录页
+        .state('forum.login', {
+            url: '/login.htm',
+            templateUrl: 'entry/tp/login.html',
+            controller: 'loginCtrl'
+        })
+        //登录-忘记密码页
+        .state('forum.loginForget', {
+            url: '/login/forget.htm',
+            templateUrl: 'entry/tp/login_forget_password.html',
+            controller: 'loginForgetCtrl'
+        })
+        //登录-重置密码页
+        .state('forum.loginReset', {
+            url: '/login/reset/:phone', //@params:phone
+            templateUrl: 'entry/tp/login_reset_password.html',
+            controller: 'loginResetCtrl'
+        })
+        //注册-创建资料页
+        .state('forum.registerCreate', {
+            url: '/register/create.htm',
+            templateUrl: 'entry/tp/register_create_data.html',
+            controller: 'registerCreateCtrl'
+        })
+        //注册-设置账号密码页
+        .state('forum.registerAccount', {
+            url: '/register/account.htm',
+            templateUrl: 'entry/tp/register_set_account.html',
+            controller: 'registerAccountCtrl'
+        })
+        //注册-验证码页
+        .state('forum.registerVcode', {
+            url: '/register/vcode/:phone', //@params:phone
+            templateUrl: 'entry/tp/register_vcode.html',
+            controller: 'registerVcodeCtrl'
+        })
+        //注册-完成页
+        .state('forum.registerDone', {
+            url: '/register/done.htm',
+            templateUrl: 'entry/tp/register_done.html',
+            controller: 'registerDoneCtrl'
+        })
+        //注册-关注感兴趣栏目页
+        .state('forum.registerColumn', {
+            url: '/register/column.htm',
+            templateUrl: 'entry/tp/register_take_column.html',
+            controller: 'registerColumnCtrl'
+        })
+        //注册-关注感兴趣的人页
+        .state('forum.registerPeople', {
+            url: '/register/people.htm',
+            templateUrl: 'entry/tp/register_focus_people.html',
+            controller: 'registerFocusCtrl'
         })
 
         /*==========首页==========*/
