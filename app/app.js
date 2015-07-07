@@ -291,9 +291,15 @@ angular.module('phoneApp', [
 
 
         /*==========会员中心==========*/
+        //用户登录
+        .state('forum.user-login', {
+            url: '/user/login.htm',
+            templateUrl: 'forum/tp/user_login.html',
+            controller: 'tUserLogin'
+        })
         //个人主页（主、客人态）
         .state('forum.user-index', {
-            url: '/user/index.htm',
+            url: '/user/index.htm?id',
             resolve: {
                 isCheck: function () {
                     return true;

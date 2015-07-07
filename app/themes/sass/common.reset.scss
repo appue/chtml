@@ -68,6 +68,16 @@ a, a:hover {
         transform: rotate(360deg);
     }
 }
+
+
+.loading-container {
+    .loading {
+        .spinner {
+            stroke: #fff;
+            fill: #fff;
+        }
+    }
+}
 //文字超出显示...
 @mixin ellipsis {
     text-overflow: ellipsis;
