@@ -1,29 +1,61 @@
 angular.module('phoneApp')
 .controller('tUserIndex', function (
 	$scope,
+    $state,
 	$stateParams,
     $ionicLoading,
+    $ionicViewSwitcher,
+    cachePool,
     widget
 ) {
 
     //显示loadding
     $ionicLoading.show({
-        template: 'Loading...'
+        // template: 'Loading<ion-spinner icon="dots"></ion-spinner>'
+        templateUrl: 'common/directives/mod_loading.html'
     });
 
-	console.log($stateParams.id);
+    $scope.footerTab = 5; //--底部tab初始化高亮
 
-	$scope.footerTab = 5; //--底部tab初始化高亮
+    $scope.Deploy = {
+        isOwner: false,
+        isShow: false
+    };
+	// console.log($stateParams.id);
 
-	$scope.DataList = {};
+    $scope.DataList = {};
+
+    var userInfo = cachePool.pull('UserInfo');
+    if (userInfo) {
+        $scope.Deploy.userId = userInfo.UserId;
+    }
+
+    if (!$stateParams.id) {
+        if (!$scope.Deploy.userId) {
+            $ionicViewSwitcher.nextDirection('swap'); //back
+            // $state.go('forum.user-login');
+            return;
+        } else {
+            $scope.userId = $scope.Deploy.userId;
+        }
+    } else {
+        $scope.userId = $stateParams.id;
+    }
 
     widget.ajaxRequest({
         noMask: true,
         url: 'getUserInfo',
         data: {
-            UserId: 1
+            UserId: $scope.userId
         },
         success: function (data) {
+
+            if (data.Response && data.Response.State) {
+
+            } else {
+
+            }
+
         	angular.extend($scope.DataList, data);
             $ionicLoading.hide();
         },
