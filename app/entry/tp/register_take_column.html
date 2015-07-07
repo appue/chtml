@@ -7,8 +7,8 @@
     <ion-content class="register_layout mod_wrapper">
         <div class="mod_layout">
             <h3 class="column_title">
-                <span>
-                    <input type="checkbox" name="" value="">全选</span>
+                <span ng-click="inputVal.allColumn = !inputVal.allColumn">
+                    <input type="checkbox" ng-model="inputVal.allColumn" ng-checked="inputVal.allColumn == true">全选</span>
                 勾选感兴趣的栏目，可优先显示
             </h3>
             <ul class="column_list">

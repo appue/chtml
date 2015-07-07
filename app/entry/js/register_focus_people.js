@@ -1,22 +1,14 @@
 angular.module('phoneApp')
-    .controller('registerFocusCtrl', function ($scope, widget) {
+    .controller('registerFocusCtrl', function ($scope, $state, widget) {
 
         widget.ajaxRequest({
             url: 'getLogin',
-            data: {
-                Phone: $scope.inputVal.phone,
-                Password: md5($scope.inputVal.password)
-            },
-            success: function (data) { //todo...
-                cachePool.push('UserInfo', {
-                    Auth: data.Auth,
-                    UserId: data.UserId
-                }, 2 / 24);
-            }
+            data: {},
+            success: function (data) {}
         });
 
-        $scope.popupConfirm = function (arg) {
-            console.log(arg);
+        $scope.goFinish = function () {
+            $state.go('home.index');
         };
 
         $scope.itemClick = function (e) {

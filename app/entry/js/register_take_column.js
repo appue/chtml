@@ -1,17 +1,14 @@
 angular.module('phoneApp')
-    .controller('registerColumnCtrl', function ($scope, widget) {
+    .controller('registerColumnCtrl', function ($scope, $state, widget) {
 
         widget.ajaxRequest({
             url: 'getLogin',
-            data: {
-                Phone: $scope.inputVal.phone,
-                Password: md5($scope.inputVal.password)
-            },
+            data: {},
             success: function (data) {}
         });
 
         $scope.goNextStep = function () {
-            alert(1);
+            $state.go('entry.registerPeople');
         };
 
         $scope.itemClick = function (e) {
