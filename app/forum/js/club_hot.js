@@ -13,7 +13,6 @@ angular.module('phoneApp')
     $scope.DataList = {};
 
     widget.ajaxRequest({
-        noMask: true,
         url: 'getHotListClub',
         data: {
             ShowNum: 10
@@ -24,8 +23,6 @@ angular.module('phoneApp')
             } else {
                 $scope.Deploy.isMore = false;
             }
-        },
-        error: function (data) {
         }
     });
 

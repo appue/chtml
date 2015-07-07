@@ -5,7 +5,7 @@
     <h1 class="title">活动列表</h1>
 </ion-header-bar>
 
-<ion-view>
+<ion-view hide-nav-bar="true">
     <ion-content overflow-scroll="true"  class="mod_wrapper">
         <div class="forum_activity_list">
             <a ng-repeat="(k, v) in DataList.ActivityList" ui-sref="forum.activity-detail({type: (v.ActivityType == 1) ? 'article' : 'photo',id: v.ActivityId})">

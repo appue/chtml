@@ -24,45 +24,30 @@ angular.module('phoneApp')
             
 
     $scope.loadMore = function () {
-        if (!$scope.Deploy.isLoading) {
+        widget.ajaxRequest({
+            scope: $scope,
+            showPage: true,
+            url: 'getListSubject',
+            data: {
+                SortType: 1
+            },
+            success: function (data) {
+                if (data.SubjectList && data.SubjectList.length > 0) {
+                    
+                    $scope.Deploy.pageTotal = data.Total || 0;
+                    $scope.DataList.SubjectList = $scope.DataList.SubjectList.concat(data.SubjectList);
+                    $scope.Deploy.isLoading = false;
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
 
-            $scope.Deploy.isLoading = true;
-            $scope.Deploy.pageIndex++;
+                } else {
 
-            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
-                $scope.Deploy.isMore = false;
-                return;
-            }
+                    $scope.Deploy.isLoading = true;
+                    $scope.Deploy.isMore = false;
 
-            widget.ajaxRequest({
-                noMask: true,
-                url: 'getListSubject',
-                data: {
-                    SortType: 1,
-                    PageIndex: $scope.Deploy.pageIndex,
-                    PageSize: $scope.Deploy.pageSize
-                },
-                success: function (data) {
-                    if (data.SubjectList && data.SubjectList.length > 0) {
-                        
-                        $scope.Deploy.pageTotal = data.Total || 0;
-                        $scope.DataList.SubjectList = $scope.DataList.SubjectList.concat(data.SubjectList);
-                        $scope.Deploy.isLoading = false;
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
-
-                    } else {
-
-                        $scope.Deploy.isLoading = true;
-                        $scope.Deploy.isMore = false;
-
-                    }
-                },
-                error: function (data) {
                 }
-            });
-        }
+            }
+        });
     };
-
 
     $scope.loadMore();
 

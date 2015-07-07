@@ -24,42 +24,28 @@ angular.module('phoneApp')
     };
 
     $scope.loadMore = function() {
-        if (!$scope.Deploy.isLoading) {
+        widget.ajaxRequest({
+            scope: $scope,
+            showPage: true,
+            url: 'getMsgPraise',
+            data: {
+            },
+            success: function (data) {
+                if (data.PraiseList && data.PraiseList.length > 0) {
 
-            $scope.Deploy.isLoading = true;
-            $scope.Deploy.pageIndex++;
+                    $scope.Deploy.pageTotal = data.Total || 0;
+                    $scope.DataList.PraiseList = $scope.DataList.PraiseList.concat(data.PraiseList);
+                    $scope.Deploy.isLoading = false;
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
 
-            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
-                $scope.Deploy.isMore = false;
-                return;
-            }
+                } else {
 
-            widget.ajaxRequest({
-                noMask: true,
-                url: 'getMsgPraise',
-                data: {
-                    PageIndex: $scope.Deploy.pageIndex,
-                    PageSize: $scope.Deploy.pageSize
-                },
-                success: function (data) {
-                    if (data.PraiseList && data.PraiseList.length > 0) {
+                    $scope.Deploy.isLoading = true;
+                    $scope.Deploy.isMore = false;
 
-                        $scope.Deploy.pageTotal = data.Total || 0;
-                        $scope.DataList.PraiseList = $scope.DataList.PraiseList.concat(data.PraiseList);
-                        $scope.Deploy.isLoading = false;
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
-
-                    } else {
-
-                        $scope.Deploy.isLoading = true;
-                        $scope.Deploy.isMore = false;
-
-                    }
-                },
-                error: function (data) {
                 }
-            });
-        }
+            }
+        });
     };
 
 

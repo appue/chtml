@@ -27,7 +27,6 @@ angular.module('phoneApp')
 
         //--获取活动的基本信息
         widget.ajaxRequest({
-            noMask: true,
             url: 'getActivityInfo',
             data: {
                 ActivityId: $stateParams.id,
@@ -40,45 +39,30 @@ angular.module('phoneApp')
 
         //--获取活动的帖子列表
         $scope.loadMore = function () {
-            if (!$scope.Deploy.isLoading) {
+            widget.ajaxRequest({
+                scope: $scope,
+                showPage: true,
+                url: 'getListArticle',
+                data: {
+                    ActivityId: $stateParams.id
+                },
+                success: function (data) {
+                    if (data.ArticleList && data.ArticleList.length > 0) {
 
-                $scope.Deploy.isLoading = true;
-                $scope.Deploy.pageIndex++;
-
-                if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
-                    $scope.Deploy.isMore = false;
-                    return;
-                }
-
-                widget.ajaxRequest({
-                    noMask: true,
-                    url: 'getListArticle',
-                    data: {
-                        ActivityId: $stateParams.id,
-                        PageIndex: $scope.Deploy.pageIndex,
-                        PageSize: $scope.Deploy.pageSize
-                    },
-                    success: function (data) {
-                        if (data.ArticleList && data.ArticleList.length > 0) {
-
-                            $scope.Deploy.pageTotal = data.Total || 0;
-                            $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
-                            $timeout($scope.setFalls, 0);
-                            $scope.Deploy.isLoading = false;
-                            $scope.$broadcast('scroll.infiniteScrollComplete');
-
-                        } else {
-
-                            $scope.Deploy.isLoading = true;
-                            $scope.Deploy.isMore = false;
-
-                        }
-                    },
-                    error: function (data) {
+                        $scope.Deploy.pageTotal = data.Total || 0;
+                        $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
+                        $timeout($scope.setFalls, 0);
                         $scope.Deploy.isLoading = false;
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                    } else {
+
+                        $scope.Deploy.isLoading = true;
+                        $scope.Deploy.isMore = false;
+
                     }
-                });
-            }
+                }
+            });
         };
 
         $scope.loadMore();
@@ -87,7 +71,6 @@ angular.module('phoneApp')
 
         //--获取帖子内容
         widget.ajaxRequest({
-            noMask: true,
             url: 'getContentArticle',
             data: {
                 ArticleId: $stateParams.id
@@ -100,8 +83,6 @@ angular.module('phoneApp')
                 // } else {
                 //     $scope.isOwner = false;
                 // }
-            },
-            error: function (data) {
             }
         });
     

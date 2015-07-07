@@ -33,7 +33,6 @@ angular.module('phoneApp')
 
     $scope.loadCate = function (type) {
         widget.ajaxRequest({
-            noMask: true,
             url: 'getListCategory',
             data: {
                 CateId: $scope.Deploy.cateId
@@ -82,8 +81,6 @@ angular.module('phoneApp')
                     $scope.Deploy.isMore = false;
 
                 }
-            },
-            error: function (data) {
             }
         });
     };

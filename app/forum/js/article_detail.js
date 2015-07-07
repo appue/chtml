@@ -59,7 +59,6 @@ angular.module('phoneApp')
 
     //--获取帖子内容
     widget.ajaxRequest({
-        noMask: true,
         url: 'getContentArticle',
         data: {
             ArticleId: $stateParams.id
@@ -81,7 +80,6 @@ angular.module('phoneApp')
     $scope.setPraise = function () {
         alert(1);
         widget.ajaxRequest({
-            noMask: true,
             url: 'setArticlePraise',
             data: {
                 ArticleId: $stateParams.id

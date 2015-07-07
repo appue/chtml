@@ -17,7 +17,6 @@ angular.module('phoneApp')
     $scope.DataList = {};
 
     widget.ajaxRequest({
-        noMask: true,
         url: 'getFindHome',
         data: {},
         success: function (data) {
@@ -40,8 +39,6 @@ angular.module('phoneApp')
             });
 
             $scope.DataList = res;
-        },
-        error: function (data) {
         }
     });
 });

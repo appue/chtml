@@ -13,7 +13,6 @@ angular.module('phoneApp')
     $scope.DataList = {};
 
     widget.ajaxRequest({
-        noMask: true,
         url: 'getListClub',
         data: {
             SortType: 1
@@ -50,8 +49,6 @@ angular.module('phoneApp')
             } else {
                 $scope.Deploy.isMore = false;
             }
-        },
-        error: function (data) {
         }
     });
 

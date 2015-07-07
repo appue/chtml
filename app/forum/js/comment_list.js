@@ -19,44 +19,30 @@ angular.module('phoneApp')
     };
 
     $scope.loadMore = function() {
-        if (!$scope.Deploy.isLoading) {
+        widget.ajaxRequest({
+            scope: $scope,
+            showPage: true,
+            url: 'getListComment',
+            data: {
+                SortType: 1,
+                ArticleId: $stateParams.id
+            },
+            success: function (data) {
+                if (data.CommentList && data.CommentList.length > 0) {
 
-            $scope.Deploy.isLoading = true;
-            $scope.Deploy.pageIndex++;
+                    $scope.Deploy.pageTotal = data.Total || 0;
+                    $scope.DataList.CommentList = $scope.DataList.CommentList.concat(data.CommentList);
+                    $scope.Deploy.isLoading = false;
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
 
-            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
-                $scope.Deploy.isMore = false;
-                return;
-            }
+                } else {
 
-            widget.ajaxRequest({
-                noMask: true,
-                url: 'getListComment',
-                data: {
-                    SortType: 1,
-                    ArticleId: $stateParams.id,
-                    PageIndex: $scope.Deploy.pageIndex,
-                    PageSize: $scope.Deploy.pageSize
-                },
-                success: function (data) {
-                    if (data.CommentList && data.CommentList.length > 0) {
+                    $scope.Deploy.isLoading = true;
+                    $scope.Deploy.isMore = false;
 
-                        $scope.Deploy.pageTotal = data.Total || 0;
-                        $scope.DataList.CommentList = $scope.DataList.CommentList.concat(data.CommentList);
-                        $scope.Deploy.isLoading = false;
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
-
-                    } else {
-
-                        $scope.Deploy.isLoading = true;
-                        $scope.Deploy.isMore = false;
-
-                    }
-                },
-                error: function (data) {
                 }
-            });
-        }
+            }
+        });
     };
 
 
