@@ -1,10 +1,7 @@
-/*
-* 首页
-* /home/#/index
-*/
+// 首页
 angular.module('phoneApp')
 
-.controller('tHome', function (
+.controller('tDefault', function (
     $scope,
     $rootScope,
     $state,
@@ -42,6 +39,9 @@ angular.module('phoneApp')
     };
 
     initConfig.init();
+
+
+    //$ionicBackdrop.retain();
 
     //--获取幻灯片图片
     widget.ajaxRequest({
@@ -108,6 +108,7 @@ angular.module('phoneApp')
                 });
 
             } else {
+                
                 $scope.Deploy.pageIndex++;
 
                 if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
@@ -138,6 +139,7 @@ angular.module('phoneApp')
                             $scope.Deploy.isMore = false;
 
                         }
+
                     },
                     error: function (data) {
                         $scope.Deploy.isLoading = false;

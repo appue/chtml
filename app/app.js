@@ -5,28 +5,22 @@ angular.module('phoneApp', [
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
 
-
-
-        /*------------------------首页模块------------------------*/
-        .state('home', {
-            abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
-            url: '/home',
-            templateUrl: 'home/tp/main.html'
-        })
-        //首页
-        .state('home.index', {
-            url: '/index.htm',
-            templateUrl: 'home/tp/index.html',
-            controller: 'tHome'
-        })
-
-
-        /*------------------------发现模块------------------------*/
+        /*========root========*/
         .state('forum', {
             abstract: true, // 为子状态提供一个 base url，其下所有子状态的 url 都是相对父状态的
             url: '/forum',
             templateUrl: 'forum/tp/main.html'
         })
+
+
+        /*==========首页==========*/
+        //首页
+        .state('forum.index', {
+            url: '/index.htm',
+            templateUrl: 'home/tp/index.html',
+            controller: 'tDefault'
+        })
+
 
         /*========注册登录========*/
         //入口页
@@ -90,14 +84,7 @@ angular.module('phoneApp', [
             controller: 'registerFocusCtrl'
         })
 
-        /*==========首页==========*/
-        //首页
-        .state('forum.index', {
-            url: '/index.htm',
-            templateUrl: 'forum/tp/index.html',
-            controller: 'tDefault'
-        })
-
+        /*==========发现==========*/
         //发现首页
         .state('forum.find', {
             url: '/find.htm',
@@ -223,7 +210,7 @@ angular.module('phoneApp', [
                     return true;
                 }
             },
-            templateUrl: 'forum/tp/msg_index.html',
+            templateUrl: 'msg/tp/index.html',
             controller: 'tMsgIndex'
         })
         //消息中心-通知
@@ -234,7 +221,7 @@ angular.module('phoneApp', [
                     return true;
                 }
             },
-            templateUrl: 'forum/tp/msg_notice.html',
+            templateUrl: 'msg/tp/notice.html',
             controller: 'tMsgNotice'
         })
         //消息中心-评论
@@ -245,7 +232,7 @@ angular.module('phoneApp', [
                     return true;
                 }
             },
-            templateUrl: 'forum/tp/msg_comment.html',
+            templateUrl: 'msg/tp/comment.html',
             controller: 'tMsgComment'
         })
         //消息中心-赞
@@ -256,7 +243,7 @@ angular.module('phoneApp', [
                     return true;
                 }
             },
-            templateUrl: 'forum/tp/msg_praise.html',
+            templateUrl: 'msg/tp/praise.html',
             controller: 'tMsgPraise'
         })
         //消息中心-邀请好友
@@ -267,7 +254,7 @@ angular.module('phoneApp', [
                     return true;
                 }
             },
-            templateUrl: 'forum/tp/msg_search.html',
+            templateUrl: 'msg/tp/search.html',
             controller: 'tMsgSearch'
         })
         //消息中心-私聊
@@ -278,7 +265,7 @@ angular.module('phoneApp', [
                     return true;
                 }
             },
-            templateUrl: 'forum/tp/msg_talk.html',
+            templateUrl: 'msg/tp/talk.html',
             controller: 'tMsgTalk'
         })
 
@@ -287,7 +274,7 @@ angular.module('phoneApp', [
         //个人主页（主、客人态）
         .state('forum.user-index', {
             url: '/user/index.htm?id',
-            templateUrl: 'member/tp/index.html',
+            templateUrl: 'user/tp/index.html',
             controller: 'tUserIndex'
         })
 
