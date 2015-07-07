@@ -6,7 +6,6 @@ angular.module('phoneApp')
     $rootScope,
     $state,
     $timeout,
-    $ionicLoading,
     $ionicBackdrop,
     $ionicHistory,
     cachePool,
@@ -27,11 +26,6 @@ angular.module('phoneApp')
         },
 
         deploy: function () {
-            //显示loadding
-            $ionicLoading.show({
-                template: 'Loading...'
-            });
-
             angular.extend($scope.Deploy, {
                 pageIndex: 0,
                 pageSize: 5,
@@ -55,11 +49,8 @@ angular.module('phoneApp')
         url: 'getHomeImage',
         success: function (data) {
             angular.extend($scope.DataList, data);
-
-            $ionicLoading.hide();
         },
         error: function (data) {
-            $ionicLoading.hide();
         }
     });
 
@@ -109,8 +100,6 @@ angular.module('phoneApp')
                             $scope.Deploy.isMore = false;
 
                         }
-
-                        $ionicLoading.hide();
                     },
                     error: function (data) {
                         $scope.Deploy.isLoading = false;
@@ -151,7 +140,6 @@ angular.module('phoneApp')
 
                         }
 
-                        $ionicLoading.hide();
                     },
                     error: function (data) {
                         $scope.Deploy.isLoading = false;

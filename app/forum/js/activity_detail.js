@@ -10,15 +10,8 @@ angular.module('phoneApp')
     $stateParams, 
     $location,
     $timeout,
-    $ionicLoading,
     widget
 ){
-
-    //显示loadding
-    $ionicLoading.show({
-        template: 'Loading...'
-    });
-
     $scope.Deploy = {
         isType: $stateParams.type == "photo" ? true : false,
         pageIndex: 0,
@@ -80,12 +73,9 @@ angular.module('phoneApp')
                             $scope.Deploy.isMore = false;
 
                         }
-
-                        $ionicLoading.hide();
                     },
                     error: function (data) {
                         $scope.Deploy.isLoading = false;
-                        $ionicLoading.hide();
                     }
                 });
             }
@@ -110,11 +100,8 @@ angular.module('phoneApp')
                 // } else {
                 //     $scope.isOwner = false;
                 // }
-
-                $ionicLoading.hide();
             },
             error: function (data) {
-                $ionicLoading.hide();
             }
         });
     

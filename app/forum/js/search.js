@@ -6,14 +6,9 @@ angular.module('phoneApp')
 
 .controller('tSearchIndex', function (
     $scope,
-    $ionicLoading,
     cachePool,
     widget
 ){
-    //显示loadding
-    $ionicLoading.show({
-        template: 'Loading...'
-    });
 
     var key = cachePool.pull('Keyword') || [];
 
@@ -40,10 +35,8 @@ angular.module('phoneApp')
         data: {},
         success: function (data) {
             angular.extend($scope.DataList, data);
-            $ionicLoading.hide();
         },
         error: function (data) {
-            $ionicLoading.hide();
         }
     });
 

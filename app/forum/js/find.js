@@ -9,14 +9,8 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location,
-    $ionicLoading,
     widget
 ){
-
-    //显示loadding
-    $ionicLoading.show({
-        template: 'Loading...'
-    });
 
     $scope.footerTab = 2;
 
@@ -46,11 +40,8 @@ angular.module('phoneApp')
             });
 
             $scope.DataList = res;
-
-            $ionicLoading.hide();
         },
         error: function (data) {
-            $ionicLoading.hide();
         }
     });
 });

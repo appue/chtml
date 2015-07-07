@@ -9,14 +9,8 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location,
-    $ionicLoading,
     widget
 ){
-
-    //显示loadding
-    $ionicLoading.show({
-        template: 'Loading...'
-    });
 
     $scope.Deploy = {
         pageIndex: 0,
@@ -63,12 +57,9 @@ angular.module('phoneApp')
                         $scope.Deploy.isLoading = true;
 
                     }
-
-                    $ionicLoading.hide();
                 },
                 error: function (data) {
                     $scope.Deploy.isLoading = false;
-                    $ionicLoading.hide();
                 }
             });
         }

@@ -38,8 +38,7 @@ angular.module('phoneApp')
         templateUrl: 'common/directives/footer_bar.html',
         controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
             // var currentUrl = $state.current.url.replace(/^\//g, '');
-            var currentUrl = widget.getCurrentUrl(),
-                current = $scope.footerTab;
+            var current = $scope.footerTab;
 
             $scope.menuChange = function(e) {
                 if (e.target.nodeName == 'LI') {

@@ -3,17 +3,10 @@ angular.module('phoneApp')
 	$scope,
     $state,
 	$stateParams,
-    $ionicLoading,
     $ionicViewSwitcher,
     cachePool,
     widget
 ) {
-
-    //显示loadding
-    $ionicLoading.show({
-        // template: 'Loading<ion-spinner icon="dots"></ion-spinner>'
-        templateUrl: 'common/directives/mod_loading.html'
-    });
 
     $scope.footerTab = 5; //--底部tab初始化高亮
 
@@ -57,10 +50,8 @@ angular.module('phoneApp')
             }
 
         	angular.extend($scope.DataList, data);
-            $ionicLoading.hide();
         },
         error: function (data) {
-            $ionicLoading.hide();
         }
     });
 

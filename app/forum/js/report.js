@@ -4,14 +4,9 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams, 
-    $location, 
-    $ionicLoading,
+    $location,
     widget
 ){
-    //显示loadding
-    $ionicLoading.show({
-        template: 'Loading...'
-    });
 
     //--设置返回按钮
     // $scope.backParam = {
