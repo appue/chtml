@@ -9,7 +9,6 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location, 
-    $ionicLoading,
     widget
 ){
     //--设置返回按钮

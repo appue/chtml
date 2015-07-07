@@ -8,14 +8,9 @@ angular.module('phoneApp')
     $scope,
     $stateParams,
     $timeout,
-    $ionicLoading,
     $ionicNavBarDelegate,
     widget
 ){
-    //显示loadding
-    $ionicLoading.show({
-        template: 'Loading...'
-    });
 
     $scope.Deploy = {
         cateId: $stateParams.id,
@@ -98,22 +93,14 @@ angular.module('phoneApp')
                         $scope.Deploy.isMore = false;
 
                     }
-                    
-                    $ionicLoading.hide();
                 },
                 error: function (data) {
-                    $ionicLoading.hide();
                 }
             });
         }
     };
 
     $scope.refreshView = function (id) {
-        
-        $ionicLoading.show({
-            template: 'Loading...'
-        });
-
         angular.extend($scope.Deploy, {
             cateId: id,
             currentTab: 1,

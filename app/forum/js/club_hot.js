@@ -6,10 +6,6 @@ angular.module('phoneApp')
     $ionicLoading,
     widget
 ){
-    //显示loadding
-    $ionicLoading.show({
-        template: 'Loading...'
-    });
 
     $scope.Deploy = {
         isMore: true
@@ -29,11 +25,8 @@ angular.module('phoneApp')
             } else {
                 $scope.Deploy.isMore = false;
             }
-            
-            $ionicLoading.hide();
         },
         error: function (data) {
-            $ionicLoading.hide();
         }
     });
 

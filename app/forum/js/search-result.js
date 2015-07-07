@@ -10,13 +10,8 @@ angular.module('phoneApp')
     $stateParams, 
     $location,
     $timeout,
-    $ionicLoading,
     widget
 ){
-    //显示loadding
-    $ionicLoading.show({
-        template: 'Loading...'
-    });
 
     $scope.Deploy = {
         currentTab: 1,
@@ -59,11 +54,8 @@ angular.module('phoneApp')
 
                     $timeout($scope.setFalls, 0);
                     $scope.isLoading = false;
-                    
-                    $ionicLoading.hide();
                 },
                 error: function (data) {
-                    $ionicLoading.hide();
                 }
             });
         }

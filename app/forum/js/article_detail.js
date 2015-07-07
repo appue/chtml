@@ -13,11 +13,6 @@ angular.module('phoneApp')
     cachePool,
     widget
 ){
-    //显示loadding
-    $ionicLoading.show({
-        template: 'Loading...'
-    });
-    
     //--设置返回按钮
     // var isFrom = $location.$$search.isFrom || $location.$$search.isfrom || '';
 
@@ -78,11 +73,8 @@ angular.module('phoneApp')
             } else {
                 $scope.isOwner = false;
             }
-
-            $ionicLoading.hide();
         },
         error: function (data) {
-            $ionicLoading.hide();
         }
     });
 
