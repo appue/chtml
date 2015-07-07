@@ -10,10 +10,9 @@ angular.module('phoneApp')
 ) {
 
     //显示loadding
-    $ionicLoading.show({
-        // template: 'Loading<ion-spinner icon="dots"></ion-spinner>'
-        templateUrl: 'common/directives/mod_loading.html'
-    });
+    // $ionicLoading.show({
+    //     templateUrl: 'common/directives/mod_loading.html'
+    // });
 
     $scope.footerTab = 5; //--底部tab初始化高亮
 
@@ -57,10 +56,10 @@ angular.module('phoneApp')
             }
 
         	angular.extend($scope.DataList, data);
-            $ionicLoading.hide();
+            // $ionicLoading.hide();
         },
         error: function (data) {
-            $ionicLoading.hide();
+            // $ionicLoading.hide();
         }
     });
 
