@@ -63,90 +63,64 @@ angular.module('phoneApp')
     });
 
     $scope.loadMore = function () {
+        if ($scope.Deploy.currentTab == 1) {
+            //--获取最新列表
+            widget.ajaxRequest({
+                scope: $scope,
+                showPage: true,
+                url: 'getHomeArticle',
+                data: {
+                },
+                success: function (data) {
+                    if (data.ArticleList && data.ArticleList.length > 0) {
 
-        if (!$scope.Deploy.isLoading) {
-
-            $scope.Deploy.isLoading = true;
-
-            if ($scope.Deploy.currentTab == 1) {
-                $scope.Deploy.pageIndex++;
-
-                if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
-                    $scope.Deploy.isMore = false;
-                    return;
-                }
-
-                //--获取最新列表
-                widget.ajaxRequest({
-                    isPage
-                    url: 'getHomeArticle',
-                    data: {
-                        PageIndex: $scope.Deploy.pageIndex,
-                        PageSize: $scope.Deploy.pageSize
-                    },
-                    success: function (data) {
-                        if (data.ArticleList && data.ArticleList.length > 0) {
-
-                            $scope.Deploy.pageTotal = data.Total || 0;
-                            $scope.DataList.ListLeft = $scope.DataList.ListLeft.concat(data.ArticleList);
-                            $timeout($scope.setFalls, 0);
-                            $scope.Deploy.isLoading = false;
-                            $scope.$broadcast('scroll.infiniteScrollComplete');
-
-                        } else {
-
-                            $scope.Deploy.isLoading = true;
-                            $scope.Deploy.isMore = false;
-
-                        }
-                    },
-                    error: function (data) {
+                        $scope.Deploy.pageTotal = data.Total || 0;
+                        $scope.DataList.ListLeft = $scope.DataList.ListLeft.concat(data.ArticleList);
+                        $timeout($scope.setFalls, 0);
                         $scope.Deploy.isLoading = false;
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                    } else {
+
+                        $scope.Deploy.isLoading = true;
                         $scope.Deploy.isMore = false;
+
                     }
-                });
-
-            } else {
-                
-                $scope.Deploy.pageIndex++;
-
-                if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
-                    $scope.Deploy.isMore = false;
-                    return;
+                },
+                error: function (data) {
                 }
+            });
 
-                //--关注列表
-                widget.ajaxRequest({
-                    noMask: true,
-                    url: 'getHomeFollow',
-                    data: {
-                        PageIndex: $scope.Deploy.pageIndex,
-                        PageSize: $scope.Deploy.pageSize
-                    },
-                    success: function (data) {
-                        if (data.ArticleList && data.ArticleList.length > 0) {
-                            
-                            $scope.Deploy.pageTotal = data.Total || 0;
-                            $scope.DataList.ListRight = $scope.DataList.ListRight.concat(data.ArticleList);
-                            $timeout($scope.setFalls, 0);
-                            $scope.Deploy.isLoading = false;
-                            $scope.$broadcast('scroll.infiniteScrollComplete');
+        } else {
 
-                        } else {
-
-                            $scope.Deploy.isLoading = true;
-                            $scope.Deploy.isMore = false;
-
-                        }
-
-                    },
-                    error: function (data) {
+            //--关注列表
+            widget.ajaxRequest({
+                scope: $scope,
+                showPage: true,
+                url: 'getHomeFollow',
+                data: {
+                },
+                success: function (data) {
+                    if (data.ArticleList && data.ArticleList.length > 0) {
+                        
+                        $scope.Deploy.pageTotal = data.Total || 0;
+                        $scope.DataList.ListRight = $scope.DataList.ListRight.concat(data.ArticleList);
+                        $timeout($scope.setFalls, 0);
                         $scope.Deploy.isLoading = false;
-                        $scope.Deploy.isMore = false;
-                    }
-                });
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
 
-            }
+                    } else {
+
+                        $scope.Deploy.isLoading = true;
+                        $scope.Deploy.isMore = false;
+
+                    }
+
+                },
+                error: function (data) {
+                }
+            });
+
         }
     };
     

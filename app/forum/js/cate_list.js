@@ -57,47 +57,35 @@ angular.module('phoneApp')
     };
 
     $scope.loadMore = function(type) {
-        if (!$scope.Deploy.isLoading) {
+        widget.ajaxRequest({
+            scope: $scope,
+            showPage: true,
+            url: 'getListArticle',
+            data: {
+                CateId: $scope.Deploy.cateId
+            },
+            success: function (data) {
+                if (data.ArticleList && data.ArticleList.length > 0) {
 
-            $scope.Deploy.isLoading = true;
-            $scope.Deploy.pageIndex++;
-
-            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
-                $scope.Deploy.isMore = false;
-                return;
-            }
-
-            widget.ajaxRequest({
-                noMask: true,
-                url: 'getListArticle',
-                data: {
-                    CateId: $scope.Deploy.cateId,
-                    PageSize: $scope.Deploy.pageSize,
-                    PageIndex: $scope.Deploy.pageIndex
-                },
-                success: function (data) {
-                    if (data.ArticleList && data.ArticleList.length > 0) {
-
-                        if (type && type == "refresh") {
-                            $scope.DataList.ArticleList = [];
-                        }
-                        $scope.Deploy.pageTotal = data.Total || 0;
-                        $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
-                        $timeout($scope.setFalls, 0);
-                        $scope.Deploy.isLoading = false;
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
-
-                    } else {
-
-                        $scope.Deploy.isLoading = true;
-                        $scope.Deploy.isMore = false;
-
+                    if (type && type == "refresh") {
+                        $scope.DataList.ArticleList = [];
                     }
-                },
-                error: function (data) {
+                    $scope.Deploy.pageTotal = data.Total || 0;
+                    $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
+                    $timeout($scope.setFalls, 0);
+                    $scope.Deploy.isLoading = false;
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                } else {
+
+                    $scope.Deploy.isLoading = true;
+                    $scope.Deploy.isMore = false;
+
                 }
-            });
-        }
+            },
+            error: function (data) {
+            }
+        });
     };
 
     $scope.refreshView = function (id) {

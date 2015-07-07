@@ -2,7 +2,7 @@ angular.module('phoneApp')
 
 .factory('widget', function (
     $http, 
-    $cacheFactory, 
+    $cacheFactory,
     $rootScope, 
     $compile, 
     $timeout,
@@ -197,7 +197,7 @@ angular.module('phoneApp')
         // cachePool.push('UserInfo', user, 2 / 24); //此处之后移动到登录页面
         //-------------ToDo
 
-        var data = params.data || {},
+        var postOpt = params.data || {},
             obj = {
                 Header: {
                     UserId: '',
@@ -211,8 +211,31 @@ angular.module('phoneApp')
             obj.Header.Auth = UserInfo.Auth;
         }
 
-        data = angular.extend({}, data, obj);
+        postOpt = angular.extend({}, postOpt, obj);
         //--数据改造加用户信息end
+
+
+        if (params.showPage) {
+            var $scope = params.scope;
+
+            if ($scope.Deploy.isLoading) return;
+            
+            $scope.Deploy.isLoading = true;
+            $scope.Deploy.pageIndex++;
+
+            if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal)>$scope.Deploy.pageSize) {
+                $scope.Deploy.isMore = false;
+                return;
+            }
+
+            console.log($scope.Deploy.pageIndex);
+
+            angular.extend(postOpt, {
+                PageIndex: $scope.Deploy.pageIndex,
+                PageSize: $scope.Deploy.pageSize
+            });
+        }
+
 
         var options = {
                 success: function () {}, //--成功回调
@@ -228,7 +251,7 @@ angular.module('phoneApp')
                 method: 'GET',
                 url: ENV.apiSocket + params.url +'.json' || '',
 
-                data: data,
+                data: postOpt,
                 timeout: 15000
             },
             effect = function () {
@@ -265,6 +288,10 @@ angular.module('phoneApp')
             }
 
             effect();
+
+            if (options.showPage) {
+                $scope.Deploy.isLoading = false;
+            }
 
         });
 
