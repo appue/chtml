@@ -39,7 +39,7 @@ angular.module('phoneApp')
                 success: function (data) {
                     widget.msgToast('密码修改成功！');
                     $timeout(function () {
-                        $state.go('entry.login');
+                        $state.go('forum.login');
                     }, 2000);
                 }
             });

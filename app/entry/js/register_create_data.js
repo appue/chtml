@@ -23,7 +23,7 @@ angular.module('phoneApp')
 
             widget.cacheData('personalData', $scope.inputVal);
 
-            $state.go('entry.registerAccount');
+            $state.go('forum.registerAccount');
 
         };
 

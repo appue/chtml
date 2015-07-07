@@ -8,7 +8,7 @@ angular.module('phoneApp')
         });
 
         $scope.goNextStep = function () {
-            $state.go('entry.registerPeople');
+            $state.go('forum.registerPeople');
         };
 
         $scope.itemClick = function (e) {

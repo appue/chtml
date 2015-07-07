@@ -23,7 +23,7 @@ angular.module('phoneApp')
 
             widget.cacheData('accountData', $scope.inputVal);
 
-            $state.go('entry.registerVcode', {
+            $state.go('forum.registerVcode', {
                 phone: $scope.inputVal.phone
             });
 

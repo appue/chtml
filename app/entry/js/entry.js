@@ -25,7 +25,7 @@ angular.module('phoneApp')
 			break;
 		case 'icon_mobile':
 			$timeout(function () {
-				$state.go('entry.registerCreate');
+				$state.go('forum.registerCreate');
 			}, 100);
 			break;
 		case 'icon_qq':

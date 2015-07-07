@@ -22,11 +22,11 @@ angular.module('phoneApp')
                     },
                     success: function (data) {
                         widget.cacheData('accountData', null);
-                        $state.go('entry.registerDone');
+                        $state.go('forum.registerDone');
                     }
                 });
             } else {
-                $state.go('entry.registerAccount');
+                $state.go('forum.registerAccount');
             }
 
         };
