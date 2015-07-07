@@ -9,8 +9,7 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams, 
-    $location, 
-    $ionicLoading,
+    $location,
     widget
 ){
 

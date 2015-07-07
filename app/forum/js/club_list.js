@@ -3,7 +3,6 @@ angular.module('phoneApp')
 
 .controller('tClubList', function (
     $scope,
-    $ionicLoading,
     widget
 ){
 

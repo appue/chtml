@@ -5,7 +5,6 @@ angular.module('phoneApp')
     $scope, 
     $state, 
     $stateParams,
-    $ionicLoading,
     widget
 ){
     $scope.Deploy = {

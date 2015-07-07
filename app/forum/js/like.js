@@ -4,7 +4,6 @@ angular.module('phoneApp')
 .controller('tFindLike', function (
     $scope,
     $timeout,
-    $ionicLoading,
     widget
 ){
 

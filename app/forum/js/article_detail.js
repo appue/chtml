@@ -9,7 +9,6 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location,
-    $ionicLoading,
     cachePool,
     widget
 ){
