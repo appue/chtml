@@ -1,8 +1,3 @@
-
-
-
-
-
 <ion-view>
     <ul class="mod_header_opacity">
         <li png-click="$ionicGoBack()"></li>
@@ -10,35 +5,27 @@
         <li></li>
     </ul>
 
-    <ion-content overflow-scroll="true" style="background:#fff;padding-bottom:50px;">
+    <ion-content overflow-scroll="true" style="background:#fff;padding-bottom:100px;">
+        <section style="background:url(../themes/temp/9.jpg) no-repeat center top;background-size:100% auto">
+            <div class="unit_member_data">
 
+                <div class="this_icon_menu" page-jump="goDataSet"></div>
 
-
-
-
-<section style="background:url(../themes/temp/9.jpg) no-repeat center top;background-size:100% auto">
-    <div class="unit_member_data">
-
-        <div class="this_icon_menu" page-jump="goDataSet"></div>
-
-        <img ng-src="{{DataList.UserInfo.UserImage}}" />
-        <h2>{{DataList.UserInfo.Username}}</h2>
-        <div class="this_text">
-            <i>经验值 {{DataList.UserInfo.Exper}}</i>
-            <i page-jump="redirectUrl.goLevel">
-                {{DataList.UserInfo.RankName}}
-                <span class="this_i"></span>
-            </i>
-        </div>
-        <div class="this_text">
-            <i page-jump="redirectUrl.goAttention">关注 {{DataList.UserInfo.TotalFollow}}</i>
-            <i page-jump="redirectUrl.goFans">粉丝 {{DataList.UserInfo.TotalFans}}</i>
-        </div>
-    </div>
-</section>
-
-
-
+                <img ng-src="{{DataList.UserInfo.UserImage}}" />
+                <h2>{{DataList.UserInfo.Username}}</h2>
+                <div class="this_text">
+                    <i>经验值 {{DataList.UserInfo.Exper}}</i>
+                    <i page-jump="redirectUrl.goLevel">
+                        {{DataList.UserInfo.RankName}}
+                        <span class="this_i"></span>
+                    </i>
+                </div>
+                <div class="this_text">
+                    <i page-jump="redirectUrl.goAttention">关注 {{DataList.UserInfo.TotalFollow}}</i>
+                    <i page-jump="redirectUrl.goFans">粉丝 {{DataList.UserInfo.TotalFans}}</i>
+                </div>
+            </div>
+        </section>
 
         <div class="mod_title_text this_a" ng-if="DataList.ArticleList.length > 0">
             <div>发布</div>
@@ -47,7 +34,7 @@
         <div class="mod_list_img" ng-if="DataList.ArticleList.length > 0">
             <ion-scroll direction="x" scrollbar-x="false" locking="false">
                 <div class="this_wrapper">
-                    <a ng-repeat="(k, v) in DataList.ArticleList track by $index" ui-sref="forum.club-detail({id: v.CateId})">
+                    <a ng-repeat="(k, v) in DataList.ArticleList track by $index" ui-sref="forum.cate({id: v.CateId})">
                         <div class="this_img"><img ng-src="{{v.ImageUrl}}" /></div>
                         <div class="this_title">{{v.CateName}}</div>
                         <div class="this_tx">今日更新 {{v.TotalArticle}}</div>
@@ -64,7 +51,7 @@
         <div class="mod_list_img" ng-if="DataList.CollectList.length > 0">
             <ion-scroll direction="x" scrollbar-x="false" locking="false">
                 <div class="this_wrapper">
-                    <a ng-repeat="(k, v) in DataList.CollectList track by $index" ui-sref="forum.club-detail({id: v.CateId})">
+                    <a ng-repeat="(k, v) in DataList.CollectList track by $index" ui-sref="forum.cate({id: v.CateId})">
                         <div class="this_img"><img ng-src="{{v.ImageUrl}}" /></div>
                         <div class="this_title">{{v.CateName}}</div>
                         <div class="this_tx">今日更新 {{v.TotalArticle}}</div>
@@ -95,5 +82,6 @@
     </ion-content>
 </ion-view>
 
-
-<footer-bar></footer-bar>
+<ion-footer-bar>
+    <footer-bar></footer-bar>
+</ion-footer-bar>

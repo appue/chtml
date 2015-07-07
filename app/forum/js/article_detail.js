@@ -73,7 +73,7 @@ angular.module('phoneApp')
         success: function (data) {
             angular.extend($scope.DataList, data);
 
-            if (userInfo.UserId == data.Author.UserId) {
+            if (userInfo && (userInfo.UserId == data.Author.UserId)) {
                 $scope.isOwner = true;  
             } else {
                 $scope.isOwner = false;
