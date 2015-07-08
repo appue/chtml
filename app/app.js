@@ -269,7 +269,6 @@ angular.module('phoneApp', [
             controller: 'tMsgTalk'
         })
 
-
         /*==========会员中心==========*/
         //个人主页（主、客人态）
         .state('forum.user-index', {
@@ -277,6 +276,78 @@ angular.module('phoneApp', [
             templateUrl: 'user/tp/index.html',
             controller: 'tUserIndex'
         })
+        // //个人主页[主、客人态]
+        // .state('forum.user', {
+        //     url: '/user/{id}.htm',
+        //     templateUrl: 'user/tp/personal.html',
+        //     controller: 'userCtrl'
+        // })
+        //个人主页-查看所有
+        .state('forum.userAll', {
+            url: '/user/{id}-all.htm',
+            templateUrl: 'user/tp/personal_all.html',
+            controller: 'userAllCtrl'
+        })
+        //个人主页-发布
+        .state('forum.userIssue', {
+            url: '/user/{id}-issue.htm',
+            templateUrl: 'user/tp/personal_issue.html',
+            controller: 'userIssueCtrl'
+        })
+        //个人主页-粉丝页
+        .state('forum.userFans', {
+            url: '/user/{id}-fans.htm',
+            templateUrl: 'user/tp/personal_fans.html',
+            controller: 'userFansCtrl'
+        })
+        //个人主页-关注页
+        .state('forum.userAttention', {
+            url: '/user/{id}-attention.htm',
+            templateUrl: 'user/tp/personal_attention.html',
+            controller: 'userAttentionCtrl'
+        })
+        //个人主页-圈子
+        .state('forum.userCircle', {
+            url: '/user/{id}-circle.htm',
+            templateUrl: 'user/tp/personal_circle.html',
+            controller: 'userCircleCtrl'
+        })
+        //个人主页-用户等级
+        .state('forum.userLevel', {
+            url: '/user/{id}-level.htm',
+            templateUrl: 'user/tp/personal_level.html',
+            controller: 'userLevelCtrl'
+        })
+        //他人主页-查看资料
+        .state('forum.userData', {
+            url: '/user/{id}-data.htm',
+            templateUrl: 'user/tp/personal_data.html',
+            controller: 'userDataCtrl'
+        })
+        //个人主页-设置
+        .state('forum.userSet', {
+            url: '/user/{id}-set.htm',
+            templateUrl: 'user/tp/personal_set.html',
+            controller: 'userSetCtrl'
+        })
+        //个人主页-设置-修改密码
+        .state('forum.userSetPassword', {
+            url: '/user/{id}-set-password.htm',
+            templateUrl: 'user/tp/personal_set_password.html',
+            controller: 'userSetPasswordCtrl'
+        })
+        //个人主页-设置-账号绑定
+        .state('forum.userSetBind', {
+            url: '/user/{id}-set-bind.htm',
+            templateUrl: 'user/tp/personal_set_bind.html',
+            controller: 'userSetBindCtrl'
+        })
+        //个人主页-设置-关于我们
+        .state('forum.userSetAboutus', {
+            url: '/user/{id}-set-aboutus.htm',
+            templateUrl: 'user/tp/personal_set_aboutus.html',
+            controller: 'userSetAboutusCtrl'
+        });
 
         // $urlRouterProvider.when('', '/index');
 

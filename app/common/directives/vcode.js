@@ -93,6 +93,13 @@ angular.module('phoneApp')
             //     console.log(arr);
             // });
 
+            // $q.all([
+            //     $http.get('http://127.0.0.1:9999/api/getClubHotUser.json'),
+            //     $http.get('http://127.0.0.1:9999/api/getClubHotUser.json')
+            // ]).then(function (data) {
+            //     console.log(data);
+            // });
+
             // function getJson(arg) {
             //     var deferred = $q.defer();
             //     var url = 'http://127.0.0.1:9999/api/' + arg + '.json';
