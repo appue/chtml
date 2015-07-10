@@ -276,12 +276,6 @@ angular.module('phoneApp', [
             templateUrl: 'user/tp/index.html',
             controller: 'tUserIndex'
         })
-        // //个人主页[主、客人态]
-        // .state('forum.user', {
-        //     url: '/user/{id}.htm',
-        //     templateUrl: 'user/tp/personal.html',
-        //     controller: 'userCtrl'
-        // })
         //个人主页-查看所有
         .state('forum.user-all', {
             url: '/user/{id}-all.htm',

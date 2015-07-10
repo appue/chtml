@@ -5,8 +5,8 @@ angular.module('phoneApp')
     var ua = navigator.userAgent.toLowerCase();
 
     var ENV = {
-        // apiSocket: 'http://123.57.224.54:8092/api/',
-        apiSocket: '/api/',
+        apiSocket: 'http://123.57.224.54:8092/api/',
+        // apiSocket: '/api/',
 
         isHybrid: false, //-----是否APP环境
         isWeixin: false, //-----是否微信环境
