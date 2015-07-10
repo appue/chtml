@@ -11,6 +11,9 @@ angular.module('phoneApp')
     $ionicHistory,
     widget
 ){
+    $scope.Page = {
+        Title: "赞"
+    };
 
     $scope.Deploy = {
         pageIndex: 0,

@@ -8,6 +8,9 @@ angular.module('phoneApp')
     $scope, 
     $state
 ){
+    $scope.Page = {
+        Title: "邀请好友"
+    };
     
 
     //--设置默认返回

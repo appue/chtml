@@ -7,6 +7,9 @@ angular.module('phoneApp')
 .controller('tMsgIndex', function (
     $scope
 ) {
+    $scope.Page = {
+        Title: "评论"
+    };
 
     $scope.footerTab = 4;
 

@@ -7,6 +7,9 @@ angular.module('phoneApp')
     $location,
     widget
 ) {
+    $scope.Page = {
+        Title: "评论"
+    };
 
     $scope.Deploy = {
         pageIndex: 0,

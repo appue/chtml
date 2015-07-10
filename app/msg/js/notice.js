@@ -8,6 +8,9 @@ angular.module('phoneApp')
     $state,
     widget
 ){
+    $scope.Page = {
+        Title: "通知"
+    };
 
     $scope.Deploy = {
         pageIndex: 0,
