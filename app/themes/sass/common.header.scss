@@ -116,7 +116,7 @@
     left: 0;
     top: 0;
     width: 100%;
-    z-index: 999999999999999;
+    z-index: 9999;
     height: 44px;
     display: -webkit-box;
     li {
@@ -134,7 +134,7 @@
                 font-family: "Ionicons";
                 content: "\f124";
                 font-weight: normal;
-                color: #fff;
+                color: #ddd;
             }
         }
         &:nth-child(2) {
