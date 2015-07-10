@@ -5,7 +5,7 @@ angular.module('phoneApp')
     var ua = navigator.userAgent.toLowerCase();
 
     var ENV = {
-        apiSocket: 'http://123.57.224.54:8092/api/',
+        apiSocket: 'http://123.57.224.54:8090/api/',
         // apiSocket: '/api/',
 
         isHybrid: false, //-----是否APP环境
