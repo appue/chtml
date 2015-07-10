@@ -1,7 +1,7 @@
 <header-bar></header-bar>
 
 <!-- 共显示20个用户 -->
-<ion-view>
+<ion-view hide-nav-bar="true">
     <ion-content overflow-scroll="true" class="mod_wrapper">
         <div class="forum_club_ranking">
             <a ng-repeat="(k, v) in DataList.UserList track by $index" ui-sref="member">

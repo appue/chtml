@@ -5,7 +5,7 @@
     <h1 class="title">评论列表<span ng-if="Deploy.pageTotal" class='color_green'>{{Deploy.pageTotal}}</span></h1>
 </ion-header-bar>
 
-<ion-view>
+<ion-view hide-nav-bar="true">
     <ion-content overflow-scroll="true" class="mod_wrapper">
         <ul class="forum_comment_list">
             <li ng-repeat="(k, v) in DataList.CommentList track by $index">
