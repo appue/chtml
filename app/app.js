@@ -283,10 +283,10 @@ angular.module('phoneApp', [
         //     controller: 'userCtrl'
         // })
         //个人主页-查看所有
-        .state('forum.userAll', {
+        .state('forum.user-all', {
             url: '/user/{id}-all.htm',
             templateUrl: 'user/tp/personal_all.html',
-            controller: 'userAllCtrl'
+            controller: 'tUserAll'
         })
         //个人主页-发布
         .state('forum.userIssue', {
