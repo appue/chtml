@@ -1,11 +1,14 @@
 <ion-view hide-nav-bar="true">
-    <ul class="mod_header_opacity">
-        <li ng-click="$ionicGoBack()"></li>
-        <li></li>
-        <li></li>
-    </ul>
+    <header class="mod_header_opacity">
+        <div ng-style="HeaderBg"></div>
+        <ul>
+            <li ng-click="$ionicGoBack()"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </header>
 
-    <ion-content overflow-scroll="true">
+    <ion-content overflow-scroll="true" delegate-handle="mainScroll">
 
         <div class="forum_cate_description">
             <div>
