@@ -8,8 +8,11 @@ angular.module('phoneApp')
     $scope, 
     $state
 ){
-    //--设置默认返回
-    $scope.backParam = {
-        'url': ['home/#/index']
+    
+    $scope.Page = {
+        Title: "开心每一天",
+        Next: "TA的主页",
+        NextUrl: "#/forum/club/list.htm"
     };
+
 });

@@ -6,6 +6,9 @@ angular.module('phoneApp')
     $timeout,
     widget
 ){
+    $scope.Page = {
+        Title: "猜你喜欢"
+    };
 
     $scope.Deploy = {
         isMore: true

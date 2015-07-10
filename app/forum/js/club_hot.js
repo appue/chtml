@@ -6,6 +6,12 @@ angular.module('phoneApp')
     widget
 ){
 
+    $scope.Page = {
+        Title: "圈子HOT",
+        Next: "全部圈子",
+        NextUrl: "forum.club-list"
+    };
+
     $scope.Deploy = {
         isMore: true
     };
