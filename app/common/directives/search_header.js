@@ -5,6 +5,7 @@ angular.module('phoneApp')
 */
 .directive('searchHeader', function (
     $state,
+    $ionicViewSwitcher,
     widget,
     cachePool
 ) {
@@ -40,18 +41,20 @@ angular.module('phoneApp')
 
                     cachePool.push('Keyword', key);
 
+                    $ionicViewSwitcher.nextDirection('forward');
                     $state.go('forum.search-result', {
                         keyword: encodeURIComponent(scope.keyword)
                     });
 
                 } else {
                     
-                    if ($state.is('index')) {
+                    if ($state.is('forum.search')) {
 
                         widget.msgToast('请输入关键字！');
 
                     } else {
 
+                        $ionicViewSwitcher.nextDirection('forward');
                         $state.go('forum.search');
 
                     }

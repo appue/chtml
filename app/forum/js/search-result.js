@@ -12,6 +12,7 @@ angular.module('phoneApp')
     $timeout,
     widget
 ){
+    $scope.Page = {};
 
     $scope.Deploy = {
         currentTab: 1,
@@ -26,6 +27,8 @@ angular.module('phoneApp')
 
     $scope.keyword = decodeURIComponent($location.$$search.keyword) || '';
 
+    $scope.Page.Title = "搜索<span class='color_green'>"+ $scope.keyword +"</span>的结果"
+    
 
     $scope.$watch('Deploy.currentTab', function () {
         if ($scope.currentTab == 1) {
