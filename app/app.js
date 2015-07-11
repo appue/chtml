@@ -312,19 +312,19 @@ angular.module('phoneApp', [
         .state('forum.userIssue', {
             url: '/user/{id}-issue.htm',
             templateUrl: 'user/tp/personal_issue.html',
-            controller: 'userIssueCtrl'
+            controller: 'tUserIssue'
         })
         //个人主页-粉丝页
         .state('forum.userFans', {
             url: '/user/{id}-fans.htm',
             templateUrl: 'user/tp/personal_fans.html',
-            controller: 'userFansCtrl'
+            controller: 'tUserFans'
         })
         //个人主页-关注页
         .state('forum.userAttention', {
             url: '/user/{id}-attention.htm',
             templateUrl: 'user/tp/personal_attention.html',
-            controller: 'userAttentionCtrl'
+            controller: 'tUserAttention'
         })
         //个人主页-圈子
         .state('forum.userCircle', {

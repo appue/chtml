@@ -1,5 +1,5 @@
 angular.module('phoneApp')
-.controller('personalAttentionCtrl', function ($scope, $stateParams) {
+.controller('tUserAttention', function ($scope, $stateParams) {
 
 	$scope.backParam = { //--设置返回按钮
 		'url': [

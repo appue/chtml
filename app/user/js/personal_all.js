@@ -1,10 +1,18 @@
 angular.module('phoneApp')
-.controller('tUserAll', function ($scope, $stateParams) {
+.controller('tUserAll', function ($scope, $stateParams, widget) {
 
-	$scope.backParam = { //--设置返回按钮
-		'url': [
-			'member/#/personal-' + $stateParams.id + '.htm'
-		]
-	};
+	// widget.ajaxRequest({
+	// 	url: 'getLogin',
+	// 	data: {
+	// 		Phone: $scope.inputVal.phone,
+	// 		Password: md5($scope.inputVal.password)
+	// 	},
+	// 	success: function (data) { //todo...
+	// 		cachePool.push('UserInfo', {
+	// 			Auth: data.Auth,
+	// 			UserId: data.UserId
+	// 		}, 2 / 24);
+	// 	}
+	// });
 
 });
