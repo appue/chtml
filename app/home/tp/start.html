@@ -1,13 +1,16 @@
-<section class="start">
-    <div ng-slide="eventSlide" ng-end="a">
-        <ul>
-            <li ng-repeat="v in startImages track by $index">
-                <img ng-src="{{v.ImageUrl}}" />
-            </li>
-        </ul>
-        <ol>
-            <li ng-repeat="(k, v) in startImages track by $index" ng-class="{current: k==0}"></li>
-        </ol>
-    </div>
-    <footer></footer>
-</section>
+<ion-view hide-nav-bar="true">
+    <ion-content scroll="false" class="start">
+        <ion-slide-box auto-play="true" does-continue="true" show-pager="false" ng-if="DataList.ImagesList.length > 0">
+            <ion-slide ng-repeat="(k, v) in DataList.ImagesList track by $index">
+                <div class="mod_slide_tab">
+                    <img ng-src="{{v.ImageUrl}}" />
+                    <p>{{v.Title}}</p>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+        <div class="this_btn" page-jump data-router="forum.index">跳过>></div>
+
+        <footer></footer>
+    </ion-content>
+</ion-view>

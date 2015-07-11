@@ -4,7 +4,7 @@
 */
 angular.module('phoneApp')
 
-.controller('tHomeStart', function (
+.controller('tStart', function (
     $scope, 
     $state,
     $timeout,
@@ -17,18 +17,20 @@ angular.module('phoneApp')
 
     $scope.eventSlide = true;
 
-    $scope.startImages = [
+    $scope.DataList = {};
+
+    $scope.DataList.ImagesList = [
         {
-            ImageUrl: '../themes/temp/start_1.jpg',
+            ImageUrl: 'themes/temp/start_1.jpg',
         },
         {
-            ImageUrl: '../themes/temp/start_2.jpg',
+            ImageUrl: 'themes/temp/start_2.jpg',
         },
         {
-            ImageUrl: '../themes/temp/start_3.jpg',
+            ImageUrl: 'themes/temp/start_3.jpg',
         },
         {
-            ImageUrl: '../themes/temp/start_4.jpg',
+            ImageUrl: 'themes/temp/start_4.jpg',
         }
     ];
 

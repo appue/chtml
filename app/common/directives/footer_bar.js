@@ -138,16 +138,18 @@ angular.module('phoneApp')
         link: function (scope, element, attr) {
 
             element.on('click', function () {
-                document.addEventListener("deviceready", onDeviceReady, false);
+                // alert(1);
+                // document.addEventListener("deviceready", onDeviceReady, false);
 
-                function onDeviceReady() {
-                    navigator.camera.getPicture(onSuccess, onFail, { 
+                // function onDeviceReady() {
+                //     alert(2);
+                    window.navigator.camera.getPicture(onSuccess, onFail, { 
                         quality: 100,
                         // destinationType: Camera.DestinationType.DATA_URL,
                         destinationType: Camera.DestinationType.FILE_URI,
                         sourceType: Camera.PictureSourceType.PHOTOLIBRARY
                     });
-                }
+                // }
             });
 
             function onSuccess(imageData) {

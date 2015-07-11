@@ -20,6 +20,12 @@ angular.module('phoneApp', [
             templateUrl: 'home/tp/index.html',
             controller: 'tDefault'
         })
+        //开始页
+        .state('forum.start', {
+            url: '/start.htm',
+            templateUrl: 'home/tp/start.html',
+            controller: 'tStart'
+        })
 
 
         /*========注册登录========*/
@@ -349,9 +355,9 @@ angular.module('phoneApp', [
         var isShow = localStorage.getItem('PHONEAPP_START');
 
         if (isShow) {
-            $urlRouterProvider.otherwise('/forum/index.htm');
+            $urlRouterProvider.otherwise('/forum/start.htm');
         } else {
-            $urlRouterProvider.otherwise('/forum/index.htm');
+            $urlRouterProvider.otherwise('/forum/start.htm');
         }
 
     });
