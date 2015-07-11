@@ -11,6 +11,7 @@ angular.module('phoneApp')
         replace: true,
         templateUrl: 'common/directives/header_bar.html',
         controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
+            // $ionicGoBack()
         }
     };
 })
@@ -19,6 +20,7 @@ angular.module('phoneApp')
 
 .directive('headerOpacity', function (
     $state,
+    $ionicViewSwitcher,
     $window,
     cachePool,
     ENV
@@ -29,7 +31,6 @@ angular.module('phoneApp')
         replace: true,
         templateUrl: 'common/directives/header_opacity.html',
         controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
-
 
             angular.element($window).on("scroll", function () {
                 headerBy();

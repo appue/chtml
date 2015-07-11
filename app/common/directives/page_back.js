@@ -1,6 +1,13 @@
 angular.module('phoneApp')
 
-.directive('pageBack', function ($window, $state, $rootScope, $stateParams, $ionicHistory) {
+.directive('pageBack', function (
+    $window,
+    $state,
+    $rootScope,
+    $stateParams,
+    $ionicHistory,
+    $ionicViewSwitcher
+) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -18,8 +25,9 @@ angular.module('phoneApp')
                 //     console.log(1);
 
                 // } else { // 默认执行浏览器后退
-
-                    $window.history.back();
+                    
+                    $ionicViewSwitcher.nextDirection('back'); //forward
+                    window.history.back();
 
                 // }
 
