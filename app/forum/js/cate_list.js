@@ -11,6 +11,9 @@ angular.module('phoneApp')
     $ionicNavBarDelegate,
     widget
 ){
+    $scope.Page = {
+        Title: ""
+    };
 
     $scope.Deploy = {
         cateId: $stateParams.id,
@@ -50,7 +53,8 @@ angular.module('phoneApp')
                 $scope.DataList.CurrentCate = data.CurrentCate;
                 $scope.DataList.CategoryList = data.CategoryList;
 
-                $ionicNavBarDelegate.title($scope.DataList.CurrentCate.CateName);
+                // $ionicNavBarDelegate.title($scope.DataList.CurrentCate.CateName);
+                $scope.Page.Title = data.CurrentCate.CateName;
             }
         });
     };

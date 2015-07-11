@@ -1,9 +1,6 @@
 <ion-view hide-nav-bar="true">
-    <ul class="mod_header_opacity">
-        <li ng-click="$ionicGoBack()"></li>
-        <li></li>
-        <li></li>
-    </ul>
+    <header-opacity></header-opacity>
+    
     <ion-content overflow-scroll="true" ng-model="Deploy.currentTab" ng-init="Deploy.currentTab=1">
 
         <div ng-if="DataList.CategoryList.length > 0" ng-class="Deploy.cateClass">
