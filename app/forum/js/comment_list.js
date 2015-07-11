@@ -8,6 +8,10 @@ angular.module('phoneApp')
     $location, 
     widget
 ) {
+    $scope.Page = {
+        Title: "评论列表"
+    };
+
     $scope.Deploy = {
         pageIndex: 0,
         pageSize: 15,

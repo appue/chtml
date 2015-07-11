@@ -21,7 +21,7 @@
             <!--瀑布流-->
             <falls>
                 <li ng-repeat="(k, v) in DataList.ListLeft track by $index" data-y="{{v.Images[0].Height}}" >
-                    <a class="this_border" ui-sref="forum.detail({id: v.ArticleId})">
+                    <a class="this_border" page-jump data-router="forum.detail" data-options='{ "id": {{v.ArticleId}} }'>
                         <img ng-src="{{v.Images[0].ImageUrl}}" />
                         <article>
                             <div class="this_text">{{v.Images[0].Description}}</div>
@@ -47,7 +47,7 @@
             <!--瀑布流-->
             <falls>
                 <li ng-repeat="(k, v) in DataList.ListRight track by $index" data-y="{{v.Images[0].Height}}" >
-                    <a class="this_border" ui-sref="forum.detail({id: v.ArticleId})">
+                    <a class="this_border" page-jump data-router="forum.detail" data-options='{ "id": {{v.ArticleId}} }'>
                         <img ng-src="{{v.Images[0].ImageUrl}}" />
                         <article>
                             <div class="this_text">{{v.Images[0].Description}}</div>

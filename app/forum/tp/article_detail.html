@@ -80,7 +80,7 @@
                         </dl>
                     </li>
                 </ul>
-                <a class="this_comment_more" ui-sref="forum.comment-list({id: 1})">更多评论>></a>
+                <a class="this_comment_more" page-jump data-router="forum.comment-list" data-options='{ "id": 1 }'>更多评论>></a>
             </div>
 
             <div class="mod_title_text this_p" ng-if="DataList.ArticleList.length > 0">
