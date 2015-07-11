@@ -8,8 +8,7 @@
     bottom: 0;
     z-index: 100;
     display: -webkit-box;
-    a,
-    p {
+    a {
         line-height: 28px;
         text-align: center;
         color: #cacdcb;
@@ -18,8 +17,6 @@
         display: block;
         width: 0;
         -webkit-box-flex: 1;
-    }
-    a {
         &.activated, &.current {
             color: #3cc482;
         }
@@ -72,6 +69,12 @@
         }
     }
     p {
+        height: 48px;
+        cursor: pointer;
+        display: block;
+        width: 0;
+        -webkit-box-flex: 1;
+        
         background: url(img/icon_camera.png) no-repeat center 4px;
         background-size: auto 40px;
         &.activated, &.current {

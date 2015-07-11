@@ -99,9 +99,9 @@ angular.module('phoneApp')
             pageTotal: 0
         });
 
-        $scope.DataList = {
-            ArticleList: []
-        };
+        // $scope.DataList = {
+        //     ArticleList: []
+        // };
 
         $scope.loadCate("refresh");
         $scope.loadMore("refresh");

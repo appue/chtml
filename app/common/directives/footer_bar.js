@@ -37,6 +37,32 @@ angular.module('phoneApp')
         replace: true,
         templateUrl: 'common/directives/footer_bar.html',
         controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
+
+            $scope.addPhoto = function () {
+
+                if (ENV.isHybrid) {
+                    var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
+                        el = document.querySelector('.js_mod_camera');
+
+                    if (el) {
+                        el.style.display = "block";
+                    } else {
+                        // $element.after(toastTpl($scope));
+                        angular.element(document.querySelector('.pane')).after(toastTpl($scope));
+                    }
+
+                    $scope.noScroll = {
+                        'overflow-y': 'hidden'
+                    };
+                } else {
+                    widget.msgToast('请下载APP吧！');
+                }
+
+                return;
+
+            };
+
+
             // var currentUrl = $state.current.url.replace(/^\//g, '');
             var current = $scope.footerTab;
 
