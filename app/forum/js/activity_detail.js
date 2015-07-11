@@ -12,6 +12,8 @@ angular.module('phoneApp')
     $timeout,
     widget
 ){
+    $scope.Page = {};
+    
     $scope.Deploy = {
         isType: $stateParams.type == "photo" ? true : false,
         pageIndex: 0,
@@ -32,6 +34,8 @@ angular.module('phoneApp')
                 ActivityId: $stateParams.id,
             },
             success: function (data) {
+                $scope.Page.Title = data.Content.ActivityName;
+
                 angular.extend($scope.DataList, data);
             }
         });
