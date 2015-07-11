@@ -42,7 +42,7 @@
         <!--瀑布流-->
         <falls ng-show="Deploy.currentTab==1">
             <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
-                <a class="this_border" ui-sref="forum.detail({id: v.ArticleId})">
+                <a class="this_border" page-jump data-router="forum.detail" data-options='{ "id": {{v.ArticleId}} }'>
                     <img ng-src="{{v.Images[0].ImageUrl}}" />
                     <article>
                         <div class="this_text">{{v.Images[0].Description}}</div>
@@ -66,7 +66,7 @@
         <!--垂直平铺-->
         <ul ng-show="Deploy.currentTab==2" class="mod_list_img_only">
             <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
-                <a class="this_border" ui-sref="forum.detail({id: v.ArticleId})">
+                <a class="this_border" page-jump data-router="forum.detail" data-options='{ "id": {{v.ArticleId}} }'>
                     <img ng-src="{{v.Images[0].ImageUrl}}" />
                     <article>
                         <div class="this_text">{{v.Images[0].Description}}</div>

@@ -89,7 +89,7 @@
             <div class="mod_list_img" ng-if="DataList.ArticleList.length > 0">
                 <ion-scroll direction="x" scrollbar-x="false" locking="false">
                     <div class="this_wrapper">
-                        <a ng-repeat="(k, v) in DataList.ArticleList track by $index" ui-sref="forum.detail({id: v.ArticleId})">
+                        <a ng-repeat="(k, v) in DataList.ArticleList track by $index" page-jump data-router="forum.detail" data-options='{ "id": {{v.ArticleId}} }'>
                             <div class="this_img">
                                 <img ng-src="{{v.Images[0].ImageUrl}}" />
                             </div>
