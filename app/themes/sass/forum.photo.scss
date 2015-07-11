@@ -1,6 +1,4 @@
 ﻿.unit_photo{
-    padding-top: 44px;
-
     .this_photo {
         position: relative;
         img{
@@ -92,7 +90,6 @@
             -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
             li {
                 padding: 10px;
-                height: 70px;
                 display: -webkit-box;
                 -webkit-box-align: stretch;
                 div {

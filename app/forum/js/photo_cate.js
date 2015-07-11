@@ -1,7 +1,3 @@
-/*
-* 发现-一级栏目-列表
-* /clump/#/cate/list-{id}.html
-*/
 angular.module('phoneApp')
 
 .controller('tPhotoCate', function (
@@ -9,12 +5,16 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location, 
+    $ionicViewSwitcher,
     widget
 ){
-    //--设置返回按钮
-    $scope.backParam = {
-        'url': ['forum/#/photo/title.htm']
+
+    $scope.Page = {
+        Title: "选择标签",
+        Next: "完成"
     };
+
+    // $ionicViewSwitcher.nextDirection('forward');
 
     
 });

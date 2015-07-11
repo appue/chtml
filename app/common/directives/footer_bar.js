@@ -38,7 +38,7 @@ angular.module('phoneApp')
         templateUrl: 'common/directives/footer_bar.html',
         controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
 
-            $scope.addPhoto = function () {
+            $rootScope.addPhoto = function () {
 
                 if (ENV.isHybrid) {
                     var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
@@ -124,6 +124,55 @@ angular.module('phoneApp')
                     'overflow-y': 'auto'
                 };
             };
+        }
+    };
+})
+
+
+.directive('addPhoto', function (
+    $parse, 
+    $timeout,
+    $compile,
+    widget,
+    ENV
+) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+
+            element.on("click", function () {
+
+                if (!ENV.isHybrid) {
+                    var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
+                        el = document.querySelector('.js_mod_camera');
+
+                    if (el) {
+                        el.style.display = "block";
+                    } else {
+                        // $element.after(toastTpl($scope));
+                        angular.element(document.querySelector('.pane')).after(toastTpl(scope));
+                    }
+
+                    scope.noScroll = {
+                        'overflow-y': 'hidden'
+                    };
+                } else {
+                    widget.msgToast('请下载APP吧！');
+                }
+
+            });
+
+
+            scope.hideCamera = function (e) {
+                var $that = angular.element(e.delegationTarget);
+                
+                $that.parent().css('display', 'none');
+
+                scope.noScroll = {
+                    'overflow-y': 'auto'
+                };
+            };
+
         }
     };
 })

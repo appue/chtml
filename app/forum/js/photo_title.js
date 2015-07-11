@@ -10,8 +10,14 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location,
+    $ionicViewSwitcher,
     widget
 ){
+
+    $scope.Page = {
+        Title: "详情",
+        Next: "继续"
+    };
 
     // var data = $rootScope.CameraImages;
 
@@ -46,6 +52,8 @@ angular.module('phoneApp')
             // routerRedirect.toJump({
             //     'url': ['forum/#/photo/cate-0.htm']
             // });
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go("forum.photo-cate");
         }
     };
 

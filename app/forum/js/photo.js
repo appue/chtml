@@ -11,11 +11,13 @@ angular.module('phoneApp')
     $stateParams, 
     $location,
     $timeout,
+    $ionicViewSwitcher,
     widget
 ){
-    //--设置返回按钮
-    $scope.backParam = {
-        'url': ['home/#/index']
+
+    $scope.Page = {
+        Title: "编辑照片",
+        Next: "继续"
     };
 
     var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
@@ -26,8 +28,8 @@ angular.module('phoneApp')
 
 
     $scope.ImageData = {
-        // imageUrl: '../themes/temp/9.jpg',
-        imageUrl: data
+        imageUrl: 'themes/temp/9.jpg',
+        // imageUrl: data
     };
 
 
@@ -92,9 +94,8 @@ angular.module('phoneApp')
 
             $rootScope.CameraImages = lastData;
 
-            // routerRedirect.toJump({
-            //     'url': ['forum/#/photo/title.htm']
-            // });
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go("forum.photo-title");
         });
 
     };

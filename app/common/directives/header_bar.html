@@ -4,6 +4,6 @@
     </div>
     <h1 class="title" ng-bind-html="Page.Title"></h1>
     <div class="buttons" ng-if="Page.Next">
-        <a class="button button-clear" ui-sref="{{Page.NextUrl}}">{{Page.Next}}</a>
+        <a class="button button-clear" ng-click="nextPage()">{{Page.Next}}</a>
     </div>
 </ion-header-bar>

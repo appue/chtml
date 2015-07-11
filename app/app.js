@@ -104,6 +104,26 @@ angular.module('phoneApp', [
             controller: 'tFindLike'
         })
 
+        /*==========发帖==========*/
+        //编辑图片
+        .state('forum.photo-edit', {
+            url: '/photo/edit.htm',
+            templateUrl: 'forum/tp/photo.html',
+            controller: 'tPhotoEdit'
+        })
+        //编辑内容
+        .state('forum.photo-title', {
+            url: '/photo/title.htm',
+            templateUrl: 'forum/tp/photo_title.html',
+            controller: 'tPhotoTitle'
+        })
+        //选择栏目
+        .state('forum.photo-cate', {
+            url: '/photo/cate-{id}.htm',
+            templateUrl: 'forum/tp/photo_cate.html',
+            controller: 'tPhotoCate'
+        })
+
         /*==========圈子==========*/
         //热门圈子
         .state('forum.club-hot', {
