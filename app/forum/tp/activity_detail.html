@@ -125,7 +125,7 @@
                         </dl>
                     </li>
                 </ul>
-                <a class="this_comment_more" ui-sref="forum.comment">更多评论>></a>
+                <a class="this_comment_more" page-jump data-router="forum.comment">更多评论>></a>
             </div>
 
             <div class="mod_title_text this_p" ng-if="DataList.ArticleList.length > 0">
@@ -134,7 +134,7 @@
             <div class="mod_list_img" ng-if="DataList.ArticleList.length > 0">
                 <ion-scroll direction="x" scrollbar-x="false" locking="false">
                     <div class="this_wrapper">
-                        <a ng-repeat="(k, v) in DataList.ArticleList track by $index" href="{{v.SiteUrl}}">
+                        <a ng-repeat="(k, v) in DataList.ArticleList track by $index" page-jump data-router="{{v.SiteUrl}}">
                             <div class="this_img">
                                 <img ng-src="{{v.Images[0].ImageUrl}}" />
                             </div>

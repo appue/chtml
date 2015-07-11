@@ -9,7 +9,7 @@
             <dl class="forum_search_keyword" ng-if="DataList.KeywordList.length > 0">
                 <dt>热门搜索</dt>
                 <dd>
-                    <a ng-repeat="v in DataList.KeywordList track by $index" ui-sref="forum.search-result({keyword: encodeURIComponent(v.Keyword)})">
+                    <a ng-repeat="v in DataList.KeywordList track by $index" page-jump data-router="forum.search-result" data-options='{ "keyword": encodeURIComponent({{v.Keyword}}) }'>
                         #{{v.Keyword}}
                     </a>
                 </dd>
@@ -21,7 +21,7 @@
                     <button ng-click="clearHistory()">清空历史</button>
                 </dt>
                 <dd>
-                    <a ng-repeat="(k, v) in DataList.HistoryKey track by $index" ui-sref="forum.search-result({keyword: encodeURIComponent(v.Keyword)})">
+                    <a ng-repeat="(k, v) in DataList.HistoryKey track by $index" page-jump data-router="forum.search-result" data-options='{ "keyword": encodeURIComponent({{v.Keyword}}) }'>
                         #{{v.Keyword}}
                     </a>
                 </dd>

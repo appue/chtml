@@ -37,6 +37,17 @@ angular.module('phoneApp')
                 if (data.ActivityList && data.ActivityList.length > 0) {
                     $scope.Deploy.pageTotal = data.Total || 0;
 
+                    angular.forEach(data.ActivityList, function (v, k) {
+                        var type = (v.ActivityType == 1) ? "article" : "photo";
+
+                        v.SiteUrl = {
+                            options: {
+                                type: type,
+                                id: v.ActivityId
+                            }
+                        }
+                    });
+
                     $scope.DataList.ActivityList = $scope.DataList.ActivityList.concat(data.ActivityList);
 
                     $scope.Deploy.isLoading = false;

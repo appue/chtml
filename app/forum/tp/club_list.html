@@ -5,7 +5,7 @@
         <dl ng-repeat="(k, v) in DataList.ClubList track by $index" class="forum_club_list">
             <dt>{{v.Letter}}</dt>
             <dd ng-repeat="(i, j) in v.List track by $index">
-                <a ui-sref="forum.club-detail({id: j.ClubId})">
+                <a page-jump data-router="forum.club-detail" data-options='{ "id": {{j.ClubId}} }'>
                     <img ng-src="{{j.ImageUrl}}" />
                     <article>
                         <p>{{j.ClubName}}</p>
