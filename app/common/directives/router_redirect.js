@@ -1,4 +1,6 @@
-router_angular.module('phoneApp')
+'use strict';
+
+angular.module('phoneApp')
 
 .directive('pageBack', function (
     $window,
@@ -28,7 +30,6 @@ router_angular.module('phoneApp')
                     
                     $ionicViewSwitcher.nextDirection('back'); //forward
                     window.history.back();
-
                 // }
 
                 // $ionicHistory.goBack();
