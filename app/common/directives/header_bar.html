@@ -1,9 +1,9 @@
-<ion-header-bar align-title="left">
-    <div class="buttons">
-        <button class="button icon-left ion-chevron-left button-clear button-white" page-back></button>
-    </div>
-    <h1 class="title" ng-bind-html="Page.Title"></h1>
-    <div class="buttons" ng-if="Page.Next">
-        <a class="button button-clear" ng-click="nextPage()">{{Page.Next}}</a>
-    </div>
+<ion-header-bar class="mod_header" ng-class="{transparent:isTransparent}" ng-style="HeaderBg" align-title="left">
+	<div class="buttons">
+		<button page-back class="back_button"></button>
+	</div>
+	<h1 class="title" ng-bind-html="Page.Title"></h1>
+	<div class="buttons buttons-right" ng-if="Page.RightText">
+		<button class="right_button" ng-click="Page.RightFun()">{{Page.RightText}}</button>
+	</div>
 </ion-header-bar>
