@@ -1,4 +1,4 @@
-angular.module('phoneApp')
+router_angular.module('phoneApp')
 
 .directive('pageBack', function (
     $window,
@@ -34,6 +34,32 @@ angular.module('phoneApp')
                 // $ionicHistory.goBack();
 
                 // $rootScope.$ionicGoBack();
+            });
+        }
+    };
+})
+
+
+.directive('pageJump', function (
+    $window,
+    $state,
+    $rootScope,
+    $stateParams,
+    $ionicHistory,
+    $ionicViewSwitcher
+) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+
+            element.on('click', function (event) {
+                
+                var router = attrs.router,
+                    options = attrs.options ? JSON.parse(attrs.options) : {};
+
+                $ionicViewSwitcher.nextDirection('forward');
+                $state.go(router, options);
+
             });
         }
     };
