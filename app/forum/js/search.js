@@ -9,6 +9,9 @@ angular.module('phoneApp')
     cachePool,
     widget
 ){
+    $scope.Page = {
+        Title: "搜索"
+    };
 
     var key = cachePool.pull('Keyword') || [];
 
