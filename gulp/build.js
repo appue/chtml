@@ -270,13 +270,13 @@ module.exports = function (gulp, $) {
         if (packageType == 'web') {
             gulp.src(framejs)
                 .pipe($.concat('frame.js'))
-                // .pipe($.uglify())
+                .pipe($.uglify())
                 .pipe(gulp.dest(buildFolder));
         } else {
             gulp.src(framejs)
                 .pipe($.concat('frame.js'))
                 .pipe($.replace(/isHybridCreatePhoneApp=false/g, 'isHybridCreatePhoneApp=true'))
-                // .pipe($.uglify())
+                .pipe($.uglify())
                 .pipe(gulp.dest(buildFolder));
         }
 
@@ -290,7 +290,7 @@ module.exports = function (gulp, $) {
             ])
             .pipe($.concat('common.js'))
             .pipe($.ngAnnotate())
-            // .pipe($.uglify())
+            .pipe($.uglify())
             .pipe(gulp.dest(buildFolder));
 
         //--项目中的JS压缩、合并（包括项目模板数据）
@@ -308,7 +308,7 @@ module.exports = function (gulp, $) {
             ])
             .pipe($.concat('index.js'))
             .pipe($.ngAnnotate())
-            // .pipe($.uglify())
+            .pipe($.uglify())
             .pipe(gulp.dest(buildFolder));
     });
 };
