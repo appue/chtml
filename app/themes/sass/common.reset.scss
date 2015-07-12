@@ -168,7 +168,8 @@ a, a:hover {
 
 .is_ios {
     .ios_status_bar {
-        .mod_header_opacity {
+        .mod_header_opacity,
+        .user_header {
             height: 64px;
             ul {
                 padding-top: 20px;

@@ -53,8 +53,9 @@
             &:nth-child(2) {
                 width: 0;
                 line-height: 44px;
-                font-size: 20px;
+                font-size: 16px;
                 text-align: center;
+                color: #fff;
                 -webkit-box-flex: 1;
             }
         }
@@ -173,7 +174,7 @@
         }
         &.icon_suggest {
             &:before {
-                content: "\f11f";
+                content: "\f11d";
                 color: #a8f;
             }
         }

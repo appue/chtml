@@ -42,3 +42,75 @@
         }
     }
 }
+
+
+.msg_index_top {
+    // margin-bottom: 10px;
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+
+
+.msg_menu_list {
+    background: #fff;
+    @include border_top_half;
+    ul {
+        @include border_bottom_half;
+        display: -webkit-box;
+        li {
+            width: 0;
+            line-height: 26px;
+            -webkit-box-flex: 1;
+            text-align: center;
+            font-size: 14px;
+            height: 65px;
+
+            &:nth-child(even) {
+                @include border_horizontal_half;
+            }
+
+            &:before {
+                display: block;
+                padding-top: 8px;
+                font-size: 34px;
+                font-family: "Ionicons";
+                font-weight: normal;
+                text-align: center;
+            }
+
+            &.icon_hit {
+                &:before {
+                    content: "\f388";
+                    color: #c60025;
+                }
+            }
+            &.icon_comment {
+                &:before {
+                    content: "\f148";
+                    content: "\f11f";
+                    color: #3cc482;
+                }
+            }
+            &.icon_notice {
+                &:before {
+                    content: "\f257";
+                    color: #83407d;
+                }
+            }
+            &.icon_talk {
+                &:before {
+                    content: "\f132";
+                    color: #3394ee;
+                }
+            }
+            &.icon_friend {
+                &:before {
+                    content: "\f3a0";
+                    color: #e2a63c;
+                }
+            }
+        }
+    }
+}
