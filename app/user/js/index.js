@@ -8,6 +8,8 @@ angular.module('phoneApp')
     widget
 ) {
 
+    widget.clearHistory();
+    
     $scope.footerTab = 5; //--底部tab初始化高亮
 
     $scope.Deploy = {

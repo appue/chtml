@@ -7,6 +7,9 @@ angular.module('phoneApp')
 .controller('tMsgIndex', function (
     $scope
 ) {
+
+    widget.clearHistory();
+
     $scope.Page = {
         Title: "评论"
     };
@@ -17,32 +20,40 @@ angular.module('phoneApp')
         {
             Title: '赞',
             ClassName: 'i_hit',
-            SiteUrl: 'forum.msg-praise',
+            SiteUrl: {
+                router: 'forum.msg-praise'
+            },
             isNew: true
         },
         {
             Title: '评论',
             ClassName: 'i_comment',
-            SiteUrl: 'forum.msg-comment',
+            SiteUrl: {
+                router: 'forum.msg-comment'
+            },
             isNew: false
         },
         {
             Title: '通知',
             ClassName: 'i_msg',
-            SiteUrl: 'forum.msg-notice',
+            SiteUrl: {
+                router: 'forum.msg-notice'
+            },
             isNew: true
         },
         {
             Title: '私聊',
             ClassName: 'i_talk',
-            SiteUrl: 'forum.msg-talk',
+            SiteUrl: {
+                router: 'forum.msg-talk'
+            },
             isNew: false
         }
         // {
         //     Title: '邀请好友',
         //     ClassName: 'i_friend',
         //     SiteUrl: {
-        //         'route': 'forum.msg-search'
+        //         'router': 'forum.msg-search'
         //     },
         //     isNew: false
         // }

@@ -12,6 +12,8 @@ angular.module('phoneApp')
     widget
 ){
 
+    widget.clearHistory();
+    
     $scope.footerTab = 2;
 
     $scope.DataList = {};

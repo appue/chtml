@@ -11,6 +11,10 @@ angular.module('phoneApp')
     cachePool,
     widget
 ){
+
+    widget.clearHistory();
+    widget.showStatusBar();
+
     var initConfig = {
         init: function  () {
             var self = this;

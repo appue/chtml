@@ -1,7 +1,7 @@
 <ion-view hide-nav-bar="true" class="ios_status_bar">
     <ion-content overflow-scroll="true">
         <div class="msg_index">
-            <a ng-repeat="(k, v) in DataLink track by $index" class="{{v.ClassName}}" page-jump data-router="{{v.SiteUrl}}">
+            <a ng-repeat="(k, v) in DataLink track by $index" class="{{v.ClassName}}" page-jump data-router="{{v.SiteUrl.router}}">
                 <span ng-class="{i_new : v.isNew}">{{v.Title}}</span>
             </a>
         </div>
