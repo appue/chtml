@@ -45,7 +45,7 @@
 <ion-view ng-if="!Deploy.isType">
     <header-opacity></header-opacity>
     
-    <ion-content overflow-scroll="true">
+    <ion-content overflow-scroll="true" on-scroll="headerScroll()" delegate-handle="mainScroll">
         <div class="mod_show_layout" ng-if="isShowLayout">
             <ul ng-if="isOwner">
                 <li>编辑</li>

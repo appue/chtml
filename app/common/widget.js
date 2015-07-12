@@ -10,6 +10,7 @@ angular.module('phoneApp')
     $ionicLoading,
     $ionicBackdrop,
     $ionicHistory,
+    $ionicScrollDelegate,
     cachePool,
     ENV
 ) {
@@ -279,6 +280,25 @@ angular.module('phoneApp')
          */
         clearHistory: function () {
             $ionicHistory.clearHistory();
+        },
+
+        changeOpacity: function () {
+            var top = $ionicScrollDelegate.$getByHandle('mainScroll').getScrollPosition().top,
+                opacity = 0;
+
+            if (top > 30) {
+                opacity = ((top - 30) / 100).toFixed(1);
+            } else {
+                opacity = 0;
+            }
+
+            if (opacity > 1) {
+                opacity = 1;
+            }
+
+            angular.element(document.querySelector('.mod_header_opacity div')).css({
+                "opacity": opacity
+            });
         }
     };
 

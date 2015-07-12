@@ -9,6 +9,7 @@ angular.module('phoneApp')
     $stateParams,
     $timeout,
     $ionicNavBarDelegate,
+    $ionicScrollDelegate,
     widget
 ){
     $scope.Page = {
@@ -109,4 +110,9 @@ angular.module('phoneApp')
 
     $scope.loadCate();
     $scope.loadMore();
+
+
+    $scope.headerScroll = function () {
+        widget.changeOpacity();
+    };
 });

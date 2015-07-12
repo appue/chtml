@@ -1,7 +1,7 @@
 <ion-view hide-nav-bar="true" class="ios_status_bar">
     <header-opacity></header-opacity>
     
-    <ion-content has-bouncing="false" ng-model="Deploy.currentTab" ng-init="Deploy.currentTab=1">
+    <ion-content has-bouncing="false" ng-model="Deploy.currentTab" ng-init="Deploy.currentTab=1" on-scroll="headerScroll()" delegate-handle="mainScroll">
 
         <div ng-if="DataList.CategoryList.length > 0" ng-class="Deploy.cateClass">
 <!--             <div>

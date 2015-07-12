@@ -72,4 +72,9 @@ angular.module('phoneApp')
 
 
     $scope.loadMore();
+
+
+    $scope.headerScroll = function () {
+        widget.changeOpacity();
+    };
 });

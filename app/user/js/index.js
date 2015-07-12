@@ -92,5 +92,11 @@ angular.module('phoneApp')
 	$scope.DataList = {
 		ClubList: [
 		]
-	}
+	};
+
+    
+
+    $scope.headerScroll = function () {
+        widget.changeOpacity();
+    };
 });

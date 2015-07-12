@@ -169,7 +169,10 @@ a, a:hover {
 .is_ios {
     .ios_status_bar {
         .mod_header_opacity {
-            top: 20px;
+            height: 64px;
+            ul {
+                padding-top: 20px;
+            }
         }
         .forum_cate_two_list {
             padding-top: 90px;

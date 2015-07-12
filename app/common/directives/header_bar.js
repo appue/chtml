@@ -21,37 +21,37 @@ angular.module('phoneApp')
             scope.Page.RightText = attrs.right ? attrs.right.split('|')[0] : '';
             scope.Page.RightFun = attrs.right ? scope.$eval(attrs.right.split('|')[1] || '') : '';
 
-            if (attrs.transparent !== undefined) {
-                scope.isTransparent = true;
+            // if (attrs.transparent !== undefined) {
+            //     scope.isTransparent = true;
 
-                angular.element($window).on("scroll", function () {
-                    headerBy();
-                });
-                // angular.element($window).on("touchstart", function () {
-                //     headerBy();
-                // });
-                angular.element($window).on("touchmove", function () {
-                    headerBy();
-                });
-                angular.element($window).on("touchend", function () {
-                    headerBy();
-                });
+            //     angular.element($window).on("scroll", function () {
+            //         headerBy();
+            //     });
+            //     // angular.element($window).on("touchstart", function () {
+            //     //     headerBy();
+            //     // });
+            //     angular.element($window).on("touchmove", function () {
+            //         headerBy();
+            //     });
+            //     angular.element($window).on("touchend", function () {
+            //         headerBy();
+            //     });
 
-                function headerBy() {
-                    var top = angular.element(document.querySelector('.scroll-content'))[0].scrollTop,
-                        op = 0;
+            //     function headerBy() {
+            //         var top = angular.element(document.querySelector('.scroll-content'))[0].scrollTop,
+            //             op = 0;
 
-                    if (top > 30) {
-                        op = ((top - 30) / 100).toFixed(1);
-                    } else {
-                        op = 0;
-                    }
+            //         if (top > 30) {
+            //             op = ((top - 30) / 100).toFixed(1);
+            //         } else {
+            //             op = 0;
+            //         }
 
-                    scope.HeaderBg = {
-                        opacity: op
-                    }
-                }
-            }
+            //         scope.HeaderBg = {
+            //             opacity: op
+            //         }
+            //     }
+            // }
 
         }
     };
@@ -71,34 +71,6 @@ angular.module('phoneApp')
         replace: true,
         templateUrl: 'common/directives/header_opacity.html',
         controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
-
-            angular.element($window).on("scroll", function () {
-                headerBy();
-            });
-            // angular.element($window).on("touchstart", function () {
-            //     headerBy();
-            // });
-            angular.element($window).on("touchmove", function () {
-                headerBy();
-            });
-            angular.element($window).on("touchend", function () {
-                headerBy();
-            });
-
-            function headerBy() {
-                var top = angular.element(document.querySelector('.scroll-content'))[0].scrollTop,
-                    op = 0;
-
-                if (top > 30) {
-                    op = ((top - 30) / 100).toFixed(1);
-                } else {
-                    op = 0;
-                }
-
-                $scope.HeaderBg = {
-                    opacity: op
-                }
-            }
         }
     };
-})
+});

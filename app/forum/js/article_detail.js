@@ -88,4 +88,10 @@ angular.module('phoneApp')
             }
         });
     };
+
+    
+
+    $scope.headerScroll = function () {
+        widget.changeOpacity();
+    };
 });

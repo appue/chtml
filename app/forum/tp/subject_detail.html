@@ -1,7 +1,7 @@
-<ion-view hide-nav-bar="true">
+<ion-view hide-nav-bar="true" class="ios_status_bar">
     <header-opacity></header-opacity>
     
-    <ion-content overflow-scroll="true">
+    <ion-content overflow-scroll="true" on-scroll="headerScroll()" delegate-handle="mainScroll">
         <div class="forum_cate_description">
             <div>
                 <img ng-src="{{DataList.ImageUrl}}" />
