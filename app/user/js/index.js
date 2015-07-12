@@ -7,8 +7,6 @@ angular.module('phoneApp')
     cachePool,
     widget
 ) {
-
-    widget.clearHistory();
     
     $scope.footerTab = 5; //--底部tab初始化高亮
 
@@ -20,22 +18,22 @@ angular.module('phoneApp')
 
     $scope.DataList = {};
 
-    var userInfo = cachePool.pull('UserInfo');
-    if (userInfo) {
-        $scope.Deploy.userId = userInfo.UserId;
-    }
+    // var userInfo = cachePool.pull('UserInfo');
+    // if (userInfo) {
+    //     $scope.Deploy.userId = userInfo.UserId;
+    // }
 
-    if (!$stateParams.id) {
-        if (!$scope.Deploy.userId) {
-            $ionicViewSwitcher.nextDirection('none'); //back
-            $state.go('forum.login');
-            return;
-        } else {
-            $scope.userId = $scope.Deploy.userId;
-        }
-    } else {
-        $scope.userId = $stateParams.id;
-    }
+    // if (!$stateParams.id) {
+    //     if (!$scope.Deploy.userId) {
+    //         $ionicViewSwitcher.nextDirection('none'); //back
+    //         $state.go('forum.login');
+    //         return;
+    //     } else {
+    //         $scope.userId = $scope.Deploy.userId;
+    //     }
+    // } else {
+    //     $scope.userId = $stateParams.id;
+    // }
 
     widget.ajaxRequest({
         url: 'getUserInfo',

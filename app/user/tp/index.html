@@ -1,11 +1,17 @@
 <ion-view hide-nav-bar="true">
-    <header-opacity></header-opacity>
+    <header class="js_op_header user_header">
+        <div></div>
+        <ul>
+            <li></li>
+            <li>我</li>
+            <li></li>
+        </ul>
+    </header>
 
-    <ion-content has-bouncing="false" style="background:#fff;padding-bottom:100px;" on-scroll="headerScroll()" delegate-handle="mainScroll">
-        <div class="user_info_top" style="background:url(../themes/temp/9.jpg) no-repeat center top;background-size:100% auto">
+    <ion-content has-bouncing="false" on-scroll="headerScroll()" delegate-handle="mainScroll" style="background:#fff;">
+        <div class="user_info_top" ng-if="Deploy.isLogin">
 
             <!-- <div class="this_icon_menu" page-jump="goDataSet"></div> -->
-
             <img ng-src="{{DataList.UserInfo.UserImage}}" />
 
             <h2>{{DataList.UserInfo.Username}}</h2>
@@ -31,8 +37,12 @@
             <div class="this_btn">加关注</div>
         </div>
 
+        <div class="user_info_top" ng-if="!Deploy.isLogin">
+            <div class="this_login">点此登录</div>
+        </div>
+
         <div class="mod_title_text this_a" ng-if="DataList.ArticleList.length > 0">
-            <div>发布</div>
+            <div>我的发布</div>
             <a>查看所有 &gt;</a>
         </div>
         <div class="mod_list_img" ng-if="DataList.ArticleList.length > 0">
@@ -49,7 +59,7 @@
         </div>
 
         <div class="mod_title_text this_a" ng-if="DataList.CollectList.length > 0">
-            <div>收藏</div>
+            <div>我的收藏</div>
             <a>查看所有 &gt;</a>
         </div>
         <div class="mod_list_img" ng-if="DataList.CollectList.length > 0">
