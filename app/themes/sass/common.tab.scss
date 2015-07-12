@@ -49,12 +49,15 @@
 
 .mod_tab_2{
     @include tab(0);
+    height: 44px;
     // @include border_bottom_half;
     .line{
         @include tab_line(50%);
     }
     li{
         @include tab_li;
+        height: 44px;
+        line-height: 44px;
         &.current{
             color: #3cc482;
         }
