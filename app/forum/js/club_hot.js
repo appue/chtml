@@ -9,7 +9,10 @@ angular.module('phoneApp')
     $scope.Page = {
         Title: "圈子HOT",
         Next: "全部圈子",
-        NextUrl: "forum.club-list"
+        SiteUrl: {
+            router: "forum.club-list",
+            options: {}
+        }
     };
 
     $scope.Deploy = {

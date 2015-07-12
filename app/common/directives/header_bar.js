@@ -16,10 +16,10 @@ angular.module('phoneApp')
         // controller: function ($scope, $element, $attrs) {},
         link: function (scope, element, attrs) {
 
-            scope.Page = {};
-            scope.Page.Title = attrs.title || '';
-            scope.Page.RightText = attrs.right.split('|')[0] || '';
-            scope.Page.RightFun = scope.$eval(attrs.right.split('|')[1] || '');
+            // scope.Page = {};
+            scope.Page.Title = scope.Page.Title ? scope.Page.Title : (attrs.title || '');
+            scope.Page.RightText = attrs.right ? attrs.right.split('|')[0] : '';
+            scope.Page.RightFun = attrs.right ? scope.$eval(attrs.right.split('|')[1] || '') : '';
 
             if (attrs.transparent !== undefined) {
                 scope.isTransparent = true;
