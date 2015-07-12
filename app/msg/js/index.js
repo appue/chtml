@@ -5,10 +5,9 @@
 angular.module('phoneApp')
 
 .controller('tMsgIndex', function (
-    $scope
+    $scope,
+    widget
 ) {
-
-    widget.clearHistory();
 
     $scope.Page = {
         Title: "评论"

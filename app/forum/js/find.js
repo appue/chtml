@@ -11,8 +11,6 @@ angular.module('phoneApp')
     $location,
     widget
 ){
-
-    widget.clearHistory();
     
     $scope.footerTab = 2;
 
