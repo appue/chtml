@@ -22,20 +22,33 @@
         display: -webkit-box;
         li {
             display: block;
-            &:nth-child(1), &:nth-child(3) {
-                width: 40px;
-            }
-            &:nth-child(1) {
+            &:nth-child(1),
+            &:nth-child(3) {
+                width: 50px;
                 text-align: center;
-                &:before {
+                &:before,
+                &:after {
                     line-height: 44px;
                     display: block;
-                    font-size: 24px;
+                    font-size: 30px;
                     font-family: "Ionicons";
-                    content: "\f124";
                     font-weight: normal;
-                    color: #ddd;
+                    color: #fff;
                 }
+                &:after {
+                    color: #3cc482;
+                    // opacity: 0;
+                }
+            }
+            &:nth-child(1) {
+                &:before {
+                    content: "\f422";
+                }   
+            }
+            &:nth-child(3) {
+                &:before {
+                    content: "\f43c";
+                }   
             }
             &:nth-child(2) {
                 width: 0;
@@ -59,6 +72,7 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, .2);
     background:url(img/bg_user.png) no-repeat center bottom #099fde;
     background-size:100% auto;
+    margin-bottom: 10px;
     img {
         display: block;
         margin: 0 auto;
@@ -103,17 +117,101 @@
             background-size: 20px auto;
         }
     }
-    .this_btn {
+    .this_btn,
+    .this_login {
         color: #fff;
         border: 1px solid #fff;
         text-align: center;
         display: block;
-        line-height: 25px;
-        width: 80px;
+        line-height: 40px;
+        width: 100px;
         margin: 0 auto;
         margin-top: 5px;
         -webkit-border-radius: 3px;
         font-weight: bold;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, .2);
+        font-size: 16px;
+        text-shadow: 2px 1px 1px rgba(0, 0, 0, .1);
+    }
+
+    .this_login {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -50px;
+    }
+}
+
+
+.user_menu_list {
+    background: #fff;
+    @include border_vertical_half;
+
+    li {
+        line-height: 50px;
+        display: -webkit-box;
+        &:before {
+            display: block;
+            width: 50px;
+            font-size: 30px;
+            font-family: "Ionicons";
+            font-weight: normal;
+            text-align: center;
+        }
+
+
+        &.icon_post {
+            &:before {
+                content: "\f148";
+                color: #aaa;
+            }
+        }
+        &.icon_fav {
+            &:before {
+                content: "\f3ea";
+                color: #f90;
+            }
+        }
+        &.icon_suggest {
+            &:before {
+                content: "\f11f";
+                color: #a8f;
+            }
+        }
+        &.icon_about {
+            &:before {
+                content: "\f47c";
+                color: #3cc482;
+            }
+        }
+        p {
+            width: 0;
+            -webkit-box-flex: 1;
+            margin-bottom: 0;
+            position: relative;
+            font-size: 14px;
+            @include border_bottom_half;
+
+            &:after {
+                font-family: "Ionicons";
+                font-weight: normal;
+                text-align: center;
+                content: "\f3d3";
+                display: block;
+                width: 30px;
+                line-height: 30px;
+                right: 0;
+                top: 50%;
+                margin-top: -15px;
+                font-size: 26px;
+                position: absolute;
+                color: #ccc;
+            }
+        }
+
+        &:last-child {
+            p {
+                border: 0;
+            }
+        }
     }
 }

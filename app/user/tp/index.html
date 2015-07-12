@@ -2,13 +2,13 @@
     <header class="js_op_header user_header">
         <div></div>
         <ul>
-            <li></li>
+            <li class="ion-email"></li>
             <li>我</li>
             <li></li>
         </ul>
     </header>
 
-    <ion-content has-bouncing="false" on-scroll="headerScroll()" delegate-handle="mainScroll" style="background:#fff;">
+    <ion-content has-bouncing="false" on-scroll="headerScroll()" delegate-handle="mainScroll">
         <div class="user_info_top" ng-if="Deploy.isLogin">
 
             <!-- <div class="this_icon_menu" page-jump="goDataSet"></div> -->
@@ -41,58 +41,66 @@
             <div class="this_login">点此登录</div>
         </div>
 
-        <div class="mod_title_text this_a" ng-if="DataList.ArticleList.length > 0">
-            <div>我的发布</div>
-            <a>查看所有 &gt;</a>
-        </div>
-        <div class="mod_list_img" ng-if="DataList.ArticleList.length > 0">
-            <ion-scroll direction="x" scrollbar-x="false" locking="false">
-                <div class="this_wrapper">
-                    <a ng-repeat="(k, v) in DataList.ArticleList track by $index" ui-sref="forum.cate({id: v.CateId})">
-                        <div class="this_img"><img ng-src="{{v.ImageUrl}}" /></div>
-                        <div class="this_title">{{v.CateName}}</div>
-                        <div class="this_tx">今日更新 {{v.TotalArticle}}</div>
-                        <div class="this_tx">赞 {{v.TotalPraise}}</div>
-                    </a>
-                </div>
-            </ion-scroll>
-        </div>
+        <ul class="user_menu_list">
+            <li class="icon_post"><p>我的发布</p></li>
+            <li class="icon_fav"><p>我的收藏</p></li>
+            <li class="icon_suggest"><p>意见反馈</p></li>
+            <li class="icon_about"><p>关于师乐汇</p></li>
+        </ul>
 
-        <div class="mod_title_text this_a" ng-if="DataList.CollectList.length > 0">
-            <div>我的收藏</div>
-            <a>查看所有 &gt;</a>
-        </div>
-        <div class="mod_list_img" ng-if="DataList.CollectList.length > 0">
-            <ion-scroll direction="x" scrollbar-x="false" locking="false">
-                <div class="this_wrapper">
-                    <a ng-repeat="(k, v) in DataList.CollectList track by $index" ui-sref="forum.cate({id: v.CateId})">
-                        <div class="this_img"><img ng-src="{{v.ImageUrl}}" /></div>
-                        <div class="this_title">{{v.CateName}}</div>
-                        <div class="this_tx">今日更新 {{v.TotalArticle}}</div>
-                        <div class="this_tx">赞 {{v.TotalPraise}}</div>
-                    </a>
-                </div>
-            </ion-scroll>
-        </div>
+        <div ng-if="Deploy.isLogin">
+            <div class="mod_title_text this_a" ng-if="DataList.ArticleList.length > 0">
+                <div>我的发布</div>
+                <a>查看所有 &gt;</a>
+            </div>
+            <div class="mod_list_img" ng-if="DataList.ArticleList.length > 0">
+                <ion-scroll direction="x" scrollbar-x="false" locking="false">
+                    <div class="this_wrapper">
+                        <a ng-repeat="(k, v) in DataList.ArticleList track by $index" ui-sref="forum.cate({id: v.CateId})">
+                            <div class="this_img"><img ng-src="{{v.ImageUrl}}" /></div>
+                            <div class="this_title">{{v.CateName}}</div>
+                            <div class="this_tx">今日更新 {{v.TotalArticle}}</div>
+                            <div class="this_tx">赞 {{v.TotalPraise}}</div>
+                        </a>
+                    </div>
+                </ion-scroll>
+            </div>
+
+            <div class="mod_title_text this_a" ng-if="DataList.CollectList.length > 0">
+                <div>我的收藏</div>
+                <a>查看所有 &gt;</a>
+            </div>
+            <div class="mod_list_img" ng-if="DataList.CollectList.length > 0">
+                <ion-scroll direction="x" scrollbar-x="false" locking="false">
+                    <div class="this_wrapper">
+                        <a ng-repeat="(k, v) in DataList.CollectList track by $index" ui-sref="forum.cate({id: v.CateId})">
+                            <div class="this_img"><img ng-src="{{v.ImageUrl}}" /></div>
+                            <div class="this_title">{{v.CateName}}</div>
+                            <div class="this_tx">今日更新 {{v.TotalArticle}}</div>
+                            <div class="this_tx">赞 {{v.TotalPraise}}</div>
+                        </a>
+                    </div>
+                </ion-scroll>
+            </div>
 
 
-        <div class="mod_title_text this_a" ng-if="DataList.ClubList.length > 0">
-            <div>精选圈子</div>
-            <a>查看所有 &gt;</a>
+            <div class="mod_title_text this_a" ng-if="DataList.ClubList.length > 0">
+                <div>精选圈子</div>
+                <a>查看所有 &gt;</a>
+            </div>
+            <div class="mod_list_img" ng-if="DataList.ClubList.length > 0">
+                <ion-scroll direction="x" scrollbar-x="false" locking="false">
+                    <div class="this_wrapper">
+                        <a ng-repeat="(k, v) in DataList.ClubList track by $index" ui-sref="forum.club-detail({id: v.ClubId})">
+                            <div class="this_img"><img ng-src="{{v.ImageUrl}}" /></div>
+                            <div class="this_title">{{v.ClubName}}</div>
+                            <div class="this_tx">今日更新 {{v.TodayNews}}</div>
+                            <div class="this_btn">去签到</div>
+                        </a>
+                    </div>
+                </ion-scroll>
+            </div>
         </div>
-        <div class="mod_list_img" ng-if="DataList.ClubList.length > 0">
-            <ion-scroll direction="x" scrollbar-x="false" locking="false">
-                <div class="this_wrapper">
-                    <a ng-repeat="(k, v) in DataList.ClubList track by $index" ui-sref="forum.club-detail({id: v.ClubId})">
-                        <div class="this_img"><img ng-src="{{v.ImageUrl}}" /></div>
-                        <div class="this_title">{{v.ClubName}}</div>
-                        <div class="this_tx">今日更新 {{v.TodayNews}}</div>
-                        <div class="this_btn">去签到</div>
-                    </a>
-                </div>
-            </ion-scroll>
-        </div>
-
     </ion-content>
 </ion-view>
 
