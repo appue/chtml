@@ -172,8 +172,8 @@ module.exports = function (gulp, $) {
     //--html js 替换
     gulp.task('replacehtml', function() {
         var jsFiles = [
-            '../cordova.js?v='+ version,
-            '../cordova_plugins.js?v='+ version,
+            'cordova.js?v='+ version,
+            'cordova_plugins.js?v='+ version,
             'frame.js?v='+ version,
             'common.js?v='+ version,
             'index.js?v='+ version
