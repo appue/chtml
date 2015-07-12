@@ -15,14 +15,14 @@ angular.module('phoneApp', [
         /*==========首页==========*/
         //首页
         .state('forum.index', {
-            cache: false,
+            // cache: false,
             url: '/index.htm',
             templateUrl: 'home/tp/index.html',
             controller: 'tDefault'
         })
         //开始页
         .state('forum.start', {
-            cache: false,
+            // cache: false,
             url: '/start.htm',
             templateUrl: 'home/tp/start.html',
             controller: 'tStart'
@@ -94,14 +94,14 @@ angular.module('phoneApp', [
         /*==========发现==========*/
         //发现首页
         .state('forum.find', {
-            cache: false,
+            // cache: false,
             url: '/find.htm',
             templateUrl: 'forum/tp/find.html',
             controller: 'tFindIndex'
         })
         //发现-猜你喜欢
         .state('forum.like', {
-            cache: false,
+            // cache: false,
             url: '/like.htm',
             templateUrl: 'forum/tp/like.html',
             controller: 'tFindLike'
@@ -110,21 +110,21 @@ angular.module('phoneApp', [
         /*==========发帖==========*/
         //编辑图片
         .state('forum.photo-edit', {
-            cache: false,
+            // cache: false,
             url: '/photo/edit.htm',
             templateUrl: 'forum/tp/photo.html',
             controller: 'tPhotoEdit'
         })
         //编辑内容
         .state('forum.photo-title', {
-            cache: false,
+            // cache: false,
             url: '/photo/title.htm',
             templateUrl: 'forum/tp/photo_title.html',
             controller: 'tPhotoTitle'
         })
         //选择栏目
         .state('forum.photo-cate', {
-            cache: false,
+            // cache: false,
             url: '/photo/cate-{id}.htm',
             templateUrl: 'forum/tp/photo_cate.html',
             controller: 'tPhotoCate'
@@ -133,28 +133,28 @@ angular.module('phoneApp', [
         /*==========圈子==========*/
         //热门圈子
         .state('forum.club-hot', {
-            cache: false,
+            // cache: false,
             url: '/club/hot.htm',
             templateUrl: 'forum/tp/club_hot.html',
             controller: 'tClubHot'
         })
         //全部圈子
         .state('forum.club-list', {
-            cache: false,
+            // cache: false,
             url: '/club/list.htm',
             templateUrl: 'forum/tp/club_list.html',
             controller: 'tClubList'
         })
         //圈子详情页
         .state('forum.club-detail', {
-            cache: false,
+            // cache: false,
             url: '/club/detail-{id}.htm',
             templateUrl: 'forum/tp/club_detail.html',
             controller: 'tClubDetail'
         })
         //圈子成员排行
         .state('forum.club-ranking', {
-            cache: false,
+            // cache: false,
             url: '/club/ranking-{id}.htm',
             templateUrl: 'forum/tp/club_ranking.html',
             controller: 'tClubRanking'
@@ -163,14 +163,14 @@ angular.module('phoneApp', [
         /*==========活动==========*/
         //活动列表
         .state('forum.activity-list', {
-            cache: false,
+            // cache: false,
             url: '/activity/list.htm',
             templateUrl: 'forum/tp/activity_list.html',
             controller: 'tActivityList'
         })
         //活动详情
         .state('forum.activity-detail', {
-            cache: false,
+            // cache: false,
             url: '/activity/detail-{type}-{id}.htm',
             templateUrl: 'forum/tp/activity_detail.html',
             controller: 'tActivityDetail'
@@ -179,14 +179,14 @@ angular.module('phoneApp', [
         /*==========专题==========*/
         //专题列表
         .state('forum.subject-list', {
-            cache: false,
+            // cache: false,
             url: '/subject/list.htm',
             templateUrl: 'forum/tp/subject_list.html',
             controller: 'tSubjectList'
         })
         //专题内容
         .state('forum.subject-detail', {
-            cache: false,
+            // cache: false,
             url: '/subject/detail-{id}.htm',
             templateUrl: 'forum/tp/subject_detail.html',
             controller: 'tSubjectDetail'
@@ -195,14 +195,14 @@ angular.module('phoneApp', [
         /*==========栏目==========*/
         //栏目列表
         .state('forum.cate', {
-            cache: false,
+            // cache: false,
             url: '/cate/list-{id}.htm',
             templateUrl: 'forum/tp/cate_list.html',
             controller: 'tCateList'
         })
         //帖子内容 id: 帖子ID
         .state('forum.detail', {
-            cache: false,
+            // cache: false,
             url: '/thread-{id}.htm',
             templateUrl: 'forum/tp/article_detail.html',
             controller: 'tArticleDetail'
@@ -211,7 +211,7 @@ angular.module('phoneApp', [
         /*==========点评==========*/
         //点评列表
         .state('forum.comment-list', {
-            cache: false,
+            // cache: false,
             url: '/comment/list-{id}.htm',
             templateUrl: 'forum/tp/comment_list.html',
             controller: 'tCommentList'
@@ -220,14 +220,14 @@ angular.module('phoneApp', [
         /*==========搜索==========*/
         //搜索首页
         .state('forum.search', {
-            cache: false,
+            // cache: false,
             url: '/search/index',
             templateUrl: 'forum/tp/search.html',
             controller: 'tSearchIndex'
         })
         //搜索结果
         .state('forum.search-result', {
-            cache: false,
+            // cache: false,
             url: '/search/result?keyword',
             templateUrl: 'forum/tp/search-result.html',
             controller: 'tSearchResult'
@@ -236,7 +236,7 @@ angular.module('phoneApp', [
         /*==========聊天==========*/
         //跟某一用户聊天
         .state('forum.chat', {
-            cache: false,
+            // cache: false,
             url: '/chat-{uid}.htm',
             resolve: {
                 isCheck: function () {
@@ -250,7 +250,7 @@ angular.module('phoneApp', [
         /*==========消息中心==========*/
         //消息中心首页
         .state('forum.msg-index', {
-            cache: false,
+            // cache: false,
             url: '/msg/index.htm',
             resolve: {
                 isCheck: function () {
@@ -262,7 +262,7 @@ angular.module('phoneApp', [
         })
         //消息中心-通知
         .state('forum.msg-notice', {
-            cache: false,
+            // cache: false,
             url: '/msg/notice.htm',
             resolve: {
                 isCheck: function () {
@@ -274,7 +274,7 @@ angular.module('phoneApp', [
         })
         //消息中心-评论
         .state('forum.msg-comment', {
-            cache: false,
+            // cache: false,
             url: '/msg/comment.htm',
             resolve: {
                 isCheck: function () {
@@ -286,7 +286,7 @@ angular.module('phoneApp', [
         })
         //消息中心-赞
         .state('forum.msg-praise', {
-            cache: false,
+            // cache: false,
             url: '/msg/praise.htm',
             resolve: {
                 isCheck: function () {
@@ -298,7 +298,7 @@ angular.module('phoneApp', [
         })
         //消息中心-邀请好友
         .state('forum.msg-search', {
-            cache: false,
+            // cache: false,
             url: '/msg/search.htm',
             resolve: {
                 isCheck: function () {
@@ -310,7 +310,7 @@ angular.module('phoneApp', [
         })
         //消息中心-私聊
         .state('forum.msg-talk', {
-            cache: false,
+            // cache: false,
             url: '/msg/talk.htm',
             resolve: {
                 isCheck: function () {
@@ -324,7 +324,7 @@ angular.module('phoneApp', [
         /*==========会员中心==========*/
         //个人主页（主、客人态）
         .state('forum.user-index', {
-            cache: false,
+            // cache: false,
             url: '/user/index.htm?id',
             templateUrl: 'user/tp/index.html',
             controller: 'tUserIndex'
