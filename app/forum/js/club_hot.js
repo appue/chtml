@@ -10,8 +10,7 @@ angular.module('phoneApp')
         Title: "圈子HOT",
         Next: "全部圈子",
         SiteUrl: {
-            router: "forum.club-list",
-            options: {}
+            router: "forum.club-list"
         }
     };
 
