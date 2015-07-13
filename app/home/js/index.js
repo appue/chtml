@@ -60,11 +60,11 @@ angular.module('phoneApp')
 
 
     $scope.$watch('Deploy.currentTab', function () {
-
         initConfig.deploy();
 
         $scope.loadMore();
     });
+
 
     $scope.loadMore = function () {
         if ($scope.Deploy.currentTab == 1) {
@@ -90,8 +90,6 @@ angular.module('phoneApp')
                         $scope.Deploy.isMore = false;
 
                     }
-                },
-                error: function (data) {
                 }
             });
 
@@ -120,8 +118,6 @@ angular.module('phoneApp')
 
                     }
 
-                },
-                error: function (data) {
                 }
             });
 

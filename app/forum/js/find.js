@@ -14,6 +14,10 @@ angular.module('phoneApp')
     
     $scope.footerTab = 2;
 
+    $scope.Deploy = {
+        
+    };
+
     $scope.DataList = {};
 
     widget.ajaxRequest({
