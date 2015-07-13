@@ -1,5 +1,10 @@
 angular.module('phoneApp')
-.controller('tUserAll', function ($scope, $stateParams, widget) {
+
+.controller('tUserCate', function (
+	$scope,
+	$stateParams,
+	widget
+) {
 
 	// widget.ajaxRequest({
 	// 	url: 'getLogin',

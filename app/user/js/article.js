@@ -1,5 +1,6 @@
 angular.module('phoneApp')
-.controller('personalIssueCtrl', function (
+
+.controller('tUserArticle', function (
     $scope,
     $stateParams,
     widget
@@ -8,15 +9,6 @@ angular.module('phoneApp')
     var currentUrl = widget.getCurrentUrl();
 
     $scope.currentTab = 1;
-
-
-    //--默认返回设置
-	$scope.backParam = { //--设置返回按钮
-		'url': [
-			'member/#/personal-' + $stateParams.id + '.htm'
-		]
-	};
-
 
     //--模拟数据
     $scope.loadMore = function() {

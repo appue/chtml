@@ -1,11 +1,10 @@
 angular.module('phoneApp')
-.controller('personalSetPasswordCtrl', function ($scope, $stateParams, widget) {
 
-	$scope.backParam = { //--设置返回按钮
-		'url': [
-			'member/#/personal-' + $stateParams.id + '/set.htm'
-		]
-	};
+.controller('tUserSetPassword', function (
+	$scope,
+	$stateParams,
+	widget
+) {
 
 	$scope.inputVal = {};
 

@@ -353,74 +353,54 @@ angular.module('phoneApp', [
             templateUrl: 'user/tp/set.html',
             controller: 'tUserSet'
         })
-
-
+        //设置-修改密码
+        .state('forum.user-set-password', {
+            url: '/user/set/password.htm',
+            templateUrl: 'user/tp/set_password.html',
+            controller: 'tUserSetPassword'
+        })
+        //设置-账号绑定
+        .state('forum.user-set-bind', {
+            url: '/user/set/bind.htm',
+            templateUrl: 'user/tp/set_bind.html',
+            controller: 'tUserSetBind'
+        })
 
         //个人主页-查看所有
-        .state('forum.user-all', {
-            url: '/user/{id}-all.htm',
-            templateUrl: 'user/tp/personal_all.html',
-            controller: 'tUserAll'
+        .state('forum.user-cate', {
+            url: '/user/cate.htm',
+            templateUrl: 'user/tp/cate.html',
+            controller: 'tUserCate'
         })
         //个人主页-发布
-        .state('forum.userIssue', {
-            url: '/user/{id}-issue.htm',
-            templateUrl: 'user/tp/personal_issue.html',
-            controller: 'tUserIssue'
+        .state('forum.user-article', {
+            url: '/user/article.htm',
+            templateUrl: 'user/tp/article.html',
+            controller: 'tUserArticle'
         })
         //个人主页-粉丝页
-        .state('forum.userFans', {
-            url: '/user/{id}-fans.htm',
-            templateUrl: 'user/tp/personal_fans.html',
+        .state('forum.user-fans', {
+            url: '/user/fans.htm',
+            templateUrl: 'user/tp/fans.html',
             controller: 'tUserFans'
         })
         //个人主页-关注页
-        .state('forum.userAttention', {
-            url: '/user/{id}-attention.htm',
-            templateUrl: 'user/tp/personal_attention.html',
+        .state('forum.user-attention', {
+            url: '/user/attention.htm',
+            templateUrl: 'user/tp/attention.html',
             controller: 'tUserAttention'
         })
         //个人主页-圈子
-        .state('forum.userCircle', {
-            url: '/user/{id}-circle.htm',
-            templateUrl: 'user/tp/personal_circle.html',
-            controller: 'userCircleCtrl'
-        })
-        //个人主页-用户等级
-        .state('forum.userLevel', {
-            url: '/user/{id}-level.htm',
-            templateUrl: 'user/tp/personal_level.html',
-            controller: 'userLevelCtrl'
+        .state('forum.user-club', {
+            url: '/user/club.htm',
+            templateUrl: 'user/tp/club.html',
+            controller: 'tUserClub'
         })
         //他人主页-查看资料
         .state('forum.userData', {
             url: '/user/{id}-data.htm',
             templateUrl: 'user/tp/personal_data.html',
             controller: 'userDataCtrl'
-        })
-        //个人主页-设置
-        .state('forum.userSet', {
-            url: '/user/{id}-set.htm',
-            templateUrl: 'user/tp/personal_set.html',
-            controller: 'userSetCtrl'
-        })
-        //个人主页-设置-修改密码
-        .state('forum.userSetPassword', {
-            url: '/user/{id}-set-password.htm',
-            templateUrl: 'user/tp/personal_set_password.html',
-            controller: 'userSetPasswordCtrl'
-        })
-        //个人主页-设置-账号绑定
-        .state('forum.userSetBind', {
-            url: '/user/{id}-set-bind.htm',
-            templateUrl: 'user/tp/personal_set_bind.html',
-            controller: 'userSetBindCtrl'
-        })
-        //个人主页-设置-关于我们
-        .state('forum.userSetAboutus', {
-            url: '/user/{id}-set-aboutus.htm',
-            templateUrl: 'user/tp/personal_set_aboutus.html',
-            controller: 'userSetAboutusCtrl'
         });
 
         // $urlRouterProvider.when('', '/index');
