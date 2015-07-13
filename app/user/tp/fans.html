@@ -1,21 +1,28 @@
-<header-bar back title="粉丝"></header-bar>
+<header-bar title="粉丝"></header-bar>
 
-<section class="mod_wrapper">
-    <ul class="unit_list_user">
-        <li>
-            <img src="../../themes/temp/3.jpg" />
-            <p>吹口哨的柬埔寨girl</p>
-            <div class="this_btn current">关注</div>
-        </li>
-        <li>
-            <img src="../../themes/temp/3.jpg" />
-            <p>吹口哨的柬埔寨girl</p>
-            <div class="this_btn">已关注</div>
-        </li>
-        <li>
-            <img src="../../themes/temp/3.jpg" />
-            <p>吹口哨的柬埔寨girl</p>
-            <div class="this_btn">互注</div>
-        </li>
-    </ul>
-</section>
+<ion-view hide-nav-bar="true">
+    <ion-content overflow-scroll="true" class="mod_wrapper">
+        <ul class="unit_list_user">
+            <li>
+                <img src="../../themes/temp/3.jpg" />
+                <p>吹口哨的柬埔寨girl</p>
+                <div class="this_btn current">关注</div>
+            </li>
+            <li>
+                <img src="../../themes/temp/3.jpg" />
+                <p>吹口哨的柬埔寨girl</p>
+                <div class="this_btn">已关注</div>
+            </li>
+            <li>
+                <img src="../../themes/temp/3.jpg" />
+                <p>吹口哨的柬埔寨girl</p>
+                <div class="this_btn">互注</div>
+            </li>
+        </ul>
+        
+        <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore">
+        </ion-infinite-scroll>
+
+        <div class="mod_no_more" ng-if="!Deploy.isMore">没有数据了！</div>
+    </ion-content>
+</ion-view>

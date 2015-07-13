@@ -1,65 +1,27 @@
-<section class="unit_member" when-scrolled="loadMore()" ng-init="currentTab=1">
-    
-    <div class="unit_member_data" style="background:url(../themes/temp/9.jpg) no-repeat center bottom;background-size:100% auto">
+<header-bar></header-bar>
 
-        <div page-back="backParam" class="this_back"></div>
+<ion-view hide-nav-bar="true">
+    <ion-content overflow-scroll="true">
 
-        <h2>玩教具</h2>
-        <div class="this_text">
-            <i>图片 50</i>
-            <i>赞 258</i>
-        </div>
-        <img src="../themes/temp/3.jpg" />
-        <h2>吹口哨的小女孩</h2>
-    </div>
+        <ul class="mod_list_img_only">
+            <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
+                <a class="this_border" page-jump data-router="forum.detail" data-options='{ "id": {{v.ArticleId}} }'>
+                    <div class="this_img"><img ng-src="{{v.Images[0].ImageUrl}}" /></div>
+                    <article>
+                        <div class="this_text">{{v.Images[0].Description}}</div>
 
-    <ul class="mod_tab_icon">
-        <li ng-click="currentTab=1" ng-class="{current : currentTab==1}">瀑布流</li>
-        <li ng-click="currentTab=2" ng-class="{current : currentTab==2}">垂直平铺</li>
-    </ul>
+                        <div class="this_cate">
+                            <div>被赞<i>{{v.TotalCollect}}</i></div>
+                            <div><span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span></div>
+                        </div>
+                    </article>
+                </a>
+            </li>
+        </ul>
+        
+        <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore">
+        </ion-infinite-scroll>
 
-
-    <!--瀑布流-->
-    <falls ng-if="currentTab==1">
-        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
-            <div class="this_border" page-jump="{{v.SiteUrl}}">
-                <img ng-src="{{v.Images[0].ImageUrl}}" />
-                <article>
-                    <div class="this_text">{{v.Images[0].Description}}</div>
-                    
-                    <div class="this_star">
-                        256
-                    </div>
-
-                    <div class="this_user">
-                        <img ng-src="{{v.Author.ImageUrl}}" />
-                        <p>
-                            {{v.Author.UserName}}<br>
-                            <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
-                        </p>
-                    </div>
-                </article>
-            </div>
-        </li>
-    </falls>
-
-    <!--垂直平铺-->
-    <ul class="mod_list_img_only" ng-if="currentTab==2">
-        <li ng-repeat="(k, v) in DataList.ArticleList track by $index" page-jump="{{v.SiteUrl}}">
-            <img ng-src="{{v.Images[0].ImageUrl}}" />
-            <article>
-                <div class="this_text">{{v.Images[0].Description}}</div>
-
-                <div class="this_star">256</div>
-
-                <div class="this_user">
-                    <img ng-src="{{v.Author.ImageUrl}}" />
-                    <p>
-                        {{v.Author.UserName}}<br>
-                        <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
-                    </p>
-                </div>
-            </article>
-        </li>
-    </ul>
-</section>
+        <div class="mod_no_more" ng-if="!Deploy.isMore">没有数据了！</div>
+    </ion-content>
+</ion-view>

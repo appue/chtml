@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>APP HTML</title>
-    <link rel="stylesheet" type="text/css" href="../../themes/member.css" />
-</head>
-<body>
-    <header class="mod_header">
-        <a class="back_button"></a>
-        <h1 class="title_content">圈子</h1>
-    </header>
+<header-bar title="圈子"></header-bar>
 
-    <section class="mod_wrapper">
+<ion-view hide-nav-bar="true">
+    <ion-content overflow-scroll="true" class="mod_wrapper">
         <dl class="unit_list_club">
             <dt>A</dt>
             <dd>
@@ -56,15 +44,9 @@
                 </div>
             </dd>
         </dl>
-    </section>
+    </ion-content>
 
-    <section class="unit_letter">
-        <ul>
-            <li>A</li>
-            <li>B</li>
-            <li>E</li>
-        </ul>
+    <section class="forum_club_letter" ng-if="DataList.ClubList.length > 0">
+        <ul><li ng-repeat="(k, v) in DataList.ClubList">{{v.Letter}}</li></ul>
     </section>
-
-</body>
-</html>
+</ion-view>

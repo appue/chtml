@@ -45,7 +45,7 @@ angular.module('phoneApp')
             if (data.Response && data.Response.State) {
                 $scope.Deploy.isLogin = true;
             } else {
-                $scope.Deploy.isLogin = false;
+                $scope.Deploy.isLogin = true;
             }
 
         	angular.extend($scope.DataList, data);

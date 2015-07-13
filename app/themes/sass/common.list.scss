@@ -215,7 +215,13 @@
             img {
                 width: 100%;
             }
+            .this_img {
+                max-height: 180px;
+                overflow: hidden;
+                margin-bottom: 5px;
+            }
             article {
+                position: relative;
                 padding: 0 10px 5px;
                 .this_text {
                     font-size: 12px;
@@ -253,6 +259,33 @@
                         }
                         dd {
                             @include multi_ellipsis(2);
+                            span {
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+                .this_cate {
+                    left: 0;
+                    top: -70px;
+                    position: absolute;
+                    z-index: 2;
+                    color: #fff;
+                    div {
+                        &:first-child {
+                            padding: 0 10px;
+                            line-height: 18px;
+                            font-size: 12px;
+                            background: rgba(60, 196, 130, .9);
+                            i {
+                                padding-left: 5px;
+                            }
+                        }
+                        &:last-child {
+                            padding: 0 10px;
+                            line-height: 30px;
+                            font-size: 14px;
+                            background: rgba(0, 0, 0, .8);
                             span {
                                 margin-right: 5px;
                             }

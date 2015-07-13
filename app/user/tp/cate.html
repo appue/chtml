@@ -1,32 +1,23 @@
-<ion-view title="<span class='color_green'>吹口哨的小女孩</span>的发布">
+<header-bar title="<span class='color_green'>吹口哨的小女孩</span>的发布"></header-bar>
 
-    <ion-content>
-        <ul class="mod_list_falls" style="height:400px;">
-            <li style="left:0;top:0;">
-                <div class="this_border">
-                    <img src="../../themes/temp/1.jpg" />
+<ion-view hide-nav-bar="true">
+    <ion-content overflow-scroll="true">
+        <!--瀑布流-->
+        <falls>
+            <li ng-repeat="(k, v) in DataList.CategoryList track by $index" data-y="{{v.Images[0].Height}}" >
+                <a class="this_border" page-jump data-router="forum.cate" data-options='{ "id": {{v.CateId}} }'>
+                    <img ng-src="{{v.Images[0].ImageUrl}}" />
                     <article>
                         <div class="this_cate">#玩教具</div>
                     </article>
-                </div>
+                </a>
             </li>
-            <li style="right:0;top:0;">
-                <div class="this_border">
-                    <img src="../../themes/temp/2.jpg" />
-                    <article>
-                        <div class="this_cate">#玩教具</div>
-                    </article>
-                </div>
-            </li>
-            <li style="right:0;top:145px;">
-                <div class="this_border">
-                    <img src="../../themes/temp/7.jpg" />
-                    <article>
-                        <div class="this_cate">#玩教具</div>
-                    </article>
-                </div>
-            </li>
-        </ul>
+        </falls>
+
+
+        <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore">
+        </ion-infinite-scroll>
+
+        <div class="mod_no_more" ng-if="!Deploy.isMore">没有数据了！</div>
     </ion-content>
-
 </ion-view>
