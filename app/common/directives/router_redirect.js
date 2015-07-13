@@ -59,12 +59,21 @@ angular.module('phoneApp')
 
                 if (attrs.pageJump == "none") {
                     direction = "none";
+
+                    $ionicHistory.clearCache();
+                    $ionicHistory.clearHistory();
                 }
                 
                 var router = attrs.router,
                     options = attrs.options ? JSON.parse(attrs.options) : {};
 
                 $ionicViewSwitcher.nextDirection(direction);
+
+                // $ionicHistory.nextViewOptions({
+                //     disableAnimate: true,
+                //     disableBack: true
+                // });
+
                 $state.go(router, options, {
                     inherit: false
                 });
