@@ -59,7 +59,8 @@ angular.module('phoneApp')
 
                 if (attrs.pageJump == "none") {
                     direction = "none";
-
+                    // scope.$destroy();
+                    scope.loadMore = {};
                     $ionicHistory.clearCache();
                     $ionicHistory.clearHistory();
                 }
