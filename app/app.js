@@ -335,6 +335,24 @@ angular.module('phoneApp', [
             templateUrl: 'user/tp/about.html',
             controller: 'tUserAbout'
         })
+        //意见反馈
+        .state('forum.user-feedback', {
+            url: '/user/feedback.htm',
+            templateUrl: 'user/tp/feedback.html',
+            controller: 'tUserFeedback'
+        })
+        //等级说明
+        .state('forum.user-level', {
+            url: '/user/level.htm',
+            templateUrl: 'user/tp/level.html',
+            controller: 'tUserLevel'
+        })
+        //设置
+        .state('forum.user-set', {
+            url: '/user/set.htm',
+            templateUrl: 'user/tp/set.html',
+            controller: 'tUserSet'
+        })
 
 
 

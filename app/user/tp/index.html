@@ -4,7 +4,7 @@
         <ul>
             <li class="ion-email"></li>
             <li>我</li>
-            <li></li>
+            <li page-jump data-router="forum.user-set"></li>
         </ul>
     </header>
 
@@ -14,9 +14,9 @@
             <!-- <div class="this_icon_menu" page-jump="goDataSet"></div> -->
             <img ng-src="{{DataList.UserInfo.UserImage}}" />
 
-            <h2>{{DataList.UserInfo.Username}}</h2>
+            <h2>{{DataList.UserInfo.Username}}<span>{{DataList.UserInfo.RankName}}</span></h2>
 
-            <div class="this_text">
+<!--             <div class="this_text">
                 <a>
                     经验值 {{DataList.UserInfo.Exper}}
                 </a>
@@ -33,22 +33,33 @@
                     粉丝 {{DataList.UserInfo.TotalFans}}
                 </a>
             </div>
+        -->
 
             <div class="this_btn">加关注</div>
+
+
+            <ul class="this_list_tab">
+                <li>
+                    <span>{{DataList.UserInfo.Exper}}</span>
+                    经验值
+                </li>
+                <li>
+                    <span>{{DataList.UserInfo.TotalFollow}}</span>
+                    关注
+                </li>
+                <li>
+                    <span>{{DataList.UserInfo.TotalFans}}</span>
+                    粉丝
+                </li>
+            </ul>
         </div>
 
         <div class="user_info_top" ng-if="!Deploy.isLogin">
             <div class="this_login">点此登录</div>
         </div>
 
-        <ul class="user_menu_list">
-            <li class="icon_post"><p>我的发布</p></li>
-            <li class="icon_fav"><p>我的收藏</p></li>
-            <li class="icon_suggest"><p>意见反馈</p></li>
-            <li class="icon_about"><p>关于师乐汇</p></li>
-        </ul>
-
-        <div ng-if="Deploy.isLogin">
+    <!--
+        <div ng-if="Deploy.isLogin" style="background:#fff;">
             <div class="mod_title_text this_a" ng-if="DataList.ArticleList.length > 0">
                 <div>我的发布</div>
                 <a>查看所有 &gt;</a>
@@ -65,7 +76,10 @@
                     </div>
                 </ion-scroll>
             </div>
+        </div>
 
+
+        <div ng-if="Deploy.isLogin" style="background:#fff;">
             <div class="mod_title_text this_a" ng-if="DataList.CollectList.length > 0">
                 <div>我的收藏</div>
                 <a>查看所有 &gt;</a>
@@ -82,15 +96,17 @@
                     </div>
                 </ion-scroll>
             </div>
+        </div>
 
 
+        <div ng-if="Deploy.isLogin" style="background:#fff;">
             <div class="mod_title_text this_a" ng-if="DataList.ClubList.length > 0">
                 <div>精选圈子</div>
                 <a>查看所有 &gt;</a>
             </div>
             <div class="mod_list_img" ng-if="DataList.ClubList.length > 0">
                 <ion-scroll direction="x" scrollbar-x="false" locking="false">
-                    <div class="this_wrapper">
+                    <div class="this_wrapper" style="padding-bottom:10px;">
                         <a ng-repeat="(k, v) in DataList.ClubList track by $index" ui-sref="forum.club-detail({id: v.ClubId})">
                             <div class="this_img"><img ng-src="{{v.ImageUrl}}" /></div>
                             <div class="this_title">{{v.ClubName}}</div>
@@ -102,6 +118,19 @@
             </div>
         </div>
 
+    -->
+
+
+        <ul class="user_menu_list">
+            <li class="icon_post" page-jump><p>我的发布</p></li>
+            <li class="icon_fav" page-jump><p>我的收藏</p></li>
+            <li class="icon_club" page-jump><p>我的圈子</p></li>
+        </ul>
+        <ul class="user_menu_list">
+            <li class="icon_suggest" page-jump data-router="forum.user-feedback"><p>意见反馈</p></li>
+            <li class="icon_level" page-jump data-router="forum.user-level"><p>会员等级说明</p></li>
+            <li class="icon_about" page-jump data-router="forum.user-about"><p>关于师乐汇</p></li>
+        </ul>
         <div class="user_bottom_logo"></div>
     </ion-content>
 </ion-view>

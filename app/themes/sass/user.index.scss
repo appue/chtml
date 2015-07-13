@@ -67,10 +67,10 @@
     width: 100%;
     color: #fff;
     overflow: hidden;
-    height: 250px;
+    height: 280px;
     padding-top: 50px;
     position: relative;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, .2);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
     background:url(img/bg_user.png) no-repeat center bottom #099fde;
     background-size:100% auto;
     // margin-bottom: 10px;
@@ -89,6 +89,11 @@
         font-size: 16px;
         color: #fff;
         font-weight: bold;
+        span {
+            font-size: 12px;
+            font-weight: normal;
+            color: #ddd;
+        }
     }
     .this_text {
         display: -webkit-box;
@@ -134,6 +139,27 @@
         text-shadow: 2px 1px 1px rgba(0, 0, 0, .1);
     }
 
+    .this_list_tab {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.1);
+        left: 0;
+        width: 100%;
+        bottom: 0;
+        display: -webkit-box;
+        li {
+            width: 0;
+            -webkit-box-flex: 1;
+            color: #fff;
+            line-height: 20px;
+            padding: 5px 0;
+            text-align: center;
+            span {
+                display: block;
+                font-size: 16px;
+            }
+        }
+    }
+
     .this_login {
         position: absolute;
         left: 50%;
@@ -144,6 +170,7 @@
 
 
 .user_menu_list {
+    margin-bottom: 10px;
     background: #fff;
     @include border_vertical_half;
 
@@ -163,13 +190,26 @@
         &.icon_post {
             &:before {
                 content: "\f148";
-                color: #aaa;
+                color: #c7c509;
             }
         }
         &.icon_fav {
             &:before {
                 content: "\f3ea";
+                content: "\f134";
                 color: #f90;
+            }
+        }
+        &.icon_club {
+            &:before {
+                content: "\f313";
+                color: #ff4981;
+            }
+        }
+        &.icon_level {
+            &:before {
+                content: "\f44d";
+                color: #49bcf7;
             }
         }
         &.icon_suggest {

@@ -1,0 +1,102 @@
+<header-bar title="设置"></header-bar>
+
+<ion-view hide-nav-bar="true">
+    <ion-content overflow-scroll="true" class="mod_wrapper">
+        <ul class="unit_owner_set">
+            <li class="no">
+                <p>昵称</p>
+                <p>{{inputVal.nickname}}</p>
+            </li>
+            <li show-popup="gender">
+                <p>性别</p>
+                <p>{{inputVal.sex}}</p>
+            </li>
+            <li show-popup="post">
+                <p>岗位</p>
+                <p>{{inputVal.job}}</p>
+            </li>
+            <li location-popup>
+                <p>地区</p>
+                <p>{{inputVal.city.Name}} {{inputVal.village.Name}}</p>
+            </li>
+            <li>
+                <p>订阅</p>
+                <p>教案  计划  总结</p>
+            </li>
+            <li>
+                <p>账号绑定</p>
+                <p></p>
+            </li>
+            <li page-jump="goPassword">
+                <p>修改密码</p>
+                <p></p>
+            </li>
+        </ul>
+
+        <ul class="unit_owner_push">
+            <li>
+                <div>消息推送</div>
+                <a ng-click="switchCtrl('isMsgPush')" ng-class="{close:!personalData.isMsgPush,open:personalData.isMsgPush}" class="on_off"></a>
+            </li>
+            <li>
+                <div>只允许我关注的人跟我私聊</div>
+                <a ng-click="switchCtrl('isFocusOnly')" ng-class="{close:!personalData.isFocusOnly,open:personalData.isFocusOnly}" class="on_off"></a>
+            </li>
+            <li>
+                <div>允许通过手机通讯录加我好友</div>
+                <a ng-click="switchCtrl('isTelAllow')" ng-class="{close:!personalData.isTelAllow,open:personalData.isTelAllow}" class="on_off"></a>
+            </li>
+            <li>
+                <div>保存图片到相册</div>
+                <a ng-click="switchCtrl('isPhotoSave')" ng-class="{close:!personalData.isPhotoSave,open:personalData.isPhotoSave}" class="on_off"></a>
+            </li>
+            <li>
+                <div>清除图片缓存</div>
+            </li>
+        </ul>
+
+        <div class="unit_btn">退出登录</div>
+
+    </ion-content>
+</ion-view>
+
+
+<popup id="gender" title="选择性别" popup-confirm="chooseSex">
+        <div class="choose_gender" ngd-click="chooseSex($event)" selector="span">
+            <span>
+                <input name="sex" ng-checked="tmpSex == '女'" type="radio">
+                <label>女</label>
+            </span>
+            <span>
+                <input name="sex" ng-checked="tmpSex == '男'" type="radio">
+                <label>男</label>
+            </span>
+        </div>
+    </popup>
+
+    <popup id="post" title="选择岗位" popup-confirm="chooseJob">
+        <div class="choose_post" ngd-click="chooseJob($event)" selector="li">
+            <ul>
+                <li>
+                    <input ng-checked="tmpJob == '园长'" name="post" type="radio">
+                    <label>园长</label>
+                </li>
+                <li>
+                    <input ng-checked="tmpJob == '保教主任'" name="post" type="radio">
+                    <label>保教主任</label>
+                </li>
+                <li>
+                    <input ng-checked="tmpJob == '教师'" name="post" type="radio">
+                    <label>教师</label>
+                </li>
+                <li>
+                    <input ng-checked="tmpJob == '其他'" name="post" type="radio">
+                    <label>其他</label>
+                </li>
+            </ul>
+        </div>
+    </popup>
+
+    <!-- <popup id="location" title="选择位置" popup-confirm="confirmLocation">
+        <location-data></location-data>
+    </popup> -->

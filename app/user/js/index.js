@@ -12,7 +12,8 @@ angular.module('phoneApp')
 
     $scope.Deploy = {
         isOwner: false,
-        isShow: false
+        isShow: false,
+        isLogin: false
     };
 	// console.log($stateParams.id);
 
@@ -45,7 +46,7 @@ angular.module('phoneApp')
             if (data.Response && data.Response.State && ($scope.Deploy.userId == $stateParams.id)) {
                 $scope.Deploy.isLogin = true;
             } else {
-                $scope.Deploy.isLogin = false;
+                $scope.Deploy.isLogin = true;
             }
 
         	angular.extend($scope.DataList, data);
