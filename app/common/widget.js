@@ -296,7 +296,7 @@ angular.module('phoneApp')
                 opacity = 1;
             }
 
-            angular.element(document.querySelector('.js_op_header div')).css({
+            angular.element(document.querySelector('.js_op_header .js_op_change')).css({
                 "opacity": opacity
             });
         }
