@@ -13,11 +13,7 @@ angular.module('phoneApp')
 ){
     
     $scope.footerTab = 2;
-
-    $scope.Deploy = {
-        
-    };
-
+    
     $scope.DataList = {};
 
     widget.ajaxRequest({
@@ -30,13 +26,6 @@ angular.module('phoneApp')
             res.CateList = [];
 
             angular.forEach(res.CategoryList, function(v, k) {
-                v.SiteUrl = {
-                    router: "forum.cate",
-                    options: {
-                        id: v.CateId
-                    }
-                };
-
                 if (res.CateList[i]) {
                     res.CateList[i].push(v);
                 } else {
@@ -50,8 +39,6 @@ angular.module('phoneApp')
             });
 
             $scope.DataList = res;
-
-            console.log($scope.DataList);
         }
     });
 });
