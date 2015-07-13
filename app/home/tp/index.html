@@ -1,8 +1,12 @@
 <ion-view hide-nav-bar="true" ng-model="Deploy.currentTab" ng-init="Deploy.currentTab=1">
     <ion-header-bar>
         <ul class="mod_tab_2">
-            <li ng-click="Deploy.currentTab=1;" ng-class="{current : Deploy.currentTab==1}">精品</li>
-            <li ng-click="Deploy.currentTab=2;" ng-class="{current : Deploy.currentTab==2}">关注</li>
+            <li ng-click="Deploy.currentTab=1;updateData();" ng-class="{current : Deploy.currentTab==1}">
+                精品
+            </li>
+            <li ng-click="Deploy.currentTab=2;updateData();" ng-class="{current : Deploy.currentTab==2}">
+                关注
+            </li>
             <i class="line" ng-class="{tmp: Deploy.currentTab == 2}"></i>
         </ul>
     </ion-header-bar>

@@ -59,11 +59,16 @@ angular.module('phoneApp')
     });
 
 
-    $scope.$watch('Deploy.currentTab', function () {
+    // $scope.$watch('Deploy.currentTab', function () {
+    //     initConfig.deploy();
+
+    //     $scope.loadMore();
+    // });
+    $scope.updateData = function () {
         initConfig.deploy();
 
         $scope.loadMore();
-    });
+    };
 
 
     $scope.loadMore = function () {
