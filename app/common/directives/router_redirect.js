@@ -53,13 +53,21 @@ angular.module('phoneApp')
         restrict: 'A',
         link: function (scope, element, attrs) {
 
+
             element.on('click', function (event) {
+                var direction = "forward";
+
+                if (attrs.pageJump == "none") {
+                    direction = "none";
+                }
                 
                 var router = attrs.router,
                     options = attrs.options ? JSON.parse(attrs.options) : {};
 
-                $ionicViewSwitcher.nextDirection('forward');
-                $state.go(router, options);
+                $ionicViewSwitcher.nextDirection(direction);
+                $state.go(router, options, {
+                    inherit: false
+                });
 
             });
         }
