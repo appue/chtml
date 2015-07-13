@@ -1,0 +1,75 @@
+﻿.user_login_pop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99999999999999999999999999;
+    background: url(img/bg_login.jpg) no-repeat left bottom #00316b;
+    background-size: 100% auto;
+
+    .this_cancel {
+        color: #fff;
+        width: 60px;
+        line-height: 40px;
+        margin-bottom: 10 px;
+        font-size: 16px;
+        padding-top: 20px;
+        text-indent: 20px;
+    }
+
+    dl {
+        padding: 10px;
+        dt {
+            width: 100%;
+            height: 60px;
+            background: url(img/icon_user_login.png) no-repeat center center;
+            background-size: auto 60px;
+        }
+        dd {
+            ul {
+                width: 100%;
+                padding-top: 30px;
+                li {
+                    margin-bottom: 10px;
+                    input {
+                        width: 100%;
+                        display: block;
+                        outline: none;
+                        background: #002551;
+                        height: 40px;
+                        padding: 0 10px;
+                    }
+
+                    &.this_login {
+                        background: #ff9600;
+                        line-height: 40px;
+                        text-align: center;
+                        color: #fff;
+                        margin-bottom: 20px;
+                        -webkit-border-radius: 4px;
+                    }
+
+                    &.this_link {
+                        color: #fff;
+                        padding: 10px 0;
+                        display: -webkit-box;
+                        div {
+                            line-height: 14px;
+                            width: 50%;
+                            &:nth-child(1) {
+                                text-align: right;
+                                padding-right: 50px;
+                                @include border_right_half;
+                            }
+                            &:nth-child(2) {
+                                text-align: left;
+                                padding-left: 50px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
