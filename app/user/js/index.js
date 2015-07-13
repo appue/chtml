@@ -101,7 +101,8 @@ angular.module('phoneApp')
 
     $scope.toMail = function () {
         if ($scope.Deploy.isLogin) {
-
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go('forum.msg-talk');
         } else {
             $scope.showLogin();
         }
