@@ -39,6 +39,7 @@
                         background: #002551;
                         height: 40px;
                         padding: 0 10px;
+                        -webkit-border-radius: 0;
                     }
 
                     &.this_login {
@@ -47,7 +48,6 @@
                         text-align: center;
                         color: #fff;
                         margin-bottom: 20px;
-                        -webkit-border-radius: 4px;
                     }
 
                     &.this_link {
