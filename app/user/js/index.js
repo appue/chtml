@@ -11,18 +11,15 @@ angular.module('phoneApp')
     $scope.footerTab = 5; //--底部tab初始化高亮
 
     $scope.Deploy = {
-        isOwner: false,
-        isShow: false,
         isLogin: false
     };
-	// console.log($stateParams.id);
 
     $scope.DataList = {};
 
-    // var userInfo = cachePool.pull('UserInfo');
-    // if (userInfo) {
-    //     $scope.Deploy.userId = userInfo.UserId;
-    // }
+    var userInfo = cachePool.pull('UserInfo');
+    if (userInfo) {
+        $scope.Deploy.userId = userInfo.UserId;
+    }
 
     // if (!$stateParams.id) {
     //     if (!$scope.Deploy.userId) {
@@ -39,14 +36,14 @@ angular.module('phoneApp')
     widget.ajaxRequest({
         url: 'getUserInfo',
         data: {
-            UserId: $scope.userId
+            UserId: $scope.Deploy.userId
         },
         success: function (data) {
 
-            if (data.Response && data.Response.State && ($scope.Deploy.userId == $stateParams.id)) {
+            if (data.Response && data.Response.State) {
                 $scope.Deploy.isLogin = true;
             } else {
-                $scope.Deploy.isLogin = true;
+                $scope.Deploy.isLogin = false;
             }
 
         	angular.extend($scope.DataList, data);
