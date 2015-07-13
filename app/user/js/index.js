@@ -3,7 +3,9 @@ angular.module('phoneApp')
 	$scope,
     $state,
 	$stateParams,
+    $ionicPopover,
     $ionicViewSwitcher,
+    $timeout,
     cachePool,
     widget
 ) {
@@ -94,5 +96,24 @@ angular.module('phoneApp')
 
     $scope.headerScroll = function () {
         widget.changeOpacity();
+    };
+
+
+    $scope.toMail = function () {
+        if ($scope.Deploy.isLogin) {
+
+        } else {
+            $scope.showLogin();
+        }
+    };
+
+
+    $scope.showLogin = function($event) {
+        var $that = angular.element(document.querySelector('.js_login'))
+        .css('display', 'block');
+
+        $timeout( function () {
+            $that.addClass('this_show');
+        }, 50);
     };
 });

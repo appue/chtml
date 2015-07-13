@@ -6,7 +6,7 @@
             <li></li>
         </ul>
         <ul class="js_op_change this_op">
-            <li></li>
+            <li ng-click="toMail()"></li>
             <li>我</li>
             <li page-jump data-router="forum.user-set"></li>
         </ul>
@@ -59,7 +59,7 @@
         </div>
 
         <div class="user_info_top" ng-if="!Deploy.isLogin">
-            <div class="this_login">点此登录</div>
+            <div class="this_login" ng-click="showLogin()">点此登录</div>
         </div>
 
         <!--
@@ -124,11 +124,18 @@
         -->
 
 
-        <ul class="user_menu_list">
+        <ul class="user_menu_list" ng-if="Deploy.isLogin">
             <li class="icon_post" page-jump><p>我的发布</p></li>
             <li class="icon_fav" page-jump><p>我的收藏</p></li>
             <li class="icon_club" page-jump><p>我的圈子</p></li>
         </ul>
+
+        <ul class="user_menu_list" ng-if="!Deploy.isLogin">
+            <li class="icon_post" ng-click="showLogin()"><p>我的发布</p></li>
+            <li class="icon_fav" ng-click="showLogin()"><p>我的收藏</p></li>
+            <li class="icon_club" ng-click="showLogin()"><p>我的圈子</p></li>
+        </ul>
+
         <ul class="user_menu_list">
             <li class="icon_suggest" page-jump data-router="forum.user-feedback"><p>意见反馈</p></li>
             <li class="icon_level" page-jump data-router="forum.user-level"><p>会员等级说明</p></li>

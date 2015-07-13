@@ -13,6 +13,11 @@ angular.module('phoneApp')
         replace: true,
         templateUrl: 'common/directives/user_login.html',
         controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
+            
+            $scope.closeLogin = function () {
+                $element.removeClass("this_show");
+            }
+
         }
     };
 });

@@ -4,9 +4,13 @@
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 99999999999999999999999999;
+    z-index: 101;
     background: url(img/bg_login.jpg) no-repeat left bottom #00316b;
     background-size: 100% auto;
+
+
+    -webkit-transition: -webkit-transform 0.15s linear;
+    -webkit-transform: translate3d(0, 100%, 0);
 
     .this_cancel {
         color: #fff;
@@ -71,5 +75,9 @@
                 }
             }
         }
+    }
+
+    &.this_show {
+        -webkit-transform: translate3d(0, 0, 0);
     }
 }
