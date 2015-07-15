@@ -13,14 +13,16 @@ angular.module('phoneApp')
     $scope.footerTab = 5; //--底部tab初始化高亮
 
     $scope.Deploy = {
-        isLogin: false
+        isLogin: false,
+        uId: 0
     };
 
     $scope.DataList = {};
 
+
     var userInfo = cachePool.pull('UserInfo');
     if (userInfo) {
-        $scope.Deploy.userId = userInfo.UserId;
+        $scope.Deploy.uId = userInfo.UserId;
     }
 
     // if (!$stateParams.id) {
@@ -39,7 +41,7 @@ angular.module('phoneApp')
         url: 'getUserInfo',
         isLogin: true,
         data: {
-            UserId: $scope.Deploy.userId
+            UserId: $scope.Deploy.uId
         },
         success: function (data) {
 

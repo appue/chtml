@@ -332,7 +332,7 @@ angular.module('phoneApp', [
         //他人首页
         .state('forum.user-other-index', {
             // cache: false,
-            url: '/user/index-{id}.htm',
+            url: '/user/index-{uid}.htm',
             templateUrl: 'user/tp/user_index.html',
             controller: 'tUserOtherIndex'
         })
@@ -354,6 +354,45 @@ angular.module('phoneApp', [
             templateUrl: 'user/tp/level.html',
             controller: 'tUserLevel'
         })
+
+        //个人主页-查看所有
+        .state('forum.user-cate', {
+            url: '/user/cate.htm',
+            templateUrl: 'user/tp/cate-{uid}.html',
+            controller: 'tUserCate'
+        })
+        //个人主页-发布
+        .state('forum.user-article', {
+            url: '/user/article-{uid}.htm',
+            templateUrl: 'user/tp/article.html',
+            controller: 'tUserArticle'
+        })
+        //个人主页-粉丝页
+        .state('forum.user-fans', {
+            url: '/user/fans-{uid}.htm',
+            templateUrl: 'user/tp/fans.html',
+            controller: 'tUserFans'
+        })
+        //个人主页-关注页
+        .state('forum.user-attention', {
+            url: '/user/attention-{uid}.htm',
+            templateUrl: 'user/tp/attention.html',
+            controller: 'tUserAttention'
+        })
+        //个人主页-圈子
+        .state('forum.user-club', {
+            url: '/user/club-{uid}.htm',
+            templateUrl: 'user/tp/club.html',
+            controller: 'tUserClub'
+        })
+        //他人主页-查看资料
+        .state('forum.userData', {
+            url: '/user/{id}-data.htm',
+            templateUrl: 'user/tp/personal_data.html',
+            controller: 'userDataCtrl'
+        })
+
+        
         //设置
         .state('forum.user-set', {
             url: '/user/set.htm',
@@ -372,43 +411,6 @@ angular.module('phoneApp', [
             templateUrl: 'user/tp/set_bind.html',
             controller: 'tUserSetBind'
         })
-
-        //个人主页-查看所有
-        .state('forum.user-cate', {
-            url: '/user/cate.htm',
-            templateUrl: 'user/tp/cate.html',
-            controller: 'tUserCate'
-        })
-        //个人主页-发布
-        .state('forum.user-article', {
-            url: '/user/article.htm',
-            templateUrl: 'user/tp/article.html',
-            controller: 'tUserArticle'
-        })
-        //个人主页-粉丝页
-        .state('forum.user-fans', {
-            url: '/user/fans.htm',
-            templateUrl: 'user/tp/fans.html',
-            controller: 'tUserFans'
-        })
-        //个人主页-关注页
-        .state('forum.user-attention', {
-            url: '/user/attention.htm',
-            templateUrl: 'user/tp/attention.html',
-            controller: 'tUserAttention'
-        })
-        //个人主页-圈子
-        .state('forum.user-club', {
-            url: '/user/club.htm',
-            templateUrl: 'user/tp/club.html',
-            controller: 'tUserClub'
-        })
-        //他人主页-查看资料
-        .state('forum.userData', {
-            url: '/user/{id}-data.htm',
-            templateUrl: 'user/tp/personal_data.html',
-            controller: 'userDataCtrl'
-        });
 
         // $urlRouterProvider.when('', '/index');
 
