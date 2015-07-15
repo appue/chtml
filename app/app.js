@@ -322,12 +322,19 @@ angular.module('phoneApp', [
         })
 
         /*==========会员中心==========*/
-        //个人主页（主、客人态）
+        //个人主页（主人态）
         .state('forum.user-index', {
             // cache: false,
-            url: '/user/index.htm?id',
+            url: '/user/index.htm',
             templateUrl: 'user/tp/index.html',
             controller: 'tUserIndex'
+        })
+        //他人首页
+        .state('forum.user-other-index', {
+            // cache: false,
+            url: '/user/index-{id}.htm',
+            templateUrl: 'user/tp/user_index.html',
+            controller: 'tUserOtherIndex'
         })
         //关于我们
         .state('forum.user-about', {

@@ -1,5 +1,5 @@
 angular.module('phoneApp')
-.controller('tUserIndex', function (
+.controller('tUserOtherIndex', function (
 	$scope,
     $state,
 	$stateParams,
@@ -9,8 +9,6 @@ angular.module('phoneApp')
     cachePool,
     widget
 ) {
-    
-    $scope.footerTab = 5; //--底部tab初始化高亮
 
     $scope.Deploy = {
         isLogin: false
@@ -37,7 +35,6 @@ angular.module('phoneApp')
 
     widget.ajaxRequest({
         url: 'getUserInfo',
-        isLogin: true,
         data: {
             UserId: $scope.Deploy.userId
         },
@@ -56,14 +53,5 @@ angular.module('phoneApp')
 
     $scope.headerScroll = function () {
         widget.changeOpacity();
-    };
-
-    $scope.toMail = function () {
-        if ($scope.Deploy.isLogin) {
-            $ionicViewSwitcher.nextDirection('forward');
-            $state.go('forum.msg-talk');
-        } else {
-            $scope.showLogin();
-        }
     };
 });

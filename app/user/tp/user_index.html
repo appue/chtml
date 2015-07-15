@@ -1,16 +1,5 @@
 <ion-view hide-nav-bar="true" class="ios_status_bar">
-    <header class="js_op_header user_header">
-        <ul>
-            <li></li>
-            <li>我</li>
-            <li></li>
-        </ul>
-        <ul class="js_op_change this_op">
-            <li ng-click="toMail()"></li>
-            <li>我</li>
-            <li page-jump data-router="forum.user-set"></li>
-        </ul>
-    </header>
+    <header-opacity></header-opacity>
 
     <ion-content has-bouncing="false" on-scroll="headerScroll()" delegate-handle="mainScroll">
         <div class="user_info_top" ng-if="Deploy.isLogin">
@@ -39,7 +28,7 @@
             </div>
         -->
 
-            <!-- <div class="this_btn">加关注</div> -->
+            <div class="this_btn">加关注</div>
 
 
             <ul class="this_list_tab">
@@ -135,17 +124,6 @@
             <!-- <li class="icon_fav" ng-click="showLogin()"><p>我的收藏</p></li> -->
             <li class="icon_club" ng-click="showLogin()"><p>我的圈子</p></li>
         </ul>
-
-        <ul class="user_menu_list">
-            <li class="icon_suggest" page-jump data-router="forum.user-feedback"><p>意见反馈</p></li>
-            <li class="icon_level" page-jump data-router="forum.user-level"><p>会员等级说明</p></li>
-            <li class="icon_about" page-jump data-router="forum.user-about"><p>关于师乐汇</p></li>
-        </ul>
-        <div class="user_bottom_logo"></div>
     </ion-content>
 
 </ion-view>
-
-<footer-bar></footer-bar>
-
-<user-login></user-login>
