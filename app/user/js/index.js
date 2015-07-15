@@ -44,11 +44,11 @@ angular.module('phoneApp')
             UserId: $scope.Deploy.uId
         },
         success: function (data) {
-
-            if (data.Response && data.Response.State) {
+            
+            if (data.Response.Ack == "Success" && data.Response && data.Response.State) {
                 $scope.Deploy.isLogin = true;
             } else {
-                $scope.Deploy.isLogin = true;
+                $scope.Deploy.isLogin = false;
             }
 
         	angular.extend($scope.DataList, data);
@@ -68,4 +68,13 @@ angular.module('phoneApp')
             $scope.showLogin();
         }
     };
+
+    $scope.showLogin = function($event) {
+        var $that = angular.element(document.querySelector('.js_login')).css('display', 'block');
+
+        $timeout( function () {
+            $that.addClass('this_show');
+        }, 50);
+    };
+
 });

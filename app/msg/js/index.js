@@ -6,6 +6,7 @@ angular.module('phoneApp')
 
 .controller('tMsgIndex', function (
     $scope,
+    $timeout,
     widget
 ) {
 
@@ -27,9 +28,6 @@ angular.module('phoneApp')
         {
             Title: '评论',
             ClassName: 'i_comment',
-            SiteUrl: {
-                router: 'forum.msg-comment'
-            },
             isNew: false
         },
         {
@@ -57,4 +55,13 @@ angular.module('phoneApp')
         //     isNew: false
         // }
     ];
+
+    //显示登录界面
+    $scope.showLogin = function($event) {
+        var $that = angular.element(document.querySelector('.js_login')).css('display', 'block');
+
+        $timeout( function () {
+            $that.addClass('this_show');
+        }, 50);
+    };
 });
