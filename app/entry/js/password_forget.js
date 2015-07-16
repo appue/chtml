@@ -4,6 +4,7 @@ angular.module('phoneApp')
     $scope,
     $state,
     $ionicPopup,
+    $ionicViewSwitcher,
     widget
 ) {
 
@@ -33,7 +34,8 @@ angular.module('phoneApp')
             template: '<div class="phone_number_cont"><p>我们将发送验证码到该手机：<br><span class="color_green">{{inputVal.phone}}</span></p></div>'
         }).then(function (res) {
             if (res) {
-                $state.go('forum.loginReset', {
+                $ionicViewSwitcher.nextDirection("forward");
+                $state.go('password_reset', {
                     phone: $scope.inputVal.phone
                 });
             }

@@ -42,18 +42,18 @@ angular.module('phoneApp', [
             templateUrl: 'entry/tp/login.html',
             controller: 'tLogin'
         })
-        //登录-忘记密码页
-        .state('forum.password-forget', {
+        //登录-忘记密码、重置密码
+        .state('forum.login-forget', {
             url: '/login/forget.htm',
-            templateUrl: 'entry/tp/password_forget.html',
-            controller: 'tPasswordForget'
+            templateUrl: 'entry/tp/forget.html',
+            controller: 'tLoginForget'
         })
         //登录-重置密码页
-        .state('forum.password-reset', {
-            url: '/login/reset/:phone', //@params:phone
-            templateUrl: 'entry/tp/password_reset.html',
-            controller: 'tPasswordReset'
-        })
+        // .state('forum.password-reset', {
+        //     url: '/login/reset/:phone', //@params:phone
+        //     templateUrl: 'entry/tp/password_reset.html',
+        //     controller: 'tPasswordReset'
+        // })
         //注册-创建资料页
         .state('forum.reg-create', {
             url: '/reg/create.htm',

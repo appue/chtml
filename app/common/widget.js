@@ -353,6 +353,28 @@ angular.module('phoneApp')
             scope.Deploy.uId = 0;
             scope.Deploy.isLogin = false;
             cachePool.remove("UserInfo");
+        },
+
+        /**
+         * 检查手机号
+         */
+        checkPhone: function (phone) {
+            var self = this,
+                status = false;
+
+            if (!phone) {
+                self.msgToast('请输入手机号码');
+                
+                status = true;
+            }
+
+            if (!/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(phone)) {
+                self.msgToast('手机号码格式不合法');
+
+                status = true;
+            }
+
+            return status;
         }
     };
 
