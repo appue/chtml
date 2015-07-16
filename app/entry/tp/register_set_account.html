@@ -1,19 +1,18 @@
-<ion-view title="<span>（</span>2<span>/3）</span>设置账号和密码">
+<header-bar title="<span>（</span>2<span>/3）</span>设置账号和密码" right="下一步|goNextStep()">
+</header-bar>
 
-	<ion-nav-buttons side="right">
-        <button class="right_button" ng-click="goNextStep()">下一步</button>
-    </ion-nav-buttons>
-
+<ion-view>
     <ion-content class="register_layout mod_wrapper">
-		<div class="mod_layout">
-        <p class="account_password_tip">设置用于登录师乐汇的手机号和密码</p>
-        <ul class="mod_list_default">
-            <li class="phone">
-                <input ng-model="inputVal.phone" type="number" placeholder="手机号码"></li>
-            <li class="password">
-                <input ng-model="inputVal.password" type="password" placeholder="密码"></li>
-        </ul>
-    </div>
-    </ion-content>
 
+		<div class="mod_layout">
+            <p class="account_password_tip">设置用于登录师乐汇的手机号和密码</p>
+            <ul class="mod_list_default">
+                <li class="phone">
+                    <input ng-model="inputVal.phone" type="number" placeholder="手机号码"></li>
+                <li class="password">
+                    <input ng-model="inputVal.password" type="password" placeholder="密码"></li>
+            </ul>
+        </div>
+        
+    </ion-content>
 </ion-view>
