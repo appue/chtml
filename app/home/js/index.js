@@ -69,7 +69,6 @@ angular.module('phoneApp')
         if (tab == 2) {
             if (!$scope.Deploy.isLogin) {
                 $scope.showLogin();
-
                 return;
             }
             $scope.Deploy.currentTab = 2;
