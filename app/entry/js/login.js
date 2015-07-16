@@ -39,6 +39,7 @@ angular.module('phoneApp')
 		}
 
 		widget.ajaxRequest({
+			scope: $scope,
 			url: 'getLogin',
 			data: {
 				Phone: $scope.inputVal.phone,
