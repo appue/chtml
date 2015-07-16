@@ -80,7 +80,9 @@
                         </dl>
                     </li>
                 </ul>
-                <a class="this_comment_more" page-jump data-router="forum.comment-list" data-options='{ "id": 1 }'>更多评论>></a>
+                <a class="this_comment_more" page-jump data-router="forum.comment-list" data-options='{ "id": 1 }'>
+                    更多评论>>
+                </a>
             </div>
 
             <div class="mod_title_text this_p" ng-if="DataList.ArticleList.length > 0">
@@ -104,7 +106,7 @@
             
             <div class="mod_login_01" ng-if="!isLogin">
                 <h3>想看看同行们发布的？</h3>
-                <a page-jump data-router="member">马上登录</button>
+                <a ng-click="showLogin()">马上登录</button>
             </div>
         </section>
     </ion-content>
