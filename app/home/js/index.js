@@ -27,7 +27,7 @@ angular.module('phoneApp')
                 currentTab: 1
             };
 
-            widget.setInitUser($scope);
+            widget.initUser($scope);
 
             self.deploy();
         },

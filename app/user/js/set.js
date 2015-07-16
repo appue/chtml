@@ -2,8 +2,11 @@ angular.module('phoneApp')
 
 .controller('tUserSet', function (
 	$scope,
-	$stateParams
+	$stateParams,
+	widget
 ) {
+
+	widget.initUser($scope);
 	
 	$scope.inputVal = { //属性数据初始化
 		nickname: '我是昵称',
@@ -24,12 +27,6 @@ angular.module('phoneApp')
 		isFocusOnly: false,
 		isTelAllow: true,
 		isPhotoSave: false
-	};
-
-	$scope.goPassword = { //--去修改密码页
-		'url': [
-			'member/#/personal-' + $stateParams.id + '/set/password.htm'
-		]
 	};
 
 	$scope.switchCtrl = function (type) {

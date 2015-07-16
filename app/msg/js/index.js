@@ -10,9 +10,7 @@ angular.module('phoneApp')
     widget
 ) {
 
-    $scope.Page = {
-        Title: "评论"
-    };
+    widget.initUser($scope);
 
     $scope.footerTab = 4;
 

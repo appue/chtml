@@ -244,6 +244,7 @@ angular.module('phoneApp')
                         $scope.Deploy.isLogin = true;
                     } else {
                         $scope.Deploy.isLogin = false;
+                        $scope.Deploy.uId = 0;
                         cachePool.remove("UserInfo");
                     }
 
@@ -328,7 +329,7 @@ angular.module('phoneApp')
         /**
          * 初始化用户登录信息
          */
-        setInitUser: function (scope) {
+        initUser: function (scope) {
             var userInfo = cachePool.pull('UserInfo');
 
             if (!scope.Deploy) {
@@ -340,7 +341,18 @@ angular.module('phoneApp')
                 scope.Deploy.isLogin = true;
             } else {
                 scope.Deploy.isLogin = false;
+                scope.Deploy.uId = 0;
             }
+        },
+
+
+        /**
+         * 注销用户登录信息
+         */
+        cleanLogin: function (scope) {
+            scope.Deploy.uId = 0;
+            scope.Deploy.isLogin = false;
+            cachePool.remove("UserInfo");
         }
     };
 

@@ -19,7 +19,8 @@ angular.module('phoneApp')
 
     $scope.DataList = {};
 
-    widget.setInitUser($scope);
+    widget.initUser($scope);
+
 
     // if (!$stateParams.id) {
     //     if (!$scope.Deploy.userId) {
