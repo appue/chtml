@@ -142,6 +142,14 @@ angular.module('phoneApp')
 
             element.on("click", function () {
 
+                widget.initUser(scope);
+
+                if (!scope.Deploy.isLogin) {
+                    scope.showLogin();
+
+                    return;
+                };
+
                 if (ENV.isHybrid) {
                     var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
                         el = document.querySelector('.js_mod_camera');
@@ -221,13 +229,25 @@ angular.module('phoneApp')
 
 .directive('ngCamera', function (
     $parse, 
-    $timeout
+    $timeout,
+    widget
 ) {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
             
             element.on('click', function () {
+
+                widget.initUser(scope);
+
+                if (!scope.Deploy.isLogin) {
+                    scope.showLogin();
+
+                    return;
+                };
+
+
+
                 document.addEventListener("deviceready", onDeviceReady, false);
                 
                 function onDeviceReady() {

@@ -15,15 +15,9 @@ angular.module('phoneApp')
     //--设置返回按钮
     // var isFrom = $location.$$search.isFrom || $location.$$search.isfrom || '';
 
+    widget.initUser($scope);
+
     $scope.DataList = {};
-    
-    //--判断用户是否登录
-    var userInfo = cachePool.pull('UserInfo');
-    if (userInfo) {
-        $scope.isLogin = true;
-    } else {
-        $scope.isLogin = false;
-    }
 
     $scope.showLayout = function () {
         $scope.isShowLayout = !$scope.isShowLayout;
@@ -67,7 +61,7 @@ angular.module('phoneApp')
         success: function (data) {
             angular.extend($scope.DataList, data);
 
-            if (userInfo && (userInfo.UserId == data.Author.UserId)) {
+            if ($scope.Deploy.uId == data.Author.UserId) {
                 $scope.isOwner = true;  
             } else {
                 $scope.isOwner = false;
