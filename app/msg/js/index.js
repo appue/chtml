@@ -55,13 +55,4 @@ angular.module('phoneApp')
         //     isNew: false
         // }
     ];
-
-    //显示登录界面
-    $scope.showLogin = function($event) {
-        var $that = angular.element(document.querySelector('.js_login')).css('display', 'block');
-
-        $timeout( function () {
-            $that.addClass('this_show');
-        }, 50);
-    };
 });

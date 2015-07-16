@@ -69,12 +69,12 @@ angular.module('phoneApp')
         }
     };
 
-    $scope.showLogin = function($event) {
-        var $that = angular.element(document.querySelector('.js_login')).css('display', 'block');
+    // $scope.showLogin = function($event) {
+    //     var $that = angular.element(document.querySelector('.js_login')).css('display', 'block');
 
-        $timeout( function () {
-            $that.addClass('this_show');
-        }, 50);
-    };
+    //     $timeout( function () {
+    //         $that.addClass('this_show');
+    //     }, 50);
+    // };
 
 });

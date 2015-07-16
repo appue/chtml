@@ -19,7 +19,15 @@ angular.module('phoneApp')
 
             $scope.closeLogin = function () {
                 $element.removeClass("this_show");
-            }
+            };
+
+            $scope.showLogin = function () {
+                var $that = $element.css("display", "block");
+                
+                $timeout( function () {
+                    $element.addClass('this_show');
+                }, 50);
+            };
 
             //去登录
             $scope.toLogin = function () {
