@@ -1,10 +1,9 @@
-<ion-view title="<span>（</span>1<span>/3）</span>创建个人资料">
+<header-bar title="<span>（</span>1<span>/3）</span>创建个人资料" right="下一步|goNextStep()">
+</header-bar>
 
-    <ion-nav-buttons side="right">
-        <button class="right_button" ng-click="goNextStep()">下一步</button>
-    </ion-nav-buttons>
-
-    <ion-content class="register_layout mod_wrapper">
+<ion-view >
+    <ion-content overflow-scroll="true" class="register_layout mod_wrapper">
+    
         <div class="mod_layout">
             <ul class="register_data">
                 <li class="nickname">
@@ -24,6 +23,6 @@
                 <li job-popup class="post">{{inputVal.job}}</li>
             </ul>
         </div>
-    </ion-content>
 
+    </ion-content>
 </ion-view>
