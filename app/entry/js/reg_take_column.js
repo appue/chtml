@@ -3,6 +3,7 @@ angular.module('phoneApp')
 .controller('tRegTakeColumn', function ($scope, $state, widget) {
 
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getLogin',
         data: {},
         success: function (data) {}

@@ -19,6 +19,7 @@ angular.module('phoneApp')
 
         if (account) {
             widget.ajaxRequest({
+                scope: $scope,
                 url: 'setSendPhone',
                 data: {
                     Phone: account.phone,

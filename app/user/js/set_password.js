@@ -36,7 +36,7 @@ angular.module('phoneApp')
 		}
 
 		widget.ajaxRequest({
-			noMask: true,
+			scope: $scope,
 			url: '$local/Tools/SendCheckCode',
 			data: {
 				Mobile: 123

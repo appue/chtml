@@ -7,6 +7,7 @@ angular.module('phoneApp')
 ) {
 
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getLogin',
         data: {},
         success: function (data) {}

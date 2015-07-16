@@ -38,6 +38,7 @@ angular.module('phoneApp')
     // }
 
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getUserInfo',
         isLogin: true,
         data: {

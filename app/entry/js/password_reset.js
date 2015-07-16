@@ -36,6 +36,7 @@ angular.module('phoneApp')
         }
 
         widget.ajaxRequest({
+            scope: $scope,
             url: 'setSendPhone',
             data: {
                 Phone: $stateParams.phone,
