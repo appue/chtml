@@ -21,6 +21,7 @@ angular.module('phoneApp')
         if (!content) return;
 
         widget.ajaxRequest({
+            scope: $scope,
             noMask: true,
             url: '$local/Tools/setArticleComment',
             data: {

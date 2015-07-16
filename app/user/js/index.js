@@ -19,11 +19,7 @@ angular.module('phoneApp')
 
     $scope.DataList = {};
 
-
-    var userInfo = cachePool.pull('UserInfo');
-    if (userInfo) {
-        $scope.Deploy.uId = userInfo.UserId;
-    }
+    widget.setInitUser($scope);
 
     // if (!$stateParams.id) {
     //     if (!$scope.Deploy.userId) {
@@ -38,23 +34,16 @@ angular.module('phoneApp')
     // }
 
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getUserInfo',
         isLogin: true,
         data: {
             UserId: $scope.Deploy.uId
         },
         success: function (data) {
-            
-            if (data.Response.Ack == "Success" && data.Response && data.Response.State) {
-                $scope.Deploy.isLogin = true;
-            } else {
-                $scope.Deploy.isLogin = false;
-            }
-
         	angular.extend($scope.DataList, data);
         }
     });
-
 
     $scope.headerScroll = function () {
         widget.changeOpacity();

@@ -28,6 +28,7 @@ angular.module('phoneApp')
     $scope.redirectUrl = {};
     
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getContentSubject',
         data: {
             SubjectId: $stateParams.id

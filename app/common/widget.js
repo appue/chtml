@@ -144,7 +144,8 @@ angular.module('phoneApp')
          * ajax请求
          */
         ajaxRequest: function (params) {
-
+            var self = this;
+            
             if (!params) return;
 
             //--数据改造加用户信息start
@@ -157,7 +158,8 @@ angular.module('phoneApp')
             // cachePool.push('UserInfo', user, 2 / 24); //此处之后移动到登录页面
             //-------------ToDo
 
-            var postOpt = params.data || {},
+            var $scope = params.scope,
+                postOpt = params.data || {},
                 obj = {
                     Header: {
                         UserId: '',
@@ -175,7 +177,6 @@ angular.module('phoneApp')
             //--数据改造加用户信息end
 
             if (params.showPage) {
-                var $scope = params.scope;
 
                 if ($scope.Deploy.isLoading) return;
 
@@ -231,9 +232,28 @@ angular.module('phoneApp')
             }
 
             $http(ajaxConfig).success(function (data) {
+                    
+                if (data.Response && data.Response.Ack == "Success") {
+                    
+                    if (!$scope.Deploy) {
+                        $scope.Deploy = {};
+                    };
 
-                if (data && typeof options.success === 'function') {
-                    options.success(data);
+                    if (data.Response.State) {
+                        $scope.Deploy.isLogin = true;
+                    } else {
+                        $scope.Deploy.isLogin = false;
+                        cachePool.remove("UserInfo");
+                    }
+
+                    if (typeof options.success === 'function') {
+                        options.success(data);
+                    }
+
+                } else {
+
+                    self.msgToast('数据请求错误！');
+
                 }
 
                 effect();
@@ -243,7 +263,7 @@ angular.module('phoneApp')
                 if (typeof options.error === 'function') {
                     options.error(data);
                 } else {
-                    msgToast('请检查你的网络');
+                    self.msgToast('请检查你的网络！');
                 }
 
                 effect();

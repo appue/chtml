@@ -52,7 +52,7 @@ angular.module('phoneApp')
 
     //--获取幻灯片图片
     widget.ajaxRequest({
-        noMask: true,
+        scope: $scope,
         url: 'getHomeImage',
         success: function (data) {
             angular.extend($scope.DataList, data);

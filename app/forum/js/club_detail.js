@@ -35,6 +35,7 @@ angular.module('phoneApp')
     };
 
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getContentClub',
         data: {
             ClubId: $stateParams.id

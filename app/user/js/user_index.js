@@ -34,6 +34,7 @@ angular.module('phoneApp')
     // }
 
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getUserInfo',
         data: {
             UserId: $scope.Deploy.userId

@@ -17,6 +17,7 @@ angular.module('phoneApp')
     $scope.DataList = {};
 
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getFindHome',
         data: {},
         success: function (data) {

@@ -22,6 +22,7 @@ angular.module('phoneApp')
 
 
         widget.ajaxRequest({
+            scope: $scope,
             url: 'setFeedback',
             data: {
                 Content: $scope.cInput.content,

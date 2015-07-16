@@ -16,6 +16,7 @@ angular.module('phoneApp')
     $scope.DataList = {};
 
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getListClub',
         data: {
             SortType: 1

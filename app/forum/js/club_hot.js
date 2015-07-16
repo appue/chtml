@@ -21,6 +21,7 @@ angular.module('phoneApp')
     $scope.DataList = {};
 
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getHotListClub',
         data: {
             ShowNum: 10
