@@ -18,9 +18,6 @@ angular.module('phoneApp')
     var toastTimer = null,
         dataPool = $cacheFactory('dataPool');
 
-    var loginTpl = $compile('<user-login></user-login>');
-    angular.element(document.getElementsByTagName('body')[0]).append(loginTpl($rootScope));
-
     var tPackage = {
         /**
          * toast提示层
@@ -285,6 +282,8 @@ angular.module('phoneApp')
             $ionicHistory.clearHistory();
         },
 
+
+
         changeOpacity: function () {
             var top = $ionicScrollDelegate.$getByHandle('mainScroll').getScrollPosition().top,
                 opacity = 0;
@@ -302,6 +301,25 @@ angular.module('phoneApp')
             angular.element(document.querySelector('.js_op_header .js_op_change')).css({
                 "opacity": opacity
             });
+        },
+
+
+        /**
+         * 初始化用户登录信息
+         */
+        setInitUser: function (scope) {
+            var userInfo = cachePool.pull('UserInfo');
+
+            if (!scope.Deploy) {
+                scope.Deploy = {};
+            }
+
+            if (userInfo && userInfo.UserId) {
+                scope.Deploy.uId = userInfo.UserId;
+                scope.Deploy.isLogin = true;
+            } else {
+                scope.Deploy.isLogin = false;
+            }
         }
     };
 

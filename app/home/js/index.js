@@ -23,8 +23,11 @@ angular.module('phoneApp')
             $scope.DataList = {};
 
             $scope.Deploy = {
+                isLogin: false,
                 currentTab: 1
             };
+
+            widget.setInitUser($scope);
 
             self.deploy();
         },
@@ -53,8 +56,6 @@ angular.module('phoneApp')
         url: 'getHomeImage',
         success: function (data) {
             angular.extend($scope.DataList, data);
-        },
-        error: function (data) {
         }
     });
 
@@ -64,7 +65,18 @@ angular.module('phoneApp')
 
     //     $scope.loadMore();
     // });
-    $scope.updateData = function () {
+    $scope.updateData = function (tab) {
+        if (tab == 2) {
+            if (!$scope.Deploy.isLogin) {
+                $scope.showLogin();
+
+                return;
+            }
+            $scope.Deploy.currentTab = 2;
+        } else {
+            $scope.Deploy.currentTab = 1;
+        }
+        
         initConfig.deploy();
 
         $scope.loadMore();
@@ -99,7 +111,6 @@ angular.module('phoneApp')
             });
 
         } else {
-
             //--关注列表
             widget.ajaxRequest({
                 scope: $scope,
