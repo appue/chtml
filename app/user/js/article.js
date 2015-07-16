@@ -17,11 +17,7 @@ angular.module('phoneApp')
         UserId: $stateParams.uid,
         CateId: $stateParams.id
     };
-
-    $scope.Page = {
-        Title: "发布"
-    };
-
+    
     $scope.DataList = {
         ArticleList: []
     };

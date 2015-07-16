@@ -1,10 +1,8 @@
 angular.module('phoneApp')
-.controller('tUserAttention', function ($scope, $stateParams) {
 
-	$scope.backParam = { //--设置返回按钮
-		'url': [
-			'member/#/personal-' + $stateParams.id + '.htm'
-		]
-	};
+.controller('tUserAttention', function (
+    $scope,
+    $stateParams
+) {
 
 });
