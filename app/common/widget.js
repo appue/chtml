@@ -233,8 +233,9 @@ angular.module('phoneApp')
 
             $http(ajaxConfig).success(function (data) {
                     
-                if (data.Response && data.Response.Ack == "Success") {
-                    
+                // if (data.Response && data.Response.Ack == "Success") { toDo
+                if (data.Response) {
+
                     if (!$scope.Deploy) {
                         $scope.Deploy = {};
                     };
