@@ -3,6 +3,7 @@ angular.module('phoneApp')
 .controller('tUserSet', function (
 	$scope,
 	$stateParams,
+	$timeout,
 	widget
 ) {
 
@@ -61,4 +62,9 @@ angular.module('phoneApp')
 
 	};
 
+
+	$scope.loginOut = function () {
+		// widget.cleanLogin($scope);
+		$scope.showLogin();
+	};
 });

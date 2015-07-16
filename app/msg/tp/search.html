@@ -1,4 +1,4 @@
-<header-bar></header-bar>
+<header-bar title="邀请好友" ng-if="Deploy.isLogin"></header-bar>
 
 <ion-view hide-nav-bar="true">
     <ion-content overflow-scroll="true">
@@ -15,6 +15,8 @@
         </ul>
     </ion-content>
 </ion-view>
+
+<page-login ng-if="!Deploy.isLogin"></page-login>
 
 
 <!-- <header class="mod_header">

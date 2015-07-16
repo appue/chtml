@@ -1,6 +1,6 @@
-<header-bar></header-bar>
+<header-bar title="私聊" ng-if="Deploy.isLogin"></header-bar>
 
-<ion-view hide-nav-bar="true">
+<ion-view hide-nav-bar="true" ng-if="Deploy.isLogin">
     <ion-content overflow-scroll="true" class="mod_wrapper">
         <ul class="msg_talk_list" ng-if="DataList.TalkList.length > 0">
             <li ng-repeat="(k, v) in DataList.TalkList track by $index">
@@ -23,3 +23,5 @@
         <div class="mod_no_more" ng-if="!Deploy.isMore">没有数据了！</div>
     </ion-content>
 </ion-view>
+
+<page-login ng-if="!Deploy.isLogin"></page-login>

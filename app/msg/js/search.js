@@ -8,14 +8,7 @@ angular.module('phoneApp')
     $scope, 
     $state
 ){
-    $scope.Page = {
-        Title: "邀请好友"
-    };
     
-
-    //--设置默认返回
-    $scope.backParam = {
-        'url': ['home/#/msg.htm']
-    };
+    widget.initUser($scope);
     
 });

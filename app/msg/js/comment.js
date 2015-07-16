@@ -7,10 +7,7 @@ angular.module('phoneApp')
     $location,
     widget
 ) {
-    $scope.Page = {
-        Title: "评论"
-    };
-
+    
     $scope.Deploy = {
         pageIndex: 0,
         pageSize: 15,
@@ -18,11 +15,16 @@ angular.module('phoneApp')
         isMore: true
     };
 
+    widget.initUser($scope);
+
     $scope.DataList = {
         CommentList: []
     };
 
     $scope.loadMore = function() {
+
+        if (!$scope.Deploy.isLogin) return;
+
         widget.ajaxRequest({
             scope: $scope,
             showPage: true,
@@ -47,5 +49,8 @@ angular.module('phoneApp')
         });
     };
 
-    $scope.loadMore();
+
+    if ($scope.Deploy.isLogin) {
+        $scope.loadMore();
+    }
 });

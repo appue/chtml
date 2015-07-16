@@ -9,22 +9,23 @@ angular.module('phoneApp')
     $state,
     widget
 ){
-    $scope.Page = {
-        Title: "私聊"
-    };
-
     $scope.Deploy = {
         pageIndex: 0,
         pageSize: 15,
         isLoading: false,
         isMore: true
     };
+    
+    widget.initUser($scope);
 
     $scope.DataList = {
         TalkList: []
     };
 
     $scope.loadMore = function() {
+
+        if (!$scope.Deploy.isLogin) return;
+        
         widget.ajaxRequest({
             scope: $scope,
             showPage: true,
@@ -49,6 +50,8 @@ angular.module('phoneApp')
         });
     };
 
-
-    $scope.loadMore();
+    if ($scope.Deploy.isLogin) {
+        $scope.loadMore();
+    }
+    
 });

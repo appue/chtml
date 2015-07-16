@@ -1,6 +1,6 @@
-<header-bar title="设置"></header-bar>
+<header-bar title="设置" ng-if="Deploy.isLogin"></header-bar>
 
-<ion-view hide-nav-bar="true">
+<ion-view hide-nav-bar="true" ng-if="Deploy.isLogin">
     <ion-content overflow-scroll="true" class="mod_wrapper">
         <div ng-if="Deploy.isLogin">
             <ul class="unit_owner_set">
@@ -58,14 +58,15 @@
                 </li>
             </ul>
 
-            <div class="unit_btn">退出登录</div>
+            <div class="unit_btn" ng-click="loginOut()">退出登录</div>
         </div>
 
     </ion-content>
 </ion-view>
 
-<user-login></user-login>
+<page-login ng-if="!Deploy.isLogin"></page-login>
 
+<user-login></user-login>
 
 <popup id="gender" title="选择性别" popup-confirm="chooseSex">
     <div class="choose_gender" ngd-click="chooseSex($event)" selector="span">
