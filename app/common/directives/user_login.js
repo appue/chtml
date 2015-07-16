@@ -51,27 +51,31 @@ angular.module('phoneApp')
                     return;
                 }
 
-
-                $scope.closeLogin();
-
-                $timeout(function (){
-
-                }, 300);
-
                 widget.ajaxRequest({
                     url: 'getLogin',
                     data: {
                         Phone: $scope.tInput.phone,
-                        Password: $scope.tInput.Password
+                        Password: md5($scope.tInput.Password)
                     },
                     success: function (data) {
 
                         if (data.Response && data.Response.State) {
-                            // $scope.Deploy.isLogin = true;
+                            cachePool.push('UserInfo', {
+                                Auth: data.Auth,
+                                UserId: data.UserId
+                            }, 2 / 24);
+
+                            $scope.Deploy.isLogin = true;
                         } else {
-                            // $scope.Deploy.isLogin = false;
+                            $scope.Deploy.isLogin = false;
                         }
 
+
+                        $scope.closeLogin();
+
+                        $timeout(function (){
+                            $element.css("display", "none");
+                        }, 300);
                     },
                     error: function (data) {
                     }

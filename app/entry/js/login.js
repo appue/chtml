@@ -45,10 +45,14 @@ angular.module('phoneApp')
 				Password: md5($scope.inputVal.password)
 			},
 			success: function (data) { //todo...
-				cachePool.push('UserInfo', {
-					Auth: data.Auth,
-					UserId: data.UserId
-				}, 2 / 24);
+
+                if (data.Response && data.Response.State) {
+                    cachePool.push('UserInfo', {
+                        Auth: data.Auth,
+                        UserId: data.UserId
+                    }, 2 / 24);
+                }
+                
 			}
 		});
 

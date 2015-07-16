@@ -18,6 +18,9 @@ angular.module('phoneApp')
     var toastTimer = null,
         dataPool = $cacheFactory('dataPool');
 
+    var loginTpl = $compile('<user-login></user-login>');
+    angular.element(document.getElementsByTagName('body')[0]).append(loginTpl($rootScope));
+
     var tPackage = {
         /**
          * toast提示层
