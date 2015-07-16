@@ -18,6 +18,7 @@ angular.module('phoneApp')
     $scope.DataList = {};
 
     widget.ajaxRequest({
+        scope: $scope,
         url: 'getClubHotUser',
         data: {
             ClubId: $stateParams.id

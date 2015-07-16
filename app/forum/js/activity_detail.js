@@ -29,6 +29,7 @@ angular.module('phoneApp')
 
         //--获取活动的基本信息
         widget.ajaxRequest({
+            scope: $scope,
             url: 'getActivityInfo',
             data: {
                 ActivityId: $stateParams.id,
@@ -75,6 +76,7 @@ angular.module('phoneApp')
 
         //--获取帖子内容
         widget.ajaxRequest({
+            scope: $scope,
             url: 'getContentArticle',
             data: {
                 ArticleId: $stateParams.id

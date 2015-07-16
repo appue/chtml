@@ -37,6 +37,7 @@ angular.module('phoneApp')
 
     $scope.loadCate = function (type) {
         widget.ajaxRequest({
+            scope: $scope,
             url: 'getListCategory',
             data: {
                 CateId: $scope.Deploy.cateId

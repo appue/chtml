@@ -43,6 +43,7 @@ angular.module('phoneApp')
             $scope.pageIndex++;
 
             widget.ajaxRequest({
+                scope: $scope,
                 noMask: true,
                 url: 'getSearchContent',
                 data: {

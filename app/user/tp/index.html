@@ -8,7 +8,8 @@
         <ul class="js_op_change this_op">
             <li ng-click="toMail()"></li>
             <li>我</li>
-            <li page-jump data-router="forum.user-set"></li>
+            <li page-jump data-router="forum.user-set" ng-if="Deploy.isLogin"></li>
+            <li ng-click="showLogin()" ng-if="!Deploy.isLogin"></li>
         </ul>
     </header>
 
