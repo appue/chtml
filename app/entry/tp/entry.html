@@ -3,11 +3,13 @@
     <div class='login_bg'></div>
 
     <div class="entry_button">
-        <a ng-click="registerSelect()" class="register">注册</a>
-        <a ui-sref="forum.login" class="login">登录</a>
+        <!-- <a ng-click="registerSelect()" class="register">注册</a> -->
+        <a page-jump data-router="forum.">注册</a>
+        <a page-jump data-router="forum.login" class="login">登录</a>
     </div>
+    
     <div class="entry_help">
-        <a>? 帮助与反馈</a>
+        <a page-jump data-router="forum.user-feedback">? 帮助与反馈</a>
     </div>
 
 </ion-view>

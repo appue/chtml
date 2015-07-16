@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.controller('registerCreateCtrl', function (
+.controller('tRegCreate', function (
     $scope,
     $state,
     $ionicPopup,

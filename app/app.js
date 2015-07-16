@@ -34,61 +34,61 @@ angular.module('phoneApp', [
         .state('forum.entry', {
             url: '/entry.htm',
             templateUrl: 'entry/tp/entry.html',
-            controller: 'entryCtrl'
+            controller: 'tEntry'
         })
         //登录页
         .state('forum.login', {
             url: '/login.htm',
             templateUrl: 'entry/tp/login.html',
-            controller: 'loginCtrl'
+            controller: 'tLogin'
         })
         //登录-忘记密码页
-        .state('forum.loginForget', {
+        .state('forum.password-forget', {
             url: '/login/forget.htm',
-            templateUrl: 'entry/tp/login_forget_password.html',
-            controller: 'loginForgetCtrl'
+            templateUrl: 'entry/tp/password_forget.html',
+            controller: 'tPasswordForget'
         })
         //登录-重置密码页
-        .state('forum.loginReset', {
+        .state('forum.password-reset', {
             url: '/login/reset/:phone', //@params:phone
-            templateUrl: 'entry/tp/login_reset_password.html',
-            controller: 'loginResetCtrl'
+            templateUrl: 'entry/tp/password_reset.html',
+            controller: 'tPasswordReset'
         })
         //注册-创建资料页
-        .state('forum.registerCreate', {
-            url: '/register/create.htm',
-            templateUrl: 'entry/tp/register_create_data.html',
-            controller: 'registerCreateCtrl'
+        .state('forum.reg-create', {
+            url: '/reg/create.htm',
+            templateUrl: 'entry/tp/reg_create.html',
+            controller: 'tRegCreate'
         })
         //注册-设置账号密码页
-        .state('forum.registerAccount', {
-            url: '/register/account.htm',
-            templateUrl: 'entry/tp/register_set_account.html',
-            controller: 'registerAccountCtrl'
+        .state('forum.reg-account', {
+            url: '/reg/account.htm',
+            templateUrl: 'entry/tp/reg_set_account.html',
+            controller: 'tRegAccount'
         })
         //注册-验证码页
-        .state('forum.registerVcode', {
-            url: '/register/vcode/:phone', //@params:phone
-            templateUrl: 'entry/tp/register_vcode.html',
-            controller: 'registerVcodeCtrl'
+        .state('forum.reg-vcode', {
+            url: '/reg/vcode/:phone', //@params:phone
+            templateUrl: 'entry/tp/reg_vcode.html',
+            controller: 'tRegVcode'
         })
         //注册-完成页
-        .state('forum.registerDone', {
-            url: '/register/done.htm',
-            templateUrl: 'entry/tp/register_done.html',
-            controller: 'registerDoneCtrl'
+        .state('forum.reg-done', {
+            url: '/reg/done.htm',
+            templateUrl: 'entry/tp/reg_done.html',
+            controller: 'tRegDone'
         })
         //注册-关注感兴趣栏目页
-        .state('forum.registerColumn', {
-            url: '/register/column.htm',
-            templateUrl: 'entry/tp/register_take_column.html',
-            controller: 'registerColumnCtrl'
+        .state('forum.reg-column', {
+            url: '/reg/column.htm',
+            templateUrl: 'entry/tp/reg_take_column.html',
+            controller: 'tRegColumn'
         })
         //注册-关注感兴趣的人页
-        .state('forum.registerPeople', {
-            url: '/register/people.htm',
-            templateUrl: 'entry/tp/register_focus_people.html',
-            controller: 'registerFocusCtrl'
+        .state('forum.reg-people', {
+            url: '/reg/people.htm',
+            templateUrl: 'entry/tp/reg_focus_people.html',
+            controller: 'tRegPeople'
         })
 
         /*==========发现==========*/

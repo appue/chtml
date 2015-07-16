@@ -1,6 +1,11 @@
 angular.module('phoneApp')
 
-.controller('loginCtrl', function ($scope, widget, cachePool, ENV) {
+.controller('tLogin', function (
+	$scope,
+	widget,
+	cachePool,
+	ENV
+) {
 
 	if (ENV.isHybrid) {
 		document.addEventListener("deviceready", onDeviceReady, false);

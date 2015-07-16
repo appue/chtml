@@ -1,6 +1,11 @@
 angular.module('phoneApp')
 
-.controller('entryCtrl', function ($scope, $state, $timeout, $ionicPopup) {
+.controller('tEntry', function (
+	$scope,
+	$state,
+	$timeout,
+	$ionicPopup
+) {
 
 	var registerPopup = null;
 	$scope.registerSelect = function () {
