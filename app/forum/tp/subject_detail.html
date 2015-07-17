@@ -21,7 +21,7 @@
         <div class="mod_list_img mb0" ng-if="DataList.CategoryList.length > 0">
             <ion-scroll direction="x" scrollbar-x="false" locking="false">
                 <div class="this_wrapper">
-                    <a ng-repeat="(k, v) in DataList.CategoryList track by $index" ui-sref="forum.cate({id: v.CateId})">
+                    <a ng-repeat="(k, v) in DataList.CategoryList track by $index" page-jump data-router="forum.cate" data-options='{ "id": {{v.CateId}} }'>
                         <div class="this_img">
                             <img ng-src="{{v.ImageUrl}}" />
                         </div>
@@ -37,7 +37,7 @@
         <!--瀑布流-->
         <falls>
             <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}">
-                <a class="this_border" ui-sref="forum.detail({id: v.ArticleId})">
+                <a class="this_border" page-jump data-router="forum.detail" data-options='{ "id": {{v.ArticleId}} }'>
                     <img ng-src="{{v.Images[0].ImageUrl}}" />
                     <article>
                         <div class="this_text">{{v.Images[0].Description}}</div>
