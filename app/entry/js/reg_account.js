@@ -10,10 +10,12 @@ angular.module('phoneApp')
 
     if (!regData) {
         widget.msgToast('用户注册信息已过期请重新返回输入！');
+        // $state.reload();
+        $state.go('forum.reg-create');
         return;
     }
 
-    $scope.cInput = widget.cacheData('personalData') || {};
+    $scope.cInput = widget.cacheData('personalData');
 
     $scope.cInput.password = null;
     $scope.cInput.btnText = "发送验证码"
@@ -57,7 +59,27 @@ angular.module('phoneApp')
                 PhoneCode: $scope.cInput.vcode
             },
             success: function (data) {
-                widget.msgToast('验证码已发送到'+ $scope.cInput.phone +'手机上');
+                if (data.Response.Ack == "Success") {
+
+                    //注册信息写入本地，登录
+                    cachePool.push('UserInfo', {
+                        Phone: $scope.cInput.phone,
+                        UserName: $scope.cInput.nickname,
+                        Sex: $scope.cInput.sex,
+                        City: $scope.cInput.city,
+                        CityName: $scope.cInput.cityName,
+                        Job: $scope.cInput.job,
+                        JobName: $scope.cInput.jobName,
+                        Auth: data.Auth,
+                        UserId: data.UserId 
+                    }, 2 / 24);
+
+                    $ionicViewSwitcher.nextDirection("forward");
+                    $state.go("forum.reg-done");
+
+                } else {
+                    widget.msgToast('注册失败：'+ data.Message);
+                }
             }
         });
     };

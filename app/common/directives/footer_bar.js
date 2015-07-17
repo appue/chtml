@@ -13,25 +13,6 @@ angular.module('phoneApp')
         uid = UserInfo.UserId;
     }
 
-    var SiteUrl = [
-        {
-            'route': 'home.index'
-        },
-        {
-            'route': 'forum.find'
-        },
-        {
-            'route': 'forum.index'
-        },
-        {
-            'route': 'msg.index'
-        },
-        {
-            'route': 'member.index',
-            'options': {}
-        }
-    ];
-
     return {
         restrict: 'E',
         replace: true,
