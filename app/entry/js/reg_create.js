@@ -31,7 +31,7 @@ angular.module('phoneApp')
         widget.cacheData('personalData', $scope.inputVal);
 
         $ionicViewSwitcher.nextDirection("forward");
-        $state.go('forum.registerAccount');
+        $state.go('forum.reg-account');
 
     };
 

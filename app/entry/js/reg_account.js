@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.controller('tRegSetAccount', function (
+.controller('tRegAccount', function (
     $scope,
     $state,
     widget

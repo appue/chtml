@@ -54,16 +54,16 @@ angular.module('phoneApp', [
         //     templateUrl: 'entry/tp/password_reset.html',
         //     controller: 'tPasswordReset'
         // })
-        //注册-创建资料页
+        //注册-创建资料页(第一步)
         .state('forum.reg-create', {
             url: '/reg/create.htm',
             templateUrl: 'entry/tp/reg_create.html',
             controller: 'tRegCreate'
         })
-        //注册-设置账号密码页
+        //注册-设置账号密码页(第二步)
         .state('forum.reg-account', {
             url: '/reg/account.htm',
-            templateUrl: 'entry/tp/reg_set_account.html',
+            templateUrl: 'entry/tp/reg_account.html',
             controller: 'tRegAccount'
         })
         //注册-验证码页
