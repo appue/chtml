@@ -14,7 +14,7 @@ angular.module('phoneApp', [
 
         /*==========首页==========*/
         //首页
-        .state('forum.index', {
+        .state('forum.home', {
             // cache: false,
             url: '/index.htm',
             templateUrl: 'home/tp/index.html',

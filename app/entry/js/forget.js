@@ -14,18 +14,28 @@ angular.module('phoneApp')
         isSend: false
     };
 
-
+    $scope.isModify = true;
 
     // 发送验证码
     $scope.sendCode = function () {
         var status = widget.checkPhone($scope.cInput.phone);
 
-        // if (status) return;
+        if (status) return;
 
         if ($scope.cInput.isSend) {
             widget.msgToast('请稍后再刷新验证码！');
             return;
         }
+
+        widget.ajaxRequest({
+            url: 'setSendPhone',
+            data: {
+                Phone: $scope.cInput.phone
+            },
+            success: function (data) {
+                widget.msgToast('验证码已发送到'+ $scope.cInput.phone +'手机上');
+            }
+        });
 
         var num = 60;
 
@@ -60,8 +70,13 @@ angular.module('phoneApp')
             return;
         }
 
-        if ($scope.cInput.passwordCheck) {
+        if (!$scope.cInput.passwordCheck) {
             widget.msgToast('请输入确认密码！');
+            return;
+        }
+
+        if ($scope.cInput.password.length < 6 || $scope.cInput.password.length > 16) {
+            widget.msgToast('密码的长度应该为6-16位');
             return;
         }
 
@@ -70,8 +85,13 @@ angular.module('phoneApp')
             return;
         }
 
-        if ($scope.cInput.vcode) {
+        if (!$scope.cInput.vcode) {
             widget.msgToast('请输入手机验证码！');
+            return;
+        }
+
+        if ($scope.cInput.vcode.length > 4 || $scope.cInput.vcode.length < 4) {
+            widget.msgToast('您输入的手机验证码长度不对');
             return;
         }
 
@@ -93,6 +113,23 @@ angular.module('phoneApp')
         //         });
         //     }
         // });
+
+
+        widget.ajaxRequest({
+            url: 'setNewPassword',
+            data: {
+                Phone: $scope.cInput.phone,
+                PhoneCode: $scope.cInput.vcode,
+                Password: md5($scope.cInput.password)
+            },
+            success: function (data) {
+                if (data.isModify) {
+
+                } else {
+                    widget.msgToast('修改密码错误，请检查您输入的信息！');
+                }
+            }
+        });
 
     };
 

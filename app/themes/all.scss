@@ -3,6 +3,11 @@
 $green_val: #3cc482;
 $gray_val: #cacdcb;
 
+@mixin font_icon {
+    font-family: "Ionicons";
+    font-weight: normal;
+}
+
 @import "ionic/ionic.scss";
 
 

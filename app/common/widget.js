@@ -158,7 +158,7 @@ angular.module('phoneApp')
             // cachePool.push('UserInfo', user, 2 / 24); //此处之后移动到登录页面
             //-------------ToDo
 
-            var $scope = params.scope,
+            var $scope = params.scope || '',
                 postOpt = params.data || {},
                 obj = {
                     Header: {
@@ -236,16 +236,18 @@ angular.module('phoneApp')
                 // if (data.Response && data.Response.Ack == "Success") { toDo
                 if (data.Response) {
 
-                    if (!$scope.Deploy) {
-                        $scope.Deploy = {};
-                    };
+                    if ($scope) {
+                        if (!$scope.Deploy) {
+                            $scope.Deploy = {};
+                        };
 
-                    if (data.Response.State) {
-                        $scope.Deploy.isLogin = true;
-                    } else {
-                        $scope.Deploy.isLogin = false;
-                        $scope.Deploy.uId = 0;
-                        cachePool.remove("UserInfo");
+                        if (data.Response.State) {
+                            $scope.Deploy.isLogin = true;
+                        } else {
+                            $scope.Deploy.isLogin = false;
+                            $scope.Deploy.uId = 0;
+                            cachePool.remove("UserInfo");
+                        }
                     }
 
                     if (typeof options.success === 'function') {

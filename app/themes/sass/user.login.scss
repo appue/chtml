@@ -117,3 +117,60 @@
         padding: 0 10px;
     }
 }
+
+
+// 忘记密码
+.user_login_forget {
+    background: #fff;
+    padding-top: 20px;
+    &:before {
+        @include font_icon;
+        text-align: center;
+        font-size: 100px;
+        line-height: 100px;
+        content: "\f120";
+        display: block;
+        color: $green_val;
+    }
+    div {
+        text-align: center;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+    ul {
+        li {
+            line-height: 50px;
+            text-indent: 10px;
+            position: relative;
+            @include border_top_half;
+            &:before,
+            &:after {
+                @include font_icon;
+                text-align: center;
+                font-size: 30px;
+                vertical-align: middle;
+                margin-right: 10px;
+            }
+            &:before {
+                color: $green_val;
+            }
+            &:after {
+                color: #ddd;
+                content: "\f3d3";
+                position: absolute;
+                right: 8px;
+
+            }
+            &:nth-child(1) {
+                &:before {
+                    content: "\f448";
+                }
+            }
+            &:nth-child(2) {
+                &:before {
+                    content: "\f2d8";
+                }
+            }
+        }
+    }
+}
