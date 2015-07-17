@@ -21,9 +21,11 @@ angular.module('phoneApp')
 				var $that = angular.element(e.delegationTarget);
 
 				if ($that.length > 0) { //选择
-					scope.tmpJob = $that.data("id");
+					scope.tmpJob = $that.attr("data-id");
+					scope.tmpJobName = $that.attr("data-name");
 				} else { //确定
 					scope.cInput.job = scope.tmpJob;
+					scope.cInput.jobName = scope.tmpJobName;
 				}
 
 			};

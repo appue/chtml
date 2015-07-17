@@ -1,6 +1,6 @@
 <div class="choose_job" ngd-click="chooseJob($event)" selector="li">
 	<ul>
-		<li ng-repeat="(k, v) in DataList.JobList track by $index" ng-class="{ current: v.Id == cInput.job }">
+		<li ng-repeat="(k, v) in DataList.JobList track by $index" data-id="{{v.Id}}" data-name="{{v.Name}}" ng-class="{ current : tmpJob == {{v.Id}} }">
 			{{v.Name}}
 		</li>
 	</ul>

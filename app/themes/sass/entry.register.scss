@@ -378,7 +378,7 @@
                 -webkit-border-radius: 10px;
                 margin-right: 10px;
             }
-            .current {
+            &.current {
                 &:before {
                     background: $green_val;
                 }

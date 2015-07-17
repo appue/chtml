@@ -6,7 +6,15 @@ angular.module('phoneApp')
     widget
 ) {
 
-    $scope.cInput = widget.cacheData('accountData') || {};
+    var regData = widget.cacheData('personalData');
+
+    if (!regData) {
+        widget.msgToast('用户注册信息已过期请重新返回输入！');
+        return;
+    }
+
+    $scope.cInput = widget.cacheData('personalData') || {};
+
     $scope.cInput.password = null;
     $scope.cInput.btnText = "发送验证码"
 
@@ -37,15 +45,14 @@ angular.module('phoneApp')
             return;
         }
 
-
         widget.ajaxRequest({
             url: 'setRegInfo',
             data: {
                 Phone: $scope.cInput.phone,
-                UserName: <i>//---用户昵称(用户名支持汉字、字母、数字、-和)</i>
-                Sex: <i>//--------用户性别（1：男、2：女）</i>
-                AreaId: <i>//-----地区ID</i>
-                Job: <i>//--------岗位</i>
+                UserName: $scope.cInput.nickname,
+                Sex: $scope.cInput.sex,
+                AreaId: $scope.cInput.city,
+                Job: $scope.cInput.job,
                 Password: md5($scope.cInput.password),
                 PhoneCode: $scope.cInput.vcode
             },
