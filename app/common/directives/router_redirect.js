@@ -66,7 +66,9 @@ angular.module('phoneApp')
                 }
                 
                 var router = attrs.router,
-                    options = attrs.options ? JSON.parse(attrs.options) : {};
+                    options = attrs.options ? scope.$eval(attrs.options) : {};
+
+                console.log(options);
 
                 $ionicViewSwitcher.nextDirection(direction);
 
