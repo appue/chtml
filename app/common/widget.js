@@ -203,11 +203,11 @@ angular.module('phoneApp')
                     // isPopup: false, //-----------请求结果是否有popup
                 },
                 ajaxConfig = { //-----------------ajax请求配置
-                    method: 'POST',
-                    url: ENV.apiSocket + params.url || '',
+                    // method: 'POST',
+                    // url: ENV.apiSocket + params.url || '',
 
-                    // method: 'GET',
-                    // url: ENV.apiSocket + params.url + '.json' || '',
+                    method: 'GET',
+                    url: ENV.apiSocket + params.url + '.json' || '',
 
                     data: postOpt,
                     timeout: 15000
@@ -232,6 +232,11 @@ angular.module('phoneApp')
             }
 
             $http(ajaxConfig).success(function (data) {
+
+                data.Response = {
+                    "Ack": "Success",
+                    "State": true
+                };
                     
                 // if (data.Response && data.Response.Ack == "Success") { toDo
                 if (data.Response) {

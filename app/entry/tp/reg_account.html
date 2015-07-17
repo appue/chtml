@@ -1,18 +1,26 @@
-<header-bar title="<span>（</span>2<span>/3）</span>设置账号和密码" right="下一步|goNextStep">
+<header-bar title="<span>（</span>2<span>/2）</span>设置账号和密码">
 </header-bar>
 
 <ion-view>
     <ion-content overflow-scroll="true" class="register_layout mod_wrapper">
 
 		<div class="mod_layout">
-            <p class="account_password_tip">设置用于登录师乐汇的手机号和密码</p>
-            <ul class="mod_list_default">
+            <ul class="mod_list_default mb10">
                 <li class="phone">
-                    <input ng-model="inputVal.phone" type="number" placeholder="手机号码"></li>
+                    <input ng-model="cInput.phone" type="number" placeholder="设置用于登录的手机号" />
+                </li>
                 <li class="password">
-                    <input ng-model="inputVal.password" type="password" placeholder="密码"></li>
+                    <input ng-model="cInput.password" type="password" placeholder="设置用于登录的密码" />
+                </li>
             </ul>
         </div>
+            
+        <div class="mod_phone_code">
+            <button ng-click="sendCode()" ng-class="{ disable: cInput.isSend }">{{cInput.btnText}}</button>
+            <input ng-model="cInput.vcode" type="number" maxlength="4" placeholder="请输入收到的验证码" />
+        </div>
         
+        <div class="unit_btn" ng-click="submitReg()">提交注册</div>
+
     </ion-content>
 </ion-view>

@@ -1,25 +1,54 @@
-<header-bar title="<span>（</span>1<span>/3）</span>创建个人资料" right="下一步|goNextStep"></header-bar>
+<header-bar title="<span>（</span>1<span>/2）</span>创建个人资料" right="下一步|goNextStep"></header-bar>
 
 <ion-view >
     <ion-content overflow-scroll="true" class="register_layout mod_wrapper">
     
         <div class="mod_layout">
-            <ul class="register_data">
+<!--             <ul class="register_data">
                 <li class="nickname">
                     <label>昵称</label>
-                    <input ng-model="inputVal.nickname" type="text" placeholder="用户名支持汉字、字母、数字"></li>
+                    <input ng-model="cInput.nickname" type="text" placeholder="用户名支持汉字、字母、数字">
+                </li>
                 <li class="gender">
-                    <span ng-click="inputVal.sex = 1">
-                        <input name="sex" ng-checked="inputVal.sex == 1" type="radio">
+                    <span ng-click="cInput.sex = 1">
+                        <input name="sex" ng-checked="cInput.sex == 1" type="radio">
                         <label>女</label>
                     </span>
-                    <span ng-click="inputVal.sex = 2">
-                        <input name="sex" ng-checked="inputVal.sex == 2" type="radio">
+                    <span ng-click="cInput.sex = 2">
+                        <input name="sex" ng-checked="cInput.sex == 2" type="radio">
                         <label>男</label>
                     </span>
                 </li>
-                <li location-popup class="location">{{inputVal.city.Name}} {{inputVal.village.Name}}</li>
-                <li job-popup class="post">{{inputVal.job}}</li>
+                <li location-popup class="location">{{cInput.city.Name}} {{cInput.village.Name}}</li>
+                <li job-popup class="post">{{cInput.job}}</li>
+            </ul>
+ -->
+            <ul class="reg_info">
+                <li class="this_nickname">
+                    <label>昵称</label>
+                    <input ng-model="cInput.nickname" type="text" placeholder="用户名支持汉字、字母、数字、和下划线" />
+                </li>
+                <li class="this_sex">
+                    <label></label>
+                    <span ng-click="cInput.sex = 1">
+                        <input name="sex" ng-checked="cInput.sex == 1" type="radio" />
+                        <em>男</em>
+                    </span>
+                    <span ng-click="cInput.sex = 2">
+                        <input name="sex" ng-checked="cInput.sex == 2" type="radio" />
+                        <em>女</em>
+                    </span>
+                </li>
+
+                <li location-popup class="this_locate">
+                    <label>位置</label>
+                    <p>{{cInput.locateName}}</p>
+                </li>
+
+                <li job-popup class="this_job">
+                    <label>职业</label>
+                    <p>{{cInput.jobName}}</p>
+                </li>
             </ul>
         </div>
 

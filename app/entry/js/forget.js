@@ -14,8 +14,6 @@ angular.module('phoneApp')
         isSend: false
     };
 
-    $scope.isModify = true;
-
     // 发送验证码
     $scope.sendCode = function () {
         var status = widget.checkPhone($scope.cInput.phone);
@@ -39,7 +37,7 @@ angular.module('phoneApp')
 
         var num = 60;
 
-        $scope.cInput.btnText = num;
+        $scope.cInput.btnText = "重新发送("+ num +")";
 
         timer();
 
@@ -52,7 +50,7 @@ angular.module('phoneApp')
                     return;
                 }
                 num--;
-                $scope.cInput.btnText = num;
+                $scope.cInput.btnText = "重新发送("+ num +")";
                 timer();
             }, 1000);
         }

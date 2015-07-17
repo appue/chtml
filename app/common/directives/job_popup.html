@@ -1,4 +1,12 @@
-<div class="choose_post" ngd-click="chooseJob($event)" selector="li">
+<div class="choose_job" ngd-click="chooseJob($event)" selector="li">
+	<ul>
+		<li ng-repeat="(k, v) in DataList.JobList track by $index" ng-class="{ current: v.Id == cInput.job }">
+			{{v.Name}}
+		</li>
+	</ul>
+</div>
+
+<!-- <div class="choose_post" ngd-click="chooseJob($event)" selector="li">
 	<ul>
 		<li>
 			<input ng-checked="tmpJob == '园长'" name="job" type="radio">
@@ -17,4 +25,4 @@
 			<label>其他</label>
 		</li>
 	</ul>
-</div>
+</div> -->

@@ -1,3 +1,92 @@
+// 注册输入界面
+.reg_info {
+    li {
+        display: -webkit-box;
+        line-height: 30px;
+        padding: 5px 0;
+        @include border_bottom_half;
+        label {
+            display: block;
+            width: 25px;
+            font-size: 0;
+            text-align: center;
+            margin-right: 10px;
+            &:before {
+                @include font_icon;
+                font-size: 18px;
+                color: #ccc;
+                line-height: 30px;
+            }
+        }
+        p {
+            display: block;
+            width: 0;
+            margin: 0;
+            -webkit-box-flex: 1;
+        }
+
+        &.this_nickname {
+            display: block;
+            label {
+                font-size: 14px;
+                width: 60px;
+                &:before {
+                    content: "\f3a0";
+                    margin-right: 10px;
+                }
+            }
+            input {
+                width: 100%;
+                padding-left: 30px;
+                font-size: 12px;
+            }
+        }
+        &.this_sex {
+            label {
+                &:before {
+                    width: 25px;
+                    height: 30px;
+                    display: block;
+                    content: "";
+                    background: url(img/icon_gender.png) no-repeat center center;
+                    background-size: 15px auto;
+                }
+            }
+            span {
+                padding: 0 15px;
+                input {
+                    width: 8px;
+                    height: 8px;
+                    -webkit-border-radius: 4px;
+                    background-color: #cacdcb;
+                    margin-right: 5px;
+                    -webkit-transition: background-color .3s ease-in-out;
+                    transition: background-color .3s ease-in-out;
+                    &:checked {
+                        background-color: #3dc482;
+                    }
+                }
+            }
+        }
+
+        &.this_locate {
+            label {
+                &:before {
+                    content: "\f456";
+                }
+            }
+        }
+
+        &.this_job {
+            label {
+                &:before {
+                    content: "\f41c";
+                }
+            }
+        }
+    }
+}
+
 .register_layout {
     .register_data li {
         padding: 14px 0 14px 30px;
@@ -239,6 +328,7 @@
         }
     }
 }
+
 .choose_post {
     ul {
         width: 210px;
@@ -261,6 +351,36 @@
                 transition: background-color .3s ease-in-out;
                 &:checked {
                     background-color: #3dc482;
+                }
+            }
+        }
+    }
+}
+
+
+// 弹框选择岗位
+.choose_job {
+    ul {
+        width: 210px;
+        margin: 0 auto;
+        overflow: hidden;
+        li {
+            text-indent: 20px;
+            line-height: 44px;
+            @include border_bottom_half;
+            &:before {
+                width: 10px;
+                height: 10px;
+                background: $gray_val;
+                content: "";
+                display: inline-block;
+                vertical-align: middle;
+                -webkit-border-radius: 10px;
+                margin-right: 10px;
+            }
+            .current {
+                &:before {
+                    background: $green_val;
                 }
             }
         }

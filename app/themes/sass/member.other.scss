@@ -288,30 +288,3 @@
         }
     }
 }
-.choose_post {
-    ul {
-        width: 210px;
-        margin: 0 auto;
-        overflow: hidden;
-        li {
-            line-height: 44px;
-            @include border_bottom_half;
-            &:last-child {
-                border-bottom: 0 none;
-            }
-            input {
-                width: 8px;
-                height: 8px;
-                -webkit-border-radius: 4px;
-                background-color: #cacdcb;
-                margin-left: 28px;
-                margin-right: 16px;
-                -webkit-transition: background-color .3s ease-in-out;
-                transition: background-color .3s ease-in-out;
-                &:checked {
-                    background-color: #3dc482;
-                }
-            }
-        }
-    }
-}

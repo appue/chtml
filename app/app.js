@@ -48,12 +48,6 @@ angular.module('phoneApp', [
             templateUrl: 'entry/tp/forget.html',
             controller: 'tLoginForget'
         })
-        //登录-重置密码页
-        // .state('forum.password-reset', {
-        //     url: '/login/reset/:phone', //@params:phone
-        //     templateUrl: 'entry/tp/password_reset.html',
-        //     controller: 'tPasswordReset'
-        // })
         //注册-创建资料页(第一步)
         .state('forum.reg-create', {
             url: '/reg/create.htm',
