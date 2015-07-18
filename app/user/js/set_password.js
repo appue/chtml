@@ -6,34 +6,98 @@ angular.module('phoneApp')
 	widget
 ) {
 
-	$scope.inputVal = {};
+	widget.initUser($scope);
+	
+	$scope.Deploy = {
+		isLogin: true
+	};
+
+	console.log($scope.UserInfo);
+
+
+    $scope.cInput = {
+        btnText: "发送验证码",
+        isSend: false
+    };
+
+    // 发送验证码
+    $scope.sendCode = function () {
+        var status = widget.checkPhone($scope.cInput.phone);
+
+        if (status) return;
+
+        if ($scope.cInput.isSend) {
+            widget.msgToast('请稍后再刷新验证码！');
+            return;
+        }
+
+        widget.ajaxRequest({
+            url: 'setSendPhone',
+            data: {
+                Phone: $scope.cInput.phone
+            },
+            success: function (data) {
+                widget.msgToast('验证码已发送到'+ $scope.cInput.phone +'手机上');
+            }
+        });
+
+        var num = 60;
+
+        $scope.cInput.btnText = "重新发送("+ num +")";
+
+        timer();
+
+        function timer() {
+            $scope.cInput.isSend = true;
+            $timeout(function () {
+                if (num == 0) {
+                    $scope.cInput.isSend = false;
+                    $scope.cInput.btnText = "重新发送验证码";
+                    return;
+                }
+                num--;
+                $scope.cInput.btnText = "重新发送("+ num +")";
+                timer();
+            }, 1000);
+        }
+    };
 
 	$scope.submitModify = function () {
 
-		if (!$scope.inputVal.oldPassword) {
+		if (!$scope.cInput.oldPassword) {
 			widget.msgToast('请输入旧密码');
 			return;
 		}
 
-		if (!$scope.inputVal.password) {
+		if (!$scope.cInput.password) {
 			widget.msgToast('请输入新密码');
 			return;
 		}
 
-		if ($scope.inputVal.password.length <= 5) {
-			widget.msgToast('新密码必须大于或等于6位');
+        if ($scope.cInput.password.length < 6 || $scope.cInput.password.length > 16) {
+            widget.msgToast('密码的长度应该为6-16位');
+            return;
+        }
+
+		if (!$scope.cInput.passwordCheck) {
+			widget.msgToast('请输入确认密码');
 			return;
 		}
 
-		if (!$scope.inputVal.passwordCheck) {
-			widget.msgToast('请再次输入新密码');
-			return;
-		}
-
-		if ($scope.inputVal.passwordCheck !== $scope.inputVal.password) {
+		if ($scope.cInput.passwordCheck !== $scope.cInput.password) {
 			widget.msgToast('两次输入不相符，请重新输入');
 			return;
 		}
+
+        if (!$scope.cInput.vcode) {
+            widget.msgToast('请输入手机验证码！');
+            return;
+        }
+
+        if ($scope.cInput.vcode.length > 4 || $scope.cInput.vcode.length < 4) {
+            widget.msgToast('您输入的手机验证码长度不对');
+            return;
+        }
 
 		widget.ajaxRequest({
 			scope: $scope,

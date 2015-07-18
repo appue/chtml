@@ -1,8 +1,9 @@
-<header-bar title="设置" ng-if="Deploy.isLogin"></header-bar>
+<section ng-if="Deploy.isLogin">
+    <header-bar title="设置"></header-bar>
 
-<ion-view hide-nav-bar="true" ng-if="Deploy.isLogin">
-    <ion-content overflow-scroll="true" class="mod_wrapper">
-        <div ng-if="Deploy.isLogin">
+    <ion-view hide-nav-bar="true">
+        <ion-content overflow-scroll="true" class="mod_wrapper">
+
             <ul class="unit_owner_set">
                 <li class="no">
                     <p>昵称</p>
@@ -59,10 +60,10 @@
             </ul>
 
             <div class="unit_btn" ng-click="loginOut()">退出登录</div>
-        </div>
 
-    </ion-content>
-</ion-view>
+        </ion-content>
+    </ion-view>
+</section>
 
 <page-login ng-if="!Deploy.isLogin"></page-login>
 

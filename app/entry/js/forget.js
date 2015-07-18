@@ -131,8 +131,4 @@ angular.module('phoneApp')
 
     };
 
-
-    function checkPhone() {
-    }
-
 });

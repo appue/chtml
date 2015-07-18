@@ -232,11 +232,6 @@ angular.module('phoneApp', [
         .state('forum.chat', {
             // cache: false,
             url: '/chat-{uid}.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
             templateUrl: 'forum/tp/chat.html',
             controller: 'tMsgChat'
         })
@@ -246,11 +241,6 @@ angular.module('phoneApp', [
         .state('forum.msg-index', {
             // cache: false,
             url: '/msg/index.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
             templateUrl: 'msg/tp/index.html',
             controller: 'tMsgIndex'
         })
@@ -258,11 +248,6 @@ angular.module('phoneApp', [
         .state('forum.msg-notice', {
             // cache: false,
             url: '/msg/notice.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
             templateUrl: 'msg/tp/notice.html',
             controller: 'tMsgNotice'
         })
@@ -270,11 +255,6 @@ angular.module('phoneApp', [
         .state('forum.msg-comment', {
             // cache: false,
             url: '/msg/comment.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
             templateUrl: 'msg/tp/comment.html',
             controller: 'tMsgComment'
         })
@@ -282,11 +262,6 @@ angular.module('phoneApp', [
         .state('forum.msg-praise', {
             // cache: false,
             url: '/msg/praise.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
             templateUrl: 'msg/tp/praise.html',
             controller: 'tMsgPraise'
         })
@@ -294,11 +269,6 @@ angular.module('phoneApp', [
         .state('forum.msg-search', {
             // cache: false,
             url: '/msg/search.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
             templateUrl: 'msg/tp/search.html',
             controller: 'tMsgSearch'
         })
@@ -306,11 +276,11 @@ angular.module('phoneApp', [
         .state('forum.msg-talk', {
             // cache: false,
             url: '/msg/talk.htm',
-            resolve: {
-                isCheck: function () {
-                    return true;
-                }
-            },
+            // resolve: {
+            //     isCheck: function () {
+            //         return true;
+            //     }
+            // },
             templateUrl: 'msg/tp/talk.html',
             controller: 'tMsgTalk'
         })

@@ -344,9 +344,11 @@ angular.module('phoneApp')
             }
 
             if (userInfo && userInfo.UserId) {
+                scope.UserInfo = angular.extend({}, userInfo);
                 scope.Deploy.uId = userInfo.UserId;
                 scope.Deploy.isLogin = true;
             } else {
+                scope.UserInfo = {};
                 scope.Deploy.isLogin = false;
                 scope.Deploy.uId = 0;
             }
