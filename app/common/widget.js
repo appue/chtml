@@ -151,8 +151,16 @@ angular.module('phoneApp')
             //--数据改造加用户信息start
             //-------------ToDo
             // var user = {
-            //     'UserId': 12313,
-            //     'Auth': 'asdfasdf'
+            //     'UserId': 22,
+            //     'Auth': 'asdfasdf',
+
+            //     'Phone': 13596858474,
+            //     'UserName': '测试账号昵称',
+            //     'Sex': 1,
+            //     'City': 2,
+            //     'CityName': '上海',
+            //     'Job': 1,
+            //     'JobName': '园长'
             // };
 
             // cachePool.push('UserInfo', user, 2 / 24); //此处之后移动到登录页面
