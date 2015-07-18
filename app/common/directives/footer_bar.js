@@ -19,6 +19,19 @@ angular.module('phoneApp')
         templateUrl: 'common/directives/footer_bar.html',
         controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
 
+            // 拿取消息状态
+            widget.ajaxRequest({
+                url: 'getMsgNews',
+                data: {},
+                success: function (data) {
+                    if (data.Response && data.Response.Ack=="Success") {
+                        if (data.isPraise || data.isComment || data.isNotice || data.isTalk) {
+                            $scope.isMessage = true;
+                        }
+                    }
+                }
+            });
+
             $rootScope.addPhoto = function () {
 
                 if (ENV.isHybrid) {
