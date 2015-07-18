@@ -1,26 +1,30 @@
-<header-bar title="赞" ng-if="Deploy.isLogin"></header-bar>
+<section ng-if="Deploy.isLogin">
+    <header-bar title="赞"></header-bar>
 
-<ion-view hide-nav-bar="true" ng-if="Deploy.isLogin">
-    <ion-content overflow-scroll="true" class="mod_wrapper">
-        <ul class="msg_praise" ng-if="DataList.PraiseList.length > 0">
-            <li ng-repeat="(k, v) in DataList.PraiseList track by $index">
-                <img src="{{v.Author.ImageUrl}}" />
-                <dl>
-                    <dt>{{v.Author.UserName}}</dt>
-                    <dd>
-                        <i>赞了</i>
-                        "{{v.Title}}"
-                    </dd>
-                </dl>
-                <div><img ng-src="{{v.ImageUrl}}" /></div>
-            </li>
-        </ul>
+    <ion-view hide-nav-bar="true">
+        <ion-content overflow-scroll="true" class="mod_wrapper">
 
-        <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore">
-        </ion-infinite-scroll>
+            <ul class="msg_praise" ng-if="DataList.PraiseList.length > 0">
+                <li ng-repeat="(k, v) in DataList.PraiseList track by $index">
+                    <img src="{{v.Author.ImageUrl}}" />
+                    <dl>
+                        <dt>{{v.Author.UserName}}</dt>
+                        <dd>
+                            <i>赞了</i>
+                            "{{v.Title}}"
+                        </dd>
+                    </dl>
+                    <div><img ng-src="{{v.ImageUrl}}" /></div>
+                </li>
+            </ul>
 
-        <div class="mod_no_more" ng-if="!Deploy.isMore">没有更多数据了！</div>
-    </ion-content>
-</ion-view>
+            <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore">
+            </ion-infinite-scroll>
+
+            <div class="mod_no_more" ng-if="!Deploy.isMore">没有更多数据了！</div>
+
+        </ion-content>
+    </ion-view>
+</section>
 
 <page-login ng-if="!Deploy.isLogin"></page-login>

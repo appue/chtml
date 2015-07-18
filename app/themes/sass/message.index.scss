@@ -66,6 +66,7 @@
             text-align: center;
             font-size: 14px;
             height: 65px;
+            position: relative;
 
             &:nth-child(even) {
                 @include border_horizontal_half;
@@ -78,6 +79,20 @@
                 font-family: "Ionicons";
                 font-weight: normal;
                 text-align: center;
+            }
+            &.new {
+                &:after {
+                    display: block;
+                    content: "";
+                    width: 10px;
+                    height: 10px;
+                    background: red;
+                    position: absolute;
+                    left: 50%;
+                    top: 10px;
+                    margin-left: 20px;
+                    -webkit-border-radius: 10px;
+                }
             }
 
             &.icon_hit {

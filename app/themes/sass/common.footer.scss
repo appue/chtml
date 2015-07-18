@@ -46,17 +46,18 @@
                 background: url(img/icon_msg_hover.png) no-repeat center 5px;
                 background-size: auto 20px;
             }
-            &.news:after {
+            &.new:after {
                 position: absolute;
                 top: 5px;
                 right: 50%;
                 margin-right: -23px;
                 content: "";
-                width: 6px;
-                height: 6px;
+                width: 8px;
+                height: 8px;
                 background: red;
                 display: block;
-                -webkit-border-radius: 6px;
+                z-index: 1;
+                -webkit-border-radius: 8px;
             }
         }
         &:nth-child(5) {

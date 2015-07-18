@@ -14,12 +14,20 @@
 
         <div class="msg_menu_list" ng-if="Deploy.isLogin">
             <ul>
-                <li class="icon_hit" page-jump data-router="forum.msg-praise"><p>赞</p></li>
-                <li class="icon_comment" page-jump data-router="forum.msg-comment"><p>评论</p></li>
+                <li class="icon_hit" ng-class="{new : msgStatus.isPraise}" page-jump data-router="forum.msg-praise">
+                    <p>赞</p>
+                </li>
+                <li class="icon_comment" ng-class="{new : msgStatus.isComment}" page-jump data-router="forum.msg-comment">
+                    <p>评论</p>
+                </li>
             </ul>
             <ul>
-                <li class="icon_notice" page-jump data-router="forum.msg-notice"><p>通知</p></li>
-                <li class="icon_talk" page-jump data-router="forum.msg-talk"><p>私聊</p></li>
+                <li class="icon_notice" ng-class="{new : msgStatus.isNotice}" page-jump data-router="forum.msg-notice">
+                    <p>通知</p>
+                </li>
+                <li class="icon_talk" ng-class="{new : msgStatus.isTalk}" page-jump data-router="forum.msg-talk">
+                    <p>私聊</p>
+                </li>
             </ul>
         </div>
 
