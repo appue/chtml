@@ -161,7 +161,7 @@
         @include border_bottom_half;
         -webkit-box-align: center;
         padding: 5px 0;
-        line-height: 30px;
+        line-height: 40px;
         background: url(img/icon_arrow.png) no-repeat right center;
         background-size: 11px auto;
         &.no {
@@ -171,6 +171,7 @@
             border-bottom: 0 none;
         }
         p {
+            margin: 0;
             display: block;
             &:nth-child(1) {
                 width: 80px;

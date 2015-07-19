@@ -9,80 +9,80 @@ angular.module('phoneApp')
 		restrict: 'A',
 		link: function (scope, element, attrs) {
 
-			var location = cachePool.pull('LocationData');
+			// var location = cachePool.pull('LocationData');
 
-			if (location) {
-				scope.cityList = location;
-			} else {
-				// widget.ajaxRequest({
-				// 	url: 'getCityList',
-				// 	success: function (data) {
-				// 		scope.cityList = data.CityList;
-				// 	}
-				// });
-			}
+			// if (location) {
+			// 	scope.CityList = location;
+			// } else {
+			// 	// widget.ajaxRequest({
+			// 	// 	url: 'getCityList',
+			// 	// 	success: function (data) {
+			// 	// 		scope.cityList = data.CityList;
+			// 	// 	}
+			// 	// });
+			// }
 
-			//todo...
-			scope.cityList = [{
-				Id: 1,
-				Name: '上海'
-			}, {
-				Id: 2,
-				Name: '北京'
-			}, {
-				Id: 3,
-				Name: '广州'
-			}, {
-				Id: 4,
-				Name: '厦门'
-			}];
+			// //todo...
+			// scope.cityList = [{
+			// 	Id: 1,
+			// 	Name: '上海'
+			// }, {
+			// 	Id: 2,
+			// 	Name: '北京'
+			// }, {
+			// 	Id: 3,
+			// 	Name: '广州'
+			// }, {
+			// 	Id: 4,
+			// 	Name: '厦门'
+			// }];
 
-			scope.villageList = [{
-				Id: 11,
-				Name: '长宁区'
-			}, {
-				Id: 12,
-				Name: '徐汇徐'
-			}, {
-				Id: 23,
-				Name: '朝阳区'
-			}, {
-				Id: 14,
-				Name: '闸北区'
-			}];
+			// scope.villageList = [{
+			// 	Id: 11,
+			// 	Name: '长宁区'
+			// }, {
+			// 	Id: 12,
+			// 	Name: '徐汇徐'
+			// }, {
+			// 	Id: 23,
+			// 	Name: '朝阳区'
+			// }, {
+			// 	Id: 14,
+			// 	Name: '闸北区'
+			// }];
 
-			//记录所选地区
-			scope.inputVal.city = scope.inputVal.city || scope.cityList[0];
-			scope.inputVal.village = scope.inputVal.village || scope.villageList[0];
+			// //记录所选地区
+			// scope.inputVal.city = scope.inputVal.city || scope.CityList[0];
+			// scope.inputVal.village = scope.inputVal.village || scope.villageList[0];
 
-			//临时所选地区
-			scope.tmpCity = scope.inputVal.city;
-			scope.tmpVillage = scope.inputVal.village;
+			// //临时所选地区
+			// scope.tmpCity = scope.inputVal.city;
+			// scope.tmpVillage = scope.inputVal.village;
 
-			function getVillageData() { //取地区数据
-				scope.tmpVillage = scope.villageList[0];
-			}
+			// function getVillageData() { //取地区数据
+			// 	scope.tmpVillage = scope.villageList[0];
+			// }
 
-			scope.chooseLocation = function (e) { //所在地选择
-				var $that = angular.element(e.delegationTarget),
-					name = $that.text(),
-					city = $that.attr('data-city'),
-					village = $that.attr('data-village');
+			// scope.chooseLocation = function (e) { //所在地选择
+			// 	var $that = angular.element(e.delegationTarget),
+			// 		name = $that.text(),
+			// 		city = $that.attr('data-city'),
+			// 		village = $that.attr('data-village');
 
-				$that.parent('ul').find('li').removeClass('current');
+			// 	$that.parent('ul').find('li').removeClass('current');
 
-				$that.addClass('current');
+			// 	$that.addClass('current');
 
-				if (city) {
-					getVillageData();
-					scope.tmpCity = scope.$eval(city);
-				}
+			// 	if (city) {
+			// 		getVillageData();
+			// 		scope.tmpCity = scope.$eval(city);
+			// 	}
 
-				if (village) {
-					scope.tmpVillage = scope.$eval(village);
-				}
+			// 	if (village) {
+			// 		scope.tmpVillage = scope.$eval(village);
+			// 	}
 
-			};
+			// };
 
 			element.bind('click', function () { //呼出弹出层
 

@@ -8,20 +8,16 @@ angular.module('phoneApp')
 ) {
 
 	widget.initUser($scope);
+
+	$scope.cInput = $scope.UserInfo || {};
+
+	if ($scope.cInput.Sex == 2) {
+		$scope.cInput.SexName = "女";
+	} else {
+		$scope.cInput.SexName = "男";
+	}
 	
-	$scope.inputVal = { //属性数据初始化
-		nickname: '我是昵称',
-		sex: '女',
-		job: '园长',
-		city: {
-			Id: 1,
-			Name: '上海'
-		},
-		village: {
-			Id: 11,
-			Name: '长宁区'
-		}
-	};
+	console.log($scope.cInput);
 
 	$scope.personalData = { //开关数据初始化
 		isMsgPush: true,
@@ -38,8 +34,8 @@ angular.module('phoneApp')
 	};
 
 	//初始化临时数据
-	$scope.tmpSex = $scope.inputVal.sex;
-	$scope.tmpJob = $scope.inputVal.job;
+	// $scope.tmpSex = $scope.inputVal.sex;
+	// $scope.tmpJob = $scope.inputVal.job;
 
 	$scope.chooseSex = function (e) { //选择性别
 		var $that = angular.element(e.delegationTarget);
@@ -51,16 +47,16 @@ angular.module('phoneApp')
 		}
 	};
 
-	$scope.chooseJob = function (e) { //岗位选择
-		var $that = angular.element(e.delegationTarget);
+	// $scope.chooseJob = function (e) { //岗位选择
+	// 	var $that = angular.element(e.delegationTarget);
 
-		if ($that.length > 0) { //选择
-			$scope.tmpJob = $that.find('label').text();
-		} else { //确定
-			$scope.inputVal.job = $scope.tmpJob;
-		}
+	// 	if ($that.length > 0) { //选择
+	// 		$scope.tmpJob = $that.find('label').text();
+	// 	} else { //确定
+	// 		$scope.inputVal.job = $scope.tmpJob;
+	// 	}
 
-	};
+	// };
 
 
 	$scope.loginOut = function () {

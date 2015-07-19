@@ -11,13 +11,13 @@ angular.module('phoneApp')
     $scope.DataList = {};
     
     $scope.cInput = widget.cacheData('personalData') || {
-        nickname: '', //--用户昵称
-        sex: 1, //--------性别：1.男；2.女
-        city: 0, //-------位置ID
-        job: 0, //--------岗位：1.园长; 2.保教主任; 3.教师; 4.其他
+        UserName: '', //--用户昵称
+        Sex: 1, //--------性别：1.男；2.女
+        City: 0, //-------位置ID
+        Job: 0, //--------岗位：1.园长; 2.保教主任; 3.教师; 4.其他
 
-        cityName: "请选择位置",
-        jobName: "请选择岗位"
+        CityName: "请选择位置",
+        JobName: "请选择岗位"
     };
 
     // $scope.inputVal = widget.cacheData('personalData') || { //数据初始化
@@ -35,17 +35,17 @@ angular.module('phoneApp')
 
     $scope.goNextStep = function () { //下一步按钮
 
-        if (!$scope.cInput.nickname) {
+        if (!$scope.cInput.UserName) {
             widget.msgToast('请输入昵称！');
             return;
         }
 
-        if (!$scope.cInput.city) {
+        if (!$scope.cInput.City) {
             widget.msgToast('请选择位置！');
             return;
         }
 
-        if (!$scope.cInput.job) {
+        if (!$scope.cInput.Job) {
             widget.msgToast('请选择岗位！');
             return;
         }

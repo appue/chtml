@@ -15,7 +15,7 @@ angular.module('phoneApp')
 
 			var job = cachePool.pull('JobData');
 
-			scope.tmpJob = scope.cInput.job; //初始化临时job
+			scope.tmpJob = scope.cInput.Job; //初始化临时job
 
 			scope.chooseJob = function (e) { //岗位选择
 				var $that = angular.element(e.delegationTarget);
@@ -24,8 +24,8 @@ angular.module('phoneApp')
 					scope.tmpJob = $that.attr("data-id");
 					scope.tmpJobName = $that.attr("data-name");
 				} else { //确定
-					scope.cInput.job = scope.tmpJob;
-					scope.cInput.jobName = scope.tmpJobName;
+					scope.cInput.Job = scope.tmpJob;
+					scope.cInput.JobName = scope.tmpJobName;
 				}
 
 			};
@@ -37,6 +37,10 @@ angular.module('phoneApp')
 					data: {},
 					success: function (data) {
 						if (data.Response && data.Response.Ack == "Success") {
+							if (!scope.DataList) {
+								scope.DataList = {};
+							}
+							
 							scope.DataList.JobList = data.JobList;
 
 							$ionicPopup.confirm({

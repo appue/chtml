@@ -7,24 +7,24 @@
             <ul class="unit_owner_set">
                 <li class="no">
                     <p>昵称</p>
-                    <p>{{inputVal.nickname}}</p>
+                    <p>{{cInput.UserName}}</p>
                 </li>
                 <li show-popup="gender">
                     <p>性别</p>
-                    <p>{{inputVal.sex}}</p>
+                    <p>{{cInput.SexName}}</p>
                 </li>
-                <li show-popup="post">
+                <li job-popup>
                     <p>岗位</p>
-                    <p>{{inputVal.job}}</p>
+                    <p>{{cInput.JobName}}</p>
                 </li>
                 <li location-popup>
                     <p>地区</p>
-                    <p>{{inputVal.city.Name}} {{inputVal.village.Name}}</p>
+                    <p>{{cInput.CityName}}</p>
                 </li>
-                <li>
+<!--                 <li>
                     <p>订阅</p>
                     <p>教案  计划  总结</p>
-                </li>
+                </li> -->
                 <!--
                     <li>
                         <p>账号绑定</p>
@@ -79,29 +79,6 @@
             <input name="sex" ng-checked="tmpSex == '男'" type="radio">
             <label>男</label>
         </span>
-    </div>
-</popup>
-
-<popup id="post" title="选择岗位" popup-confirm="chooseJob">
-    <div class="choose_post" ngd-click="chooseJob($event)" selector="li">
-        <ul>
-            <li>
-                <input ng-checked="tmpJob == '园长'" name="post" type="radio">
-                <label>园长</label>
-            </li>
-            <li>
-                <input ng-checked="tmpJob == '保教主任'" name="post" type="radio">
-                <label>保教主任</label>
-            </li>
-            <li>
-                <input ng-checked="tmpJob == '教师'" name="post" type="radio">
-                <label>教师</label>
-            </li>
-            <li>
-                <input ng-checked="tmpJob == '其他'" name="post" type="radio">
-                <label>其他</label>
-            </li>
-        </ul>
     </div>
 </popup>
 
