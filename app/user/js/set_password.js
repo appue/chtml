@@ -4,6 +4,7 @@ angular.module('phoneApp')
 	$scope,
 	$stateParams,
     $timeout,
+    $ionicViewSwitcher,
 	widget
 ) {
 
@@ -86,23 +87,34 @@ angular.module('phoneApp')
 			return;
 		}
 
-        if (!$scope.cInput.vcode) {
-            widget.msgToast('请输入手机验证码！');
-            return;
-        }
-
         if ($scope.cInput.vcode.length > 4 || $scope.cInput.vcode.length < 4) {
             widget.msgToast('您输入的手机验证码长度不对');
             return;
         }
 
+        if (!$scope.cInput.vcode) {
+            widget.msgToast('请输入手机验证码！');
+            return;
+        }
+
 		widget.ajaxRequest({
 			scope: $scope,
-			url: '$local/Tools/SendCheckCode',
+			url: 'setModifyPassword',
 			data: {
-				Mobile: 123
+                OldPassword: $scope.cInput.oldPassword,
+                Password: $scope.cInput.password,
+                PhoneCode: $scope.cInput.vcode
 			},
-			success: function (data) {}
+			success: function (data) {
+                if (data.Response && data.Response.Ack == "Success") {
+                    widget.msgToast('密码修改成功！');
+                    
+                    $ionicViewSwitcher.nextDirection('back'); //forward
+                    $window.history.back();
+                } else {
+                    widget.msgToast('密码修改失败！');
+                }
+            }
 		});
 
 	};
