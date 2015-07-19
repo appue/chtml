@@ -26,8 +26,8 @@
 
             <!--瀑布流-->
             <falls>
-                <li ng-repeat="(k, v) in DataList.ListLeft track by $index" data-y="{{v.Images[0].Height}}" >
-                    <a class="this_border" page-jump data-router="forum.detail" data-options='{ "id": {{v.ArticleId}} }'>
+                <li ng-repeat="(k, v) in DataList.ListLeft track by $index" data-y="{{v.Images[0].Height}}">
+                    <a class="this_border" page-jump data-router="forum.detail" data-options="{id:{{v.ArticleId}}}">
                         <img ng-src="{{v.Images[0].ImageUrl}}" />
                         <article>
                             <div class="this_text">{{v.Images[0].Description}}</div>
@@ -48,7 +48,6 @@
                 </li>
             </falls>
         </div>
-
 
         <div ng-if="Deploy.currentTab==2">
             <!--瀑布流-->
@@ -76,9 +75,7 @@
             </falls>
         </div>
 
-
-        <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore">
-        </ion-infinite-scroll>
+        <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore"></ion-infinite-scroll>
 
         <div class="mod_no_more" ng-if="!Deploy.isMore">没有数据了！</div>
 

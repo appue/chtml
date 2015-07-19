@@ -1,18 +1,17 @@
 /*
-* 搜索结果
-* /search/#/result
-*/
+ * 搜索结果
+ * /search/#/result
+ */
 angular.module('phoneApp')
 
 .controller('tSearchResult', function (
-    $scope, 
-    $state, 
-    $stateParams, 
+    $scope,
+    $state,
+    $stateParams,
     $location,
     $timeout,
     widget
-){
-    $scope.Page = {};
+) {
 
     $scope.Deploy = {
         currentTab: 1,
@@ -21,22 +20,44 @@ angular.module('phoneApp')
         isLoading: false,
         isMore: true
     };
+
     $scope.DataList = {
-        ArticleList: []
+        ArticleList: [],
+        CategoryList: [],
+        ClubList: [],
+        UserList: []
     };
 
     $scope.keyword = decodeURIComponent($location.$$search.keyword) || '';
 
-    $scope.Page.Title = "搜索<span class='color_green'>"+ $scope.keyword +"</span>的结果"
-    
-
     $scope.$watch('Deploy.currentTab', function () {
-        if ($scope.currentTab == 1) {
+
+        $scope.Deploy.isMore = true;
+
+        if ($scope.Deploy.currentTab == 1 && $scope.DataList.ArticleList.length > 0) {
             $timeout($scope.setFalls, 0);
+            return;
         }
+
+        if ($scope.Deploy.currentTab == 2 && $scope.DataList.CategoryList.length > 0) {
+            $timeout($scope.setFalls, 0);
+            return;
+        }
+
+        if ($scope.Deploy.currentTab == 3 && $scope.DataList.ClubList.length > 0) {
+            return;
+        }
+
+        if ($scope.Deploy.currentTab == 4 && $scope.DataList.UserList.length > 0) {
+            return;
+        }
+
+        $scope.Deploy.isMore = false;
+
     });
 
-    $scope.loadMore = function() {
+    $scope.loadMore = function (type) {
+
         if (!$scope.isLoading) {
 
             $scope.isLoading = true;
@@ -44,26 +65,41 @@ angular.module('phoneApp')
 
             widget.ajaxRequest({
                 scope: $scope,
-                noMask: true,
+                showPage: true,
                 url: 'getSearchContent',
                 data: {
-                    CateId: $stateParams.id
+                    Type: type,
+                    Keyword: $stateParams.keyword
                 },
                 success: function (data) {
-                    $scope.pageTotal = data.Total || 0;
+                    $scope.pageTotal = data.Total || 0; //todo...是否需要翻页？
 
-                    angular.forEach(data.ArticleList, function (v, k) {
+                    angular.forEach(data.ArticleList, function (v, k) { //搜索的帖子结果
                         $scope.DataList.ArticleList.push(v);
                     });
 
-                    $timeout($scope.setFalls, 0);
+                    angular.forEach(data.CategoryList, function (v, k) { //搜索的栏目结果
+                        $scope.DataList.CategoryList.push(v);
+                    });
+
+                    angular.forEach(data.ClubList, function (v, k) { //搜索的圈子结果
+                        $scope.DataList.ClubList.push(v);
+                    });
+
+                    angular.forEach(data.UserList, function (v, k) { //搜索的用户结果
+                        $scope.DataList.UserList.push(v);
+                    });
+
+                    if (type === 1 || type === 2) {
+                        $timeout($scope.setFalls, 0);
+                    }
+
                     $scope.isLoading = false;
-                },
-                error: function (data) {
                 }
             });
         }
     };
 
-    $scope.loadMore();
+    $scope.loadMore(1);
+
 });

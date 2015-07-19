@@ -1,7 +1,8 @@
-<header-bar></header-bar>
+<header-bar title="搜索<span class='color_green'>{{keyword}}</span>的结果"></header-bar>
 
-<ion-view hide-nav-bar="true">
+<ion-view>
     <ion-content overflow-scroll="true">
+
         <ul class="mod_tab_4 tab_search_result">
             <li ng-click="Deploy.currentTab=1;pageIndex=1" ng-class="{current : Deploy.currentTab==1}">内容</li>
             <li ng-click="Deploy.currentTab=2;pageIndex=1" ng-class="{current : Deploy.currentTab==2}">标签</li>
@@ -10,11 +11,9 @@
             <i class="line"></i>
         </ul>
 
-
-        <!--搜索-搜索内容-->
-        <section ng-if="Deploy.currentTab==1">
-            <!--瀑布流-->
-            <falls>
+        <section style="padding:50px 10px 10px 10px;">
+            <!--搜索-搜索内容-->
+            <falls ng-if="Deploy.currentTab==1 && DataList.ArticleList.length > 0">
                 <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
                     <a class="this_border" page-jump="{{v.SiteUrl}}">
                         <img ng-src="{{v.Images[0].ImageUrl}}" />
@@ -36,86 +35,60 @@
                     </a>
                 </li>
             </falls>
-        </section>
 
-        <!--搜索-搜索标签-->
-        <section ng-if="currentTab==2">
-            <ul class="mod_list_falls" style="height:400px;">
-                <li style="left:0;top:0;">
-                    <div class="this_border">
-                        <img src="../themes/temp/1.jpg" />
+            <!--搜索-搜索标签-->
+            <falls ng-if="Deploy.currentTab==2 && DataList.CategoryList.length > 0">
+                <li ng-repeat="(k, v) in DataList.CategoryList track by $index" data-y="{{v.Images[0].Height}}">
+                    <a class="this_border" page-jump="{{v.SiteUrl}}">
+                        <img ng-src="{{v.Images[0].ImageUrl}}">
                         <article>
-                            <div class="this_cate">
-                                #玩教具 #泥工
-                                    #玩教具 #泥工
+                            <div class="this_text">{{v.Images[0].Description}}</div>
+                            
+                            <div class="this_star">{{v.TotalCollect}}</div>
+
+                            <div class="this_user">
+                                <img ng-src="{{v.Author.ImageUrl}}" />
+                                <dl>
+                                    <dt>{{v.Author.UserName}}</dt>
+                                    <dd>
+                                        <span ng-repeat="x in v.CategoryList">#{{x.CateName}}</span>
+                                    </dd>
+                                </dl>
                             </div>
                         </article>
-                    </div>
+                    </a>
                 </li>
-                <li style="right:0;top:0;">
-                    <div class="this_border">
-                        <img src="../themes/temp/2.jpg" />
-                        <article>
-                            <div class="this_cate">#玩教具 #泥工 #泥工 #泥工</div>
-                        </article>
-                    </div>
-                </li>
-                <li style="right:0;top:145px;">
-                    <div class="this_border">
-                        <img src="../themes/temp/7.jpg" />
-                        <article>
-                            <div class="this_cate">#玩教具 #泥工 #泥工 #泥工</div>
-                        </article>
-                    </div>
-                </li>
-            </ul>
-        </section>
+            </falls>
 
-
-        <!--搜索-搜索圈子-->
-        <section ng-if="currentTab==3">
-            <ul class="unit_keyword_club">
-                <li>
+            <!--搜索-搜索圈子-->
+            <ul ng-if="Deploy.currentTab==3 && DataList.ClubList.length > 0" class="unit_keyword_club">
+                <li ng-repeat="(k, v) in DataList.ClubList track by $index" page-jump data-router="" data-options="{{v.ClubId}}">
                     <div>
-                        <img src="../themes/temp/img.jpg" />
+                        <img src="{{v.ImageUrl}}">
                         <article>
-                            <p>孩子们的营养餐</p>
-                            玩教具  手工
-                            <br>成员：258</article>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <img src="../themes/temp/img.jpg" />
-                        <article>
-                            <p>孩子们的营养餐</p>
-                            玩教具  手工
-                            <br>成员：258</article>
+                            <p>{{v.ClubName}}</p>
+                            <span ng-repeat="(m, n) in v.Category track by $index">{{n.CateName}}</span>
+                            <br>成员：{{v.TotalUser}}</article>
                     </div>
                 </li>
             </ul>
-        </section>
 
-
-        <!--搜索-搜索用户-->
-        <section ng-if="currentTab==4">
-            <ul class="unit_keyword_user">
-                <li>
-                    <img src="../themes/temp/3.jpg" />
-                    <p>吹口哨的柬埔寨girl</p>
-                    <div class="this_btn current">关注</div>
-                </li>
-                <li>
-                    <img src="../themes/temp/3.jpg" />
-                    <p>吹口哨的柬埔寨girl</p>
-                    <div class="this_btn">已关注</div>
-                </li>
-                <li>
-                    <img src="../themes/temp/3.jpg" />
-                    <p>吹口哨的柬埔寨girl</p>
-                    <div class="this_btn">互注</div>
+            <!--搜索-搜索用户-->
+            <ul ng-if="Deploy.currentTab==4 && DataList.UserList.length > 0" class="unit_keyword_user">
+                <li ng-repeat="(k, v) in DataList.UserList track by $index" page-jump data-router="" data-options="{{v.UserId}}">
+                    <img ng-src="{{v.ImageUrl}}">
+                    <p>{{v.ImageUrl}}</p>
+                    <div ng-if="v.FollowState == 1" class="this_btn current">关注</div>
+                    <div ng-if="v.FollowState == 2" class="this_btn current">互关注</div>
+                    <div ng-if="v.FollowState == 3" class="this_btn">未关注</div>
                 </li>
             </ul>
+
+            <ion-infinite-scroll on-infinite="loadMore(Deploy.currentTab)" distance="1%" ng-if="Deploy.isMore"></ion-infinite-scroll>
+
+            <div class="mod_no_more" ng-if="!Deploy.isMore">抱歉，没有找到对应结果！</div>
+
         </section>
+
     </ion-content>
 </ion-view>

@@ -13,7 +13,7 @@ angular.module('phoneApp')
 		restrict: 'A',
 		link: function (scope, element, attrs) {
 
-			var job = cachePool.pull('JobData'); //todo...
+			var job = cachePool.pull('JobData');
 
 			scope.tmpJob = scope.cInput.job; //初始化临时job
 
@@ -32,12 +32,12 @@ angular.module('phoneApp')
 
 			element.bind('click', function () { //呼出弹出层
 
-		        widget.ajaxRequest({
-		            url: 'getJobList',
-		            data: {},
-		            success: function (data) {
-		            	if (data.Response && data.Response.Ack == "Success") {
-		            		scope.DataList.JobList = data.JobList;
+				widget.ajaxRequest({
+					url: 'getJobList',
+					data: {},
+					success: function (data) {
+						if (data.Response && data.Response.Ack == "Success") {
+							scope.DataList.JobList = data.JobList;
 
 							$ionicPopup.confirm({
 								title: '选择岗位',
@@ -52,12 +52,12 @@ angular.module('phoneApp')
 									scope.chooseJob(false); //传false保证e对象不会报错
 								}
 							});
-							
-		            	} else {
-		            		widget.msgToast('获取岗位失败,请重试！');
-		            	}
-		            }
-		        });
+
+						} else {
+							widget.msgToast('获取岗位失败,请重试！');
+						}
+					}
+				});
 
 			});
 
