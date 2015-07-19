@@ -3,17 +3,11 @@ angular.module('phoneApp')
 .controller('tUserSetPassword', function (
 	$scope,
 	$stateParams,
+    $timeout,
 	widget
 ) {
 
 	widget.initUser($scope);
-	
-	$scope.Deploy = {
-		isLogin: true
-	};
-
-	console.log($scope.UserInfo);
-
 
     $scope.cInput = {
         btnText: "发送验证码",
@@ -22,9 +16,12 @@ angular.module('phoneApp')
 
     // 发送验证码
     $scope.sendCode = function () {
-        var status = widget.checkPhone($scope.cInput.phone);
+        console.log($scope.UserInfo);
+        if ($scope.UserInfo) {
+            var status = widget.checkPhone($scope.UserInfo.Phone);
 
-        if (status) return;
+            if (status) return;
+        }
 
         if ($scope.cInput.isSend) {
             widget.msgToast('请稍后再刷新验证码！');
@@ -34,10 +31,10 @@ angular.module('phoneApp')
         widget.ajaxRequest({
             url: 'setSendPhone',
             data: {
-                Phone: $scope.cInput.phone
+                Phone: $scope.UserInfo.Phone
             },
             success: function (data) {
-                widget.msgToast('验证码已发送到'+ $scope.cInput.phone +'手机上');
+                widget.msgToast('验证码已发送到'+ $scope.UserInfo.Phone +'手机上');
             }
         });
 
