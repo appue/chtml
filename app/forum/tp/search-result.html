@@ -13,7 +13,7 @@
 
         <section style="padding:50px 10px 10px 10px;">
             <!--搜索-搜索内容-->
-            <falls ng-if="Deploy.currentTab==1 && DataList.ArticleList.length > 0">
+            <falls ng-if="Deploy.currentTab==1 && DataList.ArticleList.length > 0" style="border-width:0 0 5px;">
                 <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
                     <a class="this_border" page-jump="{{v.SiteUrl}}">
                         <img ng-src="{{v.Images[0].ImageUrl}}" />
@@ -37,7 +37,7 @@
             </falls>
 
             <!--搜索-搜索标签-->
-            <falls ng-if="Deploy.currentTab==2 && DataList.CategoryList.length > 0">
+            <falls ng-if="Deploy.currentTab==2 && DataList.CategoryList.length > 0" style="border-width:0 0 5px;">
                 <li ng-repeat="(k, v) in DataList.CategoryList track by $index" data-y="{{v.Images[0].Height}}">
                     <a class="this_border" page-jump="{{v.SiteUrl}}">
                         <img ng-src="{{v.Images[0].ImageUrl}}">
@@ -64,7 +64,7 @@
             <ul ng-if="Deploy.currentTab==3 && DataList.ClubList.length > 0" class="unit_keyword_club">
                 <li ng-repeat="(k, v) in DataList.ClubList track by $index" page-jump data-router="" data-options="{{v.ClubId}}">
                     <div>
-                        <img src="{{v.ImageUrl}}">
+                        <img ng-src="{{v.ImageUrl}}">
                         <article>
                             <p>{{v.ClubName}}</p>
                             <span ng-repeat="(m, n) in v.Category track by $index">{{n.CateName}}</span>
