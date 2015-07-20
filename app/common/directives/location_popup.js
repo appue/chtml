@@ -63,25 +63,28 @@ angular.module('phoneApp')
 			// 	scope.tmpVillage = scope.villageList[0];
 			// }
 
+
+			//---------------------还没写完，带完善 ToDo
 			scope.tmpCity = 0;
+			scope.tmpSubCity = 0;
 
 			scope.chooseLocation = function (e) { //所在地选择
 				var $that = angular.element(e.delegationTarget),
-					c = $that.attr('data-c'),
-					s = $that.attr('data-s');
+					mid = $that.attr('data-mid'),
+					sid = $that.attr('data-sid');
 
 				$that.parent('ul').find('li').removeClass('current');
 
 				$that.addClass('current');
 
-				if (c) {
-					scope.CitySubList = scope.CityList[c].sub;
-					scope.tmpCity = c;
+				if (mid) {
+					scope.CitySubList = scope.CityList[mid].sub;
+					scope.tmpCity = mid;
 				}
 
-				// if (s) {
-				// 	scope.tmpVillage = scope.$eval(village);
-				// }
+				if (sid) {
+					scope.tmpSubCity = sid;
+				}
 
 			};
 
@@ -105,8 +108,8 @@ angular.module('phoneApp')
 							templateUrl: '../common/directives/location_popup.html'
 						}).then(function (res) {
 							if (res) { //确认所在地位置
-								scope.inputVal.city = scope.tmpCity;
-								scope.inputVal.village = scope.tmpVillage;
+								scope.cInput.City = scope.tmpCity;
+								scope.cInput.CityName = scope.CityList[scope.tmpCity].name +" "+ scope.CitySubList[scope.tmpSubCity].name;
 							}
 						});
 					}
