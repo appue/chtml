@@ -63,41 +63,52 @@ angular.module('phoneApp')
 			// 	scope.tmpVillage = scope.villageList[0];
 			// }
 
-			// scope.chooseLocation = function (e) { //所在地选择
-			// 	var $that = angular.element(e.delegationTarget),
-			// 		name = $that.text(),
-			// 		city = $that.attr('data-city'),
-			// 		village = $that.attr('data-village');
+			scope.tmpCity = 0;
 
-			// 	$that.parent('ul').find('li').removeClass('current');
+			scope.chooseLocation = function (e) { //所在地选择
+				var $that = angular.element(e.delegationTarget),
+					c = $that.attr('data-c'),
+					s = $that.attr('data-s');
 
-			// 	$that.addClass('current');
+				$that.parent('ul').find('li').removeClass('current');
 
-			// 	if (city) {
-			// 		getVillageData();
-			// 		scope.tmpCity = scope.$eval(city);
-			// 	}
+				$that.addClass('current');
 
-			// 	if (village) {
-			// 		scope.tmpVillage = scope.$eval(village);
-			// 	}
+				if (c) {
+					scope.CitySubList = scope.CityList[c].sub;
+					scope.tmpCity = c;
+				}
 
-			// };
+				// if (s) {
+				// 	scope.tmpVillage = scope.$eval(village);
+				// }
+
+			};
 
 			element.bind('click', function () { //呼出弹出层
 
-				$ionicPopup.confirm({
-					title: '选择位置',
-					cancelText: '取消',
-					cancelType: 'cancel',
-					okText: '确定',
-					okType: 'confirm',
-					scope: scope,
-					templateUrl: '../common/directives/location_popup.html'
-				}).then(function (res) {
-					if (res) { //确认所在地位置
-						scope.inputVal.city = scope.tmpCity;
-						scope.inputVal.village = scope.tmpVillage;
+				widget.ajaxRequest({
+					url: 'CityList',
+					data: {},
+					success: function (data) {
+
+						scope.CityList = data;
+						scope.CitySubList = scope.CityList[0].sub;
+
+						$ionicPopup.confirm({
+							title: '选择位置',
+							cancelText: '取消',
+							cancelType: 'cancel',
+							okText: '确定',
+							okType: 'confirm',
+							scope: scope,
+							templateUrl: '../common/directives/location_popup.html'
+						}).then(function (res) {
+							if (res) { //确认所在地位置
+								scope.inputVal.city = scope.tmpCity;
+								scope.inputVal.village = scope.tmpVillage;
+							}
+						});
 					}
 				});
 

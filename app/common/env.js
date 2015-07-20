@@ -5,8 +5,8 @@ angular.module('phoneApp')
     var ua = navigator.userAgent.toLowerCase();
 
     var ENV = {
-        apiSocket: 'http://m.tjoys.net/api/',
-        // apiSocket: '/api/',
+        // apiSocket: 'http://m.tjoys.net/api/',
+        apiSocket: '/api/',
 
         isHybrid: false, //-----是否APP环境
         isWeixin: false, //-----是否微信环境
