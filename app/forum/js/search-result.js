@@ -9,7 +9,6 @@ angular.module('phoneApp')
     $state,
     $stateParams,
     $location,
-    $timeout,
     widget
 ) {
 
@@ -30,91 +29,78 @@ angular.module('phoneApp')
 
     $scope.keyword = $location.$$search.keyword || '';
 
-    $scope.$watch('Deploy.currentTab', function() {
+    function updateData(dataList, listName) {
 
-        $scope.Deploy.isMore = true;
-
-        if ($scope.Deploy.currentTab == 1 && $scope.DataList.ArticleList.length > 0) {
-            $timeout($scope.setFalls, 0);
-            return;
+        if ($scope.Deploy.pageIndex == 1) {
+            $scope.DataList[listName] = [];
         }
+        
+        if (dataList && dataList.length > 0) {
 
-        if ($scope.Deploy.currentTab == 2 && $scope.DataList.CategoryList.length > 0) {
-            $timeout($scope.setFalls, 0);
-            return;
+            angular.forEach(dataList, function(v, k) {
+                $scope.DataList[listName].push(v);
+            });
+            $scope.Deploy.isLoading = false;
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+
+        } else {
+
+            $scope.Deploy.isLoading = true;
+            $scope.Deploy.isMore = false;
+
         }
-
-        if ($scope.Deploy.currentTab == 3 && $scope.DataList.ClubList.length > 0) {
-            return;
-        }
-
-        if ($scope.Deploy.currentTab == 4 && $scope.DataList.UserList.length > 0) {
-            return;
-        }
-
-        $scope.Deploy.isMore = false;
-
-    });
+    }
 
     $scope.loadMore = function(type) {
 
-        if (!$scope.isLoading) {
-
-            $scope.isLoading = true;
-            $scope.pageIndex++;
-
-            widget.ajaxRequest({
-                scope: $scope,
-                showPage: true,
-                // url: 'getSearchContent',
-                url: 'getHomeArticle',
-                data: {
-                    Type: type,
-                    Keyword: $stateParams.keyword
-                },
-                success: function(data) {
-                    console.log(data.ArticleList);
-
-                    if (data.ArticleList && data.ArticleList.length > 0) {
-                        $scope.pageTotal = data.Total || 0; //todo...是否需要翻页？
-
-                        angular.forEach(data.ArticleList, function(v, k) { //搜索的帖子结果
-                            $scope.DataList.ArticleList.push(v);
-                        });
-
-                        angular.forEach(data.CategoryList, function(v, k) { //搜索的栏目结果
-                            $scope.DataList.CategoryList.push(v);
-                        });
-
-                        angular.forEach(data.ClubList, function(v, k) { //搜索的圈子结果
-                            $scope.DataList.ClubList.push(v);
-                        });
-
-                        angular.forEach(data.UserList, function(v, k) { //搜索的用户结果
-                            $scope.DataList.UserList.push(v);
-                        });
-
-                        console.log($scope.setFalls);
-
-                        if (type === 1 || type === 2) {
-                            $timeout($scope.setFalls, 0);
-                        }
-
-                        $scope.isLoading = false;
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
-
-                    } else {
-
-                        $scope.Deploy.isLoading = true;
-                        $scope.Deploy.isMore = false;
-
-                    }
-
-                }
-            });
+        if (type === 1 || type === 2) {
+            $scope.Deploy.pageSize = 5;
+        } else {
+            $scope.Deploy.pageSize = 20;
         }
+
+        widget.ajaxRequest({
+            scope: $scope,
+            showPage: true,
+            url: 'getSearchContent',
+            data: {
+                Type: type,
+                Keyword: $stateParams.keyword
+            },
+            success: function(data) {
+
+                $scope.Deploy.pageTotal = data.Total || 0;
+
+                switch (type) {
+                    case 1:
+                        updateData(data.ArticleList, 'ArticleList');
+                        $scope.setFalls('ArticleList');
+                        break;
+
+                    case 2:
+                        updateData(data.CategoryList, 'CategoryList');
+                        $scope.setFalls('CategoryList');
+                        break;
+
+                    case 3:
+                        updateData(data.ClubList, 'ClubList');
+                        break;
+
+                    case 4:
+                        updateData(data.UserList, 'UserList');
+                        break;
+                }
+
+            }
+        });
+
     };
 
-    $scope.loadMore(1); //初始化type=1为帖子结果
+    $scope.$watch('Deploy.currentTab', function() {
+        $scope.Deploy.isLoading = false;
+        $scope.Deploy.isMore = true;
+        $scope.Deploy.pageIndex = 0;
+        $scope.loadMore($scope.Deploy.currentTab);
+    });
 
 });

@@ -71,7 +71,7 @@
 }
 
 .mod_tab_4{
-    @include tab(0);
+    @include tab(44px);
     @include border_bottom_half;
     .line{
         @include tab_line(25%);

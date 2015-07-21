@@ -25,7 +25,7 @@ angular.module('phoneApp')
 
                     $scope.Deploy.pageTotal = data.Total || 0;
                     $scope.DataList.CategoryList = $scope.DataList.CategoryList.concat(data.CategoryList);
-                    $timeout($scope.setFalls, 0);
+                    $scope.setFalls();
                     $scope.Deploy.isLoading = false;
                     $scope.$broadcast('scroll.infiniteScrollComplete');
 

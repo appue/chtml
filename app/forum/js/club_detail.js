@@ -9,7 +9,6 @@ angular.module('phoneApp')
     $state, 
     $stateParams, 
     $location,
-    $timeout,
     $window,
     widget
 ){
@@ -65,7 +64,7 @@ angular.module('phoneApp')
 
                     $scope.Deploy.pageTotal = data.Total || 0;
                     $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
-                    $timeout($scope.setFalls, 0);
+                    $scope.setFalls();
                     $scope.Deploy.isLoading = false;
                     $scope.$broadcast('scroll.infiniteScrollComplete');
 

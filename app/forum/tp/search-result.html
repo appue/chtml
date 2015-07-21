@@ -1,19 +1,19 @@
 <header-bar title="搜索<span class='color_green'>{{keyword}}</span>的结果"></header-bar>
 
 <ion-view>
+    
+    <ul class="mod_tab_4 tab_search_result">
+        <li ng-click="Deploy.currentTab=1" ng-class="{current:Deploy.currentTab==1}">内容</li>
+        <li ng-click="Deploy.currentTab=2" ng-class="{current:Deploy.currentTab==2}">标签</li>
+        <li ng-click="Deploy.currentTab=3" ng-class="{current:Deploy.currentTab==3}">圈子</li>
+        <li ng-click="Deploy.currentTab=4" ng-class="{current:Deploy.currentTab==4}">用户</li>
+        <i class="line"></i>
+    </ul>
+
     <ion-content overflow-scroll="true">
-
-        <ul class="mod_tab_4 tab_search_result">
-            <li ng-click="Deploy.currentTab=1;pageIndex=1" ng-class="{current : Deploy.currentTab==1}">内容</li>
-            <li ng-click="Deploy.currentTab=2;pageIndex=1" ng-class="{current : Deploy.currentTab==2}">标签</li>
-            <li ng-click="Deploy.currentTab=3;pageIndex=1" ng-class="{current : Deploy.currentTab==3}">圈子</li>
-            <li ng-click="Deploy.currentTab=4;pageIndex=1" ng-class="{current : Deploy.currentTab==4}">用户</li>
-            <i class="line"></i>
-        </ul>
-
-        <section style="padding:50px 10px 10px 10px;">
+        <section ng-if="Deploy.currentTab==1" style="padding-top:40px;">
             <!--搜索-搜索内容-->
-            <falls ng-if="Deploy.currentTab==1 && DataList.ArticleList.length > 0" style="border-width:0 0 5px;">
+            <falls id="ArticleList">
                 <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
                     <a class="this_border" page-jump="{{v.SiteUrl}}">
                         <img ng-src="{{v.Images[0].ImageUrl}}" />
@@ -35,9 +35,11 @@
                     </a>
                 </li>
             </falls>
+        </section>
 
+        <section ng-if="Deploy.currentTab==2" style="padding-top:40px;">
             <!--搜索-搜索标签-->
-            <falls ng-if="Deploy.currentTab==2 && DataList.CategoryList.length > 0" style="border-width:0 0 5px;">
+            <falls id="CategoryList">
                 <li ng-repeat="(k, v) in DataList.CategoryList track by $index" data-y="{{v.Images[0].Height}}">
                     <a class="this_border" page-jump="{{v.SiteUrl}}">
                         <img ng-src="{{v.Images[0].ImageUrl}}">
@@ -59,9 +61,11 @@
                     </a>
                 </li>
             </falls>
-
+        </section>
+        
+        <section ng-if="Deploy.currentTab==3" style="padding:40px 10px 5px;">
             <!--搜索-搜索圈子-->
-            <ul ng-if="Deploy.currentTab==3 && DataList.ClubList.length > 0" class="unit_keyword_club">
+            <ul ng-if="DataList.ClubList.length > 0" class="unit_keyword_club" style="margin-top:10px;">
                 <li ng-repeat="(k, v) in DataList.ClubList track by $index" page-jump data-router="" data-options="{{v.ClubId}}">
                     <div>
                         <img ng-src="{{v.ImageUrl}}">
@@ -72,9 +76,11 @@
                     </div>
                 </li>
             </ul>
-
+        </section>
+        
+        <section ng-if="Deploy.currentTab==4" style="padding:40px 10px 5px;">
             <!--搜索-搜索用户-->
-            <ul ng-if="Deploy.currentTab==4 && DataList.UserList.length > 0" class="unit_keyword_user">
+            <ul ng-if="DataList.UserList.length > 0" class="unit_keyword_user" style="margin-top:10px;">
                 <li ng-repeat="(k, v) in DataList.UserList track by $index" page-jump data-router="" data-options="{{v.UserId}}">
                     <img ng-src="{{v.ImageUrl}}">
                     <p>{{v.ImageUrl}}</p>
@@ -83,12 +89,11 @@
                     <div ng-if="v.FollowState == 3" class="this_btn">未关注</div>
                 </li>
             </ul>
-
-            <ion-infinite-scroll on-infinite="loadMore(Deploy.currentTab)" distance="1%" ng-if="Deploy.isMore"></ion-infinite-scroll>
-
-            <div class="mod_no_more" ng-if="!Deploy.isMore">抱歉，没有找到对应结果！</div>
-
         </section>
+
+        <ion-infinite-scroll on-infinite="loadMore(Deploy.currentTab)" distance="1%" ng-if="Deploy.isMore"></ion-infinite-scroll>
+
+        <div class="mod_no_more" ng-if="!Deploy.isMore">没有更多数据了！</div>
 
     </ion-content>
 </ion-view>

@@ -53,7 +53,6 @@ angular.module('phoneApp')
         restrict: 'A',
         link: function (scope, element, attrs) {
 
-
             element.on('click', function (event) {
                 var direction = "forward";
 

@@ -7,7 +7,6 @@ angular.module('phoneApp')
 .controller('tCateList', function (
     $scope,
     $stateParams,
-    $timeout,
     $ionicNavBarDelegate,
     $ionicScrollDelegate,
     widget
@@ -31,7 +30,7 @@ angular.module('phoneApp')
 
     $scope.$watch('Deploy.currentTab', function () {
         if ($scope.Deploy.currentTab == 1) {
-            $timeout($scope.setFalls, 0);
+            $scope.setFalls();
         }
     });
 
@@ -77,7 +76,7 @@ angular.module('phoneApp')
                     }
                     $scope.Deploy.pageTotal = data.Total || 0;
                     $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
-                    $timeout($scope.setFalls, 0);
+                    $scope.setFalls();
                     $scope.Deploy.isLoading = false;
                     $scope.$broadcast('scroll.infiniteScrollComplete');
 

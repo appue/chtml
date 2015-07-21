@@ -2,63 +2,85 @@ angular.module('phoneApp')
 
 // 瀑布流布局
 .directive('falls', function(
+    $q,
+    $timeout,
     $rootScope
 ) {
     return {
         restrict: 'E',
         replace: true,
         transclude: true,
-        template: '<ul class="mod_list_falls ng-transclude"></ul>',
+        template: '<ul class="mod_list_falls ng-transclude" style="opacity:0;"></ul>',
         controller: function($scope, $element, $attrs) {
-            $rootScope.setFalls = function(elem) {
+            $rootScope.setFalls = function(id) {
                 // $scope.isLoading = false;
                 // $scope.$parent.isLoading = false;
                 // angular.element(document.querySelector('.mod_list_loading')).css('display', 'none');
 
-                if (elem) {
-                    var $el = angular.element(document.querySelector(elem));
-                } else {
+                var deferred = $q.defer(),
+                    promise = deferred.promise;
+
+                $timeout(function() {
+
                     var $el = $element;
-                }
 
-                var el = $el.find('li');
-
-                if (el.length == 0) return;
-
-                var obj = {
-                        'x': 10, //--左边总高度
-                        'y': 10 //--右边总高度
-                    },
-                    w = $el.find('li')[0].offsetWidth,
-                    p = w / 200;
-
-                angular.forEach(el, function(v, k) {
-
-                    angular.element(v).find('img').eq(0).css({
-                        'height': v.dataset.y * p + 'px'
-                    });
-
-                    var h = v.offsetHeight;
-
-                    if (obj.x <= obj.y) {
-
-                        v.style.cssText = 'left:0;top:' + obj.x + 'px';
-                        obj.x = obj.x + 10 + h;
-
-                    } else {
-
-                        v.style.cssText = 'right:0;top:' + obj.y + 'px';
-                        obj.y = obj.y + 10 + h;
-
+                    if (id) { //取对应ID的falls
+                        $el = angular.element(document.getElementById(id));
                     }
 
-                });
+                    $el.css('opacity', 0);
 
-                if (obj.x <= obj.y) {
-                    $el.css('height', obj.y + 'px');
-                } else {
-                    $el.css('height', obj.x + 'px');
-                }
+                    if ($el.find('li').length == 0) {
+                        deferred.reject(); //如果没有li则终止任务
+                        return;
+                    }
+
+                    var obj = {
+                        'x': 10, //--左边总高度
+                        'y': 10 //--右边总高度
+                    };
+
+                    var p = (document.body.clientWidth - 10) / 400; //取可视区域作等比运算
+
+                    angular.forEach($el.find('li'), function(v, k) {
+
+                        angular.element(v).find('img').eq(0).css({
+                            'height': v.dataset.y * p + 'px'
+                        });
+
+                        var h = v.offsetHeight;
+
+                        if (obj.x <= obj.y) {
+
+                            v.style.cssText = 'left:0;top:' + obj.x + 'px';
+                            obj.x = obj.x + 10 + h;
+
+                        } else {
+
+                            v.style.cssText = 'right:0;top:' + obj.y + 'px';
+                            obj.y = obj.y + 10 + h;
+
+                        }
+
+                    });
+
+                    if (obj.x <= obj.y) {
+                        $el.css('height', obj.y + 'px');
+                    } else {
+                        $el.css('height', obj.x + 'px');
+                    }
+
+                    // deferred.notify(); //处理中，显示loading样式
+                    deferred.resolve($el); //处理完成执行回调
+
+                }, 0);
+
+                promise.then(function success($el) { //显示内容
+                        $el.css('opacity', 1);
+                    },
+                    function error(error) {},
+                    function notification(notification) {});
+
 
             };
 

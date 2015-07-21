@@ -5,7 +5,6 @@ angular.module('phoneApp')
     $scope,
     $rootScope,
     $state,
-    $timeout,
     $ionicBackdrop,
     $ionicHistory,
     cachePool,
@@ -96,7 +95,7 @@ angular.module('phoneApp')
 
                         $scope.Deploy.pageTotal = data.Total || 0;
                         $scope.DataList.ListLeft = $scope.DataList.ListLeft.concat(data.ArticleList);
-                        $timeout($scope.setFalls, 0);
+                        $scope.setFalls();
                         $scope.Deploy.isLoading = false;
                         $scope.$broadcast('scroll.infiniteScrollComplete');
 
@@ -122,7 +121,7 @@ angular.module('phoneApp')
                         
                         $scope.Deploy.pageTotal = data.Total || 0;
                         $scope.DataList.ListRight = $scope.DataList.ListRight.concat(data.ArticleList);
-                        $timeout($scope.setFalls, 0);
+                        $scope.setFalls();
                         $scope.Deploy.isLoading = false;
                         $scope.$broadcast('scroll.infiniteScrollComplete');
 
