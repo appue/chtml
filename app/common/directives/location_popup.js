@@ -4,7 +4,12 @@ angular.module('phoneApp')
  *  引用方法：
  *	<ANY location-popup></ANY>
  */
-.directive('locationPopup', function ($ionicPopup, widget, cachePool) {
+.directive('locationPopup', function (
+	$ionicPopup,
+	$http,
+	widget,
+	cachePool
+) {
 	return {
 		restrict: 'A',
 		link: function (scope, element, attrs) {
@@ -90,31 +95,58 @@ angular.module('phoneApp')
 
 			element.bind('click', function () { //呼出弹出层
 
-				widget.ajaxRequest({
-					url: 'CityList',
-					data: {},
-					success: function (data) {
+				// widget.ajaxRequest({
+				// 	url: 'CityList',
+				// 	data: {},
+				// 	success: function (data) {
 
-						scope.CityList = data;
-						scope.CitySubList = scope.CityList[0].sub;
+				// 		scope.CityList = data;
+				// 		scope.CitySubList = scope.CityList[0].sub;
 
-						$ionicPopup.confirm({
-							title: '选择位置',
-							cancelText: '取消',
-							cancelType: 'cancel',
-							okText: '确定',
-							okType: 'confirm',
-							scope: scope,
-							templateUrl: '../common/directives/location_popup.html'
-						}).then(function (res) {
-							if (res) { //确认所在地位置
-								scope.cInput.City = scope.tmpCity;
-								scope.cInput.CityName = scope.CityList[scope.tmpCity].name +" "+ scope.CitySubList[scope.tmpSubCity].name;
-							}
-						});
-					}
+				// 		$ionicPopup.confirm({
+				// 			title: '选择位置',
+				// 			cancelText: '取消',
+				// 			cancelType: 'cancel',
+				// 			okText: '确定',
+				// 			okType: 'confirm',
+				// 			scope: scope,
+				// 			templateUrl: '../common/directives/location_popup.html'
+				// 		}).then(function (res) {
+				// 			if (res) { //确认所在地位置
+				// 				scope.cInput.City = scope.tmpCity;
+				// 				scope.cInput.CityName = scope.CityList[scope.tmpCity].name +" "+ scope.CitySubList[scope.tmpSubCity].name;
+				// 			}
+				// 		});
+				// 	}
+				// });
+
+				$http({
+					method: 'GET',
+					url: 'api/CityList.json',
+					timeout: 15000
+				})
+				.success(function (data) {
+					scope.CityList = data;
+					scope.CitySubList = scope.CityList[0].sub;
+
+					$ionicPopup.confirm({
+						title: '选择位置',
+						cancelText: '取消',
+						cancelType: 'cancel',
+						okText: '确定',
+						okType: 'confirm',
+						scope: scope,
+						templateUrl: '../common/directives/location_popup.html'
+					}).then(function (res) {
+						if (res) { //确认所在地位置
+							scope.cInput.City = scope.tmpCity;
+							scope.cInput.CityName = scope.CityList[scope.tmpCity].name +" "+ scope.CitySubList[scope.tmpSubCity].name;
+						}
+					});
+				})
+				.error(function (data) {
+					widget.msgToast('请检查你的网络！');
 				});
-
 			});
 
 		}
