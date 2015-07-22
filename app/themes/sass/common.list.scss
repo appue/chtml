@@ -71,7 +71,13 @@
     border-style: solid;
     border-color: $bgcolor;
     position: relative;
+    opacity: 0;
+    -webkit-transition: opacity .3s ease .3s;
+    transition: opacity .3s;
     // overflow: hidden;
+    &.active {
+        opacity: 1;
+    }
     li {
         position: absolute;
         display: block;

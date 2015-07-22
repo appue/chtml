@@ -10,7 +10,7 @@ angular.module('phoneApp')
         restrict: 'E',
         replace: true,
         transclude: true,
-        template: '<ul class="mod_list_falls ng-transclude" style="opacity:0;"></ul>',
+        template: '<ul class="mod_list_falls ng-transclude"></ul>',
         controller: function($scope, $element, $attrs) {
             $rootScope.setFalls = function(id) {
                 // $scope.isLoading = false;
@@ -28,7 +28,7 @@ angular.module('phoneApp')
                         $el = angular.element(document.getElementById(id));
                     }
 
-                    $el.css('opacity', 0);
+                    $el.removeClass('active');
 
                     if ($el.find('li').length == 0) {
                         deferred.reject(); //如果没有li则终止任务
@@ -76,7 +76,7 @@ angular.module('phoneApp')
                 }, 0);
 
                 promise.then(function success($el) { //显示内容
-                        $el.css('opacity', 1);
+                        $el.addClass('active');
                     },
                     function error(error) {},
                     function notification(notification) {});
