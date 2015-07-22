@@ -28,7 +28,7 @@ angular.module('phoneApp')
                         $el = angular.element(document.getElementById(id));
                     }
 
-                    $el.removeClass('active');
+                    // $el.removeClass('active');
 
                     if ($el.find('li').length == 0) {
                         deferred.reject(); //如果没有li则终止任务
@@ -76,7 +76,7 @@ angular.module('phoneApp')
                 }, 0);
 
                 promise.then(function success($el) { //显示内容
-                        $el.addClass('active');
+                        $el.find('li').addClass('active');
                     },
                     function error(error) {},
                     function notification(notification) {});
