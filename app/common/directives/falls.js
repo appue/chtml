@@ -13,12 +13,11 @@ angular.module('phoneApp')
         template: '<ul class="mod_list_falls ng-transclude"></ul>',
         controller: function($scope, $element, $attrs) {
             $rootScope.setFalls = function(id) {
-                // $scope.isLoading = false;
-                // $scope.$parent.isLoading = false;
-                // angular.element(document.querySelector('.mod_list_loading')).css('display', 'none');
 
                 var deferred = $q.defer(),
                     promise = deferred.promise;
+
+                // deferred.notify(); //处理中，显示loading样式
 
                 $timeout(function() {
 
@@ -27,8 +26,6 @@ angular.module('phoneApp')
                     if (id) { //取对应ID的falls
                         $el = angular.element(document.getElementById(id));
                     }
-
-                    // $el.removeClass('active');
 
                     if ($el.find('li').length == 0) {
                         deferred.reject(); //如果没有li则终止任务
@@ -70,7 +67,6 @@ angular.module('phoneApp')
                         $el.css('height', obj.x + 'px');
                     }
 
-                    // deferred.notify(); //处理中，显示loading样式
                     deferred.resolve($el); //处理完成执行回调
 
                 }, 0);
