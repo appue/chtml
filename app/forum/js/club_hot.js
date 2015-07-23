@@ -6,12 +6,10 @@ angular.module('phoneApp')
     widget
 ){
 
-    $scope.Page = {
-        Title: "圈子HOT",
-        Next: "全部圈子",
-        SiteUrl: {
-            router: "forum.club-list"
-        }
+    $scope.goNext = function () {
+        // SiteUrl: {
+        //     router: "forum.club-list"
+        // }
     };
 
     $scope.Deploy = {

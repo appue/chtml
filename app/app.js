@@ -231,7 +231,7 @@ angular.module('phoneApp', [
         //跟某一用户聊天
         .state('forum.chat', {
             // cache: false,
-            url: '/chat-{uid}.htm',
+            url: '/chat-{uid}.htm?{uname}',
             templateUrl: 'forum/tp/chat.html',
             controller: 'tMsgChat'
         })

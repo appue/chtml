@@ -7,9 +7,6 @@ angular.module('phoneApp')
     $stateParams,
     widget
 ){  
-    $scope.Page = {
-        Title: "成员排行榜"
-    };
 
     $scope.Deploy = {
         isMore: true

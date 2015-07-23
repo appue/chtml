@@ -1,6 +1,6 @@
-<header-bar></header-bar>
+<header-bar title="猜你喜欢"></header-bar>
 
-<ion-view hide-nav-bar="true">
+<ion-view>
     <ion-content overflow-scroll="true">
 
         <ion-slide-box auto-play="true" does-continue="true" ng-if="DataList.PhotoList.length > 0">
@@ -12,11 +12,10 @@
             </ion-slide>
         </ion-slide-box>
 
-
         <!--瀑布流-->
         <falls>
             <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
-                <a class="this_border" page-jump data-router="forum.detail" data-options='{ "id": {{v.ArticleId}} }'>
+                <a class="this_border" page-jump data-router="forum.detail" data-options="{id:v.ArticleId}">
                     <img ng-src="{{v.Images[0].ImageUrl}}" />
                     <article>
                         <div class="this_text">{{v.Images[0].Description}}</div>
@@ -37,6 +36,9 @@
             </li>
         </falls>
 
+        <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore"></ion-infinite-scroll>
+
         <div class="mod_no_more" ng-if="!Deploy.isMore">没有数据了！</div>
+
     </ion-content>
 </ion-view>

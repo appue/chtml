@@ -24,6 +24,7 @@ angular.module('phoneApp')
         isMore: true,
         cateClass: "forum_cate_two_list"
     };
+
     $scope.DataList = {
         ArticleList: []
     };
@@ -111,8 +112,8 @@ angular.module('phoneApp')
     $scope.loadCate();
     $scope.loadMore();
 
-
     $scope.headerScroll = function () {
         widget.changeOpacity();
     };
+    
 });

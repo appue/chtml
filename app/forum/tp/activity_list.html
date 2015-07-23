@@ -1,6 +1,6 @@
-<header-bar></header-bar>
+<header-bar title="活动列表"></header-bar>
 
-<ion-view hide-nav-bar="true">
+<ion-view>
     <ion-content overflow-scroll="true"  class="mod_wrapper">
         <div class="forum_activity_list">
             <a ng-repeat="(k, v) in DataList.ActivityList" page-jump data-router="forum.activity-detail" data-options="{{v.SiteUrl.options}}">

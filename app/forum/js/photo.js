@@ -15,10 +15,10 @@ angular.module('phoneApp')
     widget
 ){
 
-    $scope.Page = {
-        Title: "编辑照片",
-        Next: "继续"
-    };
+    // $scope.Page = {
+    //     Title: "编辑照片",
+    //     Next: "继续"
+    // };
 
     var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
 

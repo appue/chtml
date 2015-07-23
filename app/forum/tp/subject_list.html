@@ -1,6 +1,6 @@
-<header-bar></header-bar>
+<header-bar title="专题集锦"></header-bar>
 
-<ion-view hide-nav-bar="true">
+<ion-view>
     <ion-content overflow-scroll="true" class="mod_wrapper">
         <div class="forum_subject_list">
             <a ng-repeat="(k, v) in DataList.SubjectList track by $index" ui-sref="forum.subject-detail({id: v.SubjectId})">

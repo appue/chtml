@@ -5,9 +5,6 @@ angular.module('phoneApp')
     $scope,
     widget
 ){
-    $scope.Page = {
-        Title: "全部圈子"
-    };
 
     $scope.Deploy = {
         isMore: true

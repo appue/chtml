@@ -2,15 +2,11 @@
 angular.module('phoneApp')
 
 .controller('tCommentList', function (
-    $scope, 
-    $state, 
-    $stateParams, 
-    $location, 
+    $scope,
+    $stateParams,
+    $location,
     widget
 ) {
-    $scope.Page = {
-        Title: "评论列表"
-    };
 
     $scope.Deploy = {
         pageIndex: 0,
@@ -18,6 +14,7 @@ angular.module('phoneApp')
         isLoading: false,
         isMore: true
     };
+    
     $scope.DataList = {
         CommentList: []
     };
@@ -49,6 +46,6 @@ angular.module('phoneApp')
         });
     };
 
-
     $scope.loadMore();
+
 });

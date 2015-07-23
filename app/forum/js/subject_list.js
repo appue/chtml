@@ -11,9 +11,6 @@ angular.module('phoneApp')
     $location,
     widget
 ){
-    $scope.Page = {
-        Title: "专题集锦"
-    };
 
     $scope.Deploy = {
         pageIndex: 0,

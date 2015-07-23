@@ -1,7 +1,7 @@
 <section ng-if="Deploy.isLogin">
     <header-bar title="私聊"></header-bar>
 
-    <ion-view hide-nav-bar="true">
+    <ion-view>
         <ion-content overflow-scroll="true" class="mod_wrapper">
             <ul class="msg_talk_list" ng-if="DataList.TalkList.length > 0">
                 <li ng-repeat="(k, v) in DataList.TalkList track by $index">

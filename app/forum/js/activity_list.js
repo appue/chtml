@@ -11,9 +11,6 @@ angular.module('phoneApp')
     $location,
     widget
 ){
-    $scope.Page = {
-        Title: "活动列表"
-    };
 
     $scope.Deploy = {
         pageIndex: 0,
@@ -21,6 +18,7 @@ angular.module('phoneApp')
         isLoading: false,
         isMore: true
     };
+
     $scope.DataList = {
         ActivityList: []
     };
@@ -64,6 +62,6 @@ angular.module('phoneApp')
         });
     };
 
-
     $scope.loadMore();
+    
 });

@@ -9,9 +9,8 @@ angular.module('phoneApp')
     widget
 ){
 
-    $scope.Page = {
-        Title: "选择标签",
-        Next: "完成"
+    $scope.go = function (e) {
+        // body...
     };
 
     // $ionicViewSwitcher.nextDirection('forward');

@@ -14,10 +14,10 @@ angular.module('phoneApp')
     widget
 ){
 
-    $scope.Page = {
-        Title: "添加图片",
-        Next: "继续"
-    };
+    // $scope.Page = {
+    //     Title: "添加图片",
+    //     Next: "继续"
+    // };
 
     $scope.Photo = {
         Files: ""

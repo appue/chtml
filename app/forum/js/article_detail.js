@@ -23,40 +23,42 @@ angular.module('phoneApp')
         $scope.isShowLayout = !$scope.isShowLayout;
     };
 
+    $scope.articleId = $stateParams.id || 0;
+
     //--跳转URL
-    $scope.redirectUrl = {
-        //--点评列表
-        CommentList: {
-            'url': ['forum/#/comment/list/'+ $stateParams.id +'.htm']
-        },
+    // $scope.redirectUrl = {
+    //     //--点评列表
+    //     CommentList: {
+    //         'url': ['forum/#/comment/list/'+ $stateParams.id +'.htm']
+    //     },
 
-        //--登录Url
-        Login: {
-            'url': ['entry/#/login.htm']
-        },
+    //     //--登录Url
+    //     Login: {
+    //         'url': ['entry/#/login.htm']
+    //     },
 
-        //--私聊
-        Chat: {
-            'url': ['/home/#/msg/chat-1.htm']
-        },
+    //     //--私聊
+    //     Chat: {
+    //         'url': ['/home/#/msg/chat-1.htm']
+    //     },
 
-        //--举报
-        Report: {
-            'url': ['forum/#/report/'+ $stateParams.id +'.htm']
-        },
+    //     //--举报
+    //     Report: {
+    //         'url': ['forum/#/report/'+ $stateParams.id +'.htm']
+    //     },
 
-        //--编辑
-        Edit: {
+    //     //--编辑
+    //     Edit: {
 
-        }
-    };
+    //     }
+    // };
 
     //--获取帖子内容
     widget.ajaxRequest({
         scope: $scope,
         url: 'getContentArticle',
         data: {
-            ArticleId: $stateParams.id
+            ArticleId: $scope.articleId
         },
         success: function (data) {
             angular.extend($scope.DataList, data);
@@ -66,8 +68,6 @@ angular.module('phoneApp')
             } else {
                 $scope.isOwner = false;
             }
-        },
-        error: function (data) {
         }
     });
 
@@ -78,16 +78,15 @@ angular.module('phoneApp')
             scope: $scope,
             url: 'setArticlePraise',
             data: {
-                ArticleId: $stateParams.id
+                ArticleId: $scope.articleId
             },
             success: function (data) {
             }
         });
     };
 
-    
-
     $scope.headerScroll = function () {
         widget.changeOpacity();
     };
+
 });
