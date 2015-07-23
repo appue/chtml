@@ -15,9 +15,18 @@ angular.module('phoneApp')
 ){
 
     $scope.Page = {
-        Title: "详情",
+        Title: "添加图片",
         Next: "继续"
     };
+
+    $scope.Photo = {
+        Files: ""
+    };
+
+    console.log($scope.Photo.Files);
+    $scope.$watch("Photo.Files", function () {
+        console.log(console.log($scope.Photo.Files));
+    })
 
     // var data = $rootScope.CameraImages;
 

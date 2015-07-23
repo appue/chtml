@@ -133,9 +133,11 @@ angular.module('phoneApp')
 
 
 .directive('addPhoto', function (
+    $state,
     $parse, 
     $timeout,
     $compile,
+    $ionicViewSwitcher,
     widget,
     ENV
 ) {
@@ -168,7 +170,9 @@ angular.module('phoneApp')
                         'overflow-y': 'hidden'
                     };
                 } else {
-                    widget.msgToast('请下载APP吧！');
+                //     widget.msgToast('请下载APP吧！');
+                    $ionicViewSwitcher.nextDirection("forward");
+                    $state.go("forum.photo-title");
                 }
 
             });
@@ -287,4 +291,61 @@ angular.module('phoneApp')
 
         }
     };
+})
+
+// 上传图片
+.directive('appFilereader', function(
+    $q
+) {
+    var slice = Array.prototype.slice;
+
+    return {
+        restrict: 'A',
+        require: '?ngModel',
+        link: function(scope, element, attrs, ngModel) {
+                if (!ngModel) return;
+
+                ngModel.$render = function() {};
+
+                element.bind('change', function(e) {
+                    var element = e.target;
+
+                    $q.all(slice.call(element.files, 0).map(readFile))
+                        .then(function(values) {
+
+                            console.log(values);
+
+                            if (scope.CameraImages) {
+                                scope.CameraImages.ImageUrl
+                            } else {
+
+                            }
+
+                            if (element.multiple) {
+                                ngModel.$setViewValue(values);
+                            } else {
+                                ngModel.$setViewValue(values.length ? values[0] : null);
+                            }
+                        });
+
+                    function readFile(file) {
+                        console.log(file);
+                        var deferred = $q.defer();
+
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            deferred.resolve(e.target.result);
+                        };
+                        reader.onerror = function(e) {
+                            deferred.reject(e);
+                        };
+                        reader.readAsDataURL(file);
+
+                        return deferred.promise;
+                    }
+
+                }); //change
+
+            } //link
+    }; //return
 });
