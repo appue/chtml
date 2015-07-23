@@ -9,7 +9,7 @@
                 <li>删除</li>
             </ul>
             <ul ng-if="!isOwner">
-                <li page-jump="redirectUrl.Report">举报</li>
+                <li page-jump data-router="redirectUrl.Report">举报</li>
 
         <!--         <li page-jump="redirect.Report">收藏</li>
                 <li page-jump="redirect.Report">分享</li>
@@ -34,7 +34,7 @@
                             <dt>
                                 <span>5天前</span>
                                 {{DataList.Author.UserName}}
-                                <a ui-sref="forum.chat({uid: 123123})">私聊</a>
+                                <a page-jump data-router="forum.chat" data-options="{uid: 123123}">私聊</a>
                             </dt>
                             <dd>
                                 发布到：

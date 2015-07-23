@@ -15,7 +15,7 @@
             <!--搜索-搜索内容-->
             <falls id="ArticleList">
                 <li ng-repeat="(k, v) in DataList.ArticleList track by $index" data-y="{{v.Images[0].Height}}" >
-                    <a class="this_border" page-jump="{{v.SiteUrl}}">
+                    <a class="this_border" page-jump data-router="forum.detail" data-options="{id:v.ArticleId}">
                         <img ng-src="{{v.Images[0].ImageUrl}}" />
                         <article>
                             <div class="this_text">{{v.Images[0].Description}}</div>
@@ -41,7 +41,7 @@
             <!--搜索-搜索标签-->
             <falls id="CategoryList">
                 <li ng-repeat="(k, v) in DataList.CategoryList track by $index" data-y="{{v.Images[0].Height}}">
-                    <a class="this_border" page-jump="{{v.SiteUrl}}">
+                    <a class="this_border" page-jump data-router="forum.detail" data-options="{id:v.ArticleId}">
                         <img ng-src="{{v.Images[0].ImageUrl}}">
                         <article>
                             <div class="this_text">{{v.Images[0].Description}}</div>

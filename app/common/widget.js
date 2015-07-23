@@ -139,7 +139,6 @@ angular.module('phoneApp')
             }
         },
 
-
         /**
          * ajax请求
          */
@@ -293,7 +292,6 @@ angular.module('phoneApp')
 
         },
 
-
         /**
          * native StatusBar 显示
          *
@@ -310,7 +308,6 @@ angular.module('phoneApp')
 
         },
 
-
         /**
          * 清除历史记录
          *
@@ -318,8 +315,6 @@ angular.module('phoneApp')
         clearHistory: function () {
             $ionicHistory.clearHistory();
         },
-
-
 
         changeOpacity: function () {
             var top = $ionicScrollDelegate.$getByHandle('mainScroll').getScrollPosition().top,
@@ -339,7 +334,6 @@ angular.module('phoneApp')
                 "opacity": opacity
             });
         },
-
 
         /**
          * 初始化用户登录信息
@@ -361,7 +355,6 @@ angular.module('phoneApp')
                 scope.Deploy.uId = 0;
             }
         },
-
 
         /**
          * 注销用户登录信息
@@ -441,12 +434,5 @@ angular.module('phoneApp')
         return query.length ? query.substr(0, query.length - 1) : query;
     };
 
-    // return {
-    //     msgToast: msgToast,
-    //     cacheData: cacheData,
-    //     safeApply: safeApply,
-    //     stickyTopScroll: stickyTopScroll,
-    //     ajaxRequest: ajaxRequest
-    // };
     return tPackage;
 });

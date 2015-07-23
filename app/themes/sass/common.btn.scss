@@ -1,6 +1,7 @@
 ﻿.unit_btn{
     @include button(100%, 40px);
     background: $green_val;
+    font-size: 16px;
 }
 
 .btn_camera{

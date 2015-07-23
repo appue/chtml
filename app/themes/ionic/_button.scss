@@ -7,7 +7,7 @@
 @mixin button($width:90px, $height:34px) {
     width: $width;
     height: $height;
-    line-height: $height;
+    // line-height: $height;
     display: block;
     border: none;
     -webkit-box-sizing: border-box;
