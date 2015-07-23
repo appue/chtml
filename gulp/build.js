@@ -225,7 +225,7 @@ module.exports = function (gulp, $) {
         return gulp.src([
                 './app/themes/fonts/*'
             ])
-            .pipe(gulp.dest(buildFolder+ 'themes/fonts'));
+            .pipe(gulp.dest(buildFolder+ '/themes/fonts'));
     });
 
     //--image 迁移
