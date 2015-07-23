@@ -10,51 +10,51 @@ angular.module('phoneApp')
 ) {
 
     $scope.cInput = {
-        btnText: "发送验证码",
-        isSend: false
+        // btnText: "发送验证码",
+        // isSend: false
     };
 
     // 发送验证码
-    $scope.sendCode = function () {
-        var status = widget.checkPhone($scope.cInput.phone);
+    // $scope.sendCode = function () {
+    //     var status = widget.checkPhone($scope.cInput.phone);
 
-        if (status) return;
+    //     if (status) return;
 
-        if ($scope.cInput.isSend) {
-            widget.msgToast('请稍后再刷新验证码！');
-            return;
-        }
+    //     if ($scope.cInput.isSend) {
+    //         widget.msgToast('请稍后再刷新验证码！');
+    //         return;
+    //     }
 
-        widget.ajaxRequest({
-            url: 'setSendPhone',
-            data: {
-                Phone: $scope.cInput.phone
-            },
-            success: function (data) {
-                widget.msgToast('验证码已发送到'+ $scope.cInput.phone +'手机上');
-            }
-        });
+    //     widget.ajaxRequest({
+    //         url: 'setSendPhone',
+    //         data: {
+    //             Phone: $scope.cInput.phone
+    //         },
+    //         success: function (data) {
+    //             widget.msgToast('验证码已发送到'+ $scope.cInput.phone +'手机上');
+    //         }
+    //     });
 
-        var num = 60;
+    //     var num = 60;
 
-        $scope.cInput.btnText = "重新发送("+ num +")";
+    //     $scope.cInput.btnText = "重新发送("+ num +")";
 
-        timer();
+    //     timer();
 
-        function timer() {
-            $scope.cInput.isSend = true;
-            $timeout(function () {
-                if (num == 0) {
-                    $scope.cInput.isSend = false;
-                    $scope.cInput.btnText = "重新发送验证码";
-                    return;
-                }
-                num--;
-                $scope.cInput.btnText = "重新发送("+ num +")";
-                timer();
-            }, 1000);
-        }
-    };
+    //     function timer() {
+    //         $scope.cInput.isSend = true;
+    //         $timeout(function () {
+    //             if (num == 0) {
+    //                 $scope.cInput.isSend = false;
+    //                 $scope.cInput.btnText = "重新发送验证码";
+    //                 return;
+    //             }
+    //             num--;
+    //             $scope.cInput.btnText = "重新发送("+ num +")";
+    //             timer();
+    //         }, 1000);
+    //     }
+    // };
 
     // 检查手机号码
     $scope.changePassword = function () {

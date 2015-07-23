@@ -3,63 +3,67 @@
 angular.module('phoneApp')
 
 // 获取验证码
-.directive('getVcode', function ($rootScope, $stateParams, $timeout, widget, $http, $q) {
+.directive('getVcode', function (
+    $rootScope,
+    $timeout,
+    widget
+) {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
 
-            if (!$stateParams.phone) { //如果电话号码不存在，则返回上一页
-                // routerRedirect.toJump(scope.backParam);
-                return;
-            }
+            widget.initUser(scope);
 
-            if ($rootScope.vEnable) { //初始化，如果之前的倒计时未结束，则重启倒计时
+            if ($rootScope.vEnable) { //初始化，如果之前的倒计时未结束，则继续倒计时
+
                 $timeout.cancel($rootScope.vEnable);
+
                 countdown();
+
             } else {
-                $rootScope.vDisableTime = 0;
+
+                $rootScope.vColdDown = 0;
+                $rootScope.vBtnText = '发送验证码';
+
             }
 
             function countdown() { //倒计时函数
-                if ($rootScope.vDisableTime > 0) {
-                    element.text('重新发送(' + $rootScope.vDisableTime + ')').addClass('disable');
-                    $rootScope.vDisableTime--;
-                    $rootScope.vEnable = $timeout(countdown, 1000);
+
+                if ($rootScope.vColdDown > 0) {
+
+                    $rootScope.vColdDown--;
+                    $rootScope.vEnable = $timeout(countdown, 1000); //给vEnable赋值，当再进入该页面时继续上次倒计时
+                    $rootScope.vBtnText = '重新发送(' + $rootScope.vColdDown + ')';
+
                 } else {
-                    element.text('重发验证码').removeClass('disable');
+
+                    $rootScope.vEnable = false;
+                    $rootScope.vBtnText = '重新发送验证码';
+
                 }
+
             }
 
-            function resendVcode() {
+            element.bind('click', function (e) {
 
-                if ($rootScope.vDisableTime !== 0) {
+                if ($rootScope.vColdDown !== 0) {
                     return;
+                } else {
+                    $rootScope.vColdDown = 60;
+                    countdown(); //开始倒计时
                 }
 
-                $rootScope.vDisableTime = 30;
-
                 widget.ajaxRequest({
-                    noMask: true,
-                    url: 'getClubHotUser',
+                    url: 'setSendPhone',
                     data: {
-                        Phone: $stateParams.phone
+                        Phone: scope.UserInfo.Phone
                     },
                     success: function (data) {
-                        if (data.ShortMessage) {
-                            countdown(); //开始倒计时
-                            widget.msgToast(data.ShortMessage);
-                        } else {
-                            widget.msgToast(data.msg || '手机号无效');
-                        }
+                        widget.msgToast('验证码已发送到' + scope.UserInfo.Phone + '手机上');
                     }
                 });
 
-            }
-
-            resendVcode(); //页面首次请求
-
-            element.text('重新发送(' + $rootScope.vDisableTime + ')').addClass('disable').on('click', resendVcode);
-
+            });
 
 
             // var defer = $q.defer();

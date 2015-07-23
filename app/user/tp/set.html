@@ -1,5 +1,5 @@
 <section ng-if="Deploy.isLogin">
-    <header-bar title="设置"></header-bar>
+    <header-bar></header-bar>
 
     <ion-view>
         <ion-content overflow-scroll="true" class="mod_wrapper">
@@ -9,7 +9,7 @@
                     <p>昵称</p>
                     <p>{{cInput.UserName}}</p>
                 </li>
-                <li show-popup="gender">
+                <li ng-click="genderSelect()">
                     <p>性别</p>
                     <p>{{cInput.SexName}}</p>
                 </li>
@@ -40,26 +40,26 @@
             <ul class="unit_owner_push">
                 <li>
                     <div>消息推送</div>
-                    <a ng-click="switchCtrl('isMsgPush')" ng-class="{close:!personalData.isMsgPush,open:personalData.isMsgPush}" class="on_off"></a>
+                    <button ng-click="switchCtrl('isMsgPush')" ng-class="{close:!userSetData.isMsgPush,open:userSetData.isMsgPush}" class="on_off"></button>
                 </li>
                 <li>
                     <div>只允许我关注的人跟我私聊</div>
-                    <a ng-click="switchCtrl('isFocusOnly')" ng-class="{close:!personalData.isFocusOnly,open:personalData.isFocusOnly}" class="on_off"></a>
+                    <a ng-click="switchCtrl('isFocusOnly')" ng-class="{close:!userSetData.isFocusOnly,open:userSetData.isFocusOnly}" class="on_off"></a>
                 </li>
                 <li>
                     <div>允许通过手机通讯录加我好友</div>
-                    <a ng-click="switchCtrl('isTelAllow')" ng-class="{close:!personalData.isTelAllow,open:personalData.isTelAllow}" class="on_off"></a>
+                    <a ng-click="switchCtrl('isTelAllow')" ng-class="{close:!userSetData.isTelAllow,open:userSetData.isTelAllow}" class="on_off"></a>
                 </li>
                 <li>
                     <div>保存图片到相册</div>
-                    <a ng-click="switchCtrl('isPhotoSave')" ng-class="{close:!personalData.isPhotoSave,open:personalData.isPhotoSave}" class="on_off"></a>
+                    <a ng-click="switchCtrl('isPhotoSave')" ng-class="{close:!userSetData.isPhotoSave,open:userSetData.isPhotoSave}" class="on_off"></a>
                 </li>
                 <li>
                     <div>清除图片缓存</div>
                 </li>
             </ul>
 
-            <div class="unit_btn" ng-click="loginOut()">退出登录</div>
+            <button class="unit_btn" ng-click="loginOut()">退出登录</button>
 
         </ion-content>
     </ion-view>
@@ -68,20 +68,3 @@
 <page-login ng-if="!Deploy.isLogin"></page-login>
 
 <user-login></user-login>
-
-<popup id="gender" title="选择性别" popup-confirm="chooseSex">
-    <div class="choose_gender" ngd-click="chooseSex($event)" selector="span">
-        <span>
-            <input name="sex" ng-checked="tmpSex == '女'" type="radio">
-            <label>女</label>
-        </span>
-        <span>
-            <input name="sex" ng-checked="tmpSex == '男'" type="radio">
-            <label>男</label>
-        </span>
-    </div>
-</popup>
-
-<!-- <popup id="location" title="选择位置" popup-confirm="confirmLocation">
-    <location-data></location-data>
-</popup> -->

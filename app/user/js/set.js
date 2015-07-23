@@ -2,10 +2,18 @@ angular.module('phoneApp')
 
 .controller('tUserSet', function (
 	$scope,
-	$stateParams,
+	$ionicPopup,
 	$timeout,
 	widget
 ) {
+
+	$scope.Page = { //头部设置
+		Title: '设置',
+		RightText: false,
+		RightFun: function () {
+			alert(1);
+		}
+	};
 
 	widget.initUser($scope);
 
@@ -16,10 +24,10 @@ angular.module('phoneApp')
 	} else {
 		$scope.cInput.SexName = "男";
 	}
-	
-	console.log($scope.cInput);
 
-	$scope.personalData = { //开关数据初始化
+	$scope.tmpSex = $scope.cInput.SexName; //初始弹出层临时性别
+
+	$scope.userSetData = { //开关数据初始化
 		isMsgPush: true,
 		isFocusOnly: false,
 		isTelAllow: true,
@@ -28,39 +36,46 @@ angular.module('phoneApp')
 
 	$scope.switchCtrl = function (type) {
 
-		$scope.personalData[type] = !$scope.personalData[type];
+		$scope.userSetData[type] = !$scope.userSetData[type];
 
-		console.log($scope.personalData[type]);
+		console.log($scope.userSetData[type]);
 	};
 
-	//初始化临时数据
-	// $scope.tmpSex = $scope.inputVal.sex;
-	// $scope.tmpJob = $scope.inputVal.job;
+	$scope.genderSelect = function () {
+		$ionicPopup.confirm({
+			title: '选择性别',
+			cancelText: '取消',
+			cancelType: 'cancel',
+			okText: '确定',
+			okType: 'confirm',
+			scope: $scope,
+			template: '<div class="choose_gender" ngd-click="chooseSex($event)" selector="span"><span><input name="sex" ng-checked="tmpSex == \'女\'" type="radio"><label>女</label></span><span><input name="sex" ng-checked="tmpSex == \'男\'" type="radio"><label>男</label></span></div>'
+		}).then(function (res) {
+			if (res) { //确认所在地位置
+				$scope.chooseSex(false);
+				//todo...
+			}
+		});
+	};
 
 	$scope.chooseSex = function (e) { //选择性别
 		var $that = angular.element(e.delegationTarget);
-
 		if ($that.length > 0) { //选择
 			$scope.tmpSex = $that.find('label').text();
 		} else { //确定
-			$scope.inputVal.sex = $scope.tmpSex;
+			$scope.cInput.SexName = $scope.tmpSex;
 		}
 	};
 
-	// $scope.chooseJob = function (e) { //岗位选择
-	// 	var $that = angular.element(e.delegationTarget);
-
-	// 	if ($that.length > 0) { //选择
-	// 		$scope.tmpJob = $that.find('label').text();
-	// 	} else { //确定
-	// 		$scope.inputVal.job = $scope.tmpJob;
-	// 	}
-
-	// };
-
+	// $timeout(function () {//todo...
+	// 	console.log($scope.cInput);
+	// 	$scope.$watch('cInput', function () {
+	// 		$scope.Page.RightText = '保存设置';
+	// 	});
+	// }, 2000);
 
 	$scope.loginOut = function () {
-		// widget.cleanLogin($scope);
 		$scope.showLogin();
 	};
+
 });

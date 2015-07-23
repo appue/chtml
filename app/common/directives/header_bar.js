@@ -20,9 +20,9 @@ angular.module('phoneApp')
             if (!scope.Page) {
                 scope.Page = {};
             }
-            scope.Page.Title = scope.Page.Title ? scope.Page.Title : (attrs.title || '');
-            scope.Page.RightText = attrs.right ? attrs.right.split('|')[0] : '';
-            scope.Page.RightFun = attrs.right ? scope.$eval(attrs.right.split('|')[1] || '') : '';
+            scope.Page.Title = scope.Page.Title || attrs.title || '';
+            scope.Page.RightText = scope.Page.RightText || (attrs.right ? attrs.right.split('|')[0] : '');
+            scope.Page.RightFun = scope.Page.RightFun || (attrs.right ? scope.$eval(attrs.right.split('|')[1]) : '');
 
             // if (attrs.transparent !== undefined) {
             //     scope.isTransparent = true;
@@ -73,7 +73,6 @@ angular.module('phoneApp')
         restrict: 'E',
         replace: true,
         templateUrl: 'common/directives/header_opacity.html',
-        controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {
-        }
+        controller: function ($scope, $element, $rootScope, $compile, $timeout, widget) {}
     };
 });
