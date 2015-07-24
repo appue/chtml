@@ -48,11 +48,11 @@
                     <span>{{DataList.UserInfo.Exper}}</span>
                     经验值
                 </li>
-                <li page-jump data-router="forum.user-attention" data-option='{ "uid": {{Deploy.uId}} }'>
+                <li page-jump data-router="forum.user-attention" data-options="{uid:Deploy.uId}">
                     <span>{{DataList.UserInfo.TotalFollow}}</span>
                     关注
                 </li>
-                <li page-jump data-router="forum.user-fans">
+                <li page-jump data-router="forum.user-fans" data-options="{uid:Deploy.uId}">
                     <span>{{DataList.UserInfo.TotalFans}}</span>
                     粉丝
                 </li>

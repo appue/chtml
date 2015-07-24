@@ -56,7 +56,7 @@ angular.module('phoneApp')
         if (type === 1 || type === 2) {
             $scope.Deploy.pageSize = 5;
         } else {
-            $scope.Deploy.pageSize = 20;
+            $scope.Deploy.pageSize = 15;
         }
 
         widget.ajaxRequest({

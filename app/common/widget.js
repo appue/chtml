@@ -1,6 +1,6 @@
 angular.module('phoneApp')
 
-.factory('widget', function (
+.factory('widget', function(
     $http,
     $cacheFactory,
     $rootScope,
@@ -23,7 +23,7 @@ angular.module('phoneApp')
          * toast提示层
          * @param msg, time
          */
-        msgToast: function (msg, time) {
+        msgToast: function(msg, time) {
             var toastDom = angular.element(document.querySelector('.notifier'));
 
             if (!toastDom.length) {
@@ -31,13 +31,13 @@ angular.module('phoneApp')
                 angular.element(document.getElementsByTagName('body')[0]).append(toastTpl($rootScope));
             }
 
-            $timeout(function () {
+            $timeout(function() {
                 $rootScope.notification = msg;
             }, 0);
 
             $timeout.cancel(toastTimer);
 
-            toastTimer = $timeout(function () {
+            toastTimer = $timeout(function() {
                 $rootScope.notification = '';
             }, time || 2000);
 
@@ -48,7 +48,7 @@ angular.module('phoneApp')
          * @param key
          * @param data 如果data不存在，则为取缓存，如果存在，则重写key的值
          */
-        cacheData: function (key, data) {
+        cacheData: function(key, data) {
 
             if (!angular.isString(key)) {
                 return false;
@@ -68,7 +68,7 @@ angular.module('phoneApp')
          * @param scope
          * @param fn
          */
-        safeApply: function (scope, fn) {
+        safeApply: function(scope, fn) {
             if (!scope || !fn) {
                 return;
             }
@@ -86,7 +86,7 @@ angular.module('phoneApp')
          * @param sticker
          * @param handler
          */
-        stickyTopScroll: function (scope, compile, titleEles, handler) {
+        stickyTopScroll: function(scope, compile, titleEles, handler) {
             if (!scope || !titleEles || !titleEles.length || !handler || !handler.getScrollPosition()) {
                 return;
             }
@@ -129,11 +129,11 @@ angular.module('phoneApp')
 
             if (targetEle && scope.stickyContent !== targetEle.innerHTML) {
                 sticker.css('top', 0);
-                safeApply(scope, function () {
+                safeApply(scope, function() {
                     scope.stickyContent = targetEle.innerHTML;
                 });
             } else if (!targetEle) {
-                safeApply(scope, function () {
+                safeApply(scope, function() {
                     scope.stickyContent = null;
                 });
             }
@@ -142,9 +142,9 @@ angular.module('phoneApp')
         /**
          * ajax请求
          */
-        ajaxRequest: function (params) {
+        ajaxRequest: function(params) {
             var self = this;
-            
+
             if (!params) return;
 
             //--数据改造加用户信息start
@@ -190,7 +190,7 @@ angular.module('phoneApp')
                 $scope.Deploy.isLoading = true;
                 $scope.Deploy.pageIndex++;
 
-                if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize - $scope.Deploy.pageTotal) > $scope.Deploy.pageSize) {
+                if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize) >= $scope.Deploy.pageTotal) {
                     $scope.Deploy.isMore = false;
                     return;
                 }
@@ -202,8 +202,8 @@ angular.module('phoneApp')
             }
 
             var options = {
-                    success: function () {}, //--成功回调
-                    error: function () {}, //----错误回调
+                    success: function() {}, //--成功回调
+                    error: function() {}, //----错误回调
                     showPage: false, //----------是否启用分页功能
                     showLoading: true, //--------是否显示loading
                     isLogin: false, //-----------判断是否需要登录
@@ -219,7 +219,7 @@ angular.module('phoneApp')
                     data: postOpt,
                     timeout: 15000
                 },
-                effect = function () {
+                effect = function() {
                     if (options.showLoading) {
                         $ionicLoading.hide();
                     }
@@ -238,13 +238,13 @@ angular.module('phoneApp')
                 }
             }
 
-            $http(ajaxConfig).success(function (data) {
+            $http(ajaxConfig).success(function(data) {
 
                 data.Response = {
                     "Ack": "Success",
                     "State": true
                 };
-                    
+
                 // if (data.Response && data.Response.Ack == "Success") { toDo
                 if (data.Response) {
 
@@ -262,6 +262,15 @@ angular.module('phoneApp')
                         }
                     }
 
+                    if (params.showPage) { //如果Total大于Index*Size，则isMore = false;
+
+                        $scope.Deploy.pageTotal = data.Total || 0;
+
+                        if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize) >= $scope.Deploy.pageTotal) {
+                            $scope.Deploy.isMore = false;
+                        }
+                    }
+
                     if (typeof options.success === 'function') {
                         options.success(data);
                     }
@@ -274,7 +283,7 @@ angular.module('phoneApp')
 
                 effect();
 
-            }).error(function (data) {
+            }).error(function(data) {
 
                 if (typeof options.error === 'function') {
                     options.error(data);
@@ -296,7 +305,7 @@ angular.module('phoneApp')
          * native StatusBar 显示
          *
          */
-        showStatusBar: function () {
+        showStatusBar: function() {
 
             if (ENV.isHybrid) {
                 document.addEventListener("deviceready", onDeviceReady, false);
@@ -312,11 +321,11 @@ angular.module('phoneApp')
          * 清除历史记录
          *
          */
-        clearHistory: function () {
+        clearHistory: function() {
             $ionicHistory.clearHistory();
         },
 
-        changeOpacity: function () {
+        changeOpacity: function() {
             var top = $ionicScrollDelegate.$getByHandle('mainScroll').getScrollPosition().top,
                 opacity = 0;
 
@@ -338,7 +347,7 @@ angular.module('phoneApp')
         /**
          * 初始化用户登录信息
          */
-        initUser: function (scope) {
+        initUser: function(scope) {
             var userInfo = cachePool.pull('UserInfo');
 
             if (!scope.Deploy) {
@@ -359,7 +368,7 @@ angular.module('phoneApp')
         /**
          * 注销用户登录信息
          */
-        cleanLogin: function (scope) {
+        cleanLogin: function(scope) {
             scope.Deploy.uId = 0;
             scope.Deploy.isLogin = false;
             cachePool.remove("UserInfo");
@@ -368,13 +377,13 @@ angular.module('phoneApp')
         /**
          * 检查手机号
          */
-        checkPhone: function (phone) {
+        checkPhone: function(phone) {
             var self = this,
                 status = false;
 
             if (!phone) {
                 self.msgToast('请输入手机号码');
-                
+
                 status = true;
             }
 
@@ -390,7 +399,7 @@ angular.module('phoneApp')
 
 
     var loginPopup = null;
-    $rootScope.$on('$locationChangeStart', function () { //切换页面时隐藏分享条&取出弹出层
+    $rootScope.$on('$locationChangeStart', function() { //切换页面时隐藏分享条&取出弹出层
         angular.element(document.getElementById('shareBtnCtrl')).css('display', 'none');
         if (loginPopup) {
             loginPopup.close();
@@ -403,7 +412,7 @@ angular.module('phoneApp')
      * @param {Object} obj
      * @return {String}
      */
-    var paramObj = function (obj) {
+    var paramObj = function(obj) {
         var query = '',
             name, value, fullSubName, subName, subValue, innerObj, i;
 

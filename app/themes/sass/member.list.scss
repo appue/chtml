@@ -16,6 +16,7 @@
         p{
             display: block;
             -webkit-box-flex: 1;
+            margin-bottom: 0;
             @include ellipsis;
         }
         .this_btn{
@@ -24,6 +25,9 @@
             &.current{
                 background: #3cc482;
             }
+        }
+        &:last-child {
+            border-width: 0;
         }
     }
 }
