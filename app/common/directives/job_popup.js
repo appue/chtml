@@ -50,7 +50,7 @@ angular.module('phoneApp')
 								okText: '确定',
 								okType: 'confirm',
 								scope: scope,
-								templateUrl: '../common/directives/job_popup.html'
+								templateUrl: 'common/directives/job_popup.html'
 							}).then(function (res) {
 								if (res) { //确认所在地位置
 									scope.chooseJob(false); //传false保证e对象不会报错

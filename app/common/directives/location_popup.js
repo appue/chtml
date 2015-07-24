@@ -136,7 +136,7 @@ angular.module('phoneApp')
 						okText: '确定',
 						okType: 'confirm',
 						scope: scope,
-						templateUrl: '../common/directives/location_popup.html'
+						templateUrl: 'common/directives/location_popup.html'
 					}).then(function (res) {
 						if (res) { //确认所在地位置
 							scope.cInput.City = scope.tmpCity;
