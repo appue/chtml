@@ -8,7 +8,7 @@ angular.module('phoneApp')
     widget
 ) {
 
-    var regData = widget.cacheData('personalData');
+    var regData = widget.cacheData('regUserData');
 
     if (!regData) {
         widget.msgToast('用户注册信息已过期请重新返回输入！');
@@ -18,7 +18,7 @@ angular.module('phoneApp')
         return;
     }
 
-    $scope.cInput = widget.cacheData('personalData');
+    $scope.cInput = widget.cacheData('regUserData');
 
     $scope.cInput.password = null;
     // $scope.cInput.btnText = "发送验证码"

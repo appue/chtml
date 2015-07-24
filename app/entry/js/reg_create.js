@@ -10,7 +10,7 @@ angular.module('phoneApp')
 
     $scope.DataList = {};
     
-    $scope.cInput = widget.cacheData('personalData') || {
+    $scope.cInput = widget.cacheData('regUserData') || {
         UserName: '', //--用户昵称
         Sex: 1, //--------性别：1.男；2.女
         City: 0, //-------位置ID
@@ -20,7 +20,7 @@ angular.module('phoneApp')
         JobName: "请选择岗位"
     };
 
-    // $scope.inputVal = widget.cacheData('personalData') || { //数据初始化
+    // $scope.inputVal = widget.cacheData('regUserData') || { //数据初始化
     //     sex: 1,
     //     job: '园长',
     //     city: {
@@ -50,7 +50,7 @@ angular.module('phoneApp')
             return;
         }
 
-        widget.cacheData('personalData', $scope.cInput);
+        widget.cacheData('regUserData', $scope.cInput);
 
         $ionicViewSwitcher.nextDirection("forward");
         $state.go('forum.reg-account');
