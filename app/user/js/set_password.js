@@ -13,6 +13,7 @@ angular.module('phoneApp')
     $scope.cInput = {
         // btnText: "发送验证码",
         // isSend: false
+        phone: $scope.UserInfo.Phone || 0
     };
 
     // 发送验证码
@@ -87,13 +88,13 @@ angular.module('phoneApp')
             return;
         }
 
-        if ($scope.cInput.vcode.length > 4 || $scope.cInput.vcode.length < 4) {
-            widget.msgToast('您输入的手机验证码长度不对');
+        if (!$scope.cInput.vcode) {
+            widget.msgToast('请输入手机验证码！');
             return;
         }
 
-        if (!$scope.cInput.vcode) {
-            widget.msgToast('请输入手机验证码！');
+        if ($scope.cInput.vcode.length != 4) {
+            widget.msgToast('您输入的手机验证码长度不对');
             return;
         }
 

@@ -21,7 +21,7 @@ angular.module('phoneApp')
     $scope.cInput = widget.cacheData('personalData');
 
     $scope.cInput.password = null;
-    $scope.cInput.btnText = "发送验证码"
+    // $scope.cInput.btnText = "发送验证码"
 
     $scope.submitReg = function () {
 
@@ -45,7 +45,7 @@ angular.module('phoneApp')
             return;
         }
 
-        if ($scope.cInput.vcode.length > 4 || $scope.cInput.vcode.length < 4) {
+        if ($scope.cInput.vcode.length != 4) {
             widget.msgToast('您输入的手机验证码长度不对');
             return;
         }
@@ -88,45 +88,45 @@ angular.module('phoneApp')
     };
 
 
-    $scope.sendCode = function () {
-        var status = widget.checkPhone($scope.cInput.phone);
+    // $scope.sendCode = function () {
+    //     var status = widget.checkPhone($scope.cInput.phone);
 
-        if (status) return;
+    //     if (status) return;
 
-        if ($scope.cInput.isSend) {
-            widget.msgToast('请稍后再刷新验证码！');
-            return;
-        }
+    //     if ($scope.cInput.isSend) {
+    //         widget.msgToast('请稍后再刷新验证码！');
+    //         return;
+    //     }
 
-        widget.ajaxRequest({
-            url: 'setSendPhone',
-            data: {
-                Phone: $scope.cInput.phone
-            },
-            success: function (data) {
-                widget.msgToast('验证码已发送到'+ $scope.cInput.phone +'手机上');
-            }
-        });
+    //     widget.ajaxRequest({
+    //         url: 'setSendPhone',
+    //         data: {
+    //             Phone: $scope.cInput.phone
+    //         },
+    //         success: function (data) {
+    //             widget.msgToast('验证码已发送到'+ $scope.cInput.phone +'手机上');
+    //         }
+    //     });
 
-        var num = 60;
+    //     var num = 60;
 
-        $scope.cInput.btnText = "重新发送("+ num +")";
+    //     $scope.cInput.btnText = "重新发送("+ num +")";
 
-        timer();
+    //     timer();
 
-        function timer() {
-            $scope.cInput.isSend = true;
-            $timeout(function () {
-                num--;
-                if (num == 0) {
-                    $scope.cInput.isSend = false;
-                    $scope.cInput.btnText = "重新发送验证码";
-                    return;
-                }
-                $scope.cInput.btnText = "重新发送("+ num +")";
-                timer();
-            }, 1000);
-        }
-    };
+    //     function timer() {
+    //         $scope.cInput.isSend = true;
+    //         $timeout(function () {
+    //             num--;
+    //             if (num == 0) {
+    //                 $scope.cInput.isSend = false;
+    //                 $scope.cInput.btnText = "重新发送验证码";
+    //                 return;
+    //             }
+    //             $scope.cInput.btnText = "重新发送("+ num +")";
+    //             timer();
+    //         }, 1000);
+    //     }
+    // };
 
 });

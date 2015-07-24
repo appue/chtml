@@ -56,6 +56,7 @@ angular.module('phoneApp')
     //     }
     // };
 
+
     // 检查手机号码
     $scope.changePassword = function () {
 
@@ -88,7 +89,7 @@ angular.module('phoneApp')
             return;
         }
 
-        if ($scope.cInput.vcode.length > 4 || $scope.cInput.vcode.length < 4) {
+        if ($scope.cInput.vcode.length != 4) {
             widget.msgToast('您输入的手机验证码长度不对');
             return;
         }

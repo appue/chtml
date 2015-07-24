@@ -12,11 +12,11 @@ angular.module('phoneApp')
         restrict: 'A',
         link: function (scope, element, attr) {
 
-            widget.initUser(scope);
+            // widget.initUser(scope);
 
             if ($rootScope.vEnable) { //初始化，如果之前的倒计时未结束，则继续倒计时
 
-                $timeout.cancel($rootScope.vEnable);
+                $timeout.cancel($rootScope.vTimer);
 
                 countdown();
 
@@ -27,26 +27,41 @@ angular.module('phoneApp')
 
             }
 
-            function countdown() { //倒计时函数
+            // function countdown() { //倒计时函数
 
-                if ($rootScope.vColdDown > 0) {
+            //     if ($rootScope.vColdDown > 0) {
 
+            //         $rootScope.vColdDown--;
+            //         $rootScope.vEnable = $timeout(countdown, 1000); //给vEnable赋值，当再进入该页面时继续上次倒计时
+            //         $rootScope.vBtnText = '重新发送(' + $rootScope.vColdDown + ')';
+
+            //     } else {
+
+            //         $rootScope.vEnable = false;
+            //         $rootScope.vBtnText = '重新发送验证码';
+
+            //     }
+
+            // }
+
+            function countdown() {
+                $rootScope.vEnable = true;
+                $rootScope.vTimer = $timeout(function () {
                     $rootScope.vColdDown--;
-                    $rootScope.vEnable = $timeout(countdown, 1000); //给vEnable赋值，当再进入该页面时继续上次倒计时
-                    $rootScope.vBtnText = '重新发送(' + $rootScope.vColdDown + ')';
+                    if ($rootScope.vColdDown <= 0) {
+                        $rootScope.vEnable = false;
+                        $rootScope.vBtnText = "重新发送验证码";
+                        return;
+                    }
+                    $rootScope.vBtnText = "重新发送("+ $rootScope.vColdDown +")";
 
-                } else {
-
-                    $rootScope.vEnable = false;
-                    $rootScope.vBtnText = '重新发送验证码';
-
-                }
-
+                    countdown();
+                }, 1000);
             }
 
             element.bind('click', function (e) {
 
-                var status = widget.checkPhone(scope.UserInfo.Phone);
+                var status = widget.checkPhone(scope.cInput.phone);
 
                 if (status) return;
 
@@ -54,16 +69,17 @@ angular.module('phoneApp')
                     return;
                 } else {
                     $rootScope.vColdDown = 60;
+                    $rootScope.vBtnText = "重新发送("+ $rootScope.vColdDown +")";
                     countdown(); //开始倒计时
                 }
 
                 widget.ajaxRequest({
                     url: 'setSendPhone',
                     data: {
-                        Phone: scope.UserInfo.Phone
+                        Phone: scope.cInput.phone
                     },
                     success: function (data) {
-                        widget.msgToast('验证码已发送到' + scope.UserInfo.Phone + '手机上');
+                        widget.msgToast('验证码已发送到' + scope.cInput.phone + '手机上');
                     }
                 });
 

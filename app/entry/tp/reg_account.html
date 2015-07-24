@@ -16,11 +16,11 @@
         </div>
             
         <div class="mod_phone_code">
-            <button ng-click="sendCode()" ng-class="{ disable: cInput.isSend }">{{cInput.btnText}}</button>
-            <input ng-model="cInput.vcode" type="number" maxlength="4" placeholder="请输入收到的验证码" />
+            <button get-vcode ng-class="{disable:vColdDown}">{{vBtnText}}</button>
+            <input ng-model="cInput.vcode" type="text" placeholder="请输入收到的验证码" />
         </div>
         
-        <div class="unit_btn" ng-click="submitReg()">提交注册</div>
+        <button class="unit_btn" ng-click="submitReg()">提交注册</button>
 
     </ion-content>
 </ion-view>
