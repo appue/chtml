@@ -126,9 +126,9 @@
 
 
         <ul class="user_menu_list" ng-if="Deploy.isLogin">
-            <li class="icon_post" page-jump data-router="forum.user-article"><p>我的发布</p></li>
+            <li class="icon_post" page-jump data-router="forum.user-article" data-options="{uid:Deploy.uId}"><p>我的发布</p></li>
             <!-- <li class="icon_fav" page-jump data-router="forum.user-cate"><p>我的收藏</p></li> -->
-            <li class="icon_club" page-jump data-router="forum.user-club"><p>我的圈子</p></li>
+            <li class="icon_club" page-jump data-router="forum.user-club" data-options="{uid:Deploy.uId}"><p>我的圈子</p></li>
         </ul>
 
         <ul class="user_menu_list" ng-if="!Deploy.isLogin">

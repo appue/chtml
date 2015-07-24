@@ -34,6 +34,7 @@
 
 .unit_list_club{
     @include border_half;
+    margin-bottom: 0;
     dt{
         line-height: 25px;
     }
@@ -60,6 +61,7 @@
                     font-size: 16px;
                     color: #000;
                     line-height: 30px;
+                    margin-bottom: 0;
                     @include ellipsis;
                 }
             }

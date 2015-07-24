@@ -35,11 +35,6 @@ angular.module('phoneApp')
 					angular.forEach(data.FansList, function(v, k) {
 						$scope.DataList.FansList.push(v);
 					});
-					$scope.$broadcast('scroll.infiniteScrollComplete');
-
-				} else {
-
-					$scope.Deploy.isMore = false;
 
 				}
 
@@ -48,6 +43,8 @@ angular.module('phoneApp')
 
 	};
 
-	$scope.loadMore();
+	if ($scope.Deploy.isLogin) {
+		$scope.loadMore();
+	}
 
 });

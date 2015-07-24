@@ -1,36 +1,47 @@
 // 猜你喜欢
 angular.module('phoneApp')
 
-.controller('tFindLike', function (
+.controller('tFindLike', function(
     $scope,
     widget
-){
+) {
 
     $scope.Deploy = {
         pageIndex: 0,
-        pageSize: 5,
+        pageSize: 5, //todo....分接口？
         isLoading: false,
         isMore: true
     };
 
-    $scope.DataList = {};
+    $scope.DataList = {
+        PhotoList: [],
+        ArticleList: []
+    };
 
-    widget.ajaxRequest({
-        scope: $scope,
-        url: 'getFindLike',
-        data: {},
-        success: function (data) {
-            angular.extend($scope.DataList, data); //todo...
+    widget.initUser($scope);
 
-            if (data.ArticleList && data.ArticleList.length > 0) {
-                $scope.Deploy.pageTotal = data.Total || 0;
-                $scope.Deploy.isLoading = false;
-                $scope.setFalls();
-                $scope.$broadcast('scroll.infiniteScrollComplete');
-            } else {
-                $scope.Deploy.isLoading = true;
-                $scope.Deploy.isMore = false;
+    $scope.loadMore = function() {
+        widget.ajaxRequest({
+            scope: $scope,
+            showPage: true,
+            url: 'getFindLike',
+            data: {},
+            success: function(data) {
+
+                $scope.DataList.PhotoList = data.PhotoList || [];
+
+                if (data.ArticleList && data.ArticleList.length > 0) {
+                    angular.forEach(data.ArticleList, function(v, k) {
+                        $scope.DataList.ArticleList.push(v);
+                    });
+                    $scope.setFalls();
+                }
             }
-        }
-    });
+        });
+    };
+
+    if ($scope.Deploy.isLogin) {
+        $scope.loadMore();
+    }
+
 });

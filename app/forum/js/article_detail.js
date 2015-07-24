@@ -1,17 +1,17 @@
 /*
-* 发现-帖子终极页(帖子详情页)
-* /clump/#/thread-{id}.htm
-*/
+ * 发现-帖子终极页(帖子详情页)
+ * /clump/#/thread-{id}.htm
+ */
 angular.module('phoneApp')
 
-.controller('tArticleDetail', function (
-    $scope, 
-    $state, 
-    $stateParams, 
+.controller('tArticleDetail', function(
+    $scope,
+    $state,
+    $stateParams,
     $location,
     cachePool,
     widget
-){
+) {
     //--设置返回按钮
     // var isFrom = $location.$$search.isFrom || $location.$$search.isfrom || '';
 
@@ -19,7 +19,7 @@ angular.module('phoneApp')
 
     $scope.DataList = {};
 
-    $scope.showLayout = function () {
+    $scope.showLayout = function() {
         $scope.isShowLayout = !$scope.isShowLayout;
     };
 
@@ -60,11 +60,11 @@ angular.module('phoneApp')
         data: {
             ArticleId: $scope.articleId
         },
-        success: function (data) {
+        success: function(data) {
             angular.extend($scope.DataList, data);
 
             if ($scope.Deploy.uId == data.Author.UserId) {
-                $scope.isOwner = true;  
+                $scope.isOwner = true;
             } else {
                 $scope.isOwner = false;
             }
@@ -72,20 +72,18 @@ angular.module('phoneApp')
     });
 
     //--赞帖子
-    $scope.setPraise = function () {
-        alert(1);
+    $scope.setPraise = function() {
         widget.ajaxRequest({
             scope: $scope,
             url: 'setArticlePraise',
             data: {
                 ArticleId: $scope.articleId
             },
-            success: function (data) {
-            }
+            success: function(data) {}
         });
     };
 
-    $scope.headerScroll = function () {
+    $scope.headerScroll = function() {
         widget.changeOpacity();
     };
 

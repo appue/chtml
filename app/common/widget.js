@@ -257,6 +257,10 @@ angular.module('phoneApp')
                         }
                     }
 
+                    if (typeof options.success === 'function') {
+                        options.success(data);
+                    }
+
                     if (params.showPage) { //如果Total大于Index*Size，则isMore = false;
 
                         $scope.Deploy.isLoading = false;
@@ -264,11 +268,9 @@ angular.module('phoneApp')
 
                         if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize) >= $scope.Deploy.pageTotal) {
                             $scope.Deploy.isMore = false;
+                        } else {
+                            $scope.$broadcast('scroll.infiniteScrollComplete');
                         }
-                    }
-
-                    if (typeof options.success === 'function') {
-                        options.success(data);
                     }
 
                 } else {
@@ -287,11 +289,11 @@ angular.module('phoneApp')
                     self.msgToast('请检查你的网络！');
                 }
 
-                effect();
-
                 if (options.showPage) {
                     $scope.Deploy.isLoading = false;
                 }
+
+                effect();
 
             });
 

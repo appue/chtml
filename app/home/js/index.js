@@ -93,16 +93,16 @@ angular.module('phoneApp')
                 success: function (data) {
                     if (data.ArticleList && data.ArticleList.length > 0) {
 
-                        $scope.Deploy.pageTotal = data.Total || 0;
+                        // $scope.Deploy.pageTotal = data.Total || 0;
                         $scope.DataList.ListLeft = $scope.DataList.ListLeft.concat(data.ArticleList);
                         $scope.setFalls();
-                        $scope.Deploy.isLoading = false;
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                    //     $scope.Deploy.isLoading = false;
+                    //     $scope.$broadcast('scroll.infiniteScrollComplete');
 
-                    } else {
+                    // } else {
 
-                        $scope.Deploy.isLoading = true;
-                        $scope.Deploy.isMore = false;
+                    //     $scope.Deploy.isLoading = true;
+                    //     $scope.Deploy.isMore = false;
 
                     }
                 }
@@ -119,16 +119,16 @@ angular.module('phoneApp')
                 success: function (data) {
                     if (data.ArticleList && data.ArticleList.length > 0) {
                         
-                        $scope.Deploy.pageTotal = data.Total || 0;
+                        // $scope.Deploy.pageTotal = data.Total || 0;
                         $scope.DataList.ListRight = $scope.DataList.ListRight.concat(data.ArticleList);
                         $scope.setFalls();
-                        $scope.Deploy.isLoading = false;
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                    //     $scope.Deploy.isLoading = false;
+                    //     $scope.$broadcast('scroll.infiniteScrollComplete');
 
-                    } else {
+                    // } else {
 
-                        $scope.Deploy.isLoading = true;
-                        $scope.Deploy.isMore = false;
+                    //     $scope.Deploy.isLoading = true;
+                    //     $scope.Deploy.isMore = false;
 
                     }
 
