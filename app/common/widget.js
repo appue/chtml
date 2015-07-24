@@ -190,11 +190,6 @@ angular.module('phoneApp')
                 $scope.Deploy.isLoading = true;
                 $scope.Deploy.pageIndex++;
 
-                if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize) >= $scope.Deploy.pageTotal) {
-                    $scope.Deploy.isMore = false;
-                    return;
-                }
-
                 angular.extend(postOpt, {
                     PageIndex: $scope.Deploy.pageIndex,
                     PageSize: $scope.Deploy.pageSize
@@ -264,6 +259,7 @@ angular.module('phoneApp')
 
                     if (params.showPage) { //如果Total大于Index*Size，则isMore = false;
 
+                        $scope.Deploy.isLoading = false;
                         $scope.Deploy.pageTotal = data.Total || 0;
 
                         if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize) >= $scope.Deploy.pageTotal) {
