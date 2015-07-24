@@ -44,12 +44,12 @@ angular.module('phoneApp')
     //     function timer() {
     //         $scope.cInput.isSend = true;
     //         $timeout(function () {
+    //             num--;
     //             if (num == 0) {
     //                 $scope.cInput.isSend = false;
     //                 $scope.cInput.btnText = "重新发送验证码";
     //                 return;
     //             }
-    //             num--;
     //             $scope.cInput.btnText = "重新发送("+ num +")";
     //             timer();
     //         }, 1000);
