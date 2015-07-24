@@ -3,6 +3,8 @@ angular.module('phoneApp')
 .controller('tRegAccount', function (
     $scope,
     $state,
+    $timeout,
+    $ionicViewSwitcher,
     widget
 ) {
 
@@ -11,6 +13,7 @@ angular.module('phoneApp')
     if (!regData) {
         widget.msgToast('用户注册信息已过期请重新返回输入！');
         // $state.reload();
+        $ionicViewSwitcher.nextDirection("back");
         $state.go('forum.reg-create');
         return;
     }

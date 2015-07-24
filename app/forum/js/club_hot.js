@@ -2,6 +2,7 @@
 angular.module('phoneApp')
 
 .controller('tClubHot', function (
+    $state,
     $scope,
     widget
 ){
@@ -10,6 +11,8 @@ angular.module('phoneApp')
         // SiteUrl: {
         //     router: "forum.club-list"
         // }
+
+        $state.go("forum.club-list");
     };
 
     $scope.Deploy = {
