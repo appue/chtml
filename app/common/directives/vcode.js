@@ -46,6 +46,10 @@ angular.module('phoneApp')
 
             element.bind('click', function (e) {
 
+                var status = widget.checkPhone(scope.UserInfo.Phone);
+
+                if (status) return;
+
                 if ($rootScope.vColdDown !== 0) {
                     return;
                 } else {
