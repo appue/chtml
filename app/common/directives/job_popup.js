@@ -54,6 +54,11 @@ angular.module('phoneApp')
 							}).then(function (res) {
 								if (res) { //确认所在地位置
 									scope.chooseJob(false); //传false保证e对象不会报错
+									
+									if (!scope.Page) {
+										scope.Page = {};
+									}
+									scope.Page.isModify = true;
 								}
 							});
 

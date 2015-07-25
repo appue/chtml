@@ -8,16 +8,26 @@ angular.module('phoneApp')
 ) {
 
 	$scope.Page = { //头部设置
-		Title: '设置',
+		isModify: false, //是否修改了
 		RightText: false,
 		RightFun: function () {
 			alert(1);
 		}
 	};
 
-	widget.initUser($scope);
+	//修改右边按钮功能
+	$scope.$watch("Page.isModify", function () {
+		if ($scope.Page.isModify) {
+			$scope.Page.RightText = "完成";
+		} else {
+			$scope.Page.RightText = false;
+		}
+	});
 
+	//初始化用户信息
+	widget.initUser($scope);
 	$scope.cInput = $scope.UserInfo || {};
+
 
 	if ($scope.cInput.Sex == 2) {
 		$scope.cInput.SexName = "女";
@@ -53,6 +63,7 @@ angular.module('phoneApp')
 		}).then(function (res) {
 			if (res) { //确认所在地位置
 				$scope.chooseSex(false);
+				$scope.Page.isModify = true;
 				//todo...
 			}
 		});

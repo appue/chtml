@@ -1,27 +1,29 @@
-<header-bar title="私聊"></header-bar>
+<section ng-if="Deploy.isLogin">
+    <header-bar title="私聊"></header-bar>
 
-<ion-view>
-    <ion-content overflow-scroll="true" class="mod_wrapper">
-        <ul class="msg_talk_list" ng-if="DataList.TalkList.length > 0">
-            <li ng-repeat="(k, v) in DataList.TalkList track by $index">
-                <img ng-src="{{v.Author.ImageUrl}}" />
-                <dl>
-                    <dt>
-                        {{v.Author.UserName}}
-                        <i>{{v.UpdateTime}}</i>
-                    </dd>
-                    <dd>
-                        {{v.Content}}
-                    </dd>
-                </dl>
-            </li>
-        </ul>
+    <ion-view>
+        <ion-content overflow-scroll="true" class="mod_wrapper">
+            <ul class="msg_talk_list" ng-if="DataList.TalkList.length > 0">
+                <li ng-repeat="(k, v) in DataList.TalkList track by $index">
+                    <img ng-src="{{v.Author.ImageUrl}}" />
+                    <dl>
+                        <dt>
+                            {{v.Author.UserName}}
+                            <i>{{v.UpdateTime}}</i>
+                        </dd>
+                        <dd>
+                            {{v.Content}}
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
 
-        <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore">
-        </ion-infinite-scroll>
+            <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="Deploy.isMore">
+            </ion-infinite-scroll>
 
-        <div class="mod_no_more" ng-if="!Deploy.isMore">没有数据了！</div>
-    </ion-content>
-</ion-view>
+            <div class="mod_no_more" ng-if="!Deploy.isMore">没有数据了！</div>
+        </ion-content>
+    </ion-view>
+</section>
 
-<page-login></page-login>
+<page-login ng-if="!Deploy.isLogin"></page-login>

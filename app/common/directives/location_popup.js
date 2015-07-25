@@ -141,6 +141,11 @@ angular.module('phoneApp')
 						if (res) { //确认所在地位置
 							scope.cInput.City = scope.tmpCity;
 							scope.cInput.CityName = scope.CityList[scope.tmpCity].name +" "+ scope.CitySubList[scope.tmpSubCity].name;
+							
+							if (!scope.Page) {
+								scope.Page = {};
+							}
+							scope.Page.isModify = true;
 						}
 					});
 				})
