@@ -13,6 +13,12 @@ angular.module('phoneApp')
     $ionicViewSwitcher,
     widget
 ){
+    $scope.Deploy = {
+        currentImage: false
+    };
+
+    //初始化用户信息
+    widget.initUser($scope);
 
     // $rootScope.CameraImages = {
     //     Images: [
@@ -26,10 +32,20 @@ angular.module('phoneApp')
     //     ClubId: 圈子ID
     //     ActivityId: 活动ID
     // };
-
     $scope.CameraImages = widget.cacheData("CameraImages") || {
         Images: []
     };
+
+    $scope.ImageData = {url: ""};
+
+    $scope.$watch("Deploy.currentImage", function () {
+        if (!$scope.Deploy.currentImage) return;
+        
+        $scope.CameraImages.Images.push({
+            ImageUrl: $scope.Deploy.currentImage
+        });
+    });
+
 
     // $scope.Photo = {
     //     Files: "",

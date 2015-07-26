@@ -1,29 +1,34 @@
-<header-bar title="添加图片" right="继续|nextPage"></header-bar>
+<section ng-if="Deploy.isLogin">
+    <header-bar title="添加图片" right="继续|nextPage"></header-bar>
 
-<ion-view>
-    <ion-content>
-        <section class="unit_photo">
+    <ion-view>
+        <ion-content>
 
-            <div class="this_edit_title">
-                <ul>
-                    <li ng-repeat="(k, v) in CameraImages.Images">
-                        <div ng-click="dataDelete(k)">
-                            <p><img data-ng-src="{{v.ImageUrl}}" /></p>
-                            <span></span>
-                        </div>
-                        <textarea ng-model="v.Description" placeholder="写下您想说的话（必填）"></textarea>
-                    </li>
-                    <li add-photo ng-if="isApp">
-                        <i></i>
-                    </li>
-                    <li ng-if="!isApp">
-                        <input type="file" ng-model="currentFiles" multiple accept="image/*" app-filereader />
-                    </li>
-                </ul>
-            </div>
+            <section class="unit_photo">
+                <div class="this_edit_title">
+                    <ul>
+                        <li ng-repeat="(k, v) in CameraImages.Images">
+                            <div ng-click="dataDelete(k)">
+                                <p>
+                                    <img data-ng-src="{{v.ImageUrl}}" />
+                                </p>
+                            </div>
+                            <textarea ng-model="v.Description" placeholder="写下您想说的话（必填）"></textarea>
+                        </li>
+                        <li add-photo ng-if="isApp">
+                            <i></i>
+                        </li>
+                        <li class="this_file" ng-if="!isApp">
+                            <input type="file" ng-model="Deploy.currentImage" accept="image/*" app-filereader />
+                            <!-- <input type="file" ng-model="currentFiles" multiple accept="image/*" app-filereader /> -->
+                        </li>
+                    </ul>
+                </div>
+            </section>
 
-        </section>
-    </ion-content>
-</ion-view>
+            <canvas id="tmp" style="display:none;"></canvas>
+        </ion-content>
+    </ion-view>
+</section>
 
-<cate-list></cate-list>
+<page-login ng-if="!Deploy.isLogin"></page-login>
