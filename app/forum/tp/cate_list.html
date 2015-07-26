@@ -4,18 +4,18 @@
     <ion-content has-bouncing="false" ng-model="Deploy.currentTab" ng-init="Deploy.currentTab=1" on-scroll="headerScroll()" delegate-handle="mainScroll">
 
         <div ng-if="DataList.CategoryList.length > 0" ng-class="Deploy.cateClass">
-<!--             <div>
-                <a ng-repeat="(k, v) in DataList.CategoryList track by $index" ui-sref="forum.cate({id: v.CateId})">
-                    #{{v.CateName}}
-                </a>
-            </div> -->
-
-
             <ul>
                 <li ng-repeat="(k, v) in DataList.CategoryList track by $index" ng-click="refreshView(v.CateId)">
-                    #{{v.CateName}}
+                    <p>#{{v.CateName}}</p>
                 </li>
             </ul>
+
+
+<!--             <ul>
+                <li ng-repeat="(k, v) in DataList.CategoryList track by $index" page-jump data-router="forum.cate" data-options="{id: {{v.CateId}}}">
+                    <p>#{{v.CateName}}</p>
+                </li>
+            </ul> -->
         </div>
 
         <div ng-if="DataList.CategoryList.length == 0" class="forum_cate_description">
