@@ -316,19 +316,21 @@ angular.module('phoneApp')
                     $q.all(slice.call(element.files, 0).map(readFile))
                         .then(function(values) {
                             if (!scope.CameraImages) {
-                                scope.CameraImages = [];
+                                scope.CameraImages = {
+                                    Images: []
+                                };
                             }
 
                             if (element.multiple) {
                                 angular.forEach(values, function (v, k) {
-                                    scope.CameraImages.push(
+                                    scope.CameraImages.Images.push(
                                         {
                                             ImageUrl: v
                                         }
                                     );
                                 });
                             } else {
-                                scope.CameraImages.push(
+                                scope.CameraImages.Images.push(
                                     {
                                         ImageUrl: values[0]
                                     }

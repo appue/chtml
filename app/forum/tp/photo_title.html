@@ -1,4 +1,4 @@
-<header-bar title="添加图片"></header-bar>
+<header-bar title="添加图片" right="继续|nextPage"></header-bar>
 
 <ion-view>
     <ion-content>
@@ -6,34 +6,24 @@
 
             <div class="this_edit_title">
                 <ul>
-                    <li ng-repeat="(k, v) in CameraImages">
+                    <li ng-repeat="(k, v) in CameraImages.Images">
                         <div ng-click="dataDelete(k)">
                             <p><img data-ng-src="{{v.ImageUrl}}" /></p>
                             <span></span>
                         </div>
-                        <textarea ng-model="v.Content" placeholder="写下您想说的话（必填）"></textarea>
+                        <textarea ng-model="v.Description" placeholder="写下您想说的话（必填）"></textarea>
                     </li>
-                    <li add-photo>
+                    <li add-photo ng-if="isApp">
                         <i></i>
+                    </li>
+                    <li ng-if="!isApp">
+                        <input type="file" ng-model="currentFiles" multiple accept="image/*" app-filereader />
                     </li>
                 </ul>
             </div>
 
-
-            <div class="this_h5_file">
-<!--                 <ul>
-                    <li ng-repeat="(k, v) in CameraImages">
-                        <div ng-click="dataDelete(k)">
-                            <p><img ng-src="{{v.ImageUrl}}" /></p>
-                            <span></span>
-                        </div>
-                        <textarea ng-model="v.Content" placeholder="写下您想说的话（必填）"></textarea>
-                    </li>
-                </ul> -->
-                <div class="this_sub_btn">
-                    <input type="file" ng-model="editItem._attachments_uri.image" multiple accept="image/*" app-filereader />
-                </div>
-            </div>
         </section>
     </ion-content>
 </ion-view>
+
+<cate-list></cate-list>

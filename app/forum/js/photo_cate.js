@@ -6,14 +6,58 @@ angular.module('phoneApp')
     $stateParams, 
     $location, 
     $ionicViewSwitcher,
+    $ionicPopup,
+    $window,
     widget
 ){
+    $scope.CameraImages = widget.cacheData("CameraImages");
 
-    $scope.go = function (e) {
-        // body...
+    if (!$scope.CameraImages || !$scope.CameraImages.Images || $scope.CameraImages.Images.length == 0) {
+        $ionicViewSwitcher.nextDirection('back');
+        $window.history.back();
+        return;
+    }
+
+
+    $scope.toDone = function () {
+
+        if (!$scope.CameraImages.CateId) {
+            widget.msgToast('请选择标签吧！');
+            return;
+        }
+
+        angular.forEach($scope.CameraImages.Images, function (v, k) {
+            if (!v.ImageUrl || !v.Description) {
+                $scope.isNone = true;
+            }
+        });
+
+        if ($scope.isNone) {
+            $ionicPopup.confirm({
+                title: '错误提示',
+                cancelText: '取消',
+                cancelType: 'cancel',
+                okText: '确定',
+                okType: 'confirm',
+                scope: $scope,
+                template: '<div style="padding:20px 0;line-height:20px;text-align:center;">您提交的信息不完整请返回修改！</div>'
+            }).then(function (res) {
+                if (res) { //确认所在地位置
+                    $ionicViewSwitcher.nextDirection('back');
+                    $window.history.back();
+                }
+            });
+
+            return;
+        }
+
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'setArticlePost',
+            data: $scope.CameraImages,
+            success: function (data) {
+                console.log(data);
+            }
+        });
     };
-
-    // $ionicViewSwitcher.nextDirection('forward');
-
-    
 });

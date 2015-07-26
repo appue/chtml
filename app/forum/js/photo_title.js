@@ -14,14 +14,22 @@ angular.module('phoneApp')
     widget
 ){
 
-    // $rootScope.CameraImages = [
-    //     {
-    //         ImageUrl: 图片地址
-    //         Content: 图片内容
-    //     }
-    // ];
+    // $rootScope.CameraImages = {
+    //     Images: [
+    //         {
+    //             ImageUrl: 图片地址
+    //             Content: 图片内容
+    //         }
+    //     ],
 
-    $scope.CameraImages = widget.cacheData("CameraImages") || [];
+    //     CateId: 栏目ID
+    //     ClubId: 圈子ID
+    //     ActivityId: 活动ID
+    // };
+
+    $scope.CameraImages = widget.cacheData("CameraImages") || {
+        Images: []
+    };
 
     // $scope.Photo = {
     //     Files: "",
@@ -37,15 +45,15 @@ angular.module('phoneApp')
 
     $scope.nextPage = function () {
 
-        if (($scope.CameraImages && $scope.CameraImages.length == 0) || !$scope.CameraImages) {
+        if ($scope.CameraImages.Images.length == 0) {
             widget.msgToast('哎哟，你总得发表点内容吧！');
             return;
         }
 
         var empty = false;
         
-        angular.forEach($scope.CameraImages, function (v, k) {
-            if (!v.Content) {
+        angular.forEach($scope.CameraImages.Images, function (v, k) {
+            if (!v.Description) {
                 empty = true;
                 return;
             }
@@ -54,9 +62,8 @@ angular.module('phoneApp')
         if (empty) {
             widget.msgToast('写点你想说的话吧！');
         } else {
-            // routerRedirect.toJump({
-            //     'url': ['forum/#/photo/cate-0.htm']
-            // });
+            widget.cacheData("CameraImages", $scope.CameraImages);
+
             $ionicViewSwitcher.nextDirection('forward');
             $state.go("forum.photo-cate");
         }
@@ -66,32 +73,32 @@ angular.module('phoneApp')
     // angular.forEach(data, function (v, k) {
     //     $scope.DataList.ImagesList.push({
     //         ImageUrl: v.image,
-    //         Content: v.content
+    //         Description: v.Description
     //     });
     // });
 
     // $scope.DataList.ImagesList = [
     //     {
     //         ImageUrl: '../themes/temp/7.jpg',
-    //         Content: ''
+    //         Description: ''
     //     },
     //     {
     //         ImageUrl: '../themes/temp/7.jpg',
-    //         Content: ''
+    //         Description: ''
     //     },
     //     {
     //         ImageUrl: '../themes/temp/7.jpg',
-    //         Content: ''
+    //         Description: ''
     //     },
     //     {
     //         ImageUrl: '../themes/temp/7.jpg',
-    //         Content: ''
+    //         Description: ''
     //     }
     // ];
 
     $scope.dataDelete = function (key) {
         // $scope.DataList.ImagesList.splice(key, 1);
-        $scope.CameraImages.splice(key, 1);
+        $scope.CameraImages.Images.splice(key, 1);
         widget.cacheData("CameraImages", $scope.CameraImages);
     };
 });
