@@ -295,7 +295,8 @@ angular.module('phoneApp')
 
 // 上传图片
 .directive('appFilereader', function(
-    $q
+    $q,
+    widget
 ) {
     var slice = Array.prototype.slice;
 
@@ -305,27 +306,36 @@ angular.module('phoneApp')
         link: function(scope, element, attrs, ngModel) {
                 if (!ngModel) return;
 
-                ngModel.$render = function() {};
+                ngModel.$render = function() {
+                    // alert(2);
+                };
 
                 element.bind('change', function(e) {
                     var element = e.target;
 
                     $q.all(slice.call(element.files, 0).map(readFile))
                         .then(function(values) {
-
-                            console.log(values);
-
-                            if (scope.CameraImages) {
-                                scope.CameraImages.ImageUrl
-                            } else {
-
+                            if (!scope.CameraImages) {
+                                scope.CameraImages = [];
                             }
 
                             if (element.multiple) {
-                                ngModel.$setViewValue(values);
+                                angular.forEach(values, function (v, k) {
+                                    scope.CameraImages.push(
+                                        {
+                                            ImageUrl: v
+                                        }
+                                    );
+                                });
                             } else {
-                                ngModel.$setViewValue(values.length ? values[0] : null);
+                                scope.CameraImages.push(
+                                    {
+                                        ImageUrl: values[0]
+                                    }
+                                );
                             }
+
+                            widget.cacheData("CameraImages", scope.CameraImages);
                         });
 
                     function readFile(file) {

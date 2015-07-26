@@ -14,41 +14,37 @@ angular.module('phoneApp')
     widget
 ){
 
-    // $scope.Page = {
-    //     Title: "添加图片",
-    //     Next: "继续"
+    // $rootScope.CameraImages = [
+    //     {
+    //         ImageUrl: 图片地址
+    //         Content: 图片内容
+    //     }
+    // ];
+
+    $scope.CameraImages = widget.cacheData("CameraImages") || [];
+
+    // $scope.Photo = {
+    //     Files: "",
+    //     ImageUrl: ""
     // };
 
-    $scope.Photo = {
-        Files: ""
-    };
-
-    console.log($scope.Photo.Files);
-    $scope.$watch("Photo.Files", function () {
-        console.log(console.log($scope.Photo.Files));
-    })
+    // console.log($scope.Photo.Files);
+    // $scope.$watch("Photo.Files", function () {
+    //     console.log(console.log($scope.Photo.Files));
+    // });
 
     // var data = $rootScope.CameraImages;
 
-    // $scope.DataList = {
-    //     ImagesList: []
-    // };
-
-    //--设置返回按钮
-    $scope.backParam = {
-        'url': ['forum/#/photo/edit.htm']
-    };
-
     $scope.nextPage = function () {
 
-        if (($rootScope.CameraImages && $rootScope.CameraImages.length == 0) || !$rootScope.CameraImages) {
+        if (($scope.CameraImages && $scope.CameraImages.length == 0) || !$scope.CameraImages) {
             widget.msgToast('哎哟，你总得发表点内容吧！');
             return;
         }
 
         var empty = false;
         
-        angular.forEach($rootScope.CameraImages, function (v, k) {
+        angular.forEach($scope.CameraImages, function (v, k) {
             if (!v.Content) {
                 empty = true;
                 return;
@@ -95,6 +91,7 @@ angular.module('phoneApp')
 
     $scope.dataDelete = function (key) {
         // $scope.DataList.ImagesList.splice(key, 1);
-        $rootScope.CameraImages.splice(key, 1);
+        $scope.CameraImages.splice(key, 1);
+        widget.cacheData("CameraImages", $scope.CameraImages);
     };
 });
