@@ -7,20 +7,28 @@
         display: -webkit-box;
         @include border_bottom_half;
         -webkit-box-align: center;
+        position: relative;
+
         &:last-child{
             border: none;
         }
         i{
             display: block;
+            width: 30px;
+            line-height: 16px;
             text-align: center;
-            width: 15px;
-            margin-right: 10px;
-            line-height: 20px;
-            text-align: left;
+
+            background: rgba(60, 196, 130, 0.9);
+            color: #fff;
+            font-size: 12px;
+
+            position: absolute;
+            left: 0;
+            top: 20px;
         }
         img{
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             margin-right: 10px;
         }
         div{
