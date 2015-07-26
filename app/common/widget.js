@@ -199,10 +199,10 @@ angular.module('phoneApp')
             var options = {
                     success: function() {}, //--成功回调
                     error: function() {}, //----错误回调
-                    showPage: false, //----------是否启用分页功能
-                    showLoading: true, //--------是否显示loading
-                    isLogin: false, //-----------判断是否需要登录
-                    // isPopup: false, //-----------请求结果是否有popup
+                    showPage: false, //---------是否启用分页功能
+                    showLoading: true, //-------是否显示loading
+                    isLogin: false, //----------判断是否需要登录
+                    // isPopup: false, //-------请求结果是否有popup
                 },
                 ajaxConfig = { //-----------------ajax请求配置
                     method: 'POST',
@@ -226,7 +226,7 @@ angular.module('phoneApp')
             for (var i in params) options[i] = params[i];
 
             if (options.showLoading) {
-                if (!options.showPage || (options.showPage && options.PageIndex < 2)) {
+                if (!options.showPage || (options.showPage && $scope.Deploy.pageIndex < 2)) {
                     $ionicLoading.show({
                         templateUrl: 'common/directives/mod_loading.html'
                     });

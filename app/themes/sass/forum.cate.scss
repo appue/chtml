@@ -123,3 +123,15 @@
         }
     }
 }
+
+
+.forum_cate_menu {
+    ul {
+        li {
+            line-height: 30px;
+            padding: 10px 0;
+            text-indent: 10px;
+            @include border_bottom_half();
+        }
+    }
+}
