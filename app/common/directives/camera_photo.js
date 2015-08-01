@@ -3,6 +3,7 @@ angular.module('phoneApp')
 // 上传图片
 .directive('appFilereader', function(
     $q,
+    $parse,
     widget
 ) {
     var slice = Array.prototype.slice;
@@ -64,18 +65,27 @@ angular.module('phoneApp')
                             image = new Image();
 
                         image.onload = function() {
-                            ctx.drawImage(image, 0, 0);
 
-                            var mpImg = new MegaPixImage(image);
+                            EXIF.getData(image, function() {
+                                var exif = EXIF.pretty(this);
 
-                            mpImg.render(canvas, {
-                                maxWidth: 640
-                            }, function () {
-                                var data = canvas.toDataURL("image/jpeg");
+                                var orientation = exif ? exif.Orientation : 1;
 
-                                ngModel.$setViewValue(data);
+                                ctx.drawImage(image, 0, 0);
+
+                                var mpImg = new MegaPixImage(image);
+
+                                mpImg.render(canvas, {
+                                    maxWidth: 640,
+                                    orientation: orientation
+                                }, function () {
+                                    var data = canvas.toDataURL("image/jpeg");
+
+                                    ngModel.$setViewValue(data);
+                                });
                             });
                         };
+
 
                         image.src = imageData;
                     }

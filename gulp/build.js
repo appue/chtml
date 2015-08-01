@@ -252,6 +252,7 @@ module.exports = function (gulp, $) {
         //--框架JS压缩合并
         var framejs = [
                 './app/lib/md5.js',
+                './app/lib/exif.js',
                 './app/lib/megapix-image.js',
 
                 './app/lib/config.js',
