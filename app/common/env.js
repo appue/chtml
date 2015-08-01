@@ -19,7 +19,7 @@ angular.module('phoneApp')
     // if (/appuewireless/.test(ua)) {
     //     ENV.isHybrid = true;
     // }
-    if (isHybridCreatePhoneApp) {
+    if (window.isHybridCreatePhoneApp) {
         ENV.isHybrid = true;
     }
 
@@ -39,10 +39,10 @@ angular.module('phoneApp')
         ENV.isWeixin = true;
     }
 
-    if (ENV.isHybrid) {
-        var url = $location.$$absUrl;
-        ENV.apiSocket = url.replace(/www\/.*/gi, 'www') + ENV.apiSocket;
-    }
+    // if (ENV.isHybrid) {
+    //     var url = $location.$$absUrl;
+    //     ENV.apiSocket = url.replace(/www\/.*/gi, 'www') + ENV.apiSocket;
+    // }
 
     return ENV;
 
