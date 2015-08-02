@@ -119,7 +119,7 @@ angular.module('phoneApp', [
         //选择栏目
         .state('forum.photo-cate', {
             // cache: false,
-            url: '/photo/cate.htm',
+            url: '/photo/cate.htm?id',
             templateUrl: 'forum/tp/photo_cate.html',
             controller: 'tPhotoCate'
         })

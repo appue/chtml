@@ -13,7 +13,7 @@ angular.module('phoneApp')
     //初始化用户信息
     widget.initUser($scope);
 
-    $scope.CameraImages = widget.cacheData("CameraImages");
+    $scope.CameraImages = widget.cacheData("CameraImages") || '';
 
     if (!$scope.CameraImages || !$scope.CameraImages.Images || $scope.CameraImages.Images.length == 0) {
         $ionicViewSwitcher.nextDirection('back');
@@ -21,12 +21,16 @@ angular.module('phoneApp')
         return;
     }
 
+
     angular.extend($scope.Deploy, {
         cateId: $stateParams.id || 1
     });
     $scope.DataList = {
-        CateList: []
+        CateList: [],
+        currentId: $scope.CameraImages.CateId || 0
     };
+
+
     widget.ajaxRequest({
         scope: $scope,
         url: 'getListCategory',
@@ -38,10 +42,28 @@ angular.module('phoneApp')
         }
     });
 
+    $scope.toSelect = function (e) {
+        var $that = angular.element(e.delegationTarget),
+            id = $that.attr('data-id');
+
+        if ($that.hasClass("next")) {
+            $ionicViewSwitcher.nextDirection('forward');
+            $state.go('forum.photo-cate', {
+                id: id
+            })
+        } else {
+            // $scope.CameraImages.CateId = id;
+            $scope.DataList.currentId = id;
+        }
+    };
 
     $scope.toDone = function () {
 
-        if (!$scope.CameraImages.CateId) {
+        // if (!$scope.CameraImages.CateId) {
+        //     widget.msgToast('请选择标签吧！');
+        //     return;
+        // }
+        if (!$scope.DataList.currentId) {
             widget.msgToast('请选择标签吧！');
             return;
         }

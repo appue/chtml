@@ -6,8 +6,8 @@
             <section class="unit_photo">
 
                 <div class="this_list_cate">
-                    <ul>
-                        <li ng-repeat="(k, v) in DataList.CateList track by $index">
+                    <ul ngd-click="toSelect($event)" selector="li">
+                        <li ng-repeat="(k, v) in DataList.CateList track by $index" ng-class="{next: v.isSub, current: DataList.currentId=={{v.CateId}}}" data-id="{{v.CateId}}">
                             {{v.CateName}}
                         </li>
                     </ul>
