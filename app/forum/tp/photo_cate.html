@@ -1,18 +1,21 @@
-<header-bar title="选择标签" right="完成|toDone"></header-bar>
+<section ng-if="Deploy.isLogin">
+    <header-bar title="选择标签" right="完成|toDone"></header-bar>
 
-<ion-view>
-    <ion-content>
-        <section class="unit_photo">
+    <ion-view>
+        <ion-content>
+            <section class="unit_photo">
 
-            <div class="this_list_cate">
-                <ul ng-repeat="(k, v) in DataList.CateList track by $index" >
-                    <li>教案</li>
-                    <li>教案</li>
-                    <li>教案</li>
-                    <li>教案</li>
-                </ul>
-            </div>
+                <div class="this_list_cate">
+                    <ul>
+                        <li ng-repeat="(k, v) in DataList.CateList track by $index">
+                            {{v.CateName}}
+                        </li>
+                    </ul>
+                </div>
 
-        </section>
-    </ion-content>
-</ion-view>
+            </section>
+        </ion-content>
+    </ion-view>
+</section>
+
+<page-login ng-if="!Deploy.isLogin"></page-login>

@@ -10,6 +10,9 @@ angular.module('phoneApp')
     $window,
     widget
 ){
+    //初始化用户信息
+    widget.initUser($scope);
+
     $scope.CameraImages = widget.cacheData("CameraImages");
 
     if (!$scope.CameraImages || !$scope.CameraImages.Images || $scope.CameraImages.Images.length == 0) {
@@ -17,6 +20,23 @@ angular.module('phoneApp')
         $window.history.back();
         return;
     }
+
+    angular.extend($scope.Deploy, {
+        cateId: $stateParams.id || 1
+    });
+    $scope.DataList = {
+        CateList: []
+    };
+    widget.ajaxRequest({
+        scope: $scope,
+        url: 'getListCategory',
+        data: {
+            CateId: $scope.Deploy.cateId
+        },
+        success: function (data) {
+            $scope.DataList.CateList = data.CategoryList;
+        }
+    });
 
 
     $scope.toDone = function () {

@@ -14,17 +14,17 @@ angular.module('phoneApp')
     widget,
     ENV
 ){
-    $scope.Deploy = {
+    //初始化用户信息
+    widget.initUser($scope);
+
+    angular.extend($scope.Deploy, {
         currentImage: false
-    };
+    });
 
     $scope.isApp = false;
     if (ENV.isHybrid) {
         $scope.isApp = true;
     }
-
-    //初始化用户信息
-    widget.initUser($scope);
 
     // $rootScope.CameraImages = {
     //     Images: [
