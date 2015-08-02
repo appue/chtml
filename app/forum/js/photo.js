@@ -15,92 +15,137 @@ angular.module('phoneApp')
     widget
 ){
 
-    // $scope.Page = {
-    //     Title: "编辑照片",
-    //     Next: "继续"
-    // };
-
     var data = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
 
     // $scope.data1 = data;
     // $scope.imageData = $base64.encode(data);
     // $scope.imageUrl = data;
 
-
+    /*
     $scope.ImageData = {
-        imageUrl: 'themes/temp/9.jpg',
-        // imageUrl: data
+        imageUrl:
+        nw:
+        nh:
+        bw:
+        bh:
+    }
+    */
+    $scope.ImageData = {
+        // imageUrl: 'themes/temp/9.jpg'
+        imageUrl: data
     };
 
+    $scope.CameraImages = widget.cacheData("CameraImages") || {
+        Images: []
+    };
 
-    var image = new Image();
+    // var canvas = document.createElement('canvas');
+    var canvas = angular.element(document.querySelector('#canvas'))[0],
+        image = new Image();
 
     image.onload = function(){
+        angular.extend($scope.ImageData, {
+            nw: image.naturalWidth,
+            nh: image.naturalHeight,
+            bw: document.querySelector('.this_photo').offsetWidth,
+            bh: document.querySelector('.this_photo').offsetHeight
+        });
 
-        $scope.ImageData.nw = image.naturalWidth,
-        $scope.ImageData.nh = image.naturalHeight,
-        $scope.ImageData.bw = document.querySelector('.this_photo').offsetWidth,
-        $scope.ImageData.bh = document.querySelector('.this_photo').offsetHeight;
-
-        var canvas = document.createElement('canvas');
         canvas.width = $scope.ImageData.bw;
         canvas.height = $scope.ImageData.bh;
-        var ctx = canvas.getContext('2d');
-        ctx.drawImage(image, 0, 0, $scope.ImageData.bw, $scope.ImageData.bh);
 
-        angular.element(document.querySelector('.this_photo')).append(canvas);
+        var ctx = canvas.getContext('2d'),
+            tmpcvs = angular.element(document.querySelector('#tmp'))[0],
+            tmpctx = tmpcvs.getContext("2d");
 
+        EXIF.getData(image, function() {
+            var exif = EXIF.pretty(this);
+            var orientation = exif ? exif.Orientation : 1;
 
+            tmpctx.drawImage(image, 0, 0);
+
+            var mpImg = new MegaPixImage(image);
+
+            mpImg.render(tmpcvs, {
+                maxWidth: 640,
+                orientation: orientation
+            }, function () {
+
+                var data = tmpcvs.toDataURL("image/jpeg");
+
+                if (!data) return;
+
+                var cvsImage = new Image();
+
+                cvsImage.onload = function() {
+                    ctx.drawImage(cvsImage, 0, 0, $scope.ImageData.bw, $scope.ImageData.bh);
+
+                    angular.element(document.querySelector('.this_photo')).append(canvas);
+                };
+
+                cvsImage.src = data;
+
+            });
+        });
     };
+
     image.src = $scope.ImageData.imageUrl;
 
 
-
-
+    // 下一页
     $scope.nextPage = function () {
 
-        var canvas = document.querySelector('#tmp');
-        var ctx = canvas.getContext('2d');
-        ctx.drawImage(image, 0, 0);
+        $scope.cvsImageData = canvas.toDataURL("image/jpeg");
 
-        var mpImg = new MegaPixImage(image);
+        if (!$scope.cvsImageData) return;
 
-        mpImg.render(canvas, {
-            maxHeight: 100
-        }, function () {
+        var cvs = angular.element(document.querySelector('#tmp'))[0],
+            ctx = cvs.getContext("2d"),
+            cvsImage = new Image();
 
-            // var data = ctx.toDataURL("image/jpeg");
+        cvsImage.onload = function() {
+            ctx.drawImage(cvsImage, 0, 0);
 
-            // sessionStorage.setItem('a', data);
-            var isRepeat = false,
-                ctx = document.querySelector('#tmp'),
-                data = ctx.toDataURL("image/jpeg"),
-                lastData = $rootScope.CameraImages || [];
+            var mpImg = new MegaPixImage(cvsImage);
 
-            
-            angular.forEach(lastData, function (v, k) {
-                if (v.ImageUrl == data) {
-                    isRepeat = true;
-                    return;
-                }
-            });
+            mpImg.render(cvs, {
+                maxWidth: 640,
+                orientation: 1
+            }, function () {
 
-            if (!isRepeat) {
-                lastData.push({
-                    ImageUrl: data,
-                    Content: ''
+                var data = cvs.toDataURL("image/jpeg"),
+                    isRepeat = false;
+
+                angular.forEach($scope.CameraImages.Images, function (v, k) {
+                    if (v.ImageUrl == data) {
+                        isRepeat = true;
+                        return;
+                    }
                 });
-            }
 
-            $rootScope.CameraImages = lastData;
+                if (!isRepeat) {
+                    $scope.CameraImages.Images.push({
+                        ImageUrl: data,
+                        Content: ''
+                    });
 
-            $ionicViewSwitcher.nextDirection('forward');
-            $state.go("forum.photo-title");
-        });
+                    widget.cacheData("CameraImages", $scope.CameraImages);
+                }
 
+                $ionicViewSwitcher.nextDirection('forward');
+                $state.go("forum.photo-title");
+
+            });
+        };
+
+        cvsImage.src = $scope.cvsImageData;
     };
     
 
+
+
+
+    
     $scope.currentTab = true;
 
     $scope.myScrollOptions = { 

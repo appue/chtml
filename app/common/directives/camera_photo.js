@@ -121,6 +121,7 @@ angular.module('phoneApp')
                 };
 
                 if (ENV.isHybrid) {
+
                     var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
                         el = document.querySelector('.js_mod_camera');
 
@@ -134,10 +135,12 @@ angular.module('phoneApp')
                     scope.noScroll = {
                         'overflow-y': 'hidden'
                     };
+
                 } else {
-                //     widget.msgToast('请下载APP吧！');
+
                     $ionicViewSwitcher.nextDirection("forward");
                     $state.go("forum.photo-title");
+
                 }
 
             });
@@ -159,8 +162,11 @@ angular.module('phoneApp')
 
 
 .directive('ngPhoto', function (
+    $state,
     $parse, 
-    $timeout
+    $timeout,
+    $ionicViewSwitcher,
+    widget
 ) {
     return {
         restrict: 'A',
@@ -186,9 +192,11 @@ angular.module('phoneApp')
 
                 sessionStorage.setItem('imageData', encodeURIComponent(imageData));
 
-                // .toJump({
-                //     'url': ['forum/#/photo/edit.htm']
-                // });
+                // $ionicViewSwitcher.nextDirection("forward");
+                // $state.go('forum.photo-edit');
+                $ionicViewSwitcher.nextDirection("none");
+                $state.go('forum.photo-title');
+
             }
 
             function onFail(message) {
@@ -201,8 +209,10 @@ angular.module('phoneApp')
 
 
 .directive('ngCamera', function (
+    $state,
     $parse, 
     $timeout,
+    $ionicViewSwitcher,
     widget
 ) {
     return {
@@ -246,9 +256,11 @@ angular.module('phoneApp')
 
                 sessionStorage.setItem('imageData', encodeURIComponent(imageData));
 
-                // routerRedirect.toJump({
-                //     'url': ['forum/#/photo/edit.htm']
-                // });
+
+                // $ionicViewSwitcher.nextDirection("forward");
+                // $state.go('forum.photo-edit');
+                $ionicViewSwitcher.nextDirection("none");
+                $state.go('forum.photo-title');
             }
 
             function onFail(message) {

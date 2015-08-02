@@ -1,10 +1,11 @@
-<header-bar title="编辑照片"></header-bar>
+<header-bar title="编辑照片" right="继续|nextPage"></header-bar>
 
 <ion-view>
     <ion-content>
         <section class="unit_photo">
             <div class="this_photo">
                 <img id="img" ng-src="{{ImageData.imageUrl}}" />
+                <canvas id="canvas"></canvas>
             </div>
 
             <div class="this_tmp_canvas"><canvas id="tmp"></canvas></div>

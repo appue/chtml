@@ -41,92 +41,92 @@ angular.module('phoneApp')
                 }
             });
 
-            $rootScope.addPhoto = function () {
+            // $rootScope.addPhoto = function () {
 
-                if (ENV.isHybrid) {
-                    var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
-                        el = document.querySelector('.js_mod_camera');
+            //     if (ENV.isHybrid) {
+            //         var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
+            //             el = document.querySelector('.js_mod_camera');
 
-                    if (el) {
-                        el.style.display = "block";
-                    } else {
-                        // $element.after(toastTpl($scope));
-                        angular.element(document.querySelector('.pane')).after(toastTpl($scope));
-                    }
+            //         if (el) {
+            //             el.style.display = "block";
+            //         } else {
+            //             // $element.after(toastTpl($scope));
+            //             angular.element(document.querySelector('.pane')).after(toastTpl($scope));
+            //         }
 
-                    $scope.noScroll = {
-                        'overflow-y': 'hidden'
-                    };
-                } else {
-                    widget.msgToast('请下载APP吧！');
-                }
+            //         $scope.noScroll = {
+            //             'overflow-y': 'hidden'
+            //         };
+            //     } else {
+            //         widget.msgToast('请下载APP吧！');
+            //     }
 
-                return;
+            //     return;
 
-            };
+            // };
 
 
             // var currentUrl = $state.current.url.replace(/^\//g, '');
-            var current = $scope.footerTab;
+            // var current = $scope.footerTab;
 
-            $scope.menuChange = function(e) {
-                if (e.target.nodeName == 'LI') {
+            // $scope.menuChange = function(e) {
+            //     if (e.target.nodeName == 'LI') {
 
-                    var $that = angular.element(e.target);
+            //         var $that = angular.element(e.target);
 
-                    var direction = 'left',
-                        id = $that.attr('data-id');
+            //         var direction = 'left',
+            //             id = $that.attr('data-id');
 
-                    $scope.footerTab = id;
+            //         $scope.footerTab = id;
 
-                    // if ((id == 3 || id== 4 || id == 5) && !uid) {
-                    //     routerRedirect.toJump({
-                    //         url: ['entry/#/login.htm?from='+ currentUrl]
-                    //     });
-                    //     return;
-                    // }
+            //         // if ((id == 3 || id== 4 || id == 5) && !uid) {
+            //         //     routerRedirect.toJump({
+            //         //         url: ['entry/#/login.htm?from='+ currentUrl]
+            //         //     });
+            //         //     return;
+            //         // }
 
-                    if (id == 3) {
+            //         if (id == 3) {
 
-                        if (ENV.isHybrid) {
-                            var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
-                                el = document.querySelector('.js_mod_camera');
+            //             if (ENV.isHybrid) {
+            //                 var toastTpl = $compile('<section class="js_mod_camera" ngd-click="hideCamera($event)" selector="div"><div class="mod_camera"><ul><li ng-photo>相册</li><li ng-camera>拍照</li></ul></div><section>'),
+            //                     el = document.querySelector('.js_mod_camera');
 
-                            if (el) {
-                                el.style.display = "block";
-                            } else {
-                                $element.after(toastTpl($scope));
-                            }
+            //                 if (el) {
+            //                     el.style.display = "block";
+            //                 } else {
+            //                     $element.after(toastTpl($scope));
+            //                 }
 
-                            $scope.noScroll = {
-                                'overflow-y': 'hidden'
-                            };
-                        } else {
-                            widget.msgToast('请下载APP吧！');
-                        }
+            //                 $scope.noScroll = {
+            //                     'overflow-y': 'hidden'
+            //                 };
+            //             } else {
+            //                 widget.msgToast('请下载APP吧！');
+            //             }
 
-                        return;
-                    }
+            //             return;
+            //         }
 
-                    if (id < current) {
-                        direction = 'right';
-                    }
+            //         if (id < current) {
+            //             direction = 'right';
+            //         }
 
-                    $that.addClass('current');
+            //         $that.addClass('current');
 
-                    $state.go(SiteUrl[id-1].route, SiteUrl[id-1].options || {});
-                }
-            };
+            //         $state.go(SiteUrl[id-1].route, SiteUrl[id-1].options || {});
+            //     }
+            // };
 
-            $scope.hideCamera = function (e) {
-                var $that = angular.element(e.delegationTarget);
+            // $scope.hideCamera = function (e) {
+            //     var $that = angular.element(e.delegationTarget);
                 
-                $that.parent().css('display', 'none');
+            //     $that.parent().css('display', 'none');
 
-                $scope.noScroll = {
-                    'overflow-y': 'auto'
-                };
-            };
+            //     $scope.noScroll = {
+            //         'overflow-y': 'auto'
+            //     };
+            // };
         }
     };
 });
