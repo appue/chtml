@@ -7,7 +7,7 @@
             <section class="unit_photo">
                 <div class="this_edit_title">
                     <ul>
-                        <li ng-repeat="(k, v) in CameraImages.Images">
+                        <li ng-repeat="(k, v) in CameraImages.Images track by $index">
                             <div ng-click="dataDelete(k)">
                                 <p>
                                     <img data-ng-src="{{v.ImageUrl}}" />
@@ -15,7 +15,7 @@
                             </div>
                             <textarea ng-model="v.Description" placeholder="写下您想说的话（必填）"></textarea>
                         </li>
-                        <li add-photo ng-if="isApp">
+                        <li ng-click="addImage()" ng-if="isApp">
                             <i></i>
                         </li>
                         <li class="this_file" ng-if="!isApp">
@@ -32,3 +32,5 @@
 </section>
 
 <page-login ng-if="!Deploy.isLogin"></page-login>
+
+<page-sheet></page-sheet>

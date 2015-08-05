@@ -112,7 +112,7 @@ angular.module('phoneApp', [
         //编辑内容
         .state('forum.photo-title', {
             // cache: false,
-            url: '/photo/title.htm',
+            url: '/photo/title.htm?type',
             templateUrl: 'forum/tp/photo_title.html',
             controller: 'tPhotoTitle'
         })
