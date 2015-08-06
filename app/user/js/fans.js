@@ -31,11 +31,7 @@ angular.module('phoneApp')
 			success: function(data) {
 
 				if (data.FansList && data.FansList.length > 0) {
-
-					angular.forEach(data.FansList, function(v, k) {
-						$scope.DataList.FansList.push(v);
-					});
-
+					$scope.DataList.FansList = $scope.DataList.FansList.concat(data.FansList);
 				}
 
 			}
