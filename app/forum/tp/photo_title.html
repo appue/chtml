@@ -15,8 +15,8 @@
                             </div>
                             <textarea ng-model="v.Description" placeholder="写下您想说的话（必填）"></textarea>
                         </li>
-                        <li ng-click="addImage()" ng-if="isApp">
-                            <i></i>
+                        <li ng-if="isApp">
+                            <i ng-click="addImage()"></i>
                         </li>
                         <li class="this_file" ng-if="!isApp">
                             <input type="file" ng-model="Deploy.currentImage" accept="image/*" app-filereader />

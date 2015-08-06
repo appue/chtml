@@ -273,6 +273,7 @@ angular.module('phoneApp')
     $state,
     $parse, 
     $timeout,
+    $ionicLoading,
     $ionicViewSwitcher,
     widget
 ) {
@@ -281,11 +282,16 @@ angular.module('phoneApp')
         link: function (scope, element, attrs) {
 
             element.on('click', function () {
+
+                $ionicLoading.show({
+                    templateUrl: 'common/directives/mod_loading.html'
+                });
+
                 document.addEventListener("deviceready", onDeviceReady, false);
 
                 function onDeviceReady() {
                     window.navigator.camera.getPicture(onSuccess, onFail, { 
-                        quality: 100,
+                        quality: 50,
                         // destinationType: Camera.DestinationType.DATA_URL,
                         destinationType: Camera.DestinationType.FILE_URI,
                         sourceType: Camera.PictureSourceType.PHOTOLIBRARY
@@ -313,6 +319,7 @@ angular.module('phoneApp')
     $state,
     $parse, 
     $timeout,
+    $ionicLoading,
     $ionicViewSwitcher,
     widget
 ) {
@@ -330,11 +337,15 @@ angular.module('phoneApp')
                     return;
                 };
 
+                $ionicLoading.show({
+                    templateUrl: 'common/directives/mod_loading.html'
+                });
+
                 document.addEventListener("deviceready", onDeviceReady, false);
                 
                 function onDeviceReady() {
                     navigator.camera.getPicture(onSuccess, onFail, { 
-                        quality: 100,
+                        quality: 50,
                         // destinationType: Camera.DestinationType.DATA_URL,
                         destinationType: Camera.DestinationType.FILE_URI,
                         // sourceType: Camera.PictureSourceType.PHOTOLIBRARY

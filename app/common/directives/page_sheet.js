@@ -2,10 +2,11 @@ angular.module('phoneApp')
 
 .directive('pageSheet', function (
     $state,
+    $window,
     $timeout,
+    $ionicLoading,
     $ionicBackdrop,
     $ionicViewSwitcher,
-    $window,
     cachePool,
     widget,
     ENV
@@ -18,11 +19,17 @@ angular.module('phoneApp')
         controller: function ($scope, $element, $rootScope, $compile) {
 
             $scope.hideSheet = function () {
-                $element.removeClass("this_show");
+                $element.addClass("this_hide");
+
+                $timeout( function () {
+                    $element.removeClass("this_show");
+                    $element.removeClass("this_hide");
+                    $element.css("display", "none");
+                }, 210);
             };
 
             $scope.showSheet = function () {
-                var $that = $element.css("display", "block");
+                $element.css("display", "block");
                 
                 $timeout( function () {
                     $element.addClass('this_show');
@@ -33,11 +40,15 @@ angular.module('phoneApp')
                 var $that = angular.element(e.delegationTarget),
                     type = $that.attr('data-type');
 
+                // document.addEventListener("deviceready", onDeviceReady, false);
                 switch (type) {
                     case 'photo':
-                        document.addEventListener("deviceready", onDeviceReady, false);
+                        $ionicLoading.show({
+                            templateUrl: 'common/directives/mod_loading.html'
+                        });
+
                         window.navigator.camera.getPicture(onSuccess, onFail, { 
-                            quality: 100,
+                            quality: 50,
                             // destinationType: Camera.DestinationType.DATA_URL,
                             destinationType: Camera.DestinationType.FILE_URI,
                             sourceType: Camera.PictureSourceType.PHOTOLIBRARY
@@ -45,9 +56,12 @@ angular.module('phoneApp')
                     break;
 
                     case 'camera':
-                        document.addEventListener("deviceready", onDeviceReady, false);
+                        $ionicLoading.show({
+                            templateUrl: 'common/directives/mod_loading.html'
+                        });
+
                         window.navigator.camera.getPicture(onSuccess, onFail, { 
-                            quality: 100,
+                            quality: 50,
                             // destinationType: Camera.DestinationType.DATA_URL,
                             destinationType: Camera.DestinationType.FILE_URI,
                             // sourceType: Camera.PictureSourceType.PHOTOLIBRARY
@@ -56,7 +70,7 @@ angular.module('phoneApp')
                     break;
 
                     default:
-                        console.log(1);
+                        $scope.hideSheet();
 
                 }
             };
@@ -82,6 +96,9 @@ angular.module('phoneApp')
                         }, function () {
                             var data = canvas.toDataURL("image/jpeg");
                             $scope.Deploy.currentImage = data;
+
+                            $scope.hideSheet();
+                            $ionicLoading.hide();
                         });
                     });
                 };
@@ -91,7 +108,8 @@ angular.module('phoneApp')
 
 
             function onFail(message) {
-                console.log("获取图片失败！");
+                // console.log("获取图片失败！");
+                widget.msgToast("获取图片失败！");
             }
         }
     };

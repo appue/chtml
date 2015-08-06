@@ -11,6 +11,7 @@ angular.module('phoneApp')
     $location,
     $rootScope,
     $stateParams,
+    $ionicLoading,
     $ionicActionSheet,
     $ionicViewSwitcher,
     widget,
@@ -49,12 +50,40 @@ angular.module('phoneApp')
             var imageData = decodeURIComponent(sessionStorage.getItem('imageData')) || '';
 
             if (imageData) {
-                onSuccess(imageData);
+                var canvas = angular.element(document.querySelector('#tmp'))[0],
+                    ctx = canvas.getContext("2d"),
+                    image = new Image();
+
+                // if ($scope.hideSheet) {
+                //     $scope.hideSheet();
+                // }
+                image.onload = function() {
+                    EXIF.getData(image, function() {
+                        var exif = EXIF.pretty(this),
+                            orientation = exif ? exif.Orientation : 1;
+
+                        ctx.drawImage(image, 0, 0);
+
+                        var mpImg = new MegaPixImage(image);
+
+                        mpImg.render(canvas, {
+                            maxWidth: 640,
+                            orientation: orientation
+                        }, function () {
+                            var data = canvas.toDataURL("image/jpeg");
+                            $scope.Deploy.currentImage = data;
+                        });
+                    });
+                };
+
+                image.src = imageData;
             }
         }, 0);
     }
 
     $scope.$watch("Deploy.currentImage", function () {
+        $ionicLoading.hide();
+
         if (!$scope.Deploy.currentImage) return;
 
         $scope.CameraImages.Images.push({
@@ -142,39 +171,4 @@ angular.module('phoneApp')
         // });
     }
 
-
-    function onSuccess(imageData) {
-        var canvas = angular.element(document.querySelector('#tmp'))[0],
-            ctx = canvas.getContext("2d"),
-            image = new Image();
-
-        if ($scope.hideSheet) {
-            $scope.hideSheet();
-        }
-        image.onload = function() {
-            EXIF.getData(image, function() {
-                var exif = EXIF.pretty(this),
-                    orientation = exif ? exif.Orientation : 1;
-
-                ctx.drawImage(image, 0, 0);
-
-                var mpImg = new MegaPixImage(image);
-
-                mpImg.render(canvas, {
-                    maxWidth: 640,
-                    orientation: orientation
-                }, function () {
-                    var data = canvas.toDataURL("image/jpeg");
-                    $scope.Deploy.currentImage = data;
-                });
-            });
-        };
-
-        image.src = imageData;
-    }
-
-
-    function onFail(message) {
-        console.log("获取图片失败！");
-    }
 });
