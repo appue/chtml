@@ -6,7 +6,7 @@
 
             <ul class="msg_praise" ng-if="DataList.PraiseList.length > 0">
                 <li ng-repeat="(k, v) in DataList.PraiseList track by $index">
-                    <img src="{{v.Author.ImageUrl}}" />
+                    <img ng-src="{{v.Author.ImageUrl}}" />
                     <dl>
                         <dt>{{v.Author.UserName}}</dt>
                         <dd>

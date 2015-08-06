@@ -37,15 +37,15 @@ angular.module('phoneApp')
             success: function (data) {
                 if (data.PraiseList && data.PraiseList.length > 0) {
 
-                    $scope.Deploy.pageTotal = data.Total || 0;
+                    // $scope.Deploy.pageTotal = data.Total || 0;
                     $scope.DataList.PraiseList = $scope.DataList.PraiseList.concat(data.PraiseList);
-                    $scope.Deploy.isLoading = false;
-                    $scope.$broadcast('scroll.infiniteScrollComplete');
+                //     $scope.Deploy.isLoading = false;
+                //     $scope.$broadcast('scroll.infiniteScrollComplete');
 
-                } else {
+                // } else {
 
-                    $scope.Deploy.isLoading = true;
-                    $scope.Deploy.isMore = false;
+                //     $scope.Deploy.isLoading = true;
+                //     $scope.Deploy.isMore = false;
 
                 }
             }

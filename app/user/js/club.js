@@ -1,15 +1,19 @@
 angular.module('phoneApp')
 
 .controller('tUserClub', function(
-	$scope,
-	widget
+    $scope,
+    $stateParams,
+    $timeout,
+    widget
 ) {
 
 	$scope.Deploy = {
 		pageIndex: 0,
 		pageSize: 15,
 		isLoading: false,
-		isMore: true
+		isMore: true,
+
+        UserId: $stateParams.uid
 	};
 
 	$scope.DataList = {
@@ -18,33 +22,47 @@ angular.module('phoneApp')
 
 	widget.initUser($scope);
 
-	$scope.loadMore = function() {
+	widget.ajaxRequest({
+		scope: $scope,
+		showPage: true,
+		isLogin: true,
+		url: 'getUserClub',
+		data: {
+			UserId: $scope.Deploy.UserId
+		},
+        success: function (data) {
+            if (data.ClubList && data.ClubList.length > 0) {
+                var res = {ClubList: []};
 
-		widget.ajaxRequest({
-			scope: $scope,
-			showPage: true,
-			isLogin: true,
-			url: 'getUserClub',
-			data: {
-				UserId: $scope.Deploy.uId
-			},
-			success: function(data) { //todo...
+                angular.forEach(data.ClubList, function (v, k) {
+                    if (res.ClubList.length == 0) {
 
-				if (data.ClubList && data.ClubList.length > 0) {
+                        res.ClubList.push({
+                            'Letter': v.Letter,
+                            'List': [v]
+                        });
 
-					angular.forEach(data.ClubList, function(v, k) {
-						$scope.DataList.ClubList.push(v);
-					});
+                    } else {
 
-				}
+                        var len = res.ClubList.length;
 
-			}
-		});
+                        if (res.ClubList[len-1].Letter == v.Letter) {
+                            res.ClubList[len-1].List.push(v);
+                        } else {
+                            res.ClubList.push({
+                                'Letter': v.Letter,
+                                'List': [v]
+                            });
+                        }
+                    }
 
-	};
+                });
 
-	if ($scope.Deploy.isLogin) {
-		$scope.loadMore();
-	}
+                angular.extend($scope.DataList, res);
+            } else {
+                $scope.Deploy.isMore = false;
+            }
+        }
+	});
 
 });

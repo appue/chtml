@@ -240,8 +240,8 @@ angular.module('phoneApp')
                     "State": true
                 };
 
-                // if (data.Response && data.Response.Ack == "Success") { toDo
-                if (data.Response) {
+                if (data.Response && data.Response.Ack == "Success") {
+                // if (data.Response) { toDo
 
                     if ($scope) {
                         if (!$scope.Deploy) {
@@ -266,7 +266,8 @@ angular.module('phoneApp')
                         $scope.Deploy.isLoading = false;
                         $scope.Deploy.pageTotal = data.Total || 0;
 
-                        if ($scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize) >= $scope.Deploy.pageTotal) {
+                        if (!$scope.Deploy.pageTotal || $scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize) >= $scope.Deploy.pageTotal) {
+                            $scope.Deploy.isLoading = true;
                             $scope.Deploy.isMore = false;
                         } else {
                             $scope.$broadcast('scroll.infiniteScrollComplete');
