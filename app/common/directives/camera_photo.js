@@ -283,9 +283,9 @@ angular.module('phoneApp')
 
             element.on('click', function () {
 
-                $ionicLoading.show({
-                    templateUrl: 'common/directives/mod_loading.html'
-                });
+                // $ionicLoading.show({
+                //     templateUrl: 'common/directives/mod_loading.html'
+                // });
 
                 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -337,9 +337,9 @@ angular.module('phoneApp')
                     return;
                 };
 
-                $ionicLoading.show({
-                    templateUrl: 'common/directives/mod_loading.html'
-                });
+                // $ionicLoading.show({
+                //     templateUrl: 'common/directives/mod_loading.html'
+                // });
 
                 document.addEventListener("deviceready", onDeviceReady, false);
                 

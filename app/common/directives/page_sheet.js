@@ -43,9 +43,9 @@ angular.module('phoneApp')
                 // document.addEventListener("deviceready", onDeviceReady, false);
                 switch (type) {
                     case 'photo':
-                        $ionicLoading.show({
-                            templateUrl: 'common/directives/mod_loading.html'
-                        });
+                        // $ionicLoading.show({
+                        //     templateUrl: 'common/directives/mod_loading.html'
+                        // });
 
                         window.navigator.camera.getPicture(onSuccess, onFail, { 
                             quality: 50,
@@ -56,9 +56,9 @@ angular.module('phoneApp')
                     break;
 
                     case 'camera':
-                        $ionicLoading.show({
-                            templateUrl: 'common/directives/mod_loading.html'
-                        });
+                        // $ionicLoading.show({
+                        //     templateUrl: 'common/directives/mod_loading.html'
+                        // });
 
                         window.navigator.camera.getPicture(onSuccess, onFail, { 
                             quality: 50,
@@ -98,7 +98,7 @@ angular.module('phoneApp')
                             $scope.Deploy.currentImage = data;
 
                             $scope.hideSheet();
-                            $ionicLoading.hide();
+                            // $ionicLoading.hide();
                         });
                     });
                 };

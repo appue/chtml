@@ -82,7 +82,7 @@ angular.module('phoneApp')
     }
 
     $scope.$watch("Deploy.currentImage", function () {
-        $ionicLoading.hide();
+        // $ionicLoading.hide();
 
         if (!$scope.Deploy.currentImage) return;
 
