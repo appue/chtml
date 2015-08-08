@@ -1,4 +1,5 @@
 angular.module('phoneApp')
+
 .controller('tUserIndex', function (
 	$scope,
     $state,
@@ -9,17 +10,11 @@ angular.module('phoneApp')
     cachePool,
     widget
 ) {
-    
+    widget.initUser($scope);
+
     $scope.footerTab = 5; //--底部tab初始化高亮
 
-    $scope.Deploy = {
-        isLogin: false,
-        uId: 0
-    };
-
     $scope.DataList = {};
-
-    widget.initUser($scope);
 
 
     // if (!$stateParams.id) {
@@ -34,23 +29,26 @@ angular.module('phoneApp')
     //     $scope.userId = $stateParams.id;
     // }
 
-    widget.ajaxRequest({
-        scope: $scope,
-        url: 'getUserInfo',
-        isLogin: true,
-        data: {
-            UserId: $scope.Deploy.uId
-        },
-        success: function (data) {
-        	angular.extend($scope.DataList, data);
-        }
-    });
+    if ($scope.Deploy.isLogin) {
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'getUserInfo',
+            isLogin: true,
+            data: {
+                UserId: $scope.Deploy.uId
+            },
+            success: function (data) {
+            	angular.extend($scope.DataList, data);
+            }
+        });
+    }
 
     $scope.headerScroll = function () {
         widget.changeOpacity();
     };
 
     $scope.toMail = function () {
+        console.log($scope.Deploy);
         if ($scope.Deploy.isLogin) {
             $ionicViewSwitcher.nextDirection('forward');
             $state.go('forum.msg-talk');

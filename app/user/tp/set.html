@@ -2,65 +2,77 @@
     <header-bar title="设置"></header-bar>
 
     <ion-view>
-        <ion-content overflow-scroll="true" class="mod_wrapper">
+        <ion-content overflow-scroll="true">
 
-            <ul class="unit_owner_set">
-                <li class="no">
-                    <p>昵称</p>
-                    <p>{{cInput.UserName}}</p>
-                </li>
-                <li ng-click="genderSelect()">
-                    <p>性别</p>
-                    <p>{{cInput.SexName}}</p>
-                </li>
-                <li job-popup>
-                    <p>岗位</p>
-                    <p>{{cInput.JobName}}</p>
-                </li>
-                <li location-popup>
-                    <p>地区</p>
-                    <p>{{cInput.CityName}}</p>
-                </li>
-<!--                 <li>
-                    <p>订阅</p>
-                    <p>教案  计划  总结</p>
-                </li> -->
-                <!--
+            <div class="user_info_top">
+                <div class="this_img"><img ng-src="{{DataList.UserInfo.UserImage}}" /></div>
+
+                <ul class="this_modify">
+                    <li>修改封面</li>
+                    <li>修改头像</li>
+                </ul>
+            </div>
+
+            <div style="padding:10px;">
+                <ul class="unit_owner_set">
+                    <li class="no">
+                        <p>昵称</p>
+                        <p>{{cInput.UserName}}</p>
+                    </li>
+                    <li ng-click="genderSelect()">
+                        <p>性别</p>
+                        <p>{{cInput.SexName}}</p>
+                    </li>
+                    <li job-popup>
+                        <p>岗位</p>
+                        <p>{{cInput.JobName}}</p>
+                    </li>
+                    <li location-popup>
+                        <p>地区</p>
+                        <p>{{cInput.CityName}}</p>
+                    </li>
                     <li>
-                        <p>账号绑定</p>
+                        <p>订阅</p>
                         <p></p>
                     </li>
-                -->
-                <li page-jump data-router="forum.user-set-password">
-                    <p>修改密码</p>
-                    <p></p>
-                </li>
-            </ul>
+                    <!--
+                        <li>
+                            <p>账号绑定</p>
+                            <p></p>
+                        </li>
+                    -->
+                    <li page-jump data-router="forum.user-set-password">
+                        <p>修改密码</p>
+                        <p></p>
+                    </li>
+                </ul>
 
-<!--             <ul class="unit_owner_push">
-                <li>
-                    <div>消息推送</div>
-                    <button ng-click="switchCtrl('isMsgPush')" ng-class="{close:!userSetData.isMsgPush,open:userSetData.isMsgPush}" class="on_off"></button>
-                </li>
-                <li>
-                    <div>只允许我关注的人跟我私聊</div>
-                    <a ng-click="switchCtrl('isFocusOnly')" ng-class="{close:!userSetData.isFocusOnly,open:userSetData.isFocusOnly}" class="on_off"></a>
-                </li>
-                <li>
-                    <div>允许通过手机通讯录加我好友</div>
-                    <a ng-click="switchCtrl('isTelAllow')" ng-class="{close:!userSetData.isTelAllow,open:userSetData.isTelAllow}" class="on_off"></a>
-                </li>
-                <li>
-                    <div>保存图片到相册</div>
-                    <a ng-click="switchCtrl('isPhotoSave')" ng-class="{close:!userSetData.isPhotoSave,open:userSetData.isPhotoSave}" class="on_off"></a>
-                </li>
-                <li>
-                    <div>清除图片缓存</div>
-                </li>
-            </ul> -->
+    <!--             <ul class="unit_owner_push">
+                    <li>
+                        <div>消息推送</div>
+                        <button ng-click="switchCtrl('isMsgPush')" ng-class="{close:!userSetData.isMsgPush,open:userSetData.isMsgPush}" class="on_off"></button>
+                    </li>
+                    <li>
+                        <div>只允许我关注的人跟我私聊</div>
+                        <a ng-click="switchCtrl('isFocusOnly')" ng-class="{close:!userSetData.isFocusOnly,open:userSetData.isFocusOnly}" class="on_off"></a>
+                    </li>
+                    <li>
+                        <div>允许通过手机通讯录加我好友</div>
+                        <a ng-click="switchCtrl('isTelAllow')" ng-class="{close:!userSetData.isTelAllow,open:userSetData.isTelAllow}" class="on_off"></a>
+                    </li>
+                    <li>
+                        <div>保存图片到相册</div>
+                        <a ng-click="switchCtrl('isPhotoSave')" ng-class="{close:!userSetData.isPhotoSave,open:userSetData.isPhotoSave}" class="on_off"></a>
+                    </li>
+                    <li>
+                        <div>清除图片缓存</div>
+                    </li>
+                </ul> -->
 
-            <button class="unit_btn" ng-click="loginOut()">退出登录</button>
+                <div class="unit_btn" ng-click="loginOut()">退出登录</div>
 
+                <br><br>
+            </div>
         </ion-content>
     </ion-view>
 </section>

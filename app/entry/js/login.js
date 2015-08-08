@@ -52,14 +52,16 @@ angular.module('phoneApp')
                         Phone: data.Phone,
                         UserName: data.Nickname,
                         Sex: data.Sex,
+
                         City: data.City,
                         CityName: data.CityName,
+                        
                         Job: data.Job,
                         JobName: data.JobName,
 
                         Auth: data.Auth,
                         UserId: data.UserId 
-                    }, 2 / 24);
+                    }, 720 / 24);
                 }
                 
 			}

@@ -162,7 +162,7 @@ angular.module('phoneApp')
                 'JobName': '园长'
             };
 
-            cachePool.push('UserInfo', user, 48 / 24); //此处之后移动到登录页面
+            cachePool.push('UserInfo', user, 720 / 24); //此处之后移动到登录页面
             //-------------ToDo
 
             var $scope = params.scope || '',
@@ -248,9 +248,11 @@ angular.module('phoneApp')
                             $scope.Deploy = {};
                         };
 
-                        if (data.Response.State) {
-                            $scope.Deploy.isLogin = true;
-                        } else {
+                        // isLogin toDo
+                        // if (data.Response.State) {
+                        // //     $scope.Deploy.isLogin = true;
+                        // // } else {
+                        if (!data.Response.State) {
                             $scope.Deploy.isLogin = false;
                             $scope.Deploy.uId = 0;
                             cachePool.remove("UserInfo");
@@ -367,10 +369,17 @@ angular.module('phoneApp')
         /**
          * 注销用户登录信息
          */
-        cleanLogin: function(scope) {
+        cleanLogin: function (scope) {
             scope.Deploy.uId = 0;
             scope.Deploy.isLogin = false;
             cachePool.remove("UserInfo");
+        },
+
+        /**
+         * 修改用户本地缓存信息
+         */
+        modifyLogin: function (scope) {
+
         },
 
         /**

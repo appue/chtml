@@ -23,68 +23,171 @@ angular.module('phoneApp').factory('cachePool', function () {
 
     var ONE_DAY = 24 * 3600 * 1000;
 
-    /**
-     * 设置本地存储的值
-     * @param key 本地存储name
-     * @param data 本地存储对象
-     * @param expires 过期时间(可选)
-     */
-    var pushData = function (key, data, expires) {
-        if (!key || !data) {
-            return;
-        }
 
-        var item = fetchItem(key) || {};
 
-        item.value = data || undefined; //暂时先取value键值，不做自定义处理
+    var storageData = {
 
-        item.expired = expires ? (Date.now() + ONE_DAY * expires) : undefined;
+        /**
+         * 设置本地存储的值
+         * @param key 本地存储name
+         * @param data 本地存储对象
+         * @param expires 过期时间(可选)
+         */
+        push: function (key, data, expires) {
+            if (!key || !data) {
+                return;
+            }
 
-        localStorage.setItem('phoneApp_' + key, JSON.stringify(item));
-    };
+            var item = fetchItem(key) || {};
 
-    /**
-     * 获取本地存储的值
-     * @param key 本地存储name
-     * expired如果存在，则判断是否过期，不存在就是永久值
-     */
-    var pullData = function (key) {
-        var item = fetchItem(key),
-            data;
+            item.value = data || undefined; //暂时先取value键值，不做自定义处理
 
-        if (!item || item.expired && item.expired <= Date.now()) {
-            return null;
-        } else {
-            data = item['value'];
-        }
+            item.expired = expires ? (Date.now() + ONE_DAY * expires) : undefined;
 
-        return data;
-    };
-
-    var removeData = function (key, dataKey) {
-        if (!key) {
-            return;
-        }
-
-        var item = fetchItem(key);
-
-        if (!item) {
-            localStorage.removeItem('phoneApp_' + key);
-            return;
-        }
-
-        if (dataKey && item[dataKey]) {
-            item[dataKey] = undefined;
             localStorage.setItem('phoneApp_' + key, JSON.stringify(item));
-        } else {
-            localStorage.removeItem('phoneApp_' + key);
+        },
+
+        /**
+         * 获取本地存储的值
+         * @param key 本地存储name
+         * expired如果存在，则判断是否过期，不存在就是永久值
+         */
+        pull: function (key) {
+            var item = fetchItem(key),
+                data;
+
+            if (!item || item.expired && item.expired <= Date.now()) {
+                return null;
+            } else {
+                data = item['value'];
+            }
+
+            return data;
+        },
+
+        /**
+         * 删除本地存储的值
+         * @params:
+         *     key: 本地存储name
+         *     dataKey: 具体某个属性
+         */
+        remove: function (key, dataKey) {
+            if (!key) {
+                return;
+            }
+
+            var item = fetchItem(key);
+
+            if (!item) {
+                localStorage.removeItem('phoneApp_' + key);
+                return;
+            }
+
+            if (dataKey && item[dataKey]) {
+                item[dataKey] = undefined;
+                localStorage.setItem('phoneApp_' + key, JSON.stringify(item));
+            } else {
+                localStorage.removeItem('phoneApp_' + key);
+            }
+
+        },
+
+        /**
+         * 修改本地存储的值
+         * @params:
+         *     key: 本地存储name
+         *     dataKey: 需要修改的属性对象 如： { a:1 }
+         */
+        modify: function (key, dataKey) {
+            if (!key) {
+                return;
+            }
+
+            var items = fetchItem(key),
+                i;
+
+            if (!items) {
+                localStorage.removeItem('phoneApp_' + key);
+                return;
+            }
+
+            if (dataKey) {
+                for (i in items.value) {
+                    if (dataKey[i]) {
+                        items.value[i] = dataKey[i];
+                    }
+                }
+
+                localStorage.setItem('phoneApp_' + key, JSON.stringify(items));
+            }
         }
 
     };
 
-    return {
-        push: pushData,
-        pull: pullData,
-        remove: removeData,
-    };
+    return storageData;
+
+    // /**
+    //  * 设置本地存储的值
+    //  * @param key 本地存储name
+    //  * @param data 本地存储对象
+    //  * @param expires 过期时间(可选)
+    //  */
+    // var pushData = function (key, data, expires) {
+    //     if (!key || !data) {
+    //         return;
+    //     }
+
+    //     var item = fetchItem(key) || {};
+
+    //     item.value = data || undefined; //暂时先取value键值，不做自定义处理
+
+    //     item.expired = expires ? (Date.now() + ONE_DAY * expires) : undefined;
+
+    //     localStorage.setItem('phoneApp_' + key, JSON.stringify(item));
+    // };
+
+    // /**
+    //  * 获取本地存储的值
+    //  * @param key 本地存储name
+    //  * expired如果存在，则判断是否过期，不存在就是永久值
+    //  */
+    // var pullData = function (key) {
+    //     var item = fetchItem(key),
+    //         data;
+
+    //     if (!item || item.expired && item.expired <= Date.now()) {
+    //         return null;
+    //     } else {
+    //         data = item['value'];
+    //     }
+
+    //     return data;
+    // };
+
+    // var removeData = function (key, dataKey) {
+    //     if (!key) {
+    //         return;
+    //     }
+
+    //     var item = fetchItem(key);
+
+    //     if (!item) {
+    //         localStorage.removeItem('phoneApp_' + key);
+    //         return;
+    //     }
+
+    //     if (dataKey && item[dataKey]) {
+    //         item[dataKey] = undefined;
+    //         localStorage.setItem('phoneApp_' + key, JSON.stringify(item));
+    //     } else {
+    //         localStorage.removeItem('phoneApp_' + key);
+    //     }
+
+    // };
+
+    // return {
+    //     push: pushData,
+    //     pull: pullData,
+    //     remove: removeData,
+    // };
 });
