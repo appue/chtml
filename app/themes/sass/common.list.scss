@@ -186,7 +186,7 @@
                 padding: 5px 0;
             }
             .this_btn {
-                @include button(90%, 30px);
+                @include button($width: 90%, $height: 30px);
                 margin: 0 5px;
                 background: $green_val;
             }

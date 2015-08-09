@@ -1,6 +1,6 @@
 .login_layout {
     .login_button {
-        @include button(110px);
+        @include button($width: 110px);
         background-color: #3cc482;
         margin: 16px auto 12px;
     }
@@ -14,7 +14,7 @@
     }
     .reset_vcode {
         margin: 15px auto 0;
-        @include button(110px);
+        @include button($width: 110px);
         background-color: #cacdcb;
     }
 }

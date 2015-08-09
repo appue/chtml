@@ -21,7 +21,7 @@
             @include ellipsis;
         }
         .this_btn{
-            @include button(70px, 30px);
+            @include button($width: 70px, $height: 30px);
             background: #cacdcb;
             &.current{
                 background: #3cc482;

@@ -6,22 +6,21 @@
     @include border_bottom_half;
     li {
         text-indent: 30px;
-        display: -webkit-box;
         padding: 10px 0;
         line-height: 30px;
         background-image: url(img/icon_club.png);
         background-repeat: no-repeat;
         @include border_bottom_half;
+        display: -webkit-box;
+        // -webkit-box-align: center;
 
         &.this_reg{
             background-position: 0 13px;
             background-size: 30px auto;
             button{
-                @include button(60px);
+                @include button($width: 60px, $font: 14px, $height: 25px);
                 background: $green_val;
                 border: none;
-                outline: none;
-                font-size: 14px;
             }
             span{
                 @include green;
@@ -37,11 +36,9 @@
                 background-size: 13px auto;
             }
             button {
-                @include button(80px);
+                @include button($width: 80px, $font: 14px, $height: 25px);
                 background: $green_val;
                 border: none;
-                outline: none;
-                font-size: 14px;
             }
         }
         &.this_acti {
