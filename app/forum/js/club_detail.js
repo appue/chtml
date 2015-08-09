@@ -19,11 +19,6 @@ angular.module('phoneApp')
         isLoading: false,
         isMore: true
     };
-    
-    //--设置返回按钮
-    // $scope.backParam = {
-    //     'url': ['clump/#/club/list.htm']
-    // };
 
     $scope.redirectUrl = {
         Ranking: "#/forum/club/ranking-"+ $stateParams.id +".htm",
@@ -85,5 +80,36 @@ angular.module('phoneApp')
 
     $scope.headerScroll = function () {
         widget.changeOpacity();
+    };
+
+    // 加入圈子
+    $scope.clubJoin = function () {
+        alert("加入圈子");
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'setJoinClub',
+            data: {
+                ClubId: $stateParams.id
+            },
+            success: function (data) {
+                if (data.Response && data.Response.State) {
+                    
+                }
+            }
+        });
+    };
+
+    // 圈子签到
+    $scope.clubSign = function () {
+        alert("圈子签到");
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'setSignClub',
+            data: {
+                ClubId: $stateParams.id
+            },
+            success: function (data) {
+            }
+        });
     };
 });
