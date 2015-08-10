@@ -10,3 +10,7 @@
         color: $color;
     }
 }
+
+.icon_right {
+    @include icon-font($type: \f3d3, $size: 18px, $color: #fff);
+}
