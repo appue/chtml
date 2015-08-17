@@ -210,6 +210,11 @@
         }
         &.this_no {
             background: none;
+            line-height: 20px;
+            padding: 10px 0;
+            em {
+                color: $green_val;
+            }
         }
     }
 }

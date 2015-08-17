@@ -10,7 +10,7 @@
 
         <div class="mod_show_layout" ng-if="isShowLayout">
             <ul ng-if="isOwner">
-                <li page-jump data-router="forum.article-edit" data-options="{id: articleId}">编辑</li>
+                <li page-jump data-router="forum.edit" data-options="{id: articleId}">编辑</li>
                 <li ng-click="doDelete">删除</li>
             </ul>
             <ul ng-if="!isOwner">

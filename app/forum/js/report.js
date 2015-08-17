@@ -1,41 +1,73 @@
 angular.module('phoneApp')
 
 .controller('tReport', function (
-    $scope, 
-    $state, 
-    $stateParams, 
+    $scope,
+    $state,
     $location,
+    $stateParams,
     widget
 ){
 
-    $scope.cInput = {};
-    
-    $scope.submitData = function() {
+    $scope.cInput = {
+        Title: $stateParams.title
+    };
 
-        if (!$scope.cInput.contact) {
-            widget.msgToast('请填您的联系方式！');
-            return;
-        }
-
-        if (!$scope.cInput.content) {
-            widget.msgToast('请填上举报理由！');
-            return;
-        }
-        
-        widget.ajaxRequest({
-            scope: $scope,
-            noMask: true,
-            url: 'setReportArticle',
-            data: {
-                ArticleId: $stateParams.id, //-----帖子ID
-                Contact: $scope.cInput.contact,//-------联系方式
-                ReportReason: $scope.cInput.content //--举报理由
-            },
-            success: function (data) {
-                widget.msgToast('感谢您的举报！');
+    // 头部设置
+    $scope.Page = { 
+        isModify: false, //是否修改了
+        RightText: false,
+        RightFun: function () {
+            if (!$scope.cInput.contact) {
+                widget.msgToast('请填您的联系方式！');
+                return;
             }
-        });
 
-    }
+            if (!$scope.cInput.content) {
+                widget.msgToast('请填上举报理由！');
+                return;
+            }
+            
+            widget.ajaxRequest({
+                scope: $scope,
+                noMask: true,
+                url: 'setReportArticle',
+                data: {
+                    ArticleId: $stateParams.id, //-----帖子ID
+                    Contact: $scope.cInput.contact,//-------联系方式
+                    ReportReason: $scope.cInput.content //--举报理由
+                },
+                success: function (data) {
+                    widget.msgToast('感谢您的举报！');
+                }
+            });
+        }
+    };
+
+    // 修改右边按钮功能
+    // $scope.$watch("Page.isModify", function () {
+    //     if ($scope.Page.isModify) {
+    //         $scope.Page.RightText = "提交";
+    //     } else {
+    //         $scope.Page.RightText = false;
+    //     }
+    // });
+
+
+    $scope.$watch("cInput.contact", function () {
+        if ($scope.cInput.contact && $scope.cInput.content) {
+            $scope.Page.RightText = "提交";
+        } else {
+            $scope.Page.RightText = false;
+        }
+    });
+
+
+    $scope.$watch("cInput.content", function () {
+        if ($scope.cInput.contact && $scope.cInput.content) {
+            $scope.Page.RightText = "提交";
+        } else {
+            $scope.Page.RightText = false;
+        }
+    });
 
 });
