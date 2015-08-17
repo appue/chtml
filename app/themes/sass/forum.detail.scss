@@ -218,3 +218,63 @@
         }
     }
 }
+
+// 发表评论
+.detail_comment {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+
+    section {
+        position: absolute;
+        left: 0;
+        top: 100px;
+        z-index: 10;
+
+        width: 100%;
+        height: 200px;
+
+        -webkit-box-sizing: border-box;
+        padding: 10px;
+
+        article {
+            background: #fff;
+            padding: 10px;
+            textarea {
+                @include border_half();
+                padding: 5px;
+                line-height: 16px;
+                font-size: 14px;
+                width: 100%;
+                height: 100px;
+                -webkit-box-sizing: border-box;
+                margin-bottom: 10px;
+            } 
+
+            p {
+                display: -webkit-box;
+                span {
+                    @include button();
+                    display: block;
+                    width: 0;
+                    -webkit-box-flex: 1;
+                    &:nth-child(1) {
+                        background: $gray_val;
+                        margin-right: 5px;
+                    }
+                    &:nth-child(2) {
+                        background: $green_val;
+                        margin-left: 5px;
+                    }
+                }
+                margin-bottom: 0;
+            }
+        }
+
+    }
+}

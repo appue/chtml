@@ -20,23 +20,50 @@ angular.module('phoneApp')
     widget.initUser($scope);
 
     $scope.DataList = {};
+    $scope.cInput = {
+        comment: ""
+    };
 
     $scope.showLayout = function () {
         $scope.isShowLayout = !$scope.isShowLayout;
+        $scope.isComment = false;
 
         if ($scope.isShowLayout) {
-            angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'hidden';   
+            $scope.hideScroll();   
         } else {
-            angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'scroll';
+            $scope.showScroll();
         }
     };
 
     $scope.hideLayout = function () {
         $scope.isShowLayout = false;
-        angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'scroll';
+        $scope.showScroll();
     };
 
     $scope.articleId = $stateParams.id || 0;
+
+    $scope.showComment = function () {
+        $scope.isComment = !$scope.isComment;
+
+        if ($scope.isComment) {
+              $scope.hideScroll();
+        } else {
+            $scope.showScroll();
+        }
+    };
+
+    $scope.hideComment = function () {
+        $scope.isComment = false;
+        $scope.showScroll();
+    };
+
+
+    $scope.hideScroll = function () {
+        angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'hidden';
+    };
+    $scope.showScroll = function () {
+        angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'scroll';
+    };
 
     //--跳转URL
     // $scope.redirectUrl = {
@@ -117,6 +144,30 @@ angular.module('phoneApp')
 
                 $ionicViewSwitcher.nextDirection('back'); //forward
                 $window.history.back();
+            }
+        });
+    };
+
+    // 发表评论
+    $scope.setComment = function () {
+
+        if ($scope.cInput.comment.length < 6) {
+            widget.msgToast('请多说点内容吧！');
+
+            return;
+        };
+
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'setArticleComment',
+            data: {
+                ArticleId: $scope.articleId,
+                Content: $scope.cInput.comment
+            },
+            success: function(data) {
+                $scope.isComment = false;
+                $scope.cInput.comment = "";
+                widget.msgToast('评论发表成功');
             }
         });
     };

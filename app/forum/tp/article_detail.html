@@ -16,8 +16,21 @@
             <li>收藏</li>
             <li>分享</li>
             <li ng-click="setPraise()">赞</li>
-            <li page-jump data-router="forum.comment-list" data-options="{id:articleId}">点评</li>
+            <li ng-click="showComment()">点评</li>
         </ul>
+    </div>
+
+
+    <div ng-if="isComment" class="detail_comment">
+        <section>
+            <article>
+                <textarea ng-model="cInput.comment" placeholder="请输入你想说的话"></textarea>
+                <p>
+                    <span ng-click="hideComment()">取消</span>
+                    <span ng-click="setComment()">发表评论</span>
+                </p>
+            </article>
+        </section>
     </div>
 
 
