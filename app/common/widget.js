@@ -345,8 +345,36 @@ angular.module('phoneApp')
             });
         },
 
+        setUserInfo: function () {
+            cachePool.push('UserInfo', {
+                Phone: data.Phone,
+                UserName: data.Nickname,
+                Sex: data.Sex,
+
+                City: data.City,
+                CityName: data.CityName,
+                
+                Job: data.Job,
+                JobName: data.JobName,
+
+                Auth: data.Auth,
+                UserId: data.UserId 
+            }, 720 / 24);
+        },
+
         /**
          * 初始化用户登录信息
+         * UserInfo {
+         *     Phone: 手机号
+         *     UserName: 用户名
+         *     Sex: 性别 1男、2女
+         *     City: 城市ID
+         *     CityName: 城市名称
+         *     Job: 工作ID,
+         *     JobName: 工作性质名称
+         *     Auth: Auth
+         *     UserId: 用户ID
+         * }
          */
         initUser: function(scope) {
             var userInfo = cachePool.pull('UserInfo');

@@ -96,6 +96,8 @@
         background-size: auto 25px;
     }
 }
+
+// 右边菜单
 .mod_show_layout {
     position: fixed;
     right: 20px;
@@ -103,6 +105,15 @@
     z-index: 101;
     background: rgba(0, 0, 0, 0.8);
     width: 100px;
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent #000 transparent;
+    }
     li {
         color: #fff;
         line-height: 40px;

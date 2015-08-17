@@ -7,8 +7,10 @@ angular.module('phoneApp')
 .controller('tArticleDetail', function(
     $scope,
     $state,
-    $stateParams,
+    $window,
     $location,
+    $stateParams,
+    $ionicViewSwitcher,
     cachePool,
     widget
 ) {
@@ -85,6 +87,27 @@ angular.module('phoneApp')
 
     $scope.headerScroll = function() {
         widget.changeOpacity();
+    };
+
+    // 删除帖子
+    $scope.setDelete = function () {
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'setArticleDel',
+            data: {
+                ArticleId: $scope.articleId
+            },
+            success: function(data) {
+                if (data.Response && data.Response.Ack == "Success") {
+                    widget.msgToast('删除成功');
+                } else {
+                    widget.msgToast('删除失败');
+                }
+
+                $ionicViewSwitcher.nextDirection('back'); //forward
+                $window.history.back();
+            }
+        });
     };
 
 });

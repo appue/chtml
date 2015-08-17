@@ -209,6 +209,12 @@ angular.module('phoneApp', [
             templateUrl: 'forum/tp/report.html',
             controller: 'tReport'
         })
+        //编辑帖子
+        .state('forum.edit', {
+            url: '/edit-{id}.htm',
+            templateUrl: 'form/tp/article_edit.html',
+            controller: 'tEdite'
+        })
 
         /*==========点评==========*/
         //点评列表

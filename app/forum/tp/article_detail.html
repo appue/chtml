@@ -10,16 +10,14 @@
 
         <div class="mod_show_layout" ng-if="isShowLayout">
             <ul ng-if="isOwner">
-                <li>编辑</li>
-                <li>删除</li>
+                <li page-jump data-router="forum.article-edit" data-options="{id: articleId}">编辑</li>
+                <li ng-click="doDelete">删除</li>
             </ul>
             <ul ng-if="!isOwner">
                 <li page-jump data-router="forum.report" data-options="{id: articleId, title: DataList.Author.UserName}">举报</li>
-
-        <!--         <li page-jump="redirect.Report">收藏</li>
-                <li page-jump="redirect.Report">分享</li>
-                <li page-jump="redirect.Report">点评</li>
-                <li page-jump="redirect.Report">赞</li> -->
+<!--                 <li>收藏</li>
+                <li>分享</li> -->
+                <li page-jump data-router="forum.comment-list" data-options="{id:articleId}">点评</li>
             </ul>
         </div>
 
