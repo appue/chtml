@@ -19,7 +19,7 @@
         <div class="mod_no_more" ng-if="!Deploy.isMore">没有数据了！</div>
     </ion-content>
 
-    <section class="forum_club_letter" ng-if="DataList.ClubList.length > 0">
+    <section class="forum_club_letter" ng-if="DataList.ClubList && DataList.ClubList.length > 0 && DataList.ClubList[0].Letter">
         <ul>
             <li ng-repeat="(k, v) in DataList.ClubList track by $index">{{v.Letter}}</li>
         </ul>
