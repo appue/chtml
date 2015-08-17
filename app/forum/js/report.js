@@ -13,8 +13,7 @@ angular.module('phoneApp')
     };
 
     // 头部设置
-    $scope.Page = { 
-        isModify: false, //是否修改了
+    $scope.Page = {
         RightText: false,
         RightFun: function () {
             if (!$scope.cInput.contact) {
@@ -42,15 +41,6 @@ angular.module('phoneApp')
             });
         }
     };
-
-    // 修改右边按钮功能
-    // $scope.$watch("Page.isModify", function () {
-    //     if ($scope.Page.isModify) {
-    //         $scope.Page.RightText = "提交";
-    //     } else {
-    //         $scope.Page.RightText = false;
-    //     }
-    // });
 
 
     $scope.$watch("cInput.contact", function () {

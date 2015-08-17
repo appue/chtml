@@ -212,7 +212,7 @@ angular.module('phoneApp', [
         //编辑帖子
         .state('forum.edit', {
             url: '/edit-{id}.htm',
-            templateUrl: 'form/tp/article_edit.html',
+            templateUrl: 'forum/tp/article_edit.html',
             controller: 'tEdite'
         })
 

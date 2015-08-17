@@ -21,8 +21,19 @@ angular.module('phoneApp')
 
     $scope.DataList = {};
 
-    $scope.showLayout = function() {
+    $scope.showLayout = function () {
         $scope.isShowLayout = !$scope.isShowLayout;
+
+        if ($scope.isShowLayout) {
+            angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'hidden';   
+        } else {
+            angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'scroll';
+        }
+    };
+
+    $scope.hideLayout = function () {
+        $scope.isShowLayout = false;
+        angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'scroll';
     };
 
     $scope.articleId = $stateParams.id || 0;
@@ -85,9 +96,9 @@ angular.module('phoneApp')
         });
     };
 
-    $scope.headerScroll = function() {
-        widget.changeOpacity();
-    };
+    // $scope.headerScroll = function() {
+    //     widget.changeOpacity();
+    // };
 
     // 删除帖子
     $scope.setDelete = function () {
