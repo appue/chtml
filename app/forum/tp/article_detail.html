@@ -15,6 +15,7 @@
             <li page-jump data-router="forum.report" data-options="{id: articleId, title: DataList.Author.UserName}">举报</li>
             <li>收藏</li>
             <li>分享</li>
+            <li ng-click="setPraise()">赞</li>
             <li page-jump data-router="forum.comment-list" data-options="{id:articleId}">点评</li>
         </ul>
     </div>
@@ -38,7 +39,7 @@
                             <dt>
                                 <span>5天前</span>
                                 {{DataList.Author.UserName}}
-                                <a page-jump data-router="forum.chat" data-options="{uid:123123,uname:DataList.Author.UserName}">私聊</a>
+                                <!-- <a page-jump data-router="forum.chat" data-options="{uid:123123,uname:DataList.Author.UserName}">私聊</a> -->
                             </dt>
                             <dd>
                                 发布到：
