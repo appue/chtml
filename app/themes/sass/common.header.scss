@@ -39,14 +39,18 @@
         input {
             width: 100%;
             @include border_half;
-            font-size: 12px;
-            height: 36px;
-            padding-top: 0;
-            line-height: 36px;
-            padding-right: 40px;
-            padding-left: 6px;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+            // height: 36px;
+            // padding-top: 0;
+            // line-height: 36px;
+            // padding-right: 40px;
+            // padding-left: 6px;
+            // -webkit-box-sizing: border-box;
+            // box-sizing: border-box;
+
+            line-height: 20px;
+            padding: 8px 40px 8px 6px;
+            -webkit-border-radius: 0;
+            font-size: 14px;
         }
         button {
             border: none;
