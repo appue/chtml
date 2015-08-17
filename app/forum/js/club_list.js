@@ -50,11 +50,6 @@ angular.module('phoneApp')
             } else {
                 $scope.Deploy.isMore = false;
             }
-
-
-
-
-             console.log($scope.DataList.ClubList);
         }
     });
 

@@ -1,6 +1,7 @@
-<header-bar title="详情"></header-bar>
+<header-bar title="详情" right="...|showLayout"></header-bar>
 
-<ion-view class="ios_status_bar">
+<ion-view>
+<!-- <ion-view class="ios_status_bar"> -->
 
     <!-- <header-opacity></header-opacity> -->
     
@@ -13,7 +14,7 @@
                 <li>删除</li>
             </ul>
             <ul ng-if="!isOwner">
-                <li page-jump data-router="redirectUrl.Report">举报</li>
+                <li page-jump data-router="forum.report" data-options="{id: articleId, title: DataList.Author.UserName}">举报</li>
 
         <!--         <li page-jump="redirect.Report">收藏</li>
                 <li page-jump="redirect.Report">分享</li>

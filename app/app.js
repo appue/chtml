@@ -194,12 +194,20 @@ angular.module('phoneApp', [
             templateUrl: 'forum/tp/cate_list.html',
             controller: 'tCateList'
         })
+
+        /*==========帖子==========*/
         //帖子内容 id: 帖子ID
         .state('forum.detail', {
             // cache: false,
             url: '/thread-{id}.htm',
             templateUrl: 'forum/tp/article_detail.html',
             controller: 'tArticleDetail'
+        })
+        //举报帖子 id: 帖子ID
+        .state('forum.report', {
+            url: '/report-{id}.htm?title',
+            templateUrl: 'forum/tp/report.html',
+            controller: 'tReport'
         })
 
         /*==========点评==========*/

@@ -187,3 +187,29 @@
         }
     }
 }
+
+
+// 举报帖子
+.comment_report {
+    li {
+        background-color: #fff;
+        margin-bottom: 10px;
+        // padding: 0 10px;
+        input {
+            width: 100%;
+            line-height: 20px;
+            padding: 20px 10px;
+            -webkit-box-sizing: none;
+            -webkit-border-radius: 0;
+        }
+        textarea {
+            width: 100%;
+            line-height: 16px;
+            padding: 10px;
+            height: 100px;
+        }
+        &.this_no {
+            background: none;
+        }
+    }
+}
