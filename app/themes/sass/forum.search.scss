@@ -24,12 +24,12 @@
             @include green;
             display: inline-block;
             @include border_half;
-            padding: 0 5px;
+            padding: 5px;
             font-size: 14px;
             margin-right: 10px;
             margin-bottom: 10px;
             cursor: pointer;
-            line-height: 30px;   
+            line-height: 20px;   
         }
     }
 }
