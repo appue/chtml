@@ -26,8 +26,8 @@ angular.module('phoneApp')
         ClubList: [],
         UserList: []
     };
-
-    $scope.keyword = $location.$$search.keyword || '';
+    
+    $scope.keyword = decodeURIComponent($location.$$search.keyword) || '';
 
     function updateData(dataList, listName) {
 
