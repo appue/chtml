@@ -16,7 +16,7 @@
         <ul class="forum_club_info" style="margin-bottom:0;" ng-if="DataList.StateJoin">
             <li class="this_reg">
                 <p>签到 <span>{{DataList.TotalSign}}</span> / 连续签到 <span>{{DataList.TotalAlwaysSign}}</span></p>
-                <button ng-click="clubSign()">签到</button>
+                <div ng-click="clubSign()">签到</div>
             </li>
             <li class="this_user">
                 <p>圈成员：{{DataList.TotalMember}}</p>
@@ -32,7 +32,7 @@
         <ul class="forum_club_info" style="margin-bottom:0;" ng-if="!DataList.StateJoin">
             <li class="this_user">
                 <p>圈成员：{{DataList.TotalMember}}</p>
-                <button ng-click="clubJoin()">加入圈子</button>
+                <div ng-click="clubJoin()">加入圈子</div>
             </li>
             <li ng-if="DataList.ActivityList.ActivityId" class="this_acti">
                 <a href="{{DataList.ActivityList.SiteUrl}}">

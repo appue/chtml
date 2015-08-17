@@ -1,5 +1,6 @@
 ﻿@mixin button ($width: 100%, $height: 40px, $font: 16px, $color: #fff) {
     outline: none;
+    height: $height;
     line-height: $height;
     width: $width;
     display: block;

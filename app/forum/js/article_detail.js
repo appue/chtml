@@ -43,6 +43,10 @@ angular.module('phoneApp')
     $scope.articleId = $stateParams.id || 0;
 
     $scope.showComment = function () {
+        if (!$scope.Deploy.isLogin) {
+            $scope.showLogin();
+            return;
+        }
         $scope.isComment = !$scope.isComment;
 
         if ($scope.isComment) {
@@ -111,8 +115,12 @@ angular.module('phoneApp')
         }
     });
 
-    //--赞帖子
+    // 赞帖子
     $scope.setPraise = function() {
+        if (!$scope.Deploy.isLogin) {
+            $scope.showLogin();
+            return;
+        }
         widget.ajaxRequest({
             scope: $scope,
             url: 'setArticlePraise',
@@ -129,6 +137,11 @@ angular.module('phoneApp')
 
     // 删除帖子
     $scope.setDelete = function () {
+        if (!$scope.Deploy.isLogin) {
+            $scope.showLogin();
+            return;
+        }
+        
         widget.ajaxRequest({
             scope: $scope,
             url: 'setArticleDel',
@@ -150,6 +163,10 @@ angular.module('phoneApp')
 
     // 发表评论
     $scope.setComment = function () {
+        if (!$scope.Deploy.isLogin) {
+            $scope.showLogin();
+            return;
+        }
 
         if ($scope.cInput.comment.length < 6) {
             widget.msgToast('请多说点内容吧！');

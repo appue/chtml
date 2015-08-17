@@ -17,10 +17,11 @@
         &.this_reg{
             background-position: 0 13px;
             background-size: 30px auto;
-            button{
+            div{
                 @include button($width: 60px, $font: 14px, $height: 25px);
                 background: $green_val;
                 border: none;
+                text-indent: 0;
             }
             span{
                 @include green;
@@ -35,10 +36,11 @@
                 background: url(img/icon_arrow.png) no-repeat right center;
                 background-size: 13px auto;
             }
-            button {
+            div {
                 @include button($width: 80px, $font: 14px, $height: 25px);
                 background: $green_val;
                 border: none;
+                text-indent: 0;
             }
         }
         &.this_acti {
