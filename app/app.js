@@ -110,10 +110,16 @@ angular.module('phoneApp', [
             templateUrl: 'forum/tp/photo.html',
             controller: 'tPhotoEdit'
         })
-        //编辑内容
+        /**
+         * 编辑内容
+         * type: 
+         *     other: 表示从弹框界面进入的
+         * club: 圈子ID
+         * act: 活动ID
+         */
         .state('forum.photo-title', {
             // cache: false,
-            url: '/photo/title.htm?type',
+            url: '/photo/title.htm?type&club&act',
             templateUrl: 'forum/tp/photo_title.html',
             controller: 'tPhotoTitle'
         })

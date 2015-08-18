@@ -5,11 +5,15 @@
 angular.module('phoneApp')
 
 .controller('tClubDetail', function (
-    $scope, 
-    $state, 
-    $stateParams, 
-    $location,
+    $scope,
+    $state,
     $window,
+    $location,
+    $stateParams,
+    $ionicViewSwitcher,
+
+    $ionicHistory,
+
     widget
 ){
     
@@ -45,6 +49,8 @@ angular.module('phoneApp')
             }
 
             angular.extend($scope.DataList, data);
+
+            console.log($scope.DataList);
         }
     });
 
@@ -120,5 +126,13 @@ angular.module('phoneApp')
             success: function (data) {
             }
         });
+    };
+
+    // 发布帖子
+    $scope.setArticle = function () {
+
+        $ionicViewSwitcher.nextDirection('forward');
+
+        $state.go('forum.photo-title', { club: $stateParams.id }, { inherit: false });
     };
 });

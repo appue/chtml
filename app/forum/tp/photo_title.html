@@ -1,5 +1,5 @@
 <section ng-if="Deploy.isLogin">
-    <header-bar title="添加图片" right="继续|nextPage"></header-bar>
+    <header-bar title="添加图片"></header-bar>
 
     <ion-view>
         <ion-content>
@@ -15,10 +15,10 @@
                             </div>
                             <textarea ng-model="v.Description" placeholder="写下您想说的话（必填）"></textarea>
                         </li>
-                        <li ng-if="isApp">
+                        <li ng-if="isHybrid">
                             <i ng-click="addImage()"></i>
                         </li>
-                        <li class="this_file" ng-if="!isApp">
+                        <li class="this_file" ng-if="!isHybrid">
                             <input type="file" ng-model="Deploy.currentImage" accept="image/*" app-filereader />
                             <!-- <input type="file" ng-model="currentFiles" multiple accept="image/*" app-filereader /> -->
                         </li>

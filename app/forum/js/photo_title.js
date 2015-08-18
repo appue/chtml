@@ -24,10 +24,6 @@ angular.module('phoneApp')
         currentImage: false
     });
 
-    $scope.isApp = false;
-    if (ENV.isHybrid) {
-        $scope.isApp = true;
-    }
 
     // $rootScope.CameraImages = {
     //     Images: [
@@ -41,8 +37,64 @@ angular.module('phoneApp')
     //     ClubId: 圈子ID
     //     ActivityId: 活动ID
     // };
-    $scope.CameraImages = widget.cacheData("CameraImages") || {
-        Images: []
+    $scope.CameraImages = widget.cacheData("CameraImages") || {};
+    if (!$scope.CameraImages.Images) {
+        $scope.CameraImages.Images = [];
+    }
+
+    // 页面顶部右边设置
+    $scope.Page = {
+        RightText: $stateParams.act ? "提交" : "继续",
+        RightFun: function () {
+            if (!$scope.CameraImages.Images || $scope.CameraImages.Images.length == 0) {
+                widget.msgToast('哎哟，你总得发表点内容吧！');
+                return;
+            }
+
+            var empty = false;
+            
+            angular.forEach($scope.CameraImages.Images, function (v, k) {
+                if (!v.Description) {
+                    empty = true;
+                    return;
+                }
+            });
+
+            if (empty) {
+                widget.msgToast('写点你想说的话吧！');
+            } else {
+
+                if ($stateParams.act) {
+                    $scope.CameraImages.ActivityId = $stateParams.act;
+
+                    widget.ajaxRequest({
+                        scope: $scope,
+                        url: 'setArticlePost',
+                        data: $scope.CameraImages,
+                        success: function (data) {
+                            widget.msgToast("内容发布成功");
+
+                            $scope.CameraImages = {};
+                            widget.cacheData("CameraImages", $scope.CameraImages);
+                            $ionicViewSwitcher.nextDirection('back');
+                            $window.history.back();
+                        }
+                    });
+
+                    return;
+                }
+
+
+                if ($stateParams.club) {
+                    $scope.CameraImages.ClubId = $stateParams.club;
+                }
+
+                widget.cacheData("CameraImages", $scope.CameraImages);
+
+                $ionicViewSwitcher.nextDirection('forward');
+                $state.go("forum.photo-cate");
+            }
+        }
     };
 
     if ($stateParams.type && $stateParams.type=="other") {
@@ -92,33 +144,6 @@ angular.module('phoneApp')
 
         widget.cacheData("CameraImages", $scope.CameraImages);
     });
-
-
-
-    $scope.nextPage = function () {
-        if ($scope.CameraImages.Images.length == 0) {
-            widget.msgToast('哎哟，你总得发表点内容吧！');
-            return;
-        }
-
-        var empty = false;
-        
-        angular.forEach($scope.CameraImages.Images, function (v, k) {
-            if (!v.Description) {
-                empty = true;
-                return;
-            }
-        });
-
-        if (empty) {
-            widget.msgToast('写点你想说的话吧！');
-        } else {
-            widget.cacheData("CameraImages", $scope.CameraImages);
-
-            $ionicViewSwitcher.nextDirection('forward');
-            $state.go("forum.photo-cate");
-        }
-    };
 
 
 

@@ -1,26 +1,27 @@
 angular.module('phoneApp')
 
 .controller('tPhotoCate', function (
-    $scope, 
-    $state, 
-    $stateParams, 
-    $location, 
-    $ionicViewSwitcher,
-    $ionicPopup,
+    $scope,
+    $state,
     $window,
-    widget
+    $location,
+    $ionicPopup,
+    $stateParams,
+    $ionicViewSwitcher,
+    widget,
+
+    $ionicHistory
 ){
     //初始化用户信息
     widget.initUser($scope);
 
-    $scope.CameraImages = widget.cacheData("CameraImages") || '';
+    $scope.CameraImages = widget.cacheData("CameraImages") || {};
 
     if (!$scope.CameraImages || !$scope.CameraImages.Images || $scope.CameraImages.Images.length == 0) {
         $ionicViewSwitcher.nextDirection('back');
         $window.history.back();
         return;
     }
-
 
     angular.extend($scope.Deploy, {
         cateId: $stateParams.id || 1
@@ -93,12 +94,28 @@ angular.module('phoneApp')
             return;
         }
 
+        $scope.CameraImages.CateId = $scope.DataList.currentId;
+
         widget.ajaxRequest({
             scope: $scope,
             url: 'setArticlePost',
             data: $scope.CameraImages,
             success: function (data) {
-                console.log(data);
+                var router  = 'forum.home',
+                    options = {};
+
+                if ($scope.CameraImages.ClubId) {
+                    router  = 'forum.club-detail';
+                    options = { id: $scope.CameraImages.ClubId };
+                }
+
+                widget.msgToast("内容发布成功");
+
+                $scope.CameraImages = {};
+                widget.cacheData("CameraImages", $scope.CameraImages);
+
+                $ionicViewSwitcher.nextDirection('back');
+                $window.history.back();
             }
         });
     };
