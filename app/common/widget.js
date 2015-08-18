@@ -15,6 +15,13 @@ angular.module('phoneApp')
     ENV
 ) {
 
+    if (ENV.isHybrid) {
+        $rootScope.isHybrid = true;
+    } else {
+        $rootScope.isHybrid = false;
+    }
+
+
     var toastTimer = null,
         dataPool = $cacheFactory('dataPool');
 
