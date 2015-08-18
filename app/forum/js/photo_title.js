@@ -12,6 +12,7 @@ angular.module('phoneApp')
     $rootScope,
     $stateParams,
     $ionicLoading,
+    $ionicHistory,
     $ionicActionSheet,
     $ionicViewSwitcher,
     widget,
@@ -77,7 +78,8 @@ angular.module('phoneApp')
                             $scope.CameraImages = {};
                             widget.cacheData("CameraImages", $scope.CameraImages);
                             $ionicViewSwitcher.nextDirection('back');
-                            $window.history.back();
+                            // $window.history.back();
+                            $ionicHistory.goBack();
                         }
                     });
 
@@ -195,5 +197,7 @@ angular.module('phoneApp')
         //     }
         // });
     }
+
+
 
 });

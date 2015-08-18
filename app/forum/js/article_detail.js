@@ -10,6 +10,7 @@ angular.module('phoneApp')
     $window,
     $location,
     $stateParams,
+    $ionicHistory,
     $ionicViewSwitcher,
     cachePool,
     widget
@@ -109,7 +110,8 @@ angular.module('phoneApp')
                 }
 
                 $ionicViewSwitcher.nextDirection('back'); //forward
-                $window.history.back();
+                // $window.history.back();
+                $ionicHistory.goBack();
             }
         });
     };

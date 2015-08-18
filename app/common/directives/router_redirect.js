@@ -29,7 +29,8 @@ angular.module('phoneApp')
                 // } else { // 默认执行浏览器后退
                     
                     $ionicViewSwitcher.nextDirection('back'); //forward
-                    $window.history.back();
+                    // $window.history.back();
+                    $ionicHistory.goBack();
                 // }
 
                 // $ionicHistory.goBack();

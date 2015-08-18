@@ -7,10 +7,9 @@ angular.module('phoneApp')
     $location,
     $ionicPopup,
     $stateParams,
+    $ionicHistory,
     $ionicViewSwitcher,
-    widget,
-
-    $ionicHistory
+    widget
 ){
     //初始化用户信息
     widget.initUser($scope);
@@ -19,7 +18,8 @@ angular.module('phoneApp')
 
     if (!$scope.CameraImages || !$scope.CameraImages.Images || $scope.CameraImages.Images.length == 0) {
         $ionicViewSwitcher.nextDirection('back');
-        $window.history.back();
+        // $window.history.back();
+        $ionicHistory.goBack();
         return;
     }
 
@@ -87,7 +87,8 @@ angular.module('phoneApp')
             }).then(function (res) {
                 if (res) { //确认所在地位置
                     $ionicViewSwitcher.nextDirection('back');
-                    $window.history.back();
+                    // $window.history.back();
+                    $ionicHistory.goBack();
                 }
             });
 
@@ -101,21 +102,13 @@ angular.module('phoneApp')
             url: 'setArticlePost',
             data: $scope.CameraImages,
             success: function (data) {
-                var router  = 'forum.home',
-                    options = {};
-
-                if ($scope.CameraImages.ClubId) {
-                    router  = 'forum.club-detail';
-                    options = { id: $scope.CameraImages.ClubId };
-                }
-
                 widget.msgToast("内容发布成功");
 
                 $scope.CameraImages = {};
                 widget.cacheData("CameraImages", $scope.CameraImages);
 
                 $ionicViewSwitcher.nextDirection('back');
-                $window.history.back();
+                $ionicHistory.goBack(-2);
             }
         });
     };

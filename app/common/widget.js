@@ -213,7 +213,7 @@ angular.module('phoneApp')
 
             var options = {
                     success: function() {}, //--成功回调
-                    error: function() {}, //----错误回调
+                    // error: function() {}, //----错误回调
                     showPage: false, //---------是否启用分页功能
                     showLoading: true, //-------是否显示loading
                     isLogin: false, //----------判断是否需要登录
@@ -301,11 +301,10 @@ angular.module('phoneApp')
                 effect();
 
             }).error(function(data) {
-
                 if (typeof options.error === 'function') {
                     options.error(data);
                 } else {
-                    self.msgToast('请检查你的网络！');
+                    self.msgToast('网络错误，请稍后再试！');
                 }
 
                 if (options.showPage) {

@@ -2,8 +2,9 @@ angular.module('phoneApp')
 
 .controller('tUserSetPassword', function (
     $scope,
-    $stateParams,
     $timeout,
+    $stateParams,
+    $ionicHistory,
     $ionicViewSwitcher,
     widget
 ) {
@@ -111,7 +112,8 @@ angular.module('phoneApp')
                     widget.msgToast('密码修改成功！');
 
                     $ionicViewSwitcher.nextDirection('back'); //forward
-                    $window.history.back();
+                    // $window.history.back();
+                    $ionicHistory.goBack();
                 } else {
                     widget.msgToast('密码修改失败！');
                 }
