@@ -172,9 +172,9 @@ module.exports = function (gulp, $) {
     //--html js 替换
     gulp.task('replacehtml', function() {
         var jsFiles = [
+            'frame.js?v='+ version,
             'cordova.js?v='+ version,
             'cordova_plugins.js?v='+ version,
-            'frame.js?v='+ version,
             'common.js?v='+ version,
             'index.js?v='+ version
         ];
@@ -265,7 +265,9 @@ module.exports = function (gulp, $) {
                 './app/bower_components/angular-ui-router/release/angular-ui-router.js',
                 './app/bower_components/angular-bindonce/bindonce.js',
                 './app/bower_components/ionic/release/js/ionic.js',
-                './app/bower_components/ionic/release/js/ionic-angular.js'
+                './app/bower_components/ionic/release/js/ionic-angular.js',
+                
+                './app/bower_components/ngCordova/dist/ng-cordova.js'
             ];
 
         if (packageType == 'web') {

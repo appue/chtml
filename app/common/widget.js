@@ -11,15 +11,23 @@ angular.module('phoneApp')
     $ionicBackdrop,
     $ionicHistory,
     $ionicScrollDelegate,
-    cachePool,
-    ENV
-) {
 
+    cachePool,
+    ENV,
+
+    $cordovaKeyboard
+) {
+    // 是否APP
     if (ENV.isHybrid) {
         $rootScope.isHybrid = true;
     } else {
         $rootScope.isHybrid = false;
     }
+
+    // 键盘设置
+    document.addEventListener("deviceready", function () {
+        $cordovaKeyboard.hideAccessoryBar(true);
+    }, false);
 
 
     var toastTimer = null,

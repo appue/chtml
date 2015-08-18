@@ -1,4 +1,5 @@
 angular.module('phoneApp', [
+        'ngCordova',
         'ionic',
         'DelegateEvents'
     ])

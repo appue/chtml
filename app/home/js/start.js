@@ -9,10 +9,10 @@ angular.module('phoneApp')
     $state,
     $timeout,
     $timeout,
+
     cachePool,
     widget
-){  
-
+){
     localStorage.setItem('PHONEAPP_START', false);
 
     $scope.eventSlide = true;

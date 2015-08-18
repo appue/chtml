@@ -10,7 +10,6 @@ angular.module('phoneApp')
     cachePool,
     widget
 ){
-
     widget.clearHistory();
     widget.showStatusBar();
 
