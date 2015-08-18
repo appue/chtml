@@ -13,7 +13,7 @@
         </ul>
         <ul ng-if="!isOwner">
             <li page-jump data-router="forum.report" data-options="{id: articleId, title: DataList.Author.UserName}">举报</li>
-            <li>收藏</li>
+            <li ng-click="setCollect()">收藏</li>
             <li>分享</li>
             <li ng-click="setPraise()">赞</li>
             <li ng-click="showComment()">点评</li>

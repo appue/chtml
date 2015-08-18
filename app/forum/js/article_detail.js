@@ -24,6 +24,15 @@ angular.module('phoneApp')
         comment: ""
     };
 
+    $scope.articleId = $stateParams.id || 0;
+    $scope.hideScroll = function () {
+        angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'hidden';
+    };
+    $scope.showScroll = function () {
+        angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'scroll';
+    };
+
+
     $scope.showLayout = function () {
         $scope.isShowLayout = !$scope.isShowLayout;
         $scope.isComment = false;
@@ -40,62 +49,6 @@ angular.module('phoneApp')
         $scope.showScroll();
     };
 
-    $scope.articleId = $stateParams.id || 0;
-
-    $scope.showComment = function () {
-        if (!$scope.Deploy.isLogin) {
-            $scope.showLogin();
-            return;
-        }
-        $scope.isComment = !$scope.isComment;
-
-        if ($scope.isComment) {
-              $scope.hideScroll();
-        } else {
-            $scope.showScroll();
-        }
-    };
-
-    $scope.hideComment = function () {
-        $scope.isComment = false;
-        $scope.showScroll();
-    };
-
-
-    $scope.hideScroll = function () {
-        angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'hidden';
-    };
-    $scope.showScroll = function () {
-        angular.element(document.querySelector('.isscroll'))[0].style.overflowY = 'scroll';
-    };
-
-    //--跳转URL
-    // $scope.redirectUrl = {
-    //     //--点评列表
-    //     CommentList: {
-    //         'url': ['forum/#/comment/list/'+ $stateParams.id +'.htm']
-    //     },
-
-    //     //--登录Url
-    //     Login: {
-    //         'url': ['entry/#/login.htm']
-    //     },
-
-    //     //--私聊
-    //     Chat: {
-    //         'url': ['/home/#/msg/chat-1.htm']
-    //     },
-
-    //     //--举报
-    //     Report: {
-    //         'url': ['forum/#/report/'+ $stateParams.id +'.htm']
-    //     },
-
-    //     //--编辑
-    //     Edit: {
-
-    //     }
-    // };
 
     //--获取帖子内容
     widget.ajaxRequest({
@@ -162,6 +115,23 @@ angular.module('phoneApp')
     };
 
     // 发表评论
+    $scope.showComment = function () {
+        if (!$scope.Deploy.isLogin) {
+            $scope.showLogin();
+            return;
+        }
+        $scope.isComment = !$scope.isComment;
+
+        if ($scope.isComment) {
+              $scope.hideScroll();
+        } else {
+            $scope.showScroll();
+        }
+    };
+    $scope.hideComment = function () {
+        $scope.isComment = false;
+        $scope.showScroll();
+    };
     $scope.setComment = function () {
         if (!$scope.Deploy.isLogin) {
             $scope.showLogin();
@@ -185,6 +155,26 @@ angular.module('phoneApp')
                 $scope.isComment = false;
                 $scope.cInput.comment = "";
                 widget.msgToast('评论发表成功');
+            }
+        });
+    };
+
+
+    // 收藏帖子
+    $scope.setCollect = function () {
+        if (!$scope.Deploy.isLogin) {
+            $scope.showLogin();
+            return;
+        }
+
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'setArticleCollect',
+            data: {
+                ArticleId: $scope.articleId
+            },
+            success: function(data) {
+                widget.msgToast('帖子收藏成功');
             }
         });
     };

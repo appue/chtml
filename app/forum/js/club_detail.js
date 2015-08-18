@@ -20,6 +20,8 @@ angular.module('phoneApp')
         isMore: true
     };
 
+    widget.initUser($scope);
+
     $scope.redirectUrl = {
         Ranking: "#/forum/club/ranking-"+ $stateParams.id +".htm",
     };
@@ -84,7 +86,10 @@ angular.module('phoneApp')
 
     // 加入圈子
     $scope.clubJoin = function () {
-        alert("加入圈子");
+        if (!$scope.Deploy.isLogin) {
+            $scope.showLogin();
+            return;
+        }
         widget.ajaxRequest({
             scope: $scope,
             url: 'setJoinClub',
@@ -101,7 +106,11 @@ angular.module('phoneApp')
 
     // 圈子签到
     $scope.clubSign = function () {
-        alert("圈子签到");
+        if (!$scope.Deploy.isLogin) {
+            $scope.showLogin();
+            return;
+        }
+        
         widget.ajaxRequest({
             scope: $scope,
             url: 'setSignClub',

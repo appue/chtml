@@ -235,10 +235,11 @@ angular.module('phoneApp')
 
             $http(ajaxConfig).success(function(data) {
 
-                data.Response = {
-                    "Ack": "Success",
-                    "State": true
-                };
+                // toDo
+                // data.Response = {
+                //     "Ack": "Success",
+                //     "State": true
+                // };
 
                 if (data.Response && data.Response.Ack == "Success") {
                 // if (data.Response) { toDo
