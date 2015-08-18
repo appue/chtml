@@ -7,6 +7,7 @@ angular.module('phoneApp')
     $ionicLoading,
     $ionicBackdrop,
     $ionicViewSwitcher,
+    $cordovaActionSheet,
     cachePool,
     widget,
     ENV
@@ -29,11 +30,50 @@ angular.module('phoneApp')
             };
 
             $scope.showSheet = function () {
-                $element.css("display", "block");
+                // $element.css("display", "block");
                 
-                $timeout( function () {
-                    $element.addClass('this_show');
-                }, 50);
+                // $timeout( function () {
+                //     $element.addClass('this_show');
+                // }, 50);
+
+                var options = {
+                    // title: '添加图片',
+                    buttonLabels: ['拍照', '照片图库'],
+                    addCancelButtonWithLabel: '取消',
+                    androidEnableCancelButton : true,
+                    winphoneEnableCancelButton : true
+                    // addDestructiveButtonWithLabel : 'Delete it'
+                };
+
+
+                document.addEventListener("deviceready", function () {
+
+                    $cordovaActionSheet.show(options)
+                        .then(function(btnIndex) {
+                            switch (btnIndex) {
+                                case 1:
+                                    window.navigator.camera.getPicture(onSuccess, onFail, { 
+                                        quality: 50,
+                                        // destinationType: Camera.DestinationType.DATA_URL,
+                                        destinationType: Camera.DestinationType.FILE_URI,
+                                        // sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                                        sourceType: Camera.PictureSourceType.CAMERA
+                                    });
+                                break;
+
+                                case 2:
+                                    window.navigator.camera.getPicture(onSuccess, onFail, { 
+                                        quality: 50,
+                                        // destinationType: Camera.DestinationType.DATA_URL,
+                                        destinationType: Camera.DestinationType.FILE_URI,
+                                        sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                                    });
+                                break;
+                            }
+                        });
+
+                }, false);
+
             };
 
             $scope.toSheet = function (e) {
