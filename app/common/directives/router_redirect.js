@@ -3,8 +3,8 @@
 angular.module('phoneApp')
 
 .directive('pageBack', function (
-    $window,
     $state,
+    $window,
     $rootScope,
     $stateParams,
     $ionicHistory,
@@ -29,11 +29,15 @@ angular.module('phoneApp')
                 // } else { // 默认执行浏览器后退
                     
                     $ionicViewSwitcher.nextDirection('back'); //forward
-                    // $window.history.back();
+                    // 
+                    
+                    if (!$ionicHistory.backView()) {
+                        $state.go('forum.home');
+                        return;
+                    }
+
                     $ionicHistory.goBack();
                 // }
-
-                // $ionicHistory.goBack();
 
                 // $rootScope.$ionicGoBack();
             });
