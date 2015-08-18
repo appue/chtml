@@ -119,7 +119,7 @@ angular.module('phoneApp', [
          */
         .state('forum.photo-title', {
             // cache: false,
-            url: '/photo/title.htm?type&club&act',
+            url: '/photo/title.htm?type&club&activity&cate',
             templateUrl: 'forum/tp/photo_title.html',
             controller: 'tPhotoTitle'
         })

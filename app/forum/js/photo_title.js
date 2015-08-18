@@ -45,7 +45,7 @@ angular.module('phoneApp')
 
     // 页面顶部右边设置
     $scope.Page = {
-        RightText: $stateParams.act ? "提交" : "继续",
+        RightText: $stateParams.activity ? "提交" : "继续",
         RightFun: function () {
             if (!$scope.CameraImages.Images || $scope.CameraImages.Images.length == 0) {
                 widget.msgToast('哎哟，你总得发表点内容吧！');
@@ -65,18 +65,20 @@ angular.module('phoneApp')
                 widget.msgToast('写点你想说的话吧！');
             } else {
 
-                if ($stateParams.act) {
-                    $scope.CameraImages.ActivityId = $stateParams.act;
+                if ($stateParams.activity) {
+                    $scope.CameraImages.ActivityId = $stateParams.activity;
+                    $scope.CameraImages.CateId = $stateParams.cate;
 
                     widget.ajaxRequest({
                         scope: $scope,
                         url: 'setArticlePost',
                         data: $scope.CameraImages,
                         success: function (data) {
-                            widget.msgToast("内容发布成功");
+                            widget.msgToast("活动发布成功");
 
                             $scope.CameraImages = {};
                             widget.cacheData("CameraImages", $scope.CameraImages);
+
                             $ionicViewSwitcher.nextDirection('back');
                             // $window.history.back();
                             $ionicHistory.goBack();

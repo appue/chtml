@@ -5,10 +5,11 @@
 angular.module('phoneApp')
 
 .controller('tActivityDetail', function (
-    $scope, 
-    $state, 
-    $stateParams, 
+    $scope,
+    $state,
     $location,
+    $stateParams,
+    $ionicViewSwitcher,
     widget
 ){
     $scope.Page = {};
@@ -24,6 +25,8 @@ angular.module('phoneApp')
         ArticleList: []
     };
 
+    widget.initUser($scope);
+
     if ($stateParams.type == "photo") {
 
         //--获取活动的基本信息
@@ -37,6 +40,8 @@ angular.module('phoneApp')
                 $scope.Page.Title = data.Content.ActivityName;
 
                 angular.extend($scope.DataList, data);
+
+                $scope.DataList.Content.CateId = 9;
             }
         });
 
@@ -53,16 +58,16 @@ angular.module('phoneApp')
                 success: function (data) {
                     if (data.ArticleList && data.ArticleList.length > 0) {
 
-                        $scope.Deploy.pageTotal = data.Total || 0;
+                        // $scope.Deploy.pageTotal = data.Total || 0;
                         $scope.DataList.ArticleList = $scope.DataList.ArticleList.concat(data.ArticleList);
                         $scope.setFalls();
-                        $scope.Deploy.isLoading = false;
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                        // $scope.Deploy.isLoading = false;
+                    //     $scope.$broadcast('scroll.infiniteScrollComplete');
 
-                    } else {
+                    // } else {
 
-                        $scope.Deploy.isLoading = true;
-                        $scope.Deploy.isMore = false;
+                    //     $scope.Deploy.isLoading = true;
+                    //     $scope.Deploy.isMore = false;
 
                     }
                 }
@@ -97,5 +102,22 @@ angular.module('phoneApp')
         };
     
     }
+
+
+
+    // 发布帖子
+    $scope.setArticle = function () {
+        if (!$scope.Deploy.isLogin) {
+            $scope.showLogin();
+            return;
+        }
+        
+        $ionicViewSwitcher.nextDirection('forward');
+
+        $state.go('forum.photo-title', {
+            activity: $stateParams.id,
+            cate: $scope.DataList.Content.CateId
+        }, { inherit: false });
+    };
 
 });

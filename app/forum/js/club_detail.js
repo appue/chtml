@@ -130,7 +130,6 @@ angular.module('phoneApp')
 
     // 发布帖子
     $scope.setArticle = function () {
-
         $ionicViewSwitcher.nextDirection('forward');
 
         $state.go('forum.photo-title', { club: $stateParams.id }, { inherit: false });
