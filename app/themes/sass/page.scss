@@ -1,6 +1,7 @@
 ﻿.mod_login {
     width: 300px;
     margin: 0 auto;
+    margin-top: 100px;
     li {
         @include border-half();
         @include box($align: center);
@@ -16,6 +17,13 @@
             border: 0;
             line-height: 20px;
             padding: 10px;
+        }
+        div {
+            width: 60px;
+            text-align: center;
+            background: #fff;
+            height: 40px;
+            line-height: 40px;
         }
 
         &:last-child {

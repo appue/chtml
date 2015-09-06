@@ -24,6 +24,11 @@ angular.module('Tjoys')
         return UserInfo;
     })();
 
+    if ($state.current.name !== "mange.login" && !$rootScope.UserInfo.UserId) {
+        $state.go("mange.login");
+        return;
+    }
+
 
     var toastTimer = null,
         dataPool = $cacheFactory('dataPool');

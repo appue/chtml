@@ -3,7 +3,8 @@ angular.module('Tjoys')
 
 .controller('tIndex', function (
     $scope,
-    $rootScope
+    $rootScope,
+    widget
 ){
     $rootScope.showHeader = true;
 });
