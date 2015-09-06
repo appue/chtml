@@ -14,5 +14,7 @@ angular.module('Tjoys')
             UserId: 1,
             Auth: "EWED4494LFOFDF84834BCD8343"
         });
+
+        $state.go("mange.index");
     };
 });
