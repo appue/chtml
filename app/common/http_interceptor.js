@@ -10,11 +10,11 @@
  *
  */
 
-angular.module('phoneApp')
+angular.module('Tjoys')
 
 .config(function ($provide, $httpProvider) {
 
-    $provide.factory('httpInterceptor', function ($q, ENV) {
+    $provide.factory('httpInterceptor', function ($q) {
 
         var httpInterceptor = {
 

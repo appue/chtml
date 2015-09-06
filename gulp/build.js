@@ -3,7 +3,7 @@ var fs   = require('fs'),
     os   = require('os');
 
 var getProject = require('./tools/folder.js'),
-    buildFolder = require('./tools/build.folder.js')();
+    buildFolder = require('./tools/build.folder.js')() || './build/';
 
 
 var runType     = argv.run || '', // dev、build
@@ -13,10 +13,6 @@ var runType     = argv.run || '', // dev、build
     d           = new Date(),
     version     = d.getTime(),
     veros       = os.platform();
-
-if (packageType == 'web') {
-    buildFolder = './build/';
-}
 
 switch (runType) {
     case 'build':
@@ -117,14 +113,12 @@ module.exports = function (gulp, $) {
         gulp.src([
                 './app/**/*.html',
                 './app/**/*.js',
-                '!./app/bower_components/**/*.html',
-                '!./app/bower_components/**/*.js'
+                '!./bower_components/**/*'
             ])
             .pipe($.watch([
                 './app/**/*.html',
                 './app/**/*.js',
-                '!./app/bower_components/**/*.html',
-                '!./app/bower_components/**/*.js'
+                '!./app/bower_components/**/*'
             ]))
             .pipe($.livereload());
 
@@ -159,8 +153,9 @@ module.exports = function (gulp, $) {
                             '!./app/common/**/*.js',
                             '!./app/lib/*',
                             '!./app/api/*',
+                            '!./app/data/*',
                             '!./app/themes/*',
-                            '!./app/bower_components/**/*.js'
+                            '!./app/bower_components/**/*'
                         ], 
                         {read: false}), {relative: true}
                 )
@@ -173,19 +168,9 @@ module.exports = function (gulp, $) {
     gulp.task('replacehtml', function() {
         var jsFiles = [
             'frame.js?v='+ version,
-            'cordova.js?v='+ version,
-            'cordova_plugins.js?v='+ version,
             'common.js?v='+ version,
             'index.js?v='+ version
         ];
-
-        if (packageType == 'web') {
-            jsFiles = [
-                'frame.js?v='+ version,
-                'common.js?v='+ version,
-                'index.js?v='+ version
-            ];
-        }
 
         return gulp.src('./app/index.html')
             .pipe($.htmlReplace({
@@ -200,11 +185,11 @@ module.exports = function (gulp, $) {
     gulp.task('templates', function() {
         return gulp.src([
                 './app/**/*.html',
-                '!./app/bower_components/**/*.html',
-                '!./app/index.html'
+                '!./app/index.html',
+                '!./app/bower_components/**/*'
             ])
             .pipe($.ngHtml2js({
-                moduleName: "phoneApp",
+                moduleName: "Tjoys",
                 prefix: ""
             }))
             .pipe(gulp.dest("./.tmp/"));
@@ -214,7 +199,7 @@ module.exports = function (gulp, $) {
     gulp.task('movecss', function() {
         return gulp.src([
                 './app/**/*.css',
-                '!./app/bower_components/**/*.css'
+                '!./app/bower_components/**/*'
             ])
             // .pipe($.minifyCss())
             .pipe(gulp.dest(buildFolder));
@@ -233,7 +218,9 @@ module.exports = function (gulp, $) {
         return gulp.src([
                 './app/**/*.jpg',
                 './app/**/*.png',
-                '!./app/themes/logo/*'
+                // '!./app/themes/temp/**/*',
+                '!./app/themes/logo/**/*',
+                '!./app/bower_components/**/*'
             ])
             .pipe(gulp.dest(buildFolder));
     });
@@ -242,7 +229,8 @@ module.exports = function (gulp, $) {
     gulp.task('movejson', function() {
         return gulp.src([
                 './app/**/*.json',
-                '!./app/bower_components/**/*.json'
+                '!./app/api/**/*.json',
+                '!./app/bower_components/**/*'
             ])
             .pipe(gulp.dest(buildFolder));
     });
@@ -255,33 +243,16 @@ module.exports = function (gulp, $) {
                 './app/lib/exif.js',
                 './app/lib/megapix-image.js',
 
-                './app/lib/config.js',
-
-                './app/bower_components/angular/angular.js',
-                './app/bower_components/angular-animate/angular-animate.js',
-                './app/bower_components/angular-touch/angular-touch.js',
-                './app/bower_components/angular-route/angular-route.js',
-                './app/bower_components/angular-sanitize/angular-sanitize.js',
-                './app/bower_components/angular-ui-router/release/angular-ui-router.js',
-                './app/bower_components/angular-bindonce/bindonce.js',
-                './app/bower_components/ionic/release/js/ionic.js',
-                './app/bower_components/ionic/release/js/ionic-angular.js',
-                
-                './app/bower_components/ngCordova/dist/ng-cordova.js'
+                './app/lib/angular.js',
+                './app/lib/angular-touch.js',
+                './app/lib/angular-route.js',
+                './app/lib/angular-ui-router.js'
             ];
 
-        if (packageType == 'web') {
-            gulp.src(framejs)
-                .pipe($.concat('frame.js'))
-                .pipe($.uglify())
-                .pipe(gulp.dest(buildFolder));
-        } else {
-            gulp.src(framejs)
-                .pipe($.concat('frame.js'))
-                .pipe($.replace(/isHybridCreatePhoneApp=false/g, 'isHybridCreatePhoneApp=true'))
-                .pipe($.uglify())
-                .pipe(gulp.dest(buildFolder));
-        }
+        gulp.src(framejs)
+            .pipe($.concat('frame.js'))
+            .pipe($.uglify())
+            .pipe(gulp.dest(buildFolder));
 
 
         //--项目公共JS压缩、合并（包括公共模板数据）
@@ -301,13 +272,12 @@ module.exports = function (gulp, $) {
                 './.tmp/**/*.js',
                 './app/**/*.js',
 
-                '!./.tmp/bower_components/**/*.js',
                 '!./.tmp/common/**/*.js',
 
                 '!./app/app.js',
                 '!./app/lib/**/*.js',
                 '!./app/common/**/*.js',
-                '!./app/bower_components/**/*.js'
+                '!./app/bower_components/**/*'
             ])
             .pipe($.concat('index.js'))
             .pipe($.ngAnnotate())

@@ -9,11 +9,7 @@ var runType = argv.run || '', // dev、build
 module.exports = function (gulp, $) {
 
     gulp.task('tmpl', ['minjs'], function() {
-
-        if (packageType == 'web') {
-            gulp.start('connect');
-        }
-        
+        gulp.start('connect');
     });
     
 

@@ -1,44 +1,47 @@
-angular.module('phoneApp')
+angular.module('Tjoys')
 
 .factory('widget', function(
+    $q,
     $http,
-    $cacheFactory,
-    $rootScope,
+    $state,
     $compile,
     $timeout,
     $location,
-    $ionicLoading,
-    $ionicBackdrop,
-    $ionicHistory,
-    $ionicScrollDelegate,
+    $rootScope,
+    $cacheFactory,
 
-    cachePool,
-    ENV,
-
-    $cordovaKeyboard
+    cachePool
 ) {
-    // 是否APP
-    if (ENV.isHybrid) {
-        $rootScope.isHybrid = true;
-    } else {
-        $rootScope.isHybrid = false;
-    }
 
-    // 键盘设置
-    document.addEventListener("deviceready", function () {
-        $cordovaKeyboard.hideAccessoryBar(true);
-    }, false);
+    // 获取本地用户信息
+    $rootScope.UserInfo = (function () {
+        var UserInfo = cachePool.pull('UserInfo');
+
+        if (!UserInfo) {
+            UserInfo = { UserId: 0 };
+        }
+
+        return UserInfo;
+    })();
 
 
     var toastTimer = null,
         dataPool = $cacheFactory('dataPool');
 
     var tPackage = {
+        config: function () {
+            var obj = {
+                apiSocket: 'http://m.tjoys.net/api/'
+            };
+
+            return obj;
+        },
+
         /**
          * toast提示层
          * @param msg, time
          */
-        msgToast: function(msg, time) {
+        msgToast: function (msg, time) {
             var toastDom = angular.element(document.querySelector('.notifier'));
 
             if (!toastDom.length) {
@@ -63,7 +66,7 @@ angular.module('phoneApp')
          * @param key
          * @param data 如果data不存在，则为取缓存，如果存在，则重写key的值
          */
-        cacheData: function(key, data) {
+        cacheData: function (key, data) {
 
             if (!angular.isString(key)) {
                 return false;
@@ -83,7 +86,7 @@ angular.module('phoneApp')
          * @param scope
          * @param fn
          */
-        safeApply: function(scope, fn) {
+        safeApply: function (scope, fn) {
             if (!scope || !fn) {
                 return;
             }
@@ -93,92 +96,14 @@ angular.module('phoneApp')
                 scope.$apply(fn);
             }
         },
-
-        /**
-         * 带标题吸顶效果的页面滚卷处理
-         * @param scope
-         * @param titleEles
-         * @param sticker
-         * @param handler
-         */
-        stickyTopScroll: function(scope, compile, titleEles, handler) {
-            if (!scope || !titleEles || !titleEles.length || !handler || !handler.getScrollPosition()) {
-                return;
-            }
-
-            var titleEle, height, targetEle, sticker,
-                scrollTop = handler.getScrollPosition().top;
-
-            if (scope.stickyContent === undefined) {
-                var tpl = compile('<h2 class="sticker" ng-show="stickyContent != null">{{stickyContent}}</h2>');
-                sticker = tpl(scope);
-                sticker.css({
-                    position: 'absolute',
-                    width: '100%'
-                });
-                angular.element(handler.getScrollView().__container).append(sticker);
-                handler.__sticker = sticker;
-            } else {
-                sticker = handler.__sticker;
-            }
-
-            // 滚卷处理
-            for (var i = 0, len = titleEles.length; i < len; i++) {
-                titleEle = titleEles[i];
-                if (i === 0) {
-                    height = titleEle.clientHeight;
-                }
-                if (scrollTop >= titleEle.offsetTop) {
-                    targetEle = titleEle;
-                } else {
-                    if (!sticker.hasClass('ng-hide')) {
-                        if (scrollTop >= titleEle.offsetTop - height) {
-                            sticker.css('top', (titleEle.offsetTop - height - scrollTop) + 'px');
-                        } else {
-                            sticker.css('top', 0);
-                        }
-                    }
-                    break;
-                }
-            }
-
-            if (targetEle && scope.stickyContent !== targetEle.innerHTML) {
-                sticker.css('top', 0);
-                safeApply(scope, function() {
-                    scope.stickyContent = targetEle.innerHTML;
-                });
-            } else if (!targetEle) {
-                safeApply(scope, function() {
-                    scope.stickyContent = null;
-                });
-            }
-        },
-
+        
         /**
          * ajax请求
          */
-        ajaxRequest: function(params) {
+        ajaxRequest: function (params) {
             var self = this;
 
             if (!params) return;
-
-            //--数据改造加用户信息start
-            //-------------ToDo
-            var user = {
-                'UserId': 22,
-                'Auth': 'asdfasdf',
-
-                'Phone': 13596858474,
-                'UserName': '测试账号昵称',
-                'Sex': 1,
-                'City': 2,
-                'CityName': '上海',
-                'Job': 1,
-                'JobName': '园长'
-            };
-
-            cachePool.push('UserInfo', user, 720 / 24); //此处之后移动到登录页面
-            //-------------ToDo
 
             var $scope = params.scope || '',
                 postOpt = params.data || {},
@@ -187,12 +112,12 @@ angular.module('phoneApp')
                         UserId: '',
                         Auth: ''
                     }
-                },
-                UserInfo = cachePool.pull('UserInfo');
+                };
+                // UserInfo = cachePool.pull('UserInfo');
 
-            if (UserInfo) {
-                obj.Header.UserId = UserInfo.UserId;
-                obj.Header.Auth = UserInfo.Auth;
+            if ($rootScope.UserInfo && $rootScope.UserInfo.UserId) {
+                obj.Header.UserId = $rootScope.UserInfo.UserId;
+                obj.Header.Auth = $rootScope.UserInfo.Auth;
             }
 
             postOpt = angular.extend({}, postOpt, obj);
@@ -200,79 +125,56 @@ angular.module('phoneApp')
 
             if (params.showPage) {
 
-                if ($scope.Deploy.isLoading) return;
+                if ($scope.Page.isLoading) return;
 
-                $scope.Deploy.isLoading = true;
-                $scope.Deploy.pageIndex++;
+                $scope.Page.isLoading = true;
+                $scope.Page.pageIndex++;
 
                 angular.extend(postOpt, {
-                    PageIndex: $scope.Deploy.pageIndex,
-                    PageSize: $scope.Deploy.pageSize
+                    PageIndex: $scope.Page.pageIndex,
+                    PageSize: $scope.Page.pageSize
                 });
             }
 
             var options = {
-                    success: function() {}, //--成功回调
-                    // error: function() {}, //----错误回调
-                    showPage: false, //---------是否启用分页功能
-                    showLoading: true, //-------是否显示loading
-                    isLogin: false, //----------判断是否需要登录
-                    // isPopup: false, //-------请求结果是否有popup
+                    success     : function() {}, //--成功回调
+                    // msgError : // 错误提示
+                    error       : function() {}, //------错误回调
+                    showPage    : false, //----------是否启用分页功能
+                    showLoading : true, //-----------是否显示loading
+                    isLogin     : false, //----------需要登录的接口屏蔽error 错误提示
+                    // isPopup  : false, //----------请求结果是否有popup
+                    isAckError  : true //------------Respone.Ack=Failure时是否显示错误信息
                 },
                 ajaxConfig = { //-----------------ajax请求配置
                     method: 'POST',
-                    url: ENV.apiSocket + params.url || '',
+                    url: se.apiSocket + params.url || '',
 
                     // method: 'GET',
                     // url: ENV.apiSocket + params.url + '.json' || '',
 
                     data: postOpt,
                     timeout: 15000
-                },
-                effect = function() {
-                    if (options.showLoading) {
-                        $ionicLoading.hide();
-                    }
-                    // if (options.isPopup) {
-                    //     $ionicBackdrop.release();
-                    // }
                 };
 
             for (var i in params) options[i] = params[i];
 
             if (options.showLoading) {
-                if (!options.showPage || (options.showPage && $scope.Deploy.pageIndex < 2)) {
-                    $ionicLoading.show({
-                        templateUrl: 'common/directives/mod_loading.html'
-                    });
+                if (!options.showPage || (options.showPage && $scope.Page.pageIndex < 2)) {
+                    // $ionicLoading.show({
+                    //     templateUrl: 'common/directives/mod_loading.html'
+                    // });
                 }
             }
 
             $http(ajaxConfig).success(function(data) {
 
-                // toDo
-                // data.Response = {
-                //     "Ack": "Success",
-                //     "State": true
-                // };
-
                 if (data.Response && data.Response.Ack == "Success") {
-                // if (data.Response) { toDo
 
                     if ($scope) {
-                        if (!$scope.Deploy) {
-                            $scope.Deploy = {};
+                        if (!$scope.Page) {
+                            $scope.Page = {};
                         };
-
-                        // isLogin toDo
-                        // if (data.Response.State) {
-                        // //     $scope.Deploy.isLogin = true;
-                        // // } else {
-                        if (!data.Response.State) {
-                            $scope.Deploy.isLogin = false;
-                            $scope.Deploy.uId = 0;
-                            cachePool.remove("UserInfo");
-                        }
                     }
 
                     if (typeof options.success === 'function') {
@@ -281,154 +183,72 @@ angular.module('phoneApp')
 
                     if (params.showPage) { //如果Total大于Index*Size，则isMore = false;
 
-                        $scope.Deploy.isLoading = false;
-                        $scope.Deploy.pageTotal = data.Total || 0;
+                        $scope.Page.isLoading = false;
+                        $scope.Page.pageTotal = data.Total || 0;
 
-                        if (!$scope.Deploy.pageTotal || $scope.Deploy.pageTotal && ($scope.Deploy.pageIndex * $scope.Deploy.pageSize) >= $scope.Deploy.pageTotal) {
-                            $scope.Deploy.isLoading = true;
-                            $scope.Deploy.isMore = false;
-                        } else {
-                            $scope.$broadcast('scroll.infiniteScrollComplete');
+                        if (!$scope.Page.pageTotal || $scope.Page.pageTotal && ($scope.Page.pageIndex * $scope.Page.pageSize) >= $scope.Page.pageTotal) {
+                            $scope.Page.isLoading = true;
                         }
                     }
 
                 } else {
 
-                    self.msgToast('数据请求错误！');
+                    if (options.isError) {
+                        if (options.msgError) {
+                            self.msgToast(options.msgError);
+                        } else {
+                            self.msgToast('数据请求错误！');
+                        }
+                    }
 
                 }
-
-                effect();
 
             }).error(function(data) {
-                if (typeof options.error === 'function') {
-                    options.error(data);
-                } else {
-                    self.msgToast('网络错误，请稍后再试！');
+                if (!options.isLogin) {
+                    if (typeof options.error === 'function') {
+                        options.error(data);
+                    } else {
+                        self.msgToast('网络错误，请稍后再试！');
+                    }
                 }
-
-                if (options.showPage) {
-                    $scope.Deploy.isLoading = false;
-                }
-
-                effect();
+				
+				options.error(data);
 
             });
 
         },
 
         /**
-         * native StatusBar 显示
-         *
-         */
-        showStatusBar: function() {
-
-            if (ENV.isHybrid) {
-                document.addEventListener("deviceready", onDeviceReady, false);
-
-                function onDeviceReady() {
-                    StatusBar.show();
-                }
-            }
-
-        },
-
-        /**
-         * 清除历史记录
-         *
-         */
-        clearHistory: function() {
-            $ionicHistory.clearHistory();
-        },
-
-        changeOpacity: function() {
-            var top = $ionicScrollDelegate.$getByHandle('mainScroll').getScrollPosition().top,
-                opacity = 0;
-
-            if (top > 30) {
-                opacity = ((top - 30) / 100).toFixed(1);
-            } else {
-                opacity = 0;
-            }
-
-            if (opacity > 1) {
-                opacity = 1;
-            }
-
-            angular.element(document.querySelector('.js_op_header .js_op_change')).css({
-                "opacity": opacity
-            });
-        },
-
-        setUserInfo: function () {
-            cachePool.push('UserInfo', {
-                Phone: data.Phone,
-                UserName: data.Nickname,
-                Sex: data.Sex,
-
-                City: data.City,
-                CityName: data.CityName,
-                
-                Job: data.Job,
-                JobName: data.JobName,
-
-                Auth: data.Auth,
-                UserId: data.UserId 
-            }, 720 / 24);
-        },
-
-        /**
-         * 初始化用户登录信息
+         * 设置登录信息
          * UserInfo {
-         *     Phone: 手机号
-         *     UserName: 用户名
-         *     Sex: 性别 1男、2女
-         *     City: 城市ID
-         *     CityName: 城市名称
-         *     Job: 工作ID,
-         *     JobName: 工作性质名称
-         *     Auth: Auth
-         *     UserId: 用户ID
+         *     UserId:    用户ID
+         *     Auth:      Auth
          * }
          */
-        initUser: function(scope) {
-            var userInfo = cachePool.pull('UserInfo');
+        setLogin: function (data) {
+            var self = this;
+                    
+            cachePool.push('UserInfo', {
+                UserId: data.UserId,
+                Auth:   data.Auth
+            }, 1); // 缓存1天
 
-            if (!scope.Deploy) {
-                scope.Deploy = {};
-            }
-
-            if (userInfo && userInfo.UserId) {
-                scope.UserInfo = angular.extend({}, userInfo);
-                scope.Deploy.uId = userInfo.UserId;
-                scope.Deploy.isLogin = true;
-            } else {
-                scope.UserInfo = {};
-                scope.Deploy.isLogin = false;
-                scope.Deploy.uId = 0;
-            }
+            $rootScope.UserInfo = cachePool.pull('UserInfo');
         },
 
         /**
          * 注销用户登录信息
          */
-        cleanLogin: function (scope) {
-            scope.Deploy.uId = 0;
-            scope.Deploy.isLogin = false;
+        cleanLogin: function () {
             cachePool.remove("UserInfo");
-        },
-
-        /**
-         * 修改用户本地缓存信息
-         */
-        modifyLogin: function (scope) {
-
+            
+            $rootScope.UserInfo = { UserId: 0 };
         },
 
         /**
          * 检查手机号
          */
-        checkPhone: function(phone) {
+        checkPhone: function (phone) {
             var self = this,
                 status = false;
 
@@ -445,25 +265,111 @@ angular.module('phoneApp')
             }
 
             return status;
+        },
+
+        /**
+         * 获取工作列表
+         */
+        getJobList: function () {
+            var q = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: 'data/getJobList.json',
+                timeout: 15000
+            })
+            .success(function (data) {
+                q.resolve(data);
+            })
+            .error(function (err) {
+                q.reject(err);
+            });
+
+            return q.promise;
+        },
+
+        /**
+         * 根据ID拿工作名称
+         */
+        getJobName: function (id) {
+            var self = this;
+
+            var JobName = self.getJobList().then(function (res) {
+                    var name;
+
+                    angular.forEach(res.JobList, function (v, k) {
+                        if (v.Id == id) {
+                            name = v.Name;
+                        }
+                    });
+
+                    return name;
+                }, function (err) {
+                    return null;
+                });
+
+            return JobName;
+        },
+
+        /**
+         * 获取城市列表
+         * CityList
+         */
+        getCityList: function () {
+            var q = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: 'data/getCityList.json',
+                timeout: 15000
+            })
+            .success(function (data) {
+                q.resolve(data);
+            })
+            .error(function (err) {
+                q.reject(err);
+            });
+
+            return q.promise;
+        },
+
+        /**
+         * 根据CityId 获取CityName
+         */
+        getCityName: function (id) {
+            var self = this;
+
+            var CityName = self.getCityList().then(function (res) {
+                var name;
+
+                angular.forEach(res, function (v, k) {
+                    angular.forEach(v.sub, function (n, i) {
+                        if (n.id == id) {
+                            name = v.name +" "+ n.name;
+                            return;
+                        }
+                    });
+                    if (name) return;                    
+                });
+
+                return name;
+            }, function (err) {
+                return null;
+            });
+
+            return CityName;
         }
+
+
     };
 
-
-    var loginPopup = null;
-    $rootScope.$on('$locationChangeStart', function() { //切换页面时隐藏分享条&取出弹出层
-        angular.element(document.getElementById('shareBtnCtrl')).css('display', 'none');
-        if (loginPopup) {
-            loginPopup.close();
-            loginPopup = null;
-        }
-    });
 
     /**
      * 重写angular的param方法，使angular使用jquery一样的数据序列化方式  The workhorse; converts an object to x-www-form-urlencoded serialization.
      * @param {Object} obj
      * @return {String}
      */
-    var paramObj = function(obj) {
+    var paramObj = function (obj) {
         var query = '',
             name, value, fullSubName, subName, subValue, innerObj, i;
 

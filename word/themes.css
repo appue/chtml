@@ -23,15 +23,68 @@ h1,h2,h3,h4 {
 }
 
 h1 {
-    font-size: 16px;
-    font-weight: bold;
+    /*font-size: 20px;*/
+    /*color: #aeff00;*/
+    /*padding: 20px 0;*/
+    vertical-align: middle;
+    background: #007eff;
+    color: #bbb;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    /*overflow: hidden;*/
+    width: 200px;
+    clear: both;
+    padding-left: 20px;
+
+    margin: 10px 0 20px -10px;
+    position: relative;
 }
+h1:before {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #000 transparent transparent transparent;
+}
+/*h1:before {
+    content: "";
+    display: inline-block;
+    width: 100px;
+    height: 10px;
+    vertical-align: middle;
+    margin-right: 10px;
+
+    background: -webkit-linear-gradient(left,
+        #aeff00 0%,  #aeff00 10%,
+        #000000 10%, #000000 15%,
+        #aeff00 15%, #aeff00 25%,
+        #000000 25%, #000000 30%,
+        #aeff00 30%, #aeff00 40%,
+        #000000 40%, #000000 45%,
+        #aeff00 45%, #aeff00 55%,
+        #000000 55%, #000000 60%,
+        #aeff00 60%, #aeff00 70%,
+        #000000 70%, #000000 75%,
+        #aeff00 75%, #aeff00 85%,
+        #000000 85%, #000000 90%,
+        #aeff00 90%, #aeff00 100%
+    )
+}*/
 
 h2 {
     border-top: 1px dotted #333;
-    padding: 10px 0;
-    margin-top: 10px;
+    padding-top: 20px;
+    /*margin-top: 10px;*/
     color: #ffde00;
+    font-size: 16px;
 }
 
 h3 {
@@ -41,6 +94,8 @@ h3 {
 h4 {
     font-size: 14px;
     font-weight: normal;
+    line-height: 20px;
+    color: #333;
 }
 
 pre {
@@ -55,4 +110,10 @@ i {
 em {
     color: #30ff00;
     font-style: normal;
+}
+
+article {
+    line-height: 20px;
+    color: #999;
+    padding-bottom: 20px;
 }

@@ -1,0 +1,54 @@
+<div class="mod_menu" ng-class="{show: showHeader}">
+    <ul>
+        <li ng-class="{show: Header.subMenu == 'web'}">
+            <dl>
+                <dt>广告管理</dd>
+                <dd><a ui-sref="mange.login">广告管理</a></dd>
+                <dd><a ui-sref="mange.login">欢迎页管理</a></dd>
+                <dt>消息群发</dd>
+                <dd><a ui-sref="mange.login">消息群发</a></dd>
+            </dl>
+        </li>
+        <li ng-class="{show: Header.subMenu == 'article'}">
+            <dl>
+                <dt>图片管理</dt>
+                <dd><a ui-sref="mange.login">未推荐图片</a></dd>
+                <dd><a ui-sref="mange.login">已推荐图片</a></dd>
+                <dt>评论管理</dt>
+                <dd><a ui-sref="mange.login">全部评论</a></dd>
+                <dt>其他管理</dt>
+                <dd><a ui-sref="mange.login">标签管理</a></dd>
+                <dd><a ui-sref="mange.login">举报管理</a></dd>
+            </dl>
+        </li>
+        <li ng-class="{show: Header.subMenu == 'club'}">
+            <dl>
+                <dt>圈子管理</dt>
+                <dd><a ui-sref="mange.login">圈子列表</a></dd>
+                <dd><a ui-sref="mange.login">圈内帖子</a></dd>
+                <dt>专题管理</dt>
+                <dd><a ui-sref="mange.login">专题列表</a></dd>
+                <dd><a ui-sref="mange.login">新建专题</a></dd>
+                <dt>活动管理</dt>
+                <dd><a ui-sref="mange.login">活动列表</a></dd>
+                <dd><a ui-sref="mange.login">创建活动</a></dd>
+            </dl>
+        </li>
+        <li ng-class="{show: Header.subMenu == 'user'}">
+            <dl>
+                <dt>用户管理</dt>
+                <dd><a ui-sref="mange.login">用户列表</a></dd>
+                <dd><a ui-sref="mange.login">等级列表</a></dd>
+                <dd><a ui-sref="mange.login">新增用户</a></dd>
+            </dl>
+        </li>
+        <li ng-class="{show: Header.subMenu == 'mange'}">
+            <dl>
+                <dt>客服管理</dt>
+                <dd><a ui-sref="mange.login">管理员列表</a></dd>
+                <dd><a ui-sref="mange.login">意见反馈</a></dd>
+                <dd><a ui-sref="mange.login">等级列表</a></dd>
+            </dl>
+        </li>
+    </ul>
+</div>

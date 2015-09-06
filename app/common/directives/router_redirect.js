@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('phoneApp')
+angular.module('Tjoys')
 
 .directive('pageBack', function (
     $state,
@@ -8,7 +8,8 @@ angular.module('phoneApp')
     $rootScope,
     $stateParams,
     $ionicHistory,
-    $ionicViewSwitcher
+    $ionicViewSwitcher,
+    widget
 ) {
     return {
         restrict: 'A',
@@ -28,18 +29,20 @@ angular.module('phoneApp')
 
                 // } else { // 默认执行浏览器后退
                     
-                    $ionicViewSwitcher.nextDirection('back'); //forward
-                    // 
+                    // $ionicViewSwitcher.nextDirection('back'); //forward
+                    // // 
                     
-                    if (!$ionicHistory.backView()) {
-                        $state.go('forum.home');
-                        return;
-                    }
+                    // if (!$ionicHistory.backView()) {
+                    //     $state.go('forum.home');
+                    //     return;
+                    // }
 
-                    $ionicHistory.goBack();
+                    // $ionicHistory.goBack();
                 // }
 
                 // $rootScope.$ionicGoBack();
+
+                widget.toBack();
             });
         }
     };

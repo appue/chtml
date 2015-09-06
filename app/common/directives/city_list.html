@@ -1,0 +1,18 @@
+<section class="mod_city_list" ngd-click="toggleCity($event)" selector="dt">
+    <ul>
+        <li ng-click="cancleCity()">取消</li>
+        <li>{{City.tmpName}}</li>
+        <li ng-click="submitCity()">确定</li>
+    </ul>
+
+    <div ngd-click="selectCity($event)" selector="p">
+        <dl ng-repeat="(k, v) in CityList track by $index" ng-class="{open: v.id == City.tmpMid}">
+            <dt data-mid="{{v.id}}" data-mkey="{{k}}" data-name="{{v.name}}">{{v.name}}</dt>
+            <dd>
+                <p ng-repeat="(i, n) in v.sub track by $index" ng-class="{current: n.id == City.tmpSid}" data-sid="{{n.id}}" data-skey="{{k}}" data-name="{{n.name}}">
+                    {{n.name}}
+                </p>
+            </dd>
+        </dl>
+    </div>
+</section>

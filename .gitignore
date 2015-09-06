@@ -1,5 +1,10 @@
+#windows
 Thumbs.db
+
+#mac
 .DS_Store
+
+
 mockup/themes/*.css
 /node_modules/
 /source/bower_components/
