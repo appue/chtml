@@ -5,15 +5,15 @@
 <ul class="mod_login">
     <li>
         <label>用户名：</label>
-        <input type="text" placeholder="输入用户名" />
+        <input ng-model="cInput.Name" type="text" placeholder="输入用户名" />
     </li>
     <li>
         <label>密码：</label>
-        <input type="password" placeholder="输入用户密码" />
+        <input ng-model="cInput.Password" type="password" placeholder="输入用户密码" />
     </li>
     <li>
         <label>验证码：</label>
-        <input type="text" placeholder="验证码" />
+        <input ng-model="cInput.Code" type="text" placeholder="验证码" />
         <div>1234</div>
     </li>
     <li ng-click="toLogin()">登录</li>

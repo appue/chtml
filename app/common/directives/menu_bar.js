@@ -10,13 +10,13 @@ angular.module('Tjoys')
         replace: true,
         templateUrl: 'common/directives/menu_bar.html',
         // controller: function ($scope, $element, $attrs) {},
-        link: function ($scope, $element, $attrs) {
+        controller: function ($scope, $element, $attrs) {
             $rootScope.Header = {
                 subMenu: 'web' // 默认显示网站管理
             };
 
-            $scope.showSubmenu = function (type) {
-                $rootScope.Header.subMenu = type;
+            $rootScope.showSubmenu = function (type) {
+                $rootScope.Menu = type;
             };
         }
     };
@@ -32,7 +32,7 @@ angular.module('Tjoys')
         replace: true,
         templateUrl: 'common/directives/menu_sub_bar.html',
         // controller: function ($scope, $element, $attrs) {},
-        link: function ($scope, $element, $attrs) {
+        controller: function ($scope, $element, $attrs) {
         }
     };
 });

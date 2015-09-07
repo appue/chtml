@@ -10,8 +10,7 @@ body {
     position: relative;
 }
 body.tbody {
-    padding-top: 130px;
-    padding-left: 200px;
+    padding: 55px 10px 10px 200px;
     background: -webkit-linear-gradient(left, #74655e 0%, #74655e 200px, #e8e2d4 200px, #e8e2d4 100%);
 }
 
@@ -30,4 +29,8 @@ img {
 
 input {
     outline: none;
+}
+
+i, em {
+    font-style: normal;
 }

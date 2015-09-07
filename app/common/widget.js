@@ -41,7 +41,7 @@ angular.module('Tjoys')
 
             return obj;
         },
-
+        
         /**
          * toast提示层
          * @param msg, time
@@ -50,7 +50,7 @@ angular.module('Tjoys')
             var toastDom = angular.element(document.querySelector('.notifier'));
 
             if (!toastDom.length) {
-                var toastTpl = $compile('<div class="notifier" ng-click="notification=null" ng-show="notification"><span>{{notification}}</span></div>');
+                var toastTpl = $compile('<div class="mod_msg" ng-click="notification=null" ng-show="notification"><span>{{notification}}</span></div>');
                 angular.element(document.getElementsByTagName('body')[0]).append(toastTpl($rootScope));
             }
 
@@ -153,7 +153,7 @@ angular.module('Tjoys')
                 },
                 ajaxConfig = { //-----------------ajax请求配置
                     method: 'POST',
-                    url: se.apiSocket + params.url || '',
+                    url: self.config().apiSocket + params.url || '',
 
                     // method: 'GET',
                     // url: ENV.apiSocket + params.url + '.json' || '',

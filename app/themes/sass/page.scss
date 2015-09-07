@@ -38,3 +38,12 @@
         }
     }
 }
+
+
+.mod_text {
+    line-height: 20px;
+    @include border-half($type: bottom);
+    margin-bottom: 10px;
+}
+
+

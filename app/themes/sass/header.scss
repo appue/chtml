@@ -49,6 +49,14 @@
             &.show {
                 color: #fff;
             }
+
+            &:nth-child(1) {
+                width: 100px;
+                height: 40px;
+                font-size: 0;
+                background: url(img/logo.png) no-repeat 0 center;
+                background-size: 100% auto;
+            }
         }
     }
 

@@ -1,0 +1,67 @@
+<div class="mod_text">
+    标签管理<br>
+    您可以对标签进行管理
+</div>
+
+
+<dl class="mod_cate_list">
+    <dt>
+        <div></div>
+        <div><input type="checkbox" /></div>
+        <div>ID</div>
+        <div>标签名称</div>
+        <div>操作</div>
+    </dt>
+    <list class="b_0" ng-repeat="(k, v) in CateList track by $index">
+        <dd>
+            <div ng-class="{sum: v.HasSub && !v.ShowSub, minus: v.ShowSub}" ng-click="showCate({e: $event, id: v.CateId, sub: v.HasSub, key: k})"></div>
+            <div>
+                <input type="checkbox" ng-click="toggle(v.CateId)" ng-if="!v.HasSub" />
+            </div>
+            <div>{{v.CateId}}</div>
+            <div>{{v.CateName}}</div>
+            <div>
+                <i ng-click="modify(v.CateId)">修改</i>
+                <i ng-click="add(v.CateId)">增加子类</i>
+                <i ng-click="delete(v.CateId)" ng-if="!v.HasSub">删除</i>
+            </div>
+        </dd>
+
+        <list class="b_1" ng-repeat="(ik, iv) in CateList[k].Sub track by $index">
+            <dd>
+                <div ng-class="{sum: iv.HasSub && !iv.ShowSub, minus: iv.ShowSub}" ng-click="showCate({e: $event,id: iv.CateId, sub: iv.HasSub, key: ik, pid: v.CateId, pkey: k})"></div>
+                <div><input type="checkbox" ng-click="toggle(iv.CateId)" ng-if="!iv.HasSub" /></div>
+                <div>{{iv.CateId}}</div>
+                <div class="t_1">{{iv.CateName}}</div>
+                <div>
+                    <i ng-click="modify(iv.CateId)">修改</i>
+                    <i ng-click="add(iv.CateId)">增加子类</i>
+                    <i ng-click="del(iv.CateId)" ng-if="!iv.HasSub">删除</i>
+                </div>
+            </dd>
+
+            <list class="b_2" ng-repeat="(jk, jv) in CateList[k].Sub[ik].Sub track by $index">
+                <dd>
+                    <div></div>
+                    <div>
+                        <input type="checkbox" ng-click="toggle(jv.CateId)" ng-if="!jv.HasSub" />
+                    </div>
+                    <div>{{jv.CateId}}</div>
+                    <div class="t_2">{{jv.CateName}}</div>
+                    <div>
+                        <i ng-click="modify(jv.CateId)">修改</i>
+                        <!-- <i>增加子类</i> -->
+                        <i ng-click="del(jv.CateId)" ng-if="!jv.HasSub">删除</i>
+                    </div>
+                </dd>
+            </list>
+        </list>
+    </list>
+</dl>
+
+
+<ul class="mod_btn_list">
+    <li ng-click="test()">批量删除</li>
+</ul>
+
+<!-- <input type="file" ng-model="Deploy.currentImage" accept="image/*" app-filereader /> -->

@@ -3,25 +3,20 @@
         <li>
             师乐汇
         </li>
-        <li ng-class="{show: Header.subMenu == 'web'}" ng-click="showSubmenu('web')">
+        <li ng-class="{show: Menu == 'web'}" ng-click="showSubmenu('web')">
             网站管理
         </li>
-        <li ng-class="{show: Header.subMenu == 'article'}" ng-click="showSubmenu('article')">
+        <li ng-class="{show: Menu == 'article'}" ng-click="showSubmenu('article')">
             内容管理
         </li>
-        <li ng-class="{show: Header.subMenu == 'club'}" ng-click="showSubmenu('club')">
+        <li ng-class="{show: Menu == 'club'}" ng-click="showSubmenu('club')">
             社区管理
         </li>
-        <li ng-class="{show: Header.subMenu == 'user'}" ng-click="showSubmenu('user')">
+        <li ng-class="{show: Menu == 'user'}" ng-click="showSubmenu('user')">
             用户管理
         </li>
-        <li ng-class="{show: Header.subMenu == 'mange'}" ng-click="showSubmenu('mange')">
+        <li ng-class="{show: Menu == 'mange'}" ng-click="showSubmenu('mange')">
             客服管理
-        </li>
-        <li>
-            <a ui-sref="mange.login">
-                修改密码
-            </a>
         </li>
     </ul>
 </header>

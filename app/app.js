@@ -27,7 +27,15 @@ angular.module('Tjoys', [
         url: '/index.htm',
         templateUrl: 'code/tp/index.html',
         controller: 'tIndex'
-    });
+    })
+
+    //标签管理
+    .state('mange.cate', {
+        // cache: false,
+        url: '/cate.htm',
+        templateUrl: 'code/tp/cate.html',
+        controller: 'tCate'
+    })
 
 
 
