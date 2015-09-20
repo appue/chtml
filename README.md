@@ -57,13 +57,23 @@ Response:
 
 Request:
 ```
-{
-
+{   
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
 }
 ```
 Response:
 ```
 {
-    
+
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
 }
 ```
