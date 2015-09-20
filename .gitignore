@@ -15,5 +15,3 @@ mockup/themes/*.css
 /.folder
 app/themes/all.css
 app/bower_components/
-
-/workspace/native/platforms/android/build/outputs/apk/

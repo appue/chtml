@@ -23,3 +23,33 @@
 4.JS编译成正式环境下的代码
 - gulp --run build || gulp --run build --g app [生成APP压缩包]
 - gulp --run build --g web  [生成H5压缩包]
+
+
+### 接口协议
+
+
+##### getLogin
+> 后台登录
+
+Request
+```
+{   
+    UserName: 用户名
+    Password: 密码（md5）
+}
+````
+
+Response:
+```
+{
+    Auth: 返回用户的Auth
+    UserId: 返回用户的UserId
+
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
