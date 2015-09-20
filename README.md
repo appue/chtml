@@ -30,7 +30,7 @@
 ##### getLogin
 > 后台登录
 
-Request
+Request:
 ```
 {   
     UserName: 用户名
@@ -49,5 +49,21 @@ Response:
         State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
         Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
     }
+}
+```
+
+##### getArticleList
+>获取文章列表
+
+Request:
+```
+{
+
+}
+```
+Response:
+```
+{
+    
 }
 ```
