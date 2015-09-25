@@ -1,9 +1,10 @@
 ﻿.mod_cate_list {
     width: 100%;
     display: table;
-    border: 1px solid $color-border;
+    // border: 1px solid $color-border;
     background: #fff;
     margin-bottom: 10px;
+    @include border-half($type: all, $color: gray);
     dt {
         background: $bg-list;
         text-align: center;
@@ -14,8 +15,9 @@
             color: #000;
             display: block;
             padding: 0 10px;
-            border-bottom: 1px solid $color-border;
-            border-right: 1px solid $color-border;
+            // border-bottom: 1px solid $color-border;
+            // border-right: 1px solid $color-border;
+            @include border-half($type: rb, $color: gray);
             &:nth-child(1),
             &:nth-child(2) {
                 width: 30px;
@@ -29,7 +31,7 @@
             }
             &:last-child {
                 width: 150px;
-                border-right: none;
+                @include border-half($type: bottom, $color: gray);
             }
         }
     }
@@ -44,8 +46,9 @@
             line-height: 30px;
             display: block;
             padding: 0 10px;
-            border-bottom: 1px solid $color-border;
-            border-right: 1px solid $color-border;
+            // border-bottom: 1px solid $color-border;
+            // border-right: 1px solid $color-border;
+            @include border-half($type: rb, $color: gray);
             &:nth-child(1),
             &:nth-child(2) {
                 width: 30px;
@@ -60,7 +63,7 @@
             &:last-child {
                 width: 150px;
                 text-align: left;
-                border-right: none;
+                @include border-half($type: bottom, $color: gray);
             }
             &.sum {
                 @include icon(
@@ -92,8 +95,10 @@
     }
 
     .b_0 {
-        border-bottom: 10px solid #fff;
-        border-top: 1px solid $color-border;
+        // border-bottom: 10px solid #fff;
+        margin-bottom: 10px;
+        // border-top: 1px solid $color-border;
+        @include border-half($type: top, $color: gray);
     }
 
     .b_1 {

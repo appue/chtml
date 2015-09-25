@@ -10,11 +10,12 @@
         display: block;
         line-height: 30px;
         text-align: center;
-        color: #fff;
+        color: #333;
         padding: 0 10px;
         cursor: pointer;
         margin-right: 10px;
-        background: -webkit-linear-gradient(top, #aea097, #75675e);
-        border: 1px solid $text;
+        // background: -webkit-linear-gradient(top, #aea097, #75675e);
+        // border: 1px solid $text;
+        background: $bg-btn;
     }
 }
