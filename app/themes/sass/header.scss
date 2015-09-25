@@ -3,7 +3,8 @@
     @include box();
 
     .mod_right {
-        padding: 10px;
+        // padding: 10px;
+        padding: 0 10px;
         -webkit-box-flex: 1;
     }
 }
@@ -20,17 +21,17 @@
     overflow: hidden;
     display: none;
 
-    border-top: 1px solid #ddf28d;
+    // border-top: 1px solid #ddf28d;
     // border-bottom: 1px solid #95b905;
-    -webkit-box-shadow: 1px 1px 3px rgba(129,160,3,1);
-    -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    // -webkit-box-shadow: 1px 1px 3px rgba(129,160,3,1);
+    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 
     &.show {
         display: block;
     }
 
     ul {
-        background: -webkit-linear-gradient(top, #c4e63a 0%, #b0ce2e 100%);
+        background: $green;
         height: 50px;
         @include box($align: center);
         li {
@@ -39,22 +40,22 @@
             line-height: 20px;
             margin: 0 10px;
             text-align: center;
-            color: #333;
+            color: #fff;
             cursor: pointer;
             a {
-                color: #333;
+                color: #fff;
             }
-            text-shadow: 1px 1px 1px rgba(129,160,3,0.6);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 
             &.show {
-                color: #fff;
+                color: #000;
             }
 
             &:nth-child(1) {
                 width: 100px;
                 height: 40px;
                 font-size: 0;
-                background: url(img/logo.png) no-repeat 0 center;
+                // background: url(img/logo.png) no-repeat 0 center;
                 background-size: 100% auto;
             }
         }
@@ -68,20 +69,17 @@
 
 
 .mod_menu {
-    position: fixed;
-    left: 0;
-    top: 60px;
-        
     display: block;
-    width: 200px;
-    display: none;
+    width: 150px;
+    // display: none;
+
     &.show {
         display: block;
     }
 
     ul {
         li {
-            padding: 0 10px;
+            // padding: 0 10px;
             display: none;
             &.show {
                 display: block;
@@ -89,8 +87,10 @@
 
             dl {
                 dt {
+                    padding: 0 5px;
                     line-height: 30px;
                     color: #000;
+                    background: #ddd;
                     @include icon(
                         $type: \f35c,
                         $size: 20px,
@@ -105,10 +105,14 @@
                     // @include border-half($type: bottom);
 
                     a {
-                        line-height: 30px;
+                        line-height: 40px;
                         display: block;
-                        color: $link;
+                        color: #666;
                         text-indent: 20px;
+                        &.current {
+                            background: $green;
+                            color: #fff;
+                        }
                     }
                 }
             }

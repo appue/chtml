@@ -1,20 +1,21 @@
 ﻿.mod_cate_list {
     width: 100%;
     display: table;
-    border: 1px solid $color_border;
-    background: $bg_list;
+    border: 1px solid $color-border;
+    background: #fff;
     margin-bottom: 10px;
     dt {
-        background: $text;
+        background: $bg-list;
         text-align: center;
+        margin-bottom: 10px;
         @include box();
         div {
             line-height: 40px;
-            color: #fff;
+            color: #000;
             display: block;
             padding: 0 10px;
-            border-bottom: 1px solid $color_border;
-            border-right: 1px solid $color_border;
+            border-bottom: 1px solid $color-border;
+            border-right: 1px solid $color-border;
             &:nth-child(1),
             &:nth-child(2) {
                 width: 30px;
@@ -37,13 +38,14 @@
     }
     dd {
         text-align: center;
+        background: #f1f1f1;
         @include box();
         div {
             line-height: 30px;
             display: block;
             padding: 0 10px;
-            border-bottom: 1px solid $color_border;
-            border-right: 1px solid $color_border;
+            border-bottom: 1px solid $color-border;
+            border-right: 1px solid $color-border;
             &:nth-child(1),
             &:nth-child(2) {
                 width: 30px;
@@ -91,7 +93,7 @@
 
     .b_0 {
         border-bottom: 10px solid #fff;
-        border-top: 1px solid $color_border;
+        border-top: 1px solid $color-border;
     }
 
     .b_1 {
