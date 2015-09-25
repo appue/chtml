@@ -68,7 +68,37 @@ Request:
 Response:
 ```
 {
+	ArticleList: [
+		{
+			ArticleId: 帖子ID
+			Images: [ 帖子里的图片
+				{
+					ImageUrl: 帖子图片
+					Description: 帖子描述
+					Width: 切割出来的图片的宽度
+					Height: 切割出来的图片的高度
+				}
+			]
 
+			Author: {
+				UserId: 帖子发布者ID
+				ImageUrl: 帖子发布者头像
+				UserName: 帖子发布者名称
+			}
+
+			TotalCollect: 帖子被收藏的总数
+
+            帖子所属栏目名称（一级、二级、三级名称）不会跨栏目，这个栏目是用户选择的
+			CategoryList: [
+				{
+					CateId: 栏目ID
+					CateName: 栏目名称
+				}
+			]
+		}
+	]
+
+	Total: 总条数
 
     此处格式固定，服务器返回验证数据
     Response: {
