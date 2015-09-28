@@ -73,6 +73,31 @@ Response:
 }
 ```
 
+##### getListBanner
+> 获取广告列表
+
+Request:
+```
+{
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+
 ##### getArticleList
 >获取文章列表
 
@@ -130,7 +155,7 @@ Response:
 }
 ```
 
-#### getListClub
+##### getListClub
 > 获取圈子列表，按ID大到小排序
 
 Request:
@@ -178,7 +203,7 @@ Response:
 }
 ```
 
-#### addClub
+##### addClub
 > 添加圈子
 
 Request:
@@ -206,7 +231,7 @@ Response:
 }
 ```
 
-#### getListComment
+##### getListComment
 > 获取评论列表
 
 Request:
@@ -252,7 +277,7 @@ Response:
 }
 ```
 
-#### delComment
+##### delComment
 > 删除某条评论
 
 Request:
@@ -279,7 +304,7 @@ Response:
 }
 ```
 
-#### getReport
+##### getReport
 > 举报管理,获取举报的列表
 
 Request:
@@ -312,7 +337,7 @@ Response:
 }
 ```
 
-#### delReport
+##### delReport
 > 删除某个举报
 
 Request:
@@ -339,8 +364,8 @@ Response:
 }
 ```
 
-#### getListSubject
-> 删除某个举报
+##### getListSubject
+> 获取专题列表
 
 Request:
 ```
@@ -393,7 +418,7 @@ Response:
 }
 ```
 
-#### addSubject
+##### addSubject
 > 添加专题
 
 Request:
@@ -425,7 +450,7 @@ Response:
 }
 ```
 
-#### getListActivity
+##### getListActivity
 > 活动列表
 
 Request:
@@ -481,7 +506,7 @@ Response:
 }
 ```
 
-#### addActivity
+##### addActivity
 > 添加活动
 
 Request:
@@ -513,4 +538,129 @@ Response:
 }
 ```
 
+##### getListUser
+> 获取用户列表
+
+Request:
+```
+{
+    PageIndex: 当前页码
+    PageSize: 每页显示多少条记录
+
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    UserId: 用户ID
+    UserName: 用户名
+
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+
+##### addUser
+> 添加用户
+
+Request:
+```
+{
+    UserName: 用户名称
+    Phone: 用户手机号
+    Password: 用户密码
+
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+
+##### getListAdmin
+> 获取管理员列表
+
+Request:
+```
+{
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    UserId: 管理员Id
+    UserName: 管理员名称
+
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+
+##### getListFeedback
+> 获取反馈列表
+
+Request:
+```
+{
+    PageIndex: 当前页码
+    PageSize: 每页显示多少条记录
+
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    List: [
+        {
+            FeedbackId: 反馈Id
+            Content: 反馈内容
+            Contact: 联系方式
+        }
+    ]
+
+    Total: 总数
+
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
 
