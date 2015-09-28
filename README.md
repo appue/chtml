@@ -8,21 +8,12 @@
 - npm install
 
 ##### 运行
-1.看接口相关文档
-- gulp --run word
 
-2.运行HTML模板
-- gulp --run html
-
-3.运行JS开发环境
+1.运行JS开发环境
 在运行开发环境前需要运行命令：
 - gulp inject (--f [项目名称])
 
 - gulp
-
-4.JS编译成正式环境下的代码
-- gulp --run build || gulp --run build --g app [生成APP压缩包]
-- gulp --run build --g web  [生成H5压缩包]
 
 
 ### 接口协议
@@ -513,7 +504,6 @@ Request:
 Response:
 ```
 {
-
     此处格式固定，服务器返回验证数据
     Response: {
         Time: 服务器当前时间
