@@ -5,8 +5,8 @@ angular.module('Tjoys')
     $rootScope,
     widget
 ){
-    $rootScope.showHeader = true;
-    $rootScope.Menu = "article";
+    $rootScope.Menu    = 'article';
+    $rootScope.SubMenu = 'cate';
 
 
     $scope.showCate = function (params) {

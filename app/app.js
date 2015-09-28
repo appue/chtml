@@ -3,6 +3,42 @@ angular.module('Tjoys', [
     'ui.router.router',
     'DelegateEvents'
 ])
+.run( function (
+    $rootScope,
+    $state,
+    cachePool
+) {
+    // 获取本地用户信息
+    $rootScope.UserInfo = (function () {
+        var UserInfo = cachePool.pull('UserInfo');
+
+        if (!UserInfo) {
+            UserInfo = { UserId: 0 };
+        }
+
+        return UserInfo;
+    })();
+
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+        if (toState.name == 'mange.login') {
+            if ($rootScope.UserInfo || $rootScope.UserInfo.Auth) {
+                $state.go('mange.index');
+            }
+
+            return;
+        }         
+
+        // 用户不存在
+        if (!$rootScope.UserInfo || !$rootScope.UserInfo.Auth) {
+            event.preventDefault();
+            $state.go('mange.login', {from: fromState.name, w: 'notLogin'});
+        }
+
+        if (toState.name != 'mange.login') {
+            $rootScope.showHeader = true;
+        }
+    });
+})
 .config( function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
@@ -13,15 +49,21 @@ angular.module('Tjoys', [
         templateUrl: 'code/tp/main.html',
     })
 
-    //后台登录
+    // 后台登录
     .state('mange.login', {
         // cache: false,
         url: '/login.htm',
         templateUrl: 'code/tp/login.html',
         controller: 'tLogin'
     })
+    // 修改密码
+    .state('mange.password', {
+        url: '/password.htm',
+        templateUrl: 'code/tp/password.html',
+        controller: 'tPassword'
+    })
 
-    //后台登录
+    // 后台首页
     .state('mange.index', {
         // cache: false,
         url: '/index.htm',
@@ -29,7 +71,7 @@ angular.module('Tjoys', [
         controller: 'tIndex'
     })
 
-    //标签管理
+    // 标签管理
     .state('mange.cate', {
         // cache: false,
         url: '/cate.htm',

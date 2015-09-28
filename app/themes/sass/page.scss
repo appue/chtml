@@ -1,4 +1,20 @@
-﻿.mod_login {
+﻿//toast样式
+.mod_msg {
+    position: absolute;
+    top: 200px;
+    width: 100%;
+    z-index: 10;
+    text-align: center;
+    color: #fff;
+    span {
+        display: inline-block;
+        padding: 10px 20px;
+        background: rgba(0, 0, 0, 0.7);
+        @include border-radius(5px);
+    }
+}
+
+.mod_login {
     width: 300px;
     margin: 0 auto;
     margin-top: 100px;
@@ -47,3 +63,38 @@
 }
 
 
+// 修改密码
+.mod_password {
+    ul {
+        margin-bottom: 10px;
+        li {
+            @include border-half($type: bottom);
+            @include box();
+            label,
+            input {
+                display: block;
+            }
+            label {
+                line-height: 40px;
+                width: 100px;
+            }
+            input {
+                line-height: 20px;
+                padding: 5px 10px;
+                width: 200px;
+            }
+        }
+    }
+    button {
+        background: $green;
+        color: #fff;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        display: block;
+        border: none;
+        line-height: 40px;
+        width: 200px;
+        font-size: 14px;
+    }
+}

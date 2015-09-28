@@ -14,21 +14,24 @@ angular.module('Tjoys')
 ) {
 
     // 获取本地用户信息
-    $rootScope.UserInfo = (function () {
-        var UserInfo = cachePool.pull('UserInfo');
+    // $rootScope.UserInfo = (function () {
+    //     var UserInfo = cachePool.pull('UserInfo');
 
-        if (!UserInfo) {
-            UserInfo = { UserId: 0 };
-        }
+    //     if (!UserInfo) {
+    //         UserInfo = { UserId: 0 };
+    //     }
 
-        return UserInfo;
-    })();
+    //     alert(JSON.stringify(UserInfo));
 
-    if ($state.current.name !== "mange.login" && !$rootScope.UserInfo.UserId) {
-        $state.go("mange.login");
-        return;
-    }
+    //     return UserInfo;
+    // })();
 
+    // if ($state.current.name !== "mange.login" && !$rootScope.UserInfo.UserId) {
+    //     $state.go("mange.login");
+    //     return;
+    // }
+
+    // 用户登录
 
     var toastTimer = null,
         dataPool = $cacheFactory('dataPool');
@@ -47,7 +50,7 @@ angular.module('Tjoys')
          * @param msg, time
          */
         msgToast: function (msg, time) {
-            var toastDom = angular.element(document.querySelector('.notifier'));
+            var toastDom = angular.element(document.querySelector('.mod_msg'));
 
             if (!toastDom.length) {
                 var toastTpl = $compile('<div class="mod_msg" ng-click="notification=null" ng-show="notification"><span>{{notification}}</span></div>');

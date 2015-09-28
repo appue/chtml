@@ -6,9 +6,5 @@ angular.module('Tjoys')
     $rootScope,
     widget
 ){
-    $rootScope.showHeader = true;
-
-    console.log($rootScope);
-
     $rootScope.Menu = "club";
 });

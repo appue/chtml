@@ -1,13 +1,13 @@
-<div class="mod_menu" ng-class="{show: showHeader}">
+<div ng-if="showHeader" class="mod_menu">
     <ul>
         <li ng-class="{show: Menu == 'web'}">
             <dl>
                 <dt>营销管理</dd>
                 <dd><a ui-sref="mange.banner">广告管理</a></dd>
-                <!-- <dd><a ui-sref="mange.login">欢迎页管理</a></dd> -->
+                <!-- <dd><a ui-sref="mange.welcome">欢迎页管理</a></dd> -->
                 <dd><a ui-sref="mange.msg">消息群发</a></dd>
                 <dt>个人设置</dd>
-                <dd><a ui-sref="mange.msg">修改密码</a></dd>
+                <dd><a ng-class="{current: SubMenu=='password'}" ui-sref="mange.password">修改密码</a></dd>
             </dl>
         </li>
         <li ng-class="{show: Menu == 'article'}">
@@ -18,21 +18,21 @@
                 <dt>评论管理</dt>
                 <dd><a ui-sref="mange.comment">全部评论</a></dd>
                 <dt>其他管理</dt>
-                <dd><a ui-sref="mange.cate">标签管理</a></dd>
-                <dd><a ui-sref="mange.report">举报管理</a></dd>
+                <dd><a ng-class="{current: SubMenu=='cate'}" ui-sref="mange.cate">标签管理</a></dd>
+                <dd><a ng-class="{current: SubMenu=='report'}" ui-sref="mange.report">举报管理</a></dd>
             </dl>
         </li>
         <li ng-class="{show: Menu == 'club'}">
             <dl>
                 <dt>圈子管理</dt>
                 <dd><a ui-sref="mange.club">圈子列表</a></dd>
-                <dd><a ui-sref="mange.club">圈内帖子</a></dd>
+                <dd><a ui-sref="mange.club-detail">圈内帖子</a></dd>
                 <dt>专题管理</dt>
                 <dd><a ui-sref="mange.subject">专题列表</a></dd>
-                <dd><a ui-sref="mange.subject">新建专题</a></dd>
+                <dd><a ui-sref="mange.subject-add">新建专题</a></dd>
                 <dt>活动管理</dt>
                 <dd><a ui-sref="mange.activity">活动列表</a></dd>
-                <dd><a ui-sref="mange.activity">创建活动</a></dd>
+                <dd><a ui-sref="mange.activity-add">创建活动</a></dd>
             </dl>
         </li>
         <li ng-class="{show: Menu == 'user'}">
@@ -40,14 +40,14 @@
                 <dt>用户管理</dt>
                 <dd><a ui-sref="mange.user">用户列表</a></dd>
                 <!-- <dd><a ui-sref="mange.login">等级列表</a></dd> -->
-                <dd><a ui-sref="mange.user">新增用户</a></dd>
+                <dd><a ui-sref="mange.user-add">新增用户</a></dd>
             </dl>
         </li>
         <li ng-class="{show: Menu == 'mange'}">
             <dl>
                 <dt>客服管理</dt>
-                <dd><a ui-sref="mange.login">管理员列表</a></dd>
-                <dd><a ui-sref="mange.login">意见反馈</a></dd>
+                <dd><a ui-sref="mange.admin">管理员列表</a></dd>
+                <dd><a ui-sref="mange.notice">意见反馈</a></dd>
                 <!-- <dd><a ui-sref="mange.login">等级列表</a></dd> -->
             </dl>
         </li>
