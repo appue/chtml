@@ -138,3 +138,51 @@ Response:
     }
 }
 ```
+
+#### getListClub
+> 获取圈子列表，按ID大到小排序
+
+Request:
+```
+{   
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    ClubList: [
+        {
+            ClubId: 圈子ID
+            ClubName: 圈子名称
+            ImageUrl: 圈子封面图
+            Description: 圈子简介
+            TotalUser: 圈子成员数目
+            TotalArticle: 圈子帖子数目
+            Letter: 圈子所属字母
+            UpdateTime: 圈子最后更新的时间（用户在圈子里发表内容都会更新这个时间）
+            CreateTime: 圈子创建的时间
+
+            圈子所属栏目名称（一级、二级、三级名称）不会跨栏目，这个栏目是后台设置好的，跟圈子里的帖子没任何关系
+            帖子发布是用户自己选择栏目
+            CategoryList: [
+                {
+                    CateId: 栏目ID
+                    CateName: 栏目名称
+                }
+            ]
+        }
+    ]
+
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
