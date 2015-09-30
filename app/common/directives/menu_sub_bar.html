@@ -3,20 +3,41 @@
         <li ng-class="{show: Menu == 'web'}">
             <dl>
                 <dt>营销管理</dd>
-                <dd><a ui-sref="mange.banner">广告管理</a></dd>
+                <dd><a ng-class="{current: SubMenu=='banner'}" ui-sref="mange.banner">广告管理</a></dd>
                 <!-- <dd><a ui-sref="mange.welcome">欢迎页管理</a></dd> -->
-                <dd><a ui-sref="mange.msg">消息群发</a></dd>
+                <dd><a ng-class="{current: SubMenu=='msg'}" ui-sref="mange.msg">消息群发</a></dd>
+                
                 <dt>个人设置</dd>
                 <dd><a ng-class="{current: SubMenu=='password'}" ui-sref="mange.password">修改密码</a></dd>
             </dl>
         </li>
-        <li ng-class="{show: Menu == 'article'}">
+        <li ng-class="{show: Menu=='article'}">
             <dl>
                 <dt>图片管理</dt>
-                <dd><a ui-sref="mange.list">未推荐图片</a></dd>
-                <dd><a ui-sref="mange.list">已推荐图片</a></dd>
+                <dd>
+                    <a ng-class="{current: SubMenu=='list'}" ui-sref="mange.list" ui-sref-opts="{inherit: false}">
+                        图片列表
+                    </a>
+                </dd>
+                <dd>
+                    <a ng-class="{current: SubMenu=='list-no'}" ui-sref="mange.list({type: 'no'})" ui-sref-opts="{inherit: false}">
+                        未推荐图片
+                    </a>
+                </dd>
+                <dd>
+                    <a ng-class="{current: SubMenu=='list-yes'}" ui-sref="mange.list({type: 'yes'})" ui-sref-opts="{inherit: false}">
+                        已推荐图片
+                    </a>
+                </dd>
+                <dd>
+                    <a ng-class="{current: SubMenu=='list-home'}" ui-sref="mange.list({type: 'home'})" ui-sref-opts="{inherit: false}">
+                        首页图片
+                    </a>
+                </dd>
+
                 <dt>评论管理</dt>
-                <dd><a ui-sref="mange.comment">全部评论</a></dd>
+                <dd><a ng-class="{current: SubMenu=='comment'}" ui-sref="mange.comment">全部评论</a></dd>
+
                 <dt>其他管理</dt>
                 <dd><a ng-class="{current: SubMenu=='cate'}" ui-sref="mange.cate">标签管理</a></dd>
                 <dd><a ng-class="{current: SubMenu=='report'}" ui-sref="mange.report">举报管理</a></dd>
@@ -25,29 +46,30 @@
         <li ng-class="{show: Menu == 'club'}">
             <dl>
                 <dt>圈子管理</dt>
-                <dd><a ui-sref="mange.club">圈子列表</a></dd>
-                <dd><a ui-sref="mange.club-detail">圈内帖子</a></dd>
+                <dd><a ng-class="{current: SubMenu=='club'}" ui-sref="mange.club">圈子列表</a></dd>
+                <dd><a ng-class="{current: SubMenu=='club-add'}" ui-sref="mange.club-add">添加圈子</a></dd>
+                <dd><a ng-class="{current: SubMenu=='club-detail'}" ui-sref="mange.club-detail">圈内帖子</a></dd>
                 <dt>专题管理</dt>
-                <dd><a ui-sref="mange.subject">专题列表</a></dd>
-                <dd><a ui-sref="mange.subject-add">新建专题</a></dd>
+                <dd><a ng-class="{current: SubMenu=='subject'}" ui-sref="mange.subject">专题列表</a></dd>
+                <dd><a ng-class="{current: SubMenu=='subject-add'}" ui-sref="mange.subject-add">新建专题</a></dd>
                 <dt>活动管理</dt>
-                <dd><a ui-sref="mange.activity">活动列表</a></dd>
-                <dd><a ui-sref="mange.activity-add">创建活动</a></dd>
+                <dd><a ng-class="{current: SubMenu=='activity'}" ui-sref="mange.activity">活动列表</a></dd>
+                <dd><a ng-class="{current: SubMenu=='activity-add'}" ui-sref="mange.activity-add">创建活动</a></dd>
             </dl>
         </li>
         <li ng-class="{show: Menu == 'user'}">
             <dl>
                 <dt>用户管理</dt>
-                <dd><a ui-sref="mange.user">用户列表</a></dd>
+                <dd><a ng-class="{current: SubMenu=='user'}" ui-sref="mange.user">用户列表</a></dd>
                 <!-- <dd><a ui-sref="mange.login">等级列表</a></dd> -->
-                <dd><a ui-sref="mange.user-add">新增用户</a></dd>
+                <dd><a ng-class="{current: SubMenu=='user-add'}" ui-sref="mange.user-add">新增用户</a></dd>
             </dl>
         </li>
         <li ng-class="{show: Menu == 'mange'}">
             <dl>
                 <dt>客服管理</dt>
-                <dd><a ui-sref="mange.admin">管理员列表</a></dd>
-                <dd><a ui-sref="mange.feedback">意见反馈</a></dd>
+                <dd><a ng-class="{current: SubMenu=='admin'}" ui-sref="mange.admin">管理员列表</a></dd>
+                <dd><a ng-class="{current: SubMenu=='feedback'}" ui-sref="mange.feedback">意见反馈</a></dd>
                 <!-- <dd><a ui-sref="mange.login">等级列表</a></dd> -->
             </dl>
         </li>

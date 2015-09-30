@@ -251,6 +251,8 @@ Request:
 {   
 	CateId: 栏目ID（ID为空或者不存在现实所有文章）
 
+    Type: No(未推荐),Yes(已推荐),Home(首页),为空
+
     PageIndex: 当前页码
     PageSize: 每页显示多少条记录
 		

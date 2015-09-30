@@ -80,6 +80,25 @@ angular.module('Tjoys', [
 
 
 
+    /**
+     * 帖子列表
+     * type: yes(推荐过的图片)、no(未推荐过的图片)、home(首页推荐的图片)、不存在是显示所有推荐、未推荐的图片
+     * cateid: 栏目ID
+     */
+    .state('mange.list', {
+        url: '/list.htm?type&cateid',
+        templateUrl: 'code/tp/list.html',
+        controller: 'tList'
+    })
+
+    // 专题管理
+    .state('mange.subject', {
+        url: '/subject.htm',
+        templateUrl: 'code/tp/subject.html',
+        controller: 'tSubject'
+    })
+
+
     // $urlRouterProvider.when('', '/index.htm');
     $urlRouterProvider.otherwise('/mange/login.htm');
 
