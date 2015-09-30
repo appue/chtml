@@ -251,7 +251,7 @@ Request:
 {   
 	CateId: 栏目ID（ID为空或者不存在现实所有文章）
 
-    Type: No(未推荐),Yes(已推荐),Home(首页),为空
+    Type: No(未审核),Yes(已审核),Home(首页),为空
 
     PageIndex: 当前页码
     PageSize: 每页显示多少条记录
@@ -314,7 +314,7 @@ Request:
 ```
 {   
     ArticleId: 帖子ID
-    Type: ['Home', 'Yes', 'No'] 推荐到首页、推荐到栏目、取消推荐
+    Type: ['Home', 'Yes', 'No'] 推荐到首页、审核通过、取消审核
         
     固顶格式Header
     Header: {
