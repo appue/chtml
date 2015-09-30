@@ -167,5 +167,25 @@
 
 // 文章列表
 .list_article {
-    
+    ul {
+        li {
+            display: inline-block;
+            width: 200px;
+            padding: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            @include border-half($type: all, $color: gray);
+            div {
+                &:nth-child(1) {
+                    width: 200px;
+                    height: 100px;
+                    overflow: hidden;
+                    @include box($align: center);
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1,8 +1,16 @@
 
 <section class="list_article">
     <ul>
-        <li>
-            <div><img src="" /><div>
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
+            <div><img ng-src="{{v.Images[0].ImageUrl}}" /><div>
         </li>
     </ul>
 </section>
+
+
+<ul class="mod_btn_list">
+    <li>推荐图片</li>
+    <li>取消推荐</li>
+    <li>推荐到首页</li>
+    <li>删除图片</li>
+</ul>
