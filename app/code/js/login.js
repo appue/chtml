@@ -32,6 +32,7 @@ angular.module('Tjoys')
             UserId: 1,
             Auth: "EWED4494LFOFDF84834BCD8343"
         });
+        $state.go("mange.index");
 
         widget.ajaxRequest({
             scope: $scope,
@@ -45,9 +46,10 @@ angular.module('Tjoys')
                     UserId: res.UserId,
                     Auth: res.Auth
                 });
+				
+        		$state.go("mange.index");
             }
         });
 
-        $state.go("mange.index");
     };
 });

@@ -21,22 +21,21 @@ angular.module('Tjoys', [
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         if (toState.name == 'mange.login') {
-            if ($rootScope.UserInfo || $rootScope.UserInfo.Auth) {
-                $state.go('mange.index');
-            }
-
+			$rootScope.showHeader = false;
+            //if ($rootScope.UserInfo || $rootScope.UserInfo.Auth) {
+            //    $state.go('mange.index');
+            //}
             return;
         }         
 
         // 用户不存在
         if (!$rootScope.UserInfo || !$rootScope.UserInfo.Auth) {
+			$rootScope.showHeader = false;
             event.preventDefault();
             $state.go('mange.login', {from: fromState.name, w: 'notLogin'});
-        }
-
-        if (toState.name != 'mange.login') {
-            $rootScope.showHeader = true;
-        }
+        } else {
+			$rootScope.showHeader = true;
+		}
     });
 })
 .config( function ($stateProvider, $urlRouterProvider) {
