@@ -293,6 +293,8 @@ Response:
 					CateName: 栏目名称
 				}
 			]
+
+            EditState: [1,2] 未审核、已审核
 		}
 	]
 

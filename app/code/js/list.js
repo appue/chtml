@@ -11,7 +11,8 @@ angular.module('Tjoys')
     $rootScope.SubMenu = $stateParams.type ? 'list-'+ $stateParams.type : 'list';
 
     $scope.Page = {
-        Type: $stateParams.type || ''
+        Type: $stateParams.type || '',
+        SelectId: [] // 选择的文章ID
     };
 
     $scope.DataList = {};
@@ -44,4 +45,39 @@ angular.module('Tjoys')
             console.log($scope.DataList);
         }
     });
+
+    // 审核推荐文章
+    $scope.setCheck = function (e, id) {
+        var $that = angular.element(e.target),
+            type  = $that.attr('data-type');
+
+        if (id) $scope.Page.SelectId = [id];
+
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'setArticle',
+            data: {
+                ArticleId: $scope.Page.SelectId,
+                Type: type
+            },
+            success: function (res) {
+
+            }
+        });
+    };
+
+    // 选择ID
+    $scope.setSelect = function (e) {
+        var $that = angular.element(e.target),
+            state = false,
+            id    = $that.attr('data-id');
+
+        angular.forEach($scope.Page.SelectId, function (v, k) {
+            if (v == id) state = true
+        });
+
+        if (!state) $scope.Page.SelectId.push(id);
+
+        console.log($scope.Page.SelectId);
+    };
 });

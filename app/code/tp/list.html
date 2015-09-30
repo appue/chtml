@@ -6,10 +6,15 @@
                 <img ng-src="{{v.Images[0].ImageUrl}}" />
             </div>
             <div class="t_btn">
-                <p data-id="{{v.ArticleId}}"></p>
-                <p data-id="{{v.ArticleId}}">推荐图片</p>
-                <p data-id="{{v.ArticleId}}">推荐到首页</p>
-                <p data-id="{{v.ArticleId}}">删除图片</p>
+                <p data-id="{{v.ArticleId}}" ng-click="setSelect($event)"></p>
+                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="Yes" ng-if="v.EditState == 1">
+                    推荐图片
+                </p>
+                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="No" ng-if="v.EditState == 2">
+                    取消推荐
+                </p>
+                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="Home">推荐到首页</p>
+                <p data-id="{{v.ArticleId}}" ng-click="delData($event, v.ArticleId)">删除图片</p>
             </div>
         </li>
     </ul>
@@ -17,10 +22,10 @@
 
 
 <ul class="mod_btn_list mb10">
-    <li>推荐图片</li>
-    <li>取消推荐</li>
-    <li>推荐到首页</li>
-    <li>删除图片</li>
+    <li ng-click="setCheck($event)" data-type="Yes">推荐图片</li>
+    <li ng-click="setCheck($event)" data-type="No">取消推荐</li>
+    <li ng-click="setCheck($event)" data-type="Home">推荐到首页</li>
+    <li ng-click="delDate($event)">删除图片</li>
 </ul>
 
 <ul class="mod_page">
