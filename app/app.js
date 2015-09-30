@@ -90,6 +90,11 @@ angular.module('Tjoys', [
         templateUrl: 'code/tp/list.html',
         controller: 'tList'
     })
+    .state('mange.list-detail', {
+        url: '/list/detail/{id}.htm?type',
+        templateUrl: 'code/tp/list_detail.html',
+        controller: 'tListDetail'
+    })
 
     // 专题管理
     .state('mange.subject', {

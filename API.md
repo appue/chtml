@@ -1,6 +1,6 @@
-### 接口协议
+###接口协议
 
-##### getLogin
+#####getLogin
 > 后台登录
 
 Request:
@@ -242,7 +242,6 @@ Response:
 }
 ```
 
-
 ##### getArticleList
 > 获取文章列表
 
@@ -306,6 +305,62 @@ Response:
     }
 }
 ```
+
+##### setArticle
+> 推荐文章
+
+Request:
+```
+{   
+    ArticleId: 帖子ID
+    Type: ['Home', 'Yes', 'No'] 推荐到首页、推荐到栏目、取消推荐
+        
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+
+##### delArticle
+> 删除文章
+
+Request:
+```
+{   
+    ArticleId: 帖子ID
+        
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+
 
 ##### getClubList
 > 获取圈子列表，按ID大到小排序
@@ -387,7 +442,6 @@ Response:
     }
 }
 ```
-
 
 ##### addClub
 > 添加圈子
@@ -477,6 +531,7 @@ Response:
     }
 }
 ```
+
 
 ##### getSubjectList
 > 获取专题列表

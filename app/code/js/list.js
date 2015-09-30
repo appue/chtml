@@ -10,6 +10,10 @@ angular.module('Tjoys')
     $rootScope.Menu    = 'article';
     $rootScope.SubMenu = $stateParams.type ? 'list-'+ $stateParams.type : 'list';
 
+    $scope.Page = {
+        Type: $stateParams.type || ''
+    };
+
     $scope.DataList = {};
 
     // widget.ajaxRequest({
@@ -27,7 +31,7 @@ angular.module('Tjoys')
 
 
     widget.ajaxRequest({
-        noMask: true,
+        scope: $scope,
         url: 'getListArticle',
         data: {
             CateId: 1,

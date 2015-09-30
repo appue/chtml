@@ -98,3 +98,60 @@
         font-size: 14px;
     }
 }
+
+.mod_page {
+    @include box();
+    li {
+        padding: 0 10px;
+        text-align: center;
+        line-height: 30px;
+        margin-right: 10px;
+        background: #eee;
+        cursor: pointer;
+        @include border-half($type: all, $color: gray);
+    }
+}
+
+
+.article_detail {
+    background: #fff;
+    padding: 10px;
+    .t_content {
+        margin-bottom: 10px;
+        img {
+            max-width: 100%;
+            display: block;
+            margin-bottom: 10px;
+        }
+        div {
+            line-height: 20px;
+        }
+    }
+
+    .t_author {
+        background: #f8f8f8;
+        padding: 10px;
+        @include border-half($type: y, $color: gray);
+        @include box($align: center);
+        img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            @include border-radius(20px);
+        }
+        div {
+            line-height: 20px;
+            width: 0;
+            -webkit-box-flex: 1;
+            h4 {
+                line-height: 20px;
+                font-size: 14px;
+                font-weight: normal;
+                color: $green;
+            }
+            i {
+                padding-right: 10px;
+            }
+        }
+    }
+}

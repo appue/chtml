@@ -1,0 +1,16 @@
+<section class="article_detail">
+    <ul class="t_content">
+        <li ng-repeat="(k, v) in DataList.Images track by $index">
+            <img ng-src="{{v.ImageUrl}}" />
+            <div data-ng-bind-html="v.Description">{{v.Description}}</div>
+        </li>
+    </ul>
+
+    <div class="t_author">
+        <img ng-src="{{DataList.Author.ImageUrl}}" />
+        <div>
+            <h4>{{DataList.Author.UserName}}</h4>
+            发布到：<i ng-repeat="(k, v) in DataList.CategoryList track by $index">#{{v.CateName}}</i>
+        </div>
+    </div>
+</section>
