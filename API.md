@@ -311,7 +311,6 @@ Request:
 ```
 {   
     ArticleId: 帖子ID（是数组[1,2,3,4,5....]）
-    <!-- Type: ['Home', 'Yes', 'No'] 推荐到首页、审核通过、取消审核 -->
     Type: nCate.取消栏目推荐；yCate.推荐栏目页；yHome.推荐到首页；nHome.取消首页推荐
         
     固顶格式Header
