@@ -86,7 +86,7 @@ angular.module('Tjoys', [
      * cateid: 栏目ID
      */
     .state('mange.list', {
-        url: '/list.htm?type&cateid',
+        url: '/list.htm?type&cateid&page',
         templateUrl: 'code/tp/list.html',
         controller: 'tList'
     })

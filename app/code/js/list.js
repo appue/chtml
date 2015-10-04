@@ -2,6 +2,7 @@
 angular.module('Tjoys')
 
 .controller('tList', function (
+    $state,
     $scope,
     $rootScope,
     $stateParams,
@@ -11,40 +12,65 @@ angular.module('Tjoys')
     $rootScope.SubMenu = $stateParams.type ? 'list-'+ $stateParams.type : 'list';
 
     $scope.Page = {
+        pageIndex: parseInt($stateParams.index, 0) || 1,
+        pageSize: 20,
+
+        CateId: [],
+        tCateId: '',
+
         Type: $stateParams.type || '',
         SelectId: [] // 选择的文章ID
     };
 
     $scope.DataList = {};
 
-    // widget.ajaxRequest({
-    //     scope: $scope,
-    //     url: 'getArticleList',
-    //     data: {
-    //         CateId: parseInt($stateParams.cateid, 0) || 0,
-    //         Type: $stateParams.type || ''
-    //     },
-    //     success: function (res) {
-    //         angular.extend($scope.DataList, res);
-    //     }
-    // })
+    $scope.loadMore = function () {
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'getArticleList',
+            showPage: true,
+            data: {
+                CateId: parseInt($stateParams.cateid, 0) || 0,
+                Type: $stateParams.type || '',
+                PageIndex: $scope.Page.pageIndex,
+                PageSize: $scope.Page.pageSize
+            },
+            success: function (res) {
+                angular.extend($scope.DataList, res);
+            }
+        });
+    };
 
+    $scope.loadMore();
 
+    $scope.CateList = [];
+    $scope.getCate = function () {
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'getListCategory',
+            data: {
+                CateId: $scope.Page.tCateId
+            },
+            success: function (res) {
+                if (res.CategoryList.length > 0) {
+                    var len = $scope.CateList.length,
+                        key = $scope.Page.CateKey;
 
-    widget.ajaxRequest({
-        scope: $scope,
-        url: 'getListArticle',
-        data: {
-            CateId: 1,
-            PageIndex: 1,
-            PageSize: 100
-        },
-        success: function (res) {
-            angular.extend($scope.DataList, res);
+                    $scope.CateList.splice(key+1, len-key+1);
+                    $scope.CateList.push(res);
+                }
+            }
+        });
+    };
+    $scope.getCate();
 
-            console.log($scope.DataList);
-        }
-    });
+    $scope.changeCate = function (key) {
+        // alert($scope.Page.CateId);
+        // alert($scope.Page.CateId);
+        $scope.Page.tCateId = $scope.Page.CateId[key];
+        $scope.Page.CateKey = key;
+        $scope.getCate();
+    }
 
     // 审核推荐文章
     $scope.setCheck = function (e, id) {
@@ -79,5 +105,16 @@ angular.module('Tjoys')
         if (!state) $scope.Page.SelectId.push(id);
 
         console.log($scope.Page.SelectId);
+    };
+
+
+    // 分页
+    $scope.changePage = function (e) {
+        var $that = angular.element(e.delegationTarget);
+            id    = $that.attr("data-id");
+
+        // $state.go("mange.list", {page: id});
+        $scope.Page.pageIndex = id;
+        $scope.loadMore();
     };
 });

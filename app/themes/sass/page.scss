@@ -155,3 +155,11 @@
         }
     }
 }
+
+
+.filter_cate {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    @include border-half($type: all, $color: gray);
+}

@@ -40,6 +40,7 @@ angular.module('Tjoys')
         config: function () {
             var obj = {
                 apiSocket: 'http://m.tjoys.net/api/'
+                // apiSocket: '/api/'
             };
 
             return obj;
@@ -159,7 +160,7 @@ angular.module('Tjoys')
                     url: self.config().apiSocket + params.url || '',
 
                     // method: 'GET',
-                    // url: ENV.apiSocket + params.url + '.json' || '',
+                    // url: self.config().apiSocket + params.url + '.json' || '',
 
                     data: postOpt,
                     timeout: 15000

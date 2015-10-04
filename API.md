@@ -251,7 +251,7 @@ Request:
 {   
 	CateId: 栏目ID（ID为空或者不存在现实所有文章）
 
-    Type: No(未审核),Yes(已审核),Home(首页),为空
+    Type: nCate(未推荐栏目),yCate(已推荐栏目),yHome(已推荐首页),为空(所有推荐未推荐的文章)
 
     PageIndex: 当前页码
     PageSize: 每页显示多少条记录
@@ -269,22 +269,13 @@ Response:
 	ArticleList: [
 		{
 			ArticleId: 帖子ID
+
 			Images: [ 帖子里的图片
 				{
 					ImageUrl: 帖子图片
 					Description: 帖子描述
-					Width: 切割出来的图片的宽度
-					Height: 切割出来的图片的高度
 				}
 			]
-
-			Author: {
-				UserId: 帖子发布者ID
-				ImageUrl: 帖子发布者头像
-				UserName: 帖子发布者名称
-			}
-
-			TotalCollect: 帖子被收藏的总数
 
             帖子所属栏目名称（一级、二级、三级名称）不会跨栏目，这个栏目是用户选择的
 			CategoryList: [
@@ -294,7 +285,11 @@ Response:
 				}
 			]
 
-            EditState: [1,2] 未审核、已审核
+            EditState: [1,2] 未推荐栏目、已推荐栏目
+			HomeState: [1,2] 未推荐首页、已推荐首页
+
+            UpdateTime: 更新时间
+            CreateTime: 创建时间
 		}
 	]
 
@@ -309,14 +304,42 @@ Response:
 }
 ```
 
-##### setArticle
-> 推荐文章
+##### setArticleCheck
+> 推荐文章、取消推荐（首页推荐、取消首页推荐、栏目页推荐、取消栏目页推荐）
 
 Request:
 ```
 {   
-    ArticleId: 帖子ID
-    Type: ['Home', 'Yes', 'No'] 推荐到首页、审核通过、取消审核
+    ArticleId: 帖子ID（是数组[1,2,3,4,5....]）
+    <!-- Type: ['Home', 'Yes', 'No'] 推荐到首页、审核通过、取消审核 -->
+    Type: nCate.取消栏目推荐；yCate.推荐栏目页；yHome.推荐到首页；nHome.取消首页推荐
+        
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+
+##### setArticleCate
+> 文章栏目移动
+
+Request:
+```
+{   
+    ArticleId: 帖子ID（是数组[1,2,3,4,5....]）
         
     固顶格式Header
     Header: {
@@ -370,7 +393,7 @@ Response:
 Request:
 ```
 {   
-    ArticleId: 帖子ID
+    ArticleId: 帖子ID（是数组[1,2,3,4.....]）
         
     固顶格式Header
     Header: {
