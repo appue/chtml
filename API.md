@@ -7,7 +7,7 @@
 Request:
 ```
 {   
-    UserName: 用户名
+    Phone: 手机号
     Password: 密码（md5）
 }
 ````
