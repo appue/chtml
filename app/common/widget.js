@@ -39,8 +39,8 @@ angular.module('Tjoys')
     var tPackage = {
         config: function () {
             var obj = {
-                apiSocket: 'http://m.tjoys.net/api/'
-                // apiSocket: '/api/'
+                // apiSocket: 'http://m.tjoys.net/api/'
+                apiSocket: '/api/'
             };
 
             return obj;
@@ -156,11 +156,11 @@ angular.module('Tjoys')
                     isAckError  : true //------------Respone.Ack=Failure时是否显示错误信息
                 },
                 ajaxConfig = { //-----------------ajax请求配置
-                    method: 'POST',
-                    url: self.config().apiSocket + params.url || '',
+                    // method: 'POST',
+                    // url: self.config().apiSocket + params.url || '',
 
-                    // method: 'GET',
-                    // url: self.config().apiSocket + params.url + '.json' || '',
+                    method: 'GET',
+                    url: self.config().apiSocket + params.url + '.json' || '',
 
                     data: postOpt,
                     timeout: 15000

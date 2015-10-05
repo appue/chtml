@@ -81,13 +81,14 @@ angular.module('Tjoys')
 
         widget.ajaxRequest({
             scope: $scope,
-            url: 'setArticle',
+            url: 'setArticleCheck',
             data: {
                 ArticleId: $scope.Page.SelectId,
                 Type: type
             },
             success: function (res) {
-
+                widget.msgToast('推荐成功！');
+                $scope.loadMore();
             }
         });
     };
@@ -96,13 +97,28 @@ angular.module('Tjoys')
     $scope.setSelect = function (e) {
         var $that = angular.element(e.target),
             state = false,
+            key,
             id    = $that.attr('data-id');
 
+        // $that.addClass('select');
+        // alert($that.hasClass('select'));
+
         angular.forEach($scope.Page.SelectId, function (v, k) {
-            if (v == id) state = true
+            if (v == id) {
+                state = true;
+                key = k;
+            }
         });
 
-        if (!state) $scope.Page.SelectId.push(id);
+        if (!state) {
+            $that.addClass('select');
+            $scope.Page.SelectId.push(id);
+        }
+
+        if (state) {
+            $scope.Page.SelectId.splice(key, 1);
+            $that.removeClass('select');
+        }
 
         console.log($scope.Page.SelectId);
     };
@@ -116,5 +132,25 @@ angular.module('Tjoys')
         // $state.go("mange.list", {page: id});
         $scope.Page.pageIndex = id;
         $scope.loadMore();
+    };
+
+    // 删除
+    $scope.delData = function (e, id) {
+        var $that = angular.element(e.target),
+            type  = $that.attr('data-type');
+
+        if (id) $scope.Page.SelectId = [id];
+
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'delArticle',
+            data: {
+                ArticleId: $scope.Page.SelectId
+            },
+            success: function (res) {
+                widget.msgToast('删除成功');
+                $scope.loadMore();
+            }
+        });
     };
 });
