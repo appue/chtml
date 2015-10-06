@@ -132,28 +132,10 @@ angular.module('Tjoys')
             postOpt = angular.extend({}, postOpt, obj);
             //--数据改造加用户信息end
 
-            if (params.showPage) {
-
-                if ($scope.Page.isLoading) return;
-
-                $scope.Page.isLoading = true;
-                $scope.Page.pageIndex++;
-
-                angular.extend(postOpt, {
-                    PageIndex: $scope.Page.pageIndex,
-                    PageSize: $scope.Page.pageSize
-                });
-            }
-
             var options = {
-                    success     : function() {}, //--成功回调
-                    // msgError : // 错误提示
-                    error       : function() {}, //------错误回调
-                    showPage    : false, //----------是否启用分页功能
-                    showLoading : true, //-----------是否显示loading
-                    isLogin     : false, //----------需要登录的接口屏蔽error 错误提示
-                    // isPopup  : false, //----------请求结果是否有popup
-                    isAckError  : true //------------Respone.Ack=Failure时是否显示错误信息
+                    success: function() {}, //--成功回调
+                    error: function() {}, //--错误回调
+                    showPage: false //-----------是否启用分页功能
                 },
                 ajaxConfig = { //-----------------ajax请求配置
                     // method: 'POST',
@@ -168,36 +150,12 @@ angular.module('Tjoys')
 
             for (var i in params) options[i] = params[i];
 
-            if (options.showLoading) {
-                if (!options.showPage || (options.showPage && $scope.Page.pageIndex < 2)) {
-                    // $ionicLoading.show({
-                    //     templateUrl: 'common/directives/mod_loading.html'
-                    // });
-                }
-            }
-
             $http(ajaxConfig).success(function(data) {
 
                 if (data.Response && data.Response.Ack == "Success") {
 
-                    if ($scope) {
-                        if (!$scope.Page) {
-                            $scope.Page = {};
-                        };
-                    }
-
                     if (typeof options.success === 'function') {
                         options.success(data);
-                    }
-
-                    if (params.showPage) { //如果Total大于Index*Size，则isMore = false;
-
-                        $scope.Page.isLoading = false;
-                        $scope.Page.pageTotal = data.Total || 0;
-
-                        if (!$scope.Page.pageTotal || $scope.Page.pageTotal && ($scope.Page.pageIndex * $scope.Page.pageSize) >= $scope.Page.pageTotal) {
-                            $scope.Page.isLoading = true;
-                        }
                     }
 
                 } else {

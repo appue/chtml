@@ -31,7 +31,6 @@ angular.module('Tjoys')
         widget.ajaxRequest({
             scope: $scope,
             url: 'getArticleList',
-            showPage: true,
             data: {
                 CateId: parseInt($stateParams.cateid, 0) || 0,
                 Type: $stateParams.type || '',
