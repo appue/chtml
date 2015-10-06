@@ -12,8 +12,8 @@ angular.module('Tjoys')
     $scope.cInput = {};
 
     $scope.toLogin = function () {
-        if (!$scope.cInput.Name) {
-            widget.msgToast('请输入用户名!');
+        if (!$scope.cInput.Phone) {
+            widget.msgToast('请输入手机号!');
             return;
         }
 
@@ -32,13 +32,13 @@ angular.module('Tjoys')
             UserId: 1,
             Auth: "EWED4494LFOFDF84834BCD8343"
         });
-        $state.go("mange.index");
+        $state.go("mange.list");
 
         widget.ajaxRequest({
             scope: $scope,
             url: 'getLogin',
             data: {
-                UserName: $scope.cInput.Name,
+                Phone: $scope.cInput.Phone,
                 Password: md5($scope.cInput.Password)
             },
             success: function (res) {
@@ -47,7 +47,10 @@ angular.module('Tjoys')
                     Auth: res.Auth
                 });
 				
-        		$state.go("mange.index");
+        		$state.go("mange.list");
+            },
+            error: function (err) {
+                widget.msgToast('登录失败');
             }
         });
 

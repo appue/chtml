@@ -102,6 +102,51 @@ angular.module('Tjoys', [
         templateUrl: 'code/tp/subject.html',
         controller: 'tSubject'
     })
+    // 添加专题
+    .state('mange.subject-add', {
+        url: '/subject/add.htm',
+        templateUrl: 'code/tp/subject_add.html',
+        controller: 'tSubjectAdd'
+    })
+
+    // 活动管理
+    .state('mange.activity', {
+        url: '/activity.htm',
+        templateUrl: 'code/tp/activity.html',
+        controller: 'tActivity'
+    })
+    // 添加活动
+    .state('mange.activity-add', {
+        url: '/activity/add.htm',
+        templateUrl: 'code/tp/activity_add.html',
+        controller: 'tActivityAdd'
+    })
+
+    // 评论管理
+    .state('mange.comment', {
+        url: '/comment.htm',
+        templateUrl: 'code/tp/comment.html',
+        controller: 'tComment'
+    })
+
+    // 圈子管理
+    .state('mange.club', {
+        url: '/club.htm',
+        templateUrl: 'code/tp/club.html',
+        controller: 'tClub'
+    })
+    // 添加圈子
+    .state('mange.club-add', {
+        url: '/club/add.htm',
+        templateUrl: 'code/tp/club_add.html',
+        controller: 'tClubAdd'
+    })
+    // 圈子帖子管理
+    .state('mange.club-thread', {
+        url: '/club/thread-{id}.htm',
+        templateUrl: 'code/tp/club_thread.html',
+        controller: 'tClubThread'
+    })
 
 
     // $urlRouterProvider.when('', '/index.htm');
