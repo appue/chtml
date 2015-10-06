@@ -70,7 +70,14 @@ angular.module('Tjoys')
         $scope.Page.tCateId = $scope.Page.CateId[key];
         $scope.Page.CateKey = key;
         $scope.getCate();
-    }
+    };
+
+    $scope.setCate = function (e) {
+        if ($scope.Page.SelectId.length == 0) {
+            widget.msgToast('选择归类的图片');
+            return;
+        }
+    };
 
     // 审核推荐文章
     $scope.setCheck = function (e, id) {
@@ -78,6 +85,11 @@ angular.module('Tjoys')
             type  = $that.attr('data-type');
 
         if (id) $scope.Page.SelectId = [id];
+
+        if ($scope.Page.SelectId.length == 0) {
+            widget.msgToast('选择推荐的图片');
+            return;
+        }
 
         widget.ajaxRequest({
             scope: $scope,
@@ -87,8 +99,11 @@ angular.module('Tjoys')
                 Type: type
             },
             success: function (res) {
-                widget.msgToast('推荐成功！');
+                widget.msgToast('推荐成功');
                 $scope.loadMore();
+            },
+            error: function (err) {
+                widget.msgToast('推荐失败');
             }
         });
     };
@@ -141,6 +156,11 @@ angular.module('Tjoys')
 
         if (id) $scope.Page.SelectId = [id];
 
+        if ($scope.Page.SelectId.length == 0) {
+            widget.msgToast('选择删除的图片');
+            return;
+        }
+
         widget.ajaxRequest({
             scope: $scope,
             url: 'delArticle',
@@ -150,6 +170,9 @@ angular.module('Tjoys')
             success: function (res) {
                 widget.msgToast('删除成功');
                 $scope.loadMore();
+            },
+            error: function (err) {
+                widget.msgToast('删除失败');
             }
         });
     };
