@@ -1,0 +1,82 @@
+{
+    "ClubList": [
+        {
+            "ClubId": 1,
+            "ClubName": "圈子名称",
+            "ImageUrl": "themes/temp/1.jpg",
+            "Description": "圈子描述",
+            "TotalUser": 100,
+            "TotalArticle": 121,
+            "CreateTime": "2015-10-23 20:12:02",
+
+            "CategoryList": [
+                {
+                    "CateId": 1,
+                    "CateName": "一栏目"
+                },
+                {
+                    "CateId": 2,
+                    "CateName": "二栏目"
+                },
+                {
+                    "CateId": 3,
+                    "CateName": "三栏目"
+                }
+            ]
+        },
+        {
+            "ClubId": 1,
+            "ClubName": "圈子名称",
+            "ImageUrl": "themes/temp/1.jpg",
+            "Description": "圈子描述",
+            "TotalUser": 100,
+            "TotalArticle": 121,
+            "CreateTime": "2015-10-23 20:12:02",
+
+            "CategoryList": [
+                {
+                    "CateId": 1,
+                    "CateName": "一栏目"
+                },
+                {
+                    "CateId": 2,
+                    "CateName": "二栏目"
+                },
+                {
+                    "CateId": 3,
+                    "CateName": "三栏目"
+                }
+            ]
+        },
+        {
+            "ClubId": 1,
+            "ClubName": "圈子名称",
+            "ImageUrl": "themes/temp/1.jpg",
+            "Description": "圈子描述",
+            "TotalUser": 100,
+            "TotalArticle": 121,
+            "CreateTime": "2015-10-23 20:12:02",
+
+            "CategoryList": [
+                {
+                    "CateId": 1,
+                    "CateName": "一栏目"
+                },
+                {
+                    "CateId": 2,
+                    "CateName": "二栏目"
+                },
+                {
+                    "CateId": 3,
+                    "CateName": "三栏目"
+                }
+            ]
+        }
+    ],
+
+    "Response": {
+        "Time": 123123123,
+        "State": true,
+        "Ack": "Success"
+    }
+}
