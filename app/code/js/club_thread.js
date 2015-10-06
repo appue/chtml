@@ -1,10 +1,12 @@
 angular.module('Tjoys')
 
-.controller('tSubject', function (
+.controller('tClubThread', function (
     $scope,
     $rootScope,
     widget
 ){
     $rootScope.Menu = 'club';
-    $rootScope.SubMenu = 'subject';
+    $rootScope.SubMenu = 'club';
+
+    $scope.DataList = {};
 });

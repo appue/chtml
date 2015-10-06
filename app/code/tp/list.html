@@ -5,13 +5,14 @@
  </section>
 
 <section class="list_article">
+    <h3 ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}">全选</h3>
     <ul>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
             <div class="t_img" ui-sref="mange.list-detail({id: v.ArticleId, type: Page.Type})">
                 <img ng-src="{{v.Images[0].ImageUrl}}" />
             </div>
             <div class="t_cate">
-                <p data-id="{{v.ArticleId}}" ng-click="setSelect($event)"></p>
+                <p ng-click="setSelect($event)" data-id="{{v.ArticleId}}" data-key="{{k}}" ng-class="{select: v.Check}"></p>
                 <i ng-repeat="(i, item) in v.CategoryList track by $index">#{{item.CateName}}</i>
             </div>
             <div class="t_time">{{v.UpdateTime}}</div>
@@ -34,12 +35,13 @@
     </ul>
 </section>
 
-<ul ngd-click="changePage($event)" selector="li" class="mod_page mb10">
+<!-- <ul ngd-click="changePage($event)" selector="li" class="mod_page mb10">
     <li data-id="1">1</li>
     <li data-id="2">2</li>
     <li data-id="3">3</li>
     <li data-id="4">4</li>
-</ul>
+</ul> -->
+<show-page></show-page>
 
 
 <ul class="mod_btn_list mb10">

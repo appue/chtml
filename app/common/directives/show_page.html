@@ -1,0 +1,5 @@
+<ul ngd-click="changePage($event)" selector="li" class="mod_page mb10">
+    <li ng-repeat="(k, v) in [] | makeArr: PageNum" ng-class="{current: v == Page.pageIndex}">
+        {{v}}
+    </li>
+</ul>

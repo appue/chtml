@@ -19,12 +19,15 @@ angular.module('Tjoys')
         tCateId: '',
 
         Type: $stateParams.type || '',
-        SelectId: [] // 选择的文章ID
+        SelectId: [], // 选择的文章ID,
+        isAll: false
     };
 
     $scope.DataList = {};
 
     $scope.loadMore = function () {
+        $scope.Page.isAll = false;
+
         widget.ajaxRequest({
             scope: $scope,
             url: 'getArticleList',
@@ -84,7 +87,11 @@ angular.module('Tjoys')
         var $that = angular.element(e.target),
             type  = $that.attr('data-type');
 
-        if (id) $scope.Page.SelectId = [id];
+        if (id) {
+            $scope.Page.SelectId = [id];
+        } else {
+            $scope.getSelect();
+        }
 
         if ($scope.Page.SelectId.length == 0) {
             widget.msgToast('选择推荐的图片');
@@ -109,52 +116,103 @@ angular.module('Tjoys')
     };
 
     // 选择ID
-    $scope.setSelect = function (e) {
-        var $that = angular.element(e.target),
-            state = false,
-            key,
-            id    = $that.attr('data-id');
+    $scope.setSelect = function (e, type) {
+        if (type && type == 'all') {
+            if ($scope.Page.isAll) {
+                angular.forEach($scope.DataList.ArticleList, function (v, k) {
+                    v.Check = false;
+                });
+                $scope.Page.isAll = false;
+            } else {
+                angular.forEach($scope.DataList.ArticleList, function (v, k) {
+                    v.Check = true;
+                });
+                $scope.Page.isAll = true;
+            }
+        } else {
+            var $that = angular.element(e.target),
+                state = true,
+                key   = $that.attr('data-key'),
+                id    = $that.attr('data-id');
 
-        // $that.addClass('select');
-        // alert($that.hasClass('select'));
+            if ($scope.DataList.ArticleList[key].Check) {
+                $scope.Page.isAll = false;
+            }
 
-        angular.forEach($scope.Page.SelectId, function (v, k) {
-            if (v == id) {
-                state = true;
-                key = k;
+            $scope.DataList.ArticleList[key].Check = !$scope.DataList.ArticleList[key].Check;
+
+            angular.forEach($scope.DataList.ArticleList, function (v, k) {
+                if (!v.Check) {
+                    state = false;
+                }
+            });
+
+            if (state) {
+                $scope.Page.isAll = true;
+            } else {
+                $scope.Page.isAll = false;
+            }
+        }
+    };
+    $scope.getSelect = function () {
+        $scope.Page.SelectId = [];
+
+        angular.forEach($scope.DataList.ArticleList, function (v, k) {
+            if (v.Check) {
+                $scope.Page.SelectId.push(v.ClubId);
             }
         });
-
-        if (!state) {
-            $that.addClass('select');
-            $scope.Page.SelectId.push(id);
-        }
-
-        if (state) {
-            $scope.Page.SelectId.splice(key, 1);
-            $that.removeClass('select');
-        }
-
-        console.log($scope.Page.SelectId);
     };
+    // $scope.setSelect = function (e) {
+    //     var $that = angular.element(e.target),
+    //         state = false,
+    //         key,
+    //         id    = $that.attr('data-id');
+
+    //     // $that.addClass('select');
+    //     // alert($that.hasClass('select'));
+
+    //     angular.forEach($scope.Page.SelectId, function (v, k) {
+    //         if (v == id) {
+    //             state = true;
+    //             key = k;
+    //         }
+    //     });
+
+    //     if (!state) {
+    //         $that.addClass('select');
+    //         $scope.Page.SelectId.push(id);
+    //     }
+
+    //     if (state) {
+    //         $scope.Page.SelectId.splice(key, 1);
+    //         $that.removeClass('select');
+    //     }
+
+    //     console.log($scope.Page.SelectId);
+    // };
 
 
     // 分页
-    $scope.changePage = function (e) {
-        var $that = angular.element(e.delegationTarget);
-            id    = $that.attr("data-id");
+    // $scope.changePage = function (e) {
+    //     var $that = angular.element(e.delegationTarget);
+    //         id    = $that.attr("data-id");
 
-        // $state.go("mange.list", {page: id});
-        $scope.Page.pageIndex = id;
-        $scope.loadMore();
-    };
+    //     // $state.go("mange.list", {page: id});
+    //     $scope.Page.pageIndex = id;
+    //     $scope.loadMore();
+    // };
 
     // 删除
     $scope.delData = function (e, id) {
         var $that = angular.element(e.target),
             type  = $that.attr('data-type');
 
-        if (id) $scope.Page.SelectId = [id];
+        if (id) {
+            $scope.Page.SelectId = [id];
+        } else {
+            $scope.getSelect();
+        }
 
         if ($scope.Page.SelectId.length == 0) {
             widget.msgToast('选择删除的图片');

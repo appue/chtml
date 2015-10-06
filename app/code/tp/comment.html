@@ -1,3 +1,30 @@
-sadfasdfasd
+<dl class="mod_list mb10">
+    <dt>
+        <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
+        <div>编号</div>
+        <div>被评论帖子</div>
+        <div>评论者</div>
+        <div style="width:300px;">评论内容</div>
+        <div>评论时间</div>
+        <div>操作</div>
+    </dt>
+    <dd ng-repeat="(k, v) in DataList.CommentList track by $index">
+        <div ng-click="setSelect($event)" data-id="{{v.CommentId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
+        <div>{{v.CommentId}}</div>
+        <div>
+            <a ui-sref="mange.list-detail({id: v.ArticleId})">{{v.Images[0].Description}}</a>
+        </div>
+        <div>{{v.Author.UserName}}</div>
+        <div>{{v.Content}}</div>
+        <div>{{v.UpdateTime}}</div>
+        <div>
+            <p ng-click="delComment(v.CommentId)">删除</p>
+        </div>
+    </dd>
+</dl>
 
-<!-- <input type="file" ng-model="Deploy.currentImage" accept="image/*" app-filereader /> -->
+<show-page></show-page>
+
+<ul class="mod_btn_list mb10">
+    <li ng-click="delComment()">批量删除</li>
+</ul>

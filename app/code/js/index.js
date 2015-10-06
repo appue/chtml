@@ -6,5 +6,6 @@ angular.module('Tjoys')
     $rootScope,
     widget
 ){
-    $rootScope.Menu = "club";
+    $rootScope.Menu = "web";
+    $rootScope.SubMenu = "web";
 });

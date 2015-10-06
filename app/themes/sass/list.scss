@@ -167,6 +167,19 @@
 
 // 文章列表
 .list_article {
+    h3 {
+        line-height: 20px;
+        padding: 10px 0;
+        font-size: 14px;
+        font-weight: normal;
+        @include box($align: center);
+        &.t_checkbox {
+            @include icon($type: "\f372", $color: #666, $size: 17px, $mr: 5px);
+            &.select {
+                @include icon($type: "\f373", $color: $green, $size: 17px);
+            }
+        }
+    }
     ul {
         li {
             display: inline-block;
@@ -232,7 +245,7 @@
         display: table-row;
         div {
             display: table-cell;
-            padding: 10px 0;
+            padding: 10px;
             line-height: 20px;
             vertical-align: middle;
             @include border-half($type: bottom, $color: gray);
@@ -240,10 +253,54 @@
                 width: 50px;
                 height: 50px;
             }
+            &.t_checkbox {
+                @include icon($type: "\f372", $color: #666, $size: 17px);
+                &.select {
+                    @include icon($type: "\f373", $color: $green, $size: 17px);
+                }
+            }
         }
     }
     dt {
         font-weight: bold;
         background: #eee;
+    }
+}
+
+
+.mod_add {
+    background: #fff;
+    padding: 10px;
+    li {
+
+        line-height: 20px;
+        padding: 10px 0;
+        @include box($align: center);
+        @include border-half($type: bottom, $color: gray);
+        label {
+            width: 120px;
+            display: block;
+        }
+        input,
+        textarea {
+            display: block;
+            line-height: 20px;
+            padding: 5px;
+            width: 200px;
+            outline: none;
+            @include border-half($type: all, $color: gray);
+        }
+    }
+}
+.mod_add_btn {
+    @include box($align: center);
+    p {
+        display: block;
+        line-height: 40px;
+        background: #ddd;
+        text-align: center;
+        width: 100px;
+        margin-right: 10px;
+        cursor: pointer;
     }
 }

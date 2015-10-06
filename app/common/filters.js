@@ -40,3 +40,16 @@ angular.module('Tjoys').filter('formatScore', function () {
         return Math.floor(score / 0.5) * 10;
     };
 });
+
+/**
+ * 分页
+ */
+angular.module('Tjoys').filter('makeArr', function () {
+    return function (input, max, step) {
+        step = step || 1;
+
+        for (var i = 1; i <= max; i += step) input.push(i);
+
+        return input;
+    };
+});

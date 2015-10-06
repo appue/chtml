@@ -109,6 +109,10 @@
         background: #eee;
         cursor: pointer;
         @include border-half($type: all, $color: gray);
+        &.current {
+            background: $green;
+            color: #fff;
+        }
     }
 }
 

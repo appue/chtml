@@ -563,7 +563,7 @@ Response:
 Request:
 ```
 {
-	ClubId: 圈子ID
+	ClubId: 圈子ID(数组[1,2,3,4......])
 
     固顶格式Header
     Header: {
@@ -1128,13 +1128,11 @@ Response:
 ```
 
 ##### getCommentList
-> 获取评论列表
+> 获取评论列表(OK)
 
 Request:
 ```
 {
-    ArticleId: 帖子ID
-
     PageIndex: 当前页码
     PageSize: 每页显示多少条记录
 
@@ -1151,12 +1149,20 @@ Response:
     CommentList: [
         {
             CommentId: 评论ID
-            ArticleId: 评论关联的帖子ID
+            ArticleId: 评论关联的帖子ID,
+
             Author: {
                 UserId: 评论发布者ID
                 ImageUrl: 评论发布者头像
                 UserName: 评论发布者名称
             }
+
+            Images: [ 帖子里的图片
+                {
+                    ImageUrl: 帖子图片
+                    Description: 帖子描述
+                }
+            ]
 
             UpdateTime: 评论更新时间
             Content: 评论内容
@@ -1174,12 +1180,12 @@ Response:
 ```
 
 ##### delComment
-> 删除某条评论
+> 删除某条评论(OK)
 
 Request:
 ```
 {
-    CommentId: 评论ID
+    CommentId: 评论ID(是数组[1,2,3,4.....])
 
     固顶格式Header
     Header: {

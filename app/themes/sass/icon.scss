@@ -5,11 +5,11 @@
     $color: #000,
     $display: inline-block,
     $elem: before,
-    $line: "",
-    $width: "",
-    $height: "",
-    $align: "",
-    $background: "",
+    $line: null,
+    $width: null,
+    $height: null,
+    $align: null,
+    $background: null,
 
     $position: "", //lt
     $left: 0,
@@ -19,7 +19,10 @@
 
     $radius: 0,
 
-    $float: ""
+    $float: null,
+
+    $mr: null,
+    $ml: null
 ) {
     &:#{$elem} {
         @include font-icon();
@@ -30,23 +33,23 @@
         font-size: $size;
         color: $color;
 
-        @if $line {
+        @if $line != null  {
             line-height: $line;
         }
 
-        @if $width {
+        @if $width != null  {
             width: $width;
         }
 
-        @if $height {
+        @if $height != null  {
             height: $height;
         }
 
-        @if $align {
+        @if $align != null {
             text-align: $align;
         }
 
-        @if $background {
+        @if $background != null {
             background: $background;
         }
 
@@ -68,12 +71,20 @@
             bottom: $bottom;
         }
 
-        @if $radius {
+        @if $radius != null {
             @include border-radius($radius);
         }
 
-        @if $float {
+        @if $float != null{
             float: $float;
+        }
+
+        @if $mr != null {
+            margin-right: $mr;
+        }
+
+        @if $ml != null {
+            margin-left: $ml;
         }
     }
 }

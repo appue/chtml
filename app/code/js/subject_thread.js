@@ -1,6 +1,6 @@
 angular.module('Tjoys')
 
-.controller('tSubject', function (
+.controller('tSubjectThread', function (
     $scope,
     $rootScope,
     widget

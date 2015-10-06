@@ -1,10 +1,10 @@
 angular.module('Tjoys')
 
-.controller('tComment', function (
+.controller('tActivity', function (
     $scope,
     $rootScope,
     widget
 ){
-    $rootScope.Menu = 'article';
-    $rootScope.SubMenu = 'comment';
+    $rootScope.Menu = 'club';
+    $rootScope.SubMenu = 'activity';
 });
