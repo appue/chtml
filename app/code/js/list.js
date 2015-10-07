@@ -102,6 +102,7 @@ angular.module('Tjoys')
     // 审核推荐文章
     $scope.setCheck = function (e, id) {
         var $that = angular.element(e.target),
+            errmsg = '',
             type  = $that.attr('data-type');
 
         if (id) {
@@ -115,10 +116,25 @@ angular.module('Tjoys')
             return;
         }
 
+        switch (type) {
+            case 'nCate':
+                errmsg = '取消栏目推荐失败';
+            break;
+            case 'nHome':
+                errmsg = '取消首页推荐失败';
+            break;
+            case 'yCate':
+                errmsg = '栏目推荐失败';
+            break;
+            case 'yHome':
+                errmsg = '首页推荐失败';
+            break;
+        }
+
         widget.ajaxRequest({
             scope: $scope,
             url: 'setArticleCheck',
-            errmsg: '推荐失败',
+            errmsg: errmsg,
             data: {
                 ArticleId: $scope.Page.SelectId,
                 Type: type
@@ -177,7 +193,7 @@ angular.module('Tjoys')
 
         angular.forEach($scope.DataList.ArticleList, function (v, k) {
             if (v.Check) {
-                $scope.Page.SelectId.push(v.ClubId);
+                $scope.Page.SelectId.push(v.ArticleId);
             }
         });
     };

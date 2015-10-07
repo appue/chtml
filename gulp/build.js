@@ -20,11 +20,6 @@ switch (runType) {
         netPath = buildFolder;
     break;
 
-    case 'word':
-        netPort = argv.port || 5555;
-        netPath = './word/';
-    break;
-
     default: //--dev
         netPort = argv.port || 9999;
         netPath = './app/';
@@ -123,16 +118,6 @@ module.exports = function (gulp, $) {
             .pipe($.livereload());
 
     });
-
-
-    gulp.task('word', function() {
-
-        // $.livereload.listen();
-
-        gulp.src('./word/**/*.html')
-            .pipe($.watch('word/**/*.html', function() {}))
-            .pipe($.livereload());
-    });
     
     //--JS 注入到页面中
     gulp.task('inject', function() {
@@ -220,16 +205,6 @@ module.exports = function (gulp, $) {
                 './app/**/*.png',
                 // '!./app/themes/temp/**/*',
                 '!./app/themes/logo/**/*',
-                '!./app/bower_components/**/*'
-            ])
-            .pipe(gulp.dest(buildFolder));
-    });
-
-    //--json 迁移
-    gulp.task('movejson', function() {
-        return gulp.src([
-                './app/**/*.json',
-                '!./app/api/**/*.json',
                 '!./app/bower_components/**/*'
             ])
             .pipe(gulp.dest(buildFolder));

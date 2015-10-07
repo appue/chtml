@@ -17,16 +17,16 @@
             </div>
             <div class="t_time">{{v.UpdateTime}}</div>
             <div class="t_btn">
-                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="yCate" ng-if="v.EditState==1">
+                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="yCate" ng-if="v.EditState=='nCate'">
                     推荐栏目页
                 </p>
-                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="nCate" ng-if="v.EditState==2" class="t_color">
+                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="nCate" ng-if="v.EditState=='yCate'" class="t_color">
                     取消栏目页
                 </p>
-                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="yHome" ng-if="v.HomeState==1">
+                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="yHome" ng-if="v.HomeState=='nHome'">
                     推荐首页
                 </p>
-                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="nHome" ng-if="v.HomeState==2" class="t_color">
+                <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="nHome" ng-if="v.HomeState=='yHome'" class="t_color">
                     取消首页
                 </p>
                 <p data-id="{{v.ArticleId}}" ng-click="delData($event, v.ArticleId)">删除</p>
@@ -70,8 +70,8 @@
     <li ng-click="setCate($event)">批量归类</li>
     <li ng-click="delData($event)">批量删除</li>
 
-    <li ng-click="setCheck($event)" data-type="Yes">推荐栏目页</li>
-    <li ng-click="setCheck($event)" data-type="Yes">取消推荐栏目页</li>
-    <li ng-click="setCheck($event)" data-type="Yes">推荐首页</li>
-    <li ng-click="setCheck($event)" data-type="No">取消推荐首页</li>
+    <li ng-click="setCheck($event)" data-type="yCate">推荐栏目页</li>
+    <li ng-click="setCheck($event)" data-type="nCate">取消推荐栏目页</li>
+    <li ng-click="setCheck($event)" data-type="yHome">推荐首页</li>
+    <li ng-click="setCheck($event)" data-type="nHome">取消推荐首页</li>
 </ul>
