@@ -1,11 +1,18 @@
-<section class="filter_cate">
+<dl class="mod_path">
+    <dt>标签管理</dt>
+    <dd>您可以对标签进行管理</dd>
+</dl>
+
+<section class="filter_cate" ng-if="CateList.length > 0">
     <select ng-repeat="(k, v) in CateList track by $index" ng-options="option.CateId as option.CateName for option in v.CategoryList" ng-model="Page.CateId[k]" ng-change="changeCate(k)">
         <!-- <option ng-repeat="(i, item) in v.CategoryList track by $index" id="{{item.CateId}}">{{item.CateName}}</option> -->
     </select>
  </section>
 
-<section class="list_article">
-    <h3 ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}">全选</h3>
+<section class="list_article" ng-if="DataList.ArticleList.length > 0">
+    <h3 ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}">
+        全选
+    </h3>
     <ul>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
             <div class="t_img" ui-sref="mange.list-detail({id: v.ArticleId, type: Page.Type})">
@@ -34,6 +41,9 @@
         </li>
     </ul>
 </section>
+
+
+<div class="mod_nodata" ng-if="DataList.ArticleList.length == 0"></div>
 
 <!-- <ul ngd-click="changePage($event)" selector="li" class="mod_page mb10">
     <li data-id="1">1</li>

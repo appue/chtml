@@ -102,7 +102,7 @@ angular.module('Tjoys')
     // 审核推荐文章
     $scope.setCheck = function (e, id) {
         var $that = angular.element(e.target),
-            errmsg = '',
+            msg = '',
             type  = $that.attr('data-type');
 
         if (id) {
@@ -118,33 +118,33 @@ angular.module('Tjoys')
 
         switch (type) {
             case 'nCate':
-                errmsg = '取消栏目推荐失败';
+                msg = '取消栏目推荐';
             break;
             case 'nHome':
-                errmsg = '取消首页推荐失败';
+                msg = '取消首页推荐';
             break;
             case 'yCate':
-                errmsg = '栏目推荐失败';
+                msg = '栏目推荐';
             break;
             case 'yHome':
-                errmsg = '首页推荐失败';
+                msg = '首页推荐';
             break;
         }
 
         widget.ajaxRequest({
             scope: $scope,
             url: 'setArticleCheck',
-            errmsg: errmsg,
+            errmsg: msg +'失败',
             data: {
                 ArticleId: $scope.Page.SelectId,
                 Type: type
             },
             success: function (res) {
-                widget.msgToast('推荐成功');
+                widget.msgToast(msg +'成功');
                 $scope.loadMore();
             },
             error: function (err) {
-                widget.msgToast('推荐失败');
+                widget.msgToast(msg +'失败');
             }
         });
     };

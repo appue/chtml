@@ -30,8 +30,6 @@ angular.module('Tjoys')
                 // });
 
                 $scope.DataList = res;
-
-                // console.log($scope.DataList);
             },
             error: function (err) {
 

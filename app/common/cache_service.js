@@ -7,7 +7,7 @@ angular.module('Tjoys').factory('cachePool', function () {
             return null;
         }
 
-        var itemStr = localStorage.getItem('Tjoys_' + key),
+        var itemStr = localStorage.getItem('tjoysadm' + key),
             item;
 
         try {
@@ -42,7 +42,7 @@ angular.module('Tjoys').factory('cachePool', function () {
 
             item.expired = expires ? (Date.now() + ONE_DAY * expires) : undefined;
 
-            localStorage.setItem('Tjoys_' + key, JSON.stringify(item));
+            localStorage.setItem('tjoysadm' + key, JSON.stringify(item));
         },
 
         /**
@@ -77,15 +77,15 @@ angular.module('Tjoys').factory('cachePool', function () {
             var item = fetchItem(key);
 
             if (!item) {
-                localStorage.removeItem('Tjoys_' + key);
+                localStorage.removeItem('tjoysadm' + key);
                 return;
             }
 
             if (dataKey && item[dataKey]) {
                 item[dataKey] = undefined;
-                localStorage.setItem('Tjoys_' + key, JSON.stringify(item));
+                localStorage.setItem('tjoysadm' + key, JSON.stringify(item));
             } else {
-                localStorage.removeItem('Tjoys_' + key);
+                localStorage.removeItem('tjoysadm' + key);
             }
 
         },
@@ -105,7 +105,7 @@ angular.module('Tjoys').factory('cachePool', function () {
                 i;
 
             if (!items) {
-                localStorage.removeItem('Tjoys_' + key);
+                localStorage.removeItem('tjoysadm' + key);
                 return;
             }
 
@@ -116,7 +116,7 @@ angular.module('Tjoys').factory('cachePool', function () {
                     }
                 }
 
-                localStorage.setItem('Tjoys_' + key, JSON.stringify(items));
+                localStorage.setItem('tjoysadm' + key, JSON.stringify(items));
             }
         }
 

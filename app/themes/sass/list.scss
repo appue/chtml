@@ -170,11 +170,11 @@
     h3 {
         line-height: 20px;
         padding: 10px 0;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: normal;
         @include box($align: center);
         &.t_checkbox {
-            @include icon($type: "\f372", $color: #666, $size: 17px, $mr: 5px);
+            @include icon($type: "\f372", $color: #333, $size: 17px, $mr: 5px);
             &.select {
                 @include icon($type: "\f373", $color: $green, $size: 17px);
             }
@@ -205,7 +205,7 @@
                 p {
                     background: #fff;
                     margin-right: 10px;
-                    @include icon($type: "\f372", $color: #666, $size: 17px);
+                    @include icon($type: "\f372", $color: #333, $size: 17px);
                     &.select {
                         @include icon($type: "\f373", $color: $green, $size: 17px);
                     }
@@ -254,7 +254,7 @@
                 height: 50px;
             }
             &.t_checkbox {
-                @include icon($type: "\f372", $color: #666, $size: 17px);
+                @include icon($type: "\f372", $color: #333, $size: 17px);
                 &.select {
                     @include icon($type: "\f373", $color: $green, $size: 17px);
                 }
@@ -264,6 +264,7 @@
     dt {
         font-weight: bold;
         background: #eee;
+        padding: 5px 10px;
     }
 }
 

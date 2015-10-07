@@ -150,16 +150,24 @@ angular.module('Tjoys')
 
             for (var i in params) options[i] = params[i];
 
+            $rootScope.isLoading = true;
+
             $http(ajaxConfig).success(function(data) {
+
+                if (!data.Response.State) {
+                    self.cleanLogin();
+                }
 
                 if (data.Response && data.Response.Ack == "Success") {
 
                     if (typeof options.success === 'function') {
                         options.success(data);
                     }
-
+                    $rootScope.isLoading = false;
+                    
                 } else {
 
+                    $rootScope.isLoading = false;
                     if (options.errmsg) {
                         self.msgToast(options.errmsg);
                     }
@@ -167,6 +175,8 @@ angular.module('Tjoys')
                 }
 
             }).error(function(data) {
+                $rootScope.isLoading = false;
+
                 if (!options.isLogin) {
                     if (typeof options.error === 'function') {
                         options.error(data);
