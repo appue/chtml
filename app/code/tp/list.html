@@ -15,7 +15,7 @@
                 <p ng-click="setSelect($event)" data-id="{{v.ArticleId}}" data-key="{{k}}" ng-class="{select: v.Check}"></p>
                 <i ng-repeat="(i, item) in v.CategoryList track by $index">#{{item.CateName}}</i>
             </div>
-            <div class="t_time">{{v.UpdateTime}}</div>
+            <div class="t_time">{{v.CreateTime}}</div>
             <div class="t_btn">
                 <p data-id="{{v.ArticleId}}" ng-click="setCheck($event, v.ArticleId)" data-type="yCate" ng-if="v.EditState=='nCate'">
                     推荐栏目页
