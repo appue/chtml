@@ -285,8 +285,8 @@ Response:
 				}
 			]
 
-            EditState: [1,2] 未推荐栏目、已推荐栏目
-			HomeState: [1,2] 未推荐首页、已推荐首页
+            EditState: ('nCate','yCate') 未推荐栏目、已推荐栏目
+			HomeState: ('nHome','yHome') 未推荐首页、已推荐首页
 
             UpdateTime: 更新时间
             CreateTime: 创建时间

@@ -160,12 +160,8 @@ angular.module('Tjoys')
 
                 } else {
 
-                    if (options.isError) {
-                        if (options.msgError) {
-                            self.msgToast(options.msgError);
-                        } else {
-                            self.msgToast('数据请求错误！');
-                        }
+                    if (options.errmsg) {
+                        self.msgToast(options.errmsg);
                     }
 
                 }

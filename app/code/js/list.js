@@ -118,6 +118,7 @@ angular.module('Tjoys')
         widget.ajaxRequest({
             scope: $scope,
             url: 'setArticleCheck',
+            errmsg: '推荐失败',
             data: {
                 ArticleId: $scope.Page.SelectId,
                 Type: type
