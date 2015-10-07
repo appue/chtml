@@ -178,7 +178,7 @@ Response:
 }
 ```
 
-##### addCartgory
+##### addCategory
 > 添加栏目
 
 Request:
@@ -208,7 +208,7 @@ Response:
 }
 ```
 
-##### modifyCartgory
+##### modifyCategory
 > 修改栏目
 
 Request:
@@ -239,7 +239,7 @@ Response:
 }
 ```
 
-##### delCartgory
+##### delCategory
 > 删除栏目(这个暂时保留)
 
 Request:
