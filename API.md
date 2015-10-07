@@ -26,36 +26,6 @@ Response:
 }
 ```
 
-##### modifyOwner
-> 修改当前登录管理员的用户信息
-
-Request:
-```
-{   
-    Password: 修改的密码（MD5）
-
-    固顶格式Header
-    Header: {
-        UserId: 当前登录用户ID（未登录传空）
-        Auth: 当前登录用户Auth（未登录传空）
-    }
-}
-```
-Response:
-```
-{
-    Auth: 返回用户的Auth
-    UserId: 返回用户的UserId
-
-    此处格式固定，服务器返回验证数据
-    Response: {
-        Time: 服务器当前时间
-        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
-        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
-    }
-}
-```
-
 ##### getBannerList
 > 获取广告列表
 
@@ -72,6 +42,16 @@ Request:
 Response:
 ```
 {
+    BannerList: [
+        {
+            BannerId: ID
+            Page: 类型['home', 'guess']
+            ImageUrl: 图片地址
+            Link: 连接地址
+            Title: 标题
+        }
+    ]
+    
     此处格式固定，服务器返回验证数据
     Response: {
         Time: 服务器当前时间
@@ -81,7 +61,64 @@ Response:
 }
 ```
 
-##### getCartgoryList
+##### addBanner
+> 添加广告
+
+Request:
+```
+{
+    Title: 标题
+    ImageUrl: 图片数据（base64）
+    Link: 连接地址
+    Page: ('home', 'guess')
+
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+
+##### delBanner
+> 删除广告
+
+Request:
+```
+{
+    BannerId: BannerId
+
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+
+##### getListCategory
 > 获取栏目列表
 
 Request:
@@ -99,52 +136,36 @@ Request:
 Response:
 ```
 {
+    当前栏目的信息
+    如果为CateId为0 或者空时 CurrentCate 为空
+    CurrentCate: {
+        CateId: 栏目ID
+        CateName: 栏目名称
+        ImageUrl: 栏目封面图
+        Description: 栏目描述
+        ClubList: [相关圈子，是通过圈子反查过来的，后台设置圈子关联栏目
+            {
+                ClubId: 圈子ID
+                ClubName: 圈子名称
+                ImageUrl: 圈子封面图
+            }
+        ]
+    }
+
     CategoryList: [
         {
             CateId: 栏目ID
             CateName: 栏目名称
+            ImageUrl: 栏目封面图
+            Description: 栏目描述
             HasSub: 是否有子栏目(true/false)
-        }
-    ]
-
-    此处格式固定，服务器返回验证数据
-    Response: {
-        Time: 服务器当前时间
-        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
-        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
-    }
-}
-```
-
-##### getContentCartgory
-> 获取栏目具体内容
-
-Request:
-```
-{   
-    CateId: 栏目ID
-
-    固顶格式Header
-    Header: {
-        UserId: 当前登录用户ID（未登录传空）
-        Auth: 当前登录用户Auth（未登录传空）
-    }
-}
-```
-Response:
-```
-{
-    CateId: 栏目ID
-    CateName: 栏目名称
-    ImageUrl: 栏目图片
-    Description: 栏目描述
-
-    相关圈子，是通过圈子反查过来的，后台设置圈子关联栏目
-    ClubList: [
-        {
-            ClubId: 圈子ID
-            ClubName: 圈子名称
-            ImageUrl: 圈子封面图
+            ClubList: [
+                {
+                    ClubId: 圈子ID
+                    ClubName: 圈子名称
+                    ImageUrl: 圈子封面图
+                }
+            ]
         }
     ]
 
@@ -163,8 +184,9 @@ Response:
 Request:
 ```
 {   
+    ParentCateId: 上级栏目ID(上级栏目ID可能为空或者0)
 	CateName: 栏目名称
-    ImageUrl: 栏目图片
+    ImageUrl: 栏目图片（base64）
     Description: 栏目描述
 
     固顶格式Header
@@ -192,9 +214,10 @@ Response:
 Request:
 ```
 {   
+    ParentCateId: 上级栏目ID(上级栏目ID可能为空或者0)
 	CateId: 栏目ID
     CateName: 栏目名称
-    ImageUrl: 栏目图片
+    ImageUrl: 栏目图片（base64）
     Description: 栏目描述
 
     固顶格式Header
@@ -222,7 +245,7 @@ Response:
 Request:
 ```
 {   
-	CateId: 栏目ID
+	CateId: 栏目ID（栏目里有文章不能被删除）
 
     固顶格式Header
     Header: {
@@ -339,6 +362,7 @@ Request:
 ```
 {   
     ArticleId: 帖子ID（是数组[1,2,3,4,5....]）
+    CateId: 栏目ID
         
     固顶格式Header
     Header: {
@@ -486,6 +510,13 @@ Response:
     Description: 圈子简介
     Letter: 圈子所属字母
 
+    CategoryList: [
+        {
+            CateId: 栏目ID
+            CateName: 栏目名称
+        }
+    ]
+
     此处格式固定，服务器返回验证数据
     Response: {
         Time: 服务器当前时间
@@ -502,9 +533,10 @@ Request:
 ```
 {
     ClubName: 圈子名称
-    ImageUrl: 圈子封面图
+    ImageUrl: 圈子封面图(base64)
     Description: 圈子简介
     Letter: 圈子所属字母
+    CateId: 圈子关联的栏目ID
 
     固顶格式Header
     Header: {
@@ -537,6 +569,7 @@ Request:
     ImageUrl: 圈子封面图
     Description: 圈子简介
     Letter: 圈子所属字母
+    CateId: 圈子关联的栏目ID
 	
     固顶格式Header
     Header: {
@@ -657,6 +690,16 @@ Requeset:
 Response:
 ```
 {
+    SubjectId: 专题ID
+    LongName: 专题标题
+    ShortName: 标题简写
+    ImageUrl: 专题封面
+    Description: 专题描述
+    ClubId: 推荐的圈子ID
+    ClubName: 推荐的圈子名称
+
+    CategoryList: 推荐的栏目暂时不定，有疑问
+
     此处格式固定，服务器返回验证数据
     Response: {
         Time: 服务器当前时间
@@ -678,6 +721,8 @@ Request:
     Description: 专题描述
     ClubId: 推荐的圈子ID
     ClubName: 推荐的圈子名称
+
+    CategoryList: 推荐的栏目暂时不定，有疑问
 
     固顶格式Header
     Header: {
@@ -706,6 +751,15 @@ Request:
 {
 	SubjectId: 专题ID
 
+    LongName: 专题标题
+    ShortName: 标题简写
+    ImageUrl: 专题封面
+    Description: 专题描述
+    ClubId: 推荐的圈子ID
+    ClubName: 推荐的圈子名称
+
+    CategoryList: 推荐的栏目暂时不定，有疑问
+
     固顶格式Header
     Header: {
         UserId: 当前登录用户ID（未登录传空）
@@ -731,7 +785,7 @@ Response:
 Request:
 ```
 {
-	SubjectId: 专题ID
+	SubjectId: 专题ID（数组[1,2,3.....]）
 
     固顶格式Header
     Header: {
@@ -758,8 +812,6 @@ Response:
 Request:
 ```
 {
-    ActivityType: 活动类型(0、不分类型显示所有活动列表；1、文字类型；2、图片类型)
-
     PageIndex: 当前页码
     PageSize: 每页显示多少条记录
 
@@ -826,6 +878,27 @@ Request:
 Response:
 ```
 {
+    ActivityId: 活动ID
+    ActivityName: 活动标题
+    ActivityLabel: 类别名称（可以说是一个标签吧，编辑后台随便输入的）
+    ActivityType: 活动类型(1、文字类型；2、图片类型) （活动一旦被添加类型不能变）
+
+    ImageUrl: 活动封面图
+    Intro: 一句话描述
+    Description: 活动详细描述
+
+    UpdateTime: 活动最后更新的时间（用户在活动里发表内容都会更新这个时间）
+    CreateTime: 活动创建的时间
+
+
+    CategoryList: [ 活动归属的栏目ID
+        {
+            CateId: 栏目ID
+            CateName: 栏目名称
+            ImageUrl: 栏目封面图
+        }
+    ]
+            
     此处格式固定，服务器返回验证数据
     Response: {
         Time: 服务器当前时间
@@ -847,7 +920,10 @@ Request:
     ActivityType: 活动类型(1、文字类型；2、图片类型)
 
     ImageUrl: 活动封面图
+    Intro: 一句话描述
     Description: 活动详细描述
+
+    CateId: 所属标签
 
     固顶格式Header
     Header: {
@@ -876,6 +952,15 @@ Request:
 {
 	ActivityId: 活动ID
 
+    ActivityName: 活动标题
+    ActivityLabel: 类别名称（可以说是一个标签吧，编辑后台随便输入的）
+
+    ImageUrl: 活动封面图（base64）
+    Intro: 一句话描述
+    Description: 活动详细描述
+
+    CateId: 所属标签
+
     固顶格式Header
     Header: {
         UserId: 当前登录用户ID（未登录传空）
@@ -901,7 +986,7 @@ Response:
 Request:
 ```
 {
-	ActivityId: 活动ID
+	ActivityId: 活动ID(数组[1,2,3........])
 
     固顶格式Header
     Header: {
@@ -941,8 +1026,22 @@ Request:
 Response:
 ```
 {
-    UserId: 用户ID
-    UserName: 用户名
+    排除管理员
+    UserList: [
+        {
+            UserId: 用户ID
+            UserName: 用户名
+            ImageUrl: 用户头像
+            Sex: (1,2) 1男、2女
+            Area: 城市ID
+            Job: 岗位
+            Phone: 手机号
+            Exper: 经验值
+            CreateTime: 注册时间
+        }
+    ]
+
+    Total: 用户总数
 
     此处格式固定，服务器返回验证数据
     Response: {
@@ -953,41 +1052,14 @@ Response:
 }
 ```
 
-##### addUser
-> 添加用户
+##### delUser
+> 删除用户
 
 Request:
 ```
 {
-    UserName: 用户名称
-    Phone: 用户手机号
-    Password: 用户密码
+    UserId: 用户ID
 
-    固顶格式Header
-    Header: {
-        UserId: 当前登录用户ID（未登录传空）
-        Auth: 当前登录用户Auth（未登录传空）
-    }
-}
-```
-Response:
-```
-{
-    此处格式固定，服务器返回验证数据
-    Response: {
-        Time: 服务器当前时间
-        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
-        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
-    }
-}
-```
-
-##### modifyUser
-> 修改用户信息
-
-Requeset:
-```
-{
     固顶格式Header
     Header: {
         UserId: 当前登录用户ID（未登录传空）
@@ -1035,40 +1107,14 @@ Response:
 }
 ```
 
-##### setAdmin
-> 设置某个用户为管理员
+##### setRole
+> 设置角色
 
 Request:
 ```
 {
-	UserId: 用户ID
-
-    固顶格式Header
-    Header: {
-        UserId: 当前登录用户ID（未登录传空）
-        Auth: 当前登录用户Auth（未登录传空）
-    }
-}
-```
-Response:
-```
-{
-    此处格式固定，服务器返回验证数据
-    Response: {
-        Time: 服务器当前时间
-        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
-        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
-    }
-}
-```
-
-##### addAdmin
-> 添加管理员
-
-Request:
-```
-{
-	UserName: 用户名称
+	UserName: 用户名
+    Type: admin:管理员; user:普通用户
 
     固顶格式Header
     Header: {
@@ -1212,7 +1258,6 @@ Response:
 Request:
 ```
 {
-
     PageIndex: 当前页码
     PageSize: 每页显示多少条记录
 
