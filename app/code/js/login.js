@@ -28,11 +28,11 @@ angular.module('Tjoys')
         }
 
         // 测试用 toDo
-        widget.setLogin({
-            UserId: 1,
-            Auth: "EWED4494LFOFDF84834BCD8343"
-        });
-        $state.go("mange.list");
+        // widget.setLogin({
+        //     UserId: 1,
+        //     Auth: "EWED4494LFOFDF84834BCD8343"
+        // });
+        // $state.go("mange.list");
 
         widget.ajaxRequest({
             scope: $scope,

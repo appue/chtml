@@ -11,6 +11,7 @@ angular.module('Tjoys')
     $rootScope.Menu    = 'article';
     $rootScope.SubMenu = $stateParams.type ? 'list-'+ $stateParams.type : 'list';
 
+
     $scope.Page = {
         pageIndex: parseInt($stateParams.index, 0) || 1,
         pageSize: 20,
@@ -18,10 +19,27 @@ angular.module('Tjoys')
         CateId: [],
         tCateId: '',
 
-        Type: $stateParams.type || '',
+        // Type: $stateParams.type || '',
+        Type: '',
         SelectId: [], // 选择的文章ID,
         isAll: false
     };
+
+    $scope.tmpType = $stateParams.type || '';
+
+    switch ($scope.tmpType) {
+        case 'yes':
+            $scope.Page.Type = 'yCate';
+            break;
+        case 'no':
+            $scope.Page.Type = 'nCate';
+            break;
+        case 'home':
+            $scope.Page.Type = 'yHome';
+            break;
+        default:
+            $scope.Page.Type = '';
+    }
 
     $scope.DataList = {};
 
@@ -32,8 +50,8 @@ angular.module('Tjoys')
             scope: $scope,
             url: 'getArticleList',
             data: {
-                CateId: parseInt($stateParams.cateid, 0) || 0,
-                Type: $stateParams.type || '',
+                CateId: parseInt($stateParams.cateid, 0) || '',
+                Type: $scope.Page.Type,
                 PageIndex: $scope.Page.pageIndex,
                 PageSize: $scope.Page.pageSize
             },

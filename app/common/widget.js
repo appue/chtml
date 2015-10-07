@@ -39,8 +39,8 @@ angular.module('Tjoys')
     var tPackage = {
         config: function () {
             var obj = {
-                // apiSocket: 'http://m.tjoys.net/api/'
-                apiSocket: '/api/'
+                apiSocket: 'http://m.tjoys.net:8092/mgapi/'
+                // apiSocket: '/api/'
             };
 
             return obj;
@@ -138,11 +138,11 @@ angular.module('Tjoys')
                     showPage: false //-----------是否启用分页功能
                 },
                 ajaxConfig = { //-----------------ajax请求配置
-                    // method: 'POST',
-                    // url: self.config().apiSocket + params.url || '',
+                    method: 'POST',
+                    url: self.config().apiSocket + params.url || '',
 
-                    method: 'GET',
-                    url: self.config().apiSocket + params.url + '.json' || '',
+                    // method: 'GET',
+                    // url: self.config().apiSocket + params.url + '.json' || '',
 
                     data: postOpt,
                     timeout: 15000
