@@ -327,6 +327,9 @@ Response:
 }
 ```
 
+##### getContentArticle
+> 跟前台的接口一样，继承吧
+
 ##### setArticleCheck
 > 推荐文章、取消推荐（首页推荐、取消首页推荐、栏目页推荐、取消栏目页推荐）
 
