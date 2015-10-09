@@ -9,6 +9,8 @@
                 
                 <dt>个人设置</dd>
                 <dd><a ng-class="{current: SubMenu=='password'}" ui-sref="mange.password">修改密码</a></dd>
+                <dt>客服管理</dt>
+                <dd><a ng-class="{current: SubMenu=='feedback'}" ui-sref="mange.feedback">意见反馈</a></dd>
             </dl>
         </li>
         <li ng-class="{show: Menu=='article'}">
@@ -61,16 +63,10 @@
                 <dt>用户管理</dt>
                 <dd><a ng-class="{current: SubMenu=='user'}" ui-sref="mange.user">用户列表</a></dd>
                 <!-- <dd><a ui-sref="mange.login">等级列表</a></dd> -->
-                <dd><a ng-class="{current: SubMenu=='user-add'}" ui-sref="mange.user-add">新增用户</a></dd>
-            </dl>
-        </li>
-        <li ng-class="{show: Menu == 'mange'}">
-            <dl>
-                <dt>客服管理</dt>
+
+                <dt>管理员管理</dt>
                 <dd><a ng-class="{current: SubMenu=='admin'}" ui-sref="mange.admin">管理员列表</a></dd>
-                <dd><a ng-class="{current: SubMenu=='feedback'}" ui-sref="mange.feedback">意见反馈</a></dd>
-                <!-- <dd><a ui-sref="mange.login">等级列表</a></dd> -->
+                <dd><a ng-class="{current: SubMenu=='admin-add'}" ui-sref="mange.admin-add">新增管理员</a></dd>
             </dl>
-        </li>
     </ul>
 </div>
