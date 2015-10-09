@@ -148,6 +148,12 @@ angular.module('Tjoys', [
         controller: 'tClubThread'
     })
 
+    // 用户管理
+    .state('mange.user', {
+        url: '/club/user.htm',
+        templateUrl: 'code/tp/user.html',
+        controller: 'tUser'
+    })
 
     // $urlRouterProvider.when('', '/index.htm');
     $urlRouterProvider.otherwise('/mange/login.htm');
