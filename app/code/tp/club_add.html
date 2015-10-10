@@ -6,21 +6,26 @@
 <ul class="mod_add mb10">
     <li>
         <label>圈子名称</label>
-        <input type="text" />
+        <input ng-model="ClubName" type="text" placeholder="请输入圈子名称" />
     </li>
     <li>
         <label>圈子图片</label>
-        <input type="file" />
+        <div class="t_upload">
+            <img data-ng-src="{{ImageUrl}}" />
+            <input type="file" ng-model="ImageUrl" accept="image/*" app-filereader />
+        </div>
     </li>
     <li>
         <label>圈子简介</label>
-        <textarea></textarea>
+        <textarea ng-model="Description" placeholder="请输入圈子简介"></textarea>
     </li>
     <li>
         <label>圈子标签</label>
     </li>
 </ul>
-<div class="mod_add_btn">
-    <p>保存</p>
-    <p>取消</p>
-</div>
+
+<ul class="mod_btn_list mb10">
+    <li ng-click="addClub()">保存</li>
+</ul>
+
+<canvas id="tmp" style="display:none;"></canvas>

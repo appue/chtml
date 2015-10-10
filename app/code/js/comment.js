@@ -78,12 +78,23 @@ angular.module('Tjoys')
             }
         }
     };
+    $scope.getSelect = function () {
+        $scope.Page.SelectId = [];
+
+        angular.forEach($scope.DataList.CommentList, function (v, k) {
+            if (v.Check) {
+                $scope.Page.SelectId.push(v.CommentId);
+            }
+        });
+    };
 
     // 删除评论
     $scope.delComment = function (id) {
-        if (id) $scope.Page.SelectId = [id];
-
-        $scope.getSelectId();
+        if (id) {
+            $scope.Page.SelectId = [id];
+        } else {
+            $scope.getSelect();
+        }
 
         if ($scope.Page.SelectId.length == 0) {
             widget.msgToast('请选择要删除的评论');
