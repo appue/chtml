@@ -50,7 +50,8 @@ angular.module('Tjoys')
             scope: $scope,
             url: 'getArticleList',
             data: {
-                CateId: parseInt($stateParams.cateid, 0) || '',
+                // CateId: parseInt($stateParams.cateid, 0) || '',
+                CateId: $scope.Page.tCateId,
                 Type: $scope.Page.Type,
                 PageIndex: $scope.Page.pageIndex,
                 PageSize: $scope.Page.pageSize
@@ -62,6 +63,11 @@ angular.module('Tjoys')
     };
 
     $scope.loadMore();
+
+
+    $scope.$watch('Page.tCateId', function () {
+        $scope.loadMore();
+    });
 
     $scope.CateList = [];
     $scope.getCate = function () {
@@ -76,6 +82,10 @@ angular.module('Tjoys')
                     var len = $scope.CateList.length,
                         key = $scope.Page.CateKey;
 
+                    res.CategoryList.unshift({
+                        CateName: '选择筛选栏目'
+                    });
+                    $scope.Page.CateId.splice(key+1, len-key+1);
                     $scope.CateList.splice(key+1, len-key+1);
                     $scope.CateList.push(res);
                 }

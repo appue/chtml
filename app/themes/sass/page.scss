@@ -242,10 +242,23 @@
 
 
 .filter_cate {
-    padding: 10px;
+    // padding: 10px;
+    // background: #fff;
+    // @include border-half($type: all, $color: gray);
     margin-bottom: 10px;
-    background: #fff;
-    @include border-half($type: all, $color: gray);
+    select {
+        cursor: pointer;
+        background: transparent;
+        padding: 5px 10px;
+        font-size: 12px;
+        outline: none;
+        -webkit-appearance: none; /*for chrome*/
+        -webkit-border-radius: 0;
+        margin-right: 10px;
+        background: $green;
+        border: none;
+        color: #fff;
+    }
 }
 
 

@@ -3,15 +3,18 @@ angular.module('Tjoys')
 .controller('tComment', function (
     $scope,
     $rootScope,
+    $stateParams,
     widget
 ){
     $rootScope.Menu = 'article';
     $rootScope.SubMenu = 'comment';
 
     $scope.Page = {
-        SelectId: [],
-        pageIndex: 1,
-        pageSize: 20
+        pageIndex: parseInt($stateParams.index, 0) || 1,
+        pageSize: 20,
+
+        SelectId: [], // 选择的ID,
+        isAll: false
     };
 
     $scope.DataList = {};
@@ -25,14 +28,7 @@ angular.module('Tjoys')
                 PageSize: $scope.Page.pageSize
             },
             success: function (res) {
-                // angular.forEach(res.CommentList, function (v, k) {
-                //     v.Check = false;
-                // });
-
                 $scope.DataList = res;
-            },
-            error: function (err) {
-
             }
         });
     };
@@ -108,6 +104,7 @@ angular.module('Tjoys')
                 CommentId: $scope.Page.SelectId
             },
             success: function (res) {
+                $scope.loadMore();
                 widget.msgToast('评论删除成功');
             },
             error: function (err) {
