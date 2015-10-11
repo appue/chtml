@@ -3,7 +3,7 @@
     <dd>您可以对评论进行删除</dd>
 </dl>
 
-<dl class="mod_list" ng-class="{mb10: DataList.CommentList.length>0}">
+<dl class="mod_list mb10">
     <dt>
         <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
         <div>编号</div>
@@ -13,7 +13,7 @@
         <div>评论时间</div>
         <div>操作</div>
     </dt>
-    <dd ng-repeat="(k, v) in DataList.CommentList track by $index" ng-if="DataList.CommentList.length>0">
+    <dd ng-repeat="(k, v) in DataList.CommentList track by $index">
         <div ng-click="setSelect($event)" data-id="{{v.CommentId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
         <div>{{v.CommentId}}</div>
         <div>
@@ -27,10 +27,11 @@
         </div>
     </dd>
 </dl>
-<div class="mod_nodata" ng-if="!DataList.CommentList || DataList.CommentList.length==0"></div>
+
+<div class="mod_nodata mb10" ng-if="!DataList.CommentList || DataList.CommentList.length==0"></div>
 
 <show-page></show-page>
 
-<ul class="mod_btn_list mb10">
+<ul class="mod_btn_list mb10" ng-class="DataList.CommentList && DataList.CommentList.length>0">
     <li ng-click="delComment()">批量删除</li>
 </ul>

@@ -7,34 +7,37 @@
     <dt>
         <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
         <div>编号</div>
+        <div>圈子图片</div>
         <div>圈子名称</div>
         <div>圈子简介</div>
         <div>圈子标签</div>
         <div>帖子数</div>
         <div>成员数</div>
-        <div>圈子图片</div>
         <div>创建时间</div>
         <div>操作</div>
     </dt>
     <dd ng-repeat="(k, v) in DataList.ClubList track by $index">
         <div ng-click="setSelect($event)" data-id="{{v.ClubId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
         <div>{{v.ClubId}}</div>
-        <div><a ui-sref="mange.club-thread({id: v.ClubId})">{{v.ClubName}}</a></div>
+        <div><a ui-sref="mange.club-thread({id: v.ClubId})"><img ng-src="{{v.ImageUrl}}" /></a></div>
+        <div>{{v.ClubName}}</div>
         <div>{{v.Description}}</div>
         <div>
             <span style="padding-right:5px;" ng-repeat="(key, item) in v.CategoryList track by $index">{{item.CateName}}</span>
         </div>
         <div>{{v.TotalArticle}}</div>
         <div>{{v.TotalUser}}</div>
-        <div><img ng-src="{{v.ImageUrl}}" /></div>
         <div>{{v.CreateTime}}</div>
         <div>
-            <p>编辑</p>
+            <p ng-click="editClub(v.ClubId)">编辑</p>
             <p ng-click="delClub(v.ClubId)">删除</p>
         </div>
     </dd>
 </dl>
 
+<div class="mod_nodata mb10" ng-if="!DataList.ClubList || DataList.ClubList.length == 0"></div>
+
 <ul class="mod_btn_list mb10">
     <li ng-click="delClub()">批量删除</li>
+    <li><a ui-sref="mange.club-add">添加圈子</a></li>
 </ul>

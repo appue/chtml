@@ -1,0 +1,21 @@
+<dl class="mod_path">
+    <dt>管理员管理</dt>
+    <dd>您可以对管理员进行管理</dd>
+</dl>
+
+<dl class="mod_list mb10">
+    <dt>
+        <div>编号</div>
+        <div>用户名</div>
+        <div>操作</div>
+    </dt>
+    <dd ng-repeat="(k, v) in DataList.UserList track by $index">
+        <div>{{v.UserId}}</div>
+        <div>{{v.UserName}}</div>
+        <div>
+            <p ng-click="delRole(v.UserId)">删除</p>
+        </div>
+    </dd>
+</dl>
+
+<div class="mod_nodata" ng-if="!DataList.UserList || DataList.UserList.length == 0"></div>

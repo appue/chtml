@@ -1,0 +1,22 @@
+<dl class="mod_path">
+    <dt>管理员添加</dt>
+    <dd>您可以对管理员进行管理</dd>
+</dl>
+
+<ul class="mod_add mb10">
+    <li>
+        <label>用户名：</label>
+        <input ng-model="tInput.UserName" type="text" placeholder="请输入用户名称" />
+    </li>
+    <li>
+        <label>用户角色：</label>
+        <select ng-options="option.id as option.name for option in RoleList" ng-model="tInput.Type">
+             <!-- ng-change="changeRole(k)" -->
+        </select>
+    </li>
+</ul>
+
+<ul class="mod_btn_list mb10">
+    <li ng-click="addRole()">保存</li>
+</ul>
+

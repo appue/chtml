@@ -441,7 +441,7 @@ Response:
 ```
 
 
-##### getClubList
+##### getListClub
 > 获取圈子列表，按ID大到小排序
 
 Request:
@@ -621,7 +621,7 @@ Response:
 ```
 
 
-##### getSubjectList
+##### getListSubject
 > 获取专题列表
 
 Request:
@@ -809,7 +809,7 @@ Response:
 }
 ```
 
-##### getActivityList
+##### getListActivity
 > 活动列表
 
 Request:
@@ -1034,7 +1034,7 @@ Response:
         {
             UserId: 用户ID
             UserName: 用户名
-            ImageUrl: 用户头像
+            UserImage: 用户头像
             Sex: (1,2) 1男、2女
             Area: 城市ID
             Job: 岗位
@@ -1098,8 +1098,12 @@ Request:
 Response:
 ```
 {
-    UserId: 管理员Id
-    UserName: 管理员名称
+    UserList: [
+        {
+            UserId: 管理员Id
+            UserName: 管理员名称
+        }
+    ]
 
     此处格式固定，服务器返回验证数据
     Response: {
@@ -1116,7 +1120,8 @@ Response:
 Request:
 ```
 {
-	UserName: 用户名
+    UserId: 用户ID（跟name互斥）
+	UserName: 用户名（跟id互斥）
     Type: admin:管理员; user:普通用户
 
     固顶格式Header

@@ -3,3 +3,35 @@
     <dd>您可以对用户进行管理</dd>
 </dl>
 
+<dl class="mod_list mb10">
+    <dt>
+        <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
+        <div>编号</div>
+        <div>头像</div>
+        <div>用户昵称</div>
+        <div>性别</div>
+        <div>城市</div>
+        <div>手机号</div>
+        <div>经验值</div>
+        <div>注册时间</div>
+        <div>操作</div>
+    </dt>
+    <dd ng-repeat="(k, v) in DataList.UserList track by $index">
+        <div ng-click="setSelect($event)" data-id="{{v.UserId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
+        <div>{{v.UserId}}</div>
+        <div><img ng-src="{{v.UserImage}}" /></div>
+        <div>{{v.UserName}}</div>
+        <div>{{v.SexName}}</div>
+        <div>{{v.AreaName}}</div>
+        <div>{{v.Phone}}</div>
+        <div>{{v.Exper}}</div>
+        <div>{{v.CreateTime}}</div>
+        <div>
+            <p ng-click="delUser(v.User)">删除</p>
+        </div>
+    </dd>
+</dl>
+
+<div class="mod_nodata mb10" ng-if="!DataList.UserList || DataList.UserList.length == 0"></div>
+
+<show-page></show-page>

@@ -19,13 +19,13 @@ angular.module('Tjoys')
 
         widget.ajaxRequest({
             scope: $scope,
-            url: 'getClubList',
+            url: 'getListClub',
             data: {},
             success: function (res) {
                 $scope.DataList = res;
             },
             error: function (err) {
-                widget.msgToast('失败');
+                widget.msgToast('获取圈子失败');
             }
         });
     };

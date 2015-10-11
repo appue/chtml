@@ -150,9 +150,21 @@ angular.module('Tjoys', [
 
     // 用户管理
     .state('mange.user', {
-        url: '/club/user.htm',
+        url: '/user.htm',
         templateUrl: 'code/tp/user.html',
         controller: 'tUser'
+    })
+    // 用户管理
+    .state('mange.role', {
+        url: '/role.htm',
+        templateUrl: 'code/tp/role.html',
+        controller: 'tRole'
+    })
+    // 用户管理
+    .state('mange.role-add', {
+        url: '/role/add.htm',
+        templateUrl: 'code/tp/role_add.html',
+        controller: 'tRoleAdd'
     })
 
     // $urlRouterProvider.when('', '/index.htm');

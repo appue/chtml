@@ -240,6 +240,9 @@
 .mod_list {
     width: 100%;
     display: table;
+    padding: 10px;
+    background: #fff;
+    -webkit-box-sizing: border-box;
     dt,
     dd {
         display: table-row;
