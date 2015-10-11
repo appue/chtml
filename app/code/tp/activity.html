@@ -7,20 +7,20 @@
     <dt>
         <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
         <div>编号</div>
-        <div>活动标题</div>
-        <div>活动描述</div>
-        <div>活动类型</div>
         <div>活动封面</div>
+        <div>活动标题</div>
+        <div style="width:200px;">活动描述</div>
+        <div>活动类型</div>
         <div>创建时间</div>
         <div>操作</div>
     </dt>
     <dd ng-repeat="(k, v) in DataList.ActivityList track by $index">
         <div ng-click="setSelect($event)" data-id="{{v.ActivityId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
         <div>{{v.ActivityId}}</div>
-        <div><a ui-sref="mange.club-thread({id: v.ActivityId})">{{v.ActivityName}}</a></div>
+        <div><a ui-sref="mange.club-thread({id: v.ActivityId})"><img ng-src="{{v.ImageUrl}}" /></a></div>
+        <div>{{v.ActivityName}}</div>
         <div>{{v.Description}}</div>
         <div>{{v.ActivityLabel}}</div>
-        <div><img ng-src="{{v.ImageUrl}}" /></div>
         <div>{{v.CreateTime}}</div>
         <div>
             <p ng-click="editActivity(v.ActivityId)">编辑</p>
@@ -30,6 +30,8 @@
 </dl>
 
 <div class="mod_nodata mb10" ng-if="!DataList.ActivityList || DataList.ActivityList.length == 0"></div>
+
+<show-page></show-page>
 
 <ul class="mod_btn_list mb10">
     <li ng-click="delActivity()">批量删除</li>

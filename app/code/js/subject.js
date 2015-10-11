@@ -25,6 +25,7 @@ angular.module('Tjoys')
             scope: $scope,
             url: 'getListSubject',
             data: {
+                SortType: 3,
                 PageIndex: $scope.Page.pageIndex,
                 PageSize: $scope.Page.pageSize
             },

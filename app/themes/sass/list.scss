@@ -262,6 +262,9 @@
                     @include icon($type: "\f373", $color: $green, $size: 17px);
                 }
             }
+            a {
+                color: #333;
+            }
         }
     }
     dt {

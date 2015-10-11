@@ -1211,13 +1211,6 @@ Response:
                 UserName: 评论发布者名称
             }
 
-            Images: [ 帖子里的图片
-                {
-                    ImageUrl: 帖子图片
-                    Description: 帖子描述
-                }
-            ]
-
             UpdateTime: 评论更新时间
             Content: 评论内容
         }

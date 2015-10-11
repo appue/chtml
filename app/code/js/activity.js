@@ -25,6 +25,7 @@ angular.module('Tjoys')
             scope: $scope,
             url: 'getListActivity',
             data: {
+                ActivityType: 0,
                 PageIndex: $scope.Page.pageIndex,
                 PageSize: $scope.Page.pageSize
             },
