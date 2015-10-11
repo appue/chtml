@@ -19,7 +19,7 @@
     <dd ng-repeat="(k, v) in DataList.UserList track by $index">
         <div ng-click="setSelect($event)" data-id="{{v.UserId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
         <div>{{v.UserId}}</div>
-        <div><img ng-src="{{v.UserImage}}" /></div>
+        <div><img ng-src="{{v.UserImage || Thumb}}" /></div>
         <div>{{v.UserName}}</div>
         <div>{{v.SexName}}</div>
         <div>{{v.AreaName}}</div>

@@ -8,6 +8,8 @@ angular.module('Tjoys', [
     $state,
     cachePool
 ) {
+    $rootScope.Thumb = "themes/img/thumb.jpg";
+
     // 获取本地用户信息
     $rootScope.UserInfo = (function () {
         var UserInfo = cachePool.pull('UserInfo');

@@ -300,3 +300,25 @@
         cursor: pointer;
     }
 }
+
+
+.article_detail_text{
+    margin-bottom: 10px;
+    background: #eee;
+    li {
+        display: inline-block;
+        line-height: 30px;
+        text-align: center;
+        &.t_praise {
+            @include icon();
+        }
+        &.t_hit {
+            @include icon();
+        }
+        &.t_collect {
+            @include icon();
+        }
+    }
+}
+
+

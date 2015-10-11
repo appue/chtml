@@ -135,8 +135,7 @@ angular.module('Tjoys')
 
             var options = {
                     success: function() {}, //--成功回调
-                    error: function() {}, //--错误回调
-                    showPage: false //-----------是否启用分页功能
+                    error: function() {} //--错误回调
                 },
                 ajaxConfig = { //-----------------ajax请求配置
                     method: 'POST',
@@ -178,14 +177,8 @@ angular.module('Tjoys')
             }).error(function(data) {
                 $rootScope.isLoading = false;
 
-                if (!options.isLogin) {
-                    if (typeof options.error === 'function') {
-                        options.error(data);
-                    } else {
-                        self.msgToast('网络错误，请稍后再试！');
-                    }
-                }
-				
+                self.msgToast('网络错误，请稍后再试！');
+
 				options.error(data);
 
             });
