@@ -308,7 +308,14 @@
     li {
         display: inline-block;
         line-height: 30px;
+        padding: 5px 10px;
         text-align: center;
+        &:nth-child(1) {
+            cursor: pointer;
+            background: $green;
+            color: #fff;
+            @include icon($color: #fff, $mr: 10px);
+        }
         &.t_praise {
             @include icon();
         }

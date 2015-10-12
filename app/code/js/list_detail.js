@@ -4,6 +4,9 @@ angular.module('Tjoys')
 .controller('tListDetail', function (
     $sce,
     $scope,
+    $state,
+    $window,
+    $location,
     $rootScope,
     $stateParams,
     widget
@@ -29,4 +32,9 @@ angular.module('Tjoys')
             console.log($scope.DataList);
         }
     });
+
+    $scope.toBack = function () {
+        // console.log($location);
+        $state.go('mange.list')
+    };
 });
