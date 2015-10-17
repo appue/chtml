@@ -1,0 +1,43 @@
+<dl class="mod_path">
+    <dt>添加活动</dt>
+    <dd>您可以对活动进行管理</dd>
+</dl>
+
+<ul class="mod_add mb10">
+    <li>
+        <label>活动标题</label>
+        <input ng-model="tInput.ActivityName" type="text" placeholder="请输入活动标题" />
+    </li>
+    <li>
+        <label>活动类型</label>
+        <select ng-model="tInput.ActivityType">
+            <option id="2">图片类</option>
+            <option id="1">文字类</option>
+        </select>
+    </li>
+    <li>
+        <label>类别名称</label>
+        <input ng-model="tInput.ActivityLabel" type="text" placeholder="例如：手工控" />
+    </li>
+    <li>
+        <label>活动封面</label>
+        <div class="t_upload">
+            <input type="file" ng-model="tInput.ImageUrl" accept="image/*" app-filereader />
+            <img data-ng-src="{{tInput.ImageUrl}}" />
+        </div>
+    </li>
+    <li>
+        <label>一句话描述</label>
+        <textarea ng-model="tInput.Intro" placeholder="请输入一句话描述"></textarea>
+    </li>
+    <li>
+        <label>详细描述</label>
+        <textarea ng-model="tInput.Description" placeholder="请输入详细描述"></textarea>
+    </li>
+</ul>
+
+<ul class="mod_btn_list mb10">
+    <li ng-click="addActivity()">保存</li>
+</ul>
+
+<canvas id="tmp" style="display:none;"></canvas>

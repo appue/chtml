@@ -104,6 +104,12 @@ angular.module('Tjoys', [
         templateUrl: 'code/tp/subject.html',
         controller: 'tSubject'
     })
+    // 专题内容
+    .state('mange.subject-content', {
+        url: '/subject/content-{id}.htm',
+        templateUrl: 'code/tp/subject_content.html',
+        controller: 'tSubjectContent'
+    })
     // 添加专题
     .state('mange.subject-add', {
         url: '/subject/add.htm',

@@ -7,4 +7,53 @@ angular.module('Tjoys')
 ){
     $rootScope.Menu = 'club';
     $rootScope.SubMenu = 'subject-add';
+
+    $scope.tInput = {};
+
+    $scope.addSubject = function () {
+        if (!$scope.tInput.LongName) {
+            widget.msgToast('专题标题（长标题）不能为空');
+            return;
+        }
+        if (!$scope.tInput.ShortName) {
+            widget.msgToast('标题简写（短标题）不能为空');
+            return;
+        }
+
+        if (!$scope.tInput.ImageUrl) {
+            widget.msgToast('请上传图片');
+            return;
+        }
+
+        if (!$scope.tInput.Description) {
+            widget.msgToast('请输入专题描述');
+            return;
+        }
+
+        if (!$scope.tInput.ClubId) {
+            widget.msgToast('请输入推荐圈子');
+            return;
+        }
+
+
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'addClub',
+            data: {
+                LongName: $scope.tInput.LongName,
+                ShortName: $scope.tInput.ShortName,
+                ImageUrl: $scope.tInput.ImageUrl,
+                Description: $scope.tInput.Description,
+                ClubId: $scope.tInput.ClubId,
+                CateId: $scope.tInput.CateId
+            },
+            success: function (res) {
+                widget.msgToast('添加圈子成功');
+                $scope.tInput = {};
+            },
+            error: function (err) {
+                widget.msgToast('获取圈子失败');
+            }
+        });
+    };
 });
