@@ -1,43 +1,79 @@
-<dl class="mod_path">
-    <dt>圈子管理</dt>
-    <dd>您可以对圈子进行管理</dd>
-</dl>
+<section ng-show="!isModify">
+    <dl class="mod_path">
+        <dt>圈子管理</dt>
+        <dd>您可以对圈子进行管理</dd>
+    </dl>
 
-<dl class="mod_list mb10">
-    <dt>
-        <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
-        <div>编号</div>
-        <div>圈子图片</div>
-        <div>圈子名称</div>
-        <div style="width:250px;">圈子简介</div>
-        <div>圈子标签</div>
-        <div>帖子数</div>
-        <div>成员数</div>
-        <div>创建时间</div>
-        <div>操作</div>
-    </dt>
-    <dd ng-repeat="(k, v) in DataList.ClubList track by $index">
-        <div ng-click="setSelect($event)" data-id="{{v.ClubId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
-        <div>{{v.ClubId}}</div>
-        <div><a ui-sref="mange.club-thread({id: v.ClubId})"><img ng-src="{{v.ImageUrl}}" /></a></div>
-        <div>{{v.ClubName}}</div>
-        <div>{{v.Description}}</div>
-        <div>
-            <span style="padding-right:5px;" ng-repeat="(key, item) in v.CategoryList track by $index">{{item.CateName}}</span>
-        </div>
-        <div>{{v.TotalArticle}}</div>
-        <div>{{v.TotalUser}}</div>
-        <div>{{v.CreateTime}}</div>
-        <div>
-            <p ng-click="editClub(v.ClubId)">编辑</p>
-            <p ng-click="delClub(v.ClubId)">删除</p>
-        </div>
-    </dd>
-</dl>
+    <dl class="mod_list mb10">
+        <dt>
+            <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
+            <div>编号</div>
+            <div>圈子图片</div>
+            <div>圈子名称</div>
+            <div style="width:250px;">圈子简介</div>
+            <div>圈子标签</div>
+            <div>帖子数</div>
+            <div>成员数</div>
+            <div>创建时间</div>
+            <div>操作</div>
+        </dt>
+        <dd ng-repeat="(k, v) in DataList.ClubList track by $index">
+            <div ng-click="setSelect($event)" data-id="{{v.ClubId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
+            <div>{{v.ClubId}}</div>
+            <div><a ui-sref="mange.club-thread({id: v.ClubId})"><img ng-src="{{v.ImageUrl}}" /></a></div>
+            <div>{{v.ClubName}}</div>
+            <div>{{v.Description}}</div>
+            <div>
+                <span style="padding-right:5px;" ng-repeat="(key, item) in v.CategoryList track by $index">{{item.CateName}}</span>
+            </div>
+            <div>{{v.TotalArticle}}</div>
+            <div>{{v.TotalUser}}</div>
+            <div>{{v.CreateTime}}</div>
+            <div>
+                <p ng-click="Edit(v.ClubId)">编辑</p>
+                <p ng-click="Delete(v.ClubId)">删除</p>
+            </div>
+        </dd>
+    </dl>
 
-<div class="mod_nodata mb10" ng-if="!DataList.ClubList || DataList.ClubList.length == 0"></div>
+    <div class="mod_nodata mb10" ng-if="!DataList.ClubList || DataList.ClubList.length == 0"></div>
 
-<ul class="mod_btn_list mb10">
-    <li ng-click="delClub()">批量删除</li>
-    <li><a ui-sref="mange.club-add">添加圈子</a></li>
-</ul>
+    <ul class="mod_btn_list mb10">
+        <li ng-click="Delete()">批量删除</li>
+        <li><a ui-sref="mange.club-add">添加圈子</a></li>
+    </ul>
+</section>
+
+<section ng-show="isModify">
+    <ul class="mod_modify mb10">
+        <li>
+            <label>圈子名称</label>
+            <input ng-model="tInput.ClubName" type="text" placeholder="请输入圈子名称" />
+        </li>
+        <li>
+            <label>圈子图片</label>
+            <div class="t_upload">
+                <input type="file" ng-model="tInput.ImageUrl" accept="image/*" app-filereader />
+                <img data-ng-src="{{tInput.ImageUrl}}" />
+            </div>
+        </li>
+        <li>
+            <label>圈子简介</label>
+            <textarea ng-model="tInput.Description" placeholder="请输入圈子简介"></textarea>
+        </li>
+        <li>
+            <label>圈子字母</label>
+            <input type="text" ng-model="tInput.Letter" placeholder="请输入圈子所在的字母" />
+        </li>
+        <li>
+            <label>圈子标签</label>
+        </li>
+    </ul>
+
+    <ul class="mod_btn_list mb10">
+        <li ng-click="Submit()">保存</li>
+        <li ng-click="Cancel()" class="disable">取消</li>
+    </ul>
+
+    <canvas id="tmp" style="display:none;"></canvas>
+</section>

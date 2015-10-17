@@ -9,6 +9,8 @@ angular.module('Tjoys')
     $rootScope.Menu = 'club';
     $rootScope.SubMenu = 'subject';
 
+    $scope.isModify = false;
+
     $scope.Page = {
         pageIndex: parseInt($stateParams.index, 0) || 1,
         pageSize: 20,
@@ -89,8 +91,8 @@ angular.module('Tjoys')
         });
     };
 
-    // 删除专题
-    $scope.delSubject = function (id) {
+    // 删除
+    $scope.Delete = function (id) {
         if (id) {
             $scope.Page.SelectId = [id];
         } else {
@@ -106,7 +108,7 @@ angular.module('Tjoys')
             scope: $scope,
             url: 'delSubject',
             data: {
-                ClubId: $scope.Page.SelectId
+                SubjectId: $scope.Page.SelectId
             },
             success: function (res) {
                 $scope.loadMore();
@@ -116,5 +118,64 @@ angular.module('Tjoys')
                 widget.msgToast('删除专题失败');
             }
         });
+    };
+
+    // 编辑专题
+    $scope.Edit = function (id) {
+        $scope.isModify = true;
+
+        angular.forEach($scope.DataList.SubjectList, function (v, k) {
+            if (v.SubjectId == id) {
+                $scope.tInput = {
+                    SubjectId: v.SubjectId,
+                    LongName: v.LongName,
+                    ShortName: v.ShortName,
+                    ImageUrl: v.ImageUrl,
+                    Description: v.Description,
+                    ClubId: v.ClubId
+                };
+            }
+        });
+    };
+    // 提交编辑
+    $scope.Submit = function () {
+        if (!$scope.tInput.LongName) {
+            widget.msgToast('专题标题（长标题）不能为空');
+            return;
+        }
+        if (!$scope.tInput.ShortName) {
+            widget.msgToast('标题简写（短标题）不能为空');
+            return;
+        }
+
+        if (!$scope.tInput.ImageUrl) {
+            widget.msgToast('请上传图片');
+            return;
+        }
+
+        if (!$scope.tInput.Description) {
+            widget.msgToast('请输入专题描述');
+            return;
+        }
+
+        var data  = angular.extend({}, $scope.tInput);
+
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'modifySubject',
+            data: data,
+            success: function (res) {
+                widget.msgToast('修改专题成功');
+                $scope.tInput = {};
+                $scope.isModify = false;
+            },
+            error: function (err) {
+                widget.msgToast('修改专题失败');
+            }
+        });
+    };
+    // 取消编辑
+    $scope.Cancel = function () {
+        $scope.isModify = false;
     };
 });

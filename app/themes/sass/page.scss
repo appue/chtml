@@ -264,7 +264,8 @@
 
 
 
-.mod_add {
+.mod_add,
+.mod_modify {
     background: #fff;
     padding: 10px;
     li {
@@ -282,11 +283,13 @@
             display: block;
             line-height: 20px;
             padding: 5px;
-            width: 200px;
+            width: 300px;
             outline: none;
             @include border-half($type: all, $color: gray);
         }
-
+        textarea {
+            height: 100px;
+        }
         .t_upload {
             @include box($align: center);
             input {
@@ -308,6 +311,7 @@
                     height: 100%;
                     text-align: center;
                     background: #eee;
+                    cursor: pointer;
                 }
             }
             img {

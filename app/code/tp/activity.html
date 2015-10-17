@@ -1,39 +1,81 @@
-<dl class="mod_path">
-    <dt>活动管理</dt>
-    <dd>您可以对活动进行管理</dd>
-</dl>
+<section ng-show="!isModify">
+    <dl class="mod_path">
+        <dt>活动管理</dt>
+        <dd>您可以对活动进行管理</dd>
+    </dl>
 
-<dl class="mod_list mb10">
-    <dt>
-        <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
-        <div>编号</div>
-        <div>活动封面</div>
-        <div>活动标题</div>
-        <div style="width:250px;">活动描述</div>
-        <div>活动类型</div>
-        <div>创建时间</div>
-        <div>操作</div>
-    </dt>
-    <dd ng-repeat="(k, v) in DataList.ActivityList track by $index">
-        <div ng-click="setSelect($event)" data-id="{{v.ActivityId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
-        <div>{{v.ActivityId}}</div>
-        <div><a ui-sref="mange.club-thread({id: v.ActivityId})"><img ng-src="{{v.ImageUrl}}" /></a></div>
-        <div>{{v.ActivityName}}</div>
-        <div>{{v.Description}}</div>
-        <div>{{v.ActivityLabel}}</div>
-        <div>{{v.CreateTime}}</div>
-        <div>
-            <p ng-click="editActivity(v.ActivityId)">编辑</p>
-            <p ng-click="delActivity(v.ActivityId)">删除</p>
-        </div>
-    </dd>
-</dl>
+    <dl class="mod_list mb10">
+        <dt>
+            <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
+            <div>编号</div>
+            <div>活动封面</div>
+            <div>活动标题</div>
+            <div style="width:250px;">活动描述</div>
+            <div>活动类型</div>
+            <div>创建时间</div>
+            <div>操作</div>
+        </dt>
+        <dd ng-repeat="(k, v) in DataList.ActivityList track by $index">
+            <div ng-click="setSelect($event)" data-id="{{v.ActivityId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
+            <div>{{v.ActivityId}}</div>
+            <div><a ui-sref="mange.club-thread({id: v.ActivityId})"><img ng-src="{{v.ImageUrl}}" /></a></div>
+            <div>{{v.ActivityName}}</div>
+            <div>{{v.Description}}</div>
+            <div>{{v.ActivityLabel}}</div>
+            <div>{{v.CreateTime}}</div>
+            <div>
+                <p ng-click="Edit(v.ActivityId)">编辑</p>
+                <p ng-click="Delete(v.ActivityId)">删除</p>
+            </div>
+        </dd>
+    </dl>
 
-<div class="mod_nodata mb10" ng-if="!DataList.ActivityList || DataList.ActivityList.length == 0"></div>
+    <div class="mod_nodata mb10" ng-if="!DataList.ActivityList || DataList.ActivityList.length == 0"></div>
 
-<show-page></show-page>
+    <show-page></show-page>
 
-<ul class="mod_btn_list mb10">
-    <li ng-click="delActivity()">批量删除</li>
-    <li><a ui-sref="mange.activity-add">添加活动</a></li>
-</ul>
+    <ul class="mod_btn_list mb10">
+        <li ng-click="delSubject()">批量删除</li>
+        <li><a ui-sref="mange.activity-add">添加活动</a></li>
+    </ul>
+</section>
+
+<section ng-show="isModify">
+    <ul class="mod_modify mb10">
+        <li>
+            <label>活动标题</label>
+            <input ng-model="tInput.ActivityName" type="text" placeholder="请输入活动标题" />
+        </li>
+        <li>
+            <label>活动类型</label>
+            <span ng-if="tInput.ActivityType == 1">文字类</span>
+            <span ng-if="tInput.ActivityType == 2">图片类</span>
+        </li>
+        <li>
+            <label>类别名称</label>
+            <input ng-model="tInput.ActivityLabel" type="text" placeholder="例如：手工控" />
+        </li>
+        <li>
+            <label>活动封面</label>
+            <div class="t_upload">
+                <input type="file" ng-model="tInput.ImageUrl" accept="image/*" app-filereader />
+                <img data-ng-src="{{tInput.ImageUrl}}" />
+            </div>
+        </li>
+        <li>
+            <label>一句话描述</label>
+            <textarea ng-model="tInput.Intro" placeholder="请输入一句话描述"></textarea>
+        </li>
+        <li>
+            <label>详细描述</label>
+            <textarea ng-model="tInput.Description" placeholder="请输入详细描述"></textarea>
+        </li>
+    </ul>
+
+    <ul class="mod_btn_list mb10">
+        <li ng-click="Submit()">保存</li>
+        <li ng-click="Cancel()" class="disable">取消</li>
+    </ul>
+
+    <canvas id="tmp" style="display:none;"></canvas>
+</section>

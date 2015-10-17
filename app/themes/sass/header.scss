@@ -65,8 +65,9 @@
 .mod_menu {
     display: block;
     width: 150px;
-
+    overflow: hidden;
     ul {
+        width: 150px;
         li {
             // padding: 0 10px;
             display: none;

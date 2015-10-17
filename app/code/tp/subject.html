@@ -1,45 +1,83 @@
-<dl class="mod_path">
-    <dt>专题管理</dt>
-    <dd>您可以对专题进行管理</dd>
-</dl>
+<section ng-show="!isModify">
+    <dl class="mod_path">
+        <dt>专题管理</dt>
+        <dd>您可以对专题进行管理</dd>
+    </dl>
 
-<dl class="mod_list mb10">
-    <dt>
-        <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
-        <div>编号</div>
-        <div>专题封面</div>
-        <div>专题标题</div>
-        <div>标题简写</div>
-        <div style="width:250px;">专题描述</div>
-        <div>帖子数</div>
-        <div>创建时间</div>
-        <div>操作</div>
-    </dt>
-    <dd ng-repeat="(k, v) in DataList.SubjectList track by $index">
-        <div ng-click="setSelect($event)" data-id="{{v.SubjectId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
-        <div>{{v.SubjectId}}</div>
-        <div>
-            <a ui-sref="mange.subject-content({id: v.SubjectId})">
-                <img ng-src="{{v.ImageUrl}}" />
-            </a>
-        </div>
-        <div>{{v.LongName}}</div>
-        <div>{{v.ShortName}}</div>
-        <div>{{v.Description}}</div>
-        <div>{{v.TotalArticle}}</div>
-        <div>{{v.CreateTime}}</div>
-        <div>
-            <p ng-click="editSubject(v.SubjectId)">编辑</p>
-            <p ng-click="delSubject(v.SubjectId)">删除</p>
-        </div>
-    </dd>
-</dl>
+    <dl class="mod_list mb10">
+        <dt>
+            <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
+            <div>编号</div>
+            <div>专题封面</div>
+            <div>专题标题</div>
+            <div>标题简写</div>
+            <div style="width:250px;">专题描述</div>
+            <div>帖子数</div>
+            <div>创建时间</div>
+            <div>操作</div>
+        </dt>
+        <dd ng-repeat="(k, v) in DataList.SubjectList track by $index">
+            <div ng-click="setSelect($event)" data-id="{{v.SubjectId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
+            <div>{{v.SubjectId}}</div>
+            <div>
+                <a ui-sref="mange.subject-content({id: v.SubjectId})">
+                    <img ng-src="{{v.ImageUrl}}" />
+                </a>
+            </div>
+            <div>{{v.LongName}}</div>
+            <div>{{v.ShortName}}</div>
+            <div>{{v.Description}}</div>
+            <div>{{v.TotalArticle}}</div>
+            <div>{{v.CreateTime}}</div>
+            <div>
+                <p ng-click="Edit(v.SubjectId)">编辑</p>
+                <p ng-click="Delete(v.SubjectId)">删除</p>
+            </div>
+        </dd>
+    </dl>
 
-<div class="mod_nodata mb10" ng-if="!DataList.SubjectList || DataList.SubjectList.length == 0"></div>
+    <div class="mod_nodata mb10" ng-if="!DataList.SubjectList || DataList.SubjectList.length == 0"></div>
 
-<show-page></show-page>
+    <show-page></show-page>
 
-<ul class="mod_btn_list mb10">
-    <li ng-click="delSubject()">批量删除</li>
-    <li><a ui-sref="mange.subject-add">新建专题</a></li>
-</ul>
+    <ul class="mod_btn_list mb10">
+        <li ng-click="Delete()">批量删除</li>
+        <li><a ui-sref="mange.subject-add">新建专题</a></li>
+    </ul>
+</section>
+
+
+<section ng-show="isModify">
+    <ul class="mod_modify mb10">
+        <li>
+            <label>专题标题（长标题）</label>
+            <input ng-model="tInput.LongName" type="text" placeholder="请输入专题标题（长标题）" />
+        </li>
+        <li>
+            <label>标题简写（短标题）</label>
+            <input ng-model="tInput.ShortName" type="text" placeholder="请输入标题简写（短标题）" />
+        </li>
+        <li>
+            <label>专题封面</label>
+            <div class="t_upload">
+                <input type="file" ng-model="tInput.ImageUrl" accept="image/*" app-filereader />
+                <img data-ng-src="{{tInput.ImageUrl}}" />
+            </div>
+        </li>
+        <li>
+            <label>专题描述</label>
+            <textarea ng-model="tInput.Description" placeholder="请输入专题描述"></textarea>
+        </li>
+        <li>
+            <label>推荐圈子</label>
+            <input ng-model="tInput.ClubId" type="text" placeholder="请输入圈子ID" />
+        </li>
+    </ul>
+
+    <ul class="mod_btn_list mb10">
+        <li ng-click="Submit()">保存</li>
+        <li ng-click="Cancel()" class="disable">取消</li>
+    </ul>
+
+    <canvas id="tmp" style="display:none;"></canvas>
+</section>

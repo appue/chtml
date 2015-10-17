@@ -272,4 +272,16 @@
         background: #eee;
         padding: 5px 10px;
     }
+    dd {
+        div:last-child {
+            p {
+                background: $green;
+                text-align: center;
+                margin: 5px 0;
+                line-height: 30px;
+                cursor: pointer;
+                color: #fff;
+            }
+        }
+    }
 }

@@ -10,15 +10,15 @@
         display: block;
         line-height: 30px;
         text-align: center;
-        color: #333;
+        color: #fff;
         padding: 0 10px;
         cursor: pointer;
         margin-right: 10px;
         min-width: 90px;
         // background: -webkit-linear-gradient(top, #aea097, #75675e);
         // border: 1px solid $text;
-        background: #ddd;
-        @include border-half($type: all);
+        background: $green;
+        // @include border-half($type: all);
         &.t_select {
             background: none;
             padding: 0;
@@ -29,7 +29,13 @@
             display: block;
             height: 30px;
             width: 100%;
-            color: #333;
+            color: #fff;
+            cursor: pointer;
+            // -webkit-text-shadow: none !important;
+        }
+        &.disable {
+            background: #ddd;
+            color: #000;
         }
     }
 }

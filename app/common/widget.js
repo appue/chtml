@@ -292,6 +292,7 @@ angular.module('Tjoys')
             })
             .success(function (data) {
                 q.resolve(data);
+                $rootScope.CityList = data;
             })
             .error(function (err) {
                 q.reject(err);
@@ -304,25 +305,38 @@ angular.module('Tjoys')
          * 根据CityId 获取CityName
          */
         getCityName: function (id) {
-            var self = this;
+            var self = this,
+                CityName;
 
-            var CityName = self.getCityList().then(function (res) {
-                var name;
-
-                angular.forEach(res, function (v, k) {
+            if ($rootScope.CityList) {
+                angular.forEach($rootScope.CityList, function (v, k) {
                     angular.forEach(v.sub, function (n, i) {
                         if (n.id == id) {
-                            name = v.name +" "+ n.name;
+                            CityName = v.name +" "+ n.name;
                             return;
                         }
                     });
-                    if (name) return;                    
+                    if (CityName) return;                    
                 });
+            } else {
+                CityName = self.getCityList().then(function (res) {
+                    var name;
 
-                return name;
-            }, function (err) {
-                return null;
-            });
+                    angular.forEach(res, function (v, k) {
+                        angular.forEach(v.sub, function (n, i) {
+                            if (n.id == id) {
+                                name = v.name +" "+ n.name;
+                                return;
+                            }
+                        });
+                        if (name) return;                    
+                    });
+
+                    return name;
+                }, function (err) {
+                    return null;
+                });
+            }
 
             return CityName;
         }

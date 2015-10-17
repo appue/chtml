@@ -5,7 +5,7 @@
 
 <dl class="mod_list mb10">
     <dt>
-        <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
+        <!-- <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div> -->
         <div>编号</div>
         <div>头像</div>
         <div>用户昵称</div>
@@ -17,7 +17,7 @@
         <div>操作</div>
     </dt>
     <dd ng-repeat="(k, v) in DataList.UserList track by $index">
-        <div ng-click="setSelect($event)" data-id="{{v.UserId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
+        <!-- <div ng-click="setSelect($event)" data-id="{{v.UserId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div> -->
         <div>{{v.UserId}}</div>
         <div><img ng-src="{{v.UserImage || Thumb}}" /></div>
         <div>{{v.UserName}}</div>
@@ -27,7 +27,7 @@
         <div>{{v.Exper}}</div>
         <div>{{v.CreateTime}}</div>
         <div>
-            <p ng-click="delUser(v.User)">删除</p>
+            <p ng-click="Delete(v.UserId)">删除</p>
         </div>
     </dd>
 </dl>

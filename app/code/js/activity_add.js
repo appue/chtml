@@ -8,7 +8,9 @@ angular.module('Tjoys')
     $rootScope.Menu = 'club';
     $rootScope.SubMenu = 'activity-add';
 
-    $scope.tInput = {};
+    $scope.tInput = {
+        ActivityType: "2"
+    };
 
     $scope.addActivity = function () {
         if (!$scope.tInput.ActivityName) {
@@ -26,14 +28,13 @@ angular.module('Tjoys')
             return;
         }
 
-
         widget.ajaxRequest({
             scope: $scope,
             url: 'addActivity',
             data: {
                 ActivityName: $scope.tInput.ActivityName,
                 ActivityLabel: $scope.tInput.ActivityLabel || '',
-                ActivityType: $scope.tInput.ActivityType,
+                ActivityType: parseInt($scope.tInput.ActivityType, 0),
                 ImageUrl: $scope.tInput.ImageUrl || '',
                 Intro: $scope.tInput.Intro || '',
                 Description: $scope.tInput.Description || '',
@@ -41,7 +42,9 @@ angular.module('Tjoys')
             },
             success: function (res) {
                 widget.msgToast('添加活动成功');
-                $scope.tInput = {};
+                $scope.tInput = {
+                    ActivityType: "2"
+                };
             },
             error: function (err) {
                 widget.msgToast('获取活动失败');

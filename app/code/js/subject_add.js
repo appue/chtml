@@ -30,12 +30,6 @@ angular.module('Tjoys')
             return;
         }
 
-        if (!$scope.tInput.ClubId) {
-            widget.msgToast('请输入推荐圈子');
-            return;
-        }
-
-
         widget.ajaxRequest({
             scope: $scope,
             url: 'addClub',
