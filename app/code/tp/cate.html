@@ -6,7 +6,7 @@
 <dl class="mod_cate_list">
     <dt>
         <div></div>
-        <div><input type="checkbox" /></div>
+        <!-- <div><input type="checkbox" /></div> -->
         <div>ID</div>
         <div>标签名称</div>
         <div>操作</div>
@@ -14,9 +14,11 @@
     <list class="b_0" ng-repeat="(k, v) in CateList track by $index">
         <dd>
             <div ng-class="{sum: v.HasSub && !v.ShowSub, minus: v.ShowSub}" ng-click="showCate({e: $event, id: v.CateId, sub: v.HasSub, key: k})"></div>
+			<!--
             <div>
                 <input type="checkbox" ng-click="toggle(v.CateId)" ng-if="!v.HasSub" />
             </div>
+			-->
             <div>{{v.CateId}}</div>
             <div>{{v.CateName}}</div>
             <div>
@@ -29,7 +31,9 @@
         <list class="b_1" ng-repeat="(ik, iv) in CateList[k].Sub track by $index">
             <dd>
                 <div ng-class="{sum: iv.HasSub && !iv.ShowSub, minus: iv.ShowSub}" ng-click="showCate({e: $event,id: iv.CateId, sub: iv.HasSub, key: ik, pid: v.CateId, pkey: k})"></div>
+				<!--
                 <div><input type="checkbox" ng-click="toggle(iv.CateId)" ng-if="!iv.HasSub" /></div>
+				-->
                 <div>{{iv.CateId}}</div>
                 <div class="t_1">{{iv.CateName}}</div>
                 <div>
@@ -42,9 +46,9 @@
             <list class="b_2" ng-repeat="(jk, jv) in CateList[k].Sub[ik].Sub track by $index">
                 <dd>
                     <div></div>
-                    <div>
+               <!--      <div>
                         <input type="checkbox" ng-click="toggle(jv.CateId)" ng-if="!jv.HasSub" />
-                    </div>
+                    </div> -->
                     <div>{{jv.CateId}}</div>
                     <div class="t_2">{{jv.CateName}}</div>
                     <div>
