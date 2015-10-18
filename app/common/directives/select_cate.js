@@ -38,7 +38,17 @@ angular.module('Tjoys')
                             });
                             $scope.Child.CateId.splice(key+1, len-key+1);
                             $scope.CateList.splice(key+1, len-key+1);
+
+
+                            if (key !== undefined && $scope.CateList[key].CategoryList[0].CateName == '选择筛选栏目') {
+                                $scope.CateList[key].CategoryList.splice(0, 1);
+                            }
                             $scope.CateList.push(res);
+                        } else {
+                            var key = $scope.Child.CateKey;
+                            if (key !== undefined && $scope.CateList[key].CategoryList[0].CateName == '选择筛选栏目') {
+                                $scope.CateList[key].CategoryList.splice(0, 1);
+                            }
                         }
                     }
                 });
