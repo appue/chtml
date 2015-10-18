@@ -1,0 +1,5 @@
+<div class="filter_cate" style="margin-bottom:0;">
+    <select ng-repeat="(k, v) in CateList track by $index" ng-options="option.CateId as option.CateName for option in v.CategoryList" ng-model="Child.CateId[k]" ng-change="changeCate(k)">
+        <!-- <option ng-repeat="(i, item) in v.CategoryList track by $index" id="{{item.CateId}}">{{item.CateName}}</option> -->
+    </select>
+</div>
