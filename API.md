@@ -447,6 +447,8 @@ Request:
 ```
 {   
     ArticleId: 帖子ID（是数组[1,2,3,4.....]）
+
+    Id: 具体类型的ID（圈子、专题、活动的ID）
     Type: club: 圈子；subject: 专题；activity：活动
         
     固顶格式Header

@@ -12,7 +12,7 @@ angular.module('Tjoys')
     $scope.isModify = false;
 
     $scope.Page = {
-        pageIndex: parseInt($stateParams.index, 0) || 1,
+        pageIndex: parseInt($stateParams.page, 0) || 1,
         pageSize: 20,
 
         isAll: false,

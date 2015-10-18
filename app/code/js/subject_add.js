@@ -34,14 +34,14 @@ angular.module('Tjoys')
 
         widget.ajaxRequest({
             scope: $scope,
-            url: 'addClub',
+            url: 'addSubject',
             data: data,
             success: function (res) {
-                widget.msgToast('添加圈子成功');
+                widget.msgToast('添加专题成功');
                 $scope.tInput = {};
             },
             error: function (err) {
-                widget.msgToast('获取圈子失败');
+                widget.msgToast('添加专题失败');
             }
         });
     };

@@ -35,7 +35,7 @@ angular.module('Tjoys')
 
         widget.ajaxRequest({
             scope: $scope,
-            url: 'addBanner',
+            url: 'addActivity',
             data: data,
             success: function (res) {
                 widget.msgToast('添加活动成功');
@@ -44,7 +44,7 @@ angular.module('Tjoys')
                 };
             },
             error: function (err) {
-                widget.msgToast('获取活动失败');
+                widget.msgToast('添加活动失败');
             }
         });
     };

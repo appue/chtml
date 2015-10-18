@@ -3,6 +3,7 @@ angular.module('Tjoys')
 // 显示分页
 .directive('showPage', function (
     $window,
+    $location,
     $rootScope
 ) {
     return {

@@ -12,12 +12,13 @@ angular.module('Tjoys')
     $rootScope.SubMenu = $stateParams.sub;
 
     $scope.Page = {
-        pageIndex: parseInt($stateParams.index, 0) || 1,
+        pageIndex: parseInt($stateParams.page, 0) || 1,
         pageSize: 20,
 
         CateId: [],
         tCateId: '',
 
+        Id: parseInt($stateParams.id, 0),
         Type: $stateParams.type,
         TypeName: '',
 
@@ -173,6 +174,7 @@ angular.module('Tjoys')
             url: 'setArticleType',
             data: {
                 ArticleId: $scope.Page.SelectId,
+                Id: $scope.Page.Id,
                 Type: $scope.Page.Type
             },
             success: function (res) {

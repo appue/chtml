@@ -35,7 +35,7 @@ angular.module('Tjoys')
 
         widget.ajaxRequest({
             scope: $scope,
-            url: 'addBanner',
+            url: 'addClub',
             data: data,
             success: function (res) {
                 widget.msgToast('添加圈子成功');
