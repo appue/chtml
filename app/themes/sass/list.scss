@@ -271,6 +271,7 @@
         font-weight: bold;
         background: #eee;
         padding: 5px 10px;
+        white-space: nowrap;
     }
     dd {
         div:last-child {
@@ -281,6 +282,8 @@
                 line-height: 30px;
                 cursor: pointer;
                 color: #fff;
+                padding: 0 10px;
+                white-space: nowrap;
             }
         }
     }

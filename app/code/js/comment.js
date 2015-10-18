@@ -84,8 +84,8 @@ angular.module('Tjoys')
         });
     };
 
-    // 删除评论
-    $scope.delComment = function (id) {
+    // 删除
+    $scope.Delete = function (id) {
         if (id) {
             $scope.Page.SelectId = [id];
         } else {

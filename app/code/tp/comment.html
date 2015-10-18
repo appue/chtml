@@ -19,7 +19,7 @@
         <div>{{v.Author.UserName}}</div>
         <div>{{v.UpdateTime}}</div>
         <div>
-            <p ng-click="delComment(v.CommentId)">删除</p>
+            <p ng-click="Delete(v.CommentId)">删除</p>
         </div>
     </dd>
 </dl>
@@ -29,5 +29,5 @@
 <show-page></show-page>
 
 <ul class="mod_btn_list mb10" ng-class="DataList.CommentList && DataList.CommentList.length>0">
-    <li ng-click="delComment()">批量删除</li>
+    <li ng-click="Delete()">批量删除</li>
 </ul>
