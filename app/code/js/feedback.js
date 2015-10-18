@@ -22,7 +22,7 @@ angular.module('Tjoys')
     $scope.loadMore = function () {
         widget.ajaxRequest({
             scope: $scope,
-            url: 'getCommentList',
+            url: 'getFeedbackList',
             data: {
                 PageIndex: $scope.Page.pageIndex,
                 PageSize: $scope.Page.pageSize
@@ -39,12 +39,12 @@ angular.module('Tjoys')
     $scope.setSelect = function (e, type) {
         if (type && type == 'all') {
             if ($scope.Page.isAll) {
-                angular.forEach($scope.DataList.CommentList, function (v, k) {
+                angular.forEach($scope.DataList.FeedbackList, function (v, k) {
                     v.Check = false;
                 });
                 $scope.Page.isAll = false;
             } else {
-                angular.forEach($scope.DataList.CommentList, function (v, k) {
+                angular.forEach($scope.DataList.FeedbackList, function (v, k) {
                     v.Check = true;
                 });
                 $scope.Page.isAll = true;
@@ -55,13 +55,13 @@ angular.module('Tjoys')
                 key   = $that.attr('data-key'),
                 id    = $that.attr('data-id');
 
-            if ($scope.DataList.CommentList[key].Check) {
+            if ($scope.DataList.FeedbackList[key].Check) {
                 $scope.Page.isAll = false;
             }
 
-            $scope.DataList.CommentList[key].Check = !$scope.DataList.CommentList[key].Check;
+            $scope.DataList.FeedbackList[key].Check = !$scope.DataList.FeedbackList[key].Check;
 
-            angular.forEach($scope.DataList.CommentList, function (v, k) {
+            angular.forEach($scope.DataList.FeedbackList, function (v, k) {
                 if (!v.Check) {
                     state = false;
                 }
@@ -77,15 +77,15 @@ angular.module('Tjoys')
     $scope.getSelect = function () {
         $scope.Page.SelectId = [];
 
-        angular.forEach($scope.DataList.CommentList, function (v, k) {
+        angular.forEach($scope.DataList.FeedbackList, function (v, k) {
             if (v.Check) {
-                $scope.Page.SelectId.push(v.CommentId);
+                $scope.Page.SelectId.push(v.FeedbackId);
             }
         });
     };
 
-    // 删除评论
-    $scope.delComment = function (id) {
+    // 删除
+    $scope.Delete = function (id) {
         if (id) {
             $scope.Page.SelectId = [id];
         } else {
@@ -99,16 +99,16 @@ angular.module('Tjoys')
 
         widget.ajaxRequest({
             scope: $scope,
-            url: 'delComment',
+            url: 'delFeedback',
             data: {
-                CommentId: $scope.Page.SelectId
+                FeedbackId: $scope.Page.SelectId
             },
             success: function (res) {
                 $scope.loadMore();
-                widget.msgToast('评论删除成功');
+                widget.msgToast('删除反馈成功');
             },
             error: function (err) {
-                widget.msgToast('评论删除失败');
+                widget.msgToast('删除反馈失败');
             }
         })
     }

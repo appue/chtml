@@ -1239,6 +1239,7 @@ Response:
             FeedbackId: 反馈Id
             Content: 反馈内容
             Contact: 联系方式
+            CreateTIme: 反馈时间
         }
     ]
 
@@ -1298,11 +1299,16 @@ Request:
 Response:
 ```
 {
-    ReportId: 举报ID,
-    Id: 举报的ID（文章DI或者圈子ID）
-    Type: 举报的类型（club、article）
-    Contact: 联系方式
-    ReportReason: 举报理由
+    ReportList: [
+        {
+            ReportId: 举报ID,
+            Id: 举报的ID（文章DI或者圈子ID）
+            <!-- Type: 举报的类型（club、article） -->
+            Contact: 联系方式
+            ReportReason: 举报理由
+            State: 0:(未处理);1:虚假举报已忽略;2:举报属实已删除(已处理)
+        }
+    ]
 
     此处格式固定，服务器返回验证数据
     Response: {

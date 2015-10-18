@@ -15,22 +15,22 @@
         <div>举报时间</div>
         <div>操作</div>
     </dt>
-    <dd ng-repeat="(k, v) in DataList.CommentList track by $index">
+    <dd ng-repeat="(k, v) in DataList.ReportList track by $index">
         <div ng-click="setSelect($event)" data-id="{{v.ReportId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
-        <div>{{v.CommentId}}</div>
-        <div><a ui-sref="mange.list-detail({id: v.ArticleId})">{{v.Content}}</a></div>
-        <div>{{v.Author.UserName}}</div>
-        <div>{{v.UpdateTime}}</div>
+        <div>{{v.ReportId}}</div>
+        <div>{{v.Content}}</div>
+        <div>{{v.UserName}}</div>
+        <div>{{v.CreateTime}}</div>
         <div>
             <p ng-click="Delete(v.ReportId)">删除</p>
         </div>
     </dd>
 </dl>
 
-<div class="mod_nodata mb10" ng-if="!DataList.CommentList || DataList.CommentList.length==0"></div>
+<div class="mod_nodata mb10" ng-if="!DataList.ReportList || DataList.ReportList.length==0"></div>
 
 <show-page></show-page>
 
-<ul class="mod_btn_list mb10" ng-class="DataList.CommentList && DataList.CommentList.length>0">
+<ul class="mod_btn_list mb10" ng-class="DataList.ReportList && DataList.ReportList.length>0">
     <li ng-click="Delete()">批量删除</li>
 </ul>
