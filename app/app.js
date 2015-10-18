@@ -210,9 +210,9 @@ angular.module('Tjoys', [
         url: '/role/add.htm',
         templateUrl: 'code/tp/role_add.html',
         controller: 'tRoleAdd'
-    })
+    });
 
     // $urlRouterProvider.when('', '/index.htm');
-    // $urlRouterProvider.otherwise('/mange/login.htm');
+    $urlRouterProvider.otherwise('/mange/login.htm');
 
 });
