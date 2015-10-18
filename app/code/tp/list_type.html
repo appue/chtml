@@ -1,7 +1,11 @@
-<dl class="mod_path">
+<!-- <dl class="mod_path">
     <dt>关联{{Page.TypeName}}帖子管理</dt>
     <dd>您可以对关联{{Page.TypeName}}帖子管理</dd>
-</dl>
+</dl> -->
+<ul class="mod_back">
+    <li page-back>Back</li>
+    <li>您可以对关联{{Page.TypeName}}帖子管理</li>
+</ul>
 
 <section class="filter_cate" ng-if="CateList.length > 0">
     <select ng-repeat="(k, v) in CateList track by $index" ng-options="option.CateId as option.CateName for option in v.CategoryList" ng-model="Page.CateId[k]" ng-change="changeCate(k)">

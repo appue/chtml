@@ -213,6 +213,6 @@ angular.module('Tjoys', [
     })
 
     // $urlRouterProvider.when('', '/index.htm');
-    $urlRouterProvider.otherwise('/mange/login.htm');
+    // $urlRouterProvider.otherwise('/mange/login.htm');
 
 });

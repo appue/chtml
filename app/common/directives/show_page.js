@@ -19,6 +19,8 @@ angular.module('Tjoys')
                 $scope.Page.pageIndex = id;
                 $scope.Page.isAll = false;
                 // $scope.Page.SelectId = [];
+                toBackPage();
+
                 $scope.loadMore();
             };
 
@@ -27,6 +29,23 @@ angular.module('Tjoys')
 
                 $scope.PageNum = Math.ceil($scope.DataList.Total / $scope.Page.pageSize);
             });
+
+            function toBackPage() {
+                var url = '',
+                    search = $location.$$search;
+
+                search['page'] = id;
+
+                angular.forEach(search, function (v, k) {
+                    if (url) {
+                        url += '&'+k+'='+v;
+                    } else {
+                        url = '?'+k+'='+v;
+                    }
+                })
+
+                $window.history.replaceState(null, '', '/#'+$location.$$path+url);
+            }
         }
     };
 });

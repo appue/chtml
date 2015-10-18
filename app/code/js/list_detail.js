@@ -32,10 +32,4 @@ angular.module('Tjoys')
             console.log($scope.DataList);
         }
     });
-
-    $scope.toBack = function () {
-        // console.log($location);
-        // $state.go('mange.list')
-        $window.history.back();
-    };
 });
