@@ -84,6 +84,18 @@ angular.module('Tjoys', [
         templateUrl: 'code/tp/banner_add.html',
         controller: 'tBannerAdd'
     })
+    // 反馈管理
+    .state('mange.feedback', {
+        url: '/feedback.htm',
+        templateUrl: 'code/tp/feedback.html',
+        controller: 'tFeedback'
+    })
+    // 举报管理
+    .state('mange.report', {
+        url: '/report.htm',
+        templateUrl: 'code/tp/report.html',
+        controller: 'tReport'
+    })
 
     // 标签管理
     .state('mange.cate', {

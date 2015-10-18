@@ -1143,44 +1143,6 @@ Response:
 }
 ```
 
-##### getFeedbackList
-> 获取反馈列表
-
-Request:
-```
-{
-    PageIndex: 当前页码
-    PageSize: 每页显示多少条记录
-
-    固顶格式Header
-    Header: {
-        UserId: 当前登录用户ID（未登录传空）
-        Auth: 当前登录用户Auth（未登录传空）
-    }
-}
-```
-Response:
-```
-{
-    List: [
-        {
-            FeedbackId: 反馈Id
-            Content: 反馈内容
-            Contact: 联系方式
-        }
-    ]
-
-    Total: 总数
-
-    此处格式固定，服务器返回验证数据
-    Response: {
-        Time: 服务器当前时间
-        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
-        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
-    }
-}
-```
-
 ##### getCommentList
 > 获取评论列表(OK)
 
@@ -1253,6 +1215,70 @@ Response:
 }
 ```
 
+##### getFeedbackList
+> 获取反馈列表
+
+Request:
+```
+{
+    PageIndex: 当前页码
+    PageSize: 每页显示多少条记录
+
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    List: [
+        {
+            FeedbackId: 反馈Id
+            Content: 反馈内容
+            Contact: 联系方式
+        }
+    ]
+
+    Total: 总数
+
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+##### delFeedback
+> 删除反馈
+
+Request:
+```
+{
+    FeedbackId: 反馈ID(是数组[1,2,3,4.....])
+
+    固顶格式Header
+    Header: {
+        UserId: 当前登录用户ID（未登录传空）
+        Auth: 当前登录用户Auth（未登录传空）
+    }
+}
+```
+Response:
+```
+{
+    此处格式固定，服务器返回验证数据
+    Response: {
+        Time: 服务器当前时间
+        State: 用户登录状态（True：用户登录成功；False：用户登录失败或者未登录）
+        Ack: 返回数据状态（Success、Failure）根据这个状态来判断数据是否提交成功
+    }
+}
+```
+
 ##### getReportList
 > 举报管理,获取举报的列表
 
@@ -1272,7 +1298,9 @@ Request:
 Response:
 ```
 {
-    ArticleId: 帖子ID
+    ReportId: 举报ID,
+    Id: 举报的ID（文章DI或者圈子ID）
+    Type: 举报的类型（club、article）
     Contact: 联系方式
     ReportReason: 举报理由
 
@@ -1291,7 +1319,7 @@ Response:
 Request:
 ```
 {
-    ReportId: 举报的ID
+    ReportId: 举报ID(是数组[1,2,3,4.....])
 
     固顶格式Header
     Header: {
