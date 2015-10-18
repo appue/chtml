@@ -117,22 +117,25 @@ angular.module('Tjoys')
         }
 
         if ($scope.Page.SelectId.length == 0) {
-            widget.msgToast('选择删除的图片');
+            widget.msgToast('选择取消关联的帖子');
             return;
         }
 
         widget.ajaxRequest({
             scope: $scope,
-            url: 'delArticle',
+            url: 'cancleArticleType',
             data: {
-                ArticleId: $scope.Page.SelectId
+                ArticleId: $scope.Page.SelectId,
+                Type: 'subject',
+                Id: $scope.Page.Id
             },
             success: function (res) {
-                widget.msgToast('删除成功');
+                widget.msgToast('取消关联成功');
+                $scope.Page.SelectId = [];
                 $scope.loadMore();
             },
             error: function (err) {
-                widget.msgToast('删除失败');
+                widget.msgToast('取消关联失败');
             }
         });
     };
