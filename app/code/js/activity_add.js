@@ -31,7 +31,7 @@ angular.module('Tjoys')
 
         var data  = angular.extend({}, $scope.tInput);
 
-        data.ActivityType = parseInt(daa.ActivityType, 0);
+        data.ActivityType = parseInt(data.ActivityType, 0);
 
         widget.ajaxRequest({
             scope: $scope,
