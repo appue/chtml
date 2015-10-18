@@ -5,8 +5,8 @@ angular.module('Tjoys')
     $rootScope,
     widget
 ){
-    $rootScope.Menu = 'web';
-    $rootScope.SubMenu = 'banner';
+    $rootScope.Menu = 'club';
+    $rootScope.SubMenu = 'activity_add';
 
     $scope.tInput = {
         ActivityType: "2"

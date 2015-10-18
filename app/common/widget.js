@@ -39,8 +39,8 @@ angular.module('Tjoys')
     var tPackage = {
         config: function () {
             var obj = {
-                // apiSocket: 'http://m.tjoys.net/mgapi/'
-                apiSocket: 'http://m.tjoys.net:8092/mgapi/'
+                apiSocket: 'http://m.tjoys.net/mgapi/'
+                // apiSocket: 'http://m.tjoys.net:8092/mgapi/'
                 // apiSocket: '/api/'
             };
 
