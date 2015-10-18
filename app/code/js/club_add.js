@@ -31,22 +31,18 @@ angular.module('Tjoys')
             return;
         }
 
+        var data  = angular.extend({}, $scope.tInput);
 
         widget.ajaxRequest({
             scope: $scope,
-            url: 'addClub',
-            data: {
-                ClubName: $scope.tInput.ClubName,
-                ImageUrl: $scope.tInput.ImageUrl,
-                Description: $scope.tInput.Description,
-                Letter: $scope.tInput.Letter
-            },
+            url: 'addBanner',
+            data: data,
             success: function (res) {
                 widget.msgToast('添加圈子成功');
                 $scope.tInput = {};
             },
             error: function (err) {
-                widget.msgToast('获取圈子失败');
+                widget.msgToast('添加圈子失败');
             }
         });
     };

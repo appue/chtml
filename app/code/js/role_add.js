@@ -36,13 +36,12 @@ angular.module('Tjoys')
             return;
         }
 
+        var data  = angular.extend({}, $scope.tInput);
+
         widget.ajaxRequest({
             scope: $scope,
             url: 'setRole',
-            data: {
-                UserName: $scope.tInput.UserName,
-                Type: $scope.tInput.Type
-            },
+            data: data,
             success: function (res) {
                 widget.msgToast('用户设置成功');
                 $scope.tInput = {

@@ -6,7 +6,7 @@
 
     <dl class="mod_list mb10">
         <dt>
-            <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
+            <!-- <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div> -->
             <div>编号</div>
             <div>专题封面</div>
             <div>专题标题</div>
@@ -17,7 +17,7 @@
             <div>操作</div>
         </dt>
         <dd ng-repeat="(k, v) in DataList.SubjectList track by $index">
-            <div ng-click="setSelect($event)" data-id="{{v.SubjectId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
+            <!-- <div ng-click="setSelect($event)" data-id="{{v.SubjectId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div> -->
             <div>{{v.SubjectId}}</div>
             <div>
                 <a ui-sref="mange.subject-content({id: v.SubjectId})">
@@ -41,7 +41,7 @@
     <show-page></show-page>
 
     <ul class="mod_btn_list mb10">
-        <li ng-click="Delete()">批量删除</li>
+        <!-- <li ng-click="Delete()">批量删除</li> -->
         <li><a ui-sref="mange.subject-add">新建专题</a></li>
     </ul>
 </section>

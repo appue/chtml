@@ -1,0 +1,37 @@
+<section ng-show="!isModify">
+    <dl class="mod_path">
+        <dt>广告管理</dt>
+        <dd>您可以对广告进行管理</dd>
+    </dl>
+
+    <dl class="mod_list mb10">
+        <dt>
+            <!-- <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div> -->
+            <div>编号</div>
+            <div>广告图片</div>
+            <div>广告标题</div>
+            <div>广告位置</div>
+            <div>链接地址</div>
+            <div>操作</div>
+        </dt>
+        <dd ng-repeat="(k, v) in DataList.UserList track by $index">
+            <!-- <div ng-click="setSelect($event)" data-id="{{v.UserId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div> -->
+            <div>{{v.BannerId}}</div>
+            <div>{{v.ImageUrl}}</div>
+            <div>{{v.Title}}</div>
+            <div>{{v.PageName}}</div>
+            <div>{{v.Link}}</div>
+            <div>
+                <p ng-click="Edit(v.BannerId)">编辑</p>
+                <p ng-click="Delete(v.BannerId)">删除</p>
+            </div>
+        </dd>
+    </dl>
+
+    <div class="mod_nodata mb10" ng-if="!DataList.BannerList || DataList.BannerList.length == 0"></div>
+
+    <ul class="mod_btn_list mb10">
+        <!-- <li ng-click="Delete()">批量删除</li> -->
+        <li><a ui-sref="mange.banner-add">添加广告</a></li>
+    </ul>
+</section>

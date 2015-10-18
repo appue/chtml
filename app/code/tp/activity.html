@@ -6,7 +6,7 @@
 
     <dl class="mod_list mb10">
         <dt>
-            <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div>
+            <!-- <div ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}"></div> -->
             <div>编号</div>
             <div>活动封面</div>
             <div>活动标题</div>
@@ -16,7 +16,7 @@
             <div>操作</div>
         </dt>
         <dd ng-repeat="(k, v) in DataList.ActivityList track by $index">
-            <div ng-click="setSelect($event)" data-id="{{v.ActivityId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div>
+            <!-- <div ng-click="setSelect($event)" data-id="{{v.ActivityId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div> -->
             <div>{{v.ActivityId}}</div>
             <div><a ui-sref="mange.club-thread({id: v.ActivityId})"><img ng-src="{{v.ImageUrl}}" /></a></div>
             <div>{{v.ActivityName}}</div>
@@ -35,7 +35,7 @@
     <show-page></show-page>
 
     <ul class="mod_btn_list mb10">
-        <li ng-click="delSubject()">批量删除</li>
+        <!-- <li ng-click="delSubject()">批量删除</li> -->
         <li><a ui-sref="mange.activity-add">添加活动</a></li>
     </ul>
 </section>

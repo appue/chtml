@@ -1,0 +1,37 @@
+<dl class="mod_path">
+    <dt>广告添加</dt>
+    <dd>您可以对广告进行管理</dd>
+</dl>
+
+<ul class="mod_add mb10">
+    <li>
+        <label>广告标题</label>
+        <input ng-model="tInput.Title" type="text" placeholder="请输入广告标题" />
+    </li>
+    <li>
+        <label>广告位置</label>
+        <select ng-model="tInput.Page">
+            <option value="home">首页</option>
+            <option value="guess">猜你喜欢</option>
+        </select>
+    <li>
+        <label>
+            广告图片<br>
+            <i>图片尺寸保持一样大小600px*300px</i>
+        </label>
+        <div class="t_upload">
+            <input type="file" ng-model="tInput.ImageUrl" accept="image/*" app-filereader />
+            <img data-ng-src="{{tInput.ImageUrl}}" />
+        </div>
+    </li>
+    <li>
+        <label>广告链接</label>
+        <textarea ng-model="tInput.Link" placeholder="请输入广告链接"></textarea>
+    </li>
+</ul>
+
+<ul class="mod_btn_list mb10">
+    <li ng-click="addBanner()">保存</li>
+</ul>
+
+<canvas id="tmp" style="display:none;"></canvas>

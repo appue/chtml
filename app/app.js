@@ -72,6 +72,19 @@ angular.module('Tjoys', [
         controller: 'tIndex'
     })
 
+    // 广告管理
+    .state('mange.banner', {
+        url: '/banner.htm',
+        templateUrl: 'code/tp/banner.html',
+        controller: 'tBanner'
+    })
+    // 广告添加
+    .state('mange.banner-add', {
+        url: '/banner/add.htm',
+        templateUrl: 'code/tp/banner_add.html',
+        controller: 'tBannerAdd'
+    })
+
     // 标签管理
     .state('mange.cate', {
         // cache: false,

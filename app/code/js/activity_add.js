@@ -5,8 +5,8 @@ angular.module('Tjoys')
     $rootScope,
     widget
 ){
-    $rootScope.Menu = 'club';
-    $rootScope.SubMenu = 'activity-add';
+    $rootScope.Menu = 'web';
+    $rootScope.SubMenu = 'banner';
 
     $scope.tInput = {
         ActivityType: "2"
@@ -28,18 +28,15 @@ angular.module('Tjoys')
             return;
         }
 
+
+        var data  = angular.extend({}, $scope.tInput);
+
+        data.ActivityType = parseInt(daa.ActivityType, 0);
+
         widget.ajaxRequest({
             scope: $scope,
-            url: 'addActivity',
-            data: {
-                ActivityName: $scope.tInput.ActivityName,
-                ActivityLabel: $scope.tInput.ActivityLabel || '',
-                ActivityType: parseInt($scope.tInput.ActivityType, 0),
-                ImageUrl: $scope.tInput.ImageUrl || '',
-                Intro: $scope.tInput.Intro || '',
-                Description: $scope.tInput.Description || '',
-                CateId: $scope.tInput.CateId || ''
-            },
+            url: 'addBanner',
+            data: data,
             success: function (res) {
                 widget.msgToast('添加活动成功');
                 $scope.tInput = {

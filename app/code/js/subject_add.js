@@ -30,17 +30,12 @@ angular.module('Tjoys')
             return;
         }
 
+        var data  = angular.extend({}, $scope.tInput);
+
         widget.ajaxRequest({
             scope: $scope,
             url: 'addClub',
-            data: {
-                LongName: $scope.tInput.LongName,
-                ShortName: $scope.tInput.ShortName,
-                ImageUrl: $scope.tInput.ImageUrl,
-                Description: $scope.tInput.Description,
-                ClubId: $scope.tInput.ClubId,
-                CateId: $scope.tInput.CateId
-            },
+            data: data,
             success: function (res) {
                 widget.msgToast('添加圈子成功');
                 $scope.tInput = {};

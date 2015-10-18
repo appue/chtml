@@ -276,7 +276,12 @@
         @include border-half($type: bottom, $color: gray);
         label {
             width: 120px;
+            padding-right: 10px;
             display: block;
+            i {
+                font-size: 12px;
+                color: #aaa;
+            }
         }
         input,
         textarea {
@@ -315,7 +320,7 @@
                 }
             }
             img {
-                width: 50px;
+                // width: 50px;
                 height: 50px;
                 display: block;
             }
