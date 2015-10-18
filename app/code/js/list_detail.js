@@ -11,8 +11,8 @@ angular.module('Tjoys')
     $stateParams,
     widget
 ){
-    $rootScope.Menu    = 'article';
-    $rootScope.SubMenu = $stateParams.type ? 'list-'+ $stateParams.type : 'list';
+    $rootScope.Menu    = $stateParams.menu;
+    $rootScope.SubMenu = $stateParams.sub;
 
     $scope.DataList = {};
 
@@ -35,6 +35,7 @@ angular.module('Tjoys')
 
     $scope.toBack = function () {
         // console.log($location);
-        $state.go('mange.list')
+        // $state.go('mange.list')
+        $window.history.back();
     };
 });

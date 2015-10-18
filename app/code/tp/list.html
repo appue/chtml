@@ -15,7 +15,7 @@
     </h3>
     <ul>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
-            <div class="t_img" ui-sref="mange.list-detail({id: v.ArticleId, type: Page.Type})">
+            <div class="t_img" ui-sref="mange.list-detail({id: v.ArticleId, menu: 'article', sub: SubMenu})">
                 <img ng-src="{{v.Images[0].ImageUrl}}" />
             </div>
             <div class="t_cate">

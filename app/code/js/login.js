@@ -22,10 +22,10 @@ angular.module('Tjoys')
             return;
         }
 
-        if (!$scope.cInput.Code) {
-            widget.msgToast('请输入验证码!');
-            return;
-        }
+        // if (!$scope.cInput.Code) {
+        //     widget.msgToast('请输入验证码!');
+        //     return;
+        // }
 
         // 测试用 toDo
         // widget.setLogin({

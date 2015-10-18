@@ -1,0 +1,41 @@
+<dl class="mod_path">
+    <dt>关联{{Page.TypeName}}帖子管理</dt>
+    <dd>您可以对关联{{Page.TypeName}}帖子管理</dd>
+</dl>
+
+<section class="filter_cate" ng-if="CateList.length > 0">
+    <select ng-repeat="(k, v) in CateList track by $index" ng-options="option.CateId as option.CateName for option in v.CategoryList" ng-model="Page.CateId[k]" ng-change="changeCate(k)">
+        <!-- <option ng-repeat="(i, item) in v.CategoryList track by $index" id="{{item.CateId}}">{{item.CateName}}</option> -->
+    </select>
+ </section>
+
+<section class="list_article" ng-if="DataList.ArticleList.length > 0">
+    <h3 ng-click="setSelect($event, 'all')" class="t_checkbox" ng-class="{select: Page.isAll}">
+        全选
+    </h3>
+    <ul>
+        <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
+            <div class="t_img" ui-sref="mange.list-detail({id: v.ArticleId, menu: Menu, sub: SubMenu})">
+                <img ng-src="{{v.Images[0].ImageUrl}}" />
+            </div>
+            <div class="t_cate">
+                <p ng-click="setSelect($event)" data-id="{{v.ArticleId}}" data-key="{{k}}" ng-class="{select: v.Check}"></p>
+                <i ng-repeat="(i, item) in v.CategoryList track by $index">#{{item.CateName}}</i>
+            </div>
+            <div class="t_time">{{v.CreateTime}}</div>
+            <div class="t_btn">
+                <p data-id="{{v.ArticleId}}" ng-click="Add($event, v.ArticleId)">
+                    加入{{Page.TypeName}}
+                </p>
+            </div>
+        </li>
+    </ul>
+</section>
+
+
+<div class="mod_nodata mb10" ng-if="DataList.ArticleList.length == 0"></div>
+<show-page></show-page>
+
+<ul class="mod_btn_list mb10" ng-if="DataList.ArticleList && DataList.ArticleList.length>0">
+    <li ng-click="Add($event)" data-type="yCate">批量加入{{Page.TypeName}}</li>
+</ul>

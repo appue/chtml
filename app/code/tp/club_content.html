@@ -1,36 +1,35 @@
 <dl class="mod_path">
-    <dt>专题管理</dt>
-    <dd>您可以对专题进行管理</dd>
+    <dt>圈子管理</dt>
+    <dd>您可以对圈子进行管理</dd>
 </dl>
 
 <ul class="mod_modify mb10">
     <li>
-        <label>专题标题（长标题）</label>
-        {{tContent.LongName}}
+        <label>圈子名称</label>
+        {{tContent.ClubName}}
     </li>
     <li>
-        <label>标题简写（短标题）</label>
-        {{tContent.ShortName}}
-    </li>
-    <li>
-        <label>专题封面</label>
+        <label>圈子图片</label>
         <div class="t_upload">
             <img data-ng-src="{{tContent.ImageUrl}}" />
         </div>
     </li>
     <li>
-        <label>专题描述</label>
+        <label>圈子简介</label>
         {{tContent.Description}}
     </li>
     <li>
-        <label>推荐圈子</label>
-        {{tContent.ClubId}}
+        <label>圈子字母</label>
+        {{tContent.Letter}}
+    </li>
+    <li>
+        <label>圈子标签</label>
     </li>
 </ul>
 
 
 <ul class="mod_btn_list">
-    <li ui-sref="mange.list-type({id:Page.Id, type:'subject', menu: 'club', sub: 'subject'})">添加专题帖子</li> 
+    <li ui-sref="mange.list-type({id:Page.Id, type:'club', menu: 'club', sub: 'club'})">添加圈子帖子</li> 
 </ul>
 
 <section class="list_article" ng-if="DataList.ArticleList.length > 0">
@@ -39,7 +38,7 @@
     </h3>
     <ul>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
-            <div class="t_img" ui-sref="mange.list-detail({id: v.ArticleId, menu: 'club', sub: 'subject'})">
+            <div class="t_img" ui-sref="mange.list-detail({id: v.ArticleId, menu: 'club', sub: 'activity'})">
                 <img ng-src="{{v.Images[0].ImageUrl}}" />
             </div>
             <div class="t_cate">
@@ -48,7 +47,7 @@
             </div>
             <div class="t_time">{{v.CreateTime}}</div>
             <div class="t_btn">
-                <p data-id="{{v.ArticleId}}" ng-click="Delete($event, v.ArticleId)">取消专题帖子</p>
+                <p data-id="{{v.ArticleId}}" ng-click="Delete($event, v.ArticleId)">取消圈子帖子</p>
             </div>
         </li>
     </ul>
@@ -61,5 +60,5 @@
 
 
 <ul class="mod_btn_list" ng-if="DataList.ArticleList && DataList.ArticleList.length>0">
-    <li ng-click="Delete($event)">批量取消专题帖子</li> 
+    <li ng-click="Delete($event)">批量取消活动帖子</li> 
 </ul>

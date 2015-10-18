@@ -18,10 +18,13 @@
         <dd ng-repeat="(k, v) in DataList.ActivityList track by $index">
             <!-- <div ng-click="setSelect($event)" data-id="{{v.ActivityId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div> -->
             <div>{{v.ActivityId}}</div>
-            <div><a ui-sref="mange.club-thread({id: v.ActivityId})"><img ng-src="{{v.ImageUrl}}" /></a></div>
+            <div><a ui-sref="mange.activity-content({id: v.ActivityId})"><img ng-src="{{v.ImageUrl}}" /></a></div>
             <div>{{v.ActivityName}}</div>
             <div>{{v.Description}}</div>
-            <div>{{v.ActivityLabel}}</div>
+            <div>
+                <span ng-show="v.ActivityType == 1">文字活动</span>
+                <span ng-show="v.ActivityType == 2">图片活动</span>
+            </div>
             <div>{{v.CreateTime}}</div>
             <div>
                 <p ng-click="Edit(v.ActivityId)">编辑</p>
@@ -79,3 +82,5 @@
 
     <canvas id="tmp" style="display:none;"></canvas>
 </section>
+
+<!-- <show-confirm></show-confirm> -->

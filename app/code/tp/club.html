@@ -20,7 +20,11 @@
         <dd ng-repeat="(k, v) in DataList.ClubList track by $index">
             <!-- <div ng-click="setSelect($event)" data-id="{{v.ClubId}}" data-key="{{k}}" class="t_checkbox" ng-class="{select: v.Check}"></div> -->
             <div>{{v.ClubId}}</div>
-            <div><a ui-sref="mange.club-thread({id: v.ClubId})"><img ng-src="{{v.ImageUrl}}" /></a></div>
+            <div>
+                <a ui-sref="mange.club-content({id: v.ClubId})">
+                    <img ng-src="{{v.ImageUrl}}" />
+                </a>
+            </div>
             <div>{{v.ClubName}}</div>
             <div>{{v.Description}}</div>
             <div>

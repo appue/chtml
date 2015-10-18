@@ -1,51 +1,51 @@
+// 首页
 angular.module('Tjoys')
 
-.controller('tSubjectContent', function (
+.controller('tListType', function (
     $state,
     $scope,
     $rootScope,
     $stateParams,
     widget
 ){
-    $rootScope.Menu    = 'club';
-    $rootScope.SubMenu = 'subject';
-
+    $rootScope.Menu = $stateParams.menu;
+    $rootScope.SubMenu = $stateParams.sub;
 
     $scope.Page = {
         pageIndex: parseInt($stateParams.index, 0) || 1,
         pageSize: 20,
 
-        Id: parseInt($stateParams.id, 0),
+        CateId: [],
+        tCateId: '',
+
+        Type: $stateParams.type,
+        TypeName: '',
 
         SelectId: [], // 选择的文章ID,
         isAll: false
     };
-
-    $scope.tContent = {};
     $scope.DataList = {};
 
-    $scope.getContent = function () {
-        widget.ajaxRequest({
-            scope: $scope,
-            url: 'getContentSubject',
-            data: {
-                SubjectId: $scope.Page.Id
-            },
-            success: function (res) {
-                angular.extend($scope.tContent, res);
-            }
-        })
-    };
-    $scope.getContent();
+    switch ($scope.Page.Type) {
+        case 'club':
+            $scope.Page.TypeName = '圈子';
+        break;
+        case 'activity':
+            $scope.Page.TypeName = '活动';
+        break;
+        case 'subject':
+            $scope.Page.TypeName = '专题';
+        break;
+    }
 
     $scope.loadMore = function () {
         $scope.Page.isAll = false;
 
         widget.ajaxRequest({
             scope: $scope,
-            url: 'getListArticle',
+            url: 'getArticleList',
             data: {
-                SubjectId: $scope.Page.Id,
+                CateId: $scope.Page.tCateId,
                 PageIndex: $scope.Page.pageIndex,
                 PageSize: $scope.Page.pageSize
             },
@@ -54,7 +54,54 @@ angular.module('Tjoys')
             }
         });
     };
+
     $scope.loadMore();
+
+
+    $scope.$watch('Page.tCateId', function () {
+        $scope.loadMore();
+    });
+
+    $scope.CateList = [];
+    $scope.getCate = function () {
+        widget.ajaxRequest({
+            scope: $scope,
+            url: 'getListCategory',
+            data: {
+                CateId: $scope.Page.tCateId
+            },
+            success: function (res) {
+                if (res.CategoryList.length > 0) {
+                    var len = $scope.CateList.length,
+                        key = $scope.Page.CateKey;
+
+                    res.CategoryList.unshift({
+                        CateName: '选择筛选栏目'
+                    });
+                    $scope.Page.CateId.splice(key+1, len-key+1);
+                    $scope.CateList.splice(key+1, len-key+1);
+                    $scope.CateList.push(res);
+                }
+            }
+        });
+    };
+    $scope.getCate();
+
+    $scope.changeCate = function (key) {
+        // alert($scope.Page.CateId);
+        // alert($scope.Page.CateId);
+        $scope.Page.tCateId = $scope.Page.CateId[key];
+        $scope.Page.CateKey = key;
+        $scope.getCate();
+    };
+
+    $scope.setCate = function (e) {
+        if ($scope.Page.SelectId.length == 0) {
+            widget.msgToast('选择归类的图片');
+            return;
+        }
+    };
+
 
     // 选择ID
     $scope.setSelect = function (e, type) {
@@ -105,8 +152,8 @@ angular.module('Tjoys')
         });
     };
 
-    // 删除
-    $scope.Delete = function (e, id) {
+    // 归类
+    $scope.Add = function (e, id) {
         var $that = angular.element(e.target),
             type  = $that.attr('data-type');
 
@@ -117,22 +164,24 @@ angular.module('Tjoys')
         }
 
         if ($scope.Page.SelectId.length == 0) {
-            widget.msgToast('选择删除的图片');
+            widget.msgToast('选择'+$scope.Page.TypeName+'图片');
             return;
         }
 
         widget.ajaxRequest({
             scope: $scope,
-            url: 'delArticle',
+            url: 'setArticleType',
             data: {
-                ArticleId: $scope.Page.SelectId
+                ArticleId: $scope.Page.SelectId,
+                Type: $scope.Page.Type
             },
             success: function (res) {
-                widget.msgToast('删除成功');
+                widget.msgToast('关联'+$scope.Page.TypeName+'成功');
+                $scope.Page.SelectId = [];
                 $scope.loadMore();
             },
             error: function (err) {
-                widget.msgToast('删除失败');
+                widget.msgToast('关联'+$scope.Page.TypeName+'失败');
             }
         });
     };

@@ -1,36 +1,41 @@
 <dl class="mod_path">
-    <dt>专题管理</dt>
-    <dd>您可以对专题进行管理</dd>
+    <dt>活动管理</dt>
+    <dd>您可以对活动进行管理</dd>
 </dl>
 
 <ul class="mod_modify mb10">
     <li>
-        <label>专题标题（长标题）</label>
-        {{tContent.LongName}}
+        <label>活动标题</label>
+        {{tContent.ActivityName}}
     </li>
     <li>
-        <label>标题简写（短标题）</label>
-        {{tContent.ShortName}}
+        <label>活动类型</label>
+        <span ng-show="tContent.ActivityType == '1'">文字类</span>
+        <span ng-show="tContent.ActivityType == '2'">图片类</span>
     </li>
     <li>
-        <label>专题封面</label>
+        <label>类别名称</label>
+        {{tContent.ActivityLabel}}
+    </li>
+    <li>
+        <label>活动封面</label>
         <div class="t_upload">
             <img data-ng-src="{{tContent.ImageUrl}}" />
         </div>
     </li>
     <li>
-        <label>专题描述</label>
-        {{tContent.Description}}
+        <label>一句话描述</label>
+        {{tContent.Intro}}
     </li>
     <li>
-        <label>推荐圈子</label>
-        {{tContent.ClubId}}
+        <label>详细描述</label>
+        {{tContent.Description}}
     </li>
 </ul>
 
 
 <ul class="mod_btn_list">
-    <li ui-sref="mange.list-type({id:Page.Id, type:'subject', menu: 'club', sub: 'subject'})">添加专题帖子</li> 
+    <li ui-sref="mange.list-type({id:Page.Id, type:'activity', menu: 'club', sub: 'activity'})">添加活动帖子</li> 
 </ul>
 
 <section class="list_article" ng-if="DataList.ArticleList.length > 0">
@@ -39,7 +44,7 @@
     </h3>
     <ul>
         <li ng-repeat="(k, v) in DataList.ArticleList track by $index">
-            <div class="t_img" ui-sref="mange.list-detail({id: v.ArticleId, menu: 'club', sub: 'subject'})">
+            <div class="t_img" ui-sref="mange.list-detail({id: v.ArticleId, menu: 'club', sub: 'activity'})">
                 <img ng-src="{{v.Images[0].ImageUrl}}" />
             </div>
             <div class="t_cate">
@@ -48,7 +53,7 @@
             </div>
             <div class="t_time">{{v.CreateTime}}</div>
             <div class="t_btn">
-                <p data-id="{{v.ArticleId}}" ng-click="Delete($event, v.ArticleId)">取消专题帖子</p>
+                <p data-id="{{v.ArticleId}}" ng-click="Delete($event, v.ArticleId)">取消活动帖子</p>
             </div>
         </li>
     </ul>
@@ -61,5 +66,5 @@
 
 
 <ul class="mod_btn_list" ng-if="DataList.ArticleList && DataList.ArticleList.length>0">
-    <li ng-click="Delete($event)">批量取消专题帖子</li> 
+    <li ng-click="Delete($event)">批量取消活动帖子</li> 
 </ul>

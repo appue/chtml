@@ -1,7 +1,6 @@
 angular.module('Tjoys')
 
-// 显示分页
-.directive('showPage', function (
+.directive('showConfirm', function (
     $window,
     $rootScope
 ) {
@@ -17,7 +16,6 @@ angular.module('Tjoys')
 
                 $scope.Page.pageIndex = id;
                 $scope.Page.isAll = false;
-                // $scope.Page.SelectId = [];
                 $scope.loadMore();
             };
 

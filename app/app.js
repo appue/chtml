@@ -118,9 +118,14 @@ angular.module('Tjoys', [
         controller: 'tList'
     })
     .state('mange.list-detail', {
-        url: '/list/detail/{id}.htm?type',
+        url: '/list/detail/{id}.htm?type&menu&sub',
         templateUrl: 'code/tp/list_detail.html',
         controller: 'tListDetail'
+    })
+    .state('mange.list-type', {
+        url: '/list/{type}/{id}.htm?menu&sub',
+        templateUrl: 'code/tp/list_type.html',
+        controller: 'tListType'
     })
 
     // 专题管理
@@ -129,18 +134,19 @@ angular.module('Tjoys', [
         templateUrl: 'code/tp/subject.html',
         controller: 'tSubject'
     })
-    // 专题内容
-    .state('mange.subject-content', {
-        url: '/subject/content-{id}.htm',
-        templateUrl: 'code/tp/subject_content.html',
-        controller: 'tSubjectContent'
-    })
     // 添加专题
     .state('mange.subject-add', {
         url: '/subject/add.htm',
         templateUrl: 'code/tp/subject_add.html',
         controller: 'tSubjectAdd'
     })
+    // 专题内容
+    .state('mange.subject-content', {
+        url: '/subject/content/{id}.htm',
+        templateUrl: 'code/tp/subject_content.html',
+        controller: 'tSubjectContent'
+    })
+
 
     // 活动管理
     .state('mange.activity', {
@@ -153,6 +159,12 @@ angular.module('Tjoys', [
         url: '/activity/add.htm',
         templateUrl: 'code/tp/activity_add.html',
         controller: 'tActivityAdd'
+    })
+    // 活动详情
+    .state('mange.activity-content', {
+        url: '/activity/content/{id}.htm',
+        templateUrl: 'code/tp/activity_content.html',
+        controller: 'tActivityContent'
     })
 
     // 评论管理
@@ -175,10 +187,10 @@ angular.module('Tjoys', [
         controller: 'tClubAdd'
     })
     // 圈子帖子管理
-    .state('mange.club-thread', {
-        url: '/club/thread-{id}.htm',
-        templateUrl: 'code/tp/club_thread.html',
-        controller: 'tClubThread'
+    .state('mange.club-content', {
+        url: '/club/content/{id}.htm',
+        templateUrl: 'code/tp/club_content.html',
+        controller: 'tClubContent'
     })
 
     // 用户管理

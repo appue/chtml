@@ -1,6 +1,6 @@
 angular.module('Tjoys')
 
-.controller('tSubjectContent', function (
+.controller('tClubContent', function (
     $state,
     $scope,
     $rootScope,
@@ -8,7 +8,7 @@ angular.module('Tjoys')
     widget
 ){
     $rootScope.Menu    = 'club';
-    $rootScope.SubMenu = 'subject';
+    $rootScope.SubMenu = 'club';
 
 
     $scope.Page = {
@@ -27,9 +27,9 @@ angular.module('Tjoys')
     $scope.getContent = function () {
         widget.ajaxRequest({
             scope: $scope,
-            url: 'getContentSubject',
+            url: 'getContentClub',
             data: {
-                SubjectId: $scope.Page.Id
+                ClubId: $scope.Page.Id
             },
             success: function (res) {
                 angular.extend($scope.tContent, res);
@@ -45,7 +45,7 @@ angular.module('Tjoys')
             scope: $scope,
             url: 'getListArticle',
             data: {
-                SubjectId: $scope.Page.Id,
+                ClubId: $scope.Page.Id,
                 PageIndex: $scope.Page.pageIndex,
                 PageSize: $scope.Page.pageSize
             },

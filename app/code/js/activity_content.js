@@ -1,6 +1,7 @@
+// 首页
 angular.module('Tjoys')
 
-.controller('tSubjectContent', function (
+.controller('tActivityContent', function (
     $state,
     $scope,
     $rootScope,
@@ -8,7 +9,7 @@ angular.module('Tjoys')
     widget
 ){
     $rootScope.Menu    = 'club';
-    $rootScope.SubMenu = 'subject';
+    $rootScope.SubMenu = 'activity';
 
 
     $scope.Page = {
@@ -27,12 +28,12 @@ angular.module('Tjoys')
     $scope.getContent = function () {
         widget.ajaxRequest({
             scope: $scope,
-            url: 'getContentSubject',
+            url: 'getContentActivity',
             data: {
-                SubjectId: $scope.Page.Id
+                ActivityId: $scope.Page.Id
             },
             success: function (res) {
-                angular.extend($scope.tContent, res);
+                angular.extend($scope.tContent, res.Content);
             }
         })
     };
@@ -45,7 +46,7 @@ angular.module('Tjoys')
             scope: $scope,
             url: 'getListArticle',
             data: {
-                SubjectId: $scope.Page.Id,
+                ActivityId: $scope.Page.Id,
                 PageIndex: $scope.Page.pageIndex,
                 PageSize: $scope.Page.pageSize
             },
