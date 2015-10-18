@@ -81,10 +81,13 @@
                     line-height: 30px;
                     color: #000;
                     background: #ddd;
+
+                    background: #666;
+                    color: #fff;
                     @include icon(
                         $type: \f35c,
                         $size: 20px,
-                        $color: #000
+                        $color: #fff
                     );
                     &:before {
                         margin-right: 5px;
