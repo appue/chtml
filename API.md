@@ -783,9 +783,6 @@ Request:
     ImageUrl: 专题封面（Base64）
     Description: 专题描述
     ClubId: 推荐的圈子ID
-    ClubName: 推荐的圈子名称
-
-    CategoryList: 推荐的栏目暂时不定，有疑问
 
     固顶格式Header
     Header: {

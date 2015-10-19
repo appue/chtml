@@ -209,6 +209,14 @@ module.exports = function (gulp, $) {
             ])
             .pipe(gulp.dest(buildFolder));
     });
+
+    //--json 迁移
+    gulp.task('movejson', function() {
+        return gulp.src([
+                './app/data/*.json'
+            ])
+            .pipe(gulp.dest(buildFolder));
+    });
     
     //--js 合并压缩
     gulp.task('minjs', function() {
