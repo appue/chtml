@@ -34,8 +34,6 @@ angular.module('Tjoys')
             $scope.getClub();
 
             $scope.changeClub = function () {
-                alert($scope.ClubId);
-
                 ngModel.$setViewValue($scope.ClubId);
             };
 
