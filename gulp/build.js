@@ -203,7 +203,8 @@ module.exports = function (gulp, $) {
         return gulp.src([
                 './app/**/*.jpg',
                 './app/**/*.png',
-                // '!./app/themes/temp/**/*',
+                
+                '!./app/themes/temp/**/*',
                 '!./app/themes/logo/**/*',
                 '!./app/bower_components/**/*'
             ])
@@ -215,7 +216,7 @@ module.exports = function (gulp, $) {
         return gulp.src([
                 './app/data/*.json'
             ])
-            .pipe(gulp.dest(buildFolder));
+            .pipe(gulp.dest(buildFolder+'/data'));
     });
     
     //--js 合并压缩
