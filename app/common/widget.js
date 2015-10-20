@@ -259,9 +259,17 @@ angular.module('Tjoys')
          * 根据ID拿工作名称
          */
         getJobName: function (id) {
-            var self = this;
-
-            var JobName = self.getJobList().then(function (res) {
+            var self = this,
+                JobName;
+                
+            if ($rootScope.JobList) {
+                angular.forEach($rootScope.JobList, function (v, k) {
+                    if (v.Id == id) {
+                        JobName = v.Name;
+                    }                
+                });
+            } else {
+                JobName = self.getJobList().then(function (res) {
                     var name;
 
                     angular.forEach(res.JobList, function (v, k) {
@@ -274,6 +282,7 @@ angular.module('Tjoys')
                 }, function (err) {
                     return null;
                 });
+            }
 
             return JobName;
         },

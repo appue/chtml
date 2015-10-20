@@ -48,6 +48,14 @@ angular.module('Tjoys')
                             v.AreaName = AreaName;
                         });
                     }
+
+                    if ($rootScope.JobList) {
+                        v.JobName = widget.getJobName(v.Job);
+                    } else {
+                        widget.getJobName(v.Job).then(function (JobName) {
+                            v.JobName = JobName;
+                        });
+                    }
                 });
                 $scope.DataList = res;
             }
