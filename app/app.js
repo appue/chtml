@@ -21,6 +21,11 @@ angular.module('Tjoys', [
         return UserInfo;
     })();
 
+    // 接口
+    var port = $location.$$port;
+    $rootScope.apiSocket = 'http://m.tjoys.net/api/';
+    if (port) $rootScope.apiSocket = 'http://m.tjoys.net:8092/api/';
+
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         if (toState.name == 'mange.login') {
 			$rootScope.showHeader = false;

@@ -37,16 +37,6 @@ angular.module('Tjoys')
         dataPool = $cacheFactory('dataPool');
 
     var tPackage = {
-        config: function () {
-            var obj = {
-                // apiSocket: 'http://m.tjoys.net/mgapi/'
-                apiSocket: 'http://m.tjoys.net:8092/mgapi/'
-                // apiSocket: '/api/'
-            };
-
-            return obj;
-        },
-        
         /**
          * toast提示层
          * @param msg, time
@@ -139,10 +129,10 @@ angular.module('Tjoys')
                 },
                 ajaxConfig = { //-----------------ajax请求配置
                     method: 'POST',
-                    url: self.config().apiSocket + params.url || '',
+                    url: $rootScope.apiSocket + params.url || '',
 
                     // method: 'GET',
-                    // url: self.config().apiSocket + params.url + '.json' || '',
+                    // url: $rootScope.apiSocket + params.url + '.json' || '',
 
                     data: postOpt,
                     timeout: 15000
