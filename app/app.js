@@ -4,8 +4,10 @@ angular.module('Tjoys', [
     'DelegateEvents'
 ])
 .run( function (
-    $rootScope,
     $state,
+    $location,
+    $rootScope,
+    
     cachePool
 ) {
     $rootScope.Thumb = "themes/img/thumb.jpg";
