@@ -25,8 +25,8 @@ angular.module('Tjoys', [
 
     // 接口
     var port = $location.$$port;
-    $rootScope.apiSocket = 'http://m.tjoys.net/api/';
-    if (port != 80) $rootScope.apiSocket = 'http://m.tjoys.net:8092/api/';
+    $rootScope.apiSocket = 'http://m.tjoys.net/mgapi/';
+    if (port != 80) $rootScope.apiSocket = 'http://m.tjoys.net:8092/mgapi/';
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         if (toState.name == 'mange.login') {
