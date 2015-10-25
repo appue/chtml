@@ -47,7 +47,7 @@
 </section>
 
 
-<section ng-show="isModify">
+<section ng-if="isModify">
     <ul class="mod_modify mb10">
         <li>
             <label>专题标题（长标题）</label>
@@ -70,7 +70,8 @@
         </li>
         <li>
             <label>推荐圈子</label>
-            <input ng-model="tInput.ClubId" type="text" placeholder="请输入圈子ID" />
+            <!-- <input ng-model="tInput.ClubId" type="text" placeholder="请输入圈子ID" /> -->
+            <select-club ng-model="tInput.ClubId" id="{{tInput.ClubId}}" name="{{tInput.ClubName}}"></select-club>
         </li>
     </ul>
 

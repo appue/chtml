@@ -132,7 +132,8 @@ angular.module('Tjoys')
                     ShortName: v.ShortName,
                     ImageUrl: v.ImageUrl,
                     Description: v.Description,
-                    ClubId: v.ClubId
+                    ClubId: v.ClubId,
+                    ClubName: v.ClubName
                 };
             }
         });

@@ -15,7 +15,8 @@ angular.module('Tjoys')
         link: function ($scope, $element, $attrs, ngModel) {
             if (!ngModel) return;
 
-            $scope.ClubId = 0;
+            $scope.ClubId = $attrs.id ? parseInt($attrs.id, 0) : 0;
+            $scope.ClubName = $attrs.name ? $attrs.name : '选择推荐的圈子';
 
             $scope.getClub = function () {
                 widget.ajaxRequest({
@@ -23,10 +24,12 @@ angular.module('Tjoys')
                     url: 'getListClub',
                     data: {},
                     success: function (res) {
-                        res.ClubList.unshift({
-                            ClubId: 0,
-                            ClubName: '选择推荐的圈子'
-                        });
+                        if (!$attrs.id) {
+                            res.ClubList.unshift({
+                                ClubId: 0,
+                                ClubName: '选择推荐的圈子'
+                            });
+                        }
                         $scope.ClubList = res.ClubList;
                     }
                 });
