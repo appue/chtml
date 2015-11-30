@@ -9,7 +9,8 @@ angular.module('Tjoys')
     $rootScope.SubMenu = 'banner';
 
     $scope.tInput = {
-        Page: 'home'
+        Page: 'home',
+		Model: "1"
     };
 
     $scope.addBanner = function () {

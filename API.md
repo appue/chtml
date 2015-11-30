@@ -69,8 +69,9 @@ Request:
 {
     Title: 标题
     ImageUrl: 图片数据（base64）
-    Link: 连接地址
+    Link: 链接地址
     Page: ('home', 'guess')
+    Model: 链接类型(1:站内链接;2:站外链接)
 
     固顶格式Header
     Header: {

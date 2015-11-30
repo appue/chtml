@@ -15,15 +15,22 @@
             <option value="guess">猜你喜欢</option>
         </select>
     <li>
-        <label>
-            广告图片<br>
-            <i>图片尺寸保持一样大小600px*300px</i>
-        </label>
+        <label>广告图片</label>
+        <input ng-model="tInput.ImageUrl" type="text" placeholder="请输入图片地址" />
+		<!--
         <div class="t_upload">
             <input type="file" ng-model="tInput.ImageUrl" accept="image/*" app-filereader />
             <img data-ng-src="{{tInput.ImageUrl}}" />
         </div>
+		-->
     </li>
+	<li>
+		<label>链接类型</label>
+		<select ng-model="tInput.Model">
+			<option value="1">站内链接</option>
+			<option value="2">站外链接</option>
+		</select>
+	</li>
     <li>
         <label>广告链接</label>
         <textarea ng-model="tInput.Link" placeholder="请输入广告链接"></textarea>
