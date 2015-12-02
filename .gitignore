@@ -15,4 +15,3 @@ mockup/themes/*.css
 /.folder
 app/themes/all.css
 app/bower_components/
-app/app.js
