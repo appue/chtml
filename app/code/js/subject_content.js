@@ -3,6 +3,7 @@ angular.module('Tjoys')
 .controller('tSubjectContent', function (
     $state,
     $scope,
+    $location,
     $rootScope,
     $stateParams,
     widget
@@ -12,7 +13,8 @@ angular.module('Tjoys')
 
 
     $scope.Page = {
-        pageIndex: parseInt($stateParams.index, 0) || 1,
+        // pageIndex: parseInt($stateParams.index, 0) || 1,
+        pageIndex: parseInt($location.search()['page'], 0) || 1,
         pageSize: 20,
 
         Id: parseInt($stateParams.id, 0),

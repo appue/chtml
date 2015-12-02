@@ -12,7 +12,7 @@ angular.module('Tjoys')
 
     $scope.Page = {
         pageIndex: parseInt($location.search()['page'], 0) || 1,
-        pageSize: 20,
+        pageSize: 10,
 
         isAll: false,
         SelectId: []

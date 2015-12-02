@@ -2,6 +2,7 @@ angular.module('Tjoys')
 
 .controller('tSubject', function (
     $scope,
+    $location,
     $rootScope,
     $stateParams,
     widget
@@ -12,8 +13,9 @@ angular.module('Tjoys')
     $scope.isModify = false;
 
     $scope.Page = {
-        pageIndex: parseInt($stateParams.page, 0) || 1,
-        pageSize: 20,
+        // pageIndex: parseInt($stateParams.page, 0) || 1,
+        pageIndex: parseInt($location.search()['page'], 0) || 1,
+        pageSize: 10,
 
         isAll: false,
         SelectId: []

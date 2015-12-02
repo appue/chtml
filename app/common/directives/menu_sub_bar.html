@@ -18,22 +18,22 @@
             <dl>
                 <dt>图片管理</dt>
                 <dd>
-                    <a ng-class="{current: SubMenu=='list'}" ui-sref="mange.list({page:1})" ui-sref-opts="{inherit: false}">
+                    <a ng-class="{current: SubMenu=='list'}" ui-sref="mange.list" ui-sref-opts="{inherit: false}">
                         图片列表
                     </a>
                 </dd>
                 <dd>
-                    <a ng-class="{current: SubMenu=='list-no'}" ui-sref="mange.list({page:1,type:'no'})" ui-sref-opts="{inherit: false}">
+                    <a ng-class="{current: SubMenu=='list-no'}" ui-sref="mange.list({type:'no'})" ui-sref-opts="{inherit: false}">
                         未推荐
                     </a>
                 </dd>
                 <dd>
-                    <a ng-class="{current: SubMenu=='list-yes'}" ui-sref="mange.list({page:1,type:'yes'})" ui-sref-opts="{inherit: false}">
+                    <a ng-class="{current: SubMenu=='list-yes'}" ui-sref="mange.list({type:'yes'})" ui-sref-opts="{inherit: false}">
                         已推荐
                     </a>
                 </dd>
                 <dd>
-                    <a ng-class="{current: SubMenu=='list-home'}" ui-sref="mange.list({page:1,type:'home'})" ui-sref-opts="{inherit: false}">
+                    <a ng-class="{current: SubMenu=='list-home'}" ui-sref="mange.list({type:'home'})" ui-sref-opts="{inherit: false}">
                         首页图片
                     </a>
                 </dd>
@@ -51,10 +51,18 @@
                 <dd><a ng-class="{current: SubMenu=='club'}" ui-sref="mange.club">圈子列表</a></dd>
                 <dd><a ng-class="{current: SubMenu=='club-add'}" ui-sref="mange.club-add">添加圈子</a></dd>
                 <dt>专题管理</dt>
-                <dd><a ng-class="{current: SubMenu=='subject'}" ui-sref="mange.subject">专题列表</a></dd>
+                <dd>
+                    <a ng-class="{current: SubMenu=='subject'}" ui-sref="mange.subject">
+                        专题列表
+                    </a>
+                </dd>
                 <dd><a ng-class="{current: SubMenu=='subject-add'}" ui-sref="mange.subject-add">新建专题</a></dd>
                 <dt>活动管理</dt>
-                <dd><a ng-class="{current: SubMenu=='activity'}" ui-sref="mange.activity">活动列表</a></dd>
+                <dd>
+                    <a ng-class="{current: SubMenu=='activity'}" ui-sref="mange.activity">
+                        活动列表
+                    </a>
+                </dd>
                 <dd><a ng-class="{current: SubMenu=='activity-add'}" ui-sref="mange.activity-add">创建活动</a></dd>
             </dl>
         </li>
