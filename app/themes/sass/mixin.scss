@@ -10,13 +10,13 @@
     font-style: normal;
 }
 
-$green:        #3cc482;
-$red:          #dc2822;
-$orange:       #ff9600;
-$link:         #333;
-$text:         #333;
-$bg-btn:       #ddd;
-$bg-list:      #eee;
+$green: #3cc482;
+$red: #dc2822;
+$orange: #ff9600;
+$link: #333;
+$text: #333;
+$bg-btn: #ddd;
+$bg-list: #eee;
 $color-border: #ddd;
 
 @mixin font-icon () {    
@@ -91,18 +91,36 @@ $color-border: #ddd;
 }
 
 
-@mixin box(
-    $align: "",
-    $pack: ""
-){
+@mixin box($align:null, $pack:null) {
     display: -webkit-box;
 
-    @if $align {
+    @if $align != null {
         -webkit-box-align: $align;
     }
 
-    @if $pack {
+    @if $pack != null {
         -webkit-box-pack: $pack;
     }
 }
 
+@mixin position($type:absolute, $left:null, $right:null, $top:null, $bottom:null, $index:100) {
+	position: $type;
+	
+	@if $left != null {
+		left: $left;
+	}
+
+	@if $right != null {
+		right: $right;
+	}
+
+	@if $top != null {
+		top: $top;
+	}
+
+	@if $bottom != null {
+		bottom: $bottom;
+	}
+	
+	z-index: $index;
+}

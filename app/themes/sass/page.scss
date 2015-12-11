@@ -180,19 +180,25 @@
 }
 
 .mod_page {
+	background: rgba(0, 0, 0, 0.7);
+	padding: 10px 0 10px 10px;
+	@include position($type:fixed, $right:10px, $bottom:10px);
     @include box();
     li {
         padding: 0 10px;
         text-align: center;
         line-height: 30px;
         margin-right: 10px;
-        background: #eee;
+        background: #fff;
         cursor: pointer;
-        @include border-half($type: all, $color: gray);
         &.current {
             background: $green;
             color: #fff;
         }
+		&.none {
+			background: #ccc;
+			color: #999;
+		}
     }
 }
 

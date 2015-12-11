@@ -2,6 +2,7 @@ angular.module('Tjoys')
 
 .controller('tUser', function (
     $scope,
+	$location,
     $rootScope,
     $stateParams,
     widget
@@ -10,7 +11,8 @@ angular.module('Tjoys')
     $rootScope.SubMenu = 'user';
 
     $scope.Page = {
-        pageIndex: parseInt($stateParams.index, 0) || 1,
+        //pageIndex: parseInt($stateParams.index, 0) || 1,
+        pageIndex: parseInt($location.search()['page'], 0) || 1,
         pageSize: 20,
 
         SelectId: [], // 选择的ID,
