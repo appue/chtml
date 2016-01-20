@@ -7,7 +7,6 @@ var getProject = require('./tools/folder.js'),
 
 
 var runType     = argv.run || '', // dev、build
-    packageType = argv.g || 'app', // 默认打APP的包，如果要打H5的包就 --g web
     cssPath     = './app/themes',
     netPath     = '',
     d           = new Date(),

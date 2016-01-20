@@ -45,7 +45,7 @@ angular.module('Tjoys')
 				$scope.PageTag = [];
 
 				var start = $scope.Page.pageIndex-2;
-				for (var i=0, i<5; i++) {
+				for (var i=0; i<5; i++) {
 					$scope.PageTag.push(start+i);
 				}
 		
